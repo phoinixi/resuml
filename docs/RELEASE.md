@@ -58,7 +58,7 @@ npm run release
 
 ## What Gets Published
 
-- **Package**: `ryaml` (the CLI package)
+- **Package**: `yamlr` (the CLI package)
 - **Registry**: npm public registry
 - **Files**: Only the built distribution files and necessary metadata
 

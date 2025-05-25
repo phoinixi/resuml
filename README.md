@@ -1,10 +1,12 @@
-# Ryaml - YAML-based Resume Management
+# yamlr
 
-[![CI](https://github.com/phoinixi/ryaml/actions/workflows/ci.yml/badge.svg)](https://github.com/phoinixi/ryaml/actions/workflows/ci.yml)
-[![npm version](https://badge.fury.io/js/ryaml.svg)](https://badge.fury.io/js/ryaml)
+[![CI](https://github.com/phoinixi/yamlr/actions/workflows/ci.yml/badge.svg)](https://github.com/phoinixi/yamlr/actions/workflows/ci.yml)
+[![npm version](https://badge.fury.io/js/yamlr.svg)](https://badge.fury.io/js/yamlr)
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
-Ryaml is a modern CLI tool for managing your resume in YAML format. It enables you to maintain your resume data as modular YAML files, validate them against the JSON Resume schema, and render them to various output formats.
+Generate JSON resumes from YAML with theme support.
+
+yamlr is a modern CLI tool for managing your resume in YAML format. It enables you to maintain your resume data as modular YAML files, validate them against the JSON Resume schema, and render them to various output formats.
 
 ## Features
 
@@ -13,17 +15,17 @@ Ryaml is a modern CLI tool for managing your resume in YAML format. It enables y
 - **Standard Compatibility:** Compatible with the [JSON Resume](https://jsonresume.org/) schema
 - **Schema Validation:** Validate your resume data against the JSON Resume schema
 - **Multiple Output Formats:** Convert your resume to JSON and render to HTML
-- **Theme Support:** Use existing JSON Resume themes or custom Ryaml themes
+- **Theme Support:** Use existing JSON Resume themes or custom yamlr themes
 - **Development Server:** Preview changes with hot-reloading
 
 ## Installation
 
 ```bash
 # Install globally
-npm install -g ryaml
+npm install -g yamlr
 
 # Or use with npx
-npx ryaml --help
+npx yamlr --help
 ```
 
 ## Usage
@@ -32,16 +34,16 @@ npx ryaml --help
 
 ```bash
 # Validate your resume YAML files
-ryaml validate -r path/to/resume/dir
+yamlr validate -r path/to/resume/dir
 
 # Convert YAML to JSON
-ryaml tojson -r path/to/resume-dir -o resume.json
+yamlr tojson -r path/to/resume-dir -o resume.json
 
 # Render resume to HTML
-ryaml render -r path/to/resume/dir -t jsonresume-theme-stackoverflow -o resume.html
+yamlr render -r path/to/resume/dir -t jsonresume-theme-stackoverflow -o resume.html
 
 # Start development server with hot-reload
-ryaml dev -r path/to/resume-dir -t jsonresume-theme-stackoverflow
+yamlr dev -r path/to/resume-dir -t jsonresume-theme-stackoverflow
 ```
 
 ### Using Multiple Files
@@ -60,7 +62,7 @@ resume/
 Then use the directory as input:
 
 ```bash
-ryaml validate -r resume/
+yamlr validate -r resume/
 ```
 
 ### Using Glob Patterns
@@ -68,7 +70,7 @@ ryaml validate -r resume/
 You can also use glob patterns to select specific files:
 
 ```bash
-ryaml validate -r "resume/**/*.yaml"
+yamlr validate -r "resume/**/*.yaml"
 ```
 
 ## Directory Structure
@@ -88,8 +90,8 @@ This is a monorepo managed with npm workspaces and Turborepo.
 
 ```bash
 # Clone the repository
-git clone https://github.com/phoinixi/ryaml.git
-cd ryaml
+git clone https://github.com/phoinixi/yamlr.git
+cd yamlr
 
 # Install dependencies
 npm install
@@ -101,7 +103,7 @@ npm run build
 npm run test
 
 # Run the CLI locally
-node packages/cli/bin/ryaml.js --help
+node packages/cli/bin/yamlr.js --help
 ```
 
 ## Contributing
