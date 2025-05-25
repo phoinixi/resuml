@@ -1,6 +1,6 @@
-# Ryaml Documentation
+# yamlr Documentation
 
-Welcome to the Ryaml documentation! This directory contains detailed guides and references for using Ryaml effectively.
+Welcome to the yamlr documentation! This directory contains detailed guides and references for using yamlr effectively.
 
 ## Quick Start
 
@@ -11,28 +11,28 @@ For a quick overview, see the main [README](../README.md) in the project root.
 ### Installation
 
 ```bash
-npm install -g ryaml
+npm install -g yamlr
 ```
 
 ### Basic Usage
 
 ```bash
 # Validate your resume
-ryaml validate -r path/to/path/to/resume/dirdir
+yamlr validate -r path/to/resume/dir
 
 # Convert to JSON
-ryaml tojson -r path/to/path/to/resume/dirdir -o resume.json
+yamlr tojson -r path/to/resume/dir -o resume.json
 
 # Render to HTML
-ryaml render -r path/to/path/to/resume/dirdir -t jsonresume-theme-elegant -o resume.html
+yamlr render -r path/to/resume/dir -t jsonresume-theme-elegant -o resume.html
 
 # Start development server
-ryaml dev -r path/to/path/to/resume/dirdir -t jsonresume-theme-elegant
+yamlr dev -r path/to/resume/dir -t jsonresume-theme-elegant
 ```
 
 ### File Structure
 
-Ryaml supports modular resume files. You can organize your resume data across multiple YAML files:
+yamlr supports modular resume files. You can organize your resume data across multiple YAML files:
 
 ```
 path/to/resume/dir
@@ -46,25 +46,25 @@ path/to/resume/dir
 
 ### Schema Compliance
 
-Ryaml follows the [JSON Resume Schema](https://jsonresume.org/schema/), ensuring compatibility with the broader JSON Resume ecosystem.
+yamlr follows the [JSON Resume Schema](https://jsonresume.org/schema/), ensuring compatibility with the broader JSON Resume ecosystem.
 
 ### Themes
 
-Ryaml supports two types of themes:
+yamlr supports two types of themes:
 
 1. **JSON Resume Themes** - Any theme from the JSON Resume community
-2. **Native Ryaml Themes** - Themes specifically designed for Ryaml
+2. **Native yamlr Themes** - Themes specifically designed for yamlr
 
 #### Using JSON Resume Themes
 
 ```bash
-ryaml render -r path/to/resume/dir -t jsonresume-theme-stackoverflow
+yamlr render -r path/to/resume/dir -t jsonresume-theme-stackoverflow
 ```
 
 #### Using Native Themes
 
 ```bash
-ryaml render -r path/to/resume/dir -t @ryaml/theme-modern
+yamlr render -r path/to/resume/dir -t @yamlr/theme-modern
 ```
 
 ### Development Server
@@ -72,7 +72,7 @@ ryaml render -r path/to/resume/dir -t @ryaml/theme-modern
 The development server provides live preview with hot-reload:
 
 ```bash
-ryaml dev -r path/to/resume/dir -t jsonresume-theme-stackoverflow --port 3000
+yamlr dev -r path/to/resume/dir -t jsonresume-theme-stackoverflow --port 3000
 ```
 
 Navigate to `http://localhost:3000` to see your resume. The page will automatically refresh when you modify your YAML files.
@@ -128,4 +128,4 @@ Starts development server with hot-reload.
 
 ## Contributing
 
-For information about contributing to Ryaml, see the main project README.
+For information about contributing to yamlr, see the main project README.
