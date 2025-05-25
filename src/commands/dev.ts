@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'node:path';
-import { processResumeData } from '@resuml/core';
+import { processResumeData } from '../core';
 import { loadResumeFiles } from '../utils/loadResume';
 import { loadThemeConfig } from '../utils/loadThemeConfig';
 import { loadTheme } from '../utils/themeLoader';
@@ -8,7 +8,6 @@ import { handleCommandError } from '../utils/errorHandler';
 import chalk from 'chalk';
 
 interface DevCommandOptions {
-  input?: string;
   resume?: string;
   theme?: string;
   themeConfig?: string;
@@ -20,14 +19,14 @@ interface DevCommandOptions {
 export async function devAction(options: DevCommandOptions): Promise<void> {
   if (!options.theme) {
     throw new Error(
-      '--theme option is required. Please specify a theme name (e.g., jsonresume-theme-elegant, jsonresume-theme-even, jsonresume-theme-classy).'
+      '--theme option is required. Please specify a theme name (e.g., stackoverflow, react).'
     );
   }
 
   console.log(chalk.blue('Starting resuml development server...'));
 
   const port = options.port || 3000;
-  const inputPath = options.resume || options.input;
+  const inputPath = options.resume;
 
   if (!inputPath) {
     throw new Error('Resume path is required. Use -r or --resume option.');
@@ -56,7 +55,7 @@ export async function devAction(options: DevCommandOptions): Promise<void> {
 
 async function renderResume(options: DevCommandOptions): Promise<void> {
   try {
-    const inputPath = options.resume || options.input;
+    const inputPath = options.resume;
     if (!inputPath) {
       throw new Error('Resume path is required');
     }

@@ -15,29 +15,27 @@ This directory contains sample resume files that demonstrate how to structure yo
 ### Validate the example resume
 
 ```bash
-resuml validate -r examples/
+resuml validate --resume examples/
 ```
 
 ### Convert to JSON
 
 ```bash
-resuml tojson -r examples/ -o examples/resume.json
+resuml tojson --resume examples/ --output examples/resume.json
 ```
 
 ### Render to HTML (requires a theme)
 
 ```bash
-# Using a JSON Resume theme
-resuml render -r examples/ -t jsonresume-theme-elegant -o examples/resume.html
-
-# Using a native resuml theme (when available)
-resuml render -r examples/ -t default -o examples/resume.html
+# Using JSON Resume themes
+resuml render --resume examples/ --theme stackoverflow --output examples/resume.html
+resuml render --resume examples/ --theme react --output examples/resume.html
 ```
 
 ### Start development server
 
 ```bash
-resuml dev -r examples/ -t default --port 3000
+resuml dev --resume examples/ --theme react --port 3000
 ```
 
 ## Creating Your Own Resume

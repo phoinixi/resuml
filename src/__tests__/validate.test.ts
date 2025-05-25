@@ -1,12 +1,12 @@
 import { validateAction } from '../commands/validate';
 import { loadResumeFiles } from '../utils/loadResume';
-import { processResumeData } from '@resuml/core';
+import { processResumeData } from '../core';
 import { handleCommandError } from '../utils/errorHandler';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 
 // Mock dependencies
 vi.mock('../utils/loadResume');
-vi.mock('@resuml/core');
+vi.mock('../core');
 vi.mock('../utils/errorHandler');
 vi.mock('chalk', () => ({
   __esModule: true,
@@ -31,10 +31,8 @@ const mockHandleCommandError = handleCommandError as import('vitest').MockedFunc
 
 describe('validate command', () => {
   const mockConsoleLog = vi.spyOn(console, 'log').mockImplementation(() => undefined);
-  const _mockConsoleError = vi.spyOn(console, 'error').mockImplementation(() => undefined);
-  const _mockProcessExit = vi
-    .spyOn(process, 'exit')
-    .mockImplementation((() => undefined) as () => never);
+  vi.spyOn(console, 'error').mockImplementation(() => undefined);
+  vi.spyOn(process, 'exit').mockImplementation((() => undefined) as () => never);
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -53,7 +51,7 @@ describe('validate command', () => {
     });
     mockProcessResumeData.mockResolvedValue(mockResume);
 
-    await validateAction({ input: 'resume.yaml' });
+    await validateAction({ resume: 'resume.yaml' });
 
     expect(mockLoadResumeFiles).toHaveBeenCalledWith('resume.yaml');
     expect(mockProcessResumeData).toHaveBeenCalledWith(['name: John Doe']);
@@ -70,7 +68,7 @@ describe('validate command', () => {
     });
     mockProcessResumeData.mockRejectedValue(mockError);
 
-    await validateAction({ input: 'resume.yaml' });
+    await validateAction({ resume: 'resume.yaml' });
 
     expect(mockHandleCommandError).toHaveBeenCalledWith(mockError, 'validate', undefined);
   });
@@ -83,7 +81,7 @@ describe('validate command', () => {
     });
     mockProcessResumeData.mockRejectedValue(mockError);
 
-    await validateAction({ input: 'resume.yaml', debug: true });
+    await validateAction({ resume: 'resume.yaml', debug: true });
 
     expect(mockHandleCommandError).toHaveBeenCalledWith(mockError, 'validate', true);
   });

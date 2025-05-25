@@ -1,4 +1,4 @@
-import { processResumeData, Resume } from '../index';
+import { processResumeData, Resume } from '../core';
 import { vi, describe, it, expect } from 'vitest';
 
 // Mock the validator to avoid external dependencies in tests

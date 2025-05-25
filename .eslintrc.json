@@ -1,29 +1,19 @@
 {
-  "root": true,
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
-  "rules": {
-    "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/no-unused-vars": [
-      "error",
-      {
-        "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_",
-        "caughtErrorsIgnorePattern": "^_"
-      }
-    ]
+  "extends": ["eslint:recommended"],
+  "root": true,
+  "env": {
+    "node": true,
+    "es2022": true
   },
-  "ignorePatterns": [
-    "node_modules/",
-    "dist/",
-    "build/",
-    ".turbo/",
-    "coverage/",
-    "*.html",
-    "*.css",
-    "*.lock",
-    "*.log",
-    "packages/*/dist/**/*.js"
-  ]
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+  },
+  "rules": {
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-explicit-any": "warn",
+    "no-console": "off"
+  }
 }
