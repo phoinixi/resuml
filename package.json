@@ -1,6 +1,6 @@
 {
   "name": "resuml",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Generate JSON resumes from YAML with theme support",
   "main": "./dist/index.js",
   "bin": {
@@ -58,6 +58,7 @@
   "license": "ISC",
   "author": "phoinixi",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
