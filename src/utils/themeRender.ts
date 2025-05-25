@@ -1,4 +1,4 @@
-import type { Resume } from '@resuml/core';
+import type { Resume } from '../core';
 
 interface ThemeConfig {
   sections?: {

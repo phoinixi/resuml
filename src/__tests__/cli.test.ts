@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { main } from '../cli';
 import { loadTheme } from '../utils/themeLoader';
 import { loadResumeFiles } from '../utils/loadResume';
-import { processResumeData } from '@resuml/core';
+import { processResumeData } from '../core';
 
 // Set NODE_ENV to test for consistent behavior of main() error handling
 process.env.NODE_ENV = 'test';
@@ -31,9 +31,9 @@ vi.mock('../utils/themeLoader', () => ({
   loadTheme: vi.fn(),
 }));
 
-// Mock @resuml/core processResumeData
-vi.mock('@resuml/core', async (importOriginal) => {
-  const actualCore = (await importOriginal()) as typeof import('@resuml/core');
+// Mock core processResumeData
+vi.mock('../core', async (importOriginal) => {
+  const actualCore = (await importOriginal()) as typeof import('../core');
   return {
     ...actualCore,
     processResumeData: vi.fn().mockResolvedValue({ basics: { name: 'Mocked Resume' } }),
@@ -45,7 +45,7 @@ vi.mock('fs', async (importOriginal) => {
   const actual = (await importOriginal()) as typeof import('fs');
   return {
     ...actual,
-    readFileSync: vi.fn((path, _encoding) => {
+    readFileSync: vi.fn((path) => {
       if (typeof path === 'string' && path.endsWith('package.json')) {
         return JSON.stringify({ version: '1.2.3-test' });
       }

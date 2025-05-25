@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'node:path';
-import { processResumeData } from '@resuml/core';
+import { processResumeData } from '../core';
 import { loadResumeFiles } from '../utils/loadResume';
 import { loadThemeConfig } from '../utils/loadThemeConfig';
 import { loadTheme } from '../utils/themeLoader';
@@ -8,7 +8,6 @@ import { handleCommandError } from '../utils/errorHandler';
 import chalk from 'chalk';
 
 interface RenderCommandOptions {
-  input?: string;
   resume?: string;
   theme?: string;
   themeConfig?: string;
@@ -20,14 +19,14 @@ interface RenderCommandOptions {
 export async function renderAction(options: RenderCommandOptions): Promise<void> {
   if (!options.theme) {
     throw new Error(
-      '--theme option is required. Please specify a theme name (e.g., jsonresume-theme-stackoverflow, jsonresume-theme-react, jsonresume-theme-elegant).'
+      '--theme option is required. Please specify a theme name (e.g., stackoverflow, react).'
     );
   }
 
   console.log(chalk.blue('Starting resuml render...'));
 
   try {
-    const inputPath = options.resume || options.input;
+    const inputPath = options.resume;
     const { yamlContents } = await loadResumeFiles(inputPath);
 
     console.log(chalk.blue('Processing and validating resume data...'));
