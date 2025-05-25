@@ -82,8 +82,8 @@ program
 // Parse Arguments
 if (
   process.argv[1] &&
-  (process.argv[1].endsWith('ryaml') ||
-    process.argv[1].endsWith('ryaml.js') ||
+  (process.argv[1].endsWith('yamlr') ||
+    process.argv[1].endsWith('yamlr.js') ||
     import.meta.url === `file://${process.argv[1]}`)
 ) {
   (async () => {
