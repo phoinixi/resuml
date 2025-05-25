@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'node:path';
-import { processResumeData } from '@ryaml/core';
+import { processResumeData } from '@yamlr/core';
 import { loadResumeFiles } from '../utils/loadResume';
 import { loadThemeConfig } from '../utils/loadThemeConfig';
 import { loadTheme } from '../utils/themeLoader';
@@ -24,7 +24,7 @@ export async function devAction(options: DevCommandOptions): Promise<void> {
     );
   }
 
-  console.log(chalk.blue('Starting ryaml development server...'));
+  console.log(chalk.blue('Starting yamlr development server...'));
 
   const port = options.port || 3000;
   const inputPath = options.resume || options.input;
@@ -75,7 +75,7 @@ async function renderResume(options: DevCommandOptions): Promise<void> {
     });
 
     // Write to a temp directory for the dev server
-    const outputPath = path.join(process.cwd(), '.ryaml-dev', 'index.html');
+    const outputPath = path.join(process.cwd(), '.yamlr-dev', 'index.html');
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     fs.writeFileSync(outputPath, htmlOutput, 'utf8');
 
@@ -113,7 +113,7 @@ async function startDevServer(port: number): Promise<void> {
     const pathname = parsedUrl.pathname || '/';
 
     if (pathname === '/' || pathname === '/index.html') {
-      const htmlPath = path.join(process.cwd(), '.ryaml-dev', 'index.html');
+      const htmlPath = path.join(process.cwd(), '.yamlr-dev', 'index.html');
 
       if (fs.existsSync(htmlPath)) {
         const html = fs.readFileSync(htmlPath, 'utf8');

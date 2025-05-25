@@ -1,12 +1,12 @@
 import { validateAction } from '../commands/validate';
 import { loadResumeFiles } from '../utils/loadResume';
-import { processResumeData } from '@ryaml/core';
+import { processResumeData } from '@yamlr/core';
 import { handleCommandError } from '../utils/errorHandler';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 
 // Mock dependencies
 vi.mock('../utils/loadResume');
-vi.mock('@ryaml/core');
+vi.mock('@yamlr/core');
 vi.mock('../utils/errorHandler');
 vi.mock('chalk', () => ({
   __esModule: true,
