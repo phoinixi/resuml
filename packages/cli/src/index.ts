@@ -79,13 +79,8 @@ program
   .option('--debug', 'Show detailed validation and processing information.')
   .action(devAction);
 
-// Parse Arguments
-if (
-  process.argv[1] &&
-  (process.argv[1].endsWith('resuml') ||
-    process.argv[1].endsWith('resuml.js') ||
-    import.meta.url === `file://${process.argv[1]}`)
-) {
+// Parse Arguments - only execute when not in test environment
+if (process.env.NODE_ENV !== 'test') {
   (async () => {
     try {
       await program.parseAsync(process.argv);

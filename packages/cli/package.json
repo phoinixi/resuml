@@ -3,18 +3,10 @@
   "version": "1.1.1",
   "description": "Generate JSON resumes from YAML with theme support",
   "private": false,
-  "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
-  },
   "bin": {
-    "resuml": "./bin/resuml.js"
+    "resuml": "./bin/resuml.cjs"
   },
   "files": [
     "bin",

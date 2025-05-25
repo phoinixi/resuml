@@ -10,14 +10,14 @@ const testDir = path.resolve(__dirname, '__test_temp__');
 
 // Helper function to run the CLI command
 const runCli = (args: string, options: { expectError?: boolean } = {}): string => {
-  const binPath = path.resolve(__dirname, '../../bin/resuml.js');
+  const binPath = path.resolve(__dirname, '../../bin/resuml.cjs');
   const execOptions: ExecSyncOptionsWithStringEncoding = {
     encoding: 'utf8',
     cwd: testDir,
     env: {
       ...process.env,
       NODE_OPTIONS: '--experimental-vm-modules',
-      NODE_ENV: 'test',
+      NODE_ENV: 'cli-test',
     },
     // Suppress stderr for tests that expect errors to keep output clean
     stdio: options.expectError ? ['pipe', 'pipe', 'ignore'] : ['pipe', 'pipe', 'pipe'],
