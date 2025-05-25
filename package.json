@@ -1,0 +1,49 @@
+{
+  "name": "ryaml",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "npm@10.2.4",
+  "workspaces": [
+    "packages/core",
+    "packages/cli"
+  ],
+  "scripts": {
+    "build": "turbo build",
+    "clean": "turbo clean",
+    "lint": "turbo lint",
+    "format": "prettier --write .",
+    "test": "turbo test",
+    "test:watch": "turbo test:watch",
+    "test:coverage": "turbo test:coverage",
+    "release": "semantic-release",
+    "test:release": "node scripts/test-release.js"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.3",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.3",
+    "@types/glob": "^8.1.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.15.3",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.0.0",
+    "semantic-release": "^24.2.5",
+    "tsup": "^8.4.0",
+    "turbo": "^2.5.2",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "glob": "^10.3.10",
+    "jsonresume-theme-elegant": "^1.16.1",
+    "jsonresume-theme-even": "^0.23.0",
+    "jsonresume-theme-stackoverflow": "^2.1.0"
+  }
+}

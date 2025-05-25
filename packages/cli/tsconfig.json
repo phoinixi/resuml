@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "declaration": true,
+    "noEmit": false,
+    "moduleResolution": "Bundler",
+    "module": "ESNext",
+    "types": ["node"],
+    "paths": {
+      "@ryaml/core": ["../core/src"]
+    }
+  },
+  "include": ["src/**/*", "src/__tests__/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

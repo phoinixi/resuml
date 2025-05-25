@@ -1,0 +1,21 @@
+work:
+  - name: 'Tech Corp'
+    position: 'Senior Software Engineer'
+    url: 'https://techcorp.com'
+    startDate: '2020-01-15'
+
+    summary: 'Lead a team of 5 developers building microservices architecture.'
+    highlights:
+      - 'Reduced API response time by 40% through optimization'
+      - 'Implemented CI/CD pipeline reducing deployment time by 60%'
+      - 'Mentored 3 junior developers'
+  - name: 'StartupXYZ'
+    position: 'Full Stack Developer'
+    url: 'https://startupxyz.com'
+    startDate: '2018-06-01'
+    endDate: '2019-12-31'
+    summary: 'Developed web applications using React and Node.js.'
+    highlights:
+      - 'Built customer dashboard serving 10,000+ users'
+      - 'Integrated payment processing system'
+      - 'Improved application performance by 50%'

@@ -1,0 +1,74 @@
+{
+  "name": "ryaml",
+  "version": "0.0.0-development",
+  "description": "CLI for ryaml - YAML-based resume management",
+  "private": false,
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "bin": {
+    "ryaml": "./bin/ryaml.js"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "tsup",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@ryaml/core": "file:../core",
+    "commander": "^11.1.0",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.11.19",
+    "ts-node": "^10.9.2",
+    "@typescript-eslint/eslint-plugin": "^7.0.1",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "tsup": "^8.0.2",
+    "typescript": "^5.0.0",
+    "vitest": "^1.2.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phoinixi/ryaml.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/phoinixi/ryaml/issues"
+  },
+  "homepage": "https://github.com/phoinixi/ryaml#readme",
+  "keywords": [
+    "resume",
+    "cv",
+    "yaml",
+    "json-resume",
+    "cli",
+    "curriculum-vitae"
+  ],
+  "author": "phoinixi",
+  "publishConfig": {
+    "access": "public"
+  }
+}
