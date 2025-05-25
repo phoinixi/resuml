@@ -11,7 +11,11 @@ For a quick overview, see the main [README](../README.md) in the project root.
 ### Installation
 
 ```bash
-npm install -g resuml
+# Install the package
+npm install -g @resuml/cli
+
+# Then use the simple command:
+resuml --help
 ```
 
 ### Basic Usage

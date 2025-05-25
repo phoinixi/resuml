@@ -22,10 +22,13 @@ resuml is a modern CLI tool for managing your resume in YAML format. It enables 
 
 ```bash
 # Install globally
-npm install -g resuml
+npm install -g @resuml/cli
 
 # Or use with npx
-npx resuml --help
+npx @resuml/cli --help
+
+# After installation, the command is simply:
+resuml --help
 ```
 
 ## Usage
