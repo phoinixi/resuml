@@ -1,4 +1,4 @@
-import { processResumeData } from '@ryaml/core';
+import { processResumeData } from '@yamlr/core';
 import { loadResumeFiles } from '../utils/loadResume';
 import { handleCommandError } from '../utils/errorHandler';
 
@@ -10,7 +10,7 @@ interface ValidateCommandOptions {
 
 export async function validateAction(options: ValidateCommandOptions): Promise<void> {
   const chalk = (await import('chalk')).default;
-  console.log(chalk.blue('Starting ryaml validate...'));
+  console.log(chalk.blue('Starting yamlr validate...'));
 
   try {
     const inputPath = options.resume || options.input;

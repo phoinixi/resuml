@@ -1,4 +1,4 @@
-import type { Resume } from '@ryaml/core';
+import type { Resume } from '@yamlr/core';
 
 interface ThemeConfig {
   sections?: {

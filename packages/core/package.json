@@ -1,5 +1,5 @@
 {
-  "name": "@ryaml/core",
+  "name": "@yamlr/core",
   "version": "0.0.0-development",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -25,13 +25,13 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/phoinixi/ryaml.git",
+    "url": "https://github.com/phoinixi/yamlr.git",
     "directory": "packages/core"
   },
   "bugs": {
-    "url": "https://github.com/phoinixi/ryaml/issues"
+    "url": "https://github.com/phoinixi/yamlr/issues"
   },
-  "homepage": "https://github.com/phoinixi/ryaml#readme",
+  "homepage": "https://github.com/phoinixi/yamlr#readme",
   "keywords": [
     "resume",
     "cv",

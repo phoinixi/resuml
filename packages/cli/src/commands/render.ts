@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'node:path';
-import { processResumeData } from '@ryaml/core';
+import { processResumeData } from '@yamlr/core';
 import { loadResumeFiles } from '../utils/loadResume';
 import { loadThemeConfig } from '../utils/loadThemeConfig';
 import { loadTheme } from '../utils/themeLoader';
@@ -24,7 +24,7 @@ export async function renderAction(options: RenderCommandOptions): Promise<void>
     );
   }
 
-  console.log(chalk.blue('Starting ryaml render...'));
+  console.log(chalk.blue('Starting yamlr render...'));
 
   try {
     const inputPath = options.resume || options.input;

@@ -1,7 +1,7 @@
 {
-  "name": "@phoinixi/ryaml",
+  "name": "yamlr",
   "version": "0.0.0-development",
-  "description": "CLI for ryaml - YAML-based resume management",
+  "description": "Generate JSON resumes from YAML with theme support",
   "private": false,
   "type": "module",
   "main": "./dist/index.cjs",
@@ -14,7 +14,7 @@
     }
   },
   "bin": {
-    "ryaml": "./bin/ryaml.js"
+    "yamlr": "./bin/yamlr.js"
   },
   "files": [
     "bin",
@@ -30,7 +30,7 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@ryaml/core": "file:../core",
+    "@yamlr/core": "file:../core",
     "commander": "^11.1.0",
     "js-yaml": "^4.1.0"
   },
@@ -52,13 +52,13 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/phoinixi/ryaml.git",
+    "url": "https://github.com/phoinixi/yamlr.git",
     "directory": "packages/cli"
   },
   "bugs": {
-    "url": "https://github.com/phoinixi/ryaml/issues"
+    "url": "https://github.com/phoinixi/yamlr/issues"
   },
-  "homepage": "https://github.com/phoinixi/ryaml#readme",
+  "homepage": "https://github.com/phoinixi/yamlr#readme",
   "keywords": [
     "resume",
     "cv",

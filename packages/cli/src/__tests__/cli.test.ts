@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { main } from '../cli';
 import { loadTheme } from '../utils/themeLoader';
 import { loadResumeFiles } from '../utils/loadResume';
-import { processResumeData } from '@ryaml/core';
+import { processResumeData } from '@yamlr/core';
 
 // Set NODE_ENV to test for consistent behavior of main() error handling
 process.env.NODE_ENV = 'test';
@@ -31,9 +31,9 @@ vi.mock('../utils/themeLoader', () => ({
   loadTheme: vi.fn(),
 }));
 
-// Mock @ryaml/core processResumeData
-vi.mock('@ryaml/core', async (importOriginal) => {
-  const actualCore = (await importOriginal()) as typeof import('@ryaml/core');
+// Mock @yamlr/core processResumeData
+vi.mock('@yamlr/core', async (importOriginal) => {
+  const actualCore = (await importOriginal()) as typeof import('@yamlr/core');
   return {
     ...actualCore,
     processResumeData: vi.fn().mockResolvedValue({ basics: { name: 'Mocked Resume' } }),

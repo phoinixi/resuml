@@ -9,7 +9,7 @@
     "module": "ESNext",
     "types": ["node"],
     "paths": {
-      "@ryaml/core": ["../core/src"]
+      "@yamlr/core": ["../core/src"]
     }
   },
   "include": ["src/**/*", "src/__tests__/**/*"],
