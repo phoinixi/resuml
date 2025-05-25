@@ -1,6 +1,6 @@
 {
   "name": "resuml",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Generate JSON resumes from YAML with theme support",
   "main": "./dist/index.js",
   "bin": {
