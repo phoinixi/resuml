@@ -1,0 +1,39 @@
+projects:
+  - name: 'E-commerce Platform'
+    description: 'Full-stack e-commerce platform built with React and Node.js'
+    highlights:
+      - 'Built with microservices architecture'
+      - 'Supports 50,000+ concurrent users'
+      - 'Payment integration with Stripe'
+    keywords:
+      - 'React'
+      - 'Node.js'
+      - 'MongoDB'
+      - 'Docker'
+    startDate: '2021-01-01'
+    endDate: '2021-06-30'
+    url: 'https://github.com/johndoe/ecommerce'
+    roles:
+      - 'Team Lead'
+      - 'Full Stack Developer'
+    entity: 'Personal Project'
+    type: 'application'
+  - name: 'DevOps Automation Tools'
+    description: 'Suite of automation tools for CI/CD pipeline management'
+    highlights:
+      - 'Reduced deployment time by 80%'
+      - 'Automated testing and quality checks'
+      - 'Cross-platform compatibility'
+    keywords:
+      - 'Python'
+      - 'Docker'
+      - 'Kubernetes'
+      - 'GitHub Actions'
+    startDate: '2020-03-01'
+    endDate: '2020-08-31'
+    url: 'https://github.com/johndoe/devops-tools'
+    roles:
+      - 'Architect'
+      - 'Developer'
+    entity: 'Open Source'
+    type: 'library'

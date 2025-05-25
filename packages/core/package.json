@@ -1,0 +1,58 @@
+{
+  "name": "@ryaml/core",
+  "version": "0.0.0-development",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "tsup",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phoinixi/ryaml.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/phoinixi/ryaml/issues"
+  },
+  "homepage": "https://github.com/phoinixi/ryaml#readme",
+  "keywords": [
+    "resume",
+    "cv",
+    "yaml",
+    "json-resume",
+    "core"
+  ],
+  "author": "phoinixi",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@jsonresume/schema": "^1.2.1",
+    "yaml": "^2.3.4",
+    "lodash.merge": "^4.6.2"
+  },
+  "devDependencies": {
+    "@types/lodash.merge": "^4.6.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.0.0",
+    "tsup": "^8.4.0",
+    "vitest": "^1.2.2"
+  }
+}

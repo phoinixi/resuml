@@ -1,0 +1,32 @@
+skills:
+  - name: 'Programming Languages'
+    level: 'Expert'
+    keywords:
+      - 'JavaScript'
+      - 'TypeScript'
+      - 'Python'
+      - 'Go'
+      - 'Java'
+  - name: 'Web Technologies'
+    level: 'Expert'
+    keywords:
+      - 'React'
+      - 'Node.js'
+      - 'Express'
+      - 'Next.js'
+      - 'HTML/CSS'
+  - name: 'Databases'
+    level: 'Advanced'
+    keywords:
+      - 'PostgreSQL'
+      - 'MongoDB'
+      - 'Redis'
+      - 'MySQL'
+  - name: 'Cloud & DevOps'
+    level: 'Advanced'
+    keywords:
+      - 'AWS'
+      - 'Docker'
+      - 'Kubernetes'
+      - 'CI/CD'
+      - 'Terraform'

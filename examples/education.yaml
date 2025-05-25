@@ -1,0 +1,13 @@
+education:
+  - institution: 'University of Technology'
+    url: 'https://university.edu'
+    area: 'Computer Science'
+    studyType: 'Bachelor of Science'
+    startDate: '2014-09-01'
+    endDate: '2018-05-15'
+    score: '3.8'
+    courses:
+      - 'Data Structures and Algorithms'
+      - 'Database Systems'
+      - 'Software Engineering'
+      - 'Computer Networks'
