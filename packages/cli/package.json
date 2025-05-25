@@ -1,5 +1,5 @@
 {
-  "name": "resuml",
+  "name": "@resuml/cli",
   "version": "1.0.0",
   "description": "Generate JSON resumes from YAML with theme support",
   "private": false,
