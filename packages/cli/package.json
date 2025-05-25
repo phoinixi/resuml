@@ -1,5 +1,5 @@
 {
-  "name": "ryaml",
+  "name": "@phoinixi/ryaml",
   "version": "0.0.0-development",
   "description": "CLI for ryaml - YAML-based resume management",
   "private": false,
