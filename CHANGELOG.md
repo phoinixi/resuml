@@ -1,5 +1,12 @@
 ## 1.1.0 (2025-05-25)
 
+* fix: fix npm naming ([e8c659b](https://github.com/phoinixi/resuml/commit/e8c659b))
+* chore(release): 1.1.0 [skip ci] ([c104777](https://github.com/phoinixi/resuml/commit/c104777))
+* feat: lockfile update ([44aedb2](https://github.com/phoinixi/resuml/commit/44aedb2))
+* feat: rename CLI package to @resuml/cli for scoped namespace ([dcaa668](https://github.com/phoinixi/resuml/commit/dcaa668))
+
+## 1.1.0 (2025-05-25)
+
 * feat: lockfile update ([44aedb2](https://github.com/phoinixi/resuml/commit/44aedb2))
 * feat: rename CLI package to @resuml/cli for scoped namespace ([dcaa668](https://github.com/phoinixi/resuml/commit/dcaa668))
 
