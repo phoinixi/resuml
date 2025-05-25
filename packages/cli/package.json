@@ -31,7 +31,6 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@resuml/core": "0.0.0-development",
     "commander": "^11.1.0",
     "js-yaml": "^4.1.0"
   },
