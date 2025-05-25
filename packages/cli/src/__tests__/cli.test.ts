@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { main } from '../cli';
 import { loadTheme } from '../utils/themeLoader';
 import { loadResumeFiles } from '../utils/loadResume';
-import { processResumeData } from '@yamlr/core';
+import { processResumeData } from '@resuml/core';
 
 // Set NODE_ENV to test for consistent behavior of main() error handling
 process.env.NODE_ENV = 'test';
@@ -31,9 +31,9 @@ vi.mock('../utils/themeLoader', () => ({
   loadTheme: vi.fn(),
 }));
 
-// Mock @yamlr/core processResumeData
-vi.mock('@yamlr/core', async (importOriginal) => {
-  const actualCore = (await importOriginal()) as typeof import('@yamlr/core');
+// Mock @resuml/core processResumeData
+vi.mock('@resuml/core', async (importOriginal) => {
+  const actualCore = (await importOriginal()) as typeof import('@resuml/core');
   return {
     ...actualCore,
     processResumeData: vi.fn().mockResolvedValue({ basics: { name: 'Mocked Resume' } }),
@@ -129,7 +129,7 @@ describe('CLI', () => {
       }
     );
 
-    await main(['node', 'ryaml', 'render', '--resume', 'dummy.yaml', '--theme', 'test-theme']);
+    await main(['node', 'resuml', 'render', '--resume', 'dummy.yaml', '--theme', 'test-theme']);
 
     // Verify error was logged (console.error is mocked in beforeEach)
     expect(console.error).toHaveBeenCalledWith(
@@ -146,7 +146,7 @@ describe('CLI', () => {
     };
     (loadTheme as import('vitest').MockedFunction<typeof loadTheme>).mockResolvedValue(mockTheme);
 
-    await main(['node', 'ryaml', 'render', '--resume', 'dummy.yaml', '--theme', 'test-theme']);
+    await main(['node', 'resuml', 'render', '--resume', 'dummy.yaml', '--theme', 'test-theme']);
 
     // Verify success message was logged (console.log is mocked in beforeEach)
     expect(console.log).toHaveBeenCalledWith(

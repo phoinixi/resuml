@@ -35,7 +35,7 @@ export async function loadTheme(themeName: string, autoInstall: boolean = true) 
       return (await import(jsonResumeThemeName)).default;
     } catch (jsonResumeError) {
       // If not found as JSON Resume theme, try as native theme
-      nativeThemeName = `@ryaml/theme-${themeName}`;
+      nativeThemeName = `@resuml/theme-${themeName}`;
       try {
         return (await import(nativeThemeName)).default;
       } catch (nativeError) {

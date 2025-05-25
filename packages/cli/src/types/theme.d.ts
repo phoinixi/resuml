@@ -6,7 +6,7 @@ declare module 'jsonresume-theme-mock' {
   export default theme;
 }
 
-declare module '@ryaml/theme-mock-native' {
+declare module '@resuml/theme-mock-native' {
   export interface Theme {
     render: (resumeData: unknown, options: unknown) => string;
   }

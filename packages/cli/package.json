@@ -1,5 +1,5 @@
 {
-  "name": "yamlr",
+  "name": "resuml",
   "version": "0.0.0-development",
   "description": "Generate JSON resumes from YAML with theme support",
   "private": false,
@@ -14,7 +14,7 @@
     }
   },
   "bin": {
-    "yamlr": "./bin/yamlr.js"
+    "resuml": "./bin/resuml.js"
   },
   "files": [
     "bin",
@@ -30,7 +30,7 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@yamlr/core": "file:../core",
+    "@resuml/core": "file:../core",
     "commander": "^11.1.0",
     "js-yaml": "^4.1.0"
   },
@@ -53,13 +53,13 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/phoinixi/yamlr.git",
+    "url": "https://github.com/phoinixi/resuml.git",
     "directory": "packages/cli"
   },
   "bugs": {
-    "url": "https://github.com/phoinixi/yamlr/issues"
+    "url": "https://github.com/phoinixi/resuml/issues"
   },
-  "homepage": "https://github.com/phoinixi/yamlr#readme",
+  "homepage": "https://github.com/phoinixi/resuml#readme",
   "keywords": [
     "resume",
     "cv",

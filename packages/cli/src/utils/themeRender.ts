@@ -1,4 +1,4 @@
-import type { Resume } from '@yamlr/core';
+import type { Resume } from '@resuml/core';
 
 interface ThemeConfig {
   sections?: {
@@ -63,7 +63,7 @@ async function renderJsonResumeTheme(
     themePackageName = `jsonresume-theme-${themeName}`;
   }
 
-  // Convert ryaml data to jsonresume format if needed
+  // Convert resuml data to jsonresume format if needed
   const jsonResumeData = resumeData; // In real implementation, convert if necessary
 
   // Dynamically import the theme
@@ -76,7 +76,7 @@ async function renderJsonResumeTheme(
 }
 
 /**
- * Renders a ryaml theme
+ * Renders a resuml theme
  */
 async function renderRyamlTheme(
   themeName: string,
@@ -89,7 +89,7 @@ async function renderRyamlTheme(
     throw new Error('No default theme available. Please specify a specific theme name.');
   }
 
-  const themePackageName = `@ryaml/theme-${themeName}`;
+  const themePackageName = `@resuml/theme-${themeName}`;
 
   // Dynamically import the theme (better than require)
   const themePackage = await import(themePackageName);

@@ -10,7 +10,7 @@ const testDir = path.resolve(__dirname, '__test_temp__');
 
 // Helper function to run the CLI command
 const runCli = (args: string, options: { expectError?: boolean } = {}): string => {
-  const binPath = path.resolve(__dirname, '../../bin/yamlr.js');
+  const binPath = path.resolve(__dirname, '../../bin/resuml.js');
   const execOptions: ExecSyncOptionsWithStringEncoding = {
     encoding: 'utf8',
     cwd: testDir,
@@ -57,7 +57,7 @@ const testResumeData = {
   },
 };
 
-describe('ryaml CLI', () => {
+describe('resuml CLI', () => {
   beforeAll(() => {
     setupTestEnv();
   });

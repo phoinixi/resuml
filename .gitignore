@@ -65,7 +65,7 @@ resume.json
 test-output.*
 
 # Development server temp files
-.ryaml-dev/
+.resuml-dev/
 
 # Temporary/test files
 parse.js
