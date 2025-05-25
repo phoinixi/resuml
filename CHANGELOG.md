@@ -1,3 +1,7 @@
+## <small>1.1.1 (2025-05-25)</small>
+
+* fix: update documentation and fix core dependency reference ([5e6162b](https://github.com/phoinixi/resuml/commit/5e6162b))
+
 ## 1.1.0 (2025-05-25)
 
 * fix: fix npm naming ([e8c659b](https://github.com/phoinixi/resuml/commit/e8c659b))
