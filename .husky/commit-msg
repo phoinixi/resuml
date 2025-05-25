@@ -1,1 +1,6 @@
+#!/bin/sh
+# Skip commitlint for semantic-release commits
+if grep -q "^chore(release):" "$1"; then
+  exit 0
+fi
 npx --no -- commitlint --edit "$1"
