@@ -1,3 +1,8 @@
+## <small>1.1.2 (2025-05-25)</small>
+
+* fix: bundle @resuml/core into CLI package ([3737f74](https://github.com/phoinixi/resuml/commit/3737f74))
+* fix: bundle core package into CLI using TypeScript paths and tsup ([4c32448](https://github.com/phoinixi/resuml/commit/4c32448))
+
 ## <small>1.1.1 (2025-05-25)</small>
 
 * fix: update documentation and fix core dependency reference ([5e6162b](https://github.com/phoinixi/resuml/commit/5e6162b))
