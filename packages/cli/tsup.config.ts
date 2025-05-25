@@ -1,8 +1,12 @@
 import { defineConfig } from 'tsup';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   entry: ['src/index.ts'],
-  format: ['cjs', 'esm'],
+  format: ['cjs'],
   target: 'es2022',
   sourcemap: true,
   clean: true,
@@ -10,7 +14,14 @@ export default defineConfig({
   shims: true,
   platform: 'node',
   noExternal: ['@resuml/core'],
-  esbuildOptions: (options) => {
-    options.tsconfig = './tsconfig.json';
-  },
+  esbuildPlugins: [
+    {
+      name: 'resolve-core',
+      setup(build) {
+        build.onResolve({ filter: /^@resuml\/core$/ }, () => ({
+          path: path.resolve(__dirname, '../core/src/index.ts'),
+        }));
+      },
+    },
+  ],
 });
