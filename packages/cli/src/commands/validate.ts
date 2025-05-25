@@ -1,4 +1,4 @@
-import { processResumeData } from '@yamlr/core';
+import { processResumeData } from '@resuml/core';
 import { loadResumeFiles } from '../utils/loadResume';
 import { handleCommandError } from '../utils/errorHandler';
 
@@ -10,7 +10,7 @@ interface ValidateCommandOptions {
 
 export async function validateAction(options: ValidateCommandOptions): Promise<void> {
   const chalk = (await import('chalk')).default;
-  console.log(chalk.blue('Starting yamlr validate...'));
+  console.log(chalk.blue('Starting resuml validate...'));
 
   try {
     const inputPath = options.resume || options.input;

@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { processResumeData } from '@yamlr/core';
+import { processResumeData } from '@resuml/core';
 import { loadResumeFiles } from '../utils/loadResume';
 import { handleCommandError } from '../utils/errorHandler';
 
@@ -12,7 +12,7 @@ interface ToJsonOptions {
 
 export async function toJsonAction(options: ToJsonOptions): Promise<void> {
   const chalk = (await import('chalk')).default;
-  console.log(chalk.blue('Starting yamlr tojson...'));
+  console.log(chalk.blue('Starting resuml tojson...'));
 
   try {
     const inputPath = options.resume || options.input;

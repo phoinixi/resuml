@@ -18,7 +18,7 @@ async function startCli() {
       throw new Error('CLI not built. Please run "npm run build" first.');
     }
   } catch (err) {
-    console.error('Error starting yamlr CLI:', err);
+    console.error('Error starting resuml CLI:', err);
     process.exit(1);
   }
 }

@@ -8,6 +8,6 @@ export default defineConfig({
   clean: true,
   dts: true,
   shims: true,
-  external: ['@yamlr/core'],
+  external: ['@resuml/core'],
   platform: 'node',
 });

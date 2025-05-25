@@ -15,29 +15,29 @@ This directory contains sample resume files that demonstrate how to structure yo
 ### Validate the example resume
 
 ```bash
-yamlr validate -r examples/
+resuml validate -r examples/
 ```
 
 ### Convert to JSON
 
 ```bash
-yamlr tojson -r examples/ -o examples/resume.json
+resuml tojson -r examples/ -o examples/resume.json
 ```
 
 ### Render to HTML (requires a theme)
 
 ```bash
 # Using a JSON Resume theme
-yamlr render -r examples/ -t jsonresume-theme-elegant -o examples/resume.html
+resuml render -r examples/ -t jsonresume-theme-elegant -o examples/resume.html
 
-# Using a native yamlr theme (when available)
-yamlr render -r examples/ -t default -o examples/resume.html
+# Using a native resuml theme (when available)
+resuml render -r examples/ -t default -o examples/resume.html
 ```
 
 ### Start development server
 
 ```bash
-yamlr dev -r examples/ -t default --port 3000
+resuml dev -r examples/ -t default --port 3000
 ```
 
 ## Creating Your Own Resume
@@ -47,7 +47,7 @@ You can use these files as a template for your own resume:
 1. Copy the example files to a new directory
 2. Modify the content to match your background
 3. Add or remove sections as needed
-4. Validate your changes with `yamlr validate`
+4. Validate your changes with `resuml validate`
 
 ## Supported Sections
 

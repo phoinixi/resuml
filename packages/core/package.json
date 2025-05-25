@@ -1,5 +1,5 @@
 {
-  "name": "@yamlr/core",
+  "name": "@resuml/core",
   "version": "0.0.0-development",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -25,13 +25,13 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/phoinixi/yamlr.git",
+    "url": "https://github.com/phoinixi/resuml.git",
     "directory": "packages/core"
   },
   "bugs": {
-    "url": "https://github.com/phoinixi/yamlr/issues"
+    "url": "https://github.com/phoinixi/resuml/issues"
   },
-  "homepage": "https://github.com/phoinixi/yamlr#readme",
+  "homepage": "https://github.com/phoinixi/resuml#readme",
   "keywords": [
     "resume",
     "cv",

@@ -9,7 +9,7 @@
     "module": "ESNext",
     "types": ["node"],
     "paths": {
-      "@yamlr/core": ["../core/src"]
+      "@resuml/core": ["../core/src"]
     }
   },
   "include": ["src/**/*", "src/__tests__/**/*"],

@@ -28,8 +28,8 @@ function getCliVersion(): string {
 export const program = new Command();
 
 program
-  .name('ryaml')
-  .description('CLI tool for managing ryaml resume files.')
+  .name('resuml')
+  .description('CLI tool for managing resuml resume files.')
   .version(getCliVersion());
 
 // Validate Command
@@ -82,8 +82,8 @@ program
 // Parse Arguments
 if (
   process.argv[1] &&
-  (process.argv[1].endsWith('yamlr') ||
-    process.argv[1].endsWith('yamlr.js') ||
+  (process.argv[1].endsWith('resuml') ||
+    process.argv[1].endsWith('resuml.js') ||
     import.meta.url === `file://${process.argv[1]}`)
 ) {
   (async () => {

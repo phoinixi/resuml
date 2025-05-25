@@ -1,12 +1,12 @@
-# yamlr
+# resuml
 
-[![CI](https://github.com/phoinixi/yamlr/actions/workflows/ci.yml/badge.svg)](https://github.com/phoinixi/yamlr/actions/workflows/ci.yml)
-[![npm version](https://badge.fury.io/js/yamlr.svg)](https://badge.fury.io/js/yamlr)
+[![CI](https://github.com/phoinixi/resuml/actions/workflows/ci.yml/badge.svg)](https://github.com/phoinixi/resuml/actions/workflows/ci.yml)
+[![npm version](https://badge.fury.io/js/resuml.svg)](https://badge.fury.io/js/resuml)
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
 Generate JSON resumes from YAML with theme support.
 
-yamlr is a modern CLI tool for managing your resume in YAML format. It enables you to maintain your resume data as modular YAML files, validate them against the JSON Resume schema, and render them to various output formats.
+resuml is a modern CLI tool for managing your resume in YAML format. It enables you to maintain your resume data as modular YAML files, validate them against the JSON Resume schema, and render them to various output formats.
 
 ## Features
 
@@ -15,17 +15,17 @@ yamlr is a modern CLI tool for managing your resume in YAML format. It enables y
 - **Standard Compatibility:** Compatible with the [JSON Resume](https://jsonresume.org/) schema
 - **Schema Validation:** Validate your resume data against the JSON Resume schema
 - **Multiple Output Formats:** Convert your resume to JSON and render to HTML
-- **Theme Support:** Use existing JSON Resume themes or custom yamlr themes
+- **Theme Support:** Use existing JSON Resume themes or custom resuml themes
 - **Development Server:** Preview changes with hot-reloading
 
 ## Installation
 
 ```bash
 # Install globally
-npm install -g yamlr
+npm install -g resuml
 
 # Or use with npx
-npx yamlr --help
+npx resuml --help
 ```
 
 ## Usage
@@ -34,16 +34,16 @@ npx yamlr --help
 
 ```bash
 # Validate your resume YAML files
-yamlr validate -r path/to/resume/dir
+resuml validate -r path/to/resume/dir
 
 # Convert YAML to JSON
-yamlr tojson -r path/to/resume-dir -o resume.json
+resuml tojson -r path/to/resume-dir -o resume.json
 
 # Render resume to HTML
-yamlr render -r path/to/resume/dir -t jsonresume-theme-stackoverflow -o resume.html
+resuml render -r path/to/resume/dir -t jsonresume-theme-stackoverflow -o resume.html
 
 # Start development server with hot-reload
-yamlr dev -r path/to/resume-dir -t jsonresume-theme-stackoverflow
+resuml dev -r path/to/resume-dir -t jsonresume-theme-stackoverflow
 ```
 
 ### Using Multiple Files
@@ -62,7 +62,7 @@ resume/
 Then use the directory as input:
 
 ```bash
-yamlr validate -r resume/
+resuml validate -r resume/
 ```
 
 ### Using Glob Patterns
@@ -70,7 +70,7 @@ yamlr validate -r resume/
 You can also use glob patterns to select specific files:
 
 ```bash
-yamlr validate -r "resume/**/*.yaml"
+resuml validate -r "resume/**/*.yaml"
 ```
 
 ## Directory Structure
@@ -90,8 +90,8 @@ This is a monorepo managed with npm workspaces and Turborepo.
 
 ```bash
 # Clone the repository
-git clone https://github.com/phoinixi/yamlr.git
-cd yamlr
+git clone https://github.com/phoinixi/resuml.git
+cd resuml
 
 # Install dependencies
 npm install
@@ -103,7 +103,7 @@ npm run build
 npm run test
 
 # Run the CLI locally
-node packages/cli/bin/yamlr.js --help
+node packages/cli/bin/resuml.js --help
 ```
 
 ## Contributing
