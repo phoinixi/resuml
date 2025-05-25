@@ -1,3 +1,8 @@
+## 1.1.0 (2025-05-25)
+
+* feat: lockfile update ([44aedb2](https://github.com/phoinixi/resuml/commit/44aedb2))
+* feat: rename CLI package to @resuml/cli for scoped namespace ([dcaa668](https://github.com/phoinixi/resuml/commit/dcaa668))
+
 ## 1.0.0 (2025-05-25)
 
 * feat: initial project setup with semantic release and CLI tools ([1871f56](https://github.com/phoinixi/resuml/commit/1871f56))
