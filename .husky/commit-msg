@@ -1,1 +1,28 @@
-npx --no -- commitlint --edit ${1}
+#!/usr/bin/env sh
+
+npx --no -- commitlint --edit "$1" || {
+  echo ""
+  echo "❌ Invalid commit message format"
+  echo ""
+  echo "📝 Required format:"
+  echo "   <type>(<scope>): <subject>"
+  echo ""
+  echo "🔍 Where <type> is one of:"
+  echo "   • feat     - A new feature"
+  echo "   • fix      - A bug fix"
+  echo "   • docs     - Documentation changes"
+  echo "   • style    - Code style changes (formatting, etc)"
+  echo "   • refactor - Code changes that neither fix bugs nor add features"
+  echo "   • perf     - Performance improvements"
+  echo "   • test     - Adding or fixing tests"
+  echo "   • chore    - Changes to build process or auxiliary tools"
+  echo ""
+  echo "📚 Examples:"
+  echo "   • feat: add new feature"
+  echo "   • fix(auth): resolve login issue"
+  echo "   • docs: update README"
+  echo ""
+  echo "🔗 More info: https://www.conventionalcommits.org/"
+  echo ""
+  exit 1
+}

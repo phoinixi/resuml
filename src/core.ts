@@ -3,7 +3,7 @@
 import { parse } from 'yaml';
 import merge from 'lodash.merge';
 import { validate } from '@jsonresume/schema';
-import type { Resume } from './types/resume';
+import type { ResumeSchema as Resume } from './types/resume';
 
 export type { Resume };
 

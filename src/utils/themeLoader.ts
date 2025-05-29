@@ -1,4 +1,7 @@
 import { execSync } from 'child_process';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 
 /**
  * Install a theme package using npm
@@ -31,20 +34,21 @@ export async function loadTheme(themeName: string) {
       : `jsonresume-theme-${themeName}`;
 
     try {
-      return (await import(jsonResumeThemeName)).default;
-    } catch (jsonResumeError) {
+      // Use require for CommonJS modules
+      return require(jsonResumeThemeName);
+    } catch (_jsonResumeError) {
       // If not found as JSON Resume theme, try as native theme
       nativeThemeName = `@resuml/theme-${themeName}`;
       try {
-        return (await import(nativeThemeName)).default;
-      } catch (nativeError) {
+        return require(nativeThemeName);
+      } catch (_nativeError) {
         // Both attempts failed - auto-install the theme
         console.log(`📦 Theme ${jsonResumeThemeName} not found. Installing...`);
         try {
           await installTheme(jsonResumeThemeName);
           console.log(`✅ Successfully installed ${jsonResumeThemeName}`);
-          // Try importing again after installation
-          return (await import(jsonResumeThemeName)).default;
+          // Try requiring again after installation
+          return require(jsonResumeThemeName);
         } catch (installError) {
           throw new Error(
             `Failed to auto-install theme ${jsonResumeThemeName}: ${
