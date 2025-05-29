@@ -36,7 +36,7 @@ export async function findInputFiles(inputPath?: string): Promise<string[]> {
           throw new Error(`No YAML files found in directory: ${inputPath}`);
         }
         return yamlFiles;
-      } catch (err) {
+      } catch (_) {
         throw new Error(`No YAML files found in directory: ${inputPath}`);
       }
     }
