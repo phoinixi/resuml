@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/phoinixi/resuml/compare/v1.2.1...v1.2.2) (2025-06-08)
+
+
+### Bug Fixes
+
+* ensure type generation and scripts are included for npm publish and development ([019521c](https://github.com/phoinixi/resuml/commit/019521c747d0a82e86f2afa38fb559cb4aaa36bc))
+
 ## [1.2.1](https://github.com/phoinixi/resuml/compare/v1.2.0...v1.2.1) (2025-06-08)
 
 
