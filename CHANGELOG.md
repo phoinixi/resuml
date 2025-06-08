@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/phoinixi/resuml/compare/v1.2.3...v1.2.4) (2025-06-08)
+
+
+### Bug Fixes
+
+* generate and include type declarations for TypeScript consumers ([a9f15c1](https://github.com/phoinixi/resuml/commit/a9f15c1f121c50f0638e01ea34cdc4eb22c4aecb))
+
 ## [1.2.3](https://github.com/phoinixi/resuml/compare/v1.2.2...v1.2.3) (2025-06-08)
 
 
