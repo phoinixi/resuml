@@ -1,6 +1,11 @@
 # resuml
 
-A CLI tool for generating JSON resumes from YAML with theme support.
+A CLI tool for generating JSON resumes from YAML with theme support. This tool helps you maintain your resume in YAML format and convert it to various formats including JSON and HTML with different themes.
+
+## Prerequisites
+
+- Node.js >= 20.0.0
+- npm >= 10.0.0
 
 ## Installation
 
@@ -8,27 +13,45 @@ A CLI tool for generating JSON resumes from YAML with theme support.
 npm install -g resuml
 ```
 
+## Quick Start
+
+1. Create a YAML file for your resume (e.g., `resume.yaml`)
+2. Validate your resume data:
+   ```bash
+   resuml validate --resume resume.yaml
+   ```
+3. Convert to JSON:
+   ```bash
+   resuml tojson --resume resume.yaml --output resume.json
+   ```
+4. Render with a theme:
+   ```bash
+   resuml render --resume resume.yaml --theme stackoverflow --output resume.html
+   ```
+
 ## Usage
 
 ### Validate resume data
+
 ```bash
 resuml validate --resume resume.yaml
 ```
 
 ### Convert YAML to JSON
+
 ```bash
 resuml tojson --resume resume.yaml --output resume.json
 ```
 
 ### Render resume with theme
+
 ```bash
 resuml render --resume resume.yaml --theme stackoverflow --output resume.html
 ```
 
-### Development server
-```bash
-resuml dev --resume resume.yaml --theme react --port 3000
-```
+## Examples
+
+For detailed examples and usage instructions, see the [examples/README.md](examples/README.md) file.
 
 ## Commands
 
@@ -44,6 +67,60 @@ resuml dev --resume resume.yaml --theme react --port 3000
 - `--theme, -t` - Theme to use for rendering
 - `--port, -p` - Port for development server (default: 3000)
 - `--debug` - Enable debug mode for detailed error messages
+
+## Example YAML Structure
+
+```yaml
+basics:
+  name: John Doe
+  label: Software Engineer
+  email: john@example.com
+  summary: Experienced software engineer...
+  location:
+    city: San Francisco
+    countryCode: US
+  profiles:
+    - network: GitHub
+      url: https://github.com/johndoe
+
+work:
+  - company: Tech Corp
+    position: Senior Engineer
+    startDate: 2020-01
+    endDate: Present
+    summary: Led development of...
+```
+
+## Available Themes
+
+- `stackoverflow` - Clean and professional theme based on Stack Overflow's style
+- `react` - Modern React-based theme with interactive features
+- More themes coming soon...
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Validation Errors**
+
+   - Ensure your YAML follows the JSON Resume schema
+   - Check for proper indentation in your YAML file
+   - Verify all required fields are present
+
+2. **Theme Rendering Issues**
+
+   - Make sure the theme is properly installed
+   - Check if all required theme dependencies are installed
+   - Try running with `--debug` flag for more information
+
+3. **Development Server Issues**
+   - Ensure the specified port is available
+   - Check if you have proper permissions to access the port
+   - Try a different port if the default is blocked
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
