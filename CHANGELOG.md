@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/phoinixi/resuml/compare/v1.2.0...v1.2.1) (2025-06-08)
+
+
+### Bug Fixes
+
+* final cleanup and documentation updates ([4b3659b](https://github.com/phoinixi/resuml/commit/4b3659b653e89242f360644673e5574a58e7d080))
+
 # [1.2.0](https://github.com/phoinixi/resuml/compare/v1.1.2...v1.2.0) (2025-05-25)
 
 ### Bug Fixes
