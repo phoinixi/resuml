@@ -9,11 +9,13 @@
   "files": [
     "bin",
     "dist",
-    "README.md"
+    "README.md",
+    "scripts",
+    "src/types"
   ],
   "scripts": {
     "build": "tsup",
-    "postinstall": "npm run generate:types",
+    "prepublishOnly": "npm run generate:types && npm run build",
     "generate:types": "node scripts/generate-types.js",
     "test": "vitest run",
     "test:watch": "vitest",
