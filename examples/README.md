@@ -2,7 +2,11 @@
 
 This directory contains sample resume files that demonstrate how to structure your resume data using YAML format.
 
-## File Structure
+## Example Types
+
+### 1. Multi-file Resume (Modular)
+
+Each section of the resume is stored in a separate YAML file for better organization and maintainability:
 
 - `basics.yaml` - Personal information, contact details, and summary
 - `education.yaml` - Educational background and qualifications
@@ -10,42 +14,44 @@ This directory contains sample resume files that demonstrate how to structure yo
 - `skills.yaml` - Technical skills and competencies
 - `projects.yaml` - Projects and notable achievements
 
-## Usage
-
-### Validate the example resume
+**Usage:**
 
 ```bash
+# Validate the multi-file resume
 resuml validate --resume examples/
-```
 
-### Convert to JSON
-
-```bash
+# Convert to JSON
 resuml tojson --resume examples/ --output examples/resume.json
-```
 
-### Render to HTML (requires a theme)
-
-```bash
-# Using JSON Resume themes
+# Render to HTML (requires a theme)
 resuml render --resume examples/ --theme stackoverflow --output examples/resume.html
-resuml render --resume examples/ --theme react --output examples/resume.html
 ```
 
-### Start development server
+### 2. Single-file Comprehensive Resume
+
+All sections are combined into a single YAML file: `resume.yaml`.
+
+**Usage:**
 
 ```bash
-resuml dev --resume examples/ --theme react --port 3000
+# Validate the single-file resume
+resuml validate --resume examples/resume.yaml
+
+# Convert to JSON
+resuml tojson --resume examples/resume.yaml --output examples/resume-single.json
+
+# Render to HTML (requires a theme)
+resuml render --resume examples/resume.yaml --theme stackoverflow --output examples/resume-single.html
 ```
 
 ## Creating Your Own Resume
 
-You can use these files as a template for your own resume:
+You can use either approach as a template for your own resume:
 
-1. Copy the example files to a new directory
-2. Modify the content to match your background
-3. Add or remove sections as needed
-4. Validate your changes with `resuml validate`
+- **Multi-file:** Copy the example files to a new directory, modify the content, and add/remove sections as needed.
+- **Single-file:** Copy `resume.yaml` and edit as needed.
+
+Validate your changes with `resuml validate`.
 
 ## Supported Sections
 
@@ -63,4 +69,4 @@ The resume format follows the [JSON Resume Schema](https://jsonresume.org/schema
 - `interests` - Personal interests and hobbies
 - `references` - Professional references
 
-Each section can be split into separate YAML files for better organization.
+Each section can be split into separate YAML files for better organization, or combined into a single file for simplicity.
