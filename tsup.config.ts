@@ -7,7 +7,7 @@ export default defineConfig([
     target: 'es2022',
     sourcemap: true,
     clean: true,
-    dts: false,
+    dts: true,
     shims: true,
     platform: 'node',
     outDir: 'dist',
