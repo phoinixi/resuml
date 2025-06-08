@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/phoinixi/resuml/compare/v1.2.2...v1.2.3) (2025-06-08)
+
+
+### Bug Fixes
+
+* remove theme-config support and related code/docs for now ([89f2c77](https://github.com/phoinixi/resuml/commit/89f2c775089d91b03b4cfdd1519697816ba31daf))
+
 ## [1.2.2](https://github.com/phoinixi/resuml/compare/v1.2.1...v1.2.2) (2025-06-08)
 
 
