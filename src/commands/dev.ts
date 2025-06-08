@@ -2,7 +2,6 @@ import fs from 'fs';
 import path from 'node:path';
 import { processResumeData } from '../core';
 import { loadResumeFiles } from '../utils/loadResume';
-import { loadThemeConfig } from '../utils/loadThemeConfig';
 import { loadTheme } from '../utils/themeLoader';
 import { handleCommandError } from '../utils/errorHandler';
 import chalk from 'chalk';
@@ -10,7 +9,6 @@ import chalk from 'chalk';
 interface DevCommandOptions {
   resume?: string;
   theme?: string;
-  themeConfig?: string;
   port?: number;
   language: string;
   debug?: boolean;
@@ -65,11 +63,9 @@ async function renderResume(options: DevCommandOptions): Promise<void> {
     console.log(chalk.blue('🔄 Processing resume data...'));
     const resumeData = await processResumeData(yamlContents);
 
-    const userThemeConfig = loadThemeConfig(options.themeConfig);
     const theme = await loadTheme(options.theme!);
 
     const htmlOutput = await theme.render(resumeData, {
-      ...userThemeConfig,
       locale: options.language,
     });
 

@@ -125,3 +125,27 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 ISC
+
+## Node.js API Usage
+
+You can use resuml programmatically from Node.js:
+
+```js
+import {
+  processResumeData,
+  loadResumeFiles,
+  loadTheme,
+  themeRender
+} from 'resuml';
+
+// Load YAML files
+const { yamlContents } = await loadResumeFiles('resume.yaml');
+// Validate and merge
+const resume = await processResumeData(yamlContents);
+// Load a theme
+const theme = await loadTheme('stackoverflow');
+// Render HTML
+const html = await theme.render(resume, { locale: 'en' });
+```
+
+See the CLI and API for more details.
