@@ -55,7 +55,6 @@ program
   .description('Renders the resume data using a specified theme.')
   .option('-r, --resume <path>', 'Input YAML file, directory, or glob pattern.')
   .option('-t, --theme <name>', 'Theme name (e.g., stackoverflow, react).')
-  .option('--theme-config <path>', 'Path to a themeConfig.yaml file for theme customization.')
   .option('-o, --output <file>', 'Output HTML file path (defaults to resume.html).')
   .option('--language <code>', 'Language code for localization.', 'en')
   .option('--debug', 'Show detailed validation and processing information.')
@@ -67,7 +66,6 @@ program
   .description('Start development server with hot-reload.')
   .option('-r, --resume <path>', 'Input YAML file, directory, or glob pattern.')
   .option('-t, --theme <name>', 'Theme name (e.g., stackoverflow, react).')
-  .option('--theme-config <path>', 'Path to a themeConfig.yaml file for theme customization.')
   .option('--port <number>', 'Port for development server.', '3000')
   .option('--language <code>', 'Language code for localization.', 'en')
   .option('--debug', 'Show detailed validation and processing information.')
@@ -84,3 +82,8 @@ if (process.env.NODE_ENV !== 'test') {
     }
   })();
 }
+
+export { processResumeData } from './core';
+export { loadResumeFiles } from './utils/loadResume';
+export { loadTheme } from './utils/themeLoader';
+export * as themeRender from './utils/themeRender';

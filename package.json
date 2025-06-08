@@ -2,7 +2,14 @@
   "name": "resuml",
   "version": "1.2.2",
   "description": "Generate JSON resumes from YAML with theme support",
-  "main": "./dist/index.js",
+  "main": "./dist/api.js",
+  "exports": {
+    ".": {
+      "import": "./dist/api.js",
+      "require": "./dist/api.js"
+    },
+    "./cli": "./dist/index.js"
+  },
   "bin": {
     "resuml": "./bin/resuml.cjs"
   },

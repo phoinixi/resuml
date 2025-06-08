@@ -2,7 +2,6 @@ import fs from 'fs';
 import path from 'node:path';
 import { processResumeData } from '../core';
 import { loadResumeFiles } from '../utils/loadResume';
-import { loadThemeConfig } from '../utils/loadThemeConfig';
 import { loadTheme } from '../utils/themeLoader';
 import { handleCommandError } from '../utils/errorHandler';
 import chalk from 'chalk';
@@ -10,7 +9,6 @@ import chalk from 'chalk';
 interface RenderCommandOptions {
   resume?: string;
   theme?: string;
-  themeConfig?: string;
   output?: string;
   language: string;
   debug?: boolean;
@@ -33,11 +31,9 @@ export async function renderAction(options: RenderCommandOptions): Promise<void>
     const resumeData = await processResumeData(yamlContents);
     console.log(chalk.green('Resume data processing and validation successful!'));
 
-    const userThemeConfig = loadThemeConfig(options.themeConfig);
     const theme = await loadTheme(options.theme);
 
     const htmlOutput = await theme.render(resumeData, {
-      ...userThemeConfig,
       locale: options.language,
     });
 
