@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/phoinixi/resuml/compare/v1.2.4...v1.2.5) (2025-06-09)
+
+
+### Bug Fixes
+
+* ensure robust theme loading and consistent imports in dev command and API ([281e87f](https://github.com/phoinixi/resuml/commit/281e87f1bc209ba575ab33b526c19fe90ebe0d58))
+
 ## [1.2.4](https://github.com/phoinixi/resuml/compare/v1.2.3...v1.2.4) (2025-06-08)
 
 
