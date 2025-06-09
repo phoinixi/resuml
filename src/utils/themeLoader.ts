@@ -21,11 +21,13 @@ async function installTheme(packageName: string): Promise<void> {
 /**
  * Load a theme module by name
  * @param themeName The name of the theme to load
+ * @param options Optional settings (autoInstall: boolean)
  * @returns The loaded theme module
  */
-export async function loadTheme(themeName: string) {
+export async function loadTheme(themeName: string, options?: { autoInstall?: boolean }) {
   let jsonResumeThemeName: string;
   let nativeThemeName: string;
+  const autoInstall = options?.autoInstall !== false;
 
   try {
     // Try loading as a JSON Resume theme
@@ -42,6 +44,12 @@ export async function loadTheme(themeName: string) {
       try {
         return require(nativeThemeName);
       } catch (_nativeError) {
+        if (!autoInstall) {
+          throw new Error(
+            `Theme package ${jsonResumeThemeName} or ${nativeThemeName} not found in node_modules.\n` +
+            `Please install the theme package manually.`
+          );
+        }
         // Both attempts failed - auto-install the theme
         console.log(`📦 Theme ${jsonResumeThemeName} not found. Installing...`);
         try {
