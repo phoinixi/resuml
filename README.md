@@ -1,8 +1,14 @@
-# resuml
+<h1 align="center">✨ Resuml</h1>
+<p align="center"><strong>Resumes in YAML <br>Powered by Typescript & Magic</strong></p>
+
+<p align="center">
+   <a href="https://www.buymeacoffee.com/leekbeds55j">
+      <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" width="150" />
+   </a>
+</p>
 
 A CLI tool for generating JSON resumes from YAML with theme support. This tool helps you maintain your resume in YAML format and convert it to various formats including JSON and HTML with different themes.
 
-<a href="https://www.buymeacoffee.com/leekbeds55j"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a pizza&emoji=🍕&slug=leekbeds55j&button_colour=FF5F5F&font_colour=ffffff&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00" /></a>
 
 ## Prerequisites
 
