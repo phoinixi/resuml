@@ -1,3 +1,11 @@
+## [1.2.6](https://github.com/phoinixi/resuml/compare/v1.2.5...v1.2.6) (2025-06-22)
+
+
+### Bug Fixes
+
+* Potential fix for code scanning alert no. 1: Unsafe shell command constructed from library input ([eeb6685](https://github.com/phoinixi/resuml/commit/eeb66858d4aea61215118dbb3e1cb8e9a952c285))
+* Potential fix for code scanning alert no. 2: Unsafe shell command constructed from library input ([8a9dcdd](https://github.com/phoinixi/resuml/commit/8a9dcddde7756606e5fce98ffceab714d656e2f3))
+
 ## [1.2.5](https://github.com/phoinixi/resuml/compare/v1.2.4...v1.2.5) (2025-06-09)
 
 
