@@ -1,4 +1,4 @@
-import { execSync } from 'child_process';
+import { execFileSync } from 'child_process';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
@@ -9,7 +9,7 @@ const require = createRequire(import.meta.url);
  */
 async function installTheme(packageName: string): Promise<void> {
   try {
-    execSync(`npm install ${packageName}`, {
+    execFileSync('npm', ['install', packageName], {
       stdio: ['inherit', 'pipe', 'pipe'],
       encoding: 'utf8',
     });
