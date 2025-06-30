@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'node:path';
+import puppeteer from 'puppeteer';
 import { processResumeData } from '../core';
 import { loadResumeFiles } from '../utils/loadResume';
 import { loadTheme } from '../utils/themeLoader';
@@ -10,6 +11,7 @@ interface RenderCommandOptions {
   resume?: string;
   theme?: string;
   output?: string;
+  format: 'html' | 'pdf';
   language: string;
   debug?: boolean;
 }
@@ -37,13 +39,38 @@ export async function renderAction(options: RenderCommandOptions): Promise<void>
       locale: options.language,
     });
 
-    // Default output path if not specified
-    const outputHtmlPath = options.output || 'resume.html';
+    const defaultExtension = options.format || 'html';
+    const defaultFilename = `resume.${defaultExtension}`;
+    const outputPath = options.output || defaultFilename;
 
-    console.log(chalk.blue(`Writing HTML output to ${outputHtmlPath}...`));
-    fs.mkdirSync(path.dirname(outputHtmlPath), { recursive: true });
-    fs.writeFileSync(outputHtmlPath, htmlOutput, 'utf8');
-    console.log(chalk.green(`Successfully wrote HTML output to ${outputHtmlPath}`));
+    if (options.format === 'pdf') {
+      console.log(chalk.blue(`Generating PDF output at ${outputPath}...`));
+      const browser = await puppeteer.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      });
+      const page = await browser.newPage();
+      await page.setContent(htmlOutput, { waitUntil: 'networkidle0' });
+      const pdfBuffer = await page.pdf({
+        path: outputPath,
+        format: 'A4',
+        printBackground: true,
+        margin: {
+          top: '1cm',
+          right: '1cm',
+          bottom: '1cm',
+          left: '1cm',
+        },
+      });
+      await browser.close();
+      fs.writeFileSync(outputPath, pdfBuffer);
+      console.log(chalk.green(`Successfully wrote PDF output to ${outputPath}`));
+    } else {
+      console.log(chalk.blue(`Writing HTML output to ${outputPath}...`));
+      fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+      fs.writeFileSync(outputPath, htmlOutput, 'utf8');
+      console.log(chalk.green(`Successfully wrote HTML output to ${outputPath}`));
+    }
   } catch (error: unknown) {
     handleCommandError(error, 'render', options.debug);
   }

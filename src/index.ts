@@ -58,7 +58,8 @@ program
   .description('Renders the resume data using a specified theme.')
   .option('-r, --resume <path>', 'Input YAML file, directory, or glob pattern.')
   .option('-t, --theme <name>', 'Theme name (e.g., stackoverflow, react).')
-  .option('-o, --output <file>', 'Output HTML file path (defaults to resume.html).')
+  .option('-o, --output <file>', 'Output file path.')
+  .option('--format <type>', 'Output format (html or pdf).', 'html')
   .option('--language <code>', 'Language code for localization.', 'en')
   .option('--debug', 'Show detailed validation and processing information.')
   .action(renderAction);
