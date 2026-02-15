@@ -9,6 +9,7 @@ import { toJsonAction } from './commands/tojson';
 import { renderAction } from './commands/render';
 import { devAction } from './commands/dev';
 import { initAction } from './commands/init';
+import { pdfAction } from './commands/pdf';
 
 // Get the directory name equivalent to __dirname in CommonJS
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
@@ -78,6 +79,19 @@ program
   .description('Scaffold a starter resume.yaml file with all sections.')
   .option('-o, --output <file>', 'Output YAML file path.', 'resume.yaml')
   .action(initAction);
+
+// PDF Command
+program
+  .command('pdf')
+  .description('Export resume as PDF using Puppeteer.')
+  .option('-r, --resume <path>', 'Input YAML file, directory, or glob pattern.')
+  .option('-t, --theme <name>', 'Theme name (e.g., stackoverflow, react).')
+  .option('-o, --output <file>', 'Output PDF file path.', 'resume.pdf')
+  .option('--language <code>', 'Language code for localization.', 'en')
+  .option('--format <size>', 'Page format: A4 or Letter.', 'A4')
+  .option('--margin <values>', 'Page margins (e.g., "10mm" or "10mm,15mm,10mm,15mm").')
+  .option('--debug', 'Show detailed validation and processing information.')
+  .action(pdfAction);
 
 // Parse Arguments - only execute when not in test environment
 if (process.env.NODE_ENV !== 'test') {
