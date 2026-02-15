@@ -1,6 +1,6 @@
 {
   "name": "resuml",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Resume as Code — Generate beautiful resumes from YAML with JSON Resume theme support, validation, PDF export, and a live dev server.",
   "main": "./dist/api.js",
   "exports": {
