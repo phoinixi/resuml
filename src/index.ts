@@ -10,6 +10,7 @@ import { renderAction } from './commands/render';
 import { devAction } from './commands/dev';
 import { initAction } from './commands/init';
 import { pdfAction } from './commands/pdf';
+import { themesAction } from './commands/themes';
 
 // Get the directory name equivalent to __dirname in CommonJS
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
@@ -92,6 +93,13 @@ program
   .option('--margin <values>', 'Page margins (e.g., "10mm" or "10mm,15mm,10mm,15mm").')
   .option('--debug', 'Show detailed validation and processing information.')
   .action(pdfAction);
+
+// Themes Command
+program
+  .command('themes')
+  .description('List available JSON Resume themes and install them.')
+  .option('--install <name>', 'Install a theme by name (e.g., stackoverflow, elegant).')
+  .action(themesAction);
 
 // Parse Arguments - only execute when not in test environment
 if (process.env.NODE_ENV !== 'test') {
