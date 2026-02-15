@@ -1,5 +1,12 @@
 <h1 align="center">✨ Resuml</h1>
-<p align="center"><strong>Resumes in YAML <br>Powered by Typescript & Magic</strong></p>
+<p align="center"><strong>Write your resume in YAML. Render it beautifully.</strong></p>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/resuml"><img src="https://img.shields.io/npm/v/resuml.svg" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/resuml"><img src="https://img.shields.io/npm/dm/resuml.svg" alt="npm downloads"></a>
+  <a href="https://github.com/phoinixi/resuml/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/resuml.svg" alt="license"></a>
+  <a href="https://github.com/phoinixi/resuml"><img src="https://img.shields.io/github/stars/phoinixi/resuml.svg?style=social" alt="GitHub stars"></a>
+</p>
 
 <p align="center">
    <a href="https://www.buymeacoffee.com/leekbeds55j">
@@ -7,8 +14,47 @@
    </a>
 </p>
 
-A CLI tool for generating JSON resumes from YAML with theme support. This tool helps you maintain your resume in YAML format and convert it to various formats including JSON and HTML with different themes.
+---
 
+### YAML in → Beautiful resume out
+
+```yaml
+# resume.yaml
+basics:
+  name: Jane Smith
+  label: Senior Software Engineer
+  email: jane@example.com
+  summary: >-
+    Passionate engineer with 8+ years
+    building scalable distributed systems.
+work:
+  - name: Acme Corp
+    position: Lead Engineer
+    startDate: 2020-01-15
+    highlights:
+      - Reduced deploy time by 60%
+      - Led team of 12 engineers
+```
+
+```bash
+resuml render --resume resume.yaml --theme stackoverflow --output resume.html
+```
+
+Your YAML becomes a polished, professional resume — ready to share, print, or export to PDF.
+
+---
+
+## Why YAML?
+
+| | YAML | JSON |
+|---|---|---|
+| **Comments** | ✅ `# explain your choices` | ❌ Not supported |
+| **Multi-line strings** | ✅ `summary: >-` block syntax | ❌ Escape everything |
+| **Readability** | ✅ Clean, minimal syntax | ⚠️ Brackets & quotes everywhere |
+| **Diffing** | ✅ Clean git diffs | ⚠️ Noisy diffs |
+| **Compatibility** | ✅ Valid JSON Resume schema | ✅ Native |
+
+YAML is a superset of JSON — your resume stays fully compatible with the [JSON Resume](https://jsonresume.org/) ecosystem while being far more pleasant to write and maintain.
 
 ## Prerequisites
 
@@ -37,44 +83,48 @@ npm install -g resuml
    resuml render --resume resume.yaml --theme stackoverflow --output resume.html
    ```
 
-## Usage
+## Commands
 
-### Validate resume data
+| Command | Description |
+|---------|-------------|
+| `validate` | Validate resume data against the JSON Resume schema |
+| `tojson` | Convert YAML resume data to JSON format |
+| `render` | Render the resume using a specified theme |
+| `dev` | Start a development server with hot-reload |
+
+## Options
+
+| Option | Alias | Description |
+|--------|-------|-------------|
+| `--resume` | `-r` | Input YAML file(s) or directory |
+| `--output` | `-o` | Output file path |
+| `--theme` | `-t` | Theme to use for rendering |
+| `--port` | `-p` | Port for dev server (default: 3000) |
+| `--language` | | Language code for localization (default: `en`) |
+| `--debug` | | Enable debug mode for detailed errors |
+
+## Compatible Themes
+
+Resuml supports themes from the JSON Resume ecosystem. Install a theme, then pass its name to `--theme`:
 
 ```bash
-resuml validate --resume resume.yaml
+npm install jsonresume-theme-stackoverflow
+resuml render --resume resume.yaml --theme stackoverflow
 ```
 
-### Convert YAML to JSON
+| Theme | Install | Style |
+|-------|---------|-------|
+| [stackoverflow](https://github.com/francoislaberge/jsonresume-theme-stackoverflow) | `npm i jsonresume-theme-stackoverflow` | Clean, professional |
+| [elegant](https://github.com/mudassir0909/jsonresume-theme-elegant) | `npm i jsonresume-theme-elegant` | Modern, elegant |
+| [kendall](https://github.com/LinuxBozo/jsonresume-theme-kendall) | `npm i jsonresume-theme-kendall` | Minimal, classic |
+| [flat](https://github.com/erming/jsonresume-theme-flat) | `npm i jsonresume-theme-flat` | Flat design |
+| [onepage](https://github.com/aonemd/jsonresume-theme-onepage) | `npm i jsonresume-theme-onepage` | Single page |
 
-```bash
-resuml tojson --resume resume.yaml --output resume.json
-```
-
-### Render resume with theme
-
-```bash
-resuml render --resume resume.yaml --theme stackoverflow --output resume.html
-```
+> Browse all themes at [jsonresume.org/themes](https://jsonresume.org/themes/) — any `jsonresume-theme-*` package works with resuml.
 
 ## Examples
 
 For detailed examples and usage instructions, see the [examples/README.md](examples/README.md) file.
-
-## Commands
-
-- `validate` - Validates resume data against the JSON Resume schema
-- `tojson` - Converts YAML resume data to JSON format
-- `render` - Renders the resume using a specified theme
-- `dev` - Starts a development server with hot-reload
-
-## Options
-
-- `--resume, -r` - Input YAML file(s) or directory
-- `--output, -o` - Output file path
-- `--theme, -t` - Theme to use for rendering
-- `--port, -p` - Port for development server (default: 3000)
-- `--debug` - Enable debug mode for detailed error messages
 
 ## Example YAML Structure
 
@@ -99,40 +149,41 @@ work:
     summary: Led development of...
 ```
 
-## Available Themes
+## CI/CD: Auto-build on Push
 
-- `stackoverflow` - Clean and professional theme based on Stack Overflow's style
-- `react` - Modern React-based theme with interactive features
-- More themes coming soon...
+Use GitHub Actions to automatically rebuild your resume when you push changes:
 
-## Troubleshooting
+```yaml
+# .github/workflows/resume.yml
+name: Build Resume
 
-### Common Issues
+on:
+  push:
+    paths: ['resume.yaml', 'resume/*.yaml']
 
-1. **Validation Errors**
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-   - Ensure your YAML follows the JSON Resume schema
-   - Check for proper indentation in your YAML file
-   - Verify all required fields are present
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-2. **Theme Rendering Issues**
+      - run: npm install -g resuml
+      - run: npm install jsonresume-theme-stackoverflow
 
-   - Make sure the theme is properly installed
-   - Check if all required theme dependencies are installed
-   - Try running with `--debug` flag for more information
+      - run: resuml render --resume resume.yaml --theme stackoverflow --output resume.html
+      - run: resuml tojson --resume resume.yaml --output resume.json
 
-3. **Development Server Issues**
-   - Ensure the specified port is available
-   - Check if you have proper permissions to access the port
-   - Try a different port if the default is blocked
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-ISC
+      - uses: actions/upload-artifact@v4
+        with:
+          name: resume
+          path: |
+            resume.html
+            resume.json
+```
 
 ## Node.js API Usage
 
@@ -157,3 +208,30 @@ const html = await theme.render(resume, { locale: 'en' });
 ```
 
 See the CLI and API for more details.
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Validation Errors**
+   - Ensure your YAML follows the JSON Resume schema
+   - Check for proper indentation in your YAML file
+   - Verify all required fields are present
+
+2. **Theme Rendering Issues**
+   - Make sure the theme is properly installed
+   - Check if all required theme dependencies are installed
+   - Try running with `--debug` flag for more information
+
+3. **Development Server Issues**
+   - Ensure the specified port is available
+   - Check if you have proper permissions to access the port
+   - Try a different port if the default is blocked
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+ISC
