@@ -57,6 +57,7 @@ debug/
 
 # Generated files and build artifacts
 *.html
+!docs/**/*.html
 examples/**/*.html
 !**/fixtures/**/*.html
 
