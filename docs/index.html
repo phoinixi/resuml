@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>resuml — Resume as Code</title>
+  <meta name="description" content="Generate beautiful resumes from YAML with JSON Resume theme support, validation, PDF export, and a live dev server.">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --border: #334155;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent2: #818cf8;
+      --green: #4ade80;
+      --yellow: #fbbf24;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 100px 24px 80px;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero .tagline {
+      font-size: 1.35rem;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .hero .cta {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--bg);
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: opacity .2s;
+    }
+    .hero .cta:hover { opacity: .85; text-decoration: none; }
+    .hero .secondary {
+      display: inline-block;
+      margin-left: 16px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    /* Install */
+    .install {
+      text-align: center;
+      padding: 0 24px 64px;
+    }
+    .install code {
+      display: inline-block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      color: var(--green);
+    }
+
+    /* Demo */
+    .demo {
+      padding: 64px 0;
+    }
+    .demo h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+      align-items: start;
+      gap: 0;
+    }
+    .demo-grid .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--accent);
+      padding-top: 60px;
+    }
+    .code-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .code-block .label {
+      background: var(--border);
+      padding: 8px 16px;
+      font-size: .8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--muted);
+    }
+    .code-block pre {
+      padding: 20px;
+      font-size: .85rem;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      overflow-x: auto;
+      line-height: 1.5;
+    }
+    .code-block .y { color: var(--yellow); }
+    .code-block .g { color: var(--green); }
+    .code-block .a { color: var(--accent); }
+    .code-block .m { color: var(--muted); }
+
+    /* Features */
+    .features {
+      padding: 80px 0;
+    }
+    .features h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 48px;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .feature-card .icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .feature-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+    .feature-card p { color: var(--muted); font-size: .9rem; }
+
+    /* Themes */
+    .themes {
+      padding: 80px 0;
+    }
+    .themes h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    .themes .subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .theme-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      transition: border-color .2s;
+    }
+    .theme-card:hover { border-color: var(--accent); }
+    .theme-card .name { font-weight: 700; margin-bottom: 4px; }
+    .theme-card .pkg { font-size: .75rem; color: var(--muted); font-family: monospace; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--muted);
+      font-size: .85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 2.2rem; }
+      .demo-grid { grid-template-columns: 1fr; }
+      .demo-grid .arrow { transform: rotate(90deg); padding: 0; }
+      .hero .secondary { margin-left: 0; margin-top: 12px; display: block; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="container">
+    <h1>resuml</h1>
+    <p class="tagline">Resume as Code — Write your resume in YAML, render it beautifully.</p>
+    <a href="https://github.com/phoinixi/resuml" class="cta">Get Started</a>
+    <a href="https://www.npmjs.com/package/resuml" class="secondary">npm i -g resuml</a>
+  </div>
+</section>
+
+<section class="install">
+  <code>npm install -g resuml</code>
+</section>
+
+<section class="demo">
+  <div class="container">
+    <h2>YAML In → Beautiful Resume Out</h2>
+    <div class="demo-grid">
+      <div class="code-block">
+        <div class="label">resume.yaml</div>
+        <pre><span class="y">basics</span>:
+  <span class="a">name</span>: <span class="g">'Jane Smith'</span>
+  <span class="a">label</span>: <span class="g">'Senior Engineer'</span>
+  <span class="a">email</span>: <span class="g">'jane@example.com'</span>
+
+<span class="y">work</span>:
+  - <span class="a">name</span>: <span class="g">'Acme Corp'</span>
+    <span class="a">position</span>: <span class="g">'Lead Developer'</span>
+    <span class="a">startDate</span>: <span class="g">'2021-01-01'</span>
+    <span class="a">highlights</span>:
+      - <span class="g">'Built the platform'</span>
+
+<span class="y">skills</span>:
+  - <span class="a">name</span>: <span class="g">'TypeScript'</span>
+    <span class="a">level</span>: <span class="g">'Expert'</span></pre>
+      </div>
+      <div class="arrow">→</div>
+      <div class="code-block">
+        <div class="label">Terminal</div>
+        <pre><span class="m">$</span> <span class="a">resuml render</span> --theme stackoverflow
+
+<span class="g">✅ Successfully wrote HTML output to resume.html</span>
+
+<span class="m">$</span> <span class="a">resuml pdf</span> --theme react
+
+<span class="g">✅ Successfully generated resume.pdf</span>
+
+<span class="m">$</span> <span class="a">resuml dev</span> --theme elegant
+<span class="y">🔄 Dev server running at http://localhost:3000</span>
+<span class="m">   Watching for changes...</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <h2>Features</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon">✍️</div>
+        <h3>resuml init</h3>
+        <p>Scaffold a starter resume.yaml with all JSON Resume sections, ready to fill in.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">✅</div>
+        <h3>resuml validate</h3>
+        <p>Validate your YAML against the JSON Resume schema with clear error messages.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🎨</div>
+        <h3>resuml render</h3>
+        <p>Render to HTML using any compatible jsonresume-theme. Dozens available on npm.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📄</div>
+        <h3>resuml pdf</h3>
+        <p>Export to PDF with configurable page format, margins, and print-ready output.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔄</div>
+        <h3>resuml dev</h3>
+        <p>Live-reload dev server — edit your YAML and see changes instantly in the browser.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📦</div>
+        <h3>resuml tojson</h3>
+        <p>Convert YAML to JSON Resume format for compatibility with other tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="themes">
+  <div class="container">
+    <h2>Compatible Themes</h2>
+    <p class="subtitle">Use any <a href="https://www.npmjs.com/search?q=jsonresume-theme">jsonresume-theme</a> from npm. Here are some popular ones:</p>
+    <div class="theme-grid">
+      <a href="https://www.npmjs.com/package/jsonresume-theme-stackoverflow" class="theme-card">
+        <div class="name">Stack Overflow</div>
+        <div class="pkg">jsonresume-theme-stackoverflow</div>
+      </a>
+      <a href="https://www.npmjs.com/package/jsonresume-theme-elegant" class="theme-card">
+        <div class="name">Elegant</div>
+        <div class="pkg">jsonresume-theme-elegant</div>
+      </a>
+      <a href="https://www.npmjs.com/package/jsonresume-theme-react" class="theme-card">
+        <div class="name">React</div>
+        <div class="pkg">jsonresume-theme-react</div>
+      </a>
+      <a href="https://www.npmjs.com/package/jsonresume-theme-even" class="theme-card">
+        <div class="name">Even</div>
+        <div class="pkg">jsonresume-theme-even</div>
+      </a>
+      <a href="https://www.npmjs.com/package/jsonresume-theme-kendall" class="theme-card">
+        <div class="name">Kendall</div>
+        <div class="pkg">jsonresume-theme-kendall</div>
+      </a>
+      <a href="https://www.npmjs.com/package/jsonresume-theme-macchiato" class="theme-card">
+        <div class="name">Macchiato</div>
+        <div class="pkg">jsonresume-theme-macchiato</div>
+      </a>
+      <a href="https://www.npmjs.com/package/jsonresume-theme-flat" class="theme-card">
+        <div class="name">Flat</div>
+        <div class="pkg">jsonresume-theme-flat</div>
+      </a>
+      <a href="https://www.npmjs.com/package/jsonresume-theme-class" class="theme-card">
+        <div class="name">Class</div>
+        <div class="pkg">jsonresume-theme-class</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Built with ❤️ by <a href="https://github.com/phoinixi">phoinixi</a> · <a href="https://github.com/phoinixi/resuml">GitHub</a> · <a href="https://www.npmjs.com/package/resuml">npm</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
