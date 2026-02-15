@@ -64,6 +64,14 @@
     "typescript": "^5.0.0",
     "vitest": "^3.2.2"
   },
+  "peerDependencies": {
+    "puppeteer": ">=20.0.0"
+  },
+  "peerDependenciesMeta": {
+    "puppeteer": {
+      "optional": true
+    }
+  },
   "engines": {
     "node": ">=20.0.0"
   },
