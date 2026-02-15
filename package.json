@@ -1,7 +1,7 @@
 {
   "name": "resuml",
-  "version": "1.2.6",
-  "description": "Generate JSON resumes from YAML with theme support",
+  "version": "2.0.0",
+  "description": "Resume as Code — Generate beautiful resumes from YAML with JSON Resume theme support, validation, PDF export, and a live dev server.",
   "main": "./dist/api.js",
   "exports": {
     ".": {
@@ -75,7 +75,7 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "homepage": "https://github.com/phoinixi/resuml",
+  "homepage": "https://phoinixi.github.io/resuml/",
   "repository": {
     "type": "git",
     "url": "https://github.com/phoinixi/resuml.git"
@@ -85,5 +85,16 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
-  }
+  },
+  "keywords": [
+    "resume",
+    "yaml",
+    "cli",
+    "json-resume",
+    "pdf",
+    "resume-builder",
+    "resume-generator",
+    "cv",
+    "career"
+  ]
 }
