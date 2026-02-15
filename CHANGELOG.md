@@ -1,3 +1,20 @@
+# [1.3.0](https://github.com/phoinixi/resuml/compare/v1.2.6...v1.3.0) (2026-02-15)
+
+
+### Bug Fixes
+
+* **ci:** bump Node.js to 22 for semantic-release compatibility ([62bac15](https://github.com/phoinixi/resuml/commit/62bac1511cc9d9d394d4ca3e22d74f0202ae32d6))
+* **ci:** configure git identity for semantic-release commits ([1343d2d](https://github.com/phoinixi/resuml/commit/1343d2d5f7632882d4792286e5e24188168a3791))
+* **ci:** disable husky in release workflow ([8d151cd](https://github.com/phoinixi/resuml/commit/8d151cd4e55854d59463bbd6bc61c84d60dd4d43))
+* **ci:** use npm OIDC trusted publishing, remove duplicate releaserc ([178eedf](https://github.com/phoinixi/resuml/commit/178eedfc6385c5ef6ccb3c35a4d2bd905be12f89))
+
+
+### Features
+
+* add interactive init command to scaffold resume.yaml ([#5](https://github.com/phoinixi/resuml/issues/5)) ([6d289f7](https://github.com/phoinixi/resuml/commit/6d289f7c4f2b0776c16fb52a4fa02c1e62bd4772))
+* add PDF export command using Puppeteer ([#6](https://github.com/phoinixi/resuml/issues/6)) ([4e71fec](https://github.com/phoinixi/resuml/commit/4e71fec9afa87e5fc7c46712dd283e698e4fd170))
+* add resuml themes command ([f191aec](https://github.com/phoinixi/resuml/commit/f191aeca3d7a0ed7686c3937d4f5af75ce26cf09))
+
 ## [1.2.6](https://github.com/phoinixi/resuml/compare/v1.2.5...v1.2.6) (2025-06-22)
 
 
