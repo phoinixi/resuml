@@ -8,6 +8,7 @@ import { validateAction } from './commands/validate';
 import { toJsonAction } from './commands/tojson';
 import { renderAction } from './commands/render';
 import { devAction } from './commands/dev';
+import { initAction } from './commands/init';
 
 // Get the directory name equivalent to __dirname in CommonJS
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
@@ -70,6 +71,13 @@ program
   .option('--language <code>', 'Language code for localization.', 'en')
   .option('--debug', 'Show detailed validation and processing information.')
   .action(devAction);
+
+// Init Command
+program
+  .command('init')
+  .description('Scaffold a starter resume.yaml file with all sections.')
+  .option('-o, --output <file>', 'Output YAML file path.', 'resume.yaml')
+  .action(initAction);
 
 // Parse Arguments - only execute when not in test environment
 if (process.env.NODE_ENV !== 'test') {
