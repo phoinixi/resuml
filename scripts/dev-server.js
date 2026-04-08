@@ -76,9 +76,10 @@ async function ensureThemeInstalled(theme) {
   const pkgJson = JSON.parse(fs.readFileSync(path.join(pkgDir, 'package.json'), 'utf8'));
   if (pkgJson.dependencies && Object.keys(pkgJson.dependencies).length > 0) {
     console.log(`   Installing dependencies for ${pkg}...`);
-    execFileSync('npm', ['install', '--omit=dev', '--ignore-scripts', '--prefix', pkgDir], {
+    execFileSync('npm', ['install', '--omit=dev', '--ignore-scripts'], {
       timeout: 30_000,
       stdio: 'pipe',
+      cwd: pkgDir,
     });
   }
 
@@ -90,13 +91,15 @@ async function ensureThemeInstalled(theme) {
     if (buildScript) {
       console.log(`   🔨 Theme needs building, installing all deps + running build...`);
       // Install all deps (including devDependencies needed for the build)
-      execFileSync('npm', ['install', '--ignore-scripts', '--prefix', pkgDir], {
+      execFileSync('npm', ['install', '--ignore-scripts'], {
         timeout: 60_000,
         stdio: 'pipe',
+        cwd: pkgDir,
       });
-      execFileSync('npm', ['run', 'build', '--prefix', pkgDir], {
+      execFileSync('npm', ['run', 'build'], {
         timeout: 60_000,
         stdio: 'pipe',
+        cwd: pkgDir,
         env: { ...process.env, NODE_ENV: 'production' },
       });
     }

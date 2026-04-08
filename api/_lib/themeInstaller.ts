@@ -60,9 +60,10 @@ export async function ensureInstalled(themeName: string): Promise<string> {
     scripts?: Record<string, string>;
   };
   if (pkgJson.dependencies && Object.keys(pkgJson.dependencies).length > 0) {
-    execFileSync('npm', ['install', '--omit=dev', '--ignore-scripts', '--prefix', pkgDir], {
+    execFileSync('npm', ['install', '--omit=dev', '--ignore-scripts'], {
       timeout: 30_000,
       stdio: 'pipe',
+      cwd: pkgDir,
     });
   }
 
@@ -71,11 +72,12 @@ export async function ensureInstalled(themeName: string): Promise<string> {
   const mainPath = path.join(pkgDir, mainEntry);
   if (!fs.existsSync(mainPath) && pkgJson.scripts?.['build']) {
     // Install all deps (including devDependencies for the build)
-    execFileSync('npm', ['install', '--ignore-scripts', '--prefix', pkgDir], {
+    execFileSync('npm', ['install', '--ignore-scripts'], {
       timeout: 60_000,
       stdio: 'pipe',
+      cwd: pkgDir,
     });
-    execFileSync('npm', ['run', 'build', '--prefix', pkgDir], {
+    execFileSync('npm', ['run', 'build'], {
       timeout: 60_000,
       stdio: 'pipe',
       env: { ...process.env, NODE_ENV: 'production' },
