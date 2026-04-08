@@ -9,6 +9,18 @@ interface ErrorBody {
   readonly error: string;
 }
 
+/**
+ * When running on localhost or Vercel itself, use relative URLs.
+ * When served from GitHub Pages / custom domain, proxy to Vercel.
+ */
+function getApiBase(): string {
+  if (typeof window === 'undefined') return '';
+  const { hostname } = window.location;
+  if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname.endsWith('.vercel.app')) {
+    return '';
+  }
+  return 'https://resuml.vercel.app';
+}
 const THEME_CACHE_TTL = 30 * 60 * 1000; // 30 minutes
 let themeCacheData: ThemeInfo[] | null = null;
 let themeCacheTime = 0;
@@ -21,7 +33,7 @@ export function fetchThemes(signal?: AbortSignal): Promise<ThemeInfo[]> {
 
   if (themeCachePromise) return themeCachePromise;
 
-  themeCachePromise = fetch('/api/themes', { signal })
+  themeCachePromise = fetch(`${getApiBase()}/api/themes`, { signal })
     .then((response) => {
       if (!response.ok) throw new Error(`Failed to load themes: ${response.status}`);
       return response.json();
@@ -49,7 +61,7 @@ export async function renderResume(
   request: RenderRequest,
   signal?: AbortSignal,
 ): Promise<string> {
-  const response = await fetch('/api/render', {
+  const response = await fetch(`${getApiBase()}/api/render`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(request),

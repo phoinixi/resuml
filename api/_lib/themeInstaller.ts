@@ -105,9 +105,30 @@ export function loadRenderer(pkgDir: string): (resume: Record<string, unknown>) 
 }
 
 /**
+ * Returns a Proxy-wrapped array that:
+ * - Supports .map/.forEach/.filter on empty arrays (no crash)
+ * - Returns a safe empty-string object for out-of-bounds index access (prevents arr[0].prop crash)
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function createSafeArray(arr: unknown[]): unknown[] {
+  return new Proxy(arr, {
+    get(target, prop, receiver): unknown {
+      const val = Reflect.get(target, prop, receiver) as unknown;
+      if (val !== undefined) return val;
+      if (typeof prop === 'string' && /^\d+$/u.test(prop)) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        return new Proxy({} as any, { get: (_: any, p: string | symbol) => typeof p === 'symbol' ? undefined : '' });
+      }
+      return val;
+    },
+  });
+}
+
+/**
  * Pad resume with safe defaults so themes don't crash on missing fields.
- * Only pad basics/location (scalar fields). Do NOT inject empty arrays —
- * themes check `arr[0].prop` which crashes when arr is [] but works when arr is undefined.
+ * All array sections are wrapped in createSafeArray so that:
+ * - theme.work.map(fn) works on empty data
+ * - theme.work[0].position returns '' instead of crashing
  */
 function padResume(r: Record<string, unknown>): Record<string, unknown> {
   const basics = (r['basics'] ?? {}) as Record<string, unknown>;
@@ -120,17 +141,12 @@ function padResume(r: Record<string, unknown>): Record<string, unknown> {
       location: { address: '', postalCode: '', city: '', countryCode: '', region: '', ...location },
     },
   };
-  // Strip empty arrays — themes crash on arr[0].prop when arr is []
   const arraySections = ['work','volunteer','education','awards','certificates','publications','skills','languages','interests','references','projects'];
   for (const key of arraySections) {
-    if (Array.isArray(safe[key]) && (safe[key] as unknown[]).length === 0) {
-      safe[key] = undefined;
-    }
+    safe[key] = createSafeArray(Array.isArray(safe[key]) ? (safe[key] as unknown[]) : []);
   }
   const safeBasics = safe['basics'] as Record<string, unknown>;
-  if (Array.isArray(safeBasics['profiles']) && (safeBasics['profiles'] as unknown[]).length === 0) {
-    safeBasics['profiles'] = undefined;
-  }
+  safeBasics['profiles'] = createSafeArray(Array.isArray(safeBasics['profiles']) ? (safeBasics['profiles'] as unknown[]) : []);
   return safe;
 }
 

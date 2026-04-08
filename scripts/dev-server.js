@@ -110,10 +110,28 @@ async function ensureThemeInstalled(theme) {
 }
 
 /**
+ * Returns a Proxy-wrapped array that:
+ * - Supports .map/.forEach/.filter on empty arrays (no crash)
+ * - Returns a safe empty-string object for out-of-bounds index access (prevents arr[0].prop crash)
+ */
+function createSafeArray(arr) {
+  return new Proxy(arr, {
+    get(target, prop, receiver) {
+      const val = Reflect.get(target, prop, receiver);
+      if (val !== undefined) return val;
+      if (typeof prop === 'string' && /^\d+$/.test(prop)) {
+        return new Proxy({}, { get: (_, p) => typeof p === 'symbol' ? undefined : '' });
+      }
+      return val;
+    },
+  });
+}
+
+/**
  * Pad resume with safe defaults so themes don't crash on missing fields.
- * Only pad basics/location (scalar fields). Do NOT inject empty arrays —
- * themes check `arr[0].prop` which crashes when arr is [] but works when arr is undefined
- * because themes guard with `if (resumeObject.section)` which is falsy for undefined.
+ * All array sections are wrapped in createSafeArray so that:
+ * - theme.work.map(fn) works on empty data
+ * - theme.work[0].position returns '' instead of crashing
  */
 function padResume(r) {
   const basics = r.basics || {};
@@ -124,16 +142,11 @@ function padResume(r) {
     ...basics,
     location: { address: '', postalCode: '', city: '', countryCode: '', region: '', ...location },
   };
-  // Strip empty arrays — themes crash on arr[0].prop when arr is []
   const arraySections = ['work','volunteer','education','awards','certificates','publications','skills','languages','interests','references','projects'];
   for (const key of arraySections) {
-    if (Array.isArray(safe[key]) && safe[key].length === 0) {
-      delete safe[key];
-    }
+    safe[key] = createSafeArray(Array.isArray(safe[key]) ? safe[key] : []);
   }
-  if (Array.isArray(safe.basics.profiles) && safe.basics.profiles.length === 0) {
-    delete safe.basics.profiles;
-  }
+  safe.basics.profiles = createSafeArray(Array.isArray(safe.basics.profiles) ? safe.basics.profiles : []);
   return safe;
 }
 
