@@ -131,8 +131,16 @@ async function renderWithTheme(themeName, resume) {
     throw new Error(`Theme "${toPackageName(themeName)}" does not export a render function`);
   }
   try {
-    const result = mod.render(resume);
-    return result instanceof Promise ? await result : result;
+    // Temporarily change cwd to theme dir so themes that read files
+    // with relative paths (e.g. fs.readFileSync('./index.css')) work
+    const originalCwd = process.cwd();
+    process.chdir(pkgDir);
+    try {
+      const result = mod.render(resume);
+      return result instanceof Promise ? await result : result;
+    } finally {
+      process.chdir(originalCwd);
+    }
   } catch (err) {
     throw new Error(
       `Theme "${toPackageName(themeName)}" crashed while rendering: ${err.message}. ` +
