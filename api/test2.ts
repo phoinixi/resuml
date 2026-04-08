@@ -1,13 +1,13 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { setCors } from './_lib/cors';
-import { fetchThemeList } from './_lib/themeRegistry';
 
-export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
-  setCors(res, 'GET');
+export default async function handler(_req: VercelRequest, res: VercelResponse): Promise<void> {
   try {
-    const themes = await fetchThemeList();
-    res.status(200).json({ count: themes.length, first: themes[0]?.name });
+    const url = 'https://registry.npmjs.org/-/v1/search?text=jsonresume-theme-&size=5';
+    const response = await fetch(url);
+    const data = await response.json() as { objects?: unknown[] };
+    res.status(200).json({ count: data.objects?.length });
   } catch (err) {
     res.status(500).json({ error: String(err) });
   }
 }
+
