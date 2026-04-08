@@ -7,5 +7,5 @@ export type { LanguageData };
 const languages: Record<string, LanguageData> = { en, de };
 
 export function getLanguageData(language: string): LanguageData {
-  return languages[language] ?? languages['en']!;
+  return languages[language] ?? languages['en'] ?? en;
 }

@@ -12,7 +12,7 @@ export function TextInput({ label, value, onChange }: TextInputProps) {
         type="text"
         className="form-input"
         value={value || ''}
-        onInput={(e) => onChange((e.target as HTMLInputElement).value)}
+        onInput={(e) => { onChange((e.target as HTMLInputElement).value); }}
       />
     </div>
   );

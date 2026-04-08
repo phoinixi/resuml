@@ -41,14 +41,14 @@ export function FormMode({ resume, onChange }: FormModeProps) {
   return (
     <div className="form-container">
       <Section title="Basics" defaultOpen>
-        <TextInput label="Name" value={basics.name ?? ''} onChange={(v) => update(['basics', 'name'], v)} />
-        <TextInput label="Label / Title" value={basics.label ?? ''} onChange={(v) => update(['basics', 'label'], v)} />
-        <TextInput label="Email" value={basics.email ?? ''} onChange={(v) => update(['basics', 'email'], v)} />
-        <TextInput label="Phone" value={basics.phone ?? ''} onChange={(v) => update(['basics', 'phone'], v)} />
-        <TextInput label="Website" value={basics.url ?? ''} onChange={(v) => update(['basics', 'url'], v)} />
-        <TextArea label="Summary" value={basics.summary ?? ''} onChange={(v) => update(['basics', 'summary'], v)} />
-        <TextInput label="City" value={location.city ?? ''} onChange={(v) => update(['basics', 'location', 'city'], v)} />
-        <TextInput label="Country" value={location.countryCode ?? ''} onChange={(v) => update(['basics', 'location', 'countryCode'], v)} />
+        <TextInput label="Name" value={basics.name ?? ''} onChange={(v) => { update(['basics', 'name'], v); }} />
+        <TextInput label="Label / Title" value={basics.label ?? ''} onChange={(v) => { update(['basics', 'label'], v); }} />
+        <TextInput label="Email" value={basics.email ?? ''} onChange={(v) => { update(['basics', 'email'], v); }} />
+        <TextInput label="Phone" value={basics.phone ?? ''} onChange={(v) => { update(['basics', 'phone'], v); }} />
+        <TextInput label="Website" value={basics.url ?? ''} onChange={(v) => { update(['basics', 'url'], v); }} />
+        <TextArea label="Summary" value={basics.summary ?? ''} onChange={(v) => { update(['basics', 'summary'], v); }} />
+        <TextInput label="City" value={location.city ?? ''} onChange={(v) => { update(['basics', 'location', 'city'], v); }} />
+        <TextInput label="Country" value={location.countryCode ?? ''} onChange={(v) => { update(['basics', 'location', 'countryCode'], v); }} />
         <ProfilesSection profiles={(basics.profiles ?? []) as Record<string, unknown>[]} update={update} />
       </Section>
 

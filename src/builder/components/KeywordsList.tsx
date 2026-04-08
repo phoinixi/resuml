@@ -13,12 +13,12 @@ export function KeywordsList({ keywords, onUpdate }: KeywordsListProps) {
             type="text"
             className="form-input form-input-list"
             value={kw}
-            onInput={(e) => onUpdate(keywords.map((old, idx) => idx === j ? (e.target as HTMLInputElement).value : old))}
+            onInput={(e) => { onUpdate(keywords.map((old, idx) => idx === j ? (e.target as HTMLInputElement).value : old)); }}
           />
-          <button className="form-list-remove" onClick={() => onUpdate(keywords.filter((_, idx) => idx !== j))}>×</button>
+          <button className="form-list-remove" onClick={() => { onUpdate(keywords.filter((_, idx) => idx !== j)); }}>×</button>
         </div>
       ))}
-      <button className="form-add-btn" onClick={() => onUpdate([...keywords, ''])}>+ Add keyword</button>
+      <button className="form-add-btn" onClick={() => { onUpdate([...keywords, '']); }}>+ Add keyword</button>
     </div>
   );
 }

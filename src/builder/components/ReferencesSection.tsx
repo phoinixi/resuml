@@ -16,13 +16,13 @@ export function ReferencesSection({ references, update }: ReferencesSectionProps
         <div key={i} className="form-entry">
           <div className="form-entry-header">
             <span className="form-entry-title">{(ref['name'] as string) || `Reference ${i + 1}`}</span>
-            <button className="form-entry-remove" onClick={() => update(['references'], references.filter((_, idx) => idx !== i))}>×</button>
+            <button className="form-entry-remove" onClick={() => { update(['references'], references.filter((_, idx) => idx !== i)); }}>×</button>
           </div>
-          <TextInput label="Name" value={(ref['name'] as string) ?? ''} onChange={(v) => update(['references', i, 'name'], v)} />
-          <TextArea label="Reference" value={(ref['reference'] as string) ?? ''} onChange={(v) => update(['references', i, 'reference'], v)} />
+          <TextInput label="Name" value={(ref['name'] as string | undefined) ?? ''} onChange={(v) => { update(['references', i, 'name'], v); }} />
+          <TextArea label="Reference" value={(ref['reference'] as string | undefined) ?? ''} onChange={(v) => { update(['references', i, 'reference'], v); }} />
         </div>
       ))}
-      <button className="form-add-entry" onClick={() => update(['references'], [...references, { name: '', reference: '' }])}>
+      <button className="form-add-entry" onClick={() => { update(['references'], [...references, { name: '', reference: '' }]); }}>
         + Add reference
       </button>
     </Section>

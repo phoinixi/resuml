@@ -92,7 +92,7 @@ function installTheme(name: string): void {
   }
 }
 
-export async function themesAction(options: ThemesCommandOptions): Promise<void> {
+export function themesAction(options: ThemesCommandOptions): void {
   if (options.install) {
     installTheme(options.install);
   } else {

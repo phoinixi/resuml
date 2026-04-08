@@ -37,6 +37,6 @@ export function usePersist(
   useEffect(() => {
     if (!initialized.current) return;
     if (saveTimer.current) clearTimeout(saveTimer.current);
-    saveTimer.current = window.setTimeout(() => saveToStorage(yaml, themeName), 1000);
+    saveTimer.current = window.setTimeout(() => { saveToStorage(yaml, themeName); }, 1000);
   }, [yaml, themeName]);
 }

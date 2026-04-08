@@ -90,9 +90,9 @@ function extractKeywords(text: string, language: string, maxKeywords: number = 3
   // Keep a mapping from stem → original token (first occurrence)
   const stemToOriginal = new Map<string, string>();
   for (let i = 0; i < tokens.length; i++) {
-    const stem = stemmed[i]!;
+    const stem = stemmed[i] ?? '';
     if (!stemToOriginal.has(stem)) {
-      stemToOriginal.set(stem, tokens[i]!);
+      stemToOriginal.set(stem, tokens[i] ?? '');
     }
   }
 

@@ -22,7 +22,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
     return;
   }
 
-  const ip = getClientIp(req.headers, req.socket?.remoteAddress);
+  const ip = getClientIp(req.headers, req.socket.remoteAddress);
   if (isRateLimited(ip)) {
     res.status(429).json({ error: 'Rate limit exceeded. Try again in a minute.' });
     return;

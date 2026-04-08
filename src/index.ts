@@ -108,11 +108,11 @@ program
 
 // Parse Arguments - only execute when not in test environment
 if (process.env['NODE_ENV'] !== 'test') {
-  (async () => {
+  void (async () => {
     try {
       await program.parseAsync(process.argv);
     } catch (e: unknown) {
-      console.error('Command line error:', (e as Error)?.message);
+      console.error('Command line error:', (e as Error).message);
       process.exit(1);
     }
   })();

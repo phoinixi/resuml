@@ -28,8 +28,8 @@ export function useTheme(themeName: string) {
       });
 
       if (!response.ok) {
-        const err = await response.json().catch(() => ({ error: 'Render failed' }));
-        throw new Error(err.error || `Render failed: ${response.status}`);
+        const err = await (response.json() as Promise<{ error?: string }>).catch(() => ({ error: 'Render failed' }));
+        throw new Error(err.error ?? `Render failed: ${response.status}`);
       }
 
       const renderedHtml = await response.text();

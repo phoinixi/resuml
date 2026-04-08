@@ -82,6 +82,26 @@ async function ensureThemeInstalled(theme) {
     });
   }
 
+  // Check if the main entry point exists; if not, the theme needs building
+  const mainEntry = pkgJson.main || 'index.js';
+  const mainPath = path.join(pkgDir, mainEntry);
+  if (!fs.existsSync(mainPath)) {
+    const buildScript = pkgJson.scripts?.build || pkgJson.scripts?.prepare;
+    if (buildScript) {
+      console.log(`   🔨 Theme needs building, installing all deps + running build...`);
+      // Install all deps (including devDependencies needed for the build)
+      execFileSync('npm', ['install', '--ignore-scripts', '--prefix', pkgDir], {
+        timeout: 60_000,
+        stdio: 'pipe',
+      });
+      execFileSync('npm', ['run', 'build', '--prefix', pkgDir], {
+        timeout: 60_000,
+        stdio: 'pipe',
+        env: { ...process.env, NODE_ENV: 'production' },
+      });
+    }
+  }
+
   console.log(`   ✅ ${pkg} ready`);
   return pkgDir;
 }

@@ -12,7 +12,7 @@ export function TextArea({ label, value, onChange }: TextAreaProps) {
         className="form-textarea"
         value={value || ''}
         rows={3}
-        onInput={(e) => onChange((e.target as HTMLTextAreaElement).value)}
+        onInput={(e) => { onChange((e.target as HTMLTextAreaElement).value); }}
       />
     </div>
   );

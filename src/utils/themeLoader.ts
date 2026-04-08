@@ -3,11 +3,15 @@ import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
 
+export interface ThemeModule {
+  render: (resume: Record<string, unknown>, options?: Record<string, unknown>) => string | Promise<string>;
+}
+
 /**
  * Install a theme package using npm
  * @param packageName The npm package name to install
  */
-async function installTheme(packageName: string): Promise<void> {
+function installTheme(packageName: string): void {
   try {
     execFileSync('npm', ['install', packageName], {
       stdio: ['inherit', 'pipe', 'pipe'],
@@ -24,7 +28,7 @@ async function installTheme(packageName: string): Promise<void> {
  * @param options Optional settings (autoInstall: boolean)
  * @returns The loaded theme module
  */
-export async function loadTheme(themeName: string, options?: { autoInstall?: boolean }) {
+export function loadTheme(themeName: string, options?: { autoInstall?: boolean }): ThemeModule {
   let jsonResumeThemeName: string;
   let nativeThemeName: string;
   const autoInstall = options?.autoInstall !== false;
@@ -37,12 +41,12 @@ export async function loadTheme(themeName: string, options?: { autoInstall?: boo
 
     try {
       // Use require for CommonJS modules
-      return require(jsonResumeThemeName);
+      return require(jsonResumeThemeName) as ThemeModule;
     } catch (_jsonResumeError) {
       // If not found as JSON Resume theme, try as native theme
       nativeThemeName = `@resuml/theme-${themeName}`;
       try {
-        return require(nativeThemeName);
+        return require(nativeThemeName) as ThemeModule;
       } catch (_nativeError) {
         if (!autoInstall) {
           throw new Error(
@@ -53,10 +57,10 @@ export async function loadTheme(themeName: string, options?: { autoInstall?: boo
         // Both attempts failed - auto-install the theme
         console.log(`📦 Theme ${jsonResumeThemeName} not found. Installing...`);
         try {
-          await installTheme(jsonResumeThemeName);
+          installTheme(jsonResumeThemeName);
           console.log(`✅ Successfully installed ${jsonResumeThemeName}`);
           // Try requiring again after installation
-          return require(jsonResumeThemeName);
+          return require(jsonResumeThemeName) as ThemeModule;
         } catch (installError) {
           throw new Error(
             `Failed to auto-install theme ${jsonResumeThemeName}: ${

@@ -17,12 +17,17 @@ export async function fetchThemeList(): Promise<ThemeInfo[]> {
     throw new Error(`npm registry returned ${response.status}`);
   }
 
-  const data = await response.json();
+  const data = (await response.json()) as {
+    objects?: Array<{
+      package: { name: string; description?: string; version?: string };
+      score?: { detail?: { popularity?: number } };
+    }>;
+  };
   const themes: ThemeInfo[] = [];
 
-  for (const result of data.objects || []) {
+  for (const result of data.objects ?? []) {
     const pkg = result.package;
-    const name = pkg.name as string;
+    const name = pkg.name;
 
     if (!name.startsWith('jsonresume-theme-')) continue;
 
@@ -30,8 +35,8 @@ export async function fetchThemeList(): Promise<ThemeInfo[]> {
     themes.push({
       name: shortName,
       displayName: shortName.charAt(0).toUpperCase() + shortName.slice(1).replace(/-/g, ' '),
-      description: (pkg.description as string) || '',
-      version: (pkg.version as string) || '0.0.0',
+      description: pkg.description ?? '',
+      version: pkg.version ?? '0.0.0',
       weeklyDownloads: result.score?.detail?.popularity
         ? Math.round(result.score.detail.popularity * 10000)
         : 0,

@@ -257,14 +257,16 @@ const dateConsistency: CheckFn = (resume) => {
 
   // Check for gaps > 6 months between consecutive jobs
   const sorted = [...work]
-    .filter((w) => w.startDate)
-    .sort((a, b) => (a.startDate! > b.startDate! ? 1 : -1));
+    .filter((w): w is typeof w & { startDate: string } => Boolean(w.startDate))
+    .sort((a, b) => (a.startDate > b.startDate ? 1 : -1));
 
   for (let i = 0; i < sorted.length - 1; i++) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const current = sorted[i]!;
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const next = sorted[i + 1]!;
-    const endDate = current.endDate || current.startDate!;
-    const gapMs = new Date(next.startDate!).getTime() - new Date(endDate).getTime();
+    const endDate = current.endDate ?? current.startDate;
+    const gapMs = new Date(next.startDate).getTime() - new Date(endDate).getTime();
     const gapMonths = gapMs / (1000 * 60 * 60 * 24 * 30);
 
     if (gapMonths > 6) {
@@ -411,7 +413,7 @@ const sectionCompleteness: CheckFn = (resume) => {
   const present = required.filter((section) => {
     const value = resume[section];
     if (Array.isArray(value)) return value.length > 0;
-    return value !== undefined && value !== null;
+    return value !== undefined;
   });
   const missing = required.filter((s) => !present.includes(s));
   const passed = missing.length === 0;

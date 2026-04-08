@@ -86,7 +86,7 @@ skills:
       `,
     ];
 
-    const result = (await processResumeData(yamlContents)) as Resume;
+    const result = (await processResumeData(yamlContents));
 
     // Since we're testing the actual implementation, adjust expectations to match
     // what we're getting

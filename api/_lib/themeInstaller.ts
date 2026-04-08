@@ -55,12 +55,30 @@ export async function ensureInstalled(themeName: string): Promise<string> {
 
   // Install prod dependencies (ignore lifecycle scripts for security)
   const pkgJson = JSON.parse(fs.readFileSync(path.join(pkgDir, 'package.json'), 'utf8')) as {
+    main?: string;
     dependencies?: Record<string, string>;
+    scripts?: Record<string, string>;
   };
   if (pkgJson.dependencies && Object.keys(pkgJson.dependencies).length > 0) {
     execFileSync('npm', ['install', '--omit=dev', '--ignore-scripts', '--prefix', pkgDir], {
       timeout: 30_000,
       stdio: 'pipe',
+    });
+  }
+
+  // Check if the main entry point exists; if not, the theme needs building
+  const mainEntry = pkgJson.main ?? 'index.js';
+  const mainPath = path.join(pkgDir, mainEntry);
+  if (!fs.existsSync(mainPath) && pkgJson.scripts?.['build']) {
+    // Install all deps (including devDependencies for the build)
+    execFileSync('npm', ['install', '--ignore-scripts', '--prefix', pkgDir], {
+      timeout: 60_000,
+      stdio: 'pipe',
+    });
+    execFileSync('npm', ['run', 'build', '--prefix', pkgDir], {
+      timeout: 60_000,
+      stdio: 'pipe',
+      env: { ...process.env, NODE_ENV: 'production' },
     });
   }
 

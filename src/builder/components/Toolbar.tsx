@@ -25,15 +25,16 @@ export function Toolbar({
 
   const handleImport = useCallback(() => fileInputRef.current?.click(), []);
 
-  const handleFileChange = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    const content = await readFile(file);
-    onImport(content);
-    e.target.value = '';
+    void readFile(file).then((content) => {
+      onImport(content);
+      e.target.value = '';
+    });
   }, [onImport]);
 
-  const handleExportYaml = useCallback(() => exportYaml(yaml), [yaml]);
+  const handleExportYaml = useCallback(() => { exportYaml(yaml); }, [yaml]);
 
   const handleExportJson = useCallback(() => {
     if (resume) exportJson(resume as unknown as Record<string, unknown>);
@@ -49,17 +50,16 @@ export function Toolbar({
     { label: 'PDF', icon: <FileDown size={14} />, onClick: handleExportPdf, disabled: !resume },
   ], [handleExportYaml, handleExportJson, handleExportPdf, resume]);
 
-  const handleShare = useCallback(async () => {
-    try {
-      await copyShareUrl(yaml, themeName);
+  const handleShare = useCallback(() => {
+    void copyShareUrl(yaml, themeName).then(() => {
       const btn = shareRef.current;
       if (btn) {
         btn.textContent = 'Copied!';
         setTimeout(() => { btn.textContent = 'Share'; }, 1500);
       }
-    } catch {
+    }).catch(() => {
       // clipboard unavailable
-    }
+    });
   }, [yaml, themeName]);
 
   return (
@@ -69,11 +69,11 @@ export function Toolbar({
         <div className="toolbar-mode-toggle">
           <button
             className={`toolbar-mode-btn ${mode === 'yaml' ? 'active' : ''}`}
-            onClick={() => onModeChange('yaml')}
+            onClick={() => { onModeChange('yaml'); }}
           >YAML</button>
           <button
             className={`toolbar-mode-btn ${mode === 'form' ? 'active' : ''}`}
-            onClick={() => onModeChange('form')}
+            onClick={() => { onModeChange('form'); }}
           >Form</button>
         </div>
       </div>

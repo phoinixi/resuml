@@ -16,13 +16,13 @@ export function InterestsSection({ interests, update }: InterestsSectionProps) {
         <div key={i} className="form-entry">
           <div className="form-entry-header">
             <span className="form-entry-title">{(interest['name'] as string) || `Interest ${i + 1}`}</span>
-            <button className="form-entry-remove" onClick={() => update(['interests'], interests.filter((_, idx) => idx !== i))}>×</button>
+            <button className="form-entry-remove" onClick={() => { update(['interests'], interests.filter((_, idx) => idx !== i)); }}>×</button>
           </div>
-          <TextInput label="Name" value={(interest['name'] as string) ?? ''} onChange={(v) => update(['interests', i, 'name'], v)} />
-          <KeywordsList keywords={(interest['keywords'] as string[]) ?? []} onUpdate={(kw) => update(['interests', i, 'keywords'], kw)} />
+          <TextInput label="Name" value={(interest['name'] as string | undefined) ?? ''} onChange={(v) => { update(['interests', i, 'name'], v); }} />
+          <KeywordsList keywords={(interest['keywords'] as string[] | undefined) ?? []} onUpdate={(kw) => { update(['interests', i, 'keywords'], kw); }} />
         </div>
       ))}
-      <button className="form-add-entry" onClick={() => update(['interests'], [...interests, { name: '', keywords: [] }])}>
+      <button className="form-add-entry" onClick={() => { update(['interests'], [...interests, { name: '', keywords: [] }]); }}>
         + Add interest
       </button>
     </Section>

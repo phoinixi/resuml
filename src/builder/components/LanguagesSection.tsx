@@ -15,13 +15,13 @@ export function LanguagesSection({ languages, update }: LanguagesSectionProps) {
         <div key={i} className="form-entry">
           <div className="form-entry-header">
             <span className="form-entry-title">{(lang['language'] as string) || `Language ${i + 1}`}</span>
-            <button className="form-entry-remove" onClick={() => update(['languages'], languages.filter((_, idx) => idx !== i))}>×</button>
+            <button className="form-entry-remove" onClick={() => { update(['languages'], languages.filter((_, idx) => idx !== i)); }}>×</button>
           </div>
-          <TextInput label="Language" value={(lang['language'] as string) ?? ''} onChange={(v) => update(['languages', i, 'language'], v)} />
-          <TextInput label="Fluency" value={(lang['fluency'] as string) ?? ''} onChange={(v) => update(['languages', i, 'fluency'], v)} />
+          <TextInput label="Language" value={(lang['language'] as string | undefined) ?? ''} onChange={(v) => { update(['languages', i, 'language'], v); }} />
+          <TextInput label="Fluency" value={(lang['fluency'] as string | undefined) ?? ''} onChange={(v) => { update(['languages', i, 'fluency'], v); }} />
         </div>
       ))}
-      <button className="form-add-entry" onClick={() => update(['languages'], [...languages, { language: '', fluency: '' }])}>
+      <button className="form-add-entry" onClick={() => { update(['languages'], [...languages, { language: '', fluency: '' }]); }}>
         + Add language
       </button>
     </Section>

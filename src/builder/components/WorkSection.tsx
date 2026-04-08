@@ -17,17 +17,17 @@ export function WorkSection({ work, update }: WorkSectionProps) {
         <div key={i} className="form-entry">
           <div className="form-entry-header">
             <span className="form-entry-title">{(job['name'] as string) || (job['position'] as string) || `Job ${i + 1}`}</span>
-            <button className="form-entry-remove" onClick={() => update(['work'], work.filter((_, idx) => idx !== i))}>×</button>
+            <button className="form-entry-remove" onClick={() => { update(['work'], work.filter((_, idx) => idx !== i)); }}>×</button>
           </div>
-          <TextInput label="Company" value={(job['name'] as string) ?? ''} onChange={(v) => update(['work', i, 'name'], v)} />
-          <TextInput label="Position" value={(job['position'] as string) ?? ''} onChange={(v) => update(['work', i, 'position'], v)} />
-          <TextInput label="Start Date" value={(job['startDate'] as string) ?? ''} onChange={(v) => update(['work', i, 'startDate'], v)} />
-          <TextInput label="End Date" value={(job['endDate'] as string) ?? ''} onChange={(v) => update(['work', i, 'endDate'], v)} />
-          <TextArea label="Summary" value={(job['summary'] as string) ?? ''} onChange={(v) => update(['work', i, 'summary'], v)} />
-          <HighlightsList highlights={(job['highlights'] as string[]) ?? []} onUpdate={(h) => update(['work', i, 'highlights'], h)} />
+          <TextInput label="Company" value={(job['name'] as string | undefined) ?? ''} onChange={(v) => { update(['work', i, 'name'], v); }} />
+          <TextInput label="Position" value={(job['position'] as string | undefined) ?? ''} onChange={(v) => { update(['work', i, 'position'], v); }} />
+          <TextInput label="Start Date" value={(job['startDate'] as string | undefined) ?? ''} onChange={(v) => { update(['work', i, 'startDate'], v); }} />
+          <TextInput label="End Date" value={(job['endDate'] as string | undefined) ?? ''} onChange={(v) => { update(['work', i, 'endDate'], v); }} />
+          <TextArea label="Summary" value={(job['summary'] as string | undefined) ?? ''} onChange={(v) => { update(['work', i, 'summary'], v); }} />
+          <HighlightsList highlights={(job['highlights'] as string[] | undefined) ?? []} onUpdate={(h) => { update(['work', i, 'highlights'], h); }} />
         </div>
       ))}
-      <button className="form-add-entry" onClick={() => update(['work'], [...work, { name: '', position: '', startDate: '' }])}>
+      <button className="form-add-entry" onClick={() => { update(['work'], [...work, { name: '', position: '', startDate: '' }]); }}>
         + Add work experience
       </button>
     </Section>

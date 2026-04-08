@@ -18,14 +18,14 @@ export function useResume(initialYaml: string) {
     debounceRef.current = window.setTimeout(() => {
       try {
         const parsed = parse(newYaml) as ResumeSchema;
-        if (parsed && typeof parsed === 'object') {
+        if (typeof parsed === 'object' && parsed !== null) {
           setResume(parsed);
           setError(null);
         } else {
           setError('YAML did not parse to an object');
         }
-      } catch (e: any) {
-        setError(e.message || 'Invalid YAML');
+      } catch (e: unknown) {
+        setError(e instanceof Error ? e.message : 'Invalid YAML');
       }
     }, 300);
   }, []);

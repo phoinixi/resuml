@@ -13,12 +13,12 @@ export function HighlightsList({ highlights, onUpdate }: HighlightsListProps) {
             type="text"
             className="form-input form-input-list"
             value={h}
-            onInput={(e) => onUpdate(highlights.map((old, idx) => idx === j ? (e.target as HTMLInputElement).value : old))}
+            onInput={(e) => { onUpdate(highlights.map((old, idx) => idx === j ? (e.target as HTMLInputElement).value : old)); }}
           />
-          <button className="form-list-remove" onClick={() => onUpdate(highlights.filter((_, idx) => idx !== j))}>×</button>
+          <button className="form-list-remove" onClick={() => { onUpdate(highlights.filter((_, idx) => idx !== j)); }}>×</button>
         </div>
       ))}
-      <button className="form-add-btn" onClick={() => onUpdate([...highlights, ''])}>+ Add highlight</button>
+      <button className="form-add-btn" onClick={() => { onUpdate([...highlights, '']); }}>+ Add highlight</button>
     </div>
   );
 }

@@ -16,14 +16,14 @@ export function SkillsSection({ skills, update }: SkillsSectionProps) {
         <div key={i} className="form-entry">
           <div className="form-entry-header">
             <span className="form-entry-title">{(skill['name'] as string) || `Skill ${i + 1}`}</span>
-            <button className="form-entry-remove" onClick={() => update(['skills'], skills.filter((_, idx) => idx !== i))}>×</button>
+            <button className="form-entry-remove" onClick={() => { update(['skills'], skills.filter((_, idx) => idx !== i)); }}>×</button>
           </div>
-          <TextInput label="Name" value={(skill['name'] as string) ?? ''} onChange={(v) => update(['skills', i, 'name'], v)} />
-          <TextInput label="Level" value={(skill['level'] as string) ?? ''} onChange={(v) => update(['skills', i, 'level'], v)} />
-          <KeywordsList keywords={(skill['keywords'] as string[]) ?? []} onUpdate={(kw) => update(['skills', i, 'keywords'], kw)} />
+          <TextInput label="Name" value={(skill['name'] as string | undefined) ?? ''} onChange={(v) => { update(['skills', i, 'name'], v); }} />
+          <TextInput label="Level" value={(skill['level'] as string | undefined) ?? ''} onChange={(v) => { update(['skills', i, 'level'], v); }} />
+          <KeywordsList keywords={(skill['keywords'] as string[] | undefined) ?? []} onUpdate={(kw) => { update(['skills', i, 'keywords'], kw); }} />
         </div>
       ))}
-      <button className="form-add-entry" onClick={() => update(['skills'], [...skills, { name: '', level: '', keywords: [] }])}>
+      <button className="form-add-entry" onClick={() => { update(['skills'], [...skills, { name: '', level: '', keywords: [] }]); }}>
         + Add skill
       </button>
     </Section>

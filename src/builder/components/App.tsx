@@ -30,7 +30,7 @@ export function App() {
   // Re-render when resume or theme changes
   useEffect(() => {
     if (resume && !error) {
-      renderResume(resume);
+      void renderResume(resume);
     }
   }, [resume, error, renderResume]);
 
@@ -67,9 +67,13 @@ export function App() {
         mode={mode}
         onModeChange={setMode}
         themeName={themeName}
-        onThemePickerToggle={() => setShowThemePicker(!showThemePicker)}
+        onThemePickerToggle={() => {
+          setShowThemePicker(!showThemePicker);
+        }}
         showAts={showAts}
-        onAtsToggle={() => setShowAts(!showAts)}
+        onAtsToggle={() => {
+          setShowAts(!showAts);
+        }}
         yaml={yaml}
         resume={resume}
         onImport={setYaml}
@@ -79,7 +83,9 @@ export function App() {
         <ThemePicker
           currentTheme={themeName}
           onSelect={handleThemeSelect}
-          onClose={() => setShowThemePicker(false)}
+          onClose={() => {
+            setShowThemePicker(false);
+          }}
         />
       )}
 
@@ -100,7 +106,12 @@ export function App() {
 
         {showAts && (
           <div className="builder-ats">
-            <AtsPanel result={atsResult} onClose={() => setShowAts(false)} />
+            <AtsPanel
+              result={atsResult}
+              onClose={() => {
+                setShowAts(false);
+              }}
+            />
           </div>
         )}
       </div>

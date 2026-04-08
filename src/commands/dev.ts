@@ -39,9 +39,9 @@ export async function devAction(options: DevCommandOptions): Promise<void> {
 
     // Watch for file changes if inputPath is a directory
     if (fs.existsSync(inputPath) && fs.statSync(inputPath).isDirectory()) {
-      watchDirectory(inputPath, () => renderResume(options));
+      watchDirectory(inputPath, () => { void renderResume(options); });
     } else if (fs.existsSync(inputPath)) {
-      watchFile(inputPath, () => renderResume(options));
+      watchFile(inputPath, () => { void renderResume(options); });
     }
 
     // Simple HTTP server
@@ -63,11 +63,11 @@ async function renderResume(options: DevCommandOptions): Promise<void> {
     console.log(chalk.blue('🔄 Processing resume data...'));
     const resumeData = await processResumeData(yamlContents);
 
-    const theme = await loadTheme(options.theme!);
+    const theme = await loadTheme(options.theme ?? 'stackoverflow');
 
     const htmlOutput = await theme.render(resumeData, {
       locale: options.language,
-    });
+    }) as string;
 
     // Write to a temp directory for the dev server
     const outputPath = path.join(process.cwd(), '.resuml-dev', 'index.html');

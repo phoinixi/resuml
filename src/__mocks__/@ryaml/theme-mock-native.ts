@@ -1,7 +1,8 @@
 export default {
   render: (resumeData: Record<string, unknown>, options: Record<string, unknown>) => {
-    return `<html><body><h1>Native Theme (${(options?.['locale'] as string) || '??'})</h1><h2>${
-      (resumeData?.['basics'] as Record<string, unknown>)?.['name'] || 'No Name'
-    }</h2></body></html>`;
+    const locale = String((options['locale'] as string | undefined) ?? '??');
+    const basics = resumeData['basics'] as Record<string, unknown> | undefined;
+    const name = String(basics?.['name'] ?? 'No Name');
+    return `<html><body><h1>Native Theme (${locale})</h1><h2>${name}</h2></body></html>`;
   },
 };

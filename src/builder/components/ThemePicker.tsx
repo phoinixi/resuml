@@ -59,7 +59,7 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
             className="form-input"
             placeholder="Search themes..."
             value={search}
-            onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
+            onInput={(e) => { setSearch((e.target as HTMLInputElement).value); }}
             autoFocus
           />
         </div>
@@ -74,7 +74,7 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
             <button
               key={theme.name}
               className={`theme-picker-card ${theme.name === currentTheme ? 'active' : ''}`}
-              onClick={() => onSelect(theme.name)}
+              onClick={() => { onSelect(theme.name); }}
             >
               <div className="theme-picker-name">{theme.displayName}</div>
               {theme.description && (

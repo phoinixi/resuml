@@ -34,7 +34,7 @@ vi.mock('../utils/loadResume', () => ({
 
 // Mock core processResumeData
 vi.mock('../core', async (importOriginal) => {
-  const actualCore = (await importOriginal()) as typeof import('../core');
+  const actualCore = (await importOriginal());
   return {
     ...actualCore,
     processResumeData: vi.fn().mockResolvedValue({ basics: { name: 'Test User' } }),
@@ -51,7 +51,7 @@ vi.mock('../utils/themeLoader', () => ({
 
 // Mock fs
 vi.mock('fs', async (importOriginal) => {
-  const actual = (await importOriginal()) as typeof import('fs');
+  const actual = (await importOriginal());
   return {
     ...actual,
     readFileSync: vi.fn((p) => {
@@ -71,7 +71,7 @@ vi.mock('fs', async (importOriginal) => {
 
 // Mock path
 vi.mock('path', async (importOriginal) => {
-  const actual = (await importOriginal()) as typeof import('path');
+  const actual = (await importOriginal());
   return {
     ...actual,
     join: (...args: string[]) => args.join('/'),
