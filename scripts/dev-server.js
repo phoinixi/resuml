@@ -254,9 +254,6 @@ async function startBuildWatch() {
   console.log('👀 Watching for frontend changes...');
 }
 
-  return ctx;
-}
-
 // ── HTTP server ─────────────────────────────────────────────────────
 async function main() {
   // Build frontend first
