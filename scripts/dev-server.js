@@ -13,7 +13,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 import { execFileSync } from 'node:child_process';
-import { build } from 'esbuild';
+import { context } from 'esbuild';
 
 const require = createRequire(import.meta.url);
 
@@ -236,7 +236,7 @@ function serveStatic(req, res) {
 
 // ── esbuild watch ───────────────────────────────────────────────────
 async function startBuildWatch() {
-  const ctx = await build({
+  const ctx = await context({
     entryPoints: [path.resolve(ROOT, 'src/builder/index.tsx')],
     bundle: true,
     sourcemap: true,
@@ -250,14 +250,9 @@ async function startBuildWatch() {
     // Don't minify in dev for better debugging
   });
 
-  // Watch for changes (esbuild >= 0.17)
-  if (typeof ctx.watch === 'function') {
-    await ctx.watch();
-    console.log('👀 Watching for frontend changes...');
-  } else {
-    // Fallback: just build once
-    console.log('✅ Frontend built (watch not available, rebuild on save manually)');
-  }
+  await ctx.watch();
+  console.log('👀 Watching for frontend changes...');
+}
 
   return ctx;
 }
