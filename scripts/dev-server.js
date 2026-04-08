@@ -130,8 +130,15 @@ async function renderWithTheme(themeName, resume) {
   if (typeof mod.render !== 'function') {
     throw new Error(`Theme "${toPackageName(themeName)}" does not export a render function`);
   }
-  const result = mod.render(resume);
-  return result instanceof Promise ? await result : result;
+  try {
+    const result = mod.render(resume);
+    return result instanceof Promise ? await result : result;
+  } catch (err) {
+    throw new Error(
+      `Theme "${toPackageName(themeName)}" crashed while rendering: ${err.message}. ` +
+      `This usually means the theme expects resume fields that are missing (e.g. work, education).`
+    );
+  }
 }
 
 // ── Theme registry (mirrors api/_lib/themeRegistry.ts) ──────────────

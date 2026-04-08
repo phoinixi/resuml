@@ -107,5 +107,13 @@ export function loadRenderer(pkgDir: string): (resume: Record<string, unknown>) 
 export async function renderWithTheme(themeName: string, resume: Record<string, unknown>): Promise<string> {
   const pkgDir = await ensureInstalled(themeName);
   const render = loadRenderer(pkgDir);
-  return await render(resume);
+  try {
+    return await render(resume);
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    throw new Error(
+      `Theme "${themeName}" crashed while rendering: ${msg}. ` +
+      `This usually means the theme expects resume fields that are missing.`,
+    );
+  }
 }
