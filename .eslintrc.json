@@ -45,6 +45,7 @@
     "no-var": "error",
     "prefer-const": "error"
   },
+  "ignorePatterns": ["scripts/"],
   "overrides": [
     {
       "files": ["src/__tests__/**/*.ts"],

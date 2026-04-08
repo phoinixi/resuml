@@ -26,7 +26,7 @@ export function DownloadDropdown({ options }: DownloadDropdownProps) {
     if (open) {
       document.addEventListener('mousedown', handleOutsideClick);
     }
-    return () => document.removeEventListener('mousedown', handleOutsideClick);
+    return () => { document.removeEventListener('mousedown', handleOutsideClick); };
   }, [open, handleOutsideClick]);
 
   const handleSelect = useCallback((option: DownloadOption) => {
@@ -38,7 +38,7 @@ export function DownloadDropdown({ options }: DownloadDropdownProps) {
     <div className="download-dropdown" ref={ref}>
       <button
         className="toolbar-btn"
-        onClick={() => setOpen((prev) => !prev)}
+        onClick={() => { setOpen((prev) => !prev); }}
         title="Download resume"
       >
         <Download size={14} /> Download
@@ -49,7 +49,7 @@ export function DownloadDropdown({ options }: DownloadDropdownProps) {
             <button
               key={option.label}
               className="download-dropdown-item"
-              onClick={() => handleSelect(option)}
+              onClick={() => { handleSelect(option); }}
               disabled={option.disabled}
             >
               <span className="download-dropdown-icon">{option.icon}</span>

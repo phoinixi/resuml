@@ -8,7 +8,7 @@ await build({
   entryPoints: [resolve(__dirname, '../src/builder/index.tsx')],
   bundle: true,
   minify: true,
-  sourcemap: true,
+  treeShaking: true,
   format: 'esm',
   target: 'es2022',
   outfile: resolve(__dirname, '../docs/app/main.js'),

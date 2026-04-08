@@ -2,6 +2,7 @@
   "name": "resuml",
   "version": "1.2.4",
   "description": "Generate JSON resumes from YAML with theme support",
+  "type": "module",
   "main": "./dist/api.js",
   "exports": {
     ".": {
@@ -25,7 +26,7 @@
     "build:builder": "node scripts/build-builder.js",
     "dev:builder": "node scripts/dev-server.js",
     "prepublishOnly": "npm run generate:types && npm run build",
-    "generate:types": "node scripts/generate-types.js",
+    "generate:types": "node scripts/generate-types.cjs",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "eslint src api --ext .ts,.tsx",

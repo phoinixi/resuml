@@ -1,5 +1,13 @@
-import { ThemeListResponseSchema } from '../../shared/schemas';
-import type { ThemeInfo, RenderRequest } from '../../shared/schemas';
+import type { ThemeInfo } from '../../shared/schemas';
+
+interface RenderRequest {
+  readonly resume: Record<string, unknown>;
+  readonly theme: string;
+}
+
+interface ErrorBody {
+  readonly error: string;
+}
 
 const THEME_CACHE_TTL = 30 * 60 * 1000; // 30 minutes
 let themeCacheData: ThemeInfo[] | null = null;
@@ -18,8 +26,8 @@ export function fetchThemes(signal?: AbortSignal): Promise<ThemeInfo[]> {
       if (!response.ok) throw new Error(`Failed to load themes: ${response.status}`);
       return response.json();
     })
-    .then((data) => {
-      const parsed = ThemeListResponseSchema.parse(data);
+    .then((data: unknown) => {
+      const parsed = data as ThemeInfo[];
       themeCacheData = parsed;
       themeCacheTime = Date.now();
       themeCachePromise = null;
@@ -49,7 +57,7 @@ export async function renderResume(
   });
 
   if (!response.ok) {
-    const err = await response.json().catch(() => ({ error: 'Render failed' }));
+    const err: ErrorBody = await (response.json() as Promise<ErrorBody>).catch(() => ({ error: 'Render failed' }));
     throw new Error(err.error || `Render failed: ${response.status}`);
   }
 
@@ -68,7 +76,7 @@ export async function downloadPdf(
   });
 
   if (!response.ok) {
-    const err = await response.json().catch(() => ({ error: 'PDF generation failed' }));
+    const err: ErrorBody = await (response.json() as Promise<ErrorBody>).catch(() => ({ error: 'PDF generation failed' }));
     throw new Error(err.error || `PDF failed: ${response.status}`);
   }
 
