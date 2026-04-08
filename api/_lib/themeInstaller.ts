@@ -48,7 +48,7 @@ export async function ensureInstalled(themeName: string): Promise<string> {
   fs.mkdirSync(pkgDir, { recursive: true });
   const tarPath = path.join(CACHE_DIR, `${pkgName}.tgz`);
   fs.writeFileSync(tarPath, buf);
-  execFileSync('tar', ['xzf', tarPath, '-C', pkgDir, '--strip-components=1'], {
+  execFileSync('/usr/bin/tar', ['xzf', tarPath, '-C', pkgDir, '--strip-components=1'], {
     timeout: 10_000,
   });
   fs.unlinkSync(tarPath);
