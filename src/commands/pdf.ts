@@ -78,7 +78,7 @@ export async function pdfAction(options: PdfCommandOptions): Promise<void> {
     console.log(chalk.green('Resume data processing and validation successful!'));
 
     // Render HTML using theme
-    const theme = await loadTheme(options.theme);
+    const theme = loadTheme(options.theme);
     const htmlOutput = await theme.render(resumeData, {
       locale: options.language,
     });

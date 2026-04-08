@@ -144,7 +144,7 @@ describe('CLI', () => {
       name: 'test-theme',
       render: vi.fn().mockReturnValue('<html>Test</html>'),
     };
-    (loadTheme as import('vitest').MockedFunction<typeof loadTheme>).mockResolvedValue(mockTheme);
+    (loadTheme as import('vitest').MockedFunction<typeof loadTheme>).mockReturnValue(mockTheme);
 
     await main(['node', 'resuml', 'render', '--resume', 'dummy.yaml', '--theme', 'test-theme']);
 

@@ -43,7 +43,7 @@ vi.mock('../core', async (importOriginal) => {
 
 // Mock theme loading
 vi.mock('../utils/themeLoader', () => ({
-  loadTheme: vi.fn().mockResolvedValue({
+  loadTheme: vi.fn().mockReturnValue({
     name: 'test-theme',
     render: vi.fn().mockReturnValue('<html>Test</html>'),
   }),

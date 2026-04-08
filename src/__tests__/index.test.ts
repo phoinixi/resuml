@@ -1,4 +1,4 @@
-import { processResumeData, Resume } from '../core';
+import { processResumeData } from '../core';
 import { vi, describe, it, expect } from 'vitest';
 
 // Mock the validator to avoid external dependencies in tests
@@ -9,8 +9,7 @@ vi.mock('@jsonresume/schema', () => ({
   ) => {
     // Basic validation - just check if basics property exists
     const dataAsRecord = data as Record<string, unknown>; // Type assertion
-    const valid =
-      typeof dataAsRecord === 'object' && dataAsRecord !== null && 'basics' in dataAsRecord;
+    const valid = 'basics' in dataAsRecord;
     callback(valid ? null : [{ message: 'Invalid resume data' }], valid);
   },
 }));
@@ -86,7 +85,7 @@ skills:
       `,
     ];
 
-    const result = (await processResumeData(yamlContents));
+    const result = await processResumeData(yamlContents);
 
     // Since we're testing the actual implementation, adjust expectations to match
     // what we're getting

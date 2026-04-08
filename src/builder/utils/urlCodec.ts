@@ -12,7 +12,7 @@ export function decompress(hash: string): { yaml: string; theme: string } | null
     const bytes = new Uint8Array(Array.from(binary, (c) => c.charCodeAt(0)));
     const decompressed = pako.inflate(bytes);
     const text = new TextDecoder().decode(decompressed);
-    const { y, t } = JSON.parse(text);
+    const { y, t } = JSON.parse(text) as { y: string; t: string };
     return { yaml: y, theme: t };
   } catch {
     return null;

@@ -17,13 +17,11 @@ export function Preview({ html, loading, error }: PreviewProps) {
     if (!iframe) return;
 
     if (!html) {
-      // Clear iframe when html is nulled (e.g. on error)
       previousHtmlRef.current = null;
       const doc = iframe.contentDocument;
       if (doc) {
-        doc.open();
-        doc.write('');
-        doc.close();
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        doc.open(); doc.write(''); doc.close();
       }
       return;
     }
@@ -33,9 +31,8 @@ export function Preview({ html, loading, error }: PreviewProps) {
 
     const doc = iframe.contentDocument;
     if (doc) {
-      doc.open();
-      doc.write(html);
-      doc.close();
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      doc.open(); doc.write(html); doc.close();
     }
   }, [html]);
 

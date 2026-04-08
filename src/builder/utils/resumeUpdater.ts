@@ -14,7 +14,7 @@ export function updateAtPath(
   const keys = path.slice(0, -1);
   const lastKey = path[path.length - 1] as string | number;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
   const target = keys.reduce<any>((obj, key) => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     if (obj[key] === undefined) {

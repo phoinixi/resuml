@@ -33,8 +33,8 @@ describe('themes command', () => {
     console.error = originalConsoleError;
   });
 
-  it('should list available themes', async () => {
-    await themesAction({});
+  it('should list available themes', () => {
+    themesAction({});
 
     expect(console.log).toHaveBeenCalledWith(expect.stringContaining('Compatible JSON Resume Themes'));
     expect(console.log).toHaveBeenCalledWith(expect.stringContaining('stackoverflow'));
@@ -43,7 +43,7 @@ describe('themes command', () => {
 
   it('should install a theme by short name', async () => {
     const { execSync } = await import('child_process');
-    await themesAction({ install: 'stackoverflow' });
+    themesAction({ install: 'stackoverflow' });
 
     expect(execSync).toHaveBeenCalledWith(
       'npm install jsonresume-theme-stackoverflow',
@@ -54,7 +54,7 @@ describe('themes command', () => {
 
   it('should install a theme by full package name', async () => {
     const { execSync } = await import('child_process');
-    await themesAction({ install: 'jsonresume-theme-custom' });
+    themesAction({ install: 'jsonresume-theme-custom' });
 
     expect(execSync).toHaveBeenCalledWith(
       'npm install jsonresume-theme-custom',
@@ -68,7 +68,7 @@ describe('themes command', () => {
       throw new Error('npm install failed');
     });
 
-    await themesAction({ install: 'nonexistent-theme' });
+    themesAction({ install: 'nonexistent-theme' });
 
     expect(console.error).toHaveBeenCalledWith(expect.stringContaining('Failed to install'));
   });

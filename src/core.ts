@@ -22,7 +22,7 @@ export async function processResumeData(yamlContents: string[]): Promise<Resume>
   const dataObjects = yamlContents
     .map((content) => {
       try {
-        return parse(content);
+        return parse(content) as Partial<Resume>;
       } catch (error) {
         console.warn('Failed to parse YAML content:', error);
         return null;
@@ -37,7 +37,7 @@ export async function processResumeData(yamlContents: string[]): Promise<Resume>
   // Custom array merge to ensure arrays are concatenated
   const customizer = (objValue: unknown, srcValue: unknown) => {
     if (Array.isArray(objValue)) {
-      return objValue.concat(srcValue);
+      return (objValue as unknown[]).concat(srcValue as unknown[]);
     }
     return undefined; // Let lodash handle it
   };

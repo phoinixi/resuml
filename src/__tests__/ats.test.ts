@@ -290,7 +290,7 @@ describe('analyzeAts (integration)', () => {
     const jd = 'Senior TypeScript developer with React and AWS experience.';
     const result = analyzeAts(fullResume, { language: 'en', jobDescription: jd });
     expect(result.keywords).toBeDefined();
-    expect(result.keywords!.matched.length).toBeGreaterThan(0);
+    expect(result.keywords?.matched.length).toBeGreaterThan(0);
     expect(result.summary).toContain('job description');
   });
 

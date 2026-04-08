@@ -19,8 +19,8 @@ function getCliVersion(): string {
   const packageJsonPath = path.resolve(currentDir, '../package.json');
   if (fs.existsSync(packageJsonPath)) {
     try {
-      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-      return packageJson.version || '0.0.0';
+      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8')) as { version?: string };
+      return packageJson.version ?? '0.0.0';
     } catch {
       return '0.0.0';
     }

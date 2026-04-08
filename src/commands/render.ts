@@ -32,17 +32,17 @@ export async function renderAction(options: RenderCommandOptions): Promise<void>
     const resumeData = await processResumeData(yamlContents);
     console.log(chalk.green('Resume data processing and validation successful!'));
 
-    const theme = await loadTheme(options.theme);
+    const theme = loadTheme(options.theme);
 
     const htmlOutput = await theme.render(resumeData, {
       locale: options.language,
     });
 
-    const defaultExtension = options.format || 'html';
+    const defaultExtension = options.format;
     const defaultFilename = `resume.${defaultExtension}`;
     const outputPath = options.output || defaultFilename;
 
-    if (options.format === 'pdf') {
+    if (options.format === 'pdf') { // eslint-disable-line @typescript-eslint/no-unnecessary-condition
       console.log(chalk.blue(`Generating PDF output at ${outputPath}...`));
       const { chromium } = await import('playwright');
       const browser = await chromium.launch();

@@ -35,8 +35,8 @@ function isThemeInstalled(pkg: string): boolean {
 function getInstalledVersion(pkg: string): string | null {
   try {
     const require = createRequire(process.cwd() + '/');
-    const pkgJson = require(`${pkg}/package.json`);
-    return pkgJson.version || null;
+    const pkgJson = require(`${pkg}/package.json`) as { version?: string };
+    return pkgJson.version ?? null;
   } catch {
     return null;
   }

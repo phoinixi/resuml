@@ -17,8 +17,8 @@ export function useResume(initialYaml: string) {
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = window.setTimeout(() => {
       try {
-        const parsed = parse(newYaml) as ResumeSchema;
-        if (typeof parsed === 'object' && parsed !== null) {
+        const parsed = parse(newYaml) as ResumeSchema | null;
+        if (parsed !== null) {
           setResume(parsed);
           setError(null);
         } else {

@@ -63,11 +63,11 @@ async function renderResume(options: DevCommandOptions): Promise<void> {
     console.log(chalk.blue('🔄 Processing resume data...'));
     const resumeData = await processResumeData(yamlContents);
 
-    const theme = await loadTheme(options.theme ?? 'stackoverflow');
+    const theme = loadTheme(options.theme ?? 'stackoverflow');
 
     const htmlOutput = await theme.render(resumeData, {
       locale: options.language,
-    }) as string;
+    });
 
     // Write to a temp directory for the dev server
     const outputPath = path.join(process.cwd(), '.resuml-dev', 'index.html');

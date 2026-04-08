@@ -124,12 +124,12 @@ function padResume(r: Record<string, unknown>): Record<string, unknown> {
   const arraySections = ['work','volunteer','education','awards','certificates','publications','skills','languages','interests','references','projects'];
   for (const key of arraySections) {
     if (Array.isArray(safe[key]) && (safe[key] as unknown[]).length === 0) {
-      delete safe[key];
+      safe[key] = undefined;
     }
   }
   const safeBasics = safe['basics'] as Record<string, unknown>;
   if (Array.isArray(safeBasics['profiles']) && (safeBasics['profiles'] as unknown[]).length === 0) {
-    delete safeBasics['profiles'];
+    safeBasics['profiles'] = undefined;
   }
   return safe;
 }

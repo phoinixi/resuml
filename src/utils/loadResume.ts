@@ -18,7 +18,7 @@ export async function loadResumeFiles(
   for (const file of files) {
     try {
       const content = await fs.readFile(file, 'utf-8');
-      const parsed = YAML.parse(content);
+      const parsed: unknown = YAML.parse(content);
       if (parsed && typeof parsed === 'object') {
         yamlContents.push(content);
       }
