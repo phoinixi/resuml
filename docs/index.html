@@ -200,6 +200,14 @@
     .builder-divider:hover {
       background: var(--accent);
     }
+    .builder-main.dragging {
+      cursor: col-resize;
+      user-select: none;
+    }
+    .builder-main.dragging iframe,
+    .builder-main.dragging .cm-editor {
+      pointer-events: none;
+    }
     .builder-preview {
       overflow: hidden;
       display: flex;

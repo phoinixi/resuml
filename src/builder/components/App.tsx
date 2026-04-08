@@ -17,6 +17,7 @@ export function App() {
   const [showThemePicker, setShowThemePicker] = useState(false);
   const [themeName, setThemeName] = useState('stackoverflow');
   const [splitPos, setSplitPos] = useState(50);
+  const [dragging, setDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { yaml, resume, error, setYaml, updateResume } = useResume(DEFAULT_YAML);
@@ -44,12 +45,15 @@ export function App() {
     const container = containerRef.current;
     if (!container) return;
 
-    const onMove = (e: MouseEvent) => {
+    setDragging(true);
+
+    const onMove = (ev: MouseEvent) => {
       const rect = container.getBoundingClientRect();
-      const pct = ((e.clientX - rect.left) / rect.width) * 100;
+      const pct = ((ev.clientX - rect.left) / rect.width) * 100;
       setSplitPos(Math.min(80, Math.max(20, pct)));
     };
     const onUp = () => {
+      setDragging(false);
       document.removeEventListener('mousemove', onMove);
       document.removeEventListener('mouseup', onUp);
     };
@@ -79,7 +83,7 @@ export function App() {
         />
       )}
 
-      <div className="builder-main" ref={containerRef}>
+      <div className={`builder-main${dragging ? ' dragging' : ''}`} ref={containerRef}>
         <div className="builder-editor" style={{ width: `${splitPos}%` }}>
           {mode === 'yaml' ? (
             <Editor yaml={yaml} onChange={setYaml} error={error} />
