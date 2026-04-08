@@ -43,7 +43,7 @@ export function Preview({ html, loading, error }: PreviewProps) {
       <iframe
         className="preview-iframe"
         srcDoc={html}
-        sandbox="allow-same-origin"
+        sandbox="allow-same-origin allow-scripts"
         title="Resume preview"
       />
     </div>
