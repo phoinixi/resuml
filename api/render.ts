@@ -1,9 +1,9 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { RenderRequestSchema } from '../src/shared/schemas';
-import { setCors, setSecurityHeaders } from './_lib/cors';
-import { getClientIp, isRateLimited } from './_lib/rateLimit';
-import { cacheKey, getCached, setCached } from './_lib/cache';
-import { renderWithTheme } from './_lib/themeInstaller';
+import { RenderRequestSchema } from '../src/shared/schemas.js';
+import { setCors, setSecurityHeaders } from './_lib/cors.js';
+import { getClientIp, isRateLimited } from './_lib/rateLimit.js';
+import { cacheKey, getCached, setCached } from './_lib/cache.js';
+import { renderWithTheme } from './_lib/themeInstaller.js';
 
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 const MAX_BODY_SIZE = 512 * 1024; // 512 KB

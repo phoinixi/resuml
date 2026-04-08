@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { setCors, setSecurityHeaders } from './_lib/cors';
-import { fetchThemeList, isThemeListCached } from './_lib/themeRegistry';
+import { setCors, setSecurityHeaders } from './_lib/cors.js';
+import { fetchThemeList, isThemeListCached } from './_lib/themeRegistry.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
   setCors(res, 'GET');

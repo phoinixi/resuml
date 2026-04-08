@@ -1,4 +1,4 @@
-import type { ThemeInfo } from '../../src/shared/schemas';
+import type { ThemeInfo } from '../../src/shared/schemas.js';
 
 let cachedThemes: ThemeInfo[] | null = null;
 let cacheExpires = 0;

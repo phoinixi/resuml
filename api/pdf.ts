@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { PdfRequestSchema } from '../src/shared/schemas';
-import { setCors, setSecurityHeaders } from './_lib/cors';
-import { getClientIp, isRateLimited } from './_lib/rateLimit';
-import { renderWithTheme } from './_lib/themeInstaller';
+import { PdfRequestSchema } from '../src/shared/schemas.js';
+import { setCors, setSecurityHeaders } from './_lib/cors.js';
+import { getClientIp, isRateLimited } from './_lib/rateLimit.js';
+import { renderWithTheme } from './_lib/themeInstaller.js';
 
 const MAX_BODY_SIZE = 512 * 1024; // 512 KB
 
