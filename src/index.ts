@@ -41,6 +41,10 @@ program
   .description('Validates resume data against the schema.')
   .option('-r, --resume <path>', 'Input YAML file, directory, or glob pattern.')
   .option('--debug', 'Show detailed validation errors.')
+  .option('--ats', 'Run ATS (Applicant Tracking System) compatibility analysis.')
+  .option('--jd <path>', 'Path to a job description file for keyword matching (requires --ats).')
+  .option('--ats-threshold <score>', 'Minimum ATS score (0-100). Exit with code 1 if below threshold.')
+  .option('--format <type>', 'Output format for ATS results (text or json).', 'text')
   .action(validateAction);
 
 // ToJSON Command
@@ -118,3 +122,5 @@ export { processResumeData } from './core';
 export { loadResumeFiles } from './utils/loadResume';
 export { loadTheme } from './utils/themeLoader';
 export * as themeRender from './utils/themeRender';
+export { analyzeAts } from './ats/index';
+export type { AtsResult, AtsOptions } from './ats/index';
