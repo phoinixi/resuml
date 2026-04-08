@@ -229,6 +229,17 @@
       padding: 80px 0;
       border-top: 1px solid var(--border);
     }
+
+    /* ATS */
+    .ats {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+    .ats h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
     .quickstart h2 {
       text-align: center;
       font-size: 2rem;
@@ -326,7 +337,7 @@
 <section class="hero">
   <div class="container">
     <h1>resuml</h1>
-    <p class="tagline">Write your resume in YAML. Render it beautifully with 50+ themes. Export to HTML and PDF.</p>
+    <p class="tagline">Write your resume in YAML. Render it beautifully with 50+ themes. ATS scoring built in. Export to HTML and PDF.</p>
     <div class="badges">
       <img src="https://img.shields.io/npm/v/resuml?style=flat-square&color=38bdf8" alt="npm version">
       <img src="https://img.shields.io/npm/dm/resuml?style=flat-square&color=818cf8" alt="npm downloads">
@@ -441,6 +452,66 @@
         <h3>resuml themes</h3>
         <p>Browse and discover available themes. Find the perfect look for your resume.</p>
       </div>
+      <div class="feature-card">
+        <div class="icon">🎯</div>
+        <h3>resuml validate --ats</h3>
+        <p>ATS scoring engine — 11 checks for contact, content quality, and structure. Fully offline, no API keys.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📋</div>
+        <h3>--jd matching</h3>
+        <p>Match your resume against a job description. See matched and missing keywords with a match percentage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ats" id="ats">
+  <div class="container">
+    <h2>🎯 Built-in ATS Analysis</h2>
+    <p class="subtitle" style="text-align:center;color:var(--muted);margin-bottom:40px;">Score your resume against ATS best practices and job descriptions — fully offline, no API keys.</p>
+    <div class="demo-grid" style="grid-template-columns:1fr 40px 1fr;align-items:start;">
+      <div class="code-block">
+        <div class="label">Terminal</div>
+        <pre><span class="m">$</span> <span class="a">resuml validate</span> --ats -r resume.yaml
+
+<span class="g">═══ ATS Analysis Report ═══</span>
+
+  Score: <span class="g">82/100</span> (good)
+
+  <span class="y">Contact Information</span>
+  <span class="g">✓</span> Contact information is complete.
+  <span class="g">✓</span> LinkedIn profile found.
+
+  <span class="y">Content Quality</span>
+  <span class="g">✓</span> All highlights start with action verbs.
+  <span class="a">✗</span> Only 3 of 6 highlights include metrics.
+    <span class="m">→ Add numbers and percentages</span></pre>
+      </div>
+      <div class="arrow">→</div>
+      <div class="code-block">
+        <div class="label">With Job Description</div>
+        <pre><span class="m">$</span> <span class="a">resuml validate</span> --ats --jd job.txt
+
+  <span class="y">Job Description Match</span>
+  Match: <span class="g">73%</span> (22/30 keywords)
+
+  <span class="g">✓ Matched:</span> TypeScript, React, AWS,
+    Node.js, Docker, CI/CD, ...
+
+  <span class="a">✗ Missing:</span> Terraform, GraphQL,
+    Datadog, Kafka
+
+  <span class="m">→ Consider adding these keywords</span>
+    <span class="m">where relevant.</span>
+
+<span class="m"># CI/CD gate</span>
+<span class="m">$</span> <span class="a">resuml validate</span> --ats \
+    --ats-threshold 75</pre>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+      <p style="color:var(--muted);font-size:.9rem;">11 checks · English &amp; German · Keyword stemming · CI/CD ready with <code style="background:var(--surface);border:1px solid var(--border);padding:2px 6px;border-radius:4px;font-size:.85rem;">--ats-threshold</code></p>
     </div>
   </div>
 </section>

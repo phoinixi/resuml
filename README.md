@@ -88,6 +88,7 @@ npm install -g resuml
 | Command | Description |
 |---------|-------------|
 | `validate` | Validate resume data against the JSON Resume schema |
+| `validate --ats` | Run ATS (Applicant Tracking System) compatibility analysis |
 | `tojson` | Convert YAML resume data to JSON format |
 | `render` | Render the resume using a specified theme |
 | `dev` | Start a development server with hot-reload |
@@ -102,6 +103,82 @@ npm install -g resuml
 | `--port` | `-p` | Port for dev server (default: 3000) |
 | `--language` | | Language code for localization (default: `en`) |
 | `--debug` | | Enable debug mode for detailed errors |
+| `--ats` | | Run ATS compatibility analysis (with `validate`) |
+| `--jd` | | Path to job description file for keyword matching (with `--ats`) |
+| `--ats-threshold` | | Minimum ATS score (0-100); exits with code 1 if below |
+
+## ATS Analysis
+
+Resumls built-in ATS (Applicant Tracking System) analysis helps ensure your resume passes automated screening. Fully offline and deterministic — no API keys or LLMs required.
+
+### Quick Start
+
+```bash
+# Basic ATS score
+resuml validate --resume resume.yaml --ats
+
+# Match against a specific job description
+resuml validate --resume resume.yaml --ats --jd job-description.txt
+
+# CI/CD gate: fail if score is below threshold
+resuml validate --resume resume.yaml --ats --ats-threshold 75
+
+# Machine-readable JSON output
+resuml validate --resume resume.yaml --ats --format json
+```
+
+### What It Checks
+
+The ATS engine runs 11 deterministic checks across 3 categories:
+
+**Contact Information**
+- Complete contact details (name, email, phone, city)
+- LinkedIn profile present
+
+**Content Quality**
+- Professional summary (length and presence)
+- Work highlights (minimum 2 per entry)
+- Action verbs (highlights start with strong verbs)
+- Quantified impact (numbers, percentages, metrics in highlights)
+- No first-person pronouns
+
+**Resume Structure**
+- Date consistency (no unexplained gaps > 6 months)
+- Skills populated (≥ 3 categories with keywords)
+- Education completeness
+- Essential sections present (basics, work, education, skills)
+
+### Job Description Matching
+
+Provide a job description file to get keyword matching:
+
+```bash
+resuml validate --resume resume.yaml --ats --jd job.txt
+```
+
+The engine extracts keywords from the job description using TF-based ranking with stem matching, then compares them against your resume. You get:
+- **Match percentage** — how many JD keywords appear in your resume
+- **Matched keywords** — what you already cover
+- **Missing keywords** — what to consider adding
+
+### Scoring
+
+| Score | Rating | Meaning |
+|-------|--------|-------------|
+| 90-100 | Excellent | Resume is well-optimized for ATS |
+| 75-89 | Good | Minor improvements possible |
+| 60-74 | Needs Work | Several issues to address |
+| 0-59 | Poor | Significant improvements needed |
+
+When a job description is provided, the final score is 60% generic checks + 40% keyword match.
+
+### Multi-Language Support
+
+ATS checks support English and German, with language-specific action verb lists and pronoun detection. Use the `--language` flag:
+
+```bash
+resuml validate --resume lebenslauf.yaml --ats --language de
+```
 
 ## Compatible Themes
 
@@ -174,6 +251,9 @@ jobs:
       - run: npm install -g resuml
       - run: npm install jsonresume-theme-stackoverflow
 
+      # Validate and check ATS score (fails if below 75)
+      - run: resuml validate --resume resume.yaml --ats --ats-threshold 75
+
       - run: resuml render --resume resume.yaml --theme stackoverflow --output resume.html
       - run: resuml tojson --resume resume.yaml --output resume.json
 
@@ -194,7 +274,8 @@ import {
   processResumeData,
   loadResumeFiles,
   loadTheme,
-  themeRender
+  themeRender,
+  analyzeAts
 } from 'resuml';
 
 // Load YAML files
@@ -205,6 +286,17 @@ const resume = await processResumeData(yamlContents);
 const theme = await loadTheme('stackoverflow');
 // Render HTML
 const html = await theme.render(resume, { locale: 'en' });
+
+// ATS analysis
+const atsResult = analyzeAts(resume, { language: 'en' });
+console.log(`ATS Score: ${atsResult.score}/100`);
+
+// With job description matching
+const jdResult = analyzeAts(resume, {
+  language: 'en',
+  jobDescription: 'Looking for a senior TypeScript developer...'
+});
+console.log(`Matched keywords: ${jdResult.keywords?.matched.join(', ')}`);
 ```
 
 See the CLI and API for more details.

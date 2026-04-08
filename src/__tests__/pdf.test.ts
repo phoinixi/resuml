@@ -16,6 +16,16 @@ vi.mock('chalk', () => ({
   },
 }));
 
+// Mock puppeteer — return an object with a launch that fails,
+// so render.ts's static import succeeds but pdf.ts's loadPuppeteer
+// will trigger handleCommandError when launch throws
+vi.mock('puppeteer', () => ({
+  __esModule: true,
+  default: {
+    launch: vi.fn().mockRejectedValue(new Error('Puppeteer browser launch failed')),
+  },
+}));
+
 // Mock loadResumeFiles
 vi.mock('../utils/loadResume', () => ({
   loadResumeFiles: vi
@@ -112,8 +122,7 @@ describe('pdf command', () => {
     ).rejects.toThrow('--theme option is required');
   });
 
-  it('should show graceful error when puppeteer is missing', async () => {
-    // Puppeteer is not installed in dev deps, so import will fail
+  it('should show graceful error when puppeteer fails', async () => {
     await main([
       'node',
       'resuml',
@@ -124,9 +133,9 @@ describe('pdf command', () => {
       'test-theme',
     ]);
 
-    // Should get an error about puppeteer not being installed
+    // Should get an error about puppeteer failing
     expect(console.error).toHaveBeenCalledWith(
-      expect.stringContaining('Puppeteer is required')
+      expect.stringContaining('Puppeteer browser launch failed')
     );
   });
 
