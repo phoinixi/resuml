@@ -2,7 +2,10 @@ import { execFileSync } from 'child_process';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
+import { createRequire } from 'module';
 import { extract as tarExtract } from 'tar';
+
+const require = createRequire(import.meta.url);
 
 /** Only alphanumeric, hyphens, dots, underscores — validated upstream by Zod */
 const SAFE_NAME = /^[a-zA-Z0-9._-]+$/;
