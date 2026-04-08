@@ -41,11 +41,15 @@ export function Preview({ html, loading, error }: PreviewProps) {
 
   return (
     <div className="preview-container">
-      {loading && previousHtmlRef.current === null && (
+      {loading && !previousHtmlRef.current && (
         <div className="preview-loading">
           <div className="spinner" />
           <span>Rendering preview...</span>
         </div>
+      )}
+
+      {loading && previousHtmlRef.current && (
+        <div className="preview-progress-bar" />
       )}
 
       {error && (

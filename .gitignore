@@ -79,3 +79,4 @@ parse.js
 *.pdf
 scripts/shims/
 scripts/_shims/
+.vercel

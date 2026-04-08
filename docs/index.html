@@ -254,6 +254,7 @@
 
     /* Preview */
     .preview-container {
+      position: relative;
       width: 100%;
       height: 100%;
       display: flex;
@@ -279,6 +280,21 @@
       justify-content: center;
     }
     .preview-error { color: var(--orange); }
+    .preview-progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      z-index: 10;
+      background: linear-gradient(90deg, transparent 0%, var(--accent) 50%, transparent 100%);
+      background-size: 200% 100%;
+      animation: progress-slide 1.2s ease-in-out infinite;
+    }
+    @keyframes progress-slide {
+      0% { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
+    }
     .spinner {
       width: 24px;
       height: 24px;
