@@ -3,6 +3,10 @@ node_modules/
 .pnp
 .pnp.js
 
+# Builder output
+docs/app/
+docs/themes/
+
 # Build outputs
 dist/
 build/
@@ -72,3 +76,6 @@ test-output.*
 parse.js
 *.tmp
 *.temp
+*.pdf
+scripts/shims/
+scripts/_shims/
