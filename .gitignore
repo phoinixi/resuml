@@ -80,3 +80,4 @@ parse.js
 scripts/shims/
 scripts/_shims/
 .vercel
+.env*.local

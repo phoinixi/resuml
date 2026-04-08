@@ -11,5 +11,6 @@ export default defineConfig([
     shims: true,
     platform: 'node',
     outDir: 'dist',
+    external: ['playwright', 'playwright-core'],
   },
 ]);
