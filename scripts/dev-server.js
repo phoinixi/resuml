@@ -124,8 +124,16 @@ function padResume(r) {
     ...basics,
     location: { address: '', postalCode: '', city: '', countryCode: '', region: '', ...location },
   };
-  // Ensure profiles is at least undefined (not missing key) so basics.profiles works
-  if (!safe.basics.profiles) safe.basics.profiles = basics.profiles;
+  // Strip empty arrays — themes crash on arr[0].prop when arr is []
+  const arraySections = ['work','volunteer','education','awards','certificates','publications','skills','languages','interests','references','projects'];
+  for (const key of arraySections) {
+    if (Array.isArray(safe[key]) && safe[key].length === 0) {
+      delete safe[key];
+    }
+  }
+  if (Array.isArray(safe.basics.profiles) && safe.basics.profiles.length === 0) {
+    delete safe.basics.profiles;
+  }
   return safe;
 }
 

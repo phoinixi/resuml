@@ -112,7 +112,7 @@ export function loadRenderer(pkgDir: string): (resume: Record<string, unknown>) 
 function padResume(r: Record<string, unknown>): Record<string, unknown> {
   const basics = (r['basics'] ?? {}) as Record<string, unknown>;
   const location = (basics['location'] ?? {}) as Record<string, unknown>;
-  return {
+  const safe: Record<string, unknown> = {
     ...r,
     basics: {
       name: '', label: '', image: '', email: '', phone: '', url: '', summary: '',
@@ -120,6 +120,18 @@ function padResume(r: Record<string, unknown>): Record<string, unknown> {
       location: { address: '', postalCode: '', city: '', countryCode: '', region: '', ...location },
     },
   };
+  // Strip empty arrays — themes crash on arr[0].prop when arr is []
+  const arraySections = ['work','volunteer','education','awards','certificates','publications','skills','languages','interests','references','projects'];
+  for (const key of arraySections) {
+    if (Array.isArray(safe[key]) && (safe[key] as unknown[]).length === 0) {
+      delete safe[key];
+    }
+  }
+  const safeBasics = safe['basics'] as Record<string, unknown>;
+  if (Array.isArray(safeBasics['profiles']) && (safeBasics['profiles'] as unknown[]).length === 0) {
+    delete safeBasics['profiles'];
+  }
+  return safe;
 }
 
 export async function renderWithTheme(themeName: string, resume: Record<string, unknown>): Promise<string> {
