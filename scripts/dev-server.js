@@ -8,6 +8,7 @@
  */
 import http from 'node:http';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
@@ -37,42 +38,67 @@ const MIME = {
   '.woff2': 'font/woff2',
 };
 
-// ── Theme helpers (mirrors api/_lib/themeInstaller.ts) ──────────────
+// ── Theme helpers (CDN-based: fetch tarball + extract + install deps) ──
 const SAFE_NAME = /^[a-zA-Z0-9._-]+$/;
+const THEME_CACHE_DIR = path.join(os.tmpdir(), 'resuml-themes');
 
 function toPackageName(theme) {
   if (!SAFE_NAME.test(theme)) throw new Error('Invalid theme name');
   return theme.startsWith('jsonresume-theme-') ? theme : `jsonresume-theme-${theme}`;
 }
 
-function ensureInstalled(theme) {
+async function ensureThemeInstalled(theme) {
   const pkg = toPackageName(theme);
-  try {
-    // Check if already available
-    require.resolve(pkg, { paths: [ROOT] });
-  } catch {
-    console.log(`📦 Installing ${pkg}...`);
-    execFileSync('npm', ['install', '--no-save', pkg], {
-      cwd: ROOT,
+  const pkgDir = path.join(THEME_CACHE_DIR, pkg);
+
+  if (fs.existsSync(path.join(pkgDir, 'package.json'))) {
+    return pkgDir;
+  }
+
+  console.log(`📦 Downloading ${pkg} from npm registry...`);
+
+  // Fetch tarball URL
+  const metaRes = await fetch(`https://registry.npmjs.org/${pkg}/latest`);
+  if (!metaRes.ok) throw new Error(`Theme "${pkg}" not found on npm (${metaRes.status})`);
+  const meta = await metaRes.json();
+  const tarballUrl = meta.dist.tarball;
+
+  // Download and extract
+  const tarRes = await fetch(tarballUrl);
+  const buf = Buffer.from(await tarRes.arrayBuffer());
+  fs.mkdirSync(pkgDir, { recursive: true });
+  const tarPath = path.join(THEME_CACHE_DIR, `${pkg}.tgz`);
+  fs.writeFileSync(tarPath, buf);
+  execFileSync('tar', ['xzf', tarPath, '-C', pkgDir, '--strip-components=1'], { timeout: 10_000 });
+  fs.unlinkSync(tarPath);
+
+  // Install prod deps (ignore lifecycle scripts for security)
+  const pkgJson = JSON.parse(fs.readFileSync(path.join(pkgDir, 'package.json'), 'utf8'));
+  if (pkgJson.dependencies && Object.keys(pkgJson.dependencies).length > 0) {
+    console.log(`   Installing dependencies for ${pkg}...`);
+    execFileSync('npm', ['install', '--omit=dev', '--ignore-scripts', '--prefix', pkgDir], {
       timeout: 30_000,
       stdio: 'pipe',
     });
-    // Clear require cache so the freshly-installed package is picked up
-    for (const key of Object.keys(require.cache)) {
-      if (key.includes(pkg)) delete require.cache[key];
-    }
   }
+
+  console.log(`   ✅ ${pkg} ready`);
+  return pkgDir;
 }
 
 async function renderWithTheme(themeName, resume) {
-  ensureInstalled(themeName);
-  const pkg = toPackageName(themeName);
-  const mod = require(require.resolve(pkg, { paths: [ROOT] }));
+  const pkgDir = await ensureThemeInstalled(themeName);
+
+  // Clear require cache for this dir so hot-reload works
+  for (const key of Object.keys(require.cache)) {
+    if (key.startsWith(pkgDir)) delete require.cache[key];
+  }
+
+  const mod = require(pkgDir);
   if (typeof mod.render !== 'function') {
-    throw new Error(`Theme "${pkg}" does not export a render function`);
+    throw new Error(`Theme "${toPackageName(themeName)}" does not export a render function`);
   }
   const result = mod.render(resume);
-  // Some themes (e.g. stackoverflowed) return a Promise
   return result instanceof Promise ? await result : result;
 }
 
