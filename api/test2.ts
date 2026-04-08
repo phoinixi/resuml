@@ -1,13 +1,9 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { setCors } from './_lib/cors';
 
 export default async function handler(_req: VercelRequest, res: VercelResponse): Promise<void> {
-  try {
-    const url = 'https://registry.npmjs.org/-/v1/search?text=jsonresume-theme-&size=5';
-    const response = await fetch(url);
-    const data = await response.json() as { objects?: unknown[] };
-    res.status(200).json({ count: data.objects?.length });
-  } catch (err) {
-    res.status(500).json({ error: String(err) });
-  }
+  setCors(res, 'GET');
+  res.status(200).json({ ok: true, origin: process.env['ALLOWED_ORIGIN'] });
 }
+
 
