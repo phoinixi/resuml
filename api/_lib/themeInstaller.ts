@@ -2,6 +2,7 @@ import { execFileSync } from 'child_process';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
+import { extract as tarExtract } from 'tar';
 
 /** Only alphanumeric, hyphens, dots, underscores — validated upstream by Zod */
 const SAFE_NAME = /^[a-zA-Z0-9._-]+$/;
@@ -48,9 +49,7 @@ export async function ensureInstalled(themeName: string): Promise<string> {
   fs.mkdirSync(pkgDir, { recursive: true });
   const tarPath = path.join(CACHE_DIR, `${pkgName}.tgz`);
   fs.writeFileSync(tarPath, buf);
-  execFileSync('/usr/bin/tar', ['xzf', tarPath, '-C', pkgDir, '--strip-components=1'], {
-    timeout: 10_000,
-  });
+  await tarExtract({ file: tarPath, cwd: pkgDir, strip: 1 });
   fs.unlinkSync(tarPath);
 
   // Install prod dependencies (ignore lifecycle scripts for security)
