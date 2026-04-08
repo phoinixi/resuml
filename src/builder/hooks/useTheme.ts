@@ -41,6 +41,7 @@ export function useTheme(themeName: string) {
     } catch (e: unknown) {
       if (e instanceof Error && e.name === 'AbortError') return;
       if (!controller.signal.aborted) {
+        setHtml(null);
         setThemeError(e instanceof Error ? e.message : 'Failed to render theme');
         setLoading(false);
       }

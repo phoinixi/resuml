@@ -70,7 +70,7 @@ export function Toolbar({
           <button
             className={`toolbar-mode-btn ${mode === 'form' ? 'active' : ''}`}
             onClick={() => { onModeChange('form'); }}
-          >Visual</button>
+          >Editor</button>
           <button
             className={`toolbar-mode-btn ${mode === 'yaml' ? 'active' : ''}`}
             onClick={() => { onModeChange('yaml'); }}

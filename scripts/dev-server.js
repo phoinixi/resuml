@@ -109,7 +109,50 @@ async function ensureThemeInstalled(theme) {
   return pkgDir;
 }
 
+/**
+ * Pad resume with empty defaults so themes don't crash on missing fields.
+ * Themes blindly access resume.basics.location.city, work[0].position, etc.
+ */
+function padResume(r) {
+  const safe = {
+    basics: {
+      name: '', label: '', image: '', email: '', phone: '', url: '', summary: '',
+      location: { address: '', postalCode: '', city: '', countryCode: '', region: '' },
+      profiles: [],
+      ...r.basics,
+    },
+    work: r.work ?? [],
+    volunteer: r.volunteer ?? [],
+    education: r.education ?? [],
+    awards: r.awards ?? [],
+    certificates: r.certificates ?? [],
+    publications: r.publications ?? [],
+    skills: r.skills ?? [],
+    languages: r.languages ?? [],
+    interests: r.interests ?? [],
+    references: r.references ?? [],
+    projects: r.projects ?? [],
+    meta: r.meta ?? {},
+    ...r,
+  };
+  // Ensure basics nested objects survive even if user provided partial basics
+  safe.basics = {
+    name: '', label: '', image: '', email: '', phone: '', url: '', summary: '',
+    location: { address: '', postalCode: '', city: '', countryCode: '', region: '' },
+    profiles: [],
+    ...r.basics,
+  };
+  if (r.basics?.location && typeof r.basics.location === 'object') {
+    safe.basics.location = {
+      address: '', postalCode: '', city: '', countryCode: '', region: '',
+      ...r.basics.location,
+    };
+  }
+  return safe;
+}
+
 async function renderWithTheme(themeName, resume) {
+  const paddedResume = padResume(resume);
   const pkgDir = await ensureThemeInstalled(themeName);
 
   // Clear require cache for this dir so hot-reload works
@@ -136,7 +179,7 @@ async function renderWithTheme(themeName, resume) {
     const originalCwd = process.cwd();
     process.chdir(pkgDir);
     try {
-      const result = mod.render(resume);
+      const result = mod.render(paddedResume);
       return result instanceof Promise ? await result : result;
     } finally {
       process.chdir(originalCwd);

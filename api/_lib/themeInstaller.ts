@@ -104,14 +104,44 @@ export function loadRenderer(pkgDir: string): (resume: Record<string, unknown>) 
   return mod['render'] as (resume: Record<string, unknown>) => string | Promise<string>;
 }
 
+/**
+ * Pad resume with empty defaults so themes don't crash on missing fields.
+ */
+function padResume(r: Record<string, unknown>): Record<string, unknown> {
+  const basics = (r['basics'] ?? {}) as Record<string, unknown>;
+  const location = (basics['location'] ?? {}) as Record<string, unknown>;
+  return {
+    ...r,
+    basics: {
+      name: '', label: '', image: '', email: '', phone: '', url: '', summary: '',
+      ...basics,
+      location: { address: '', postalCode: '', city: '', countryCode: '', region: '', ...location },
+      profiles: basics['profiles'] ?? [],
+    },
+    work: r['work'] ?? [],
+    volunteer: r['volunteer'] ?? [],
+    education: r['education'] ?? [],
+    awards: r['awards'] ?? [],
+    certificates: r['certificates'] ?? [],
+    publications: r['publications'] ?? [],
+    skills: r['skills'] ?? [],
+    languages: r['languages'] ?? [],
+    interests: r['interests'] ?? [],
+    references: r['references'] ?? [],
+    projects: r['projects'] ?? [],
+    meta: r['meta'] ?? {},
+  };
+}
+
 export async function renderWithTheme(themeName: string, resume: Record<string, unknown>): Promise<string> {
+  const paddedResume = padResume(resume);
   const pkgDir = await ensureInstalled(themeName);
   const render = loadRenderer(pkgDir);
   // Change cwd to theme dir so themes reading files with relative paths work
   const originalCwd = process.cwd();
   process.chdir(pkgDir);
   try {
-    return await render(resume);
+    return await render(paddedResume);
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     throw new Error(

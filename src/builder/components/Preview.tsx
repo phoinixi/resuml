@@ -14,7 +14,21 @@ export function Preview({ html, loading, error }: PreviewProps) {
 
   useEffect(() => {
     const iframe = iframeRef.current;
-    if (!iframe || !html || html === previousHtmlRef.current) return;
+    if (!iframe) return;
+
+    if (!html) {
+      // Clear iframe when html is nulled (e.g. on error)
+      previousHtmlRef.current = null;
+      const doc = iframe.contentDocument;
+      if (doc) {
+        doc.open();
+        doc.write('');
+        doc.close();
+      }
+      return;
+    }
+
+    if (html === previousHtmlRef.current) return;
     previousHtmlRef.current = html;
 
     const doc = iframe.contentDocument;
