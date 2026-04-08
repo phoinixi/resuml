@@ -60,7 +60,7 @@ export async function ensureInstalled(themeName: string): Promise<string> {
     scripts?: Record<string, string>;
   };
   if (pkgJson.dependencies && Object.keys(pkgJson.dependencies).length > 0) {
-    execFileSync('npm', ['install', '--omit=dev', '--ignore-scripts'], {
+    execFileSync('npm', ['install', '--omit=dev', '--ignore-scripts', '--legacy-peer-deps'], {
       timeout: 30_000,
       stdio: 'pipe',
       cwd: pkgDir,

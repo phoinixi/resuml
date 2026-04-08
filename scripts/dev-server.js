@@ -76,7 +76,7 @@ async function ensureThemeInstalled(theme) {
   const pkgJson = JSON.parse(fs.readFileSync(path.join(pkgDir, 'package.json'), 'utf8'));
   if (pkgJson.dependencies && Object.keys(pkgJson.dependencies).length > 0) {
     console.log(`   Installing dependencies for ${pkg}...`);
-    execFileSync('npm', ['install', '--omit=dev', '--ignore-scripts'], {
+    execFileSync('npm', ['install', '--omit=dev', '--ignore-scripts', '--legacy-peer-deps'], {
       timeout: 30_000,
       stdio: 'pipe',
       cwd: pkgDir,
