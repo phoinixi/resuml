@@ -47,7 +47,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
       return;
     }
 
-    const html = renderWithTheme(theme, resume);
+    const html = await renderWithTheme(theme, resume);
 
     setCached(key, html, CACHE_TTL);
 

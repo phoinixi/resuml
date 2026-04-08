@@ -25,7 +25,7 @@ export function ensureInstalled(themeName: string): void {
   }
 }
 
-export function loadRenderer(themeName: string): (resume: Record<string, unknown>) => string {
+export function loadRenderer(themeName: string): (resume: Record<string, unknown>) => string | Promise<string> {
   const pkgName = toPackageName(themeName);
   // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment
   const mod = require(pkgName);
@@ -34,11 +34,11 @@ export function loadRenderer(themeName: string): (resume: Record<string, unknown
     throw new Error(`Theme "${pkgName}" does not export a render function`);
   }
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return
-  return mod.render as (resume: Record<string, unknown>) => string;
+  return mod.render as (resume: Record<string, unknown>) => string | Promise<string>;
 }
 
-export function renderWithTheme(themeName: string, resume: Record<string, unknown>): string {
+export async function renderWithTheme(themeName: string, resume: Record<string, unknown>): Promise<string> {
   ensureInstalled(themeName);
   const render = loadRenderer(themeName);
-  return render(resume);
+  return await render(resume);
 }

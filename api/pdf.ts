@@ -34,7 +34,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
   const { resume, theme, format, margin } = parsed.data;
 
   try {
-    const html = renderWithTheme(theme, resume);
+    const html = await renderWithTheme(theme, resume);
 
     const { chromium } = await import('playwright-core');
     const browser = await chromium.launch({

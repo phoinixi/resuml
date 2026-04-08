@@ -64,14 +64,16 @@ function ensureInstalled(theme) {
   }
 }
 
-function renderWithTheme(themeName, resume) {
+async function renderWithTheme(themeName, resume) {
   ensureInstalled(themeName);
   const pkg = toPackageName(themeName);
   const mod = require(require.resolve(pkg, { paths: [ROOT] }));
   if (typeof mod.render !== 'function') {
     throw new Error(`Theme "${pkg}" does not export a render function`);
   }
-  return mod.render(resume);
+  const result = mod.render(resume);
+  // Some themes (e.g. stackoverflowed) return a Promise
+  return result instanceof Promise ? await result : result;
 }
 
 // ── Theme registry (mirrors api/_lib/themeRegistry.ts) ──────────────
@@ -140,7 +142,7 @@ async function handleApiRender(req, res) {
 
   try {
     console.log(`🎨 Rendering with theme: ${theme}`);
-    const html = renderWithTheme(theme, resume);
+    const html = await renderWithTheme(theme, resume);
     res.writeHead(200, {
       'Content-Type': 'text/html; charset=utf-8',
       'Access-Control-Allow-Origin': '*',
@@ -275,4 +277,9 @@ async function main() {
 main().catch((err) => {
   console.error('Failed to start dev server:', err);
   process.exit(1);
+});
+
+// Prevent theme crashes from killing the server
+process.on('uncaughtException', (err) => {
+  console.error('⚠️  Uncaught exception (server still running):', err.message);
 });
