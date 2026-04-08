@@ -1,13 +1,40 @@
 import { ThemeListResponseSchema } from '../../shared/schemas';
 import type { ThemeInfo, RenderRequest } from '../../shared/schemas';
 
-export async function fetchThemes(signal?: AbortSignal): Promise<ThemeInfo[]> {
-  const response = await fetch('/api/themes', { signal });
-  if (!response.ok) {
-    throw new Error(`Failed to load themes: ${response.status}`);
+const THEME_CACHE_TTL = 30 * 60 * 1000; // 30 minutes
+let themeCacheData: ThemeInfo[] | null = null;
+let themeCacheTime = 0;
+let themeCachePromise: Promise<ThemeInfo[]> | null = null;
+
+export function fetchThemes(signal?: AbortSignal): Promise<ThemeInfo[]> {
+  if (themeCacheData && Date.now() - themeCacheTime < THEME_CACHE_TTL) {
+    return Promise.resolve(themeCacheData);
   }
-  const data = await response.json();
-  return ThemeListResponseSchema.parse(data);
+
+  if (themeCachePromise) return themeCachePromise;
+
+  themeCachePromise = fetch('/api/themes', { signal })
+    .then((response) => {
+      if (!response.ok) throw new Error(`Failed to load themes: ${response.status}`);
+      return response.json();
+    })
+    .then((data) => {
+      const parsed = ThemeListResponseSchema.parse(data);
+      themeCacheData = parsed;
+      themeCacheTime = Date.now();
+      themeCachePromise = null;
+      return parsed;
+    })
+    .catch((e: unknown) => {
+      themeCachePromise = null;
+      throw e;
+    });
+
+  return themeCachePromise;
+}
+
+export function prefetchThemes(): void {
+  fetchThemes().catch(() => { /* silent prefetch */ });
 }
 
 export async function renderResume(

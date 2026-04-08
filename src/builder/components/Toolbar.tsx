@@ -1,6 +1,8 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useMemo } from 'react';
+import { Target, FolderOpen, Link, Palette, FileText, FileJson, FileDown } from 'lucide-react';
 import type { ResumeSchema } from '../../types/resume';
-import { exportYaml, exportJson, printHtml, copyShareUrl, readFile } from '../services/fileOps';
+import { exportYaml, exportJson, exportPdf, copyShareUrl, readFile } from '../services/fileOps';
+import { DownloadDropdown } from './DownloadDropdown';
 
 interface ToolbarProps {
   mode: 'yaml' | 'form';
@@ -12,12 +14,11 @@ interface ToolbarProps {
   yaml: string;
   resume: ResumeSchema | null;
   onImport: (yaml: string) => void;
-  previewHtml: string | null;
 }
 
 export function Toolbar({
   mode, onModeChange, themeName, onThemePickerToggle,
-  showAts, onAtsToggle, yaml, resume, onImport, previewHtml,
+  showAts, onAtsToggle, yaml, resume, onImport,
 }: ToolbarProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const shareRef = useRef<HTMLButtonElement>(null);
@@ -38,9 +39,15 @@ export function Toolbar({
     if (resume) exportJson(resume as unknown as Record<string, unknown>);
   }, [resume]);
 
-  const handlePrint = useCallback(() => {
-    if (previewHtml) printHtml(previewHtml);
-  }, [previewHtml]);
+  const handleExportPdf = useCallback(() => {
+    if (resume) void exportPdf(resume as unknown as Record<string, unknown>, themeName);
+  }, [resume, themeName]);
+
+  const downloadOptions = useMemo(() => [
+    { label: 'YAML', icon: <FileText size={14} />, onClick: handleExportYaml },
+    { label: 'JSON', icon: <FileJson size={14} />, onClick: handleExportJson, disabled: !resume },
+    { label: 'PDF', icon: <FileDown size={14} />, onClick: handleExportPdf, disabled: !resume },
+  ], [handleExportYaml, handleExportJson, handleExportPdf, resume]);
 
   const handleShare = useCallback(async () => {
     try {
@@ -48,7 +55,7 @@ export function Toolbar({
       const btn = shareRef.current;
       if (btn) {
         btn.textContent = 'Copied!';
-        setTimeout(() => { btn.textContent = '🔗 Share'; }, 1500);
+        setTimeout(() => { btn.textContent = 'Share'; }, 1500);
       }
     } catch {
       // clipboard unavailable
@@ -73,7 +80,7 @@ export function Toolbar({
 
       <div className="toolbar-center">
         <button className="toolbar-theme-btn" onClick={onThemePickerToggle}>
-          🎨 {themeName}
+          <Palette size={14} /> {themeName}
         </button>
       </div>
 
@@ -82,17 +89,15 @@ export function Toolbar({
           className={`toolbar-btn ${showAts ? 'active' : ''}`}
           onClick={onAtsToggle}
           title="ATS Score"
-        >🎯 ATS</button>
-        <button className="toolbar-btn" onClick={handleImport} title="Import YAML">📂 Import</button>
-        <button className="toolbar-btn" onClick={handleExportYaml} title="Export YAML">💾 YAML</button>
-        <button className="toolbar-btn" onClick={handleExportJson} title="Export JSON">📋 JSON</button>
-        <button className="toolbar-btn" onClick={handlePrint} title="Print / Save as PDF">🖨️ PDF</button>
+        ><Target size={14} /> ATS</button>
+        <button className="toolbar-btn" onClick={handleImport} title="Import YAML"><FolderOpen size={14} /> Import</button>
+        <DownloadDropdown options={downloadOptions} />
         <button
           className="toolbar-btn toolbar-share-btn"
           ref={shareRef}
           onClick={handleShare}
           title="Copy share link"
-        >🔗 Share</button>
+        ><Link size={14} /> Share</button>
         <input
           ref={fileInputRef}
           type="file"

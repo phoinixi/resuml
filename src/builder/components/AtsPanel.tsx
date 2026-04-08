@@ -1,5 +1,6 @@
 
 import { useMemo } from 'react';
+import { X } from 'lucide-react';
 import type { AtsResult } from '../../ats/types';
 import { groupChecksByCategory } from '../utils/atsGrouping';
 
@@ -36,7 +37,7 @@ export function AtsPanel({ result, onClose }: AtsPanelProps) {
       <div className="ats-panel">
         <div className="ats-panel-header">
           <span>ATS Score</span>
-          <button className="ats-panel-close" onClick={onClose}>×</button>
+          <button className="ats-panel-close" onClick={onClose}><X size={16} /></button>
         </div>
         <div className="ats-panel-empty">
           <span>Edit your resume to see the ATS score</span>
@@ -49,7 +50,7 @@ export function AtsPanel({ result, onClose }: AtsPanelProps) {
     <div className="ats-panel">
       <div className="ats-panel-header">
         <span>ATS Score</span>
-        <button className="ats-panel-close" onClick={onClose}>×</button>
+        <button className="ats-panel-close" onClick={onClose}><X size={16} /></button>
       </div>
 
       <div className="ats-panel-score">
@@ -68,7 +69,7 @@ export function AtsPanel({ result, onClose }: AtsPanelProps) {
             <div className="ats-category-title">{category}</div>
             {checks.map((check) => (
               <div key={check.id} className={`ats-check ${check.passed ? 'passed' : 'failed'}`}>
-                <span className="ats-check-icon">{check.passed ? '✓' : '✗'}</span>
+                <span className={`ats-check-icon ${check.passed ? 'passed' : 'failed'}`}>{check.passed ? '✓' : '✗'}</span>
                 <div className="ats-check-content">
                   <span className="ats-check-msg">{check.message}</span>
                   {check.suggestion && (

@@ -69,7 +69,6 @@ export function App() {
         yaml={yaml}
         resume={resume}
         onImport={setYaml}
-        previewHtml={html}
       />
 
       {showThemePicker && (

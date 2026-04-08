@@ -1,4 +1,6 @@
 
+import { AlertTriangle } from 'lucide-react';
+
 interface PreviewProps {
   html: string | null;
   loading: boolean;
@@ -21,7 +23,7 @@ export function Preview({ html, loading, error }: PreviewProps) {
     return (
       <div className="preview-container">
         <div className="preview-error">
-          <span className="preview-error-icon">⚠️</span>
+          <AlertTriangle size={16} className="preview-error-icon" />
           <span>{error}</span>
         </div>
       </div>

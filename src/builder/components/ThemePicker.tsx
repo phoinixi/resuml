@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { X } from 'lucide-react';
 import { fetchThemes } from '../services/api';
 import type { ThemeInfo } from '../../shared/schemas';
 
@@ -50,7 +51,7 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
       <div className="theme-picker">
         <div className="theme-picker-header">
           <h3>Choose Theme</h3>
-          <button className="theme-picker-close" onClick={onClose}>×</button>
+          <button className="theme-picker-close" onClick={onClose}><X size={18} /></button>
         </div>
         <div className="theme-picker-search">
           <input

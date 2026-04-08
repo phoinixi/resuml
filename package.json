@@ -44,6 +44,7 @@
     "js-yaml": "^4.1.0",
     "jsonresume-theme-stackoverflow": "^2.1.0",
     "lodash.merge": "^4.6.2",
+    "lucide-react": "^1.7.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "yaml": "^2.3.4",
