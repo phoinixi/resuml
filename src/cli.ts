@@ -15,7 +15,7 @@ export async function main(argv?: string[]): Promise<void> {
     // This catch is for unexpected errors during parseAsync,
     // though Commander usually handles errors and calls process.exit.
     // In a test environment with process.exit mocked, this might catch issues.
-    if (process.env.NODE_ENV !== 'test') {
+      if (process.env['NODE_ENV'] !== 'test') {
       console.error('CLI execution failed:', error);
       process.exit(1);
     } else {

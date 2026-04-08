@@ -12,15 +12,9 @@ await build({
   format: 'esm',
   target: 'es2022',
   outfile: resolve(__dirname, '../docs/app/main.js'),
-  jsxFactory: 'h',
-  jsxFragment: 'Fragment',
-  jsx: 'transform',
+  jsx: 'automatic',
   define: {
     'process.env.NODE_ENV': '"production"',
-  },
-  alias: {
-    'react': 'preact/compat',
-    'react-dom': 'preact/compat',
   },
   loader: {
     '.ts': 'ts',

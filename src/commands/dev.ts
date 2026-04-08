@@ -81,7 +81,7 @@ async function renderResume(options: DevCommandOptions): Promise<void> {
 }
 
 function watchDirectory(dirPath: string, callback: () => void): void {
-  fs.watch(dirPath, { recursive: true }, (eventType, filename) => {
+  fs.watch(dirPath, { recursive: true }, (_eventType, filename) => {
     if (filename && (filename.endsWith('.yaml') || filename.endsWith('.yml'))) {
       console.log(chalk.blue(`📁 File changed: ${filename}`));
       callback();

@@ -1,7 +1,7 @@
 export default {
-  render: (resumeData: unknown) => {
+  render: (resumeData: Record<string, unknown>) => {
     return `<html><body><h1>JSONResume Theme: ${
-      resumeData?.basics?.name || 'No Name'
+      (resumeData?.['basics'] as Record<string, unknown>)?.['name'] || 'No Name'
     }</h1></body></html>`;
   },
 };

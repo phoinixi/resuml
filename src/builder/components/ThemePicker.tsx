@@ -1,5 +1,6 @@
-import { h } from 'preact';
-import { useState, useEffect, useMemo } from 'preact/hooks';
+import { useState, useEffect, useMemo } from 'react';
+import { fetchThemes } from '../services/api';
+import type { ThemeInfo } from '../../shared/schemas';
 
 interface ThemePickerProps {
   currentTheme: string;
@@ -7,58 +8,29 @@ interface ThemePickerProps {
   onClose: () => void;
 }
 
-interface ThemeMeta {
-  name: string;
-  displayName: string;
-  description?: string;
-  browserCompatible: boolean;
-}
-
-// Built-in themes that we list. browserCompatible will be updated from manifest.
-const BUILTIN_THEMES: ThemeMeta[] = [
-  { name: 'stackoverflow', displayName: 'Stack Overflow', description: 'Popular developer-focused theme with dark mode', browserCompatible: true },
-  { name: 'elegant', displayName: 'Elegant', description: 'Clean and professional', browserCompatible: false },
-  { name: 'even', displayName: 'Even', description: 'Simple and balanced layout', browserCompatible: false },
-  { name: 'kendall', displayName: 'Kendall', description: 'Modern and minimal', browserCompatible: false },
-  { name: 'flat', displayName: 'Flat', description: 'Flat design aesthetic', browserCompatible: false },
-  { name: 'macchiato', displayName: 'Macchiato', description: 'Warm, coffee-inspired tones', browserCompatible: false },
-  { name: 'class', displayName: 'Class', description: 'Classic resume style', browserCompatible: false },
-  { name: 'paper', displayName: 'Paper', description: 'Clean paper-like look', browserCompatible: false },
-  { name: 'spartan', displayName: 'Spartan', description: 'Minimalist with strong typography', browserCompatible: false },
-  { name: 'short', displayName: 'Short', description: 'Compact single-page layout', browserCompatible: false },
-];
-
 export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProps) {
   const [search, setSearch] = useState('');
-  const [themes, setThemes] = useState<ThemeMeta[]>(BUILTIN_THEMES);
+  const [themes, setThemes] = useState<ThemeInfo[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // Try to load manifest from bundled themes
   useEffect(() => {
-    fetch('./themes/manifest.json')
-      .then((r) => r.ok ? r.json() : null)
-      .then((manifest: ThemeMeta[] | null) => {
-        if (manifest && Array.isArray(manifest) && manifest.length > 0) {
-          // Merge: manifest themes override built-in, then append any
-          // built-in themes not in manifest
-          const manifestMap = new Map(manifest.map(t => [t.name, t]));
-          const merged: ThemeMeta[] = [];
+    const controller = new AbortController();
+    setLoading(true);
+    setError(null);
 
-          // First add all manifest themes (in order)
-          for (const mt of manifest) {
-            merged.push(mt);
-          }
-
-          // Then add built-in themes not in manifest
-          for (const bt of BUILTIN_THEMES) {
-            if (!manifestMap.has(bt.name)) {
-              merged.push(bt);
-            }
-          }
-
-          setThemes(merged);
-        }
+    fetchThemes(controller.signal)
+      .then((data) => {
+        setThemes(data);
+        setLoading(false);
       })
-      .catch(() => { /* Keep built-in list */ });
+      .catch((e: unknown) => {
+        if (e instanceof Error && e.name === 'AbortError') return;
+        setError(e instanceof Error ? e.message : 'Failed to load themes');
+        setLoading(false);
+      });
+
+    return () => { controller.abort(); };
   }, []);
 
   const filtered = useMemo(() => {
@@ -67,48 +39,51 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
     return themes.filter((t) =>
       t.name.toLowerCase().includes(q) ||
       t.displayName.toLowerCase().includes(q) ||
-      (t.description || '').toLowerCase().includes(q)
+      t.description.toLowerCase().includes(q)
     );
   }, [themes, search]);
 
   return (
-    <div class="theme-picker-overlay" onClick={(e) => {
+    <div className="theme-picker-overlay" onClick={(e) => {
       if ((e.target as HTMLElement).classList.contains('theme-picker-overlay')) onClose();
     }}>
-      <div class="theme-picker">
-        <div class="theme-picker-header">
+      <div className="theme-picker">
+        <div className="theme-picker-header">
           <h3>Choose Theme</h3>
-          <button class="theme-picker-close" onClick={onClose}>×</button>
+          <button className="theme-picker-close" onClick={onClose}>×</button>
         </div>
-        <div class="theme-picker-search">
+        <div className="theme-picker-search">
           <input
             type="text"
-            class="form-input"
+            className="form-input"
             placeholder="Search themes..."
             value={search}
             onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
-            // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus
           />
         </div>
-        <div class="theme-picker-grid">
-          {filtered.map((theme) => (
+        <div className="theme-picker-grid">
+          {loading && (
+            <div className="theme-picker-empty">Loading themes...</div>
+          )}
+          {error && (
+            <div className="theme-picker-empty">Error: {error}</div>
+          )}
+          {!loading && !error && filtered.map((theme) => (
             <button
               key={theme.name}
-              class={`theme-picker-card ${theme.name === currentTheme ? 'active' : ''}`}
+              className={`theme-picker-card ${theme.name === currentTheme ? 'active' : ''}`}
               onClick={() => onSelect(theme.name)}
             >
-              <div class="theme-picker-name">{theme.displayName}</div>
+              <div className="theme-picker-name">{theme.displayName}</div>
               {theme.description && (
-                <div class="theme-picker-desc">{theme.description}</div>
+                <div className="theme-picker-desc">{theme.description}</div>
               )}
-              {!theme.browserCompatible && (
-                <div class="theme-picker-cli">Uses built-in renderer</div>
-              )}
+              <div className="theme-picker-meta">v{theme.version}</div>
             </button>
           ))}
-          {filtered.length === 0 && (
-            <div class="theme-picker-empty">No themes matching "{search}"</div>
+          {!loading && !error && filtered.length === 0 && (
+            <div className="theme-picker-empty">No themes matching "{search}"</div>
           )}
         </div>
       </div>

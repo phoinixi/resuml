@@ -110,7 +110,6 @@ const resumeWithPronouns: ResumeSchema = {
 describe('ATS Generic Checks', () => {
   it('should pass all checks for a well-structured resume', () => {
     const checks = runGenericChecks(fullResume, 'en');
-    const failed = checks.filter((c) => !c.passed);
     // The full resume may not pass every single check perfectly, but should pass most
     expect(checks.length).toBeGreaterThanOrEqual(10);
     // Contact, summary, linkedin, work-highlights, skills, education, section-completeness should pass

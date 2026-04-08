@@ -1,5 +1,4 @@
-import { h, Fragment } from 'preact';
-import { useState, useCallback, useRef, useEffect } from 'preact/hooks';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { Editor } from './Editor';
 import { FormMode } from './FormMode';
 import { Preview } from './Preview';
@@ -40,7 +39,7 @@ export function App() {
   }, []);
 
   // Split pane drag
-  const handleDragStart = useCallback((e: MouseEvent) => {
+  const handleDragStart = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     const container = containerRef.current;
     if (!container) return;
@@ -59,7 +58,7 @@ export function App() {
   }, []);
 
   return (
-    <Fragment>
+    <>
       <Toolbar
         mode={mode}
         onModeChange={setMode}
@@ -81,8 +80,8 @@ export function App() {
         />
       )}
 
-      <div class="builder-main" ref={containerRef}>
-        <div class="builder-editor" style={{ width: `${splitPos}%` }}>
+      <div className="builder-main" ref={containerRef}>
+        <div className="builder-editor" style={{ width: `${splitPos}%` }}>
           {mode === 'yaml' ? (
             <Editor yaml={yaml} onChange={setYaml} error={error} />
           ) : (
@@ -90,22 +89,18 @@ export function App() {
           )}
         </div>
 
-        <div
-          class="builder-divider"
-          onMouseDown={handleDragStart}
-          title="Drag to resize"
-        />
+        <div className="builder-divider" onMouseDown={handleDragStart} title="Drag to resize" />
 
-        <div class="builder-preview" style={{ width: `${100 - splitPos}%` }}>
+        <div className="builder-preview" style={{ width: `${100 - splitPos}%` }}>
           <Preview html={html} loading={themeLoading} error={themeError} />
         </div>
 
         {showAts && (
-          <div class="builder-ats">
+          <div className="builder-ats">
             <AtsPanel result={atsResult} onClose={() => setShowAts(false)} />
           </div>
         )}
       </div>
-    </Fragment>
+    </>
   );
 }

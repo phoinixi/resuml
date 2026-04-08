@@ -9,10 +9,7 @@ export function compress(yaml: string, theme: string): string {
 export function decompress(hash: string): { yaml: string; theme: string } | null {
   try {
     const binary = atob(hash);
-    const bytes = new Uint8Array(binary.length);
-    for (let i = 0; i < binary.length; i++) {
-      bytes[i] = binary.charCodeAt(i);
-    }
+    const bytes = new Uint8Array(Array.from(binary, (c) => c.charCodeAt(0)));
     const decompressed = pako.inflate(bytes);
     const text = new TextDecoder().decode(decompressed);
     const { y, t } = JSON.parse(text);

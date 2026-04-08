@@ -5,7 +5,7 @@ import os from 'os';
 import { main } from '../cli';
 
 // Set NODE_ENV to test
-process.env.NODE_ENV = 'test';
+process.env['NODE_ENV'] = 'test';
 
 // We need to mock readline for the interactive prompts
 vi.mock('readline', () => ({

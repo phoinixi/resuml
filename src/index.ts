@@ -89,7 +89,7 @@ program
 // PDF Command
 program
   .command('pdf')
-  .description('Export resume as PDF using Puppeteer.')
+  .description('Export resume as PDF using Playwright.')
   .option('-r, --resume <path>', 'Input YAML file, directory, or glob pattern.')
   .option('-t, --theme <name>', 'Theme name (e.g., stackoverflow, react).')
   .option('-o, --output <file>', 'Output PDF file path.', 'resume.pdf')
@@ -107,7 +107,7 @@ program
   .action(themesAction);
 
 // Parse Arguments - only execute when not in test environment
-if (process.env.NODE_ENV !== 'test') {
+if (process.env['NODE_ENV'] !== 'test') {
   (async () => {
     try {
       await program.parseAsync(process.argv);

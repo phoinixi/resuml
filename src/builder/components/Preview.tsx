@@ -1,4 +1,3 @@
-import { h } from 'preact';
 
 interface PreviewProps {
   html: string | null;
@@ -9,9 +8,9 @@ interface PreviewProps {
 export function Preview({ html, loading, error }: PreviewProps) {
   if (loading) {
     return (
-      <div class="preview-container">
-        <div class="preview-loading">
-          <div class="spinner" />
+      <div className="preview-container">
+        <div className="preview-loading">
+          <div className="spinner" />
           <span>Rendering preview...</span>
         </div>
       </div>
@@ -20,9 +19,9 @@ export function Preview({ html, loading, error }: PreviewProps) {
 
   if (error) {
     return (
-      <div class="preview-container">
-        <div class="preview-error">
-          <span class="preview-error-icon">⚠️</span>
+      <div className="preview-container">
+        <div className="preview-error">
+          <span className="preview-error-icon">⚠️</span>
           <span>{error}</span>
         </div>
       </div>
@@ -31,8 +30,8 @@ export function Preview({ html, loading, error }: PreviewProps) {
 
   if (!html) {
     return (
-      <div class="preview-container">
-        <div class="preview-empty">
+      <div className="preview-container">
+        <div className="preview-empty">
           <span>Edit your resume to see a live preview</span>
         </div>
       </div>
@@ -40,9 +39,9 @@ export function Preview({ html, loading, error }: PreviewProps) {
   }
 
   return (
-    <div class="preview-container">
+    <div className="preview-container">
       <iframe
-        class="preview-iframe"
+        className="preview-iframe"
         srcDoc={html}
         sandbox="allow-same-origin"
         title="Resume preview"

@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import { useEffect, useRef } from 'preact/hooks';
+import { useEffect, useRef } from 'react';
 import { EditorView, keymap, lineNumbers, highlightActiveLine, highlightActiveLineGutter } from '@codemirror/view';
 import { EditorState } from '@codemirror/state';
 import { yaml as yamlLang } from '@codemirror/lang-yaml';
@@ -140,12 +139,12 @@ export function Editor({ yaml, onChange, error }: EditorProps) {
   }, [yaml]);
 
   return (
-    <div class="editor-container">
-      <div class="editor-header">
-        <span class="editor-title">resume.yaml</span>
-        {error && <span class="editor-error" title={error}>YAML Error</span>}
+    <div className="editor-container">
+      <div className="editor-header">
+        <span className="editor-title">resume.yaml</span>
+        {error && <span className="editor-error" title={error}>YAML Error</span>}
       </div>
-      <div class="editor-body" ref={containerRef} />
+      <div className="editor-body" ref={containerRef} />
     </div>
   );
 }

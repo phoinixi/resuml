@@ -5,7 +5,7 @@ import { loadResumeFiles } from '../utils/loadResume';
 import { processResumeData } from '../core';
 
 // Set NODE_ENV to test for consistent behavior of main() error handling
-process.env.NODE_ENV = 'test';
+process.env['NODE_ENV'] = 'test';
 
 // Mock chalk to return plain text
 vi.mock('chalk', () => ({
@@ -110,7 +110,7 @@ describe('CLI', () => {
     ).mockResolvedValue({ basics: { name: 'Default Mocked Resume' } });
 
     // Suppress console output unless CLI_TEST_DEBUG is set
-    if (!process.env.CLI_TEST_DEBUG) {
+    if (!process.env['CLI_TEST_DEBUG']) {
       console.error = vi.fn();
       console.log = vi.fn();
     }

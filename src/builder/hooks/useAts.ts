@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'preact/hooks';
+import { useState, useEffect, useRef } from 'react';
 import type { ResumeSchema } from '../../types/resume';
 import type { AtsResult } from '../../ats/types';
 import { analyzeAts } from '../../ats/index';

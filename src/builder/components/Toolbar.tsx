@@ -1,7 +1,6 @@
-import { h } from 'preact';
-import { useRef, useCallback } from 'preact/hooks';
+import React, { useRef, useCallback } from 'react';
 import type { ResumeSchema } from '../../types/resume';
-import { stringify as yamlStringify } from 'yaml';
+import { exportYaml, exportJson, printHtml, copyShareUrl, readFile } from '../services/fileOps';
 
 interface ToolbarProps {
   mode: 'yaml' | 'form';
@@ -21,98 +20,79 @@ export function Toolbar({
   showAts, onAtsToggle, yaml, resume, onImport, previewHtml,
 }: ToolbarProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const shareRef = useRef<HTMLButtonElement>(null);
 
-  const handleImport = useCallback(() => {
-    fileInputRef.current?.click();
-  }, []);
+  const handleImport = useCallback(() => fileInputRef.current?.click(), []);
 
-  const handleFileChange = useCallback((e: Event) => {
-    const file = (e.target as HTMLInputElement).files?.[0];
+  const handleFileChange = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (typeof reader.result === 'string') {
-        onImport(reader.result);
-      }
-    };
-    reader.readAsText(file);
-    // Reset so same file can be imported again
-    (e.target as HTMLInputElement).value = '';
+    const content = await readFile(file);
+    onImport(content);
+    e.target.value = '';
   }, [onImport]);
 
-  const handleExportYaml = useCallback(() => {
-    const blob = new Blob([yaml], { type: 'text/yaml' });
-    downloadBlob(blob, 'resume.yaml');
-  }, [yaml]);
+  const handleExportYaml = useCallback(() => exportYaml(yaml), [yaml]);
 
   const handleExportJson = useCallback(() => {
-    if (!resume) return;
-    const blob = new Blob([JSON.stringify(resume, null, 2)], { type: 'application/json' });
-    downloadBlob(blob, 'resume.json');
+    if (resume) exportJson(resume as unknown as Record<string, unknown>);
   }, [resume]);
 
   const handlePrint = useCallback(() => {
-    if (!previewHtml) return;
-    const win = window.open('', '_blank');
-    if (!win) return;
-    win.document.write(previewHtml);
-    win.document.close();
-    // Wait for styles/images to load
-    win.onload = () => {
-      win.print();
-    };
+    if (previewHtml) printHtml(previewHtml);
   }, [previewHtml]);
 
   const handleShare = useCallback(async () => {
     try {
-      const { compress } = await import('../utils/urlCodec');
-      const hash = compress(yaml, themeName);
-      const url = `${window.location.origin}${window.location.pathname}#${hash}`;
-      await navigator.clipboard.writeText(url);
-      // Brief visual feedback
-      const btn = document.querySelector('.toolbar-share-btn');
+      await copyShareUrl(yaml, themeName);
+      const btn = shareRef.current;
       if (btn) {
         btn.textContent = 'Copied!';
         setTimeout(() => { btn.textContent = '🔗 Share'; }, 1500);
       }
     } catch {
-      // Fallback: just copy URL as-is
+      // clipboard unavailable
     }
   }, [yaml, themeName]);
 
   return (
-    <div class="toolbar">
-      <div class="toolbar-left">
-        <span class="toolbar-brand">resuml</span>
-        <div class="toolbar-mode-toggle">
+    <div className="toolbar">
+      <div className="toolbar-left">
+        <span className="toolbar-brand">resuml</span>
+        <div className="toolbar-mode-toggle">
           <button
-            class={`toolbar-mode-btn ${mode === 'yaml' ? 'active' : ''}`}
+            className={`toolbar-mode-btn ${mode === 'yaml' ? 'active' : ''}`}
             onClick={() => onModeChange('yaml')}
           >YAML</button>
           <button
-            class={`toolbar-mode-btn ${mode === 'form' ? 'active' : ''}`}
+            className={`toolbar-mode-btn ${mode === 'form' ? 'active' : ''}`}
             onClick={() => onModeChange('form')}
           >Form</button>
         </div>
       </div>
 
-      <div class="toolbar-center">
-        <button class="toolbar-theme-btn" onClick={onThemePickerToggle}>
+      <div className="toolbar-center">
+        <button className="toolbar-theme-btn" onClick={onThemePickerToggle}>
           🎨 {themeName}
         </button>
       </div>
 
-      <div class="toolbar-right">
+      <div className="toolbar-right">
         <button
-          class={`toolbar-btn ${showAts ? 'active' : ''}`}
+          className={`toolbar-btn ${showAts ? 'active' : ''}`}
           onClick={onAtsToggle}
           title="ATS Score"
         >🎯 ATS</button>
-        <button class="toolbar-btn" onClick={handleImport} title="Import YAML">📂 Import</button>
-        <button class="toolbar-btn" onClick={handleExportYaml} title="Export YAML">💾 YAML</button>
-        <button class="toolbar-btn" onClick={handleExportJson} title="Export JSON">📋 JSON</button>
-        <button class="toolbar-btn" onClick={handlePrint} title="Print / Save as PDF">🖨️ PDF</button>
-        <button class="toolbar-btn toolbar-share-btn" onClick={handleShare} title="Copy share link">🔗 Share</button>
+        <button className="toolbar-btn" onClick={handleImport} title="Import YAML">📂 Import</button>
+        <button className="toolbar-btn" onClick={handleExportYaml} title="Export YAML">💾 YAML</button>
+        <button className="toolbar-btn" onClick={handleExportJson} title="Export JSON">📋 JSON</button>
+        <button className="toolbar-btn" onClick={handlePrint} title="Print / Save as PDF">🖨️ PDF</button>
+        <button
+          className="toolbar-btn toolbar-share-btn"
+          ref={shareRef}
+          onClick={handleShare}
+          title="Copy share link"
+        >🔗 Share</button>
         <input
           ref={fileInputRef}
           type="file"
@@ -123,13 +103,4 @@ export function Toolbar({
       </div>
     </div>
   );
-}
-
-function downloadBlob(blob: Blob, filename: string) {
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  a.click();
-  URL.revokeObjectURL(url);
 }

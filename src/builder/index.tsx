@@ -1,7 +1,7 @@
-import { h, render } from 'preact';
+import { createRoot } from 'react-dom/client';
 import { App } from './components/App';
 
 const root = document.getElementById('app');
 if (root) {
-  render(h(App, null), root);
+  createRoot(root).render(<App />);
 }

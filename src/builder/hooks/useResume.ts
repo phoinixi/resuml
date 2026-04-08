@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'preact/hooks';
+import { useState, useCallback, useRef } from 'react';
 import { parse, stringify } from 'yaml';
 import type { ResumeSchema } from '../../types/resume';
 

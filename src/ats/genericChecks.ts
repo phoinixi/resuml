@@ -261,15 +261,15 @@ const dateConsistency: CheckFn = (resume) => {
     .sort((a, b) => (a.startDate! > b.startDate! ? 1 : -1));
 
   for (let i = 0; i < sorted.length - 1; i++) {
-    const current = sorted[i];
-    const next = sorted[i + 1];
+    const current = sorted[i]!;
+    const next = sorted[i + 1]!;
     const endDate = current.endDate || current.startDate!;
     const gapMs = new Date(next.startDate!).getTime() - new Date(endDate).getTime();
     const gapMonths = gapMs / (1000 * 60 * 60 * 24 * 30);
 
     if (gapMonths > 6) {
       issues.push(
-        `Gap of ~${Math.round(gapMonths)} months between "${current.name || 'Unknown'}" (ended ${endDate}) and "${next.name || 'Unknown'}" (started ${next.startDate}).`
+        `Gap of ~${Math.round(gapMonths)} months between "${current.name ?? 'Unknown'}" (ended ${endDate}) and "${next.name ?? 'Unknown'}" (started ${next.startDate}).`
       );
     }
   }

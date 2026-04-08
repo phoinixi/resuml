@@ -1,5 +1,7 @@
-import { h } from 'preact';
+
+import { useMemo } from 'react';
 import type { AtsResult } from '../../ats/types';
+import { groupChecksByCategory } from '../utils/atsGrouping';
 
 interface AtsPanelProps {
   result: AtsResult | null;
@@ -26,52 +28,51 @@ function ratingLabel(rating: string): string {
 export function AtsPanel({ result, onClose }: AtsPanelProps) {
   if (!result) {
     return (
-      <div class="ats-panel">
-        <div class="ats-panel-header">
+      <div className="ats-panel">
+        <div className="ats-panel-header">
           <span>ATS Score</span>
-          <button class="ats-panel-close" onClick={onClose}>×</button>
+          <button className="ats-panel-close" onClick={onClose}>×</button>
         </div>
-        <div class="ats-panel-empty">
+        <div className="ats-panel-empty">
           <span>Edit your resume to see the ATS score</span>
         </div>
       </div>
     );
   }
 
-  const categoryGroups: Record<string, typeof result.checks> = {};
-  for (const check of result.checks) {
-    if (!categoryGroups[check.category]) categoryGroups[check.category] = [];
-    categoryGroups[check.category].push(check);
-  }
+  const categoryGroups = useMemo(
+    () => groupChecksByCategory(result.checks),
+    [result.checks],
+  );
 
   return (
-    <div class="ats-panel">
-      <div class="ats-panel-header">
+    <div className="ats-panel">
+      <div className="ats-panel-header">
         <span>ATS Score</span>
-        <button class="ats-panel-close" onClick={onClose}>×</button>
+        <button className="ats-panel-close" onClick={onClose}>×</button>
       </div>
 
-      <div class="ats-panel-score">
-        <div class="ats-score-circle" style={{ borderColor: scoreColor(result.score) }}>
-          <span class="ats-score-number" style={{ color: scoreColor(result.score) }}>{result.score}</span>
-          <span class="ats-score-label">/ 100</span>
+      <div className="ats-panel-score">
+        <div className="ats-score-circle" style={{ borderColor: scoreColor(result.score) }}>
+          <span className="ats-score-number" style={{ color: scoreColor(result.score) }}>{result.score}</span>
+          <span className="ats-score-label">/ 100</span>
         </div>
-        <span class="ats-rating" style={{ color: scoreColor(result.score) }}>
+        <span className="ats-rating" style={{ color: scoreColor(result.score) }}>
           {ratingLabel(result.rating)}
         </span>
       </div>
 
-      <div class="ats-panel-checks">
+      <div className="ats-panel-checks">
         {Object.entries(categoryGroups).map(([category, checks]) => (
-          <div key={category} class="ats-category">
-            <div class="ats-category-title">{category}</div>
+          <div key={category} className="ats-category">
+            <div className="ats-category-title">{category}</div>
             {checks.map((check) => (
-              <div key={check.id} class={`ats-check ${check.passed ? 'passed' : 'failed'}`}>
-                <span class="ats-check-icon">{check.passed ? '✓' : '✗'}</span>
-                <div class="ats-check-content">
-                  <span class="ats-check-msg">{check.message}</span>
+              <div key={check.id} className={`ats-check ${check.passed ? 'passed' : 'failed'}`}>
+                <span className="ats-check-icon">{check.passed ? '✓' : '✗'}</span>
+                <div className="ats-check-content">
+                  <span className="ats-check-msg">{check.message}</span>
                   {check.suggestion && (
-                    <span class="ats-check-suggestion">{check.suggestion}</span>
+                    <span className="ats-check-suggestion">{check.suggestion}</span>
                   )}
                 </div>
               </div>
@@ -81,24 +82,24 @@ export function AtsPanel({ result, onClose }: AtsPanelProps) {
       </div>
 
       {result.keywords && (
-        <div class="ats-keywords">
-          <div class="ats-category-title">Keywords ({result.keywords.matchPercentage}% match)</div>
+        <div className="ats-keywords">
+          <div className="ats-category-title">Keywords ({result.keywords.matchPercentage}% match)</div>
           {result.keywords.matched.length > 0 && (
-            <div class="ats-kw-group">
-              <span class="ats-kw-label matched">Matched:</span>
-              <div class="ats-kw-tags">
+            <div className="ats-kw-group">
+              <span className="ats-kw-label matched">Matched:</span>
+              <div className="ats-kw-tags">
                 {result.keywords.matched.map((kw) => (
-                  <span key={kw} class="ats-kw-tag matched">{kw}</span>
+                  <span key={kw} className="ats-kw-tag matched">{kw}</span>
                 ))}
               </div>
             </div>
           )}
           {result.keywords.missing.length > 0 && (
-            <div class="ats-kw-group">
-              <span class="ats-kw-label missing">Missing:</span>
-              <div class="ats-kw-tags">
+            <div className="ats-kw-group">
+              <span className="ats-kw-label missing">Missing:</span>
+              <div className="ats-kw-tags">
                 {result.keywords.missing.map((kw) => (
-                  <span key={kw} class="ats-kw-tag missing">{kw}</span>
+                  <span key={kw} className="ats-kw-tag missing">{kw}</span>
                 ))}
               </div>
             </div>

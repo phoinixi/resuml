@@ -55,7 +55,7 @@ export function handleCommandError(error: unknown, command: string, debug: boole
   }
 
   // Only exit if not in a test environment where exit might disrupt the test runner
-  if (process.env.NODE_ENV !== 'test') {
+    if (process.env['NODE_ENV'] !== 'test') {
     process.exit(1);
   }
 }

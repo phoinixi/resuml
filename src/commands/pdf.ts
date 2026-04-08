@@ -16,29 +16,28 @@ interface PdfCommandOptions {
   debug?: boolean;
 }
 
-interface PuppeteerBrowser {
-  newPage(): Promise<PuppeteerPage>;
+interface PlaywrightBrowser {
+  newPage(): Promise<PlaywrightPage>;
   close(): Promise<void>;
 }
 
-interface PuppeteerPage {
+interface PlaywrightPage {
   setContent(html: string, options?: { waitUntil?: string }): Promise<void>;
   pdf(options?: Record<string, unknown>): Promise<Buffer>;
 }
 
-interface PuppeteerModule {
-  launch(options?: Record<string, unknown>): Promise<PuppeteerBrowser>;
+interface PlaywrightBrowserType {
+  launch(options?: Record<string, unknown>): Promise<PlaywrightBrowser>;
 }
 
-async function loadPuppeteer(): Promise<PuppeteerModule> {
+async function loadPlaywright(): Promise<PlaywrightBrowserType> {
   try {
-    const puppeteer = await import('puppeteer');
-    return puppeteer.default || puppeteer;
+    const { chromium } = await import('playwright');
+    return chromium;
   } catch {
     throw new Error(
-      `Puppeteer is required for PDF export but is not installed.\n` +
-        `Install it with: ${chalk.cyan('npm install puppeteer')}\n` +
-        `Or for a smaller download: ${chalk.cyan('npm install puppeteer-core')}`
+      `Playwright is required for PDF export but is not installed.\n` +
+        `Install it with: ${chalk.cyan('npm install playwright')}`
     );
   }
 }
@@ -48,13 +47,13 @@ function parseMargin(margin?: string): Record<string, string> {
   if (!margin) return defaultMargin;
 
   const parts = margin.split(',').map((s) => s.trim());
-  if (parts.length === 1) {
+  if (parts.length === 1 && parts[0]) {
     return { top: parts[0], right: parts[0], bottom: parts[0], left: parts[0] };
   }
-  if (parts.length === 2) {
+  if (parts.length === 2 && parts[0] && parts[1]) {
     return { top: parts[0], right: parts[1], bottom: parts[0], left: parts[1] };
   }
-  if (parts.length === 4) {
+  if (parts.length === 4 && parts[0] && parts[1] && parts[2] && parts[3]) {
     return { top: parts[0], right: parts[1], bottom: parts[2], left: parts[3] };
   }
   return defaultMargin;
@@ -84,9 +83,9 @@ export async function pdfAction(options: PdfCommandOptions): Promise<void> {
       locale: options.language,
     });
 
-    // Load puppeteer
-    console.log(chalk.blue('Loading Puppeteer...'));
-    const puppeteer = await loadPuppeteer();
+    // Load playwright
+    console.log(chalk.blue('Loading Playwright...'));
+    const chromium = await loadPlaywright();
 
     // Convert HTML to PDF
     const outputPath = options.output || 'resume.pdf';
@@ -95,10 +94,10 @@ export async function pdfAction(options: PdfCommandOptions): Promise<void> {
 
     console.log(chalk.blue(`Generating PDF (${format} format)...`));
 
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await chromium.launch({ headless: true });
     try {
       const page = await browser.newPage();
-      await page.setContent(htmlOutput, { waitUntil: 'networkidle0' });
+      await page.setContent(htmlOutput, { waitUntil: 'networkidle' });
 
       const pdfBuffer = await page.pdf({
         format,

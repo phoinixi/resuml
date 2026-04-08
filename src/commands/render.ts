@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'node:path';
-import puppeteer from 'puppeteer';
 import { processResumeData } from '../core';
 import { loadResumeFiles } from '../utils/loadResume';
 import { loadTheme } from '../utils/themeLoader';
@@ -45,12 +44,10 @@ export async function renderAction(options: RenderCommandOptions): Promise<void>
 
     if (options.format === 'pdf') {
       console.log(chalk.blue(`Generating PDF output at ${outputPath}...`));
-      const browser = await puppeteer.launch({
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      });
+      const { chromium } = await import('playwright');
+      const browser = await chromium.launch();
       const page = await browser.newPage();
-      await page.setContent(htmlOutput, { waitUntil: 'networkidle0' });
+      await page.setContent(htmlOutput, { waitUntil: 'networkidle' });
       const pdfBuffer = await page.pdf({
         path: outputPath,
         format: 'A4',

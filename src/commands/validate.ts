@@ -26,8 +26,12 @@ function formatAtsReport(result: AtsResult, debug: boolean, chalk: typeof import
   // Group checks by category
   const categories: Record<string, AtsCheck[]> = {};
   for (const check of result.checks) {
-    if (!categories[check.category]) categories[check.category] = [];
-    categories[check.category].push(check);
+    const list = categories[check.category];
+    if (!list) {
+      categories[check.category] = [check];
+    } else {
+      list.push(check);
+    }
   }
 
   const categoryLabels: Record<string, string> = {

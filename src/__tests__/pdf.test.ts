@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { main } from '../cli';
 
 // Set NODE_ENV to test
-process.env.NODE_ENV = 'test';
+process.env['NODE_ENV'] = 'test';
 
 // Mock chalk
 vi.mock('chalk', () => ({
@@ -16,13 +16,12 @@ vi.mock('chalk', () => ({
   },
 }));
 
-// Mock puppeteer — return an object with a launch that fails,
-// so render.ts's static import succeeds but pdf.ts's loadPuppeteer
-// will trigger handleCommandError when launch throws
-vi.mock('puppeteer', () => ({
+// Mock playwright — return an object whose chromium.launch fails,
+// so pdf.ts's loadPlaywright will trigger handleCommandError when launch throws
+vi.mock('playwright', () => ({
   __esModule: true,
-  default: {
-    launch: vi.fn().mockRejectedValue(new Error('Puppeteer browser launch failed')),
+  chromium: {
+    launch: vi.fn().mockRejectedValue(new Error('Playwright browser launch failed')),
   },
 }));
 
@@ -122,7 +121,7 @@ describe('pdf command', () => {
     ).rejects.toThrow('--theme option is required');
   });
 
-  it('should show graceful error when puppeteer fails', async () => {
+  it('should show graceful error when playwright fails', async () => {
     await main([
       'node',
       'resuml',
@@ -133,9 +132,9 @@ describe('pdf command', () => {
       'test-theme',
     ]);
 
-    // Should get an error about puppeteer failing
+    // Should get an error about playwright failing
     expect(console.error).toHaveBeenCalledWith(
-      expect.stringContaining('Puppeteer browser launch failed')
+      expect.stringContaining('Playwright browser launch failed')
     );
   });
 
@@ -153,7 +152,7 @@ describe('pdf command', () => {
       'Letter',
     ]);
 
-    // It'll error on puppeteer, but the options parsing succeeded
+    // It'll error on playwright, but the options parsing succeeded
     expect(console.error).toHaveBeenCalled();
     expect(mockExit).not.toHaveBeenCalled();
   });
