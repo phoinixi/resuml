@@ -12,7 +12,7 @@ import { usePersist } from '../hooks/usePersist';
 import { DEFAULT_YAML } from '../defaults';
 
 export function App() {
-  const [mode, setMode] = useState<'yaml' | 'form'>('yaml');
+  const [mode, setMode] = useState<'yaml' | 'form'>('form');
   const [showAts, setShowAts] = useState(false);
   const [showThemePicker, setShowThemePicker] = useState(false);
   const [themeName, setThemeName] = useState('stackoverflow');

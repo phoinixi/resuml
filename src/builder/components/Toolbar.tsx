@@ -68,13 +68,13 @@ export function Toolbar({
         <span className="toolbar-brand">resuml</span>
         <div className="toolbar-mode-toggle">
           <button
+            className={`toolbar-mode-btn ${mode === 'form' ? 'active' : ''}`}
+            onClick={() => { onModeChange('form'); }}
+          >Visual</button>
+          <button
             className={`toolbar-mode-btn ${mode === 'yaml' ? 'active' : ''}`}
             onClick={() => { onModeChange('yaml'); }}
           >YAML</button>
-          <button
-            className={`toolbar-mode-btn ${mode === 'form' ? 'active' : ''}`}
-            onClick={() => { onModeChange('form'); }}
-          >Form</button>
         </div>
       </div>
 
