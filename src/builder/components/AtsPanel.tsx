@@ -26,6 +26,11 @@ function ratingLabel(rating: string): string {
 }
 
 export function AtsPanel({ result, onClose }: AtsPanelProps) {
+  const categoryGroups = useMemo(
+    () => result ? groupChecksByCategory(result.checks) : {},
+    [result],
+  );
+
   if (!result) {
     return (
       <div className="ats-panel">
@@ -39,11 +44,6 @@ export function AtsPanel({ result, onClose }: AtsPanelProps) {
       </div>
     );
   }
-
-  const categoryGroups = useMemo(
-    () => groupChecksByCategory(result.checks),
-    [result.checks],
-  );
 
   return (
     <div className="ats-panel">
