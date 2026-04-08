@@ -68,14 +68,20 @@ export async function ensureInstalled(themeName: string): Promise<string> {
 }
 
 export function loadRenderer(pkgDir: string): (resume: Record<string, unknown>) => string | Promise<string> {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment
-  const mod = require(pkgDir);
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  if (typeof mod.render !== 'function') {
+  let mod: Record<string, unknown>;
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment
+    mod = require(pkgDir) as Record<string, unknown>;
+  } catch (_err) {
+    const name = path.basename(pkgDir);
+    throw new Error(
+      `Could not load theme "${name}". It may require a build step not included in the published package.`,
+    );
+  }
+  if (typeof mod['render'] !== 'function') {
     throw new Error(`Theme at "${pkgDir}" does not export a render function`);
   }
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return
-  return mod.render as (resume: Record<string, unknown>) => string | Promise<string>;
+  return mod['render'] as (resume: Record<string, unknown>) => string | Promise<string>;
 }
 
 export async function renderWithTheme(themeName: string, resume: Record<string, unknown>): Promise<string> {

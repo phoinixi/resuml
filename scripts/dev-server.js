@@ -94,7 +94,16 @@ async function renderWithTheme(themeName, resume) {
     if (key.startsWith(pkgDir)) delete require.cache[key];
   }
 
-  const mod = require(pkgDir);
+  let mod;
+  try {
+    mod = require(pkgDir);
+  } catch (err) {
+    const pkg = toPackageName(themeName);
+    const hint = err.code === 'MODULE_NOT_FOUND'
+      ? `. This theme may require a build step that isn't included in the published package.`
+      : '';
+    throw new Error(`Could not load theme "${pkg}"${hint}`);
+  }
   if (typeof mod.render !== 'function') {
     throw new Error(`Theme "${toPackageName(themeName)}" does not export a render function`);
   }
