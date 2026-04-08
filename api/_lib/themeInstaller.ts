@@ -105,7 +105,9 @@ export function loadRenderer(pkgDir: string): (resume: Record<string, unknown>) 
 }
 
 /**
- * Pad resume with empty defaults so themes don't crash on missing fields.
+ * Pad resume with safe defaults so themes don't crash on missing fields.
+ * Only pad basics/location (scalar fields). Do NOT inject empty arrays —
+ * themes check `arr[0].prop` which crashes when arr is [] but works when arr is undefined.
  */
 function padResume(r: Record<string, unknown>): Record<string, unknown> {
   const basics = (r['basics'] ?? {}) as Record<string, unknown>;
@@ -116,20 +118,7 @@ function padResume(r: Record<string, unknown>): Record<string, unknown> {
       name: '', label: '', image: '', email: '', phone: '', url: '', summary: '',
       ...basics,
       location: { address: '', postalCode: '', city: '', countryCode: '', region: '', ...location },
-      profiles: basics['profiles'] ?? [],
     },
-    work: r['work'] ?? [],
-    volunteer: r['volunteer'] ?? [],
-    education: r['education'] ?? [],
-    awards: r['awards'] ?? [],
-    certificates: r['certificates'] ?? [],
-    publications: r['publications'] ?? [],
-    skills: r['skills'] ?? [],
-    languages: r['languages'] ?? [],
-    interests: r['interests'] ?? [],
-    references: r['references'] ?? [],
-    projects: r['projects'] ?? [],
-    meta: r['meta'] ?? {},
   };
 }
 

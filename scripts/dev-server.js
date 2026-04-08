@@ -110,44 +110,22 @@ async function ensureThemeInstalled(theme) {
 }
 
 /**
- * Pad resume with empty defaults so themes don't crash on missing fields.
- * Themes blindly access resume.basics.location.city, work[0].position, etc.
+ * Pad resume with safe defaults so themes don't crash on missing fields.
+ * Only pad basics/location (scalar fields). Do NOT inject empty arrays —
+ * themes check `arr[0].prop` which crashes when arr is [] but works when arr is undefined
+ * because themes guard with `if (resumeObject.section)` which is falsy for undefined.
  */
 function padResume(r) {
-  const safe = {
-    basics: {
-      name: '', label: '', image: '', email: '', phone: '', url: '', summary: '',
-      location: { address: '', postalCode: '', city: '', countryCode: '', region: '' },
-      profiles: [],
-      ...r.basics,
-    },
-    work: r.work ?? [],
-    volunteer: r.volunteer ?? [],
-    education: r.education ?? [],
-    awards: r.awards ?? [],
-    certificates: r.certificates ?? [],
-    publications: r.publications ?? [],
-    skills: r.skills ?? [],
-    languages: r.languages ?? [],
-    interests: r.interests ?? [],
-    references: r.references ?? [],
-    projects: r.projects ?? [],
-    meta: r.meta ?? {},
-    ...r,
-  };
-  // Ensure basics nested objects survive even if user provided partial basics
+  const basics = r.basics || {};
+  const location = basics.location || {};
+  const safe = { ...r };
   safe.basics = {
     name: '', label: '', image: '', email: '', phone: '', url: '', summary: '',
-    location: { address: '', postalCode: '', city: '', countryCode: '', region: '' },
-    profiles: [],
-    ...r.basics,
+    ...basics,
+    location: { address: '', postalCode: '', city: '', countryCode: '', region: '', ...location },
   };
-  if (r.basics?.location && typeof r.basics.location === 'object') {
-    safe.basics.location = {
-      address: '', postalCode: '', city: '', countryCode: '', region: '',
-      ...r.basics.location,
-    };
-  }
+  // Ensure profiles is at least undefined (not missing key) so basics.profiles works
+  if (!safe.basics.profiles) safe.basics.profiles = basics.profiles;
   return safe;
 }
 
