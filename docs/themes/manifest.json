@@ -293,7 +293,7 @@
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 267754,
+    "fileSize": 221485,
     "cssSize": 6626
   },
   {
@@ -381,7 +381,7 @@
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 266680,
+    "fileSize": 220411,
     "cssSize": 6365
   },
   {
@@ -403,7 +403,7 @@
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 241661,
+    "fileSize": 195392,
     "cssSize": 6599
   },
   {
@@ -447,7 +447,7 @@
     "browserCompatible": true,
     "hasSnapshot": false,
     "hasCss": false,
-    "fileSize": 350825,
+    "fileSize": 304560,
     "cssSize": 0
   },
   {
@@ -634,7 +634,7 @@
     "browserCompatible": true,
     "hasSnapshot": false,
     "hasCss": false,
-    "fileSize": 295279,
+    "fileSize": 249020,
     "cssSize": 0
   },
   {
@@ -1096,7 +1096,7 @@
     "browserCompatible": true,
     "hasSnapshot": false,
     "hasCss": false,
-    "fileSize": 215140,
+    "fileSize": 168945,
     "cssSize": 0
   },
   {
@@ -1140,7 +1140,7 @@
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 269789,
+    "fileSize": 223520,
     "cssSize": 7684
   },
   {
@@ -1690,7 +1690,7 @@
     "browserCompatible": true,
     "hasSnapshot": false,
     "hasCss": false,
-    "fileSize": 297037,
+    "fileSize": 250775,
     "cssSize": 0
   },
   {
@@ -1756,7 +1756,7 @@
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": false,
-    "fileSize": 255960,
+    "fileSize": 209777,
     "cssSize": 0
   },
   {
@@ -2075,7 +2075,7 @@
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 325151,
+    "fileSize": 278889,
     "cssSize": 6365
   },
   {
@@ -2240,7 +2240,7 @@
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": false,
-    "fileSize": 253056,
+    "fileSize": 206873,
     "cssSize": 0
   },
   {
@@ -2262,7 +2262,7 @@
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 287591,
+    "fileSize": 241322,
     "cssSize": 7155
   },
   {
@@ -2405,7 +2405,7 @@
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 326082,
+    "fileSize": 279820,
     "cssSize": 6365
   },
   {
@@ -2603,7 +2603,7 @@
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 242703,
+    "fileSize": 196434,
     "cssSize": 6402
   },
   {
@@ -2625,7 +2625,7 @@
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 267511,
+    "fileSize": 221242,
     "cssSize": 6365
   },
   {
@@ -2647,7 +2647,7 @@
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 169072,
+    "fileSize": 122889,
     "cssSize": 1962
   },
   {
@@ -2823,7 +2823,7 @@
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": false,
-    "fileSize": 255964,
+    "fileSize": 209781,
     "cssSize": 0
   },
   {
@@ -3010,7 +3010,7 @@
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": false,
-    "fileSize": 253859,
+    "fileSize": 207676,
     "cssSize": 0
   },
   {
@@ -3450,7 +3450,7 @@
     "browserCompatible": true,
     "hasSnapshot": false,
     "hasCss": false,
-    "fileSize": 300724,
+    "fileSize": 254462,
     "cssSize": 0
   },
   {
