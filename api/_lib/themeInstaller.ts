@@ -12,25 +12,6 @@ const SAFE_NAME = /^[a-zA-Z0-9._-]+$/;
 
 const CACHE_DIR = path.join(os.tmpdir(), 'resuml-themes');
 
-/**
- * Create a node_modules symlink at the cache root pointing to the Lambda's own
- * node_modules. This lets themes that externalize react/react-dom/etc. resolve
- * them without a separate npm install — Node.js walks up from any theme dir
- * under CACHE_DIR and finds the symlink at CACHE_DIR/node_modules.
- */
-function linkLambdaNodeModules(): void {
-  const nmLink = path.join(CACHE_DIR, 'node_modules');
-  if (fs.existsSync(nmLink)) return;
-  try {
-    // require.resolve('react') gives e.g. /var/task/node_modules/react/index.js
-    // two path.dirname calls → /var/task/node_modules
-    const reactEntry = require.resolve('react');
-    const projectNm = path.dirname(path.dirname(reactEntry));
-    fs.mkdirSync(CACHE_DIR, { recursive: true });
-    fs.symlinkSync(projectNm, nmLink);
-  } catch { /* non-fatal: react not resolvable (local dev) */ }
-}
-
 export function toPackageName(theme: string): string {
   if (!SAFE_NAME.test(theme)) {
     throw new Error('Invalid theme name');
@@ -90,39 +71,34 @@ export async function ensureInstalled(themeName: string): Promise<string> {
   const pkgName = toPackageName(themeName);
   const pkgDir = path.join(CACHE_DIR, pkgName);
 
-  // Ensure the cache-level node_modules symlink exists (once per Lambda instance)
-  linkLambdaNodeModules();
+  // Always fetch metadata first so we can validate the cached version.
+  // This one small request (registry metadata, ~5KB) prevents stale-cache bugs
+  // where an older cached package version has a different layout than the latest.
+  const metaRes = await fetch(`https://registry.npmjs.org/${pkgName}/latest`);
+  if (!metaRes.ok) {
+    throw new Error(`Theme "${pkgName}" not found on npm (${String(metaRes.status)})`);
+  }
+  const meta = (await metaRes.json()) as { dist: { tarball: string }; version: string };
+  const latestVersion = meta.version;
+  const tarballUrl = meta.dist.tarball;
 
-  if (fs.existsSync(path.join(pkgDir, 'package.json'))) {
-    // Verify the main entry exists AND is loadable; if not (e.g. broken prior install
-    // or deps missing), clean up so we re-install fresh.
-    const cachedPkg = JSON.parse(fs.readFileSync(path.join(pkgDir, 'package.json'), 'utf8')) as { main?: string };
+  // Cache hit: exists, same version, main entry file present → use it
+  const cachedPkgPath = path.join(pkgDir, 'package.json');
+  if (fs.existsSync(cachedPkgPath)) {
+    const cachedPkg = JSON.parse(fs.readFileSync(cachedPkgPath, 'utf8')) as { main?: string; version?: string };
     const cachedMain = path.join(pkgDir, cachedPkg.main ?? 'index.js');
-    if (fs.existsSync(cachedMain)) {
-      try {
-        require(pkgDir); // verify it's actually loadable, not just extracted
-        // Touch the dir so mtime stays current (used for LRU eviction)
-        const now = new Date();
-        try { fs.utimesSync(pkgDir, now, now); } catch { /* ignore */ }
-        return pkgDir;
-      } catch {
-        // Not loadable (e.g. missing deps) — fall through to re-install
-      }
+    if (cachedPkg.version === latestVersion && fs.existsSync(cachedMain)) {
+      // Touch mtime so LRU stays accurate
+      const now = new Date();
+      try { fs.utimesSync(pkgDir, now, now); } catch { /* ignore */ }
+      return pkgDir;
     }
-    // Broken/stale install — clean up and re-install
+    // Wrong version or broken install — evict
     fs.rmSync(pkgDir, { recursive: true, force: true });
   }
 
   // Evict oldest cached themes before installing a new one
   evictOldThemes();
-
-  // Fetch tarball URL from the npm registry
-  const metaRes = await fetch(`https://registry.npmjs.org/${pkgName}/latest`);
-  if (!metaRes.ok) {
-    throw new Error(`Theme "${pkgName}" not found on npm (${String(metaRes.status)})`);
-  }
-  const meta = (await metaRes.json()) as { dist: { tarball: string } };
-  const tarballUrl = meta.dist.tarball;
 
   // Download tarball
   const tarRes = await fetch(tarballUrl);
@@ -142,11 +118,9 @@ export async function ensureInstalled(themeName: string): Promise<string> {
   const pkgJson = JSON.parse(fs.readFileSync(path.join(pkgDir, 'package.json'), 'utf8')) as {
     main?: string;
     dependencies?: Record<string, string>;
-    scripts?: Record<string, string>;
   };
 
-  // Early check: if the main entry doesn't exist in the tarball, the theme needs a
-  // build step. Fail immediately — before wasting time/disk on npm install.
+  // Fail fast if the theme's main entry wasn't shipped (needs a build step).
   const mainEntry = pkgJson.main ?? 'index.js';
   const mainPath = path.join(pkgDir, mainEntry);
   if (!fs.existsSync(mainPath)) {
@@ -157,20 +131,15 @@ export async function ensureInstalled(themeName: string): Promise<string> {
     );
   }
 
-  // Try loading the theme without installing node_modules first.
-  // Many themes ship a self-contained bundle — if require() succeeds, skip npm install entirely.
-  let needsDeps = false;
-  if (pkgJson.dependencies && Object.keys(pkgJson.dependencies).length > 0) {
-    try {
-      require(pkgDir);
-      // Loaded fine without deps — theme is self-contained
-    } catch {
-      needsDeps = true;
-    }
-  }
-
-  // Install prod dependencies only if the theme couldn't load without them
-  if (needsDeps) {
+  // Install prod dependencies if the theme lists any.
+  //
+  // NOTE: We do NOT try to require() the theme first and skip install if it works.
+  // Some themes (e.g. jsonresume-theme-react) use a lazy-loading wrapper index.cjs
+  // that defers require('dist/index.cjs') until render() is called. The top-level
+  // require() succeeds, but render() later fails because react is not found.
+  // Always installing prod deps is the only safe approach.
+  const hasDeps = pkgJson.dependencies !== undefined && Object.keys(pkgJson.dependencies).length > 0;
+  if (hasDeps) {
     try {
       execFileSync('npm', ['install', '--omit=dev', '--ignore-scripts', '--legacy-peer-deps', '--cache', '/tmp/.npm-cache', '--no-audit', '--no-fund'], {
         timeout: 55_000,
@@ -179,7 +148,7 @@ export async function ensureInstalled(themeName: string): Promise<string> {
         env: { ...process.env, HOME: '/tmp', npm_config_cache: '/tmp/.npm-cache' },
       });
     } catch (installErr) {
-      // Clean up on install failure so the next request retries instead of finding a broken install
+      // Clean up on failure so the next request retries from scratch
       fs.rmSync(pkgDir, { recursive: true, force: true });
       const msg = installErr instanceof Error ? installErr.message : String(installErr);
       const isNoSpace = msg.includes('ENOSPC') || msg.includes('no space left');
