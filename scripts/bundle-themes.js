@@ -15,10 +15,10 @@
  */
 
 import { build } from 'esbuild';
-import { resolve, dirname } from 'path';
+import { resolve, dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
-import { mkdirSync, writeFileSync, existsSync, readFileSync } from 'fs';
+import { mkdirSync, writeFileSync, existsSync, readFileSync, readdirSync } from 'fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const THEMES_DIR = resolve(__dirname, '../docs/themes');
@@ -81,7 +81,90 @@ async function discoverThemes() {
   return themes;
 }
 
-async function bundleTheme(shortName, packageName) {
+/** Recursively collect text files from a theme directory for embedding in the fs shim. */
+function collectThemeFiles(themeDir) {
+  const files = {};
+  const dirs = {};
+
+  function walk(dir, relPrefix = '') {
+    let entries;
+    try { entries = readdirSync(dir, { withFileTypes: true }); }
+    catch { return; }
+
+    const childNames = [];
+    for (const entry of entries) {
+      if (entry.name === 'node_modules' || entry.name.startsWith('.')) continue;
+      childNames.push(entry.name);
+      const full = join(dir, entry.name);
+      const rel = relPrefix ? `${relPrefix}/${entry.name}` : entry.name;
+
+      if (entry.isDirectory()) {
+        walk(full, rel);
+      } else {
+        const ext = (entry.name.split('.').pop() || '').toLowerCase();
+        if (['css', 'hbs', 'html', 'json', 'txt', 'handlebars', 'mustache'].includes(ext)) {
+          try { files[rel] = readFileSync(full, 'utf-8'); }
+          catch { /* skip unreadable */ }
+        }
+      }
+    }
+    dirs[relPrefix || '.'] = childNames;
+  }
+
+  walk(themeDir);
+  return { files, dirs };
+}
+
+/** Generate an fs shim that embeds the theme's files so readFileSync/readdirSync work at runtime. */
+function generateThemeFsShim(themeFiles) {
+  const { files, dirs } = themeFiles;
+  return `
+const __files = ${JSON.stringify(files)};
+const __dirs = ${JSON.stringify(dirs)};
+
+function matchFile(path) {
+  const clean = path.replace(/\\/+/g, '/').replace(/^\\/+/, '');
+  if (__files[clean] !== undefined) return __files[clean];
+  for (const key of Object.keys(__files)) {
+    if (clean.endsWith('/' + key) || clean.endsWith(key)) return __files[key];
+  }
+  return undefined;
+}
+
+function matchDir(path) {
+  const clean = path.replace(/\\/+/g, '/').replace(/^\\/+/, '');
+  if (__dirs[clean] !== undefined) return __dirs[clean];
+  for (const key of Object.keys(__dirs)) {
+    if (clean.endsWith('/' + key) || clean.endsWith(key)) return __dirs[key];
+  }
+  return undefined;
+}
+
+export const readFileSync = (path, encoding) => {
+  const r = matchFile(path);
+  return r !== undefined ? r : '';
+};
+
+export const readdirSync = (path) => {
+  const r = matchDir(path);
+  return r !== undefined ? r : [];
+};
+
+export const existsSync = (path) => {
+  return matchFile(path) !== undefined || matchDir(path) !== undefined;
+};
+
+export default { readFileSync, readdirSync, existsSync };
+`;
+}
+
+async function bundleTheme(shortName, packageName, shimsDir) {
+  // Generate a theme-specific fs shim with embedded file contents so that
+  // readFileSync / readdirSync return real CSS, templates, and partials at runtime.
+  const themeDir = resolve(__dirname, `../node_modules/${packageName}`);
+  const themeFiles = collectThemeFiles(themeDir);
+  writeFileSync(resolve(shimsDir, 'fs.js'), generateThemeFsShim(themeFiles));
+
   const entryContent = `
     import * as themeNs from '${packageName}';
     const _t = themeNs.default ?? themeNs;
@@ -157,11 +240,7 @@ async function main() {
     export const extname = (p) => { const m = p.match(/\\.[^.]+$/); return m ? m[0] : ''; };
     export default { join, resolve, dirname, basename, extname };
   `);
-  writeFileSync(resolve(shimsDir, 'fs.js'), `
-    export const readFileSync = () => '';
-    export const existsSync = () => false;
-    export default { readFileSync, existsSync };
-  `);
+  // fs shim is generated per-theme in bundleTheme() with embedded file contents
   writeFileSync(resolve(shimsDir, 'url.js'), `
     export const URL = globalThis.URL;
     export const URLSearchParams = globalThis.URLSearchParams;
@@ -236,7 +315,7 @@ async function main() {
     } catch {}
 
     // Bundle it
-    const success = await bundleTheme(theme.name, theme.packageName);
+    const success = await bundleTheme(theme.name, theme.packageName, shimsDir);
 
     if (success) {
       const outFile = resolve(THEMES_DIR, `${theme.name}.js`);

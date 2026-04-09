@@ -1,10 +1,16 @@
 const STORAGE_KEY_YAML = 'resuml:yaml';
 const STORAGE_KEY_THEME = 'resuml:theme';
 
+/** Strip stray HTML tags (e.g. <p>, </p>) that may have leaked into YAML values. */
+function stripHtmlTags(yaml: string): string {
+  return yaml.replace(/<\/?(?:p|br|div|span)(?:\s[^>]*)?\/?>/gi, '');
+}
+
 export function loadFromStorage(): { yaml: string | null; theme: string | null } {
   try {
+    const raw = localStorage.getItem(STORAGE_KEY_YAML);
     return {
-      yaml: localStorage.getItem(STORAGE_KEY_YAML),
+      yaml: raw ? stripHtmlTags(raw) : null,
       theme: localStorage.getItem(STORAGE_KEY_THEME),
     };
   } catch {
@@ -29,7 +35,7 @@ export async function loadFromUrlHash(): Promise<{ yaml: string; theme: string }
     const result = decompress(hash);
     if (result) {
       history.replaceState(null, '', window.location.pathname);
-      return result;
+      return { ...result, yaml: stripHtmlTags(result.yaml) };
     }
   } catch {
     // Invalid hash
