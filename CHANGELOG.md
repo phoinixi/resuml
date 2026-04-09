@@ -1,3 +1,15 @@
+# [1.6.0](https://github.com/phoinixi/resuml/compare/v1.5.2...v1.6.0) (2026-04-09)
+
+
+### Bug Fixes
+
+* resolve all lint errors in new theme worker files ([2220296](https://github.com/phoinixi/resuml/commit/22202968f8f7a6eb4b1e62a6057cb7000c715d6b))
+
+
+### Features
+
+* web worker rendering, snapshots, and CSS extraction ([e8969f8](https://github.com/phoinixi/resuml/commit/e8969f8735617a0e06b79a0349a7e163b3f14d92))
+
 ## [1.5.2](https://github.com/phoinixi/resuml/compare/v1.5.1...v1.5.2) (2026-04-09)
 
 
