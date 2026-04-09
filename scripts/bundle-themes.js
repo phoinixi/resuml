@@ -104,6 +104,11 @@ async function bundleTheme(shortName, packageName) {
       define: {
         'process.env.NODE_ENV': '"production"',
         'global': 'globalThis',
+        '__dirname': '"/"',
+        '__filename': '"/index.js"',
+        'process.browser': 'true',
+        'process.platform': '"browser"',
+        'process.version': '"v18.0.0"',
       },
       // Polyfill Node.js built-ins as no-ops for browser
       alias: {

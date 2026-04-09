@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { X } from 'lucide-react';
-import { fetchThemes } from '../services/api';
-import type { BrowserTheme } from '../services/api';
+import { fetchThemes, isBundledTheme } from '../services/api';
+import type { NpmTheme } from '../services/api';
 
 interface ThemePickerProps {
   currentTheme: string;
@@ -11,7 +11,7 @@ interface ThemePickerProps {
 
 export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProps) {
   const [search, setSearch] = useState('');
-  const [themes, setThemes] = useState<BrowserTheme[]>([]);
+  const [themes, setThemes] = useState<NpmTheme[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -76,7 +76,10 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
               className={`theme-picker-card ${theme.name === currentTheme ? 'active' : ''}`}
               onClick={() => { onSelect(theme.name); }}
             >
-              <div className="theme-picker-name">{theme.displayName}</div>
+              <div className="theme-picker-name">
+                {theme.displayName}
+                {isBundledTheme(theme.name) && <span className="theme-badge-instant" title="Instant — renders in browser">⚡</span>}
+              </div>
               {theme.description && (
                 <div className="theme-picker-desc">{theme.description}</div>
               )}
@@ -84,7 +87,7 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
             </button>
           ))}
           {!loading && !error && filtered.length === 0 && (
-            <div className="theme-picker-empty">No themes matching "{search}"</div>
+            <div className="theme-picker-empty">No themes matching &quot;{search}&quot;</div>
           )}
         </div>
       </div>
