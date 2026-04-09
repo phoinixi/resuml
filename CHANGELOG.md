@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/phoinixi/resuml/compare/v1.4.0...v1.4.1) (2026-04-09)
+
+
+### Bug Fixes
+
+* add repository url to package.json, fix bin entry for npm provenance ([bdc9d2e](https://github.com/phoinixi/resuml/commit/bdc9d2e5cff3f72c35661bed31490596ab0ba450))
+
 # [1.4.0](https://github.com/phoinixi/resuml/compare/v1.3.1...v1.4.0) (2026-04-09)
 
 
