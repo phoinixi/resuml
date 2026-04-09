@@ -92,16 +92,22 @@ export async function ensureInstalled(themeName: string): Promise<string> {
   linkLambdaNodeModules();
 
   if (fs.existsSync(path.join(pkgDir, 'package.json'))) {
-    // Verify the main entry is loadable; if not (broken prior install), re-install
+    // Verify the main entry exists AND is loadable; if not (e.g. broken prior install
+    // or deps missing), clean up so we re-install fresh.
     const cachedPkg = JSON.parse(fs.readFileSync(path.join(pkgDir, 'package.json'), 'utf8')) as { main?: string };
     const cachedMain = path.join(pkgDir, cachedPkg.main ?? 'index.js');
     if (fs.existsSync(cachedMain)) {
-      // Touch the dir so mtime stays current (used for LRU eviction)
-      const now = new Date();
-      try { fs.utimesSync(pkgDir, now, now); } catch { /* ignore */ }
-      return pkgDir;
+      try {
+        require(pkgDir); // verify it's actually loadable, not just extracted
+        // Touch the dir so mtime stays current (used for LRU eviction)
+        const now = new Date();
+        try { fs.utimesSync(pkgDir, now, now); } catch { /* ignore */ }
+        return pkgDir;
+      } catch {
+        // Not loadable (e.g. missing deps) — fall through to re-install
+      }
     }
-    // Broken install — clean up and re-install
+    // Broken/stale install — clean up and re-install
     fs.rmSync(pkgDir, { recursive: true, force: true });
   }
 
@@ -195,8 +201,9 @@ export function loadRenderer(pkgDir: string): (resume: Record<string, unknown>) 
     mod = require(pkgDir) as Record<string, unknown>;
   } catch (_err) {
     const name = path.basename(pkgDir);
+    const reason = _err instanceof Error ? _err.message : String(_err);
     throw new Error(
-      `Could not load theme "${name}". It may require a build step not included in the published package.`,
+      `Could not load theme "${name}": ${reason}`,
     );
   }
   if (typeof mod['render'] !== 'function') {
