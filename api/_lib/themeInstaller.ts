@@ -101,34 +101,47 @@ export async function ensureInstalled(themeName: string): Promise<string> {
   await tarExtract({ file: tarPath, cwd: pkgDir, strip: 1 });
   fs.unlinkSync(tarPath);
 
-  // Install prod dependencies (ignore lifecycle scripts for security)
+  // Read package.json from extracted tarball
   const pkgJson = JSON.parse(fs.readFileSync(path.join(pkgDir, 'package.json'), 'utf8')) as {
     main?: string;
     dependencies?: Record<string, string>;
     scripts?: Record<string, string>;
   };
-  if (pkgJson.dependencies && Object.keys(pkgJson.dependencies).length > 0) {
-    execFileSync('npm', ['install', '--omit=dev', '--ignore-scripts', '--legacy-peer-deps', '--cache', '/tmp/.npm-cache', '--no-audit', '--no-fund'], {
-      timeout: 60_000,
-      stdio: 'pipe',
-      cwd: pkgDir,
-      env: { ...process.env, HOME: '/tmp', npm_config_cache: '/tmp/.npm-cache' },
-    });
-    // Clean download cache to free /tmp space — installed node_modules stay
-    cleanNpmCache();
-  }
 
-  // Check if the main entry point exists; themes that only ship source and need a
-  // build step are not supported in the online editor (build takes too long in Lambda).
+  // Early check: if the main entry doesn't exist in the tarball, the theme needs a
+  // build step. Fail immediately — before wasting time/disk on npm install.
   const mainEntry = pkgJson.main ?? 'index.js';
   const mainPath = path.join(pkgDir, mainEntry);
   if (!fs.existsSync(mainPath)) {
-    // Clean up so the next request doesn't find a broken install
     fs.rmSync(pkgDir, { recursive: true, force: true });
     throw new Error(
       `Theme "${pkgName}" does not include a pre-built package. ` +
       `Themes that require a compile step are not supported in the online editor.`,
     );
+  }
+
+  // Install prod dependencies (ignore lifecycle scripts for security)
+  if (pkgJson.dependencies && Object.keys(pkgJson.dependencies).length > 0) {
+    try {
+      execFileSync('npm', ['install', '--omit=dev', '--ignore-scripts', '--legacy-peer-deps', '--cache', '/tmp/.npm-cache', '--no-audit', '--no-fund'], {
+        timeout: 55_000,
+        stdio: 'pipe',
+        cwd: pkgDir,
+        env: { ...process.env, HOME: '/tmp', npm_config_cache: '/tmp/.npm-cache' },
+      });
+    } catch (installErr) {
+      // Clean up on install failure so the next request retries instead of finding a broken install
+      fs.rmSync(pkgDir, { recursive: true, force: true });
+      const msg = installErr instanceof Error ? installErr.message : String(installErr);
+      const isNoSpace = msg.includes('ENOSPC') || msg.includes('no space left');
+      throw new Error(
+        isNoSpace
+          ? `Theme "${pkgName}" could not be installed: not enough disk space. Try a lighter theme.`
+          : `Theme "${pkgName}" dependency install failed: ${msg.split('\n')[0]}`,
+      );
+    }
+    // Clean download cache to free /tmp space — installed node_modules stay
+    cleanNpmCache();
   }
 
   return pkgDir;
