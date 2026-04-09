@@ -4,7 +4,8 @@ node_modules/
 .pnp.js
 
 # Builder output
-docs/app/
+docs/app/*
+!docs/app/main.js
 docs/themes/
 
 # Build outputs
