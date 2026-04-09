@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/phoinixi/resuml/compare/v1.7.1...v1.7.2) (2026-04-09)
+
+
+### Bug Fixes
+
+* pad resume before sending to theme worker ([b4b6359](https://github.com/phoinixi/resuml/commit/b4b6359c96da762d2109d3c8d166ef9ea22b92ee))
+
 ## [1.7.1](https://github.com/phoinixi/resuml/compare/v1.7.0...v1.7.1) (2026-04-09)
 
 
