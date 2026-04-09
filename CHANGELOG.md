@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/phoinixi/resuml/compare/v1.5.0...v1.5.1) (2026-04-09)
+
+
+### Bug Fixes
+
+* resolve bundled theme crash + server theme UX ([5a0507a](https://github.com/phoinixi/resuml/commit/5a0507a6687553e953866d793b7829a89ccfddd6))
+
 # [1.5.0](https://github.com/phoinixi/resuml/compare/v1.4.4...v1.5.0) (2026-04-09)
 
 
