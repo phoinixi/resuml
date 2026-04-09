@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/phoinixi/resuml/compare/v1.5.1...v1.5.2) (2026-04-09)
+
+
+### Bug Fixes
+
+* embed theme assets in fs shim + strip HTML from stored data ([49d868b](https://github.com/phoinixi/resuml/commit/49d868bae9ffe6550660fcd2dcbe7a7d06b67133))
+
 ## [1.5.1](https://github.com/phoinixi/resuml/compare/v1.5.0...v1.5.1) (2026-04-09)
 
 
