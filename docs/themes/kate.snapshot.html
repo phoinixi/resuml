@@ -1,0 +1,412 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+        <title>Jane Smith</title>
+        <style>
+            body {
+    background: #EEEEEE;
+    font: 12px "Times New Roman", Times, sans-serif;
+    line-height: 1.4;
+    margin: 40px 0;
+}
+ul {
+    margin-bottom: 0;
+    padding-left: 20px;
+    margin-top: 2px;
+    list-style-type: circle;
+}
+li {
+    margin-bottom: 2px;
+}
+a {
+    text-decoration: underline;
+    color: #000;
+}
+.resume {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 80px 100px;
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 4px #aaa;
+    -webkit-box-shadow: 2px 2px 4px #aaa;
+}
+.largeFont {
+    font: 20px Helvetica;
+}
+.smallFont {
+    font: 12px Verdana;
+}
+.sectionName {
+    width: 100%;
+    vertical-align: top;
+    display: inline-block;
+    font: 120% Helvetica, Arial;
+    text-transform: uppercase;
+}
+.title {
+    font-weight: bold;
+}
+.date {
+    float: right;
+    font-weight: bold;
+}
+.separator {
+    height: 5px;
+}
+.sectionLine {
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #CFCFCF;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.divider {
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+span[toggle='true'] {
+    display: inline-block;
+}
+span[section='true'] {
+    display: block;
+}
+.controls {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    max-width: 300px;
+    width: 300px;
+}
+ul > li > h4 {
+    margin-bottom: 0;
+}
+.clearfix {
+    clear: both;
+}
+/*
+ * Set some print settings. We're going to try and enforce 1" margins.
+*/
+@media print {
+    @page {
+        size: letter portrait;
+        margin: 25mm 25mm 25mm 25mm;
+    }
+    .resume {
+        max-width: 100%;
+        border: 0px;
+        background: #fff;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+    }
+    body,
+    html,
+    .resume {
+        margin: 0px;
+        padding: 0px;
+    }
+    .controls {
+        display: none;
+    }
+}
+
+        </style>
+    </head>
+    <body>
+        <div class="controls">
+            <h3>Display</h3>
+            <hr>
+            <ul style="list-style-type: none;">
+                <li>
+                    <h4>Experience</h4>
+                </li>
+                <li>
+                    <input type="checkbox" onclick="toggle('experience')" checked> Block
+                </li>
+                <li>
+                    <input type="checkbox" onclick="toggle('experience_salary')" checked> Salary
+                </li>
+                <li>
+                    <input type="checkbox" onclick="toggle('experience_hours')" checked> Hours
+                </li>
+                <li>
+                    <input type="checkbox" onclick="toggle('experience_dates')" checked> Dates
+                </li>
+                <li>
+                    <input type="checkbox" onclick="toggle('experience_address')" checked> Address
+                </li>
+                <li>
+                    <input type="checkbox" onclick="toggle('experience_website')" checked> Website
+                </li>
+                <li>
+                    <input type="checkbox" onclick="toggle('experience_supervisor')" checked> Supervisor
+                </li>
+                <li>
+                    <input type="checkbox" onclick="toggle('experience_contact_phone')" checked> Contact Phone
+                </li>
+                <li>
+                    <h4>Volunteer</h4>
+                </li>
+                <li>
+                    <input type="checkbox" onclick="toggle('volunteer')" checked> Block
+                </li>
+                <li>
+                    <h4>Awards</h4>
+                </li>
+                <li>
+                    <input type="checkbox" onclick="toggle('awards')" checked> Block
+                </li>
+                <li>
+                    <h4>Education</h4>
+                </li>
+                <li>
+                    <input type="checkbox" onclick="toggle('education')" checked> Block
+                </li>
+                <li>
+                    <h4>Publications</h4>
+                </li>
+                <li>
+                    <input type="checkbox" onclick="toggle('publications')" checked> Block
+                </li>
+                <li>
+                    <h4>Languages</h4>
+                </li>
+                <li>
+                    <input type="checkbox" onclick="toggle('languages')" checked> Block
+                </li>
+                <li>
+                    <h4>References</h4>
+                </li>
+                <li>
+                    <input type="checkbox" onclick="toggle('references')" checked> Block
+                </li>
+            </ul>
+        </div>
+        <div class="resume">
+            <div class="largeFont">
+                Jane Smith, Senior Software Engineer
+            </div>
+            <div class="smallFont">
+                <span class="email"><a href="mailto:jane@example.com">jane@example.com</a></span>
+                <span class="divider">|</span>
+                <span class="phone">+1-555-987-6543</span>
+                <span class="divider">|</span>
+                <span class="address">
+                    San Francisco, California
+                </span>
+                <span class="url">
+                    <a href="https://linkedin.com/in/janesmith">https://linkedin.com/in/janesmith</a>
+                </span>
+                <span class="divider">|</span>
+                <span class="url">
+                    <a href="https://github.com/janesmith">https://github.com/janesmith</a>
+                </span>
+                
+            </div>
+            <div class="sectionLine"></div>
+
+            <div class="sectionName">
+                <span>SUMMARY</span>
+            </div>
+            <span>Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.</span>
+            <div class="sectionLine"></div>
+
+            <div class="sectionName">
+                <span>SKILLS</span>
+            </div>
+            <div class="skillBlock">
+                <span class="title">Languages:</span>
+                <span>&lt;p&gt;TypeScript&lt;/p&gt;
+</span>, 
+                <span>&lt;p&gt;JavaScript&lt;/p&gt;
+</span>, 
+                <span>&lt;p&gt;Python&lt;/p&gt;
+</span>, 
+                <span>&lt;p&gt;Go&lt;/p&gt;
+</span>
+            </div>
+            <div class="skillBlock">
+                <span class="title">Frontend:</span>
+                <span>&lt;p&gt;React&lt;/p&gt;
+</span>, 
+                <span>&lt;p&gt;Next.js&lt;/p&gt;
+</span>, 
+                <span>&lt;p&gt;HTML/CSS&lt;/p&gt;
+</span>, 
+                <span>&lt;p&gt;Tailwind&lt;/p&gt;
+</span>
+            </div>
+            <div class="skillBlock">
+                <span class="title">Backend &amp; Cloud:</span>
+                <span>&lt;p&gt;Node.js&lt;/p&gt;
+</span>, 
+                <span>&lt;p&gt;PostgreSQL&lt;/p&gt;
+</span>, 
+                <span>&lt;p&gt;AWS&lt;/p&gt;
+</span>, 
+                <span>&lt;p&gt;Docker&lt;/p&gt;
+</span>
+            </div>
+            <div class="sectionLine"></div>
+
+
+
+            <div class="clearfix"></div>
+
+            <span section='true' toggle='true' data-id="experience">
+                <div class="sectionName">
+                    <span>PROFESSIONAL EXPERIENCE</span>
+                </div>
+                <span class="title">
+                    Senior Software Engineer
+
+                    <span style="float: right;">
+                        <span style="font-weight: normal">
+                            <span toggle='true' data-id="experience_hours">
+                                
+                            </span>
+                            <span toggle='true' data-id="experience_salary">
+                                
+                            </span>
+                        </span>
+
+                        <span toggle='true' data-id="experience_dates">
+                            Jan, 2020
+                            
+                            
+                        </span>
+                    </span>
+
+                    
+
+                    <span style="font-weight: normal; float: right;">
+                        <span toggle='true' data-id="experience_website">
+                            <a href=""></a>
+                        </span>
+                        <span toggle='true' data-id="experience_address">
+                            
+                        </span>
+                        <span toggle='true' data-id="experience_supervisor">
+                            
+                        </span>
+                        <span toggle='true' data-id="experience_contact_phone">
+                            
+                        </span>
+                    </span>
+                </span>
+
+                <ul class="highlights">
+                    <li>&lt;p&gt;&amp;lt;p&amp;gt;Lead engineer for the platform team, owning core API infrastructure.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+                    <li>&lt;p&gt;&amp;lt;p&amp;gt;Reduced API latency by 45% through caching and query optimization&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+                    <li>&lt;p&gt;&amp;lt;p&amp;gt;Designed microservices architecture serving 2M daily requests&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+                    <li>&lt;p&gt;&amp;lt;p&amp;gt;Mentored 4 junior engineers through technical growth plans&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+                </ul>
+                <div class="separator"></div>
+                <span class="title">
+                    Full Stack Developer
+
+                    <span style="float: right;">
+                        <span style="font-weight: normal">
+                            <span toggle='true' data-id="experience_hours">
+                                
+                            </span>
+                            <span toggle='true' data-id="experience_salary">
+                                
+                            </span>
+                        </span>
+
+                        <span toggle='true' data-id="experience_dates">
+                            Jan, 2017
+                            to
+                            Jan, 2020
+                        </span>
+                    </span>
+
+                    
+
+                    <span style="font-weight: normal; float: right;">
+                        <span toggle='true' data-id="experience_website">
+                            <a href=""></a>
+                        </span>
+                        <span toggle='true' data-id="experience_address">
+                            
+                        </span>
+                        <span toggle='true' data-id="experience_supervisor">
+                            
+                        </span>
+                        <span toggle='true' data-id="experience_contact_phone">
+                            
+                        </span>
+                    </span>
+                </span>
+
+                <ul class="highlights">
+                    <li>&lt;p&gt;&amp;lt;p&amp;gt;Built customer-facing web applications from prototype to production.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+                    <li>&lt;p&gt;&amp;lt;p&amp;gt;Built real-time dashboard used by 15,000+ daily active users&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+                    <li>&lt;p&gt;&amp;lt;p&amp;gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+                </ul>
+                
+                <div class="sectionLine"></div>
+            </span>
+
+            <div class="clearfix"></div>
+
+
+
+
+
+
+            <span section='true' toggle='true' data-id="education" style="display: block">
+                <div class="sectionName">
+                    <span>EDUCATION</span>
+                </div>
+                <span class="title">
+                    Bachelor of Science  - Computer Science
+                    <span class="date">
+                        Jan, 2013 to Jan, 2017
+                    </span>
+                </span>
+                <br />University of Technology
+                
+                <div class="sectionLine"></div>
+            </span>
+
+            <div class="clearfix"></div>
+
+
+
+
+
+
+        </div> <!-- // Container -->
+
+        <script type="text/javascript">
+            function toggle(selector) {
+                var elements = document.querySelectorAll('[data-id="' + selector + '"]');
+
+                if (elements.length > 0) {
+                    elements.forEach(function (spanBlock) {
+                        var style = window.getComputedStyle(spanBlock),
+                            display = style.getPropertyValue('display');
+
+                        if (display === "inline-block") {
+                            spanBlock.style.display = "none";
+                        } else {
+                            spanBlock.style.display = "inline-block";
+                        }
+                    })
+                }
+            }
+        </script>
+    </body>
+</html>

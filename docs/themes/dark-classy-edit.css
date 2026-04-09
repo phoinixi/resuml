@@ -1,0 +1,244 @@
+/*<!--*/
+body {
+	font-size: 62.5%;
+	font-family: "Montserrat", sans-serif;
+	background-color: #171717;
+	color: #eeeeee;
+}
+.main-wrap {
+	max-width: 960px;
+	margin: 0 auto;
+}
+a {
+	color: #aaaaaa;
+	text-decoration: none;
+	-webkit-transition: color 0.175s ease 0.05s;
+	   -moz-transition: color 0.175s ease 0.05s;
+	        transition: color 0.175s ease 0.05s;
+}
+a:visited {
+	color: #777777;
+}
+a:hover,
+a:focus {
+	color: #455d66;
+	text-decoration: none;
+}
+.header {
+	text-align: center;
+	font-size: 2em;
+	margin: 0 10%;
+}
+.section {
+	padding: 1em 1em 0 1em;
+	margin-bottom: 1em;
+}
+.section .fa.left {
+	margin-right: 0.25em;
+}
+h1 {
+	color: #eeeeee;
+	font-size: 2em;
+	margin: 1em 0 0;
+	text-transform: uppercase;
+}
+h2 {
+	font-size: 3.5em;
+	margin: 0.83em 0;
+	text-transform: uppercase;
+}
+h3 {
+	color: #aaaaaa;
+	font-size: 1.75em;
+	margin: 1em 0 0;
+}
+h4 {
+	color: #666666;
+	font-size: 1.25em;
+	margin: 0 0 1em;
+}
+.profile {
+	font-family: "Montserrat";
+	font-size: 1em;
+	margin: 0;
+}
+.profile-name {
+	display: none;
+}
+.contact-header {
+	font-weight: bold;
+}
+.contact-list li,
+.contact-list a {
+	color: #eeeeee;
+}
+.label {
+	margin-top: 0;
+	margin-bottom: 0.25em;
+}
+.fa {
+	font-size: 2em;
+}
+.left {
+	font-size: 1em;
+}
+.main {
+	margin: 0 10% 5em;
+}
+.skills {
+	margin-bottom: 0.5em;
+}
+p {
+	color: #aaaaaa;
+	font-family: "Open Sans";
+	font-size: 1.5em;
+}
+li {
+	color: #aaaaaa;
+	font-family: "Open Sans";
+	font-size: 1.5em;
+}
+.list-lines,
+.list-lines li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.list-lines li {
+	font-family: "Montserrat";
+	font-size: 1em;
+}
+.list-set,
+.list-set li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.list-set li {
+	font-family: "Montserrat";
+	display: inline-block;
+}
+.list-set li a {
+	display: inline-block;
+}
+.list-set li .fa {
+	min-width: 1em;
+	min-height: 1em;
+}
+/*Minor adjustment to icons.*/
+.list-set li .fa-stack-overflow:before {
+	font-size: 0.9em;
+	position: relative;
+	top: -0.05em;
+}
+.list-set.keywords {
+	overflow: hidden;
+}
+.list-set.keywords li {
+	background-color: #444444;
+	color: #eeeeee;
+	padding: 0.4em 0.5em;
+	font-size: 1.2em;
+	display: inline-block;
+	margin: 1px;
+	float: left;
+}
+.profiles-list {
+	margin-top: 0.75em;
+}
+blockquote {
+	margin: 2em 1em;
+	padding: 1em;
+	border-left: 0.75em solid #666666;
+	font-family: "Open Sans";
+	font-size: 1.5em;
+}
+blockquote .name {
+	font-weight: bold;
+	font-family: "Montserrat";
+	margin-top: 1em;
+}
+::-moz-selection {
+	background: #666666;
+}
+::selection {
+	background: #666666;
+}
+@media (max-width: 768px) {
+	body {
+		font-size: 50%;
+	}
+	.header {
+		margin: 0 5%;
+	}
+	.main {
+		margin: 0 5%;
+	}
+}
+@media print {
+	body {
+		background: #FFFFFF;
+		color: #171717;
+	}
+	.main-wrap {
+		width: 100%;
+	}
+	.main {
+		margin: 0 0 1em 0;
+	}
+	.section {
+		page-break-inside: avoid;
+	}
+	.main .section:last-child {
+		margin-bottom: 0;
+	}
+	a {
+		color: #555555;
+	}
+	a:visited {
+		color: #555555;
+	}
+	a:hover,
+	a:focus {
+		color: #555555;
+	}
+	h1 {
+		color: #111111;
+		margin-top: 0.5em;
+	}
+	h2 {
+		margin: 0.25em 0;
+	}
+	h3 {
+		color: #555555;
+	}
+	h4 {
+		color: #bbbbbb;
+	}
+	.contact-list li,
+	.contact-list a {
+		color: #111111;
+	}
+	p {
+		color: #555555;
+	}
+	li {
+		color: #555555;
+	}
+	.list-set.keywords li {
+		background-color: transparent;
+		color: #555555;
+		border: 1px solid #aaaaaa;
+	}
+	blockquote {
+		border-color: #999999;
+	}
+	* {
+		/*Avoid printing the color at the start of the transition (Chrome issue).*/
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		        transition: none !important;
+
+	}
+}
+/*-->*/

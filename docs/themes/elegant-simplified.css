@@ -1,0 +1,71 @@
+body {
+				font-family: 'Lato';
+				background-image: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/snow.png");
+        font-size: 'small'
+			}
+
+			.oswald-font {
+				font-family: 'oswald';
+				vertical-align: bottom;
+			}
+
+			.name {
+				text-transform: uppercase;
+			}
+			
+			a:hover {
+				text-decoration: none;
+			}
+			
+			.link-github {
+				color: #454545;
+			}
+			
+			.link-github:hover {
+				color: black;
+			}
+			
+			.link-twitter {
+				color: #33CCFF;
+			}
+			
+			.social-link {
+				margin-left: 5px;
+			}
+			
+			.social-link:first-child {
+				margin-left: 0;
+			}
+			
+			.link-blog {
+				color: rgb(243, 111, 36);
+			}
+			
+			.link-blog:hover {
+				color: rgb(211, 97, 32);
+			}
+			
+			.summary {
+				/*font-family: "Pt mono";*/
+				font-size: 1.1em;
+			}
+			
+			.fa {
+				font-size: 0.9em;
+			}
+
+			.wip {
+				position: absolute;
+				right: 0;
+			}
+
+			h3 {
+				font-size: 1.3em;
+			}
+			h4 {
+				font-size: 1.2em;
+			}
+			
+			.item-detail h3 {
+				margin-top: 0;
+			}

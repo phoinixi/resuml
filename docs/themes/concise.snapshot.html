@@ -1,0 +1,667 @@
+<!doctype html>
+<html>
+	<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui, initial-scale=1.0">
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+	<meta name="description" content="Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.">
+
+	<title>Jane Smith | Senior Software Engineer</title>
+
+	<style>
+		
+		body {
+	background: #fafafa;
+	font: 15px "Open Sans", sans-serif;
+	line-height: 1.4;
+	position: relative;
+	margin: 0;
+	padding-bottom: 6rem;
+	min-height: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Lato", sans-serif;
+	margin-bottom: 0.1rem;
+}
+
+em {
+	color: #999;
+}
+p {
+	line-height: 1.4;
+	margin: 0.5rem 0;
+}
+ul {
+	margin-bottom: 0;
+	list-style-type: '— ';
+}
+section {
+	margin-bottom: 1rem;
+}
+blockquote {
+	margin: 0;
+	margin-bottom: 1em;
+}
+
+.cross-heading {
+	width: 100%;
+	margin-top: 1.25em;
+	text-align: center;
+}
+
+.cross-heading > p {
+	margin: 0;
+	font-size:1.4rem;
+	font-family: "Lato", sans-serif;
+	text-transform: uppercase;
+	display: inline-block;
+
+	background: #fafafa;
+	padding: 0 0.75em;
+}
+
+.cross-heading::after {
+	height: 1px;
+	content: "";
+	background: #aaa;
+	width: 100%;
+	display: block;
+	position: relative;
+	z-index: -100;
+	top: -1em;
+}
+
+.item {
+	margin-bottom: 1em;
+}
+
+.name {
+	font-size: 1.1rem;
+}
+
+.position, .title {
+	font-size: 1.3rem;
+}
+
+.section-container {
+	padding: 0.25em;
+	margin: 0.5em;
+	margin-bottom: 1em;
+	border-left-style: solid;
+	border-color: rgba(170, 170, 170, 0); /* #aaa0 */
+	border-width: 1px;
+}
+
+.section-container-hover {
+	border-color: rgba(170, 170, 170, 255);
+}
+
+.summary-section-dropdown-indicator {
+	font-family: FontAwesome;
+	top: -0.25rem;
+	position: relative;
+	left: 50%;
+	margin-left: -0.5rem;
+	display: block;
+	width: 0;
+	height: 0;
+}
+
+@keyframes bounce {
+	 0% {
+		 top: -0.5rem;
+	 }
+	 50% {
+		 top: -0.1rem;
+	 }
+	 100% {
+		 top: -0.5rem;
+	 }
+}
+
+.summary-section-dropdown-hinter {
+	font-family: FontAwesome;
+	top: -0.25rem;
+	position: relative;
+	left: 50%;
+	font-size: 1.2rem;
+	margin-left: -0.6rem; /* 1/2 of font-size */
+	display: block;
+	width: 0;
+	height: 0;
+
+	animation: bounce 1.3s infinite;
+	/*animation-timing-function: ease-in-out;*/
+}
+
+.concise-full-switch {
+	text-align: center;
+	font-size: 0.7rem;
+
+	margin: 0;
+	margin-top: 0.3rem;
+}
+
+.concise-full-switch a {
+	padding: 0.1rem;
+}
+
+#header-container {
+	margin: 0 auto;
+	padding: 0;
+}
+
+#header {
+	border-bottom-style: solid;
+	border-width: 1px;
+	border-color: #aaa;
+	text-align: center;
+	margin: 0 auto;
+	margin-bottom: 	0.75rem;
+	margin-top: 		0.75rem;
+	padding: 0.5em;
+}
+#header h1 {
+	font-size: 2.7em;
+}
+#header h1, #header h2, #header h3, #header h4 {
+	padding: 0;
+	margin: 0.1rem;
+}
+#resume {
+	margin: 0 auto;
+	/*max-width: 60%;*/
+	/*padding: 0.25rem;*/
+}
+
+#basics {
+	margin-bottom: -10px;
+}
+#basics h3 {
+	margin-top: 1.5em;
+}
+#basics-header-container {
+	overflow:hidden;
+}
+#basics .full-section {
+	margin: 0;
+}
+#basics .summary {
+	text-align: center;
+}
+#contact {
+	float: left;
+	text-align: left;
+}
+#location {
+	float: right;
+	text-align: right;
+	border-left-style: none;
+	border-right-style: solid;
+}
+#contact, #location {
+	margin: 0;
+	margin-bottom: 0.5rem;
+}
+#profiles,
+#skills {
+	overflow: hidden;
+	margin: 0.5rem 0;
+}
+#profiles .item,
+#skills .item {
+	float: left;
+	margin: 0.5rem 0.25rem;
+}
+
+#skills .item {
+	width: 33%;
+}
+
+.keywords {
+	margin: 0.1rem 0.25rem;
+}
+
+.keyword {
+	padding: 0.15rem 0.6rem;
+	margin: 0.2rem 0.1rem;
+	display: inline-block;
+
+	color: #aaa;
+	border-radius: 1rem;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #aaa;
+}
+
+.reference {
+	font-style: italic;
+	font-size-adjust: 0.48;
+}
+
+#footer {
+	text-align: center;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	font-size: smaller;
+}
+
+@media only screen and (max-width: 992px) {
+	#contact {
+		width: 100%;
+		float: none;
+		text-align: center;
+		margin: 0;
+		margin-bottom: 0.25rem;
+	}
+
+	#location {
+		width: 100%;
+		float: none;
+		text-align: center;
+		margin: 0;
+		margin-bottom: 0.25rem;
+		border-left-style: solid;
+		border-right-style: none;
+	}
+
+	#skills .item {
+		width: 100%;
+	}
+}
+
+	</style>
+
+	</head>
+	<body>
+
+	<div class=".container-fluid">
+		<div class="concise-full-switch">
+			<a href="#" id="concise-activate" title="Hide detailed information until hovered over">Concise</a>
+			|
+			<a href="#" id="full-activate" title="Show all information">Full</a>
+		</div>
+
+		<div id="header-container" class="col-xs-10 col-lg-7">
+			<div id="header">
+				  <h1>Jane Smith</h1>
+				  <h3>Senior Software Engineer</h3>
+			</div>
+		</div>
+
+		<div id="resume" class="col-xs-10 col-lg-7">
+				<section id="basics">
+					<div id="basics-header-container">
+						<div id="contact" class="section-container no-hinter-section">
+							<div class="summary-section">
+									<div class="email">
+										<a href="mailto:jane@example.com">jane@example.com</a>
+									</div>
+							</div>
+							<div class="full-section">
+								<div class="phone">
+									+1-555-987-6543
+								</div>
+							</div>
+						</div>
+						<div id="location" class="section-container no-hinter-section">
+							<div class="summary-section">
+								<div class="countryCode">
+									US
+										<span class="region">
+											(California)
+										</span>
+								</div>
+							</div>
+							<div class="full-section">
+									<div class="city">
+										San Francisco
+									</div>
+							</div>
+						</div>
+					</div>
+					<div class="summary">
+						<p><em>Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.</em></p>
+					</div>
+					<section id="profiles">
+						<span class="item">
+								<icon title="linkedin" class="fa fa-linkedin"></icon>
+								<!-- <strong class="network">
+									linkedin
+								</strong> -->
+								<span class="username">
+									<a href="https://linkedin.com/in/janesmith">janesmith</a>
+								</span>
+						</span>
+						<span class="item">
+								<icon title="github" class="fa fa-github"></icon>
+								<!-- <strong class="network">
+									github
+								</strong> -->
+								<span class="username">
+									<a href="https://github.com/janesmith">janesmith</a>
+								</span>
+						</span>
+					</section>
+				</section>
+			<section id="work">
+				<div class="cross-heading"><p>Work</p></div>
+				<div class="item section-container">
+					<div class="summary-section">
+						<div class="position">
+							Senior Software Engineer
+						</div>
+						  <div class="date" title=" Jan 01 2020 — Present ">
+						    <icon class="fa fa-calendar" aria-hidden="true"></icon>
+						    <strong>6 years</strong>
+						      <strong>(ongoing)</strong>
+						    <em>Started Jan 2020</em>
+						  </div>
+					</div>
+					<div class="full-section">
+						<ul class="highlights">
+							<li><p>&lt;p&gt;Lead engineer for the platform team, owning core API infrastructure.&lt;/p&gt;</p>
+			</li>
+							<li><p>&lt;p&gt;Reduced API latency by 45% through caching and query optimization&lt;/p&gt;</p>
+			</li>
+							<li><p>&lt;p&gt;Designed microservices architecture serving 2M daily requests&lt;/p&gt;</p>
+			</li>
+							<li><p>&lt;p&gt;Mentored 4 junior engineers through technical growth plans&lt;/p&gt;</p>
+			</li>
+						</ul>
+					</div>
+				</div>
+				<div class="item section-container">
+					<div class="summary-section">
+						<div class="position">
+							Full Stack Developer
+						</div>
+						  <div class="date" title=" Jan 01 2017 — Jan 01 2020 ">
+						    <icon class="fa fa-calendar" aria-hidden="true"></icon>
+						    <strong>2 years</strong>
+						    <em>Started Jan 2017</em>
+						  </div>
+					</div>
+					<div class="full-section">
+						<ul class="highlights">
+							<li><p>&lt;p&gt;Built customer-facing web applications from prototype to production.&lt;/p&gt;</p>
+			</li>
+							<li><p>&lt;p&gt;Built real-time dashboard used by 15,000+ daily active users&lt;/p&gt;</p>
+			</li>
+							<li><p>&lt;p&gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&lt;/p&gt;</p>
+			</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section id="work">
+				<div class="cross-heading"><p>Projects</p></div>
+				<div class="item section-container">
+					<div class="summary-section">
+						<h3 class="title">
+							Open Source CLI Tool
+						</h3>
+						<div class="description">
+							<em><p>Developer productivity tool with 2,000+ GitHub stars</p>
+			</em>
+						</div>
+						<div class="url">
+							<a href="https://github.com/janesmith/cli-tool">github.com/janesmith/cli-tool</a>
+						</div>
+					</div>
+					<div class="full-section">
+						<!-- For spacing  -->
+						<p></p>
+						  <div class="date" title=" Jan 01 2022 — Present ">
+						    <icon class="fa fa-calendar" aria-hidden="true"></icon>
+						    <strong>4 years</strong>
+						      <strong>(ongoing)</strong>
+						    <em>Started Jan 2022</em>
+						  </div>
+						<ul class="highlights">
+							<li><p>Published to npm with 5,000+ weekly downloads</p>
+			</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section id="education">
+				<div class="cross-heading"><p>Education</p></div>
+				<div class="item section-container">
+					<div class="summary-section">
+						<div class="institution">
+							<icon class="fa fa-graduation-cap" aria-hidden="true"></icon>
+							University of Technology
+						</div>
+						  <div class="date">
+						    <icon class="fa fa-calendar" aria-hidden="true"></icon>
+						      Jan 01 2013 — Jan 01 2017
+						  </div>
+						<div class="area">
+							<span class="studyType">
+								<strong>Bachelor of Science</strong>
+							</span>
+							(Computer Science)
+						</div>
+					</div>
+					<div class="full-section">
+							<div class="courses">
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="skills">
+				<div class="cross-heading"><p>Skills</p></div>
+				<div class="item section-container">
+					<div class="summary-section">
+						<div class="skill-name">
+							Languages
+						</div>
+						<div class="level">
+							<em>Expert</em>
+						</div>
+					</div>
+						<div class="full-section">
+							  <div class="keywords container">
+							      <span class="keyword col-xs-1">&lt;p&gt;TypeScript&lt;/p&gt;
+							</span>
+							      <span class="keyword col-xs-1">&lt;p&gt;JavaScript&lt;/p&gt;
+							</span>
+							      <span class="keyword col-xs-1">&lt;p&gt;Python&lt;/p&gt;
+							</span>
+							      <span class="keyword col-xs-1">&lt;p&gt;Go&lt;/p&gt;
+							</span>
+							  </div>
+						</div>
+				</div>
+				<div class="item section-container">
+					<div class="summary-section">
+						<div class="skill-name">
+							Frontend
+						</div>
+						<div class="level">
+							<em>Expert</em>
+						</div>
+					</div>
+						<div class="full-section">
+							  <div class="keywords container">
+							      <span class="keyword col-xs-1">&lt;p&gt;React&lt;/p&gt;
+							</span>
+							      <span class="keyword col-xs-1">&lt;p&gt;Next.js&lt;/p&gt;
+							</span>
+							      <span class="keyword col-xs-1">&lt;p&gt;HTML/CSS&lt;/p&gt;
+							</span>
+							      <span class="keyword col-xs-1">&lt;p&gt;Tailwind&lt;/p&gt;
+							</span>
+							  </div>
+						</div>
+				</div>
+				<div class="item section-container">
+					<div class="summary-section">
+						<div class="skill-name">
+							Backend &amp; Cloud
+						</div>
+						<div class="level">
+							<em>Advanced</em>
+						</div>
+					</div>
+						<div class="full-section">
+							  <div class="keywords container">
+							      <span class="keyword col-xs-1">&lt;p&gt;Node.js&lt;/p&gt;
+							</span>
+							      <span class="keyword col-xs-1">&lt;p&gt;PostgreSQL&lt;/p&gt;
+							</span>
+							      <span class="keyword col-xs-1">&lt;p&gt;AWS&lt;/p&gt;
+							</span>
+							      <span class="keyword col-xs-1">&lt;p&gt;Docker&lt;/p&gt;
+							</span>
+							  </div>
+						</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div id="footer">
+		<em><a href="https://www.npmjs.com/package/jsonresume-theme-concise">Theme</a> for <a href="https://jsonresume.org/">JSON Resume</a></em>
+	</div>
+	</body>
+
+	<script>
+		// set to true to remove all interactivity and just display all info
+		var SHOW_FULL_SECTIONS = false;
+
+		// how long a user must hover over a summary before it expands
+		var HOVER_ACTIVATE_TIME = 600; // ms
+
+		// for dynamic changing of showing everything
+		var full_mode = true;
+
+		var hinter_removed = false;
+
+		var otherSlidingDownTimeout = null;
+		revealSection = function(activateTimeout) {
+			$(this).addClass("section-container-hover");
+			var $dropdownIndicator = $(this).children(".summary-section-dropdown-indicator");
+			$dropdownIndicator.text("\uf107"); // down arrow
+
+			if (otherSlidingDownTimeout === null) {
+				var $fullSection = $(this).children(".full-section");
+				otherSlidingDownTimeout = window.setTimeout(function() {
+					$fullSection.slideDown("med", function() {
+						window.clearTimeout(otherSlidingDownTimeout);
+						otherSlidingDownTimeout = null;
+
+						// only CHANGE it from a down arrow
+						// (the whole action may have been cancelled and we don't want to re-add)
+						if ($dropdownIndicator.text() !== "") {
+							$dropdownIndicator.text("\uf106"); // up arrow
+						}
+					});
+
+				}, activateTimeout);
+			} else {
+				window.clearTimeout(otherSlidingDownTimeout);
+				otherSlidingDownTimeout = null;
+			}
+		}
+
+		hideSection = function() {
+			$(this).removeClass("section-container-hover");
+			// instead of emptying, put in \uf107 if we want to always show indicators
+			$(this).children(".summary-section-dropdown-indicator").text("");
+
+			$(this).children(".full-section").slideUp("med");
+			window.clearTimeout(otherSlidingDownTimeout);
+			otherSlidingDownTimeout = null;
+		}
+
+		set_full_mode = function() {
+			$("#full-activate").css("text-decoration", "underline");
+			$("#concise-activate").css("text-decoration", "none");
+
+			// disable handlers and show everything
+			$(".section-container").off("mouseenter mouseleave");
+			$(".section-container").off("blur");
+			$(".section-container").off("click");
+
+			$(".summary-section-dropdown-hinter").hide();
+			$(".full-section").show();
+			$(".summary-section").show();
+		}
+
+		set_concise_mode = function() {
+			$("#concise-activate").css("text-decoration", "underline");
+			$("#full-activate").css("text-decoration", "none");
+
+			// make sure to re-show and re-activate hover option on hinter
+			// (never show again once removed; i.e. hovered over once)
+			$(".summary-section-dropdown-hinter").show();
+			if (!hinter_removed) {
+				$(".section-container").not(".no-hinter-section").first()
+				.hover(() => {
+					hinter_removed = true;
+					$(".summary-section-dropdown-hinter").remove();
+				});
+			}
+
+			// desktop reveal method
+			$(".section-container").hover(function() {
+				revealSection.apply(this, [HOVER_ACTIVATE_TIME]);
+			}, hideSection);
+
+			// mobile reveal method
+			$(".section-container").on("blur", hideSection);
+			$(".section-container").on("click", function() {
+				// blur all those EXCEPT this one
+				var current = $(this);
+				$(".section-container").filter(function() {
+					return !$(this).is(current);
+				}).blur();
+
+				revealSection.apply(this, [0]);
+			});
+
+			$(".full-section").hide();
+			$(".summary-section").show();
+		}
+
+		if (!SHOW_FULL_SECTIONS) {
+			// toggle handlers
+			$("#concise-activate").click(set_concise_mode);
+			$("#full-activate").click(set_full_mode);
+
+			// add a hinter to the dropdown function that disappears on first parent hover
+			$(".section-container").not(".no-hinter-section").first()
+			.append("<span class='summary-section-dropdown-hinter'>\uf107</span>")
+
+			// instead of being empty, put in \uf107 if we want to always show indicators
+			$(".section-container").append(
+				"<span class='summary-section-dropdown-indicator'></span>");
+
+			$(".full-section").hide();
+			$(".summary-section").show();
+
+			// set concise by default
+			set_concise_mode()
+		} else {
+			$(".concise-full-switch").hide();
+			$(".full-section").show();
+			$(".summary-section").show();
+		}
+
+	</script>
+</html>

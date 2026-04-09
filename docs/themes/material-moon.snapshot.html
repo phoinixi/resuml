@@ -1,0 +1,752 @@
+<html lang="en" class="mdl-js">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="Resume of Jane Smith">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resume of Jane Smith</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.blue_grey-light_blue.min.css">
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style type="text/css">
+            /**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+html, body {
+    font-family: 'Roboto', 'Helvetica', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h4 {
+    font-size: 24px;
+    line-height: 32px;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 12px 0 4px;
+}
+
+p {
+    font-size: 14px;
+    letter-spacing: 0;
+    margin: 0 0 4px;
+}
+.section__circle-container > .section__circle-container__circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 32px;
+    margin: 0px 8px 0 0;
+}
+
+@media screen and (max-width: 1024px){
+    .mdl-layout__header-row {
+        height: 56px;
+        padding: 0 16px 0 56px;
+    }
+}
+
+
+header .material-icons{
+    font-size: 42px;
+}
+
+.txt-center {
+    text-align: center !important;
+}
+
+.mdl-card__actions {
+    font-size: 14px;
+    line-height: normal;
+    width: 100%;
+    background-color: #fff;
+    padding: 8px;
+    box-sizing: border-box;
+}
+.mdl-card__title.mdl-card--border {
+    justify-content: space-between;
+}
+
+.resume-card {
+    height: auto;
+    width: 100%;
+    padding: 0px;
+    min-height: 64px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.resume-card .mdl-card__supporting-text {
+    height: auto;
+    width: 100%;
+    padding: 0px;
+    min-height: 64px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+
+.mdl-resume .mdl-card .mdl-card__supporting-text {
+    margin: 40px;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    padding: 0;
+    color: inherit;
+    width: calc(100% - 80px);
+}
+
+.mdl-resume.mdl-resume .mdl-card__supporting-text h4 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.mdl-resume .mdl-card__actions {
+    margin: 0;
+    padding: 4px 16px;
+    color: inherit;
+}
+
+.mdl-resume .mdl-card__actions a {
+    color: #00BCD4;
+    margin: 0;
+}
+
+.mdl-resume .mdl-card__actions a:hover,
+.mdl-resume .mdl-card__actions a:active {
+    color: inherit;
+    background-color: transparent;
+}
+
+.mdl-resume .mdl-card__supporting-text + .mdl-card__actions {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.mdl-resume #add {
+    position: absolute;
+    right: 40px;
+    top: 36px;
+    z-index: 999;
+}
+
+.mdl-resume .mdl-layout__content section:not(:last-of-type) {
+    position: relative;
+    margin-bottom: 48px;
+}
+
+.mdl-resume section.section--center {
+    max-width: 860px;
+}
+
+.mdl-resume #features section.section--center {
+    max-width: 620px;
+}
+
+.mdl-resume section > header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.mdl-resume section > .section__play-btn {
+    min-height: 200px;
+}
+
+.mdl-resume section > header > .material-icons {
+    font-size: 3rem;
+}
+
+.mdl-resume section > button {
+    position: absolute;
+    z-index: 99;
+    top: 8px;
+    right: 8px;
+}
+.mdl-resume section .section__text {
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    padding-top: 8px;
+}
+
+.mdl-resume section .section__text h5 {
+    font-size: inherit;
+    margin: 0;
+    margin-bottom: 0.5em;
+}
+
+.mdl-resume section .section__text a {
+    text-decoration: none;
+}
+
+.mdl-resume section .section__circle-container > .section__circle-container__circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 32px;
+    margin: 8px 0;
+}
+
+.mdl-resume section.section--footer .section__circle--big {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    margin: 8px 32px;
+}
+
+.mdl-resume .is-small-screen section.section--footer .section__circle--big {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    margin: 8px 16px;
+}
+
+.mdl-resume section.section--footer {
+    padding: 64px 0;
+    margin: 0 -8px -8px -8px;
+}
+
+.mdl-resume section.section--center .section__text:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, .13);
+}
+
+.mdl-resume .mdl-card .mdl-card__supporting-text > h3:first-child {
+    margin-bottom: 24px;
+}
+
+.mdl-resume .mdl-layout__tab-panel:not(#overview) {
+    background-color: white;
+}
+
+.mdl-resume #features section {
+    margin-bottom: 72px;
+}
+
+.mdl-resume #features h4, #features h5 {
+    margin-bottom: 16px;
+}
+
+
+.mdl-resume .mdl-menu__container {
+    z-index: 99;
+}
+
+.section__circle-container > .section__circle-container__circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 32px;
+    margin: 8px 0;
+}
+.mdl-color--primary {
+    background-color: #5e35b1 !important;
+}
+
+#education {
+    margin-top: 0px;
+    margin-bottom: 0;
+    position: relative;
+    padding: 1em 0;
+    list-style: none;
+
+}
+
+#awards:before,
+#education:before {
+    width: 5px;
+    height: 100%;
+    position: absolute;
+    left: 35px;
+    top: 0;
+    content: ' ';
+    display: block;
+    background-color: #32475c;
+    background: -moz-linear-gradient(top, #ffffff 0%, #32475c 7%, #32475c 89%, #ffffff 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(7%, #32475c), color-stop(89%, #32475c), color-stop(100%, #ffffff));
+    background: -webkit-linear-gradient(top, #ffffff 0%, #32475c 7%, #32475c 89%, #ffffff 100%);
+    background: -o-linear-gradient(top, #ffffff 0%, #32475c 7%, #32475c 89%, #ffffff 100%);
+    background: -ms-linear-gradient(top, #ffffff 0%, #32475c 7%, #32475c 89%, #ffffff 100%);
+    background: linear-gradient(to bottom, #ffffff 0%, #32475c 7%, #32475c 89%, #ffffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0);
+}
+
+#awards li,
+#education li {
+    z-index: 2;
+    position: relative;
+    float: left;
+}
+
+#awards .year,
+#education .year {
+    width: 14%;
+    background: #fff;
+    padding: 10px;
+    font-weight: 700;
+    display: inline-block;
+}
+
+#awards .description,
+#education .description {
+    width: auto;
+    display: inline-block;
+    background: #32475c;
+    color: #fff;
+    margin-bottom: 10px;
+    position: relative;
+    padding: 10px;
+    border-bottom: 1px solid #32475c;
+    border-right: 1px solid #32475c;
+    border-radius: 5px;
+}
+
+#awards .description:after,
+#education .description:after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    right: 0;
+    left: -16px;
+    height: 0;
+    width: 0;
+    border: solid transparent;
+    border-right-color: #32475c;
+    border-width: 8px;
+    pointer-events: none;
+}
+
+#awards .description h3,
+#education .description h3 {
+    font-size: 1.2em;
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+}
+
+#awards .description p,
+#education .description p {
+    margin-top: 5px;
+    padding: 0;
+}
+
+.demo-layout-transparent {
+}
+
+.demo-layout-transparent .mdl-layout__header,
+.demo-layout-transparent .mdl-layout__drawer-button {
+    /* This background is dark, so we set text to white. Use 87% black instead if
+       your background is light. */
+    color: black;
+}
+
+.item-interests,
+.item-skills {
+    color: #334960;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.interest,
+.skill {
+    color: #fff;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    background: #32475c;
+    position: relative;
+    font-size: .85em;
+}
+
+.skill-level {
+    background-color: #227c74;
+    border-radius: 4px;
+    color: #fff;
+    padding: 1px 8px;
+    font-size: .75em;
+    position: absolute;
+    margin: 1px 10px;
+}
+
+#language-skills .skill {
+    margin: 10px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.pad {
+    padding: 8px;
+}
+
+.job .details {
+    text-align: left;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: auto !important;
+    margin-bottom: 5px;
+    color: #fff;
+    background-color: #32475c;
+    width: 100%;
+    padding: 15px;
+}
+
+
+.highlights-wrap:first-child {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.highlight {
+    background-color: #ccc !important;
+    color: #000;
+}
+.highlight {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+@media (max-width: 479px) {
+    .mdl-grid {
+        padding: 0px;
+    }
+}
+    </style>
+    <style type="text/css" media="print">
+            body {
+    font-size: .95em;
+    -webkit-print-color-adjust: exact;
+}
+
+a[href]:after {
+    content: none !important;
+}
+
+#photo{
+    display: none;
+}
+
+.box {
+    margin-bottom: -10px;
+}
+.col-sm-5{
+    width: 40%;
+    padding: 0 15px;
+}
+
+.col-sm-7{
+    width: 60%;
+    padding: 0 15px;
+}
+
+.skills .col-sm-offset-1,
+.interests .col-sm-offset-1{
+    margin-top: -10px;
+    margin-bottom: 5px;
+}
+
+#education {
+    margin: 0;
+    margin-bottom: -20px;
+}
+#awards:before,
+#education:before {
+    background: none;
+}
+
+#awards .description,
+#education .description,
+.job .details {
+    border: 1px solid #eee;
+}
+.publication,
+.publication .panel-heading,
+.publication .name{
+    margin: 0;
+    padding: 0 5px;
+    border: none;
+}
+.publication .panel-body {
+    padding: 0 10px;
+    margin: 0;
+}
+
+.badge {
+    margin: 0;
+}
+
+.list-group-item{
+    border: none;
+    margin: 0;
+    padding: 5px 15px;
+}
+.list-group-item:after{
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 0;
+    left: -1px;
+    height: 0;
+    width: 0;
+    border: solid transparent;
+    border-right-color: #999;
+    border-width: 4px;
+    pointer-events: none;
+}
+
+.list-group-item{
+  background-color: #fff !important;
+  color: #000;
+}
+    </style>
+</head>
+
+<body class="mdl-resume mdl-color--grey-100 mdl-color-text--grey-700 mdl-base" cz-shortcut-listen="true">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <div class="section__circle-container">
+                <div class="section__circle-container__circle" style="background-image: url(&#x2F;&#x2F;www.gravatar.com&#x2F;avatar&#x2F;9e26471d35a78862c17e467d87cddedf?s&#x3D;65&amp;r&#x3D;pg&amp;d&#x3D;mm)">
+                </div>
+            </div>
+            <span class="mdl-layout-title">Jane Smith<p>Senior Software Engineer</p></span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <div class="badge mdl-cell--hide-phone">
+                <div class="icon pull-left text-center"><span class="fa fa-envelope fa-fw"></span></div>
+                <div class="title only pull-right"><a class="badge" href="mailto:jane@example.com" target="_blank">jane@example.com</a></div>
+            </div>
+            <div class="badge mdl-cell--hide-phone">
+                <div class="icon pull-left text-center"><span class="fa fa-phone fa-fw"></span></div>
+                <div class="title only pull-right"><a class="" href="tel:{basics.phone}}">+1-555-987-6543</a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Jane Smith<p>Senior Software Engineer</p></span>
+        <nav class="mdl-navigation">
+
+            <a class="mdl-navigation__link" href="#work">Work Experience</a>
+            <!-- CONTACT -->
+                    <div class="mdl-navigation__link">
+                        <div class="icon pull-left text-center"><span class="fa fa-map-marker fa-fw"></span></div>
+                        <div class="title pull-right"></div>
+                        <div class="description pull-right">San Francisco,California  US</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon pull-left text-center"><span class="fa fa-phone fa-fw"></span></div>
+                        <div class="title only pull-right"><a class="badge" href="tel:{basics.phone}}">+1-555-987-6543</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon pull-left text-center"><span class="fa fa-envelope fa-fw"></span></div>
+                        <div class="title only pull-right"><a class="badge" href="mailto:jane@example.com" target="_blank">jane@example.com</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon pull-left text-center"><span class="fa fa-linkedin fa-fw"></span></div>
+                        <div class="description pull-right"><a class="badge" href="https:&#x2F;&#x2F;linkedin.com&#x2F;in&#x2F;janesmith" target="_blank">janesmith</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon pull-left text-center"><span class="fa fa-github fa-fw"></span></div>
+                        <div class="description pull-right"><a class="badge" href="https:&#x2F;&#x2F;github.com&#x2F;janesmith" target="_blank">janesmith</a></div>
+                    </div>
+
+
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--8-col-desktop">
+                    <!-- ABOUT ME -->
+                    <div class="resume-card mdl-card__supporting-text mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--border">
+                            <h4 class="mdl-card__title-text"><i class="fa fa-university ico"></i>&nbsp;&nbsp;About</h4>
+                        </div>
+                        <p class="pad">Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.</p>
+                    </div>
+                <!-- WORK EXPERIENCE -->
+
+                <div id="work" class="resume-card mdl-card__supporting-text mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--border">
+                        <h4 class="mdl-card__title-text"><i class="fa fa-suitcase ico"></i>&nbsp;&nbsp;Work Experience</h4>
+                        <p class="mdl-card__title-text experienceYears"><i class="fa fa-clock-o"></i>&nbsp;9&nbsp;Years</p>
+                    </div>
+                    <div class="job mdl-card--border">
+
+                        <div class="details mdl-cell mdl-cell--12-col">
+                            <div class="where"></div>
+                            <div class="year">Jan, – Present</div>
+                            <div class="profession">Senior Software Engineer</div>
+                        </div>
+
+
+                        <div class="mdl-card__actions mdl-grid mdl-grid--no-spacing">
+                            <div class="description">
+                                
+                                    <div class="highlights-wrap">
+                                            <div class="highlight section__text mdl-cell mdl-cell--12-col-desktop"><p>&lt;p&gt;Lead engineer for the platform team, owning core API infrastructure.&lt;/p&gt;</p>
+</div>
+                                            <div class="highlight section__text mdl-cell mdl-cell--12-col-desktop"><p>&lt;p&gt;Reduced API latency by 45% through caching and query optimization&lt;/p&gt;</p>
+</div>
+                                            <div class="highlight section__text mdl-cell mdl-cell--12-col-desktop"><p>&lt;p&gt;Designed microservices architecture serving 2M daily requests&lt;/p&gt;</p>
+</div>
+                                            <div class="highlight section__text mdl-cell mdl-cell--12-col-desktop"><p>&lt;p&gt;Mentored 4 junior engineers through technical growth plans&lt;/p&gt;</p>
+</div>
+                                    </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="job mdl-card--border">
+
+                        <div class="details mdl-cell mdl-cell--12-col">
+                            <div class="where"></div>
+                            <div class="year">Jan, – Jan,</div>
+                            <div class="profession">Full Stack Developer</div>
+                        </div>
+
+
+                        <div class="mdl-card__actions mdl-grid mdl-grid--no-spacing">
+                            <div class="description">
+                                
+                                    <div class="highlights-wrap">
+                                            <div class="highlight section__text mdl-cell mdl-cell--12-col-desktop"><p>&lt;p&gt;Built customer-facing web applications from prototype to production.&lt;/p&gt;</p>
+</div>
+                                            <div class="highlight section__text mdl-cell mdl-cell--12-col-desktop"><p>&lt;p&gt;Built real-time dashboard used by 15,000+ daily active users&lt;/p&gt;</p>
+</div>
+                                            <div class="highlight section__text mdl-cell mdl-cell--12-col-desktop"><p>&lt;p&gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&lt;/p&gt;</p>
+</div>
+                                    </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mdl-cell mdl-cell--4-col-desktop">
+                <!-- EDUCATION -->
+
+                    <div class="resume-card mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--border">
+                            <h4 class="mdl-card__title-text"><i class="fa fa-university ico"></i>&nbsp;&nbsp;Education</h4>
+                        </div>
+                        <ul id="education">
+                            <li>
+                                <div class="year pull-left">Jan, Jan,</div>
+                                <div class="description pull-right">
+                                    <h3>University of Technology</h3>
+                                    <p><i class= "fa fa-graduation-cap ico"></i> Bachelor of Science</p>
+                                    <p>Computer Science</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- SKILLS -->
+                    <div class="resume-card mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--border">
+                            <h4 class="mdl-card__title-text"><i class="fa fa-tasks ico"></i>&nbsp;&nbsp;Skills</h4>
+                        </div>
+                            <div class="skills pad">
+                                <div class="item-skills">
+                                    Languages
+                                    <span class="skill-level">Expert</span>
+                                </div>
+                                <div class="">
+                                        <span class="skill badge"><p>TypeScript</p>
+</span>
+                                        <span class="skill badge"><p>JavaScript</p>
+</span>
+                                        <span class="skill badge"><p>Python</p>
+</span>
+                                        <span class="skill badge"><p>Go</p>
+</span>
+                                </div>
+                            </div>
+                            <div class="skills pad">
+                                <div class="item-skills">
+                                    Frontend
+                                    <span class="skill-level">Expert</span>
+                                </div>
+                                <div class="">
+                                        <span class="skill badge"><p>React</p>
+</span>
+                                        <span class="skill badge"><p>Next.js</p>
+</span>
+                                        <span class="skill badge"><p>HTML/CSS</p>
+</span>
+                                        <span class="skill badge"><p>Tailwind</p>
+</span>
+                                </div>
+                            </div>
+                            <div class="skills pad">
+                                <div class="item-skills">
+                                    Backend &amp; Cloud
+                                    <span class="skill-level">Advanced</span>
+                                </div>
+                                <div class="">
+                                        <span class="skill badge"><p>Node.js</p>
+</span>
+                                        <span class="skill badge"><p>PostgreSQL</p>
+</span>
+                                        <span class="skill badge"><p>AWS</p>
+</span>
+                                        <span class="skill badge"><p>Docker</p>
+</span>
+                                </div>
+                            </div>
+                    </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

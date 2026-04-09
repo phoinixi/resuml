@@ -1,0 +1,428 @@
+<!doctype html>
+<html>
+	<head>
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+
+    <title>
+        Jane Smith - Senior Software Engineer - 2026-4-9
+    </title>
+
+    <style>
+    /*! normalize.css 2012-02-07T12:37 UTC - http://github.com/necolas/normalize.css */article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block}audio,canvas,video{display:inline-block;*display:inline;*zoom:1}audio:not([controls]){display:none}[hidden]{display:none}html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html,button,input,select,textarea{font-family:sans-serif}body{margin:0}a:focus{outline:thin dotted}a:hover,a:active{outline:0}h1{font-size:2em;margin:.67em 0}h2{font-size:1.5em;margin:.83em 0}h3{font-size:1.17em;margin:1em 0}h4{font-size:1em;margin:1.33em 0}h5{font-size:.83em;margin:1.67em 0}h6{font-size:.75em;margin:2.33em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}blockquote{margin:1em 40px}dfn{font-style:italic}mark{background:#ff0;color:#000}p,pre{margin:1em 0}pre,code,kbd,samp{font-family:monospace,serif;_font-family:'courier new',monospace;font-size:1em}pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word}q{quotes:none}q:before,q:after{content:'';content:none}small{font-size:75%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}dl,menu,ol,ul{margin:1em 0}dd{margin:0 0 0 40px}menu,ol,ul{padding:0 0 0 40px}nav ul,nav ol{list-style:none;list-style-image:none}img{border:0;-ms-interpolation-mode:bicubic}svg:not(:root){overflow:hidden}figure{margin:0}form{margin:0}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0;white-space:normal;*margin-left:-7px}button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle}button,input{line-height:normal}button,input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button;*overflow:visible}button[disabled],input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;*height:13px;*width:13px}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-decoration,input[type="search"]::-webkit-search-cancel-button{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
+
+/* General, overall styling */
+body {
+  background: #F9F9F9;
+  font-size: 0.9em;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 100px;
+}
+
+em {
+  color: #444;
+}
+
+p {
+  line-height: 1.4;
+}
+
+a {
+  color: #31A6D6;
+}
+
+a:visited {
+  color: #3061A5;
+}
+
+a:hover {
+  color: #3061A5;
+}
+
+ul {
+  margin-bottom: 0;
+}
+section {
+  margin-bottom: 1em;
+}
+
+blockquote {
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+/* End general, overall styling */
+
+/* Header name styling */
+
+#header {
+  background: #009DDC;
+  height: 150px;
+  padding: 15px;
+}
+#header-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.header-title{ 
+  margin: 0px; 
+  padding: 0px; 
+  float: right; 
+}
+.avatar{ 
+  float: left; 
+}
+
+
+@media print{
+  #header {
+    background: #009DDC;
+    height: 50px;
+  }
+
+  .photo{
+    display: none;
+    float: left;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+}
+
+#header-title {
+  color: #FFFFFF;
+  margin: 0 auto;
+}
+
+#header-subtitle {
+  color: #F3F3F3;
+  font-size: 1em;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+header .name{
+  float: right;
+  padding-top: 70px;
+}
+.photo{
+  float: left;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* End header name styling */
+
+/* Set width of main body of CV */
+.container {
+  max-width: 700px;
+  padding: 0 50px;
+  margin: 0 auto;
+}
+
+/* End */
+
+/* Styling Basics (Name, Contact, About, Profiles) */
+
+
+
+.website,
+.email,
+.phone {
+  margin-bottom: 10px;
+  float: left;
+  width: 50%;
+}
+
+.summary {
+  padding-top: 5px;
+  clear: both;
+}
+
+#profiles {
+  overflow: hidden;
+  margin: 0px;
+}
+@media print{
+  #profiles {
+    display: none;
+  }
+}
+
+#profiles .item {
+  float: left;
+  text-align:center;
+  width: 25%;
+  margin:5px 0px;
+  min-width:150px;
+}
+
+/* End 'Basics' Styling */
+
+/* Work and volunteering experience styling */
+
+.institution,
+.qualification {
+  float: left;
+}
+
+.work_date,
+.study_date,
+.work_website{
+  float: right;
+}
+
+.work_position,
+.study_area{
+  font-style: italic;
+  color: #444;
+}
+
+.courses {
+  clear: both;
+}
+
+.dissertation {
+  margin-top: 10px;
+}
+
+.underlined{
+  border-bottom: 1px #E2E2E2 solid;
+}
+
+.skill {
+  margin:10px 5%;
+  float:left;
+  width:40%;
+  min-width:100px;
+}
+
+.item {
+  margin: 25px 0;
+}
+
+/* End work and volunteering */
+
+/* Skills, languages, interests and references styling */
+
+#skills {
+  overflow: hidden;
+}
+
+#languages .item,
+#interests .item,
+#skills .item {
+  float: left;
+  width: 50%;
+}
+
+#references,
+#interests {
+  clear: both;
+}
+
+h3{font-size:1.17em;margin:0em 0}
+
+/* End styling */
+
+    </style>
+	</head>
+	<body>
+	
+    <div id="header">
+      <div id="header-content">
+        <div class="header-title">  
+          <h1 id="header-title">Jane Smith</h1>
+          <h2 id="header-subtitle">Senior Software Engineer</h2>
+        </div>
+      </div>
+    </div>
+
+	<div id="content" class="container">
+	<section id="basics">
+		<div class="contact">
+		<h2 class="underlined">Summary</h2>
+		<div class="email">
+			<strong>Email:</strong>
+			jane@example.com
+		</div>
+		<div class="phone">
+			<strong>Phone:</strong>
+			+1-555-987-6543
+		</div>
+		</div>
+		<div class="summary">
+			<h3>About</h3>
+			<p>Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.</p>
+		</div>
+		<section id="profiles">
+			<div class="item">
+				<strong class="network">
+					linkedin
+				</strong>
+				<div class="url">
+					<a href="https://linkedin.com/in/janesmith">
+						janesmith
+					</a>
+				</div>
+			</div>
+			<div class="item">
+				<strong class="network">
+					github
+				</strong>
+				<div class="url">
+					<a href="https://github.com/janesmith">
+						janesmith
+					</a>
+				</div>
+			</div>
+		</section>
+	</section>
+
+	<section id="work">
+		<h2 class="underlined">Work</h2>
+		<div class="item">
+			
+
+			<div class="work_position">
+				Senior Software Engineer
+			</div>
+
+
+			<ul class="highlights">
+        <li><p>&lt;p&gt;Lead engineer for the platform team, owning core API infrastructure.&lt;/p&gt;</p>
+</li>
+        <li><p>&lt;p&gt;Reduced API latency by 45% through caching and query optimization&lt;/p&gt;</p>
+</li>
+        <li><p>&lt;p&gt;Designed microservices architecture serving 2M daily requests&lt;/p&gt;</p>
+</li>
+        <li><p>&lt;p&gt;Mentored 4 junior engineers through technical growth plans&lt;/p&gt;</p>
+</li>
+			</ul>
+		</div>
+		<div class="item">
+			
+
+			<div class="work_position">
+				Full Stack Developer
+			</div>
+
+
+			<ul class="highlights">
+        <li><p>&lt;p&gt;Built customer-facing web applications from prototype to production.&lt;/p&gt;</p>
+</li>
+        <li><p>&lt;p&gt;Built real-time dashboard used by 15,000+ daily active users&lt;/p&gt;</p>
+</li>
+        <li><p>&lt;p&gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&lt;/p&gt;</p>
+</li>
+			</ul>
+		</div>
+	</section>
+
+	
+	<section id="education">
+		<h2 class="underlined">Education and Training</h2>
+		<div class="item">
+      <section id="University of Technology">
+        <div class="study_name">
+          <h3> University of Technology 
+            <div class="study_date">
+              <span class="startDate">
+                September 2013 -
+              </span>
+              <span class="endDate">
+                May 2017
+              </span>
+            </div>
+          </h3>
+        </div>
+      </section>
+
+      <div class="study_area">
+        Computer Science 
+      </div>
+
+
+		</div>
+	</section>
+	
+	<section id="skills">
+		<h2 class="underlined">Skills</h2>
+		<div class="skill">
+			<div class="name">
+        <strong> Languages </strong>
+			</div>
+			<div class="level">
+				<em>Expert</em>
+			</div>
+			<ul class="keywords">
+        <li><p>TypeScript</p>
+</li>
+        <li><p>JavaScript</p>
+</li>
+        <li><p>Python</p>
+</li>
+        <li><p>Go</p>
+</li>
+			</ul>
+		</div>
+		<div class="skill">
+			<div class="name">
+        <strong> Frontend </strong>
+			</div>
+			<div class="level">
+				<em>Expert</em>
+			</div>
+			<ul class="keywords">
+        <li><p>React</p>
+</li>
+        <li><p>Next.js</p>
+</li>
+        <li><p>HTML/CSS</p>
+</li>
+        <li><p>Tailwind</p>
+</li>
+			</ul>
+		</div>
+		<div class="skill">
+			<div class="name">
+        <strong> Backend &amp; Cloud </strong>
+			</div>
+			<div class="level">
+				<em>Advanced</em>
+			</div>
+			<ul class="keywords">
+        <li><p>Node.js</p>
+</li>
+        <li><p>PostgreSQL</p>
+</li>
+        <li><p>AWS</p>
+</li>
+        <li><p>Docker</p>
+</li>
+			</ul>
+		</div>
+	</section>
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script>
+    var highestBox = 0;
+    $('.skill').each(function(){
+
+    if($(this).height() > highestBox)
+      highestBox = $(this).height();
+    })
+
+    $('.skill').each(function(){
+      $(this).height(highestBox);
+    })
+  </script>
+
+
+	
+	
+	</div>
+	</body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Jane Smith</title>
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,700|Roboto:300,400,700|Noto+Serif:400" rel="stylesheet" type="text/css">
+  <style>
+    body {
+  font-family: Roboto,Arial,sans-serif;
+  font-weight: 300;
+  background-color: #ffffff;
+}
+
+p {
+  display: inline;
+}
+
+a,span {
+  color: #4c92c1;
+  text-decoration: none;
+}
+
+.email,.site,.github,.phone-number,.address {
+  margin-bottom: .4em;
+  font-size: 1em;
+}
+
+ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.card {
+  /*background-color: #fefefe;
+  box-shadow: 1px 1px 14px -5px rgba(0,0,0,0.5);
+  border-radius: 2px;*/
+  margin-bottom: 15px;
+}
+
+.header.card {
+  margin-top: 15px;
+  margin-right: 15px;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0 15px 0 20px;
+  border-bottom: 1px dashed #CFCFCF;
+}
+
+section.card {
+  padding: 15px 15px 22.5px 20px;
+}
+
+.header {
+  overflow: auto;
+  margin-left: 6px;
+  margin-right: 12px;
+}
+
+.skill {
+  font-family: Roboto,Arial,sans-serif;
+  font-size: 1em;
+  margin-bottom: .4em;
+  color: #4c92c1;
+  font-weight: 400;
+}
+
+.skills p {
+  font-size: 1em;
+}
+
+#name {
+  font-family: 'Open Sans',Arial,sans-serif;
+  font-size: 3em;
+  font-weight: 400;
+  color: #555;
+  float: left;
+  margin: .1em .1em .2em;
+}
+
+#resume-container {
+  width: 900px;
+  margin: 0 auto;
+}
+
+.section-header {
+  margin-top: 0;
+  margin-bottom: .4em;
+  font-family: 'Open Sans';
+  font-weight: 400;
+  font-size: 1.2em;
+}
+
+.left-content {
+  float: left;
+  width: 32%;
+  margin-left: 6px;
+}
+
+.left-content .section-header {
+  font-weight: 400;
+  color: #BC1B39;
+  text-transform: uppercase;
+}
+
+.left-content .section-content {
+  font-weight: 300;
+}
+
+.left-content .title {
+  font-weight: 400;
+  margin-bottom: .5em;
+  color: #4c92c1;
+}
+
+.left-content .card {
+  border-bottom: 1px dashed #CFCFCF;
+}
+
+.right-content {
+  width: 64%;
+  margin-right: 15px;
+  float: right;
+}
+
+.right-content .section-header {
+  /*color: #000;*/
+  color: #BC1B39;
+  text-transform: uppercase;
+}
+
+.right-content {
+  border-left: 1px dashed #CFCFCF;
+}
+
+.section-content {
+  overflow: auto;
+}
+
+.title {
+  font-family: Roboto,Arial,sans-serif;
+  font-size: 1em;
+  font-weight: 300;
+  margin-bottom: .2em;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.duration {
+  font-family: Roboto,Arial,sans-serif;
+  font-weight: 300;
+  color: #3c82b1;
+  margin-top: .2em;
+  margin-bottom: .3em;
+  text-align: right;
+}
+
+.occupation {
+  font-size: 1em;
+  font-family: Roboto,Arial,sans-serif;
+  font-weight: 400;
+  margin-bottom: .5em;
+}
+
+.languages {
+  font-family: Roboto,Arial,sans-serif;
+  font-size: 1em;
+  font-weight: 300;
+}
+
+.list {
+  list-style-type: none;
+  font-size: 1em;
+}
+
+.location {
+  font-size: 1em;
+  font-weight: 300;
+  margin-bottom: .1em;
+}
+
+.left {
+  float: left;
+  width: 45%;
+  clear: both;
+}
+
+.right {
+  float: right;
+  width: 55%;
+}
+
+ul.list {
+  list-style-type: circle;
+  padding-left: 1.1rem;
+}
+
+ul.list li {
+  line-height: 135%;
+  margin-bottom: .2em;
+}
+
+ul.list li:before {
+  display: inline-block;
+  width: 0;
+  margin-left: 0;
+}
+
+.project,.employment,.education,.skills {
+  margin-bottom: .8em;
+}
+
+.education-info .title {
+  margin-bottom: .2em;
+  line-height: 130%;
+}
+
+.education.last {
+  margin-bottom: .8em !important;
+}
+
+.education .grade {
+  font-size: 1em;
+}
+
+.project-info {
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.last {
+  margin-bottom: 0!important;
+}
+
+.term {
+  font-size: 1.75em;
+  font-weight: 200;
+  color: #000;
+}
+
+#skills-container,.contact {
+  margin-bottom: 0;
+}
+
+.interests,.subtitle {
+  font-size: 1em;
+  margin-bottom: .2em;
+}
+
+.project .title,.employment .title {
+  color: #4c92c1;
+  font-weight: 400;
+}
+
+.employment .summary {
+  font-size: 1em;
+  margin-bottom: .4em;
+}
+
+#awards .summary {
+  font-size: 1em;
+}
+
+#summary {
+  font-size: 1em;
+}
+
+.contact .site {
+  font-size: .9em;
+}
+
+  </style>
+</head>
+
+<body>
+  <div id='resume-container'>
+    <div class='header card'>
+      <h1 id='name'>
+          Jane Smith
+        </h1>
+      <span class='term'>Senior Software Engineer</span>
+    </div>
+    <div class='left-content'>
+      <section class='card'>
+        <div class='section-header'>Contact</div>
+        <div class='section-content' id='contact'>
+          <div class='contact'>
+            <div class='address'>
+              San Francisco, California, US
+            </div>
+            <div class='email'>
+              <a href='mailto:jane@example.com'>jane@example.com</a>
+            </div>
+              
+            <div class='site'>
+              linkedin: <a href='https://linkedin.com/in/janesmith'>janesmith</a>
+            </div>
+              
+            <div class='site'>
+              github: <a href='https://github.com/janesmith'>janesmith</a>
+            </div>
+              
+            <div class='phone-number last'>
+              <a href="tel:+1-555-987-6543">+1-555-987-6543</a>
+            </div>
+          </div>
+        </div>
+      </section>
+       
+      <section class='card'>
+        <div class='section-header'>Technical Skills</div>
+        <div class='section-content' id='technical-skills'>
+          <div id='skills-container'>
+            <div class='skills'>
+              <div class='skill'>Languages</div>
+               
+              <p>
+                 &lt;p&gt;TypeScript&lt;/p&gt;
+,  &lt;p&gt;JavaScript&lt;/p&gt;
+,  &lt;p&gt;Python&lt;/p&gt;
+,  &lt;p&gt;Go&lt;/p&gt;
+ 
+              </p>
+            </div>
+            <div class='skills'>
+              <div class='skill'>Frontend</div>
+               
+              <p>
+                 &lt;p&gt;React&lt;/p&gt;
+,  &lt;p&gt;Next.js&lt;/p&gt;
+,  &lt;p&gt;HTML/CSS&lt;/p&gt;
+,  &lt;p&gt;Tailwind&lt;/p&gt;
+ 
+              </p>
+            </div>
+            <div class='skills'>
+              <div class='skill'>Backend &amp; Cloud</div>
+               
+              <p>
+                 &lt;p&gt;Node.js&lt;/p&gt;
+,  &lt;p&gt;PostgreSQL&lt;/p&gt;
+,  &lt;p&gt;AWS&lt;/p&gt;
+,  &lt;p&gt;Docker&lt;/p&gt;
+ 
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+       
+      <section class='card'>
+        <div class='section-header'>Education</div>
+        <div class='section-content' id='education'>
+          <div class='education last'>
+            <div class='education-info'>
+              <div class='title'>
+                Bachelor of Science in Computer Science
+                <br>at  University of Technology 
+              </div>
+              <div class='duration'>
+                 Jan 2013   - Jan 2017 
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+           </div>
+    <div class='right-content'>
+      <section class='card'>
+        <div class='section-header'>Summary</div>
+        <div class='section-content' id='summary'>
+          Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.
+        </div>
+      </section>
+      <section class='card'>
+        <div class='section-header'>Employment</div>
+        <div class='section-content' id='employment'>
+          <div class='employment'>
+            <div class='employment-info'>
+              <div class='title'>
+  Senior Software Engineer 
+              </div>
+              <div class='duration'>
+                 Jan 2020   - Present 
+              </div>
+            </div>
+            <div class='info'>
+ 
+              <ul class="list">
+                <li>&lt;p&gt;&amp;lt;p&amp;gt;Lead engineer for the platform team, owning core API infrastructure.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+                <li>&lt;p&gt;&amp;lt;p&amp;gt;Reduced API latency by 45% through caching and query optimization&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+                <li>&lt;p&gt;&amp;lt;p&amp;gt;Designed microservices architecture serving 2M daily requests&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+                <li>&lt;p&gt;&amp;lt;p&amp;gt;Mentored 4 junior engineers through technical growth plans&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+              </ul>
+            </div>
+          </div>
+          <div class='employment'>
+            <div class='employment-info'>
+              <div class='title'>
+  Full Stack Developer 
+              </div>
+              <div class='duration'>
+                 Jan 2017   - Jan 2020 
+              </div>
+            </div>
+            <div class='info'>
+ 
+              <ul class="list">
+                <li>&lt;p&gt;&amp;lt;p&amp;gt;Built customer-facing web applications from prototype to production.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+                <li>&lt;p&gt;&amp;lt;p&amp;gt;Built real-time dashboard used by 15,000+ daily active users&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+                <li>&lt;p&gt;&amp;lt;p&amp;gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+       
+      <section class='card'>
+        <div class='section-header'>Projects</div>
+        <div class='section-content' id='projects'>
+          <div class='project last'>
+            <div class='project-info'>
+              <div class='title'>Open Source CLI Tool</div>
+              <div class='duration'>
+                 Jan 2022   - Present 
+              </div>
+            </div>
+            <div class='info'>
+              <ul class="list">
+                <li>&lt;p&gt;Published to npm with 5,000+ weekly downloads&lt;/p&gt;
+</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+            </div>
+  </div>
+</body>
+
+</html>

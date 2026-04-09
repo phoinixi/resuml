@@ -30,12 +30,7 @@ jobs:
       - run: npm ci
 
       - name: Bundle themes
-        run: |
-          if [ "${{ github.event.inputs.all }}" = "true" ]; then
-            node scripts/bundle-themes.js --all
-          else
-            node scripts/bundle-themes.js
-          fi
+        run: node scripts/bundle-themes.js --all
 
       - name: Commit and push
         run: |

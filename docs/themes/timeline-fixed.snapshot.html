@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"><![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="not-ie" lang="en">
+<!--<![endif]-->
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <meta name="description" content="Jane Smith's resume" />
+        <meta name="keywords" content="Jane Smith"/>
+        <title>Jane Smith &bull; jane@example.com &bull; +1-555-987-6543</title>
+
+        <!-- style sheets-->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" rel="stylesheet" type="text/css">
+        <link href="//rawgit.com/dbkaplun/jsonresume-theme-timeline-fixed/master/build/css/index.css" rel="stylesheet" type="text/css">
+        <link href="//rawgit.com/dbkaplun/jsonresume-theme-timeline-fixed/master/bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <!-- scripts-->
+        <script data-main="//rawgit.com/dbkaplun/jsonresume-theme-timeline-fixed/master/js/index" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    </head>
+    <body>
+        <!-- Top icons -->
+        <div class="top-icons hidden-xs hidden-sm hidden-print">
+            <a class="top-menu" data-toggle="tooltip" data-placement="top" title="Menu toggle"><span class="glyphicon glyphicon-th-list"></span></a>
+            <a href="index.pdf" class="top-download-resume" data-toggle="tooltip" data-placement="top" title="Download resume" target="_blank"><span class="glyphicon glyphicon-cloud-download"></span></a>
+            <a href="#" class="top-print" data-toggle="tooltip" data-placement="top" title="Print resume"><span class="glyphicon glyphicon-print"></span></a>
+        </div>
+        <!-- end Top icons -->
+
+        <!-- Navigation -->
+        <nav id="spy" class="spy hidden-sm hidden-xs hidden-print">
+            <ul>
+                <li class="active"><a href="#work-experience">Work experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+            </ul>
+        </nav>
+        <!-- end Navigation -->
+
+        <!-- Navigation for small devices -->
+        <nav id="mini-nav" class="spy visible-sm visible-xs hidden-print">
+            <ul>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Menu</a>
+                    <ul class="dropdown-menu">
+                        <li class="active"><a href="#work-experience">Work experience</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                    </ul>
+                </li>
+              </ul>
+        </nav>
+        <!-- end Navigation for small devices -->
+
+        <div id="resume" class="container">
+            <header id="header" class="hidden-print">
+                <div class="row">
+                    <div class="header-content col-sm-8 col-sm-offset-2 text-center">
+                        <img src="&#x2F;&#x2F;www.gravatar.com&#x2F;avatar&#x2F;9e26471d35a78862c17e467d87cddedf?s=200&amp;r=pg&amp;d=mm" class="face hidden-print" alt="A picture of me">
+                        <hr class="empty">
+                        <p class="header-name">Jane Smith</p>
+                        <p class="header-subtitle">Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.</p>
+                        <p><a href="mailto:jane@example.com" target="_blank">jane@example.com</a> &bull; +1-555-987-6543 &bull; <a href="" target="_blank"></a></p>
+                        <p class="header-profiles hidden-print">
+                            <a href="https:&#x2F;&#x2F;linkedin.com&#x2F;in&#x2F;janesmith" class="btn btn-lg btn-default" target="_blank"><span class="fa fa-linkedin"></span></a>
+                            <a href="https:&#x2F;&#x2F;github.com&#x2F;janesmith" class="btn btn-lg btn-default" target="_blank"><span class="fa fa-github"></span></a>
+                        </p>
+                    </div>
+                </div>
+            </header>
+
+            <section id="work-experience" class="work-experience section row">
+                <div class="col-sm-7 col-sm-offset-5">
+                    <ul>
+                        <li class="title"><span class="glyphicon glyphicon-briefcase"></span>Work experience</li>
+                        <li>
+                            <span class="note">March 2020 - </span>
+                            <p><strong>Senior Software Engineer</strong> at <strong><a href="" target="_blank"></a></strong></p>
+                            <p class="description">Lead engineer for the platform team, owning core API infrastructure.</p>
+                            <ul>
+                                <li>Reduced API latency by 45% through caching and query optimization</li>
+                                <li>Designed microservices architecture serving 2M daily requests</li>
+                                <li>Mentored 4 junior engineers through technical growth plans</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="note">June 2017 - February 2020</span>
+                            <p><strong>Full Stack Developer</strong> at <strong><a href="" target="_blank"></a></strong></p>
+                            <p class="description">Built customer-facing web applications from prototype to production.</p>
+                            <ul>
+                                <li>Built real-time dashboard used by 15,000+ daily active users</li>
+                                <li>Implemented CI&#x2F;CD pipeline reducing deploy time from 2 hours to 8 minutes</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="education" class="education section row">
+                <div class="col-sm-7 col-sm-offset-5">
+                    <ul>
+                        <li class="title"><span class="glyphicon glyphicon-book"></span>Education</li>
+                        <li>
+                            <span class="note has-annotation">September 2013 - May 2017</span>
+                            <p><strong>Bachelor of Science</strong> at <strong><a href="" target="_blank">University of Technology</a></strong></p>
+                            <p class="description">Computer Science</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+
+
+            <section id="skills" class="skills section row">
+                <div class="col-sm-7 col-sm-offset-5">
+                    <ul>
+                        <li class="title"><span class="glyphicon glyphicon-tasks"></span>Skills</li>
+                        <li>
+                            <p><strong class="has-annotation">Languages</strong> <span class="annotation">Expert</span></p>
+                            <p class="keywords">
+                                <span class="label label-default">TypeScript</span>
+                                <span class="label label-default">JavaScript</span>
+                                <span class="label label-default">Python</span>
+                                <span class="label label-default">Go</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p><strong class="has-annotation">Frontend</strong> <span class="annotation">Expert</span></p>
+                            <p class="keywords">
+                                <span class="label label-default">React</span>
+                                <span class="label label-default">Next.js</span>
+                                <span class="label label-default">HTML&#x2F;CSS</span>
+                                <span class="label label-default">Tailwind</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p><strong class="has-annotation">Backend &amp; Cloud</strong> <span class="annotation">Advanced</span></p>
+                            <p class="keywords">
+                                <span class="label label-default">Node.js</span>
+                                <span class="label label-default">PostgreSQL</span>
+                                <span class="label label-default">AWS</span>
+                                <span class="label label-default">Docker</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+
+
+
+            <section class="up section row hidden-print">
+                <div class="col-sm-7 col-sm-offset-5">
+                    <ul>
+                        <li class="title"><span class="glyphicon glyphicon-arrow-up"></span>Up</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>

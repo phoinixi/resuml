@@ -1,0 +1,353 @@
+<!doctype html>
+<html>
+	<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+	
+	<title>Jane Smith</title>
+
+	<style>
+	body {
+	background: #EEEEEE;
+	font: 12px "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	line-height: 1.2;
+	margin: 50px 0;
+	margin-bottom: 100px;
+}
+
+h2 {
+	border-bottom: 1px solid black;
+	font-variant: small-caps;
+	margin: 12px 0;
+}
+
+#resume {
+	margin: 0 auto;
+
+  width: 670px; /* width: 7in; */
+  height: 900px; /* or height: 9.5in; */
+
+	/*height: 11in;*/
+	/*width: 8.5in;*/
+	size: letter;
+	padding: 24px 40px;
+	background: #fff;
+	box-shadow: 5px 5px 5px #dddddd;
+
+}
+
+.item {
+	margin-bottom: 4px;
+}
+
+.item-inline {
+	display: inline-block;
+}
+
+.item-title {
+	font-weight: bold;
+}
+
+.item-content {
+	margin-top: 4px;
+}
+
+.secondary-text, .date {
+	color: #666666;
+}
+
+.pull-right {
+	text-align: right;
+}
+
+.highlights {
+	margin: 4px auto;
+	padding: 4px 0px 4px 16px;
+}
+
+.highlights li {
+	line-height: 125%;
+	margin-bottom: 4px;
+	/*padding: 4px 8px;*/
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #resume * {
+    visibility: visible;
+  }
+  #resume {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+/*em {
+	color: #999;
+}
+p {
+	line-height: 1.4;
+}
+ul {
+	margin-bottom: 0;
+}
+section {
+	margin-bottom: 2em;
+}
+blockquote {
+	margin: 0;
+	margin-bottom: 1em;
+}
+.item {
+	margin-bottom: 1em;
+}
+
+#basics {
+	margin-bottom: -10px;
+}
+#basics h3 {
+	margin-top: 1.5em;
+}
+#basics .contact strong,
+#location strong {
+	clear: both;
+	float: left;
+	line-height: 1.3;
+	width: 120px;
+}
+#profiles,
+#skills {
+	overflow: hidden;
+}
+#profiles .item,
+#skills .item {
+	float: left;
+	width: 50%;
+}
+*/
+	</style>
+
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/flexboxgrid/6.3.0/flexboxgrid.min.css" type="text/css">
+
+	</head>
+	<body>
+	
+	<div id="resume">
+
+		<div class="row center-xs">
+			<h1>Jane Smith <small>Senior Software Engineer</small></h1>
+		</div>
+
+		<section id="basics" class="row center-xs" style="margin-bottom: 16px;">
+
+			<div id="location" class="col-xs">
+				<span class="city">
+					San Francisco, 
+				</span>
+				<span class="countryCode">
+					US
+				</span>
+				<span class="region">
+					California
+				</span>
+			</div>
+
+			<div class="contact col-xs">
+				<span class="email">
+					jane@example.com
+				</span>
+				<span> | </span>
+				<span class="phone">
+					+1-555-987-6543
+				</span>
+				<span> | </span>
+			</div>
+
+		</section>
+
+	<section id="work">
+		<h2>Work Experience</h2>
+		<div class="item">
+			<div class="row">
+				<div class="col-xs start">
+					<div class="item-title">
+						Senior Software Engineer
+					</div>
+				</div>
+				<div class="col-xs end pull-right">
+					<div class="date">
+						<span class="startDate">
+							Jan, 2020
+						</span>
+						<span class="endDate">
+							- Present
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs start">
+				</div>
+				<div class="col-xs end">
+				</div>
+			</div>
+
+			<ul class="highlights">
+				<li>&lt;p&gt;&amp;lt;p&amp;gt;Lead engineer for the platform team, owning core API infrastructure.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+				<li>&lt;p&gt;&amp;lt;p&amp;gt;Reduced API latency by 45% through caching and query optimization&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+				<li>&lt;p&gt;&amp;lt;p&amp;gt;Designed microservices architecture serving 2M daily requests&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+				<li>&lt;p&gt;&amp;lt;p&amp;gt;Mentored 4 junior engineers through technical growth plans&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+			</ul>
+		</div>
+		<div class="item">
+			<div class="row">
+				<div class="col-xs start">
+					<div class="item-title">
+						Full Stack Developer
+					</div>
+				</div>
+				<div class="col-xs end pull-right">
+					<div class="date">
+						<span class="startDate">
+							Jan, 2017
+						</span>
+						<span class="endDate">
+							- Jan, 2020
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs start">
+				</div>
+				<div class="col-xs end">
+				</div>
+			</div>
+
+			<ul class="highlights">
+				<li>&lt;p&gt;&amp;lt;p&amp;gt;Built customer-facing web applications from prototype to production.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+				<li>&lt;p&gt;&amp;lt;p&amp;gt;Built real-time dashboard used by 15,000+ daily active users&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+				<li>&lt;p&gt;&amp;lt;p&amp;gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+			</ul>
+		</div>
+	</section>
+
+	
+	<section id="education">
+		<h2>Education</h2>
+		<div class="item">
+
+			<div class="row">
+				<div class="col-xs">
+					<div class="institution item-title">
+						University of Technology
+					</div>
+				</div>
+				<div class="col-xs end pull-right">
+					<div class="date">
+						<span class="startDate">
+							Jan, 2013
+						</span>
+						<span class="endDate">
+							- Jan, 2017
+						</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs">
+					<div class="studyType">
+						Bachelor of Science
+					</div>
+				</div>
+				<div class="col-xs end pull-right">
+				</div>
+			</div>
+
+			<div class="item-content">
+				<div class="row col-xs">
+					<div class="area">
+						<strong>Major: </strong>
+						<span>Computer Science</span>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	
+
+	
+	<section id="skills">
+		<h2>Skills</h2>
+		<div class="item item-inline">
+			<span class="name item-title">
+				Languages<span>: </span>
+			</span>
+			<span class="keywords">
+				<span>&lt;p&gt;TypeScript&lt;/p&gt;
+, </span>
+				<span>&lt;p&gt;JavaScript&lt;/p&gt;
+, </span>
+				<span>&lt;p&gt;Python&lt;/p&gt;
+, </span>
+				<span>&lt;p&gt;Go&lt;/p&gt;
+</span>
+			</span>
+			<span> | </span>
+		</div>
+		<div class="item item-inline">
+			<span class="name item-title">
+				Frontend<span>: </span>
+			</span>
+			<span class="keywords">
+				<span>&lt;p&gt;React&lt;/p&gt;
+, </span>
+				<span>&lt;p&gt;Next.js&lt;/p&gt;
+, </span>
+				<span>&lt;p&gt;HTML/CSS&lt;/p&gt;
+, </span>
+				<span>&lt;p&gt;Tailwind&lt;/p&gt;
+</span>
+			</span>
+			<span> | </span>
+		</div>
+		<div class="item item-inline">
+			<span class="name item-title">
+				Backend &amp; Cloud<span>: </span>
+			</span>
+			<span class="keywords">
+				<span>&lt;p&gt;Node.js&lt;/p&gt;
+, </span>
+				<span>&lt;p&gt;PostgreSQL&lt;/p&gt;
+, </span>
+				<span>&lt;p&gt;AWS&lt;/p&gt;
+, </span>
+				<span>&lt;p&gt;Docker&lt;/p&gt;
+</span>
+			</span>
+			<span></span>
+		</div>
+	</section>
+
+
+	
+	
+	</div>
+
+	</body>
+</html>

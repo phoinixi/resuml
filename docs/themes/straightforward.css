@@ -1,0 +1,158 @@
+body {
+  font-family: "Times New Roman", Times, sans-serif;
+  /* 13px to 15px looks good */
+  font-size: 15px;
+  /* 1.38, 1.4, or 1.5 looks good */
+  line-height: 1.4;
+  margin: 0 auto;
+}
+
+#wrapper {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+/* when generating the resume as a website or as headless, this will keep a nice readable margin in place */
+#resume {
+  margin: 0.4in;
+}
+
+/* use-case is when a user generates their resume as a website, saves their website as a PDF, and uses their browser to manage the margins during save */
+@media print {
+  #resume {
+    margin: 0;
+  }
+}
+
+ul {
+  margin-bottom: 0;
+}
+
+li {
+  margin-bottom: 2px;
+}
+
+a {
+  color: black;
+  /* it's less likely someone will click the links; removing underline to reduce noise */
+  text-decoration: none;
+}
+
+.display-none {
+  /* note: this is to enable any automated parsing of content */
+  display: none;
+}
+
+.basics {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.basics>* {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 30%;
+}
+
+#basics-center-content {
+  text-align: center;
+  font-size: 30px;
+}
+
+#basics-right-content {
+  text-align: right;
+  font-size: 13px;
+}
+
+.basics .divider {
+  font-weight: bold;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.section-block {
+  display: block;
+  width: 100%;
+}
+
+.section-name {
+  color: #004687;
+  display: block;
+  font-weight: bold;
+}
+
+.section-line {
+  border-color: none;
+  border-style: hidden;
+  border-width: 1px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.section-intro-line {
+  border-color: #004687;
+  border-style: solid;
+  border-width: 1px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+#work-block .block-header,
+#volunteer .block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#work-block .block-header>*,
+#volunteer .block-header>* {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 30%;
+}
+
+.block-header .date {
+  font-weight: bold;
+  text-align: right;
+}
+
+.block-header .organization {
+  font-weight: bold;
+  text-align: left;
+}
+
+.block-header .title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.section-content {
+  display: block;
+}
+
+.section-content ul {
+  padding-left: 20px;
+  margin-top: 3px;
+  list-style-type: circle;
+}
+
+.section-content .title {
+  font-weight: bold;
+}
+
+.section-content .date {
+  float: right;
+}
+
+.section-content .separator {
+  height: 7px;
+}
+
+.summary {
+  margin-top: 6px;
+}
+
+.job-block {
+  page-break-inside: avoid;
+}

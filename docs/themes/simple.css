@@ -1,0 +1,238 @@
+body {
+  background: #fff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.882353);
+  line-height: 20px;
+  margin: 0;
+}
+
+em {
+  color: #999;
+}
+
+p {
+  line-height: 1.4;
+}
+
+ul {
+  margin: 10px 0 20px 0;
+  padding-left: 20px;
+}
+
+blockquote {
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+.item {
+  margin-bottom: 20px;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 420px;
+  padding: 0 30px;
+}
+
+.top {
+  padding-top: 20px;
+  background-color: #EEE;
+  height: 40px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.profile-pic {
+  float: left;
+  width: 80px;
+  height: 80px;
+  background-size: 80px;
+
+  -moz-border-radius: 50%; 
+  -webkit-border-radius: 50%; 
+  border-radius: 50%;
+  border-color: #FFF;
+  border-style: solid;
+  border-width: 4px;
+}
+
+.name-title {
+  float: left;
+  margin-left: 10px;
+}
+
+.name {
+  font-size: 25px;
+  line-height: 40px;
+  color: rgba(0,0,0,0.88);
+  font-weight: 400;
+  margin: 4px 0 0 0;
+}
+
+.job-title {
+  font-size: 17px;
+  color: rgba(0,0,0,0.6);
+}
+
+.bio {
+  margin: 20px 0;
+}
+
+.heading {
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 20px 0 10px 0;
+  color: #F05C5C;
+}
+
+.item .heading {
+  text-transform: none;
+  font-weight: 700;
+}
+
+.website {
+  font-weight: 300;
+}
+
+.profiles .website {
+  margin-left: 5px;
+}
+
+.label {
+  display: inline-block;
+  font-weight: 700;
+  line-height: 1.5em;
+}
+
+.contact .label {
+  width: 75px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.summary {
+  margin: 15px 0 20px 0;
+}
+
+.highlights {
+  font-weight: 300;
+}
+
+.details {
+  padding-left: 10px;
+  border-left-style: solid;
+  border-left-width: 2px;
+  border-left-color: #999;
+}
+
+.skills .level {
+  font-size: 0.8em;
+  font-weight: 300;
+  color: #666;
+}
+
+.skills .item {
+  margin-bottom: 10px;
+}
+
+.skills ul {
+  margin-bottom: 10px;
+}
+
+.footer {
+  margin-top: 50px;
+  height: 1px;
+}
+
+/* Big Phones & Tablets */
+@media only screen and (min-width: 450px) {
+
+  .top {
+    height: 100px;
+  }
+
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+    margin-top: 23px; /* height of top - 1/2 height - border width  */
+    background-size: 150px;
+  }
+
+  .name {
+    font-size: 36px;
+    margin: 10px 0 5px 0;
+  }
+
+  .name-title {
+    float: left;
+    margin: 50px 0 0 20px;
+  }
+
+}
+
+/* Desktop */
+@media print, screen and (min-width: 680px) {
+
+  .container {
+    max-width: 768px;
+  }
+
+  .contact, 
+  .profiles, 
+  .overview, 
+  .highlights, 
+  .education .item, 
+  .interests, 
+  .references {
+    width: 45%;
+  }
+
+  .profiles, .overview, .skills .item, .interests, .education .item:nth-child(even) {
+    float: left;
+  }
+
+  .contact, .highlights, .references, .education .item:nth-child(odd) {
+    float: right;
+  }
+
+  .skills .item {
+    width: 33.33333%;
+  }
+
+  .skills .item:nth-child(5n+5) { /*should be 3n+3, but not sure whats wrong with the selector?*/
+    clear: both;
+  }
+
+}
+
+/* Print overrides */
+
+@media print {
+
+  .top {
+    background-color: #FFF;
+    padding-top: 0;
+  }
+
+  .profile-pic {
+    display: none;
+  }
+
+  .name-title {
+    margin-left: 0;
+  }
+
+  .heading {
+    color: #FF6363;
+  }
+
+  @page {
+    margin: 2cm;
+  }
+
+}

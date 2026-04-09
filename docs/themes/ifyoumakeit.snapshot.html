@@ -1,0 +1,417 @@
+
+<!doctype html>
+<html>
+	<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+
+	<title>Jane Smith</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+
+	<style>
+	* {
+	box-sizing: border-box;
+}
+
+body {
+	background: #efefef;
+	font: 16px Arial, Helvetica, sans-serif;
+	line-height: 1.4;
+	margin: 1.5rem 0;
+	color: #333;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.resume {
+	max-width: 50rem;
+	margin: auto;
+	padding: 0.5rem;
+	font-size: 0;
+}
+
+.header {
+	text-align: center;
+	padding: 0 1.5rem;
+	margin: 0 0.5rem 2rem;
+	position: relative;
+	font-size: initial;
+}
+
+.header__name {
+	font-size: 2rem;
+	font-weight: bold;
+	line-height: 1;
+}
+
+.header__title {
+	font-size: 1.5rem;
+	font-style: italic;
+}
+
+.section {
+	font-size: initial;
+	display: inline-block;
+	width: 100%;
+	padding: 0.5rem;
+
+}
+
+.section__title {
+	font-weight: bold;
+	font-size: 1.5rem;
+	display: inline-block;
+	margin: 0 0 0.5rem;
+	border-bottom: 1px #ccc dotted;
+}
+
+.section__subtitle {
+	font-family: Georgia;
+	font-size: 1.1rem;
+}
+
+.section__body {
+	position: relative;
+	vertical-align: top;
+	width: 100%;
+	font-size: initial;
+	border: 1px #ddd solid;
+	padding: 1rem;
+	transform: scale(1) translateZ(0);
+	transition: 0.25s transform, box-shadow;
+	background: #efefef;
+}
+
+.section__body:hover {
+	box-shadow: inset 0 0 0 1px #fff, 0 4px 2px -2px #ddd;
+	transform: scale(1.025) translateZ(1px);
+	z-index: 1;
+}
+
+.section__label {
+	display: block;
+	color: #aaa;
+	text-transform: uppercase;
+	font-size: 0.75rem;
+}
+
+.section__link {
+	background-color: #efefcc;
+	color: #333;
+	text-decoration: none;
+	word-break: break-word;
+}
+
+.section__detail {
+	margin-bottom: 0.25rem;
+}
+
+.section__list {
+	margin-top: 0.5rem;
+	padding-left: 2rem;
+}
+
+.section__item {
+	list-style: circle;
+	font-size: 0.8rem;
+}
+
+.section__date {
+	font-family: monospace;
+}
+
+.section__subsection + .section__subsection {
+	margin-top: 1rem;
+	border-top: 1px #ccc dotted;
+	padding-top: 1rem;
+}
+
+.section__quote {
+	font-family: monospace;
+}
+
+.section__tag {
+	padding: 0.5rem 0.75rem;
+	display: inline-block;
+	margin: 0 0.25rem 0.25rem 0;
+	background: #eaeaea;
+}
+
+.section__category {
+	font-size: 0.9rem;
+}
+
+.section__level {
+	font-style: italic;
+	font-size: 0.6rem;
+}
+
+
+@media (min-width: 30rem){
+
+	.header {
+		text-align: right;
+	}
+
+	.header__name {
+		font-size: 3rem;
+	}
+
+	.header__title {
+		font-size: 2rem;
+		background: #efefef;
+		display: inline-block;
+		padding: 0 0.5rem;
+		margin: 0 -0.25rem -2.5rem 0;
+		font-family: georgia;
+		line-height: 1;
+	}
+
+	.header__title::before {
+		content: "";
+		display: block;
+		border-bottom: 1px #ccc dotted;
+		width: 100%;
+		position: absolute;
+		bottom: 1rem;
+		z-index: -1;
+		left: 0;
+	}
+
+	.sections__main,
+	.sections__aside {
+		display: inline-block;
+		width: 50%;
+		vertical-align: top;
+	}
+
+	.sections__main {
+		width: 60%;
+	}
+
+	.sections__aside {
+		width: 40%;
+	}
+
+}
+
+@media print {
+	background: #fff;
+}
+
+	</style>
+
+	</head>
+	<body>
+
+		<div class="resume">
+
+			<header class="header">
+				<h1 class="header__name">Jane Smith</h1>
+				<h2 class="header__title">Senior Software Engineer</h2>
+			</header>
+
+			<main class="sections__main">
+
+				<section class="section section--summary">
+					<div class="section__body">
+
+						<h3 class="section__title">Summary</h3>
+
+						<div class="section__summary">
+							Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.
+						</div>
+					</div>
+				</section>
+
+
+
+
+
+
+				<section class="section section--work">
+					<div class="section__body">
+
+						<h3 class="section__title">Work</h3>
+
+						<div class="section__subsection">
+
+							<h4 class="section__subtitle">
+								Senior Software Engineer
+							</h4>
+
+
+							<div class="section__detail">
+								<span class="section__date">
+									Jan, 2020
+								</span>
+								<span class="section__date">
+									- Present
+								</span>
+							</div>
+
+							<ul class="section__list">
+								<li class="section__item">&lt;p&gt;&amp;lt;p&amp;gt;Lead engineer for the platform team, owning core API infrastructure.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+								<li class="section__item">&lt;p&gt;&amp;lt;p&amp;gt;Reduced API latency by 45% through caching and query optimization&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+								<li class="section__item">&lt;p&gt;&amp;lt;p&amp;gt;Designed microservices architecture serving 2M daily requests&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+								<li class="section__item">&lt;p&gt;&amp;lt;p&amp;gt;Mentored 4 junior engineers through technical growth plans&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+							</ul>
+						</div>
+						<div class="section__subsection">
+
+							<h4 class="section__subtitle">
+								Full Stack Developer
+							</h4>
+
+
+							<div class="section__detail">
+								<span class="section__date">
+									Jan, 2017
+								</span>
+								<span class="section__date">
+									- Jan, 2020
+								</span>
+							</div>
+
+							<ul class="section__list">
+								<li class="section__item">&lt;p&gt;&amp;lt;p&amp;gt;Built customer-facing web applications from prototype to production.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+								<li class="section__item">&lt;p&gt;&amp;lt;p&amp;gt;Built real-time dashboard used by 15,000+ daily active users&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+								<li class="section__item">&lt;p&gt;&amp;lt;p&amp;gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+							</ul>
+						</div>
+
+					</div>
+				</section>
+
+
+			</main>
+
+			<aside class="sections__aside">
+				<section class="section section--contact">
+					<div class="section__body">
+
+						<h3 class="section__title">Contact</h3>
+
+
+						<div class="section__detail">
+							<label class="section__label">Email</label>
+							jane@example.com
+						</div>
+
+						<div class="section__detail">
+							<label class="section__label">Phone</label>
+							+1-555-987-6543
+						</div>
+
+
+					</div>
+				</section>
+
+				<section class="section section--education">
+					<div class="section__body">
+
+						<h3 class="section__title">Education</h3>
+						<div class="section__subsection">
+							<h4 class="section__subtitle">
+								University of Technology
+							</h4>
+							<div class="section__detail">
+								<span class="section__date">
+									Jan, 2013
+								</span>
+								<span class="section__date">
+									- Jan, 2017
+								</span>
+							</div>
+							<div class="section__detail">
+								Computer Science
+							</div>
+							<div class="section__detail">
+								Bachelor of Science
+							</div>
+						</div>
+
+					</div>
+				</section>
+
+
+
+				<section class="section section--skills">
+					<div class="section__body">
+
+						<h3 class="section__title">Skills</h3>
+
+						<div class="section__subsection">
+							<h4 class="section__subtitle">
+								Languages
+							</h4>
+							<div class="section__level">
+								<em>Expert</em>
+							</div>
+							<ul class="section__list">
+								<li class="section__item">&lt;p&gt;TypeScript&lt;/p&gt;
+</li>
+								<li class="section__item">&lt;p&gt;JavaScript&lt;/p&gt;
+</li>
+								<li class="section__item">&lt;p&gt;Python&lt;/p&gt;
+</li>
+								<li class="section__item">&lt;p&gt;Go&lt;/p&gt;
+</li>
+							</ul>
+						</div>
+						<div class="section__subsection">
+							<h4 class="section__subtitle">
+								Frontend
+							</h4>
+							<div class="section__level">
+								<em>Expert</em>
+							</div>
+							<ul class="section__list">
+								<li class="section__item">&lt;p&gt;React&lt;/p&gt;
+</li>
+								<li class="section__item">&lt;p&gt;Next.js&lt;/p&gt;
+</li>
+								<li class="section__item">&lt;p&gt;HTML/CSS&lt;/p&gt;
+</li>
+								<li class="section__item">&lt;p&gt;Tailwind&lt;/p&gt;
+</li>
+							</ul>
+						</div>
+						<div class="section__subsection">
+							<h4 class="section__subtitle">
+								Backend &amp; Cloud
+							</h4>
+							<div class="section__level">
+								<em>Advanced</em>
+							</div>
+							<ul class="section__list">
+								<li class="section__item">&lt;p&gt;Node.js&lt;/p&gt;
+</li>
+								<li class="section__item">&lt;p&gt;PostgreSQL&lt;/p&gt;
+</li>
+								<li class="section__item">&lt;p&gt;AWS&lt;/p&gt;
+</li>
+								<li class="section__item">&lt;p&gt;Docker&lt;/p&gt;
+</li>
+							</ul>
+						</div>
+
+					</div>
+				</section>
+
+
+
+
+			</aside>
+
+		</div>
+	</body>
+</html>

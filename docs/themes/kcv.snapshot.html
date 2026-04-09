@@ -1,0 +1,432 @@
+<!doctype html>
+<html>
+	<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+	
+	<title>Jane Smith</title>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
+	
+	<style type="text/css">
+	@import url(
+	https://fonts.googleapis.com/css?family=Lato:400,700
+);
+body {
+	background: #fff;
+	font-family: Lato, sans-serif;
+	margin: 0 0 80px;
+}
+a {
+	color: #08298A;
+}
+a:focus,
+a:hover {
+	color: #f1c40f;
+	text-decoration: none;
+}
+p {
+	line-height: 1.5;
+	margin: 0;
+}
+p + p {
+	margin-top: 10px;
+}
+h1,
+h2,
+h3,
+h4 {
+	margin-top: 0
+}
+section {
+	margin-top: 30px;
+}
+li {
+	line-height: 1.8;
+	list-style: none;
+}
+li:before {
+	content: "\f052";
+	float: left;
+	font: 13px Octicons;
+	margin-top: 6px;
+	margin-left: -20px;
+	opacity: .1;
+	position: absolute;
+}
+blockquote {
+	border-left: 5px solid #e7e9ec;
+	font-size: 14px;
+}
+em {
+	color: #95a5a6;
+	font-weight: normal;
+	font-style: normal;
+}
+h4 span:first-child {
+	color: #000;
+	font-weight: bold;
+}
+.container {
+	max-width: 750px;
+	padding: 0 30px;
+}
+.col-sm-6 {
+	margin-bottom: 10px;
+}
+.col-sm-12 h4 {
+	margin-top: 12px; 
+}
+.col-sm-12 + .col-sm-12 {
+	margin-top: 30px;
+}
+#header {
+	background: #f4f6f6;
+	padding: 10px 0;
+}
+#header h2 {
+	color: #6E6E6E;
+	font-size: 24px;
+}
+#content h3 {
+	color: #f1c40f;
+	font-size: 26px;
+	margin-top: -4px;
+}
+#content aside {
+	text-align: right;
+	padding-right: 30px;
+}
+#profiles .network {
+	text-transform: capitalize;
+}
+#work .position,
+#volunteer .position {
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+#education .area {
+	font-weight: bold;
+}
+#education .area:before {
+	content: "\f0d7";
+	font: 16px Octicons;
+	margin-right: 6px;
+}
+#education .studyType {
+	margin-left: 25px;
+}
+#awards .summary,
+#publications .summary {
+	margin-top: 8px;
+}
+#publications .website a:before {
+	content: attr(href);
+}
+
+@media (min-width: 480px) {
+	.strike-through {
+		border-top: 1px solid #f4f6f6;
+		height: 20px;
+		margin-top: 12px;
+		margin-bottom: -2px;
+		position: relative;
+	}
+	.strike-through span,
+	.strike-through a {
+		background: #fff;
+		position: absolute;
+	}
+	.strike-through span:first-child {
+		padding-right: 20px;
+		margin-top: -12px;
+	}
+	.strike-through span + span {
+		font-size: 14px;
+		margin-top: -10px;
+		padding-left: 20px;
+		right: 0;
+	}
+}
+@media (max-width: 768px) {
+	.col-sm-6:last-child {
+		margin-bottom: 0px;
+	}
+	#content aside {
+		margin-bottom: 20px;
+		padding-right: 0;
+		text-align: left;
+	}
+	#publications .website a:before {
+		content: "View publication";
+	}
+}
+@media (max-width: 480px) {
+	h1 {
+		font-size: 26px;
+	}
+	.date {
+		font-size: 14px;
+		margin-bottom: 5px;
+	}
+	.strike-through span:first-child {
+		margin-bottom: 7px;
+	}
+	.strike-through span {
+		display: block;
+	}	
+	#header {
+		margin-bottom: 10px;
+		padding: 40px 0;
+	}
+	#actions {
+		display: none;
+	}
+}
+
+#header div.container {
+    height: 130px;
+}
+
+#header div.logo {
+    position: absolute;
+    margin-left: 2%;
+}
+
+#header div.main-name {
+    position: relative;
+    margin-left: 27%;
+    margin-top: 5%;
+    float: left;
+}
+
+div.row div.col-sm-12 div, h4, ul li, strong, p{
+    break-inside: avoid;
+};
+
+div.row div.col-sm-6 div, h4, ul li, strong, p {
+    break-inside: avoid;
+}
+
+	</style>
+	
+	</head>
+	<body>
+
+	<header id="header">
+		<div class="container">
+			<div class="row">
+				<div class="logo">
+                	<img src="data:image/jpeg;base64,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" alt="Keepler logo" style="width: 130px;">
+                </div>
+				<div class="main-name">
+					<h1>
+						Jane Smith
+					</h1>
+					<h2>
+						Senior Software Engineer
+					</h2>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div id="content" class="container">
+
+	<section id="contact" class="row">
+		<aside class="col-sm-3">
+			<h3>Contact</h3>
+		</aside>
+		<div class="col-sm-9">
+			<div class="row">
+			<div class="col-sm-6">
+				<strong>Email</strong>
+				<div class="email">jane@example.com</div>
+			</div>
+			<div class="col-sm-6">
+				<strong>Phone</strong>
+				<div class="phone">+1-555-987-6543</div>
+			</div>
+			</div>
+		</div>
+	</section>
+	<section id="about" class="row">
+		<aside class="col-sm-3">
+			<h3>About</h3>
+		</aside>
+		<div class="col-sm-9">
+			<p>Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.</p>
+		</div>
+	</section>
+	<section id="profiles" class="row">
+		<aside class="col-sm-3">
+			<h3>Profiles</h3>
+		</aside>
+		<div class="col-sm-9">
+			<div class="row">
+				<div class="col-sm-6">
+					<strong class="network">
+						linkedin
+					</strong>
+					<div class="username">
+						<div class="url">
+							<a href="https://linkedin.com/in/janesmith">janesmith</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<strong class="network">
+						github
+					</strong>
+					<div class="username">
+						<div class="url">
+							<a href="https://github.com/janesmith">janesmith</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="work" class="row">
+		<aside class="col-sm-3">
+			<h3>Work</h3>
+		</aside>
+		<div class="col-sm-9">
+			<div class="row">
+			<div class="col-sm-12">
+				<h4 class="strike-through">
+					<span></span>
+					<span class="date">
+						Jan, 2020 — 
+					</span>
+				</h4>
+				<div class="position">
+					Senior Software Engineer
+				</div>
+				<h4>Highlights</h4>
+				<ul class="highlights">
+					<li class="bullet">&lt;p&gt;&amp;lt;p&amp;gt;Lead engineer for the platform team, owning core API infrastructure.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+					<li class="bullet">&lt;p&gt;&amp;lt;p&amp;gt;Reduced API latency by 45% through caching and query optimization&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+					<li class="bullet">&lt;p&gt;&amp;lt;p&amp;gt;Designed microservices architecture serving 2M daily requests&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+					<li class="bullet">&lt;p&gt;&amp;lt;p&amp;gt;Mentored 4 junior engineers through technical growth plans&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+				</ul>
+			</div>
+			<div class="col-sm-12">
+				<h4 class="strike-through">
+					<span></span>
+					<span class="date">
+						Jan, 2017 — Jan, 2020
+					</span>
+				</h4>
+				<div class="position">
+					Full Stack Developer
+				</div>
+				<h4>Highlights</h4>
+				<ul class="highlights">
+					<li class="bullet">&lt;p&gt;&amp;lt;p&amp;gt;Built customer-facing web applications from prototype to production.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+					<li class="bullet">&lt;p&gt;&amp;lt;p&amp;gt;Built real-time dashboard used by 15,000+ daily active users&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+					<li class="bullet">&lt;p&gt;&amp;lt;p&amp;gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+				</ul>
+			</div>
+			</div>
+		</div>
+	</section>
+
+	
+	<section id="education" class="row">
+		<aside class="col-sm-3">
+			<h3>Education</h3>
+		</aside>
+		<div class="col-sm-9">
+			<div class="row">
+			<div class="col-sm-12">
+				<h4 class="strike-through">
+					<span>University of Technology</span>
+					<span class="date">
+						Jan, 2013 — Jan, 2017
+					</span>
+				</h4>
+				<div class="area">
+					Computer Science
+				</div>
+				<div class="studyType">
+					Bachelor of Science
+				</div>
+			</div>
+			</div>
+		</div>
+	</section>
+	
+	
+	
+	<section id="skills" class="row">
+		<aside class="col-sm-3">
+			<h3>Skills</h3>
+		</aside>
+		<div class="col-sm-9">
+			<div class="row">
+			<div class="col-sm-6">
+				<div class="name">
+					<h4>Languages</h4>
+				</div>
+				<ul class="keywords">
+					<li>&lt;p&gt;TypeScript&lt;/p&gt;
+</li>
+					<li>&lt;p&gt;JavaScript&lt;/p&gt;
+</li>
+					<li>&lt;p&gt;Python&lt;/p&gt;
+</li>
+					<li>&lt;p&gt;Go&lt;/p&gt;
+</li>
+				</ul>
+			</div>
+			<div class="col-sm-6">
+				<div class="name">
+					<h4>Frontend</h4>
+				</div>
+				<ul class="keywords">
+					<li>&lt;p&gt;React&lt;/p&gt;
+</li>
+					<li>&lt;p&gt;Next.js&lt;/p&gt;
+</li>
+					<li>&lt;p&gt;HTML/CSS&lt;/p&gt;
+</li>
+					<li>&lt;p&gt;Tailwind&lt;/p&gt;
+</li>
+				</ul>
+			</div>
+			<div class="col-sm-6">
+				<div class="name">
+					<h4>Backend &amp; Cloud</h4>
+				</div>
+				<ul class="keywords">
+					<li>&lt;p&gt;Node.js&lt;/p&gt;
+</li>
+					<li>&lt;p&gt;PostgreSQL&lt;/p&gt;
+</li>
+					<li>&lt;p&gt;AWS&lt;/p&gt;
+</li>
+					<li>&lt;p&gt;Docker&lt;/p&gt;
+</li>
+				</ul>
+			</div>
+			</div>
+		</div>
+	</section>
+
+
+	
+
+	</div>
+	
+	</body>
+</html>

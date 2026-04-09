@@ -1,0 +1,327 @@
+<!doctype html>
+<html>
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+
+		<title>Jane Smith's Resume</title>
+
+		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+		<style>
+		
+		</style>
+
+	</head>
+	<body>
+
+	<div id="resume">
+		
+			<section id="header">
+				<!--
+				<div class="avatar">
+					<img src="">
+				</div>
+				-->
+				<div class="meta">
+					<h1>Jane Smith</h1>
+					<p>This resume was built using <code>samk</code> theme for <code>JSON Resume</code> on <span id="today"></span></p>
+				</div>
+			</section>
+		
+			<section id="basics">
+		
+				<h2>👨‍💻 Senior Software Engineer</h2>
+		
+				<div class="contact">
+				<div class="location">
+					<p>
+						<i class="fa fa-map-pin"></i>
+						<strong>Location:</strong><br />
+						San Francisco,
+						California,
+						US
+					</p>
+				</div>
+				<div class="email">
+					<strong class="network">
+						E-Mail:
+					</strong>
+					<br/>
+					<a href="mailto:jane@example.com">jane@example.com</a>
+				</div>
+				<div class="phone">
+					<strong class="network">
+						Phone:
+					</strong>
+					<br />
+					<a href="tel:+1-555-987-6543">+1-555-987-6543</a>
+				</div>
+					<div class="profile-item">
+						<strong class="network">
+							linkedin
+						</strong>
+						<div class="username">
+							<a target="_blank" href="https://linkedin.com/in/janesmith">
+								janesmith
+							</a>
+						</div>
+					</div>
+					<div class="profile-item">
+						<strong class="network">
+							github
+						</strong>
+						<div class="username">
+							<a target="_blank" href="https://github.com/janesmith">
+								janesmith
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="summary">
+					<p><i class="fa fa-info-circle"></i> <strong>About Me</strong></p>
+					<p>Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.</p>
+				</div>
+			</section>
+		
+		<script>
+		var today = new Date();
+		var dd = String(today.getDate()).padStart(2, '0');
+		var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+		var yyyy = today.getFullYear();
+		
+		today = yyyy + '-' + mm + '-' + dd;
+		var todaysDate = document.getElementById("today");
+			todaysDate.innerHTML = today;
+		</script>		<section id="skills">
+			<h2>💪 Skills</h2>
+			<div class="item">
+				<p><strong>
+					Languages
+				</strong></p>
+				<div class="level">
+					<em>Expert</em>
+				</div>
+				<ul class="keywords">
+					<li><code>&lt;p&gt;TypeScript&lt;/p&gt;
+		</code></li>
+					<li><code>&lt;p&gt;JavaScript&lt;/p&gt;
+		</code></li>
+					<li><code>&lt;p&gt;Python&lt;/p&gt;
+		</code></li>
+					<li><code>&lt;p&gt;Go&lt;/p&gt;
+		</code></li>
+				</ul>
+			</div>
+			<div class="item">
+				<p><strong>
+					Frontend
+				</strong></p>
+				<div class="level">
+					<em>Expert</em>
+				</div>
+				<ul class="keywords">
+					<li><code>&lt;p&gt;React&lt;/p&gt;
+		</code></li>
+					<li><code>&lt;p&gt;Next.js&lt;/p&gt;
+		</code></li>
+					<li><code>&lt;p&gt;HTML/CSS&lt;/p&gt;
+		</code></li>
+					<li><code>&lt;p&gt;Tailwind&lt;/p&gt;
+		</code></li>
+				</ul>
+			</div>
+			<div class="item">
+				<p><strong>
+					Backend &amp; Cloud
+				</strong></p>
+				<div class="level">
+					<em>Advanced</em>
+				</div>
+				<ul class="keywords">
+					<li><code>&lt;p&gt;Node.js&lt;/p&gt;
+		</code></li>
+					<li><code>&lt;p&gt;PostgreSQL&lt;/p&gt;
+		</code></li>
+					<li><code>&lt;p&gt;AWS&lt;/p&gt;
+		</code></li>
+					<li><code>&lt;p&gt;Docker&lt;/p&gt;
+		</code></li>
+				</ul>
+			</div>
+		</section>
+		<section id="work">
+			<h2>💼 Experience</h2>
+		
+			<div class="item page-break">
+		
+				<div class="position">
+					<i class="fa fa-id-card"></i> <strong>Senior Software Engineer</strong>
+				</div>
+		
+				<div class="date">
+					<i class="fa fa-calendar"></i>
+					<span class="startDate">
+						Jan, 2020
+					</span>
+					<span class="endDate">
+						- Present
+					</span>
+				</div>
+		
+		
+		
+				<ul class="highlights">
+					<li>&lt;p&gt;&amp;lt;p&amp;gt;Lead engineer for the platform team, owning core API infrastructure.&amp;lt;/p&amp;gt;&lt;/p&gt;
+		</li>
+					<li><p>&lt;p&gt;Reduced API latency by 45% through caching and query optimization&lt;/p&gt;</p>
+		</li>
+					<li><p>&lt;p&gt;Designed microservices architecture serving 2M daily requests&lt;/p&gt;</p>
+		</li>
+					<li><p>&lt;p&gt;Mentored 4 junior engineers through technical growth plans&lt;/p&gt;</p>
+		</li>
+				</ul>
+		
+				<aside class="separator"></aside>
+		
+			</div>
+			<div class="item page-break">
+		
+				<div class="position">
+					<i class="fa fa-id-card"></i> <strong>Full Stack Developer</strong>
+				</div>
+		
+				<div class="date">
+					<i class="fa fa-calendar"></i>
+					<span class="startDate">
+						Jan, 2017
+					</span>
+					<span class="endDate">
+						- Jan, 2020
+					</span>
+				</div>
+		
+		
+		
+				<ul class="highlights">
+					<li>&lt;p&gt;&amp;lt;p&amp;gt;Built customer-facing web applications from prototype to production.&amp;lt;/p&amp;gt;&lt;/p&gt;
+		</li>
+					<li><p>&lt;p&gt;Built real-time dashboard used by 15,000+ daily active users&lt;/p&gt;</p>
+		</li>
+					<li><p>&lt;p&gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&lt;/p&gt;</p>
+		</li>
+				</ul>
+		
+				<aside class="separator"></aside>
+		
+			</div>
+		</section>
+		<section id="education">
+			<h2>🎒 Education</h2>
+			<div class="item">
+				<div class="date">
+					<i class="fa fa-calendar"></i>
+					<span class="startDate">
+						Jan, 2013
+					</span>
+					<span class="endDate">
+						- Jan, 2017
+					</span>
+				</div>
+				<div class="institution">
+					<strong>University of Technology</strong>
+				</div>
+				<div class="studyType">
+					Bachelor of Science
+				</div>
+				<div class="area">
+					Computer Science
+				</div>
+			</div>
+		</section>
+		<section id="references">
+			<h2>📝 References</h2>
+			<p>References are available upon request.</p>
+		</section>	</div>
+
+	<script>
+
+	// Get "basic info" elements, add FontAwesome icons
+	const contactInfo = document.querySelectorAll('.contact strong');
+	contactInfo.forEach(el => {
+		if (el.innerHTML.includes('E-Mail') ) {
+			el.innerHTML = '<i class="fa fa-envelope"></i>' + el.innerHTML;
+		}
+		if (el.innerHTML.includes('Phone')) {
+			el.innerHTML = '<i class="fa fa-phone"></i>' + el.innerHTML;
+		}
+		if (el.innerHTML.includes('Website')) {
+			el.innerHTML = '<i class="fa fa-globe"></i>' + el.innerHTML;
+		}
+		if (el.innerHTML.includes('GitHub')) {
+			el.innerHTML = '<i class="fa fa-github"></i>' + el.innerHTML;
+		}
+		if (el.innerHTML.includes('SoundCloud')) {
+			el.innerHTML = '<i class="fa fa-soundcloud"></i>' + el.innerHTML;
+		}
+		if (el.innerHTML.includes('Instagram')) {
+			el.innerHTML = '<i class="fa fa-instagram"></i>' + el.innerHTML;
+		}
+	});
+
+	// Get skill label elements, add FontAwesome icons
+	const skillLabel = document.querySelectorAll('#skills strong');
+	skillLabel.forEach(el => {
+		if (el.innerHTML.includes('Front-End') ) {
+			el.innerHTML = '<i class="fa fa-code"></i>' + el.innerHTML;
+		}
+		if (el.innerHTML.includes('Back-End')) {
+			el.innerHTML = '<i class="fa fa-code"></i>' + el.innerHTML;
+		}
+		if (el.innerHTML.includes('Local')) {
+			el.innerHTML = '<i class="fa fa-desktop"></i>' + el.innerHTML;
+		}
+		if (el.innerHTML.includes('Servers')) {
+			el.innerHTML = '<i class="fa fa-server"></i>' + el.innerHTML;
+		}
+		if (el.innerHTML.includes('DevOps')) {
+			el.innerHTML = '<i class="fa fa-cubes"></i>' + el.innerHTML;
+		}
+		if (el.innerHTML.includes('CLI Tools')) {
+			el.innerHTML = '<i class="fa fa-terminal"></i>' + el.innerHTML;
+		}
+		if (el.innerHTML.includes('Key Knowledge Areas')) {
+			el.innerHTML = '<i class="fa fa-key"></i>' + el.innerHTML;
+		}
+		if (el.innerHTML.includes('Multimedia Expertise')) {
+			el.innerHTML = '<i class="fa fa-file-movie-o"></i>' + el.innerHTML;
+		}
+		if (el.innerHTML.includes('Methodologies')) {
+			el.innerHTML = '<i class="fa fa-gears"></i>' + el.innerHTML;
+		}
+	});
+
+	// Get skill elements, add their content as the <li>'s class
+	// const skillElements = document.querySelectorAll('#skills li');
+	// skillElements.forEach(el => { el.outerHTML = '<li class="' + el.innerHTML + '">' + el.innerHTML + '</li>' });
+
+	// Get elements that might contain URLs
+	const companySites = document.querySelectorAll('#work .website');
+	const clientSites = document.querySelectorAll('#work li');
+
+	// URLify any detected URLs within
+	companySites.forEach(el => { el.innerHTML = urlify(el.innerHTML); });
+	clientSites.forEach(el => { el.innerHTML = urlify(el.innerHTML); });
+
+	// urlify - Detect URLs and wrap them in <a> tags
+	function urlify(text) {
+		var urlRegex = /(https?:\/\/[^\s]+)/g;
+		return text.replace(urlRegex, function (url) {
+			return '<a target="_blank" href="' + url + '">' + url + '</a>';
+		})
+	}
+	</script>
+
+	</body>
+</html>

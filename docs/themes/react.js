@@ -1,0 +1,1641 @@
+var K=Object.create;var d=Object.defineProperty;var Q=Object.getOwnPropertyDescriptor;var X=Object.getOwnPropertyNames;var Z=Object.getPrototypeOf,nn=Object.prototype.hasOwnProperty;var y=(n=>typeof require<"u"?require:typeof Proxy<"u"?new Proxy(n,{get:(e,t)=>(typeof require<"u"?require:e)[t]}):n)(function(n){if(typeof require<"u")return require.apply(this,arguments);throw Error('Dynamic require of "'+n+'" is not supported')});var h=(n,e)=>()=>(n&&(e=n(n=0)),e);var en=(n,e)=>()=>(e||n((e={exports:{}}).exports,e),e.exports),v=(n,e)=>{for(var t in e)d(n,t,{get:e[t],enumerable:!0})},k=(n,e,t,r)=>{if(e&&typeof e=="object"||typeof e=="function")for(let o of X(e))!nn.call(n,o)&&o!==t&&d(n,o,{get:()=>e[o],enumerable:!(r=Q(e,o))||r.enumerable});return n};var tn=(n,e,t)=>(t=n!=null?K(Z(n)):{},k(e||!n||!n.__esModule?d(t,"default",{value:n,enumerable:!0}):t,n)),z=n=>k(d({},"__esModule",{value:!0}),n);var a=h(()=>{});var U={};v(U,{createReadStream:()=>A,createWriteStream:()=>O,default:()=>rn,existsSync:()=>C,lstatSync:()=>M,mkdirSync:()=>E,readFileSync:()=>S,readdirSync:()=>R,rmdirSync:()=>_,statSync:()=>b,unlinkSync:()=>T,writeFileSync:()=>F});function f(n){return String(n).replace(/[\\]+/g,"/").replace(/^\/+/,"")}function j(n){var e=f(n);if(l[e]!==void 0)return l[e];for(var t=Object.keys(l),r=0;r<t.length;r++)if(e.endsWith("/"+t[r])||e===t[r])return l[t[r]]}function g(n){var e=f(n);if(c[e]!==void 0)return c[e];for(var t=Object.keys(c),r=0;r<t.length;r++)if(e.endsWith("/"+t[r])||e===t[r])return c[t[r]]}var l,c,S,R,C,F,E,b,M,T,_,A,O,rn,D=h(()=>{"use strict";a();l={"dist/jsonresume-theme-react.css":`/* Markdown styling */
+
+.markdown {
+  color: var(--color-text);
+}
+
+.markdown p {
+  margin-bottom: 0.75rem;
+}
+
+.markdown p:last-child {
+  margin-bottom: 0px;
+}
+
+.markdown a {
+  color: var(--color-brand);
+}
+
+.markdown a:hover {
+  text-decoration-line: underline;
+}
+
+.markdown ul {
+  margin-left: 1.25rem;
+  margin-bottom: 0.75rem;
+  list-style-type: disc;
+}
+
+.markdown ol {
+  margin-left: 1.25rem;
+  margin-bottom: 0.75rem;
+  list-style-type: decimal;
+}
+
+.markdown li {
+  margin-bottom: 0.25rem;
+}
+
+.markdown h1 {
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+.markdown h2 {
+  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+.markdown h3 {
+  margin-bottom: 0.25rem;
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+}
+
+.markdown h4 {
+  margin-bottom: 0.25rem;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+}
+
+.markdown code {
+  background-color: var(--color-bg-secondary);
+  border-radius: 0.25rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.markdown pre {
+  background-color: var(--color-bg-secondary);
+  margin-bottom: 0.75rem;
+  overflow-x: auto;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+}
+
+.markdown pre code {
+  background-color: transparent;
+  padding: 0px;
+}
+
+.markdown blockquote {
+  border-color: var(--color-border);
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-left-width: 4px;
+  padding-left: 1rem;
+  font-style: italic;
+}
+
+.markdown hr {
+  border-color: var(--color-border);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.markdown strong {
+  font-weight: 600;
+}
+
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */
+
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured \`sans\` font-family by default.
+5. Use the user's configured \`sans\` font-feature-settings by default.
+6. Use the user's configured \`sans\` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+html,
+:host {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
+  -o-tab-size: 4;
+     tab-size: 4; /* 3 */
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif; /* 4 */
+  font-feature-settings: normal; /* 5 */
+  font-variation-settings: normal; /* 6 */
+  -webkit-tap-highlight-color: transparent; /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from \`html\` so users can set them as a class directly on the \`html\` element.
+*/
+
+body {
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+  border-top-width: 1px; /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured \`mono\` font-family by default.
+2. Use the user's configured \`mono\` font-feature-settings by default.
+3. Use the user's configured \`mono\` font-variation-settings by default.
+4. Correct the odd \`em\` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace; /* 1 */
+  font-feature-settings: normal; /* 2 */
+  font-variation-settings: normal; /* 3 */
+  font-size: 1em; /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent \`sub\` and \`sup\` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+  border-collapse: collapse; /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-feature-settings: inherit; /* 1 */
+  font-variation-settings: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  font-weight: inherit; /* 1 */
+  line-height: inherit; /* 1 */
+  letter-spacing: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional \`:invalid\` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to \`inherit\` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+
+dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements \`display: block\` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add \`vertical-align: middle\` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+
+[hidden]:where(:not([hidden="until-found"])) {
+  display: none;
+}
+
+:root {
+    /* Modern Minimalist Theme - Light Mode */
+    --color-brand: #3b82f6; /* More sophisticated blue accent */
+    --color-brand-light: #60a5fa; /* Lighter blue for hover */
+    --color-brand-dark: #1d4ed8; /* Darker blue for active */
+
+    /* Text Colors - Refined monochromatic scale */
+    --color-text: #1f2937; /* Near-black text for headings */
+    --color-text-secondary: #4b5563; /* Medium gray text for body */
+    --color-text-tertiary: #6b7280; /* Light gray text for captions */
+    --color-text-muted: #6b7178; /* Muted text for less important content */
+
+    /* Background Colors */
+    --color-bg: #ffffff; /* Pure white background */
+    --color-bg-secondary: #f8fafc; /* Very subtle off-white for cards */
+    --color-bg-accent: #eff6ff; /* Very light blue accent background */
+
+    /* Border Colors */
+    --color-border: #e5e7eb; /* Light gray border */
+
+    /* Accent colors */
+    --color-accent-primary: #10b981; /* Emerald green for success/positive */
+    --color-accent-secondary: #f59e0b; /* Amber for warnings/neutral */
+    --color-accent-danger: #ef4444; /* Red for errors/negative */
+  }
+
+html {
+  background-color: var(--color-bg);
+  font-size: 13px;
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+    font-family:
+      'Helvetica Neue',
+      system-ui,
+      -apple-system,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      sans-serif;
+}
+
+body {
+  margin: 0px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-brand-dark);
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+a:hover {
+  color: var(--color-brand);
+  text-decoration-line: underline;
+}
+
+h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+  margin: 0px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+.container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+
+  .container {
+    max-width: 1536px;
+  }
+}
+
+.text-brand {
+  color: var(--color-brand);
+}
+
+.text-text {
+  color: var(--color-text);
+}
+
+.bg-color {
+  background-color: var(--color-bg);
+}
+
+.bg-color-secondary {
+  background-color: var(--color-bg-secondary);
+}
+
+.border-color {
+  border-color: var(--color-border);
+}
+
+.relative {
+  position: relative;
+}
+
+.float-right {
+  float: right;
+}
+
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.mb-0 {
+  margin-bottom: 0px;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
+.ml-1\\.5 {
+  margin-left: 0.375rem;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+
+.mr-1 {
+  margin-right: 0.25rem;
+}
+
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
+.mt-0\\.5 {
+  margin-top: 0.125rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mt-1\\.5 {
+  margin-top: 0.375rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.inline {
+  display: inline;
+}
+
+.flex {
+  display: flex;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.h-28 {
+  height: 7rem;
+}
+
+.h-3 {
+  height: 0.75rem;
+}
+
+.h-4 {
+  height: 1rem;
+}
+
+.h-5 {
+  height: 1.25rem;
+}
+
+.w-28 {
+  width: 7rem;
+}
+
+.w-3 {
+  width: 0.75rem;
+}
+
+.w-4 {
+  width: 1rem;
+}
+
+.w-5 {
+  width: 1.25rem;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.list-disc {
+  list-style-type: disc;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.gap-1 {
+  gap: 0.25rem;
+}
+
+.gap-1\\.5 {
+  gap: 0.375rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-3 {
+  gap: 0.75rem;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.space-y-1 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+
+.space-y-1\\.5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.375rem * var(--tw-space-y-reverse));
+}
+
+.space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.border-2 {
+  border-width: 2px;
+}
+
+.border-b {
+  border-bottom-width: 1px;
+}
+
+.border-transparent {
+  border-color: transparent;
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
+.bg-opacity-5 {
+  --tw-bg-opacity: 0.05;
+}
+
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.p-3 {
+  padding: 0.75rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.py-0\\.5 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-normal {
+  font-weight: 400;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.leading-none {
+  line-height: 1;
+}
+
+.leading-normal {
+  line-height: 1.5;
+}
+
+.leading-relaxed {
+  line-height: 1.625;
+}
+
+.leading-snug {
+  line-height: 1.375;
+}
+
+.leading-tight {
+  line-height: 1.25;
+}
+
+.text-foreground {
+  color: var(--color-text);
+}
+
+.text-foreground-muted {
+  color: var(--color-text-muted);
+}
+
+.text-foreground-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-foreground-tertiary {
+  color: var(--color-text-tertiary);
+}
+
+.no-underline {
+  text-decoration-line: none;
+}
+
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-shadow {
+  transition-property: box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Basic print adjustments that are hard to do with Tailwind classes */
+
+@media print {
+  html {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  a[href]:after {
+    content: none !important;
+  }
+
+  @page {
+    margin: 0.7cm 0.5cm;
+    size: auto;
+  }
+}
+
+.hover\\:text-brand:hover {
+  color: var(--color-brand);
+}
+
+.hover\\:border-color:hover {
+  border-color: var(--color-border);
+}
+
+@media print {
+
+  .print\\:border-color {
+    border-color: var(--color-border);
+  }
+}
+
+.before\\:absolute::before {
+  content: var(--tw-content);
+  position: absolute;
+}
+
+.before\\:left-0::before {
+  content: var(--tw-content);
+  left: 0px;
+}
+
+.before\\:top-0::before {
+  content: var(--tw-content);
+  top: 0px;
+}
+
+.before\\:h-full::before {
+  content: var(--tw-content);
+  height: 100%;
+}
+
+.before\\:w-px::before {
+  content: var(--tw-content);
+  width: 1px;
+}
+
+.hover\\:text-foreground-muted:hover {
+  color: var(--color-text-muted);
+}
+
+.hover\\:underline:hover {
+  text-decoration-line: underline;
+}
+
+.hover\\:shadow-sm:hover {
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+@media (min-width: 640px) {
+
+  .sm\\:h-32 {
+    height: 8rem;
+  }
+
+  .sm\\:w-32 {
+    width: 8rem;
+  }
+
+  .sm\\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .sm\\:space-y-2 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .lg\\:w-1\\/3 {
+    width: 33.333333%;
+  }
+
+  .lg\\:w-2\\/3 {
+    width: 66.666667%;
+  }
+
+  .lg\\:w-\\[960px\\] {
+    width: 960px;
+  }
+
+  .lg\\:flex-row {
+    flex-direction: row;
+  }
+}
+
+@media print {
+
+  .print\\:float-none {
+    float: none;
+  }
+
+  .print\\:m-0 {
+    margin: 0px;
+  }
+
+  .print\\:mx-0\\.5 {
+    margin-left: 0.125rem;
+    margin-right: 0.125rem;
+  }
+
+  .print\\:my-2 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .print\\:mb-0 {
+    margin-bottom: 0px;
+  }
+
+  .print\\:mb-0\\.5 {
+    margin-bottom: 0.125rem;
+  }
+
+  .print\\:mb-1 {
+    margin-bottom: 0.25rem;
+  }
+
+  .print\\:mb-2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .print\\:mb-4 {
+    margin-bottom: 1rem;
+  }
+
+  .print\\:ml-1 {
+    margin-left: 0.25rem;
+  }
+
+  .print\\:ml-4 {
+    margin-left: 1rem;
+  }
+
+  .print\\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .print\\:mt-0\\.5 {
+    margin-top: 0.125rem;
+  }
+
+  .print\\:mt-1 {
+    margin-top: 0.25rem;
+  }
+
+  .print\\:flex {
+    display: flex;
+  }
+
+  .print\\:hidden {
+    display: none;
+  }
+
+  .print\\:h-24 {
+    height: 6rem;
+  }
+
+  .print\\:h-3 {
+    height: 0.75rem;
+  }
+
+  .print\\:h-4 {
+    height: 1rem;
+  }
+
+  .print\\:w-24 {
+    width: 6rem;
+  }
+
+  .print\\:w-3 {
+    width: 0.75rem;
+  }
+
+  .print\\:w-4 {
+    width: 1rem;
+  }
+
+  .print\\:w-\\[28\\%\\] {
+    width: 28%;
+  }
+
+  .print\\:w-\\[72\\%\\] {
+    width: 72%;
+  }
+
+  .print\\:w-full {
+    width: 100%;
+  }
+
+  .print\\:max-w-full {
+    max-width: 100%;
+  }
+
+  .print\\:list-disc {
+    list-style-type: disc;
+  }
+
+  .print\\:flex-row {
+    flex-direction: row;
+  }
+
+  .print\\:gap-0\\.5 {
+    gap: 0.125rem;
+  }
+
+  .print\\:gap-1 {
+    gap: 0.25rem;
+  }
+
+  .print\\:gap-3 {
+    gap: 0.75rem;
+  }
+
+  .print\\:space-y-1 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+  }
+
+  .print\\:space-y-2 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+  }
+
+  .print\\:rounded-md {
+    border-radius: 0.375rem;
+  }
+
+  .print\\:rounded-sm {
+    border-radius: 0.125rem;
+  }
+
+  .print\\:border-b {
+    border-bottom-width: 1px;
+  }
+
+  .print\\:border-l-0 {
+    border-left-width: 0px;
+  }
+
+  .print\\:bg-transparent {
+    background-color: transparent;
+  }
+
+  .print\\:p-0 {
+    padding: 0px;
+  }
+
+  .print\\:px-1 {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .print\\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .print\\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .print\\:py-0 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .print\\:py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .print\\:pb-1 {
+    padding-bottom: 0.25rem;
+  }
+
+  .print\\:pl-0 {
+    padding-left: 0px;
+  }
+
+  .print\\:pt-0 {
+    padding-top: 0px;
+  }
+
+  .print\\:align-middle {
+    vertical-align: middle;
+  }
+
+  .print\\:text-\\[0\\.65rem\\] {
+    font-size: 0.65rem;
+  }
+
+  .print\\:text-\\[10px\\] {
+    font-size: 10px;
+  }
+
+  .print\\:text-\\[11px\\] {
+    font-size: 11px;
+  }
+
+  .print\\:text-\\[16px\\] {
+    font-size: 16px;
+  }
+
+  .print\\:text-\\[32px\\] {
+    font-size: 32px;
+  }
+
+  .print\\:text-\\[8px\\] {
+    font-size: 8px;
+  }
+
+  .print\\:text-\\[9px\\] {
+    font-size: 9px;
+  }
+
+  .print\\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .print\\:hover\\:border-transparent:hover {
+    border-color: transparent;
+  }
+
+  .print\\:hover\\:shadow-none:hover {
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+}
+`,"package.json":`{
+  "name": "jsonresume-theme-react",
+  "version": "1.0.4",
+  "description": "A React-based theme for JSON Resume",
+  "type": "module",
+  "main": "index.cjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev:base": "vite",
+    "dev": "npm run generate-types && node scripts/dev.js",
+    "build": "npm run generate-types && tsc -b && vite build",
+    "build:ci": "npm run build && node scripts/render.js",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --write \\"**/*.{js,jsx,ts,tsx,json,css,scss,md}\\"",
+    "format:check": "prettier --check \\"**/*.{js,jsx,ts,tsx,json,css,scss,md}\\"",
+    "render:resumed": "npm run build && node scripts/render.js",
+    "generate-types": "node scripts/generateTypes.js",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "start": "resumed --theme jsonresume-theme-local",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "jsonresume",
+    "jsonresume-theme",
+    "resume",
+    "cv",
+    "react",
+    "theme"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phoinixi/jsonresume-theme-react.git"
+  },
+  "author": "Francesco Esposito",
+  "license": "MIT",
+  "dependencies": {
+    "@jsonresume/schema": "1.2.1",
+    "clsx": "2.1.1",
+    "date-fns": "^4.1.0",
+    "i18next": "^24.2.3",
+    "jsonresume-theme-local": "file:./",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-i18next": "^15.4.1",
+    "react-icons": "5.5.0",
+    "react-markdown": "10.1.0",
+    "remark-gfm": "4.0.1",
+    "tailwind-merge": "3.0.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.25.9",
+    "@babel/plugin-transform-runtime": "^7.26.10",
+    "@eslint/js": "^9.21.0",
+    "@iconify/react": "^5.2.0",
+    "@iconify/tailwind": "^1.2.0",
+    "@semantic-release/commit-analyzer": "^11.0.0",
+    "@semantic-release/github": "^11.0.0",
+    "@semantic-release/npm": "^11.0.0",
+    "@semantic-release/release-notes-generator": "^12.0.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/i18next": "^12.1.0",
+    "@types/node": "^22.13.13",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/react-i18next": "^7.8.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.21.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.5",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^15.15.0",
+    "jsdom": "^26.0.0",
+    "json-schema-to-typescript": "^15.0.4",
+    "minimist": "^1.2.8",
+    "postcss": "^8.5.3",
+    "postcss-nesting": "^13.0.1",
+    "prettier": "^3.5.3",
+    "resumed": "4.1.0",
+    "semantic-release": "^24.1.0",
+    "tailwindcss": "^3.4.1",
+    "terser": "^5.39.0",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.24.1",
+    "vite": "^6.2.0",
+    "vite-plugin-compression2": "^1.3.3",
+    "vitest": "^3.1.1"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
+  },
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "index.cjs"
+  ],
+  "comment": "The files array ensures only the necessary files are included when publishing to npm"
+}
+`},c={dist:["index.cjs","index.cjs.map","jsonresume-theme-react.css","jsonresume-theme-react.css.gz"],".":["LICENSE","README.md","dist","index.cjs","package.json"]};S=function(n,e){var t=j(n);return t!==void 0?t:""},R=function(n,e){var t=g(n);return t===void 0&&(t=[]),e&&e.withFileTypes?t.map(function(r){var o=f(n)+"/"+r,i=g(o)!==void 0;return{name:r,isFile:function(){return!i},isDirectory:function(){return i}}}):t},C=function(n){return j(n)!==void 0||g(n)!==void 0},F=function(){},E=function(){},b=function(){return{isFile:function(){return!0},isDirectory:function(){return!1},size:0,mtime:new Date}},M=b,T=function(){},_=function(){},A=function(){return{pipe:function(n){return n},on:function(){return this}}},O=function(){return{write:function(){},end:function(){},on:function(){return this}}},rn={readFileSync:S,readdirSync:R,existsSync:C,writeFileSync:F,mkdirSync:E,statSync:b,lstatSync:M,unlinkSync:T,rmdirSync:_,createReadStream:A,createWriteStream:O}});var W={};v(W,{basename:()=>m,default:()=>on,dirname:()=>w,extname:()=>p,isAbsolute:()=>$,join:()=>L,normalize:()=>H,parse:()=>q,relative:()=>I,resolve:()=>N,sep:()=>P});var L,N,w,m,p,P,$,H,I,q,on,B=h(()=>{"use strict";a();L=function(){return[].slice.call(arguments).join("/")},N=function(){return[].slice.call(arguments).join("/")},w=function(n){return n.split("/").slice(0,-1).join("/")},m=function(n,e){var t=n.split("/").pop()||"";return e&&t.endsWith(e)?t.slice(0,-e.length):t},p=function(n){var e=n.match(/\.[^.]+$/);return e?e[0]:""},P="/",$=function(n){return n.charAt(0)==="/"},H=function(n){return n},I=function(n,e){return e},q=function(n){return{root:"",dir:w(n),base:m(n),ext:p(n),name:m(n,p(n))}},on={join:L,resolve:N,dirname:w,basename:m,extname:p,sep:P,isAbsolute:$,normalize:H,relative:I,parse:q}});var J=en((hn,Y)=>{a();var an=(D(),z(U)),x=(B(),z(W));console.log("[Theme] index.cjs loaded.");console.log("[Theme] __dirname:","/");console.log("[Theme] process.cwd():",process.cwd());globalThis.window=globalThis.window||{};globalThis.document=globalThis.document||{createElement:()=>({}),addEventListener:()=>{}};function V(){try{let n=x.join("/","dist/jsonresume-theme-react.css");return an.readFileSync(n,"utf8")}catch(n){return console.error("Error loading CSS from",x.join("/","dist/jsonresume-theme-react.css"),n),""}}function sn(n){let e=x.join("/","dist/index.cjs"),t;try{t=y(e)}catch(i){throw console.error("Error loading built module from",e,i),new Error(`Could not load theme module from ${e}. Did you run 'npm run build'?`)}let r=t.getResumeHtml,o=n.language||"en";console.log(`Using language: ${o}`);try{let i=r(n,o);return`<!DOCTYPE html>
+      <html lang="${o}">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>${n.basics?.name||"Resume"}</title>
+        <style>${V()}</style>
+      </head>
+      <body>
+        <div id="root">${i}</div>
+      </body>
+      </html>`}catch(i){return console.error("Error rendering resume:",i),`<!DOCTYPE html>
+    <html lang="${o}">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>${n.basics?.name||"Resume"}</title>
+      <style>${V()}</style>
+    </head>
+    <body>
+      <div id="root">
+        <h1>Error Rendering Resume</h1>
+        <p>There was an error rendering your resume: ${i.message}</p>
+        <p>Check that the theme was built correctly ('npm run build') and the resume.json is valid.</p>
+      </div>
+    </body>
+    </html>`}}Y.exports={render:sn}});a();var s=tn(J(),1),G=s.default??s,fn=G.render??s.render,bn=G.pdfRenderOptions??s.pdfRenderOptions;export{bn as pdfRenderOptions,fn as render};

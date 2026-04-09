@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jane Smith - Resume</title>
+  <style>:root {
+  --text: #0f172a;
+  --muted: #334155;
+  --summary-light: #7c8798;
+  --heading: #0b1220;
+  --header-bg: #0f274d;
+  --right-bg: #edf4ff;
+  --right-text: #0f274d;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  color: var(--text);
+  font-family: Aptos, "Gill Sans MT", "Gill Sans", Calibri, "Trebuchet MS", sans-serif;
+  line-height: 1.22;
+  font-size: 10pt;
+}
+.resume {
+  max-width: 8.5in;
+  margin: 0 auto;
+  padding: 0.28in 0.32in;
+}
+.header {
+  display: grid;
+  grid-template-columns: 1fr 88px;
+  gap: 10px;
+  align-items: start;
+  margin-bottom: 8px;
+  background: var(--header-bg);
+  border: 1px solid #0b1f3f;
+  padding: 10px 10px 8px;
+}
+.header-main {
+  text-align: center;
+}
+.name {
+  margin: 0;
+  font-size: 22pt;
+  line-height: 1.05;
+  color: #f8fbff;
+}
+.label {
+  margin: 3px 0 0;
+  font-size: 10.4pt;
+  color: #e6f0ff;
+  font-style: italic;
+}
+.layout {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 0.16in;
+  align-items: start;
+}
+.right-panel {
+  background: var(--right-bg);
+  color: var(--right-text);
+  padding: 8px 8px 6px;
+  line-height: 1.14;
+}
+.right-panel .section-title {
+  color: var(--right-text);
+}
+.right-panel .compact-list li,
+.right-panel .contact-list li,
+.right-panel .skill-group,
+.right-panel a {
+  color: var(--right-text);
+}
+.right-panel .compact-list li,
+.right-panel .contact-list li,
+.right-panel .skill-group,
+.right-panel .compact-sub li {
+  font-size: 9.15pt;
+}
+.photo,
+.photo-empty {
+  width: 100%;
+  height: 100%;
+}
+.photo-wrap {
+  width: 68px;
+  height: 68px;
+  border: 1px solid #93c5fd;
+  background: #eff6ff;
+}
+.photo {
+  object-fit: cover;
+  display: block;
+}
+.photo-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 8.4pt;
+  color: #1d4ed8;
+  padding: 6px;
+}
+.section {
+  margin-top: 7px;
+}
+.section-title {
+  margin: 0 0 4px;
+  font-size: 14.2pt;
+  font-weight: 700;
+  color: var(--heading);
+}
+.summary {
+  margin: 0;
+  text-align: left;
+  font-size: 10.05pt;
+}
+.item {
+  margin-bottom: 5px;
+}
+.work-item-keep {
+  width: 100%;
+  display: block;
+  margin-bottom: 5px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+.item-role {
+  margin: 0;
+  font-size: 10.5pt;
+  font-weight: 700;
+}
+.item-org {
+  margin: 0.5px 0 0;
+  color: var(--muted);
+  font-size: 10.5pt;
+  font-style: italic;
+}
+.item-dates {
+  white-space: nowrap;
+  color: var(--muted);
+  font-size: 9.15pt;
+}
+.item-summary {
+  margin: 1px 0 2px;
+  color: var(--summary-light);
+  font-style: italic;
+}
+.bullets {
+  margin: 2px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.bullets li {
+  margin: 0 0 1px;
+  line-height: 1.12;
+  position: relative;
+  padding-left: 12px;
+}
+.bullets li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--muted);
+}
+.contact-list,
+.compact-list {
+  margin: 0;
+  padding: 0 0 0 14px;
+  list-style: disc;
+}
+.contact-list {
+  padding-left: 0;
+  list-style: none;
+}
+.contact-list li,
+.compact-list li {
+  margin-bottom: 5px;
+  font-size: 9.7pt;
+}
+.contact-list li {
+  margin-bottom: 2px;
+  line-height: 1.08;
+}
+.contact-icon {
+  display: inline-flex;
+  width: 0.82em;
+  height: 0.82em;
+  margin-right: 4px;
+  vertical-align: -0.08em;
+}
+.contact-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.compact-sub {
+  margin: 1px 0 0 14px;
+  padding: 0;
+}
+.compact-sub li {
+  font-size: 9.35pt;
+  margin-bottom: 0;
+}
+.compact-list > li {
+  margin-bottom: 7px;
+}
+.cert-list > li {
+  margin-bottom: 2px;
+  line-height: 1.1;
+}
+.compact-list li::marker {
+  color: var(--muted);
+}
+.skill-group {
+  margin-bottom: 6px;
+  font-size: 9.65pt;
+}
+.skill-name {
+  font-weight: 700;
+}
+.skills-section,
+.skills-section .section-title {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.skills-section .section-title {
+  break-after: avoid;
+  page-break-after: avoid;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.print-footer {
+  display: none;
+}
+@media print {
+  @page {
+    size: Letter;
+    margin: 0.32in 0.32in 0.22in 0.32in;
+  }
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .resume {
+    max-width: none;
+    margin: 0;
+    padding: 0.03in 0 0.26in;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  .layout {
+    align-items: start;
+  }
+  .layout > div,
+  .right-panel {
+    padding-bottom: 0.28in;
+  }
+  .right-panel {
+    background: transparent;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .right-panel .section {
+    background: var(--right-bg);
+    margin-top: 7px;
+    padding: 6px 8px;
+  }
+  .right-panel .section:first-child {
+    margin-top: 0;
+  }
+  .bullets,
+  .compact-list,
+  .skills-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .section-title {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  .work-section .work-item-keep,
+  .work-section .work-item-keep .item,
+  .work-section .work-item-keep .item-head,
+  .work-section .work-item-keep .item-summary,
+  .work-section .work-item-keep .bullets,
+  .work-section .work-item-keep .bullets li {
+    break-inside: avoid-page !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+  }
+  .work-section .work-item-keep {
+    page-break-before: auto;
+    break-before: auto;
+  }
+  .print-footer {
+    display: flex !important;
+    position: fixed;
+    left: 0.32in;
+    right: 0.32in;
+    bottom: 0in;
+    height: 0.22in;
+    padding: 0 0 0.01in;
+    font-size: 7.8pt;
+    line-height: 1.15;
+    color: var(--summary-light);
+    font-style: italic;
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 999;
+    pointer-events: none;
+  }
+}</style>
+</head>
+<body>
+  <main class="resume" role="main">
+    <header class="header" role="banner">
+      <div class="header-main">
+        <h1 class="name">Jane Smith</h1>
+        <p class="label">Senior Software Engineer</p>
+      </div>
+      <div class="photo-wrap" aria-label="Profile image">
+        <div class="photo-empty">Profile Photo</div>
+      </div>
+    </header>
+    <div class="layout">
+      <div><section class="section "><h2 class="section-title">Summary</h2><p class="summary">Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.</p></section><section class="section work-section"><h2 class="section-title">Professional Experience</h2>
+      <div class="work-item-keep">
+        <article class="item">
+          <div class="item-head">
+            <div>
+              <h3 class="item-role">Senior Software Engineer</h3>
+              <p class="item-org">Tech Corp</p>
+            </div>
+            <div class="item-dates">Jan 2020 - Present</div>
+          </div>
+          <ul class="bullets"><li>&lt;p&gt;&amp;lt;p&amp;gt;Lead engineer for the platform team, owning core API infrastructure.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li><li>&lt;p&gt;&amp;lt;p&amp;gt;Reduced API latency by 45% through caching and query optimization&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li><li>&lt;p&gt;&amp;lt;p&amp;gt;Designed microservices architecture serving 2M daily requests&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li><li>&lt;p&gt;&amp;lt;p&amp;gt;Mentored 4 junior engineers through technical growth plans&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li></ul>
+        </article>
+      </div>
+    
+      <div class="work-item-keep">
+        <article class="item">
+          <div class="item-head">
+            <div>
+              <h3 class="item-role">Full Stack Developer</h3>
+              <p class="item-org">StartupXYZ</p>
+            </div>
+            <div class="item-dates">Jan 2017 - Jan 2020</div>
+          </div>
+          <ul class="bullets"><li>&lt;p&gt;&amp;lt;p&amp;gt;Built customer-facing web applications from prototype to production.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li><li>&lt;p&gt;&amp;lt;p&amp;gt;Built real-time dashboard used by 15,000+ daily active users&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li><li>&lt;p&gt;&amp;lt;p&amp;gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li></ul>
+        </article>
+      </div>
+    </section></div>
+      <aside class="right-panel"><section class="section "><h2 class="section-title">Contact</h2><ul class="contact-list"><li><span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" focusable="false"><path d="M6.6 2.8h3.2c.55 0 1 .45 1 1v2.6c0 .5-.37.92-.86.99l-1.5.2a13.5 13.5 0 0 0 8 8l.2-1.5c.07-.49.49-.86.99-.86h2.6c.55 0 1 .45 1 1v3.2c0 .55-.45 1-1 1A17.8 17.8 0 0 1 5.6 3.8c0-.55.45-1 1-1Z" fill="#0f172a"></path></svg></span>+1-555-987-6543</li><li><span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2" ry="2" fill="none" stroke="#0f172a" stroke-width="1.8"></rect><path d="M4 7l8 6 8-6" fill="none" stroke="#0f172a" stroke-width="1.8"></path></svg></span><a href="mailto:jane@example.com">jane@example.com</a></li><li><span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" focusable="false"><path d="M12 22s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12Z" fill="none" stroke="#0f172a" stroke-width="1.8"></path><circle cx="12" cy="10" r="2.4" fill="#0f172a"></circle></svg></span>San Francisco, California</li><li><span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" focusable="false"><circle cx="12" cy="12" r="10" fill="none" stroke="#0f172a" stroke-width="1.8"></circle><path d="M2 12h20M12 2a14 14 0 0 1 0 20M12 2a14 14 0 0 0 0 20" fill="none" stroke="#0f172a" stroke-width="1.4"></path></svg></span><a href="https://janesmith.dev">https://janesmith.dev</a></li><li><span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" focusable="false"><rect x="0" y="0" width="24" height="24" rx="3" fill="#111111"></rect><text x="12" y="17" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#ffffff">in</text></svg></span><a href="https://linkedin.com/in/janesmith">https://linkedin.com/in/janesmith</a></li><li><span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" focusable="false"><circle cx="12" cy="12" r="12" fill="#111111"></circle><path d="M12 5.2c-3.85 0-6.97 3.12-6.97 6.97 0 3.08 2 5.7 4.77 6.62.35.06.48-.15.48-.34 0-.17-.01-.73-.01-1.33-1.94.42-2.35-.82-2.35-.82-.32-.8-.78-1.02-.78-1.02-.64-.44.05-.43.05-.43.71.05 1.08.73 1.08.73.63 1.08 1.65.77 2.06.59.06-.46.25-.77.45-.95-1.55-.18-3.18-.78-3.18-3.46 0-.76.27-1.38.72-1.87-.07-.18-.31-.91.07-1.9 0 0 .58-.19 1.92.71a6.7 6.7 0 0 1 3.49 0c1.33-.9 1.92-.71 1.92-.71.38.99.14 1.72.07 1.9.45.49.72 1.11.72 1.87 0 2.68-1.63 3.28-3.19 3.45.26.22.48.65.48 1.3 0 .95-.01 1.71-.01 1.95 0 .19.13.41.49.34A6.98 6.98 0 0 0 18.97 12.17c0-3.85-3.12-6.97-6.97-6.97Z" fill="#ffffff"></path></svg></span><a href="https://github.com/janesmith">https://github.com/janesmith</a></li></ul></section><section class="section "><h2 class="section-title">Education</h2><ul class="compact-list edu-list"><li><strong>Bachelor of Science in Computer Science</strong>, <em>University of Technology</em></li></ul></section><section class="section skills-section"><h2 class="section-title">Skills</h2><div>
+      <div class="skill-group">
+        <span class="skill-name">Languages:</span>
+        <span>&lt;p&gt;TypeScript&lt;/p&gt;
+, &lt;p&gt;JavaScript&lt;/p&gt;
+, &lt;p&gt;Python&lt;/p&gt;
+, &lt;p&gt;Go&lt;/p&gt;
+</span>
+      </div>
+    
+      <div class="skill-group">
+        <span class="skill-name">Frontend:</span>
+        <span>&lt;p&gt;React&lt;/p&gt;
+, &lt;p&gt;Next.js&lt;/p&gt;
+, &lt;p&gt;HTML/CSS&lt;/p&gt;
+, &lt;p&gt;Tailwind&lt;/p&gt;
+</span>
+      </div>
+    
+      <div class="skill-group">
+        <span class="skill-name">Backend &amp; Cloud:</span>
+        <span>&lt;p&gt;Node.js&lt;/p&gt;
+, &lt;p&gt;PostgreSQL&lt;/p&gt;
+, &lt;p&gt;AWS&lt;/p&gt;
+, &lt;p&gt;Docker&lt;/p&gt;
+</span>
+      </div>
+    </div></section></aside>
+    </div>
+  </main>
+  <footer class="print-footer" role="contentinfo">Jane Smith: Senior Software Engineer</footer>
+</body>
+</html>

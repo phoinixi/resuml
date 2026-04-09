@@ -1,0 +1,15 @@
+a {
+  color: #364fc7;
+  text-decoration: none;
+}
+
+.lt-dash::before {
+  content: "- ";
+}
+
+@media print {
+  ul,
+  .item {
+    page-break-inside: avoid;
+  }
+}

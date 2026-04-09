@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef } from 'react';
 import type { ResumeSchema } from '../../types/resume';
-import { loadTheme, loadSnapshot, isThemeLoaded } from '../services/api.js';
+import { loadTheme, loadSnapshot, isThemeLoaded, getThemeCapability } from '../services/api.js';
 
 export function useTheme(themeName: string) {
   const [html, setHtml] = useState<string | null>(null);
@@ -36,17 +36,17 @@ export function useTheme(themeName: string) {
     }
 
     try {
-      // Load the render module (may be instant if cached, or load worker)
       const mod = await loadTheme(themeName);
-      if (renderId !== renderIdRef.current) return; // superseded
+      if (renderId !== renderIdRef.current) return;
 
-      // Render with actual resume data
       const result = mod.render(resume as unknown as Record<string, unknown>);
       const rendered = typeof result === 'string' ? result : await result;
       if (renderId !== renderIdRef.current) return;
 
       setHtml(rendered);
-      setIsSnapshot(false);
+      // For snapshot-only themes, keep the snapshot indicator permanently
+      const capability = getThemeCapability(themeName);
+      setIsSnapshot(capability === 'snapshot-only');
       setLoading(false);
     } catch (e: unknown) {
       if (renderId !== renderIdRef.current) return;

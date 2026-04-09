@@ -1,0 +1,866 @@
+<!doctype html>
+<html>
+   <head>
+
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/socialstyles.css">
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+      <script src="js/on-screen.umd.min.js"></script>
+      <script src="js/scripts.js"></script>
+
+      <title>Jane Smith</title>
+
+      <style>
+@import url('https://fonts.googleapis.com/css?family=Lato|Ubuntu+Mono|VT323|Share+Tech+Mono');
+
+/* GLOBAL STYLES */
+
+html {
+   height: 100%;
+   width: 100%;
+}
+
+body {
+   background: #f0f0f0;
+/*   background-image: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/cubes.png"); */
+   background-image: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/cross_scratches.png");
+	font: 14px 'Lato', Helvetica, sans-serif;
+	line-height: 20px;
+   height: 100%;
+   width: 100%;
+	margin: 0;
+   padding: 0;
+}
+
+::selection {
+   background: #bbfb87; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+   background: #bbfb87; /* Gecko Browsers */
+}
+
+div, input, ul, li, p, h1, h2, h3, h4 {
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+
+h1, h2, h3, h4, p {
+   font-family: 'Lato';
+   font-style: normal;
+   font-variant: normal;
+   margin: 0;
+}
+
+h1 {
+   font-size: 35px;
+}
+
+h2 {
+   font-size: 22px;
+   font-weight: 700;
+   text-transform: uppercase;
+   color: #979ab1;
+}
+
+h3 {
+   font-size: 18px;
+   text-transform: uppercase;
+}
+
+p {
+   font-size: 14px;
+}
+
+section {
+   background-color: white;
+   padding: 20px;
+   box-shadow: 1px 1px 14px -5px rgba(0,0,0,0.5);
+   max-width: 600px;
+   margin: 20px auto;
+   position: relative;
+}
+
+#wrapper {
+   max-width: 600px;
+   position: relative;
+   margin: 0px auto;
+}
+
+.item {
+   margin: 30px 0px 0px 0px;
+}
+
+.col1-2 {
+   float: left;
+   width: 50%;
+}
+
+.clear {
+   clear: both;
+}
+
+icon {
+   margin-right: 10px;
+}
+
+
+/* RESPONSIVE STYLES FOR THUMBNAIL AND MENU */
+@media (max-width: 991px) {
+   #basics {
+      margin-top: 120px !important;
+      padding-top: 120px !important;
+   }
+
+   .thumbnail {
+      display: none;
+   }
+
+   #basics .thumbnail {
+      background-color: white;
+      display: block;
+      margin: -100px !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 50% !important;
+      box-shadow: 0px -3px 8px -5px rgba(0,0,0,0.5) !important;
+      z-index: 5;
+   }
+   #basics .thumbnail img {
+      width: 100% !important;
+      height: initial !important;
+      filter: initial !important;
+      -webkit-filter: initial !important;
+      opacity: 1 !important;
+   }
+  
+   #scroll-spy {
+      display: none;
+   }
+
+   #flt {
+      display: block;
+      width: 50px;
+      height: 50px;
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-color: white;
+      border-radius: 100%;
+      box-shadow: 1px 1px 14px -5px rgba(0,0,0,0.5);
+      z-index: 10;
+   }
+
+   #flt .flt-button,
+   #flt .flt-close {
+      text-align: center;
+   }
+
+   #flt .flt-button a,
+   #flt .flt-close a {
+      color: #bbfb87;
+   }
+
+   #flt .flt-button a:hover,
+   #flt .flt-close a:hover {
+      color: #e1e8f1;
+   }
+
+   #flt .flt-button icon,
+   #flt .flt-close icon {
+      font-size: 26px;
+      margin: 0px;
+      padding: 12px 0px;
+   }
+}
+
+@media (min-width: 992px) {
+   #flt {
+      display: none;
+   }
+}
+
+/* NAVIGATION MENU STYLES */
+
+nav {
+   position: fixed;
+   text-align: left;
+   text-transform: uppercase;
+}
+
+nav ul li a {
+   padding: 5px !important;
+   transition: all 0.5s ease 0s;
+}
+
+nav ul li a:hover,
+nav ul li.active a {
+   color: black;
+   background-color: transparent !important;
+}
+
+nav#scroll-spy {
+   z-index: 999;
+   margin-left: 620px;
+}
+
+nav#flt-menu {
+   display:none;
+   top: 10px;
+   right: 10px;
+   background: white;
+   box-shadow: 1px 1px 14px -5px rgba(0,0,0,0.5);
+   padding: 20px;
+}
+
+nav#flt-menu ul {
+   padding-bottom: 10px;
+}
+
+/* THUMBNAIL STYLES */
+
+div.thumbnail {
+   background: transparent;
+   width: 200px;
+   height: 200px;
+   position: absolute;
+   margin: 0px;
+   border-radius: 100%;
+   padding: 0px;
+   border: 0px;
+   top: 0px;
+   left: -220px;
+   z-index: 1;
+}
+
+div.thumbnail img {
+   width: 100%;
+   height: 100%;
+   border-radius: 100%;
+   transition: all 1s ease 0s;
+   -webkit-filter: grayscale(100%);
+   filter: grayscale(100%);
+   opacity: 0.0;
+}
+
+div.thumbnail.active {
+   position: fixed;
+   top: initial;
+   left: initial;
+   top: 20px;
+   margin-left: -240px;
+   z-index: 100;
+   box-shadow: 1px 1px 14px -5px rgba(0,0,0,0.5);
+}
+
+div.thumbnail.active img {
+    -webkit-filter: initial;
+   filter: initial;
+   opacity: 1;
+}
+
+
+
+/* BASIC INFORMATION SECTION STYLES */
+
+#basics h1,
+#basics h2 {
+   text-align: center;
+   margin-top: 5px;
+}
+
+#basics .summary {
+   font-family: 'Share Tech Mono';
+   font-size: 14px;
+   margin: 30px;
+}
+
+#basics .info {
+   margin: 20px 0px;
+   border-top: 1px solid #f0f0f0;
+   padding-top: 20px;
+}
+
+#basics .profiles {
+   text-align: center;
+}
+
+#basics .contact {
+   color: #979ab1;
+   text-align: left;
+   font-size: 12px;
+}
+
+#basics .contact .contact_row {
+   min-height: 20px;
+}
+
+
+#basics .contact icon {
+   float: left;
+   margin: 0px;
+   font-size: 15px;
+}
+
+#basics .contact span {
+   margin-left: 25px;
+   display: block;
+}
+
+
+/* TIMELINE SECTIONS STYLES */
+
+.timeline-section {
+   position: relative;
+}
+
+.timeline-section:before {
+   width: 5px;
+   height: 100%;
+   position: absolute;
+   left: 8.5%;
+   top: 0;
+   content: ' ';
+   display: block;
+   background: #e1e8f1;
+}
+
+.timeline-section .timeline {
+   width: 20%;
+   float: left;
+   text-align: center;
+   margin: 0px;
+   position: relative;
+   min-height: 1px;
+}
+
+.timeline-section .timeline div {
+   position: absolute;
+   background: white;
+   width: 100%;
+   padding: 5px 10px 5px 0px;
+}
+
+.timeline-section .timeline p {
+   font-size: 14px;
+   font-weight: bold;
+   line-height: 15px;
+   color: #444;
+}
+
+.timeline-section .timeline p.duration {
+   font-size: 12px;
+   font-weight: normal;
+   margin-top: 10px;
+}
+
+.timeline-section .description {
+   width: 80%;
+   float: left;
+}
+
+/* WORK AND VOLUNTEER SECTION STYLES */
+
+#work .position,
+#volunteer .position {
+   font-size: 20px;
+   margin-bottom: 10px;
+}
+
+#work .summary,
+#volunteer .summary {
+   margin: 0px 0px 20px 0px;
+}
+
+#work .highlights,
+#volunteer .highlights,
+#education .courses {
+   margin: 10px 0px;
+   font-size: 15px;
+   padding: 0px 0px 0px 30px;
+}
+
+#work .highlights li,
+#volunteer .highlights li,
+#education .courses li {
+   margin-bottom: 10px;
+   color: #bdd4e3;
+   font-size: 17px;
+   line-height: 15px;
+}
+
+#work .highlights li span,
+#volunteer .highlights li span,
+#education .courses li span {
+   font-size: 14px;
+   color: #333;
+}
+
+/* EDUCATION SECTION STYLES */
+
+#education .study-type {
+   font-size: 20px;
+   margin-bottom: 10px;
+}
+
+#education .institution {
+   text-transform: uppercase;
+   font-size: 14px;
+}
+
+#education .institution icon {
+   color: #979ab1;
+   margin-right: 5px;
+}
+
+#education .gpa {
+   margin-left: 25px;
+   font-size: 12px;
+}
+
+
+/* SKILLS AND LANGUAGES SECTION STYLES */
+
+ul.keywords {
+   list-style: none;
+   margin: 10px 0px 0px 0px;
+   padding: 0px;
+}
+
+ul.keywords li {
+   display: inline-block;
+   margin: 2px;
+   font-size: 12px;
+   background: #e1e8f1;
+   padding: 0px 5px;
+}
+
+#languages .progress,
+#skills .progress {
+   margin-bottom: 10px;
+   border-radius: 0px;
+   height: 30px;
+}
+
+
+#languages .native .progress-bar {
+   background: rgba(255,137,64,1);
+   background: -moz-linear-gradient(left, rgba(255,137,64,1) 0%, rgba(255,255,107,1) 100%);
+   background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,137,64,1)), color-stop(100%, rgba(255,255,107,1)));
+   background: -webkit-linear-gradient(left, rgba(255,137,64,1) 0%, rgba(255,255,107,1) 100%);
+   background: -o-linear-gradient(left, rgba(255,137,64,1) 0%, rgba(255,255,107,1) 100%);
+   background: -ms-linear-gradient(left, rgba(255,137,64,1) 0%, rgba(255,255,107,1) 100%);
+   background: linear-gradient(to right, rgba(255,137,64,1) 0%, rgba(255,255,107,1) 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8940', endColorstr='#ffff6b', GradientType=1 );
+}
+
+#languages .master .progress-bar,
+#skills .master .progress-bar {
+   background: rgba(255,102,125,1);
+   background: -moz-linear-gradient(left, rgba(255,102,125,1) 0%, rgba(255,194,97,1) 100%);
+   background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,102,125,1)), color-stop(100%, rgba(255,194,97,1)));
+   background: -webkit-linear-gradient(left, rgba(255,102,125,1) 0%, rgba(255,194,97,1) 100%);
+   background: -o-linear-gradient(left, rgba(255,102,125,1) 0%, rgba(255,194,97,1) 100%);
+   background: -ms-linear-gradient(left, rgba(255,102,125,1) 0%, rgba(255,194,97,1) 100%);
+   background: linear-gradient(to right, rgba(255,102,125,1) 0%, rgba(255,194,97,1) 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff667d', endColorstr='#ffc261', GradientType=1 );
+}
+
+#languages .advanced .progress-bar,
+#skills .advanced .progress-bar {
+   background: rgba(138,102,255,1);
+   background: -moz-linear-gradient(left, rgba(138,102,255,1) 0%, rgba(255,97,255,1) 100%);
+   background: -webkit-gradient(left top, right top, color-stop(0%, rgba(138,102,255,1)), color-stop(100%, rgba(255,97,255,1)));
+   background: -webkit-linear-gradient(left, rgba(138,102,255,1) 0%, rgba(255,97,255,1) 100%);
+   background: -o-linear-gradient(left, rgba(138,102,255,1) 0%, rgba(255,97,255,1) 100%);
+   background: -ms-linear-gradient(left, rgba(138,102,255,1) 0%, rgba(255,97,255,1) 100%);
+   background: linear-gradient(to right, rgba(138,102,255,1) 0%, rgba(255,97,255,1) 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a66ff', endColorstr='#ff61ff', GradientType=1 );
+}
+
+#languages .intermediate .progress-bar,
+#skills .intermediate .progress-bar {
+   background: rgba(97,181,255,1);
+   background: -moz-linear-gradient(left, rgba(97,181,255,1) 0%, rgba(102,255,209,1) 100%);
+   background: -webkit-gradient(left top, right top, color-stop(0%, rgba(97,181,255,1)), color-stop(100%, rgba(102,255,209,1)));
+   background: -webkit-linear-gradient(left, rgba(97,181,255,1) 0%, rgba(102,255,209,1) 100%);
+   background: -o-linear-gradient(left, rgba(97,181,255,1) 0%, rgba(102,255,209,1) 100%);
+   background: -ms-linear-gradient(left, rgba(97,181,255,1) 0%, rgba(102,255,209,1) 100%);
+   background: linear-gradient(to right, rgba(97,181,255,1) 0%, rgba(102,255,209,1) 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#61b5ff', endColorstr='#66ffd1', GradientType=1 );
+}
+
+#languages .beginner .progress-bar,
+#skills .beginner .progress-bar {
+   background: rgba(97,255,97,1);
+   background: -moz-linear-gradient(left, rgba(97,255,97,1) 0%, rgba(219,255,102,1) 100%);
+   background: -webkit-gradient(left top, right top, color-stop(0%, rgba(97,255,97,1)), color-stop(100%, rgba(219,255,102,1)));
+   background: -webkit-linear-gradient(left, rgba(97,255,97,1) 0%, rgba(219,255,102,1) 100%);
+   background: -o-linear-gradient(left, rgba(97,255,97,1) 0%, rgba(219,255,102,1) 100%);
+   background: -ms-linear-gradient(left, rgba(97,255,97,1) 0%, rgba(219,255,102,1) 100%);
+   background: linear-gradient(to right, rgba(97,255,97,1) 0%, rgba(219,255,102,1) 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#61ff61', endColorstr='#dbff66', GradientType=1 );
+}
+
+
+#languages .progress-bar,
+#skills .progress-bar {
+   padding: 5px 0px;
+   transition: all 4s ease 0s;
+   white-space: nowrap;
+}
+
+#languages .progress-bar span,
+#skills .progress-bar span {
+   margin-left: 10px;
+}
+
+#languages .progress-bar.zero,
+#skills .progress-bar.zero {
+   width: 0% !important;
+}
+
+#languages .name-bar,
+#skills .name-bar,
+#interests .name-bar {
+   font-size: 16px;
+   font-weight: bold;
+   text-transform: uppercase;
+   text-align: left;
+}
+
+/* AWARDS SECTION STYLES */
+
+#awards .title {
+   font-size: 22px;
+   margin-bottom: 5px;
+}
+
+#awards .awarder {
+   font-size: 14px;
+   text-transform: uppercase;
+   margin-bottom: 10px;
+}
+
+#awards .awarder icon {
+   color: #979ab1;
+   margin-right: 5px;
+}
+
+#awards .summary p {
+   color: #444;
+}
+
+
+/* PUBLICATIONS SECTION STYLES */
+
+#publications .item {
+   margin-top: 20px;
+}
+
+#publications .name {
+   font-size: 16px;
+}
+
+#publications .name .publisher {
+   font-size: 14px;
+}
+
+#publications .releaseDate {
+   font-size: 12px;
+}
+
+#publications .summary {
+   margin: 10px 0px;
+   border-left: 5px solid #e1e8f1;
+   font-size: 14px;
+   padding: 10px 20px;
+}
+
+/* REFERENCES SECTION STYLES */
+blockquote {
+   margin: 0;
+   margin-bottom: 10px;
+   border-left: 5px solid #e1e8f1;
+   font-size: 14px;
+   padding: 10px 20px;
+}
+
+
+/* BOTTOM SEPARATION */
+
+.space {
+   width: 100%;
+   height: 500px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+      </style>
+
+   </head>
+   <body data-spy="scroll" data-target="#scroll-spy" data-offset="100">
+
+      <div id="wrapper">
+
+
+         <!-- Top fixed navigation bar for small devices -->
+         <div id="flt">
+            <div class="flt-button">
+               <a href="#"><icon class="fa fa-bars"></icon></a>
+            </div>
+            <nav id="flt-menu">
+               <ul class="nav">
+                  <li><a href="#basics">Hello!</a></li>
+                  <li><a href="#work">Work Experience</a></li>
+                  <li><a href="#education">Education</a></li>
+                  <li><a href="#skills">Skills</a></li>
+               </ul>
+               <div class="flt-close">
+                  <a href="#"><icon class="fa fa-chevron-circle-up"></icon></a>
+               </div>
+            </nav>
+         </div>
+         
+         <!-- Side fixed navigation menu for big devices -->
+         <nav id="scroll-spy">
+            <ul class="nav" data-spy="affix">
+               <li><a href="#basics">Hello!</a></li>
+               <li><a href="#work">Work Experience</a></li>
+               <li><a href="#education">Education</a></li>
+               <li><a href="#skills">Skills</a></li>
+            </ul>
+         </nav>
+
+         <section id="basics">
+            <div class="thumbnail">
+               <img src="https://unsplash.it/200/200/?image=1062"/>
+            </div>
+            <h1>Jane Smith</h1>
+            <h2>Senior Software Engineer</h2>
+
+            <div class="summary">
+               <icon class="fa fa-quote-left"></icon>
+               Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.
+               <icon class="fa fa-quote-right"></icon>
+            </div>
+
+            <div class="info">
+
+               <div class="contact col1-2">
+                  <div class="contact_row">
+                     <icon class="fa fa-globe"></icon>
+                     <span>
+                        
+                        San Francisco,
+                        US,
+                        California
+                     </span>
+                  </div>
+                  <div class="contact_row">
+                     <icon class="fa fa-paper-plane"></icon>
+                     <span>jane@example.com</span>
+                  </div>
+                  <div class="contact_row">
+                     <icon class="fa fa-phone"></icon>
+                     <span>+1-555-987-6543</span>
+                  </div>
+               </div>
+
+               <div class="profiles col1-2">
+                  <a target="_blank" href="https://linkedin.com/in/janesmith"><icon class=""></icon></a>
+                  <a target="_blank" href="https://github.com/janesmith"><icon class=""></icon></a>
+               </div>
+
+               <div class="clear"></div>
+            </div>
+         </section>
+
+
+         <section id="work">
+            <div class="thumbnail">
+               <img src=""/>
+            </div>
+
+            <h2><icon class="fa fa-building"></icon> Work Experience</h2>
+
+            <div class="timeline-section">
+               <div class="item">
+
+                  <div class="timeline">
+                     <div>
+                        <p>Jan, 2020</p>
+                        <p class="duration">6 years 1 month</p>
+                     </div>
+                  </div>
+
+                  <div class="description">
+                     <div class="position">
+                        <span>Senior Software Engineer</span>                     </div>
+                     <h3>Highlights</h3>
+                     <ul class="highlights">
+                        <li><span>&lt;p&gt;&amp;lt;p&amp;gt;Lead engineer for the platform team, owning core API infrastructure.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</span></li>
+                        <li><span>&lt;p&gt;&amp;lt;p&amp;gt;Reduced API latency by 45% through caching and query optimization&amp;lt;/p&amp;gt;&lt;/p&gt;
+</span></li>
+                        <li><span>&lt;p&gt;&amp;lt;p&amp;gt;Designed microservices architecture serving 2M daily requests&amp;lt;/p&amp;gt;&lt;/p&gt;
+</span></li>
+                        <li><span>&lt;p&gt;&amp;lt;p&amp;gt;Mentored 4 junior engineers through technical growth plans&amp;lt;/p&amp;gt;&lt;/p&gt;
+</span></li>
+                     </ul>
+                  </div>
+                  <div class="clear"></div>
+
+               </div>
+               <div class="item">
+
+                  <div class="timeline">
+                     <div>
+                        <p>Jan, 2017</p>
+                        <p>Jan, 2020</p>
+                        <p class="duration">3 years</p>
+                     </div>
+                  </div>
+
+                  <div class="description">
+                     <div class="position">
+                        <span>Full Stack Developer</span>                     </div>
+                     <h3>Highlights</h3>
+                     <ul class="highlights">
+                        <li><span>&lt;p&gt;&amp;lt;p&amp;gt;Built customer-facing web applications from prototype to production.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</span></li>
+                        <li><span>&lt;p&gt;&amp;lt;p&amp;gt;Built real-time dashboard used by 15,000+ daily active users&amp;lt;/p&amp;gt;&lt;/p&gt;
+</span></li>
+                        <li><span>&lt;p&gt;&amp;lt;p&amp;gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&amp;lt;/p&amp;gt;&lt;/p&gt;
+</span></li>
+                     </ul>
+                  </div>
+                  <div class="clear"></div>
+
+               </div>
+            </div>
+         </section>
+
+
+         <section id="education">
+            <div class="thumbnail">
+               <img src=""/>
+            </div>
+
+            <h2><icon class="fa fa-graduation-cap"></icon> Education</h2>
+
+            <div class="timeline-section">
+
+               <div class="item">
+
+                  <div class="timeline">
+                  </div>
+
+                  <div class="description">
+
+                     <div class="study-type">
+                        Bachelor of Science
+                        in Computer Science
+                     </div>
+
+                     <div class="institution">
+                        <icon class="fa fa-university"></icon> University of Technology
+                     </div>
+
+
+                  </div>
+                  <div class="clear"></div>
+               </div>
+            </div>
+         </section>
+
+         <section id="skills">
+            <div class="thumbnail">
+               <img src=""/>
+            </div>
+
+            <h2><icon class="fa fa-code"></icon> Skills</h2>
+
+            <div class="item">
+               <!-- If there's value, we animate till the value -->
+               <div class="name-bar">
+                  Languages
+               </div>
+
+               <ul class="keywords">
+                  <li>&lt;p&gt;TypeScript&lt;/p&gt;
+</li>
+                  <li>&lt;p&gt;JavaScript&lt;/p&gt;
+</li>
+                  <li>&lt;p&gt;Python&lt;/p&gt;
+</li>
+                  <li>&lt;p&gt;Go&lt;/p&gt;
+</li>
+               </ul>
+
+            </div>
+            <div class="item">
+               <!-- If there's value, we animate till the value -->
+               <div class="name-bar">
+                  Frontend
+               </div>
+
+               <ul class="keywords">
+                  <li>&lt;p&gt;React&lt;/p&gt;
+</li>
+                  <li>&lt;p&gt;Next.js&lt;/p&gt;
+</li>
+                  <li>&lt;p&gt;HTML/CSS&lt;/p&gt;
+</li>
+                  <li>&lt;p&gt;Tailwind&lt;/p&gt;
+</li>
+               </ul>
+
+            </div>
+            <div class="item">
+               <!-- If there's value, we animate till the value -->
+               <div class="name-bar">
+                  Backend &amp; Cloud
+               </div>
+
+               <ul class="keywords">
+                  <li>&lt;p&gt;Node.js&lt;/p&gt;
+</li>
+                  <li>&lt;p&gt;PostgreSQL&lt;/p&gt;
+</li>
+                  <li>&lt;p&gt;AWS&lt;/p&gt;
+</li>
+                  <li>&lt;p&gt;Docker&lt;/p&gt;
+</li>
+               </ul>
+
+            </div>
+
+
+
+         </section>
+
+
+
+
+
+
+
+         <div class="space"></div>
+
+      </div>
+   </body>
+</html>

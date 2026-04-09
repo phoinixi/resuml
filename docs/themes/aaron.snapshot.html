@@ -1,0 +1,336 @@
+<!doctype html>
+<html>
+	<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+	<link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,700' rel='stylesheet' type='text/css'>
+	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+	<script>
+		$(document).ready(function () {
+    $('.datetime').each(function () {
+        $(this).html(moment($(this).attr('datetime')).format('MMM YYYY'));
+    });
+});
+	</script>
+
+	<title>Jane Smith</title>
+
+	<style>
+	body {
+	background: #fff;
+	font: 16px 'Alegreya', serif;
+	line-height: 1.5;
+	margin: 50px 0;
+	margin-bottom: 100px;
+	color: rgba(0, 0, 0, 0.7);
+	min-width: 680px;
+}
+em {
+	color: #999;
+}
+p {
+	line-height: 1.5;
+	margin-top: 0.3em;
+}
+
+a {
+	text-decoration: none;
+	color: #337ab7;
+	opacity: 0.8;
+}
+
+a:hover {
+	opacity: 0.6;
+}
+
+ul {
+	margin-bottom: 0;
+}
+section {
+	margin-bottom: 2em;
+}
+blockquote {
+	margin: 0;
+	margin-bottom: 1em;
+}
+.item {
+	margin-bottom: 1em;
+}
+
+#interests .item:last-child, #skills .item:last-child, #education .item:last-child {
+	margin-bottom: 0;
+}
+
+#resume {
+	margin: 0 auto;
+	max-width: 750px;
+	padding: 0 20px;
+}
+
+#profiles,
+#skills {
+	overflow: hidden;
+}
+#profiles .item,
+#skills .item {
+}
+
+.em {
+	font-style: italic;
+}
+
+#basics {
+	margin: 0;
+	padding: 0;
+	padding-bottom: 1em;
+	border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+	margin-bottom: 2em;
+	font-size: 0.95em;
+}
+
+#basics li {
+	list-style-type: none;
+	display: inline-block;
+	width: 24.5%;
+	text-align: center;
+}
+
+#basics li:first-of-type {
+	text-align: left;
+}
+
+#basics li:last-of-type {
+	text-align: right;
+}
+
+.keywords {
+	margin: 0;
+	padding: 0;
+}
+
+.keywords li {
+
+}
+
+.light {
+	color: gray;
+}
+
+#summary {
+	float: left;
+}
+
+#symbol {
+	font-size: 2em;
+	display: inline-block;
+	float: left;
+	width: 6%;
+	margin-top: 0;
+}
+
+#summary p {
+	display: inline-block;
+	float: left;
+	width: 94%;
+	margin-top: 0;
+}
+
+.item {
+	margin-left: 6%;
+}
+
+.level {
+	font-weight: normal;
+	font-style: italic;
+}
+
+#skills .item, #interests .item {
+	margin-bottom: 2em;
+}
+
+.item-top {
+	width: 100%;
+}
+
+.courses li {
+	display: inline-block;
+	width: 33%;
+	opacity: 0.7;
+}
+
+.organization {
+	font-weight: bold;
+	width: 49%;
+	float: left;
+}
+
+.date {
+	width: 50%;
+	float: left;
+	text-align: right;
+}
+
+.position, .awarder, .publisher {
+	font-style: italic;
+}
+
+.small {
+	font-size: 0.9em;
+}
+
+.strong {
+	font-weight: bold;
+}
+	</style>
+	
+	</head>
+	<body>
+	
+	<div id="resume">
+
+		<h1>Jane Smith, <span class="em">Senior Software Engineer</span></h1>
+
+		<ul id="basics" class="light">
+			<li><a href="">Website</a></li>
+			<li>jane@example.com</li>
+			<li>+1-555-987-6543</li>
+			<li>San Francisco, California, US</li>
+		</ul>
+
+		<section id="summary">
+				<div id="symbol">&#9608;</div>
+				<p>Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.</p>
+		</section>
+
+		<section id="work">
+			<h2>Work Experience</h2>
+				<div class="item">
+					<div class="item-top">
+						<div class="date light">
+								<span class="startDate">
+									<time class="datetime" datetime=Jan, 2020></time> &mdash; 
+								</span>
+								<span class="endDate">
+									Present
+								</span>
+						</div>
+					</div>
+					<div style="clear: both;"></div>
+						<ul class="highlights">
+								<li class="small">&lt;p&gt;&amp;lt;p&amp;gt;Lead engineer for the platform team, owning core API infrastructure.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+								<li class="small">&lt;p&gt;&amp;lt;p&amp;gt;Reduced API latency by 45% through caching and query optimization&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+								<li class="small">&lt;p&gt;&amp;lt;p&amp;gt;Designed microservices architecture serving 2M daily requests&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+								<li class="small">&lt;p&gt;&amp;lt;p&amp;gt;Mentored 4 junior engineers through technical growth plans&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+						</ul>
+				</div>
+				<div class="item">
+					<div class="item-top">
+						<div class="date light">
+								<span class="startDate">
+									<time class="datetime" datetime=Jan, 2017></time> &mdash; 
+								</span>
+								<span class="endDate">
+									<time class="datetime" datetime=Jan, 2020></time>
+								</span>
+						</div>
+					</div>
+					<div style="clear: both;"></div>
+						<ul class="highlights">
+								<li class="small">&lt;p&gt;&amp;lt;p&amp;gt;Built customer-facing web applications from prototype to production.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+								<li class="small">&lt;p&gt;&amp;lt;p&amp;gt;Built real-time dashboard used by 15,000+ daily active users&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+								<li class="small">&lt;p&gt;&amp;lt;p&amp;gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+						</ul>
+				</div>
+		</section>
+
+		<section id="education">
+			<h2>Education</h2>
+				<div class="item">
+					<div class="item-top">
+							<div class="organization">
+								<span class="org-name">University of Technology</span>
+							</div>
+						<div class="date light">
+								<span class="startDate">
+									<time class="datetime" datetime=Jan, 2013></time> &mdash; 
+								</span>
+								<span class="endDate">
+									<time class="datetime" datetime=Jan, 2017></time>
+								</span>
+						</div>
+					</div>
+					<div style="clear: both;"></div>
+					<p>
+					<span class="studyType">Bachelor of Science</span>, <span class="area">Computer Science</span>
+					
+					</p>
+				</div>
+		</section>
+
+
+
+
+		<section id="skills">
+			<h2>Skills</h2>
+				<div class="item">
+					<div class="item-top strong">
+						<span class="name">Languages</span> <span class="level">(Expert)</span>
+					</div>
+					<ul class="courses">
+						<li class="small">&lt;p&gt;TypeScript&lt;/p&gt;
+</li>
+						<li class="small">&lt;p&gt;JavaScript&lt;/p&gt;
+</li>
+						<li class="small">&lt;p&gt;Python&lt;/p&gt;
+</li>
+						<li class="small">&lt;p&gt;Go&lt;/p&gt;
+</li>
+					</ul>
+				</div>
+				<div class="item">
+					<div class="item-top strong">
+						<span class="name">Frontend</span> <span class="level">(Expert)</span>
+					</div>
+					<ul class="courses">
+						<li class="small">&lt;p&gt;React&lt;/p&gt;
+</li>
+						<li class="small">&lt;p&gt;Next.js&lt;/p&gt;
+</li>
+						<li class="small">&lt;p&gt;HTML/CSS&lt;/p&gt;
+</li>
+						<li class="small">&lt;p&gt;Tailwind&lt;/p&gt;
+</li>
+					</ul>
+				</div>
+				<div class="item">
+					<div class="item-top strong">
+						<span class="name">Backend &amp; Cloud</span> <span class="level">(Advanced)</span>
+					</div>
+					<ul class="courses">
+						<li class="small">&lt;p&gt;Node.js&lt;/p&gt;
+</li>
+						<li class="small">&lt;p&gt;PostgreSQL&lt;/p&gt;
+</li>
+						<li class="small">&lt;p&gt;AWS&lt;/p&gt;
+</li>
+						<li class="small">&lt;p&gt;Docker&lt;/p&gt;
+</li>
+					</ul>
+				</div>
+		</section>
+
+
+
+	
+	</body>
+</html>

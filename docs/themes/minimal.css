@@ -1,0 +1,292 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+body {
+	background: #fff;
+	font-family: Lato, sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	margin: 0 0 80px;
+	color: #222;
+}
+b, strong, .area {
+font-weight: 400;
+color: #333;
+}
+a {
+	color: #2A94D6;
+}
+a:focus,
+a:hover {
+	color: #F3AE4E;
+	text-decoration: none;
+}
+p {
+	line-height: 1.5;
+	margin: 0;
+}
+p + p {
+	margin-top: 10px;
+}
+h1,
+h2,
+h3,
+h4 {
+	margin-top: 0;
+	font-weight: 400;
+	color: #333;
+}
+h1 {
+	font-size: 2em;
+}
+h2 {
+	font-size: 1.8em;
+}
+h3 {
+	font-size: 1.5em;
+}
+h4 {
+	font-size: 1.2em;
+}
+.date {
+	font-weight: 400;
+}
+section {
+	margin-top: 30px;
+}
+li {
+	line-height: 1.5;
+	list-style: none;
+	padding-bottom: 5px;
+}
+li:before {
+	content: "\f052";
+	float: left;
+	font: 13px Octicons;
+	margin-top: 6px;
+	margin-left: -20px;
+	opacity: .2;
+	position: absolute;
+}
+blockquote {
+	border-left: 5px solid #e7e9ec;
+	font-size: 14px;
+}
+em {
+	color: #95a5a6;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.container {
+	max-width: 750px;
+	padding: 0 30px;
+}
+.col-sm-6 {
+	margin-bottom: 10px;
+}
+.col-sm-12 h4 {
+	margin-top: 12px;
+}
+.col-sm-12 + .col-sm-12 {
+	margin-top: 30px;
+}
+#header {
+	background: #F0F1F2;
+	padding: 50px 0;
+	margin-bottom: 30px;
+}
+#header h2 {
+	color: #647687;
+	font-size: 1.5em;
+	font-weight: 300;
+}
+#content h3 {
+	color: #F3AE4E;
+	margin-top: -4px;
+	font-weight: 400;
+}
+#content aside {
+	text-align: right;
+	padding-right: 30px;
+}
+#profiles .network {
+	text-transform: capitalize;
+}
+#work .position,
+#volunteer .position {
+	font-weight: 400;
+	margin-bottom: 8px;
+}
+#education .area {
+	font-weight: 700;
+}
+#education .area:before {
+	content: "\f0d7";
+	font: 16px Octicons;
+	margin-right: 6px;
+}
+#education .studyType {
+	margin-left: 25px;
+}
+#awards .summary,
+#publications .summary {
+	margin-top: 8px;
+}
+#publications .website a:before {
+	content: attr(href);
+}
+#skills .keywords, #education .courses {
+	padding: 0;
+	margin: 0;
+}
+#skills .keywords li:before, #education .courses li:before {
+	content: "";
+}
+#skills .keywords li, #education .courses li {
+	display: inline-block;
+	padding: 0px 6px;
+	margin: 3px 4px 4px 0;
+	border: 1px solid #ccc;
+	line-height: 1.5em;
+	border-radius: 1px;
+	background-color: #fafafa
+}
+
+@media (min-width: 480px) {
+	.strike-through {
+		border-top: 1px solid #f4f6f6;
+		height: 20px;
+		margin-top: 12px;
+		margin-bottom: -2px;
+		position: relative;
+	}
+	.strike-through span,
+	.strike-through a {
+		background: #fff;
+		position: absolute;
+	}
+	.strike-through span:first-child {
+		padding-right: 20px;
+		margin-top: -12px;
+	}
+	.strike-through span + span {
+		font-size: 14px;
+		margin-top: -10px;
+		padding-left: 20px;
+		right: 0;
+	}
+}
+@media (max-width: 768px) {
+	.col-sm-6:last-child {
+		margin-bottom: 0px;
+	}
+	#content aside {
+		margin-bottom: 10px;
+		padding-right: 0;
+		text-align: left;
+	}
+	#publications .website a:before {
+		content: "View publication";
+	}
+	.work-item {
+		padding-bottom: 10px
+	}
+	.work-item:last-child {
+		padding-bottom: 0;
+	}
+}
+@media (max-width: 480px) {
+	#content {
+		padding: 15px;
+	}
+	.container {
+		padding: 0 15px;
+	}
+	h1 {
+		font-size: 1.5em;
+	}
+	h2 {
+		font-size: 1.4em;
+	}
+	h3 {
+		font-size: 1.3em;
+	}
+	h4 {
+		font-size: 1em;
+	}
+	.date {
+		margin-bottom: 5px;
+	}
+	.strike-through span:first-child {
+		margin-bottom: 7px;
+	}
+	.strike-through span {
+		display: block;
+	}
+	#header {
+		margin-bottom: 0px;
+		padding: 20px 0;
+	}
+	#header h2 {
+		font-size: 1.2em;
+	}
+	#actions {
+		display: none;
+	}
+	section {
+		margin-top: 20px;
+		margin-bottom: 30px;
+	}
+	.website.pull-right {
+		float: none !important;
+	}
+}
+@media print {
+	body {
+		margin: 0;
+		font-size: 12px
+	}
+	#header {
+		padding: 0;
+		margin-bottom: 0px;
+	}
+	#content aside {
+		margin-bottom: 0px;
+	}
+	section {
+		margin-top: 25px;
+	}
+	.col-sm-6 {
+		margin-bottom: 0px;
+	}
+	.col-sm-12 h4 {
+		margin-top: 0px;
+	}
+	.strike-through {
+		border: none;
+		margin: 0px 0 0;
+		padding: 10px 0 5px;
+		height: auto;
+		line-height: 1em;
+	}
+	#work .position, #volunteer .position, #work .summary, #volunteer .summary {
+		margin-bottom: 0px;
+		padding-bottom: 8px;
+	}
+	.work-item {
+		padding-bottom: 0px;
+		page-break-inside: avoid;
+	}
+	#volunteer{
+		page-break-inside: avoid;
+	}
+	#awards{
+		page-break-inside: avoid;
+	}
+	#skills {
+		page-break-inside: avoid;
+	}
+	.website {
+		display: none;
+	}
+}

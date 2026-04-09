@@ -1,0 +1,410 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Jane Smith</title>
+      
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --text-primary: #2c3e50;
+        --text-secondary: #7f8c8d;
+        --accent: #3498db;
+        --border: #e0e0e0;
+        --background: #ffffff;
+      }
+
+      body {
+        font-family: 'Georgia', 'Times New Roman', serif;
+        color: var(--text-primary);
+        background: var(--background);
+        line-height: 1.6;
+        font-size: 11pt;
+        max-width: 8.5in;
+        margin: 0 auto;
+        padding: 0.75in;
+      }
+
+      /* Typography */
+      h1, h2, h3, h4, h5, h6 {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+        font-weight: 600;
+        line-height: 1.2;
+        margin-bottom: 0.5em;
+      }
+
+      h1 {
+        font-size: 28pt;
+        font-weight: 700;
+        margin-bottom: 0.2em;
+      }
+
+      h2 {
+        font-size: 10pt;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: 2px solid var(--text-primary);
+        padding-bottom: 0.3em;
+        margin-top: 1.2em;
+        margin-bottom: 0.8em;
+        font-weight: 700;
+      }
+
+      h3 {
+        font-size: 12pt;
+        font-weight: 600;
+        margin-bottom: 0.3em;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* Header */
+      .header {
+        text-align: center;
+        margin-bottom: 1.5em;
+        padding-bottom: 1em;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .header h1 {
+        margin-bottom: 0.1em;
+      }
+
+      .header .label {
+        font-size: 11pt;
+        color: var(--text-secondary);
+        margin-bottom: 0.8em;
+        font-style: italic;
+      }
+
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1em;
+        font-size: 9pt;
+        margin-top: 0.5em;
+      }
+
+      .contact-info span {
+        white-space: nowrap;
+      }
+
+      .contact-info span:not(:last-child)::after {
+        content: "•";
+        margin-left: 1em;
+        color: var(--text-secondary);
+      }
+
+      /* Summary */
+      .summary {
+        text-align: justify;
+        margin-bottom: 1em;
+        font-size: 10.5pt;
+        line-height: 1.5;
+      }
+
+      /* Work Experience */
+      .work-item {
+        margin-bottom: 1.2em;
+        page-break-inside: avoid;
+      }
+
+      .work-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 0.3em;
+      }
+
+      .work-header h3 {
+        margin: 0;
+      }
+
+      .work-meta {
+        display: flex;
+        justify-content: space-between;
+        font-size: 9.5pt;
+        color: var(--text-secondary);
+        margin-bottom: 0.4em;
+      }
+
+      .work-summary {
+        font-style: italic;
+        margin-bottom: 0.5em;
+        font-size: 10pt;
+        color: var(--text-secondary);
+      }
+
+      .highlights {
+        list-style-position: outside;
+        padding-left: 1.2em;
+        margin-top: 0.4em;
+      }
+
+      .highlights li {
+        margin-bottom: 0.3em;
+        font-size: 10pt;
+      }
+
+      /* Skills */
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0.8em;
+        margin-bottom: 1em;
+      }
+
+      .skill-category {
+        page-break-inside: avoid;
+      }
+
+      .skill-category h4 {
+        font-size: 10pt;
+        font-weight: 600;
+        margin-bottom: 0.3em;
+      }
+
+      .skill-keywords {
+        font-size: 9.5pt;
+        line-height: 1.4;
+      }
+
+      /* Education */
+      .education-item {
+        margin-bottom: 0.8em;
+        page-break-inside: avoid;
+      }
+
+      .education-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+
+      .education-meta {
+        font-size: 9.5pt;
+        color: var(--text-secondary);
+      }
+
+      /* Awards & Publications */
+      .award-item, .publication-item {
+        margin-bottom: 0.8em;
+        page-break-inside: avoid;
+      }
+
+      .award-title, .publication-name {
+        font-weight: 600;
+        font-size: 10pt;
+      }
+
+      .award-date, .publication-date {
+        color: var(--text-secondary);
+        font-size: 9pt;
+      }
+
+      /* Profiles */
+      .profiles {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1em;
+        margin-top: 0.5em;
+      }
+
+      /* Print Styles */
+      @media print {
+        body {
+          padding: 0.5in;
+          font-size: 10pt;
+          max-width: 100%;
+        }
+
+        h1 {
+          font-size: 24pt;
+        }
+
+        h2 {
+          font-size: 9pt;
+          page-break-after: avoid;
+        }
+
+        h3 {
+          font-size: 11pt;
+          page-break-after: avoid;
+        }
+
+        .work-item,
+        .education-item,
+        .skill-category,
+        .award-item,
+        .publication-item {
+          page-break-inside: avoid;
+        }
+
+        a {
+          color: var(--text-primary);
+          text-decoration: none;
+        }
+
+        a[href^="http"]:after {
+          content: "";
+        }
+
+        .highlights li {
+          font-size: 9.5pt;
+        }
+      }
+
+      /* Mobile Responsive */
+      @media screen and (max-width: 768px) {
+        body {
+          padding: 1em;
+          font-size: 12pt;
+        }
+
+        h1 {
+          font-size: 24pt;
+        }
+
+        .contact-info {
+          flex-direction: column;
+          gap: 0.3em;
+        }
+
+        .contact-info span:not(:last-child)::after {
+          display: none;
+        }
+
+        .work-header,
+        .work-meta,
+        .education-header {
+          flex-direction: column;
+        }
+
+        .skills {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  
+    </head>
+    <body>
+      
+      <header class="header">
+        <h1>Jane Smith</h1>
+        <div class="label">Senior Software Engineer</div>
+        <div class="contact-info">
+          <span><a href="mailto:jane@example.com">jane@example.com</a></span><span>+1-555-987-6543</span><span>San Francisco, California</span>
+        </div>
+        <div class="profiles"><span><a href="https://linkedin.com/in/janesmith">linkedin</a></span><span><a href="https://github.com/janesmith">github</a></span></div>
+      </header>
+    
+      <div class="summary">Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.</div>
+      
+      <section>
+        <h2>Experience</h2>
+        
+        <div class="work-item">
+          <div class="work-header">
+            <h3>Senior Software Engineer</h3>
+          </div>
+          <div class="work-meta">
+            <span><strong>Tech Corp</strong></span>
+            <span>Jan 2020 – Present</span>
+          </div>
+          
+          <ul class="highlights"><li><p>&lt;p&gt;Lead engineer for the platform team, owning core API infrastructure.&lt;/p&gt;</p>
+</li><li><p>&lt;p&gt;Reduced API latency by 45% through caching and query optimization&lt;/p&gt;</p>
+</li><li><p>&lt;p&gt;Designed microservices architecture serving 2M daily requests&lt;/p&gt;</p>
+</li><li><p>&lt;p&gt;Mentored 4 junior engineers through technical growth plans&lt;/p&gt;</p>
+</li></ul>
+        </div>
+      
+        <div class="work-item">
+          <div class="work-header">
+            <h3>Full Stack Developer</h3>
+          </div>
+          <div class="work-meta">
+            <span><strong>StartupXYZ</strong></span>
+            <span>Jan 2017 – Jan 2020</span>
+          </div>
+          
+          <ul class="highlights"><li><p>&lt;p&gt;Built customer-facing web applications from prototype to production.&lt;/p&gt;</p>
+</li><li><p>&lt;p&gt;Built real-time dashboard used by 15,000+ daily active users&lt;/p&gt;</p>
+</li><li><p>&lt;p&gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&lt;/p&gt;</p>
+</li></ul>
+        </div>
+      
+      </section>
+    
+      
+      <section>
+        <h2>Skills</h2>
+        <div class="skills">
+          
+      <div class="skill-category">
+        <h4>Languages</h4>
+        <div class="skill-keywords"><p>TypeScript</p>
+ • <p>JavaScript</p>
+ • <p>Python</p>
+ • <p>Go</p>
+</div>
+      </div>
+    
+      <div class="skill-category">
+        <h4>Frontend</h4>
+        <div class="skill-keywords"><p>React</p>
+ • <p>Next.js</p>
+ • <p>HTML/CSS</p>
+ • <p>Tailwind</p>
+</div>
+      </div>
+    
+      <div class="skill-category">
+        <h4>Backend & Cloud</h4>
+        <div class="skill-keywords"><p>Node.js</p>
+ • <p>PostgreSQL</p>
+ • <p>AWS</p>
+ • <p>Docker</p>
+</div>
+      </div>
+    
+        </div>
+      </section>
+    
+      
+      <section>
+        <h2>Education</h2>
+        
+      <div class="education-item">
+        <div class="education-header">
+          <h3>University of Technology</h3>
+          <span class="education-meta">Jan 2013 – Jan 2017</span>
+        </div>
+        <div class="education-meta">
+          Bachelor of Science Computer Science
+        </div>
+      </div>
+    
+      </section>
+    
+      
+      
+    </body>
+    </html>
+  

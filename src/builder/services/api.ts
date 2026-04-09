@@ -25,6 +25,8 @@ export interface ThemeModule {
   pdfRenderOptions?: unknown;
 }
 
+export type ThemeCapability = 'browser' | 'snapshot-only' | 'server';
+
 /** Relative URL used when calling the Vercel serverless API (render/themes). */
 function getApiBase(): string {
   if (typeof window === 'undefined') return '';
@@ -52,6 +54,7 @@ function getThemesBase(): string {
 let themeListCache: NpmTheme[] | null = null;
 let manifestCache: BrowserTheme[] | null = null;
 let bundledNames: Set<string> | null = null;
+let snapshotOnlyNames: Set<string> | null = null;
 
 async function loadManifest(): Promise<BrowserTheme[]> {
   if (manifestCache) return manifestCache;
@@ -65,7 +68,7 @@ async function loadManifest(): Promise<BrowserTheme[]> {
   }
 }
 
-function getManifestEntry(name: string): BrowserTheme | undefined {
+export function getManifestEntry(name: string): BrowserTheme | undefined {
   return manifestCache?.find((t) => t.name === name);
 }
 
@@ -84,21 +87,33 @@ export async function fetchThemes(signal?: AbortSignal): Promise<NpmTheme[]> {
   ]);
 
   bundledNames = new Set(manifest.filter((t) => t.browserCompatible).map((t) => t.name));
-  const names = bundledNames;
+  snapshotOnlyNames = new Set(
+    manifest.filter((t) => !t.browserCompatible && t.hasSnapshot).map((t) => t.name),
+  );
 
-  const bundledFirst = npmThemes.sort((a, b) => {
-    const aB = names.has(a.name) ? 0 : 1;
-    const bB = names.has(b.name) ? 0 : 1;
-    if (aB !== bB) return aB - bB;
+  const names = bundledNames;
+  const snaps = snapshotOnlyNames;
+
+  // Sort: browser-compatible first, then snapshot-only, then server-only
+  const sorted = npmThemes.sort((a, b) => {
+    const aRank = names.has(a.name) ? 0 : snaps.has(a.name) ? 1 : 2;
+    const bRank = names.has(b.name) ? 0 : snaps.has(b.name) ? 1 : 2;
+    if (aRank !== bRank) return aRank - bRank;
     return b.weeklyDownloads - a.weeklyDownloads;
   });
 
-  themeListCache = bundledFirst;
+  themeListCache = sorted;
   return themeListCache;
 }
 
 export function isBundledTheme(name: string): boolean {
   return bundledNames?.has(name) ?? false;
+}
+
+export function getThemeCapability(name: string): ThemeCapability {
+  if (bundledNames?.has(name)) return 'browser';
+  if (snapshotOnlyNames?.has(name)) return 'snapshot-only';
+  return 'server';
 }
 
 export function prefetchThemes(): void {
@@ -135,11 +150,12 @@ export async function loadSnapshot(themeName: string): Promise<string | null> {
 // Strategy:
 //   1. If snapshot available → show it instantly while loading the render module
 //   2. Load bundled .js in Web Worker (off main thread)
-//   3. Fall back to server /api/render for non-bundled themes
+//   3. For snapshot-only themes → return snapshot as render result
+//   4. Fall back to server /api/render for themes with no bundle or snapshot
 
 const loadedWorkerThemes = new Set<string>();
 
-/** Whether we already have the theme render module ready (worker or server). */
+/** Whether we already have the theme render module ready. */
 export function isThemeLoaded(themeName: string): boolean {
   return loadedWorkerThemes.has(themeName) || serverThemeCache.has(themeName);
 }
@@ -165,11 +181,24 @@ export async function loadTheme(themeName: string): Promise<ThemeModule> {
       loadedWorkerThemes.add(themeName);
       return { render: (resume) => workerRender(resume) };
     } catch {
-      // Worker load failed — fall through to server
+      // Worker load failed — fall through
     }
   }
 
-  // Fall back to server render
+  // For snapshot-only themes, return a module that serves the snapshot
+  if (entry?.hasSnapshot && !entry.browserCompatible) {
+    const snapshotTheme: ThemeModule = {
+      render: async () => {
+        const snap = await loadSnapshot(themeName);
+        if (snap) return snap;
+        throw new Error(`Theme "${themeName}" is available as preview only`);
+      },
+    };
+    serverThemeCache.set(themeName, snapshotTheme);
+    return snapshotTheme;
+  }
+
+  // Fall back to server render (for themes with no bundle or snapshot)
   const serverTheme: ThemeModule = {
     render: async (resume) => {
       const signal = AbortSignal.timeout(30_000);

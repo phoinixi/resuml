@@ -1,0 +1,4 @@
+/* This makes the text not selectable */
+		#download:after {
+			content: 'Download';
+		}

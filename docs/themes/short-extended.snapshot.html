@@ -1,0 +1,457 @@
+<!doctype html>
+<html>
+	<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+	
+	<title>Jane Smith</title>
+
+	<style>
+	:root {
+	font-size: 15px;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+body {
+	background: #fff;
+	line-height: 1.2;
+	margin: 0 0;
+	margin-bottom: 100px;
+}
+em {
+	color: #999;
+}
+p {
+	line-height: 1.4;
+	font-size: .9rem;
+	text-align: justify;
+}
+
+a {
+	color: #2C85B1;
+	text-decoration: none;
+	font-weight: 400;
+}
+ul {
+	margin-bottom: 0;
+}
+section {
+	margin: 0 0 2em;
+}
+blockquote {
+	margin: 0;
+	margin-top: 1em;
+}
+#resume {
+	margin: 2em 2em 2em 2.5em;
+	max-width: 760px;
+}
+
+/* Resume heading */
+.heading header { 
+
+}
+
+.heading header h1 {
+	font-size: 1.8rem;
+	line-height: 1;
+	margin: 0.5em 0 0 0;
+	font-weight: 600;
+}
+
+.heading header h3 {
+	color: #6B6B6B;
+	font-size: 1.1rem;
+	line-height: 1;
+	margin: 0 0 0.5em 0;
+	font-weight: 300;
+}
+
+.heading header h2 {
+	font-size: 1.4rem;
+	margin: 0;
+	font-weight: 400;
+}
+
+.heading header .contact .detail {
+	margin: 0 1em 0 0;
+}
+
+.heading .summary p {
+	font-size: 1rem;
+}
+
+.profile {
+	display: inline-block;
+	margin: 0 1em 0 0;
+}
+
+.profile strong,
+.profile span {
+	display: inline-block;
+	margin: 0 1em 0 0;
+}
+.profile strong a {
+	font-weight: inherit;
+}
+
+/* section / line breaks */
+section h2 {
+	position: relative;
+	display: inline-block;
+	font-size: 1.4rem;
+	line-height: 1;
+	margin: 0 0 0.6em;
+	text-transform: uppercase;
+	color: #BC1B39;
+	font-weight: 500;
+}
+
+section h2::after {
+	content: '';
+	position: absolute;
+	width: 50%;
+	height: 1px;
+	left: 0;
+	bottom: -0.4rem;
+	background-color: #BC1B39;
+}
+
+/* Experience items */
+.item:not(:last-child) {
+	margin: 0 0 1em;
+	padding: 0 0 1em;
+	border-bottom: 1px solid #F2EBEC;
+}
+
+.item:last-child {
+	border-bottom: none;
+}
+
+.item.work header .company {
+	display: flex;
+	flex-direction: column;
+}
+
+.item.work header .company a.url{
+	margin-top: -0.4em;
+	margin-bottom: 0.2rem;
+	font-size: 0.8rem;
+	font-weight: 300;
+}
+
+.item header h3 {
+	margin: 0 1em 0.2em 0;
+	display: inline-block;
+	font-weight: 600;
+	font-size: 1.2rem;
+}
+
+.item.work header h3 a.icon{
+	color: inherit;
+	font: inherit;
+	text-decoration: inherit;
+	display: inline-flex;
+	align-items: center;
+}
+
+.item.work header h3 a.icon svg{
+	height: 1rem;
+	width: 1rem;
+	margin-top: .2rem;
+	margin-left: .2rem;
+}
+
+.item header h3[data-location]::after {
+	content: " (" attr(data-location) ")";
+	color: #6B6B6B;
+	font-weight: 300;
+}
+
+.item header a {
+	display: inline-block;
+}
+
+.item header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.item .position {
+	font-weight: 500;
+	font-size: 1rem;
+	margin: 0 1em 0.2em 0;
+}
+
+.item .startDate,
+.item .endDate {
+	color: #6B6B6B;
+}
+
+.item .highlights {
+	list-style: square;
+	font-size: .85rem;
+	width: 66%;
+	columns: 2;
+	-webkit-columns: 2;
+	-moz-columns: 2;
+}
+
+/* skills */
+#skills .item {
+	margin: 0.5em 0;
+	padding: 0 0 0.5em;
+	font-size: .95rem;
+}
+
+#skills .item .name {
+	font-weight: 600;
+	display: inline-block;
+	text-transform: uppercase;
+	margin: 0 1em 0 0;
+	width: 23%;
+	vertical-align: top;
+}
+
+#skills .item .keywords {
+	display: inline-block;
+	width: 70%;
+	vertical-align: top;
+}
+
+/* education */
+#education .item {
+	vertical-align: top;
+	border-bottom: 0;
+}
+
+#education .item .qualification{
+	width: 60%;
+}
+
+#references .reference blockquote {
+	font-size: .95rem;
+	line-height: 1.2;
+	text-align: justify;
+}
+
+#references .reference .details {
+	font-size: 1rem;
+}
+
+#references .reference .name {
+	font-weight: 700;
+}
+
+#references .reference .title,
+#references .reference .company {
+	font-weight: 300;
+	color: #6B6B6B;
+}
+
+#references .reference .title,
+#references .reference .contact{
+	border-left: 1px solid;
+	margin-left: .4rem;
+	padding-left: .4rem;
+}
+
+#references .reference .contact {
+	font-weight: 400;
+}
+
+
+
+	</style>
+	<style media="print">
+		body { font-size: 12px; }
+	</style>
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+	
+	</head>
+	<body>
+	
+	<div id="resume">
+
+	<section class="heading">
+		<header>
+			<h1>Jane Smith</h1>
+			<h3>Senior Software Engineer</h3>
+			<div class="contact">
+				<span class="detail">
+					<a href="mailto:jane@example.com" target="_blank">jane@example.com</a>
+				</span>
+				<span class="detail">
+					+1-555-987-6543
+				</span>
+			</div>
+		</header>
+
+			<div class="profile">
+				<strong class="network">
+                    linkedin
+				</strong>
+				<span class="username">
+					<a href="https://linkedin.com/in/janesmith" target="_blank">janesmith</a>
+				</span>
+			</div>
+			<div class="profile">
+				<strong class="network">
+                    github
+				</strong>
+				<span class="username">
+					<a href="https://github.com/janesmith" target="_blank">janesmith</a>
+				</span>
+			</div>
+
+        <div class="summary">
+            <p>Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.</p>
+        </div>
+
+	</section>
+
+	<section id="skills">
+		<h2>Skills</h2>
+		<div class="item">
+			<div class="name">
+				Languages
+			</div>
+			<div class="keywords">
+					&lt;p&gt;TypeScript&lt;/p&gt;
+,
+					&lt;p&gt;JavaScript&lt;/p&gt;
+,
+					&lt;p&gt;Python&lt;/p&gt;
+,
+					&lt;p&gt;Go&lt;/p&gt;
+
+			</div>
+		</div>
+		<div class="item">
+			<div class="name">
+				Frontend
+			</div>
+			<div class="keywords">
+					&lt;p&gt;React&lt;/p&gt;
+,
+					&lt;p&gt;Next.js&lt;/p&gt;
+,
+					&lt;p&gt;HTML/CSS&lt;/p&gt;
+,
+					&lt;p&gt;Tailwind&lt;/p&gt;
+
+			</div>
+		</div>
+		<div class="item">
+			<div class="name">
+				Backend &amp; Cloud
+			</div>
+			<div class="keywords">
+					&lt;p&gt;Node.js&lt;/p&gt;
+,
+					&lt;p&gt;PostgreSQL&lt;/p&gt;
+,
+					&lt;p&gt;AWS&lt;/p&gt;
+,
+					&lt;p&gt;Docker&lt;/p&gt;
+
+			</div>
+		</div>
+	</section>
+
+	<section class="experience">
+		<h2>Experience</h2>
+		<section class="item work">
+			<header>
+				<div class="date">
+                    <span class="startDate">
+                        Jan 2020
+                    </span>
+                    <span class="endDate">
+                        - Present
+                    </span>
+				</div>
+			</header>
+			<span class="position">
+				Senior Software Engineer
+			</span>
+
+			<ul class="highlights">
+				<li>&lt;p&gt;&amp;lt;p&amp;gt;Lead engineer for the platform team, owning core API infrastructure.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+				<li>&lt;p&gt;&amp;lt;p&amp;gt;Reduced API latency by 45% through caching and query optimization&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+				<li>&lt;p&gt;&amp;lt;p&amp;gt;Designed microservices architecture serving 2M daily requests&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+				<li>&lt;p&gt;&amp;lt;p&amp;gt;Mentored 4 junior engineers through technical growth plans&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+			</ul>
+		</section>
+		<section class="item work">
+			<header>
+				<div class="date">
+                    <span class="startDate">
+                        Jan 2017
+                    </span>
+                    <span class="endDate">
+                        - Jan 2020
+                    </span>
+				</div>
+			</header>
+			<span class="position">
+				Full Stack Developer
+			</span>
+
+			<ul class="highlights">
+				<li>&lt;p&gt;&amp;lt;p&amp;gt;Built customer-facing web applications from prototype to production.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+				<li>&lt;p&gt;&amp;lt;p&amp;gt;Built real-time dashboard used by 15,000+ daily active users&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+				<li>&lt;p&gt;&amp;lt;p&amp;gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+			</ul>
+		</section>
+	</section>
+
+	
+	<section id="education">
+		<h2>Education</h2>
+		<div class="item">
+			<header>
+					<h3 class="name">University of Technology</h3>
+				<div class="date">
+                    <span class="startDate">
+                        Jan 2013
+                    </span>
+                    <span class="endDate">
+                        - Jan 2017
+                    </span>
+                </div>
+			</header>
+
+			<div class="qualification">
+				<span class="studyType">
+					Bachelor of Science
+				</span>
+
+				<span class="area">
+					- Computer Science
+				</span>
+
+			</div>
+
+		</div>
+	</section>
+	
+	
+
+
+	
+	
+	</div>
+	
+	</body>
+</html>

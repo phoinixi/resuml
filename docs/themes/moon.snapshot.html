@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resume of Jane Smith</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <style type="text/css">
+    @import url(//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800);
+@charset "utf-8";
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }
+
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.pad {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+body{
+    font-family: 'Open Sans', Arial, Tahoma;
+    font-weight: 400;
+    color: #363636;
+    background: #fff;
+}
+blockquote {
+    font-size: 1em;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.container{
+    margin-top: 0px;
+    margin-bottom: 15px;
+    background: #fff;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.container a{
+  color: #fff;
+}
+
+
+#text-header h1{
+    margin: 0;
+    padding: 0;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+#text-header h1::first-line{
+    font-size: 1.5em;
+    font-weight: 800;
+    line-height: 1.5em;
+}
+#text-header h1 span{
+    color: #334960;
+    opacity: 0.7;
+}
+#text-header h1 sup{
+    opacity: 0.5;
+}
+#text-header:after{
+    width: 100%;
+    height: 3px;
+    border-bottom: 1px solid #ddd;
+    margin-top: 5px;
+    content: '';
+    display: block;
+}
+
+.left-col{
+  padding: 0px;
+}
+
+.box{
+    padding: 0 10px 0px 10px;
+}
+
+.box.contact{
+  margin-bottom: 15px;
+}
+
+.box h2{
+    color: #000;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.box.education.h2{
+  
+}
+
+
+#awards,
+#education{
+    margin-top: 20px;
+    margin-bottom: 0;
+    position: relative;
+    padding: 1em 0;
+    list-style: none;
+  
+}
+#awards:before,
+#education:before {
+    width: 5px;
+    height: 100%;
+    position: absolute;
+    left: 35px;
+    top: 0;
+    content: ' ';
+    display: block;
+    background-color: #32475c;
+    background: -moz-linear-gradient(top,  #ffffff 0%, #32475c 7%, #32475c 89%, #ffffff 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(7%,#32475c), color-stop(89%,#32475c), color-stop(100%,#ffffff));
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#32475c 7%,#32475c 89%,#ffffff 100%);
+    background: -o-linear-gradient(top,  #ffffff 0%,#32475c 7%,#32475c 89%,#ffffff 100%);
+    background: -ms-linear-gradient(top,  #ffffff 0%,#32475c 7%,#32475c 89%,#ffffff 100%);
+    background: linear-gradient(to bottom,  #ffffff 0%,#32475c 7%,#32475c 89%,#ffffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 );
+}
+#awards li,
+#education li{
+    z-index: 2;
+    position: relative;
+    float: left;
+}
+#awards .year,
+#education .year{
+    width: 14%;
+    background: #fff;
+    padding: 10px;
+    font-weight: 700;
+    display: inline-block;
+}
+#awards .description,
+#education .description{
+    width: auto;
+    display: inline-block;
+    background: #32475c;
+    color: #fff;
+    margin-bottom: 10px;
+    position: relative;
+    padding: 10px;
+    border-bottom: 1px solid #32475c;
+    border-right: 1px solid #32475c;
+    border-radius: 5px;
+}
+#awards .description:after,
+#education .description:after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    right: 0;
+    left: -16px;
+    height: 0;
+    width: 0;
+    border: solid transparent;
+    border-right-color: #32475c;
+    border-width: 8px;
+    pointer-events: none;
+}
+#awards .description h3,
+#education .description h3{
+    font-size: 1.2em;
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+}
+#awards .description p,
+#education .description p{
+    margin-top: 5px;
+    padding: 0;
+}
+
+.experienceYears{
+  float: right;
+}
+
+.job{
+    margin-bottom: 15px;
+}
+.job .details {
+  text-align: center;
+  margin-left: 0px;
+  width: auto;
+  margin-bottom: 5px;
+  color: #fff;
+  background-color: #32475c;
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+  border-radius: 5px;
+  padding: 5px;
+}
+.job-details{
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-bottom: 0px;
+}
+.job .where{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.job .profession{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.job .description{
+    line-height: 1.5em;
+}
+
+.list-group-item{
+  background-color: #ccc !important;
+  color: #000;
+}
+
+.publication {
+    margin-bottom: 0;
+}
+.publication .name{
+    font-size: 1em;
+    font-weight: bold;
+}
+.publication .year{
+    opacity: 0.7;
+}
+.publication p{
+    margin: 0;
+    padding-top: 10px;
+}
+
+.contact-item{
+    width: 100%;
+    float: left;
+}
+.contact-item .icon{
+    padding: 10px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    color: #fff;
+    background: #32475c;
+}
+.contact-item:last-child .icon{
+    border-bottom: none;
+}
+.contact-item .title{
+    width: 80%;
+    width: calc(100% - 55px);
+    font-weight: 700;
+    opacity: 0.9;
+}
+.contact-item .title.only{
+    margin-top: 10px;
+}
+.contact-item .description{
+    width: 80%;
+    width: calc(100% - 55px);
+    color: #334960;
+}
+
+.item-interests,
+.item-skills{
+    height: 30px;
+    color: #334960;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+.interest,
+.skill{
+    color: #fff;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    background: #32475c;
+    position: relative;
+    font-size: .85em;
+}
+.skill-level {
+    background-color: #227c74;
+    border-radius: 4px;
+    color: #fff;
+    padding: 1px 8px;
+    font-size: .75em;
+    position: absolute;
+    margin: 1px 10px;
+}
+
+#language-skills .skill{
+    margin: 10px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+    </style>
+    <style type="text/css" media="print">
+    body {
+    font-size: .95em;
+    -webkit-print-color-adjust: exact;
+}
+
+a[href]:after {
+    content: none !important;
+}
+
+#photo{
+    display: none;
+}
+
+.box {
+    margin-bottom: -10px;
+}
+.col-sm-5{
+    width: 40%;
+    padding: 0 15px;
+}
+
+.col-sm-7{
+    width: 60%;
+    padding: 0 15px;
+}
+
+.skills .col-sm-offset-1,
+.interests .col-sm-offset-1{
+    margin-top: -10px;
+    margin-bottom: 5px;
+}
+
+#education {
+    margin: 0;
+    margin-bottom: -20px;
+}
+#awards:before,
+#education:before {
+    background: none;
+}
+
+#awards .description,
+#education .description,
+.job .details {
+    border: 1px solid #eee;
+}
+.publication,
+.publication .panel-heading,
+.publication .name{
+    margin: 0;
+    padding: 0 5px;
+    border: none;
+}
+.publication .panel-body {
+    padding: 0 10px;
+    margin: 0;
+}
+
+.badge {
+    margin: 0;
+}
+
+.list-group-item{
+    border: none;
+    margin: 0;
+    padding: 5px 15px;
+}
+.list-group-item:after{
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 0;
+    left: -1px;
+    height: 0;
+    width: 0;
+    border: solid transparent;
+    border-right-color: #999;
+    border-width: 4px;
+    pointer-events: none;
+}
+
+.list-group-item{
+  background-color: #fff !important;
+  color: #000;
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div id="" class="text-center">
+            <!-- PHOTO (AVATAR) -->
+            <div id="text-header">
+              <h1>Jane Smith<br><span>Senior Software Engineer</span></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-7 left-col">
+           <!-- CONTACT -->
+          <div class="box contact clearfix">
+            <h2><i class="fa fa-bullseye ico"></i>&nbsp;&nbsp;Contact</h2>
+            <div class="contact-item">
+              <div class="icon pull-left text-center"><span class="fa fa-map-marker fa-fw"></span></div>
+              <div class="title pull-right"></div>
+              <div class="description pull-right">San Francisco US</div>
+            </div>
+            <div class="contact-item">
+              <div class="icon pull-left text-center"><span class="fa fa-phone fa-fw"></span></div>
+              <div class="title only pull-right"><a class="badge" href="tel:{basics.phone}}">+1-555-987-6543</a>
+            </div>
+            </div>
+            <div class="contact-item">
+              <div class="icon pull-left text-center"><span class="fa fa-envelope fa-fw"></span></div>
+              <div class="title only pull-right"><a class="badge" href="mailto:jane@example.com" target="_blank">jane@example.com</a></div>
+            </div>
+            <div class="contact-item">
+              <div class="icon pull-left text-center"><span class="fa fa-linkedin-square fa-fw"></span></div>
+              <div class="title pull-right">linkedin</div>
+              <div class="description pull-right"><a class="badge" href="https:&#x2F;&#x2F;linkedin.com&#x2F;in&#x2F;janesmith" target="_blank">janesmith</a></div>
+            </div>
+            <div class="contact-item">
+              <div class="icon pull-left text-center"><span class="fa fa-github-square fa-fw"></span></div>
+              <div class="title pull-right">github</div>
+              <div class="description pull-right"><a class="badge" href="https:&#x2F;&#x2F;github.com&#x2F;janesmith" target="_blank">janesmith</a></div>
+            </div>
+          </div>
+          
+          <!-- ABOUT ME -->
+          <div class="box">
+            <h2><i class="fa fa-user ico"></i>&nbsp;&nbsp;About</h2>
+            <p>Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.</p>
+          </div>
+          <!-- WORK EXPERIENCE -->
+          <div class="box work">
+            <h2 class="col-xs-12"><i class= "fa fa-suitcase ico"></i>&nbsp;&nbsp;Work Experience <p class="experienceYears"><i class="fa fa-clock-o"></i>&nbsp;9&nbsp;Years</p></h2>
+            
+              <div class="job clearfix">
+                <div class="row">
+                  <div class="details col-xs-12">
+                    <div class="where"></div>
+                    <div class="year">Jan, – Present</div>
+                    <div class="profession">Senior Software Engineer</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="job-details col-xs-12">
+                    <div class="description">
+                      
+                      <ul class="list-group">
+                        <li class="list-group-item"><p>&lt;p&gt;Lead engineer for the platform team, owning core API infrastructure.&lt;/p&gt;</p>
+</li>
+                        <li class="list-group-item"><p>&lt;p&gt;Reduced API latency by 45% through caching and query optimization&lt;/p&gt;</p>
+</li>
+                        <li class="list-group-item"><p>&lt;p&gt;Designed microservices architecture serving 2M daily requests&lt;/p&gt;</p>
+</li>
+                        <li class="list-group-item"><p>&lt;p&gt;Mentored 4 junior engineers through technical growth plans&lt;/p&gt;</p>
+</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="job clearfix">
+                <div class="row">
+                  <div class="details col-xs-12">
+                    <div class="where"></div>
+                    <div class="year">Jan, – Jan,</div>
+                    <div class="profession">Full Stack Developer</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="job-details col-xs-12">
+                    <div class="description">
+                      
+                      <ul class="list-group">
+                        <li class="list-group-item"><p>&lt;p&gt;Built customer-facing web applications from prototype to production.&lt;/p&gt;</p>
+</li>
+                        <li class="list-group-item"><p>&lt;p&gt;Built real-time dashboard used by 15,000+ daily active users&lt;/p&gt;</p>
+</li>
+                        <li class="list-group-item"><p>&lt;p&gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&lt;/p&gt;</p>
+</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-5">
+         
+          <!-- EDUCATION -->
+          <div class="box clearfix">
+            <h2><i class="fa fa-university ico"></i>&nbsp;&nbsp;Education</h2>
+            <ul id="education" class="clearfix">
+              <li>
+                <div class="year pull-left">Jan, Jan,</div>
+                <div class="description pull-right">
+                  <h3>University of Technology</h3>
+                  <p><i class= "fa fa-graduation-cap ico"></i> Bachelor of Science</p>
+                  <p>Computer Science</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- SKILLS -->
+          <div class="box">
+            <h2><i class="fa fa-tasks ico"></i>&nbsp;&nbsp;Skills</h2>
+            <div class="skills clearfix">
+              <div class="item-skills">
+                  Languages
+                  <span class="skill-level">Expert</span>
+              </div>
+              <div class="col-sm-offset-1 col-sm-12 clearfix">
+                <span class= "skill badge"><p>TypeScript</p>
+</span>
+                <span class= "skill badge"><p>JavaScript</p>
+</span>
+                <span class= "skill badge"><p>Python</p>
+</span>
+                <span class= "skill badge"><p>Go</p>
+</span>
+              </div>
+            </div>
+            <div class="skills clearfix">
+              <div class="item-skills">
+                  Frontend
+                  <span class="skill-level">Expert</span>
+              </div>
+              <div class="col-sm-offset-1 col-sm-12 clearfix">
+                <span class= "skill badge"><p>React</p>
+</span>
+                <span class= "skill badge"><p>Next.js</p>
+</span>
+                <span class= "skill badge"><p>HTML/CSS</p>
+</span>
+                <span class= "skill badge"><p>Tailwind</p>
+</span>
+              </div>
+            </div>
+            <div class="skills clearfix">
+              <div class="item-skills">
+                  Backend &amp; Cloud
+                  <span class="skill-level">Advanced</span>
+              </div>
+              <div class="col-sm-offset-1 col-sm-12 clearfix">
+                <span class= "skill badge"><p>Node.js</p>
+</span>
+                <span class= "skill badge"><p>PostgreSQL</p>
+</span>
+                <span class= "skill badge"><p>AWS</p>
+</span>
+                <span class= "skill badge"><p>Docker</p>
+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- JQUERY -->
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- BOOTSTRAP -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+  </body>
+</html>

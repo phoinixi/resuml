@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jane Smith</title>
+        <style>/* Markdown styling */
+
+.markdown {
+  color: var(--color-text);
+}
+
+.markdown p {
+  margin-bottom: 0.75rem;
+}
+
+.markdown p:last-child {
+  margin-bottom: 0px;
+}
+
+.markdown a {
+  color: var(--color-brand);
+}
+
+.markdown a:hover {
+  text-decoration-line: underline;
+}
+
+.markdown ul {
+  margin-left: 1.25rem;
+  margin-bottom: 0.75rem;
+  list-style-type: disc;
+}
+
+.markdown ol {
+  margin-left: 1.25rem;
+  margin-bottom: 0.75rem;
+  list-style-type: decimal;
+}
+
+.markdown li {
+  margin-bottom: 0.25rem;
+}
+
+.markdown h1 {
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+.markdown h2 {
+  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+.markdown h3 {
+  margin-bottom: 0.25rem;
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+}
+
+.markdown h4 {
+  margin-bottom: 0.25rem;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+}
+
+.markdown code {
+  background-color: var(--color-bg-secondary);
+  border-radius: 0.25rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.markdown pre {
+  background-color: var(--color-bg-secondary);
+  margin-bottom: 0.75rem;
+  overflow-x: auto;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+}
+
+.markdown pre code {
+  background-color: transparent;
+  padding: 0px;
+}
+
+.markdown blockquote {
+  border-color: var(--color-border);
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-left-width: 4px;
+  padding-left: 1rem;
+  font-style: italic;
+}
+
+.markdown hr {
+  border-color: var(--color-border);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.markdown strong {
+  font-weight: 600;
+}
+
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */
+
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+html,
+:host {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
+  -o-tab-size: 4;
+     tab-size: 4; /* 3 */
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif; /* 4 */
+  font-feature-settings: normal; /* 5 */
+  font-variation-settings: normal; /* 6 */
+  -webkit-tap-highlight-color: transparent; /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+  border-top-width: 1px; /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace; /* 1 */
+  font-feature-settings: normal; /* 2 */
+  font-variation-settings: normal; /* 3 */
+  font-size: 1em; /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+  border-collapse: collapse; /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-feature-settings: inherit; /* 1 */
+  font-variation-settings: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  font-weight: inherit; /* 1 */
+  line-height: inherit; /* 1 */
+  letter-spacing: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+
+dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+
+[hidden]:where(:not([hidden="until-found"])) {
+  display: none;
+}
+
+:root {
+    /* Modern Minimalist Theme - Light Mode */
+    --color-brand: #3b82f6; /* More sophisticated blue accent */
+    --color-brand-light: #60a5fa; /* Lighter blue for hover */
+    --color-brand-dark: #1d4ed8; /* Darker blue for active */
+
+    /* Text Colors - Refined monochromatic scale */
+    --color-text: #1f2937; /* Near-black text for headings */
+    --color-text-secondary: #4b5563; /* Medium gray text for body */
+    --color-text-tertiary: #6b7280; /* Light gray text for captions */
+    --color-text-muted: #6b7178; /* Muted text for less important content */
+
+    /* Background Colors */
+    --color-bg: #ffffff; /* Pure white background */
+    --color-bg-secondary: #f8fafc; /* Very subtle off-white for cards */
+    --color-bg-accent: #eff6ff; /* Very light blue accent background */
+
+    /* Border Colors */
+    --color-border: #e5e7eb; /* Light gray border */
+
+    /* Accent colors */
+    --color-accent-primary: #10b981; /* Emerald green for success/positive */
+    --color-accent-secondary: #f59e0b; /* Amber for warnings/neutral */
+    --color-accent-danger: #ef4444; /* Red for errors/negative */
+  }
+
+html {
+  background-color: var(--color-bg);
+  font-size: 13px;
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+    font-family:
+      'Helvetica Neue',
+      system-ui,
+      -apple-system,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      sans-serif;
+}
+
+body {
+  margin: 0px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-brand-dark);
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+a:hover {
+  color: var(--color-brand);
+  text-decoration-line: underline;
+}
+
+h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+  margin: 0px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+.container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+
+  .container {
+    max-width: 1536px;
+  }
+}
+
+.text-brand {
+  color: var(--color-brand);
+}
+
+.text-text {
+  color: var(--color-text);
+}
+
+.bg-color {
+  background-color: var(--color-bg);
+}
+
+.bg-color-secondary {
+  background-color: var(--color-bg-secondary);
+}
+
+.border-color {
+  border-color: var(--color-border);
+}
+
+.relative {
+  position: relative;
+}
+
+.float-right {
+  float: right;
+}
+
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.mb-0 {
+  margin-bottom: 0px;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
+.ml-1\.5 {
+  margin-left: 0.375rem;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+
+.mr-1 {
+  margin-right: 0.25rem;
+}
+
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
+.mt-0\.5 {
+  margin-top: 0.125rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mt-1\.5 {
+  margin-top: 0.375rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.inline {
+  display: inline;
+}
+
+.flex {
+  display: flex;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.h-28 {
+  height: 7rem;
+}
+
+.h-3 {
+  height: 0.75rem;
+}
+
+.h-4 {
+  height: 1rem;
+}
+
+.h-5 {
+  height: 1.25rem;
+}
+
+.w-28 {
+  width: 7rem;
+}
+
+.w-3 {
+  width: 0.75rem;
+}
+
+.w-4 {
+  width: 1rem;
+}
+
+.w-5 {
+  width: 1.25rem;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.list-disc {
+  list-style-type: disc;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.gap-1 {
+  gap: 0.25rem;
+}
+
+.gap-1\.5 {
+  gap: 0.375rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-3 {
+  gap: 0.75rem;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.space-y-1 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+
+.space-y-1\.5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.375rem * var(--tw-space-y-reverse));
+}
+
+.space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.border-2 {
+  border-width: 2px;
+}
+
+.border-b {
+  border-bottom-width: 1px;
+}
+
+.border-transparent {
+  border-color: transparent;
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
+.bg-opacity-5 {
+  --tw-bg-opacity: 0.05;
+}
+
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.p-3 {
+  padding: 0.75rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.py-0\.5 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-normal {
+  font-weight: 400;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.leading-none {
+  line-height: 1;
+}
+
+.leading-normal {
+  line-height: 1.5;
+}
+
+.leading-relaxed {
+  line-height: 1.625;
+}
+
+.leading-snug {
+  line-height: 1.375;
+}
+
+.leading-tight {
+  line-height: 1.25;
+}
+
+.text-foreground {
+  color: var(--color-text);
+}
+
+.text-foreground-muted {
+  color: var(--color-text-muted);
+}
+
+.text-foreground-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-foreground-tertiary {
+  color: var(--color-text-tertiary);
+}
+
+.no-underline {
+  text-decoration-line: none;
+}
+
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-shadow {
+  transition-property: box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Basic print adjustments that are hard to do with Tailwind classes */
+
+@media print {
+  html {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  a[href]:after {
+    content: none !important;
+  }
+
+  @page {
+    margin: 0.7cm 0.5cm;
+    size: auto;
+  }
+}
+
+.hover\:text-brand:hover {
+  color: var(--color-brand);
+}
+
+.hover\:border-color:hover {
+  border-color: var(--color-border);
+}
+
+@media print {
+
+  .print\:border-color {
+    border-color: var(--color-border);
+  }
+}
+
+.before\:absolute::before {
+  content: var(--tw-content);
+  position: absolute;
+}
+
+.before\:left-0::before {
+  content: var(--tw-content);
+  left: 0px;
+}
+
+.before\:top-0::before {
+  content: var(--tw-content);
+  top: 0px;
+}
+
+.before\:h-full::before {
+  content: var(--tw-content);
+  height: 100%;
+}
+
+.before\:w-px::before {
+  content: var(--tw-content);
+  width: 1px;
+}
+
+.hover\:text-foreground-muted:hover {
+  color: var(--color-text-muted);
+}
+
+.hover\:underline:hover {
+  text-decoration-line: underline;
+}
+
+.hover\:shadow-sm:hover {
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+@media (min-width: 640px) {
+
+  .sm\:h-32 {
+    height: 8rem;
+  }
+
+  .sm\:w-32 {
+    width: 8rem;
+  }
+
+  .sm\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .sm\:space-y-2 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .lg\:w-1\/3 {
+    width: 33.333333%;
+  }
+
+  .lg\:w-2\/3 {
+    width: 66.666667%;
+  }
+
+  .lg\:w-\[960px\] {
+    width: 960px;
+  }
+
+  .lg\:flex-row {
+    flex-direction: row;
+  }
+}
+
+@media print {
+
+  .print\:float-none {
+    float: none;
+  }
+
+  .print\:m-0 {
+    margin: 0px;
+  }
+
+  .print\:mx-0\.5 {
+    margin-left: 0.125rem;
+    margin-right: 0.125rem;
+  }
+
+  .print\:my-2 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .print\:mb-0 {
+    margin-bottom: 0px;
+  }
+
+  .print\:mb-0\.5 {
+    margin-bottom: 0.125rem;
+  }
+
+  .print\:mb-1 {
+    margin-bottom: 0.25rem;
+  }
+
+  .print\:mb-2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .print\:mb-4 {
+    margin-bottom: 1rem;
+  }
+
+  .print\:ml-1 {
+    margin-left: 0.25rem;
+  }
+
+  .print\:ml-4 {
+    margin-left: 1rem;
+  }
+
+  .print\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .print\:mt-0\.5 {
+    margin-top: 0.125rem;
+  }
+
+  .print\:mt-1 {
+    margin-top: 0.25rem;
+  }
+
+  .print\:flex {
+    display: flex;
+  }
+
+  .print\:hidden {
+    display: none;
+  }
+
+  .print\:h-24 {
+    height: 6rem;
+  }
+
+  .print\:h-3 {
+    height: 0.75rem;
+  }
+
+  .print\:h-4 {
+    height: 1rem;
+  }
+
+  .print\:w-24 {
+    width: 6rem;
+  }
+
+  .print\:w-3 {
+    width: 0.75rem;
+  }
+
+  .print\:w-4 {
+    width: 1rem;
+  }
+
+  .print\:w-\[28\%\] {
+    width: 28%;
+  }
+
+  .print\:w-\[72\%\] {
+    width: 72%;
+  }
+
+  .print\:w-full {
+    width: 100%;
+  }
+
+  .print\:max-w-full {
+    max-width: 100%;
+  }
+
+  .print\:list-disc {
+    list-style-type: disc;
+  }
+
+  .print\:flex-row {
+    flex-direction: row;
+  }
+
+  .print\:gap-0\.5 {
+    gap: 0.125rem;
+  }
+
+  .print\:gap-1 {
+    gap: 0.25rem;
+  }
+
+  .print\:gap-3 {
+    gap: 0.75rem;
+  }
+
+  .print\:space-y-1 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+  }
+
+  .print\:space-y-2 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+  }
+
+  .print\:rounded-md {
+    border-radius: 0.375rem;
+  }
+
+  .print\:rounded-sm {
+    border-radius: 0.125rem;
+  }
+
+  .print\:border-b {
+    border-bottom-width: 1px;
+  }
+
+  .print\:border-l-0 {
+    border-left-width: 0px;
+  }
+
+  .print\:bg-transparent {
+    background-color: transparent;
+  }
+
+  .print\:p-0 {
+    padding: 0px;
+  }
+
+  .print\:px-1 {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .print\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .print\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .print\:py-0 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .print\:py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .print\:pb-1 {
+    padding-bottom: 0.25rem;
+  }
+
+  .print\:pl-0 {
+    padding-left: 0px;
+  }
+
+  .print\:pt-0 {
+    padding-top: 0px;
+  }
+
+  .print\:align-middle {
+    vertical-align: middle;
+  }
+
+  .print\:text-\[0\.65rem\] {
+    font-size: 0.65rem;
+  }
+
+  .print\:text-\[10px\] {
+    font-size: 10px;
+  }
+
+  .print\:text-\[11px\] {
+    font-size: 11px;
+  }
+
+  .print\:text-\[16px\] {
+    font-size: 16px;
+  }
+
+  .print\:text-\[32px\] {
+    font-size: 32px;
+  }
+
+  .print\:text-\[8px\] {
+    font-size: 8px;
+  }
+
+  .print\:text-\[9px\] {
+    font-size: 9px;
+  }
+
+  .print\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .print\:hover\:border-transparent:hover {
+    border-color: transparent;
+  }
+
+  .print\:hover\:shadow-none:hover {
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+}
+</style>
+      </head>
+      <body>
+        <div id="root"><div class="container p-3 mx-auto lg:w-[960px] bg-color text-text print:max-w-full print:p-0 print:w-full print:px-6"><header class="relative mb-2 print:mb-0 print:p-0"><div><div><h1 class="mb-1 text-5xl font-light text-foreground-muted print:mb-0.5 print:text-[32px]">Jane Smith</h1><h2 class="mb-2 text-xl font-normal text-foreground print:mb-1 print:text-[16px]">Senior Software Engineer</h2></div><div class="flex gap-2 items-center print:gap-1" role="contentinfo" aria-label="Location"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 384 512" style="color:#6c6c6c" class="w-4 h-4 text-brand print:w-3 print:h-3" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"></path></svg>San Francisco, California</div><div class="flex flex-wrap gap-6 mt-4 text-sm text-foreground-tertiary print:mt-0 print:align-middle" role="contentinfo" aria-label="Contact information"><a href="mailto:jane@example.com" class="flex gap-2 items-center transition-colors hover:text-brand print:gap-1" aria-label="Email: jane@example.com"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" style="color:#6c6c6c" class="w-4 h-4 text-brand print:w-3 print:h-3" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path></svg>jane@example.com</a><a href="tel:+1-555-987-6543" class="flex gap-2 items-center transition-colors hover:text-brand print:gap-1" aria-label="Phone: +1-555-987-6543"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" style="color:#6c6c6c" class="w-4 h-4 text-brand print:flex" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M272 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h224c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM160 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm112-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v312z"></path></svg>+1-555-987-6543</a><a href="https://janesmith.dev" target="_blank" rel="noopener noreferrer" class="flex gap-2 items-center transition-colors hover:text-brand print:gap-1" aria-label="Website: https://janesmith.dev"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" class="w-4 h-4 text-brand print:w-4 print:h-4" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"></path></svg>https://janesmith.dev</a></div><div class="mt-2 print:mt-1"><div class="flex flex-wrap gap-3"><a href="https://linkedin.com/in/janesmith" target="_blank" rel="noopener noreferrer" class="inline-flex gap-1 items-center text-sm hover:text-foreground-muted" title="linkedin profile"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" style="color:#0077B5" class="w-4 h-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg><span class="hover:underline">linkedin</span></a><a href="https://github.com/janesmith" target="_blank" rel="noopener noreferrer" class="inline-flex gap-1 items-center text-sm hover:text-foreground-muted" title="github profile"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" style="color:#333333" class="w-4 h-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><span class="hover:underline">github</span></a></div></div><div class="mt-6 leading-relaxed text-foreground-secondary print:my-2 print:py-2"><h2 class="flex items-center mt-2 mb-1 font-semibold uppercase text-base text-brand print:text-sm print:mt-0 print:mb-0.5"><span>About</span><span class="flex-grow ml-1 border-b border-brand print:hidden"></span></h2><div class="p-4 rounded-lg mb-0 bg-color-secondary border border-transparent transition-shadow hover:shadow-sm hover:border-color print:bg-transparent print:hover:border-transparent print:hover:shadow-none print:p-0" role="article" aria-describedby="summary-undefined"><div class="flex flex-col gap-1.5 print:gap-0.5"><div class="flex flex-wrap items-center gap-1 print:gap-0.5"></div><div id="summary-undefined" class="text-sm text-foreground-secondary print:text-[9px]"><div class="markdown" role="contentinfo" aria-label="Markdown content"><p>Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.</p></div></div></div></div></div></div></header><div class="flex flex-col gap-6 lg:flex-row print:flex-row print:gap-3"><div class="lg:w-2/3 print:w-[72%]"><section class="my-2 print:m-0 print:mb-4" role="region" aria-labelledby="section-title-sections.work"><h2 class="flex items-center mt-2 mb-1 font-semibold uppercase text-base text-brand print:text-sm print:mt-0 print:mb-0.5"><span>Work Experience</span><span class="flex-grow ml-1 border-b border-brand print:hidden"></span></h2><div class="relative before:absolute before:left-0 before:top-0 before:h-full before:w-px before:bg-border"><div class="mb-4 print:m-0 print:py-2 print:border-b print:border-color" role="article"><div class="mb-2 text-sm print:mb-1 print:text-[9px]"><div class="flex items-center"><span class="font-medium text-foreground" role="time">Jan 2020 - Present</span><span class="ml-2 text-sm text-foreground-tertiary print:ml-1" role="time" aria-label="Duration: 6 years, 3 months">(<!-- -->6 years, 3 months<!-- -->)</span></div></div><div class="p-4 rounded-lg mb-0 bg-color-secondary border border-transparent transition-shadow hover:shadow-sm hover:border-color print:bg-transparent print:hover:border-transparent print:hover:shadow-none print:p-0" role="article" aria-labelledby="title-undefined" aria-describedby="highlights-undefined"><div class="flex flex-col gap-1.5 print:gap-0.5"><div><h3 id="title-undefined" class="font-medium text-base">Senior Software Engineer<span class="text-foreground-secondary"> at <a href="https://techcorp.com" target="_blank" rel="noopener noreferrer" class="text-brand hover:underline">Tech Corp</a></span></h3></div><div class="flex flex-wrap items-center gap-1 print:gap-0.5"></div><div id="highlights-undefined" class="print:px-4"><ul class="ml-4 text-sm list-disc text-foreground-secondary print:text-[9px] print:ml-4 print:list-disc"><li><div class="markdown" role="contentinfo" aria-label="Markdown content">&lt;p&gt;&amp;lt;p&amp;gt;Lead engineer for the platform team, owning core API infrastructure.&amp;lt;/p&amp;gt;&lt;/p&gt;</div></li><li><div class="markdown" role="contentinfo" aria-label="Markdown content"></div></li><li><div class="markdown" role="contentinfo" aria-label="Markdown content"></div></li><li><div class="markdown" role="contentinfo" aria-label="Markdown content"></div></li></ul></div></div></div></div><div class="mb-4 print:m-0 print:py-2 print:border-b print:border-color" role="article"><div class="mb-2 text-sm print:mb-1 print:text-[9px]"><div class="flex items-center"><span class="font-medium text-foreground" role="time">Jan 2017 - Jan 2020</span><span class="ml-2 text-sm text-foreground-tertiary print:ml-1" role="time" aria-label="Duration: 3 years">(<!-- -->3 years<!-- -->)</span></div></div><div class="p-4 rounded-lg mb-0 bg-color-secondary border border-transparent transition-shadow hover:shadow-sm hover:border-color print:bg-transparent print:hover:border-transparent print:hover:shadow-none print:p-0" role="article" aria-labelledby="title-undefined" aria-describedby="highlights-undefined"><div class="flex flex-col gap-1.5 print:gap-0.5"><div><h3 id="title-undefined" class="font-medium text-base">Full Stack Developer<span class="text-foreground-secondary"> at <!-- -->StartupXYZ</span></h3></div><div class="flex flex-wrap items-center gap-1 print:gap-0.5"></div><div id="highlights-undefined" class="print:px-4"><ul class="ml-4 text-sm list-disc text-foreground-secondary print:text-[9px] print:ml-4 print:list-disc"><li><div class="markdown" role="contentinfo" aria-label="Markdown content">&lt;p&gt;&amp;lt;p&amp;gt;Built customer-facing web applications from prototype to production.&amp;lt;/p&amp;gt;&lt;/p&gt;</div></li><li><div class="markdown" role="contentinfo" aria-label="Markdown content"></div></li><li><div class="markdown" role="contentinfo" aria-label="Markdown content"></div></li></ul></div></div></div></div></div></section><section class="my-2 print:m-0 print:mb-4" role="region" aria-labelledby="section-title-sections.education"><h2 class="flex items-center mt-2 mb-1 font-semibold uppercase text-base text-brand print:text-sm print:mt-0 print:mb-0.5"><span>Education</span><span class="flex-grow ml-1 border-b border-brand print:hidden"></span></h2><div class="relative before:absolute before:left-0 before:top-0 before:h-full before:w-px before:bg-border"><div class="mb-4 print:m-0 print:py-2 print:border-b print:border-color" role="article"><div class="mb-2 text-sm print:mb-1 print:text-[9px]"><div class="flex items-center"><span class="font-medium text-foreground" role="time">Jan 2013 - Jan 2017</span><span class="ml-2 text-sm text-foreground-tertiary print:ml-1" role="time" aria-label="Duration: 4 years">(<!-- -->4 years<!-- -->)</span></div></div><div class="p-4 rounded-lg mb-0 bg-color-secondary border border-transparent transition-shadow hover:shadow-sm hover:border-color print:bg-transparent print:hover:border-transparent print:hover:shadow-none print:p-0" role="article" aria-labelledby="title-undefined" aria-describedby="summary-undefined"><div class="flex flex-col gap-1.5 print:gap-0.5"><div><h3 id="title-undefined" class="font-medium text-base">Bachelor of Science<span class="text-foreground-secondary"> at <!-- -->University of Technology</span></h3></div><div class="flex flex-wrap items-center gap-1 print:gap-0.5"></div><div id="summary-undefined" class="text-sm text-foreground-secondary print:text-[9px]"><div class="markdown" role="contentinfo" aria-label="Markdown content"><p>GPA: 3.8</p></div></div></div></div></div></div></section><section class="my-2 print:m-0 print:mb-4" role="region" aria-labelledby="section-title-sections.projects"><h2 class="flex items-center mt-2 mb-1 font-semibold uppercase text-base text-brand print:text-sm print:mt-0 print:mb-0.5"><span>Projects</span><span class="flex-grow ml-1 border-b border-brand print:hidden"></span></h2><div class="relative before:absolute before:left-0 before:top-0 before:h-full before:w-px before:bg-border"><div class="mb-4 print:m-0 print:py-2 print:border-b print:border-color" role="article"><div class="mb-2 text-sm print:mb-1 print:text-[9px]"><div class="flex items-center"><span class="font-medium text-foreground" role="time">Jan 2022 - Present</span><span class="ml-2 text-sm text-foreground-tertiary print:ml-1" role="time" aria-label="Duration: 4 years, 3 months">(<!-- -->4 years, 3 months<!-- -->)</span></div></div><div class="p-4 rounded-lg mb-0 bg-color-secondary border border-transparent transition-shadow hover:shadow-sm hover:border-color print:bg-transparent print:hover:border-transparent print:hover:shadow-none print:p-0" role="article" aria-labelledby="title-undefined" aria-describedby="summary-undefined highlights-undefined"><div class="flex flex-col gap-1.5 print:gap-0.5"><div><h3 id="title-undefined" class="font-medium text-base">Open Source CLI Tool</h3></div><div class="flex flex-wrap items-center gap-1 print:gap-0.5"></div><div id="summary-undefined" class="text-sm text-foreground-secondary print:text-[9px]"><div class="markdown" role="contentinfo" aria-label="Markdown content">&lt;p&gt;Developer productivity tool with 2,000+ GitHub stars&lt;/p&gt;</div></div><div id="highlights-undefined" class="print:px-4"><ul class="ml-4 text-sm list-disc text-foreground-secondary print:text-[9px] print:ml-4 print:list-disc"><li><div class="markdown" role="contentinfo" aria-label="Markdown content"></div></li></ul></div><a href="https://github.com/janesmith/cli-tool" target="_blank" rel="noopener noreferrer" class="mt-1 inline-flex items-center text-sm text-brand hover:underline print:hidden">View Project<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="ml-1.5 h-3 w-3" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"></path></svg></a></div></div></div></div></section></div><div class="lg:w-1/3 print:w-[28%]"><div class="print:space-y-2"><section class="mb-4 print:mb-2" id="section-tsogo0en2" aria-labelledby="section-tsogo0en2-title"><h2 id="section-tsogo0en2-title" class="flex items-center mt-2 mb-1 font-semibold uppercase text-base text-brand print:text-sm print:mt-0 print:mb-0.5"><span>Skills</span><span class="flex-grow ml-1 border-b border-brand print:hidden"></span></h2><div class="grid grid-cols-2 gap-4"><div><h3 class="text-base font-medium text-foreground">Languages</h3><span class="text-sm text-foreground-tertiary">Expert</span><div class="flex flex-wrap gap-2 mt-1"><span class="inline-flex items-center px-2 py-0.5 text-sm rounded-md border print:px-1 print:py-0 print:text-[9px] print:rounded-sm bg-color-secondary border-color text-foreground-secondary" role="status" aria-label="&lt;p&gt;TypeScript&lt;/p&gt;
+">&lt;p&gt;TypeScript&lt;/p&gt;
+</span><span class="inline-flex items-center px-2 py-0.5 text-sm rounded-md border print:px-1 print:py-0 print:text-[9px] print:rounded-sm bg-color-secondary border-color text-foreground-secondary" role="status" aria-label="&lt;p&gt;JavaScript&lt;/p&gt;
+">&lt;p&gt;JavaScript&lt;/p&gt;
+</span><span class="inline-flex items-center px-2 py-0.5 text-sm rounded-md border print:px-1 print:py-0 print:text-[9px] print:rounded-sm bg-color-secondary border-color text-foreground-secondary" role="status" aria-label="&lt;p&gt;Python&lt;/p&gt;
+">&lt;p&gt;Python&lt;/p&gt;
+</span><span class="inline-flex items-center px-2 py-0.5 text-sm rounded-md border print:px-1 print:py-0 print:text-[9px] print:rounded-sm bg-color-secondary border-color text-foreground-secondary" role="status" aria-label="&lt;p&gt;Go&lt;/p&gt;
+">&lt;p&gt;Go&lt;/p&gt;
+</span></div></div><div><h3 class="text-base font-medium text-foreground">Frontend</h3><span class="text-sm text-foreground-tertiary">Expert</span><div class="flex flex-wrap gap-2 mt-1"><span class="inline-flex items-center px-2 py-0.5 text-sm rounded-md border print:px-1 print:py-0 print:text-[9px] print:rounded-sm bg-color-secondary border-color text-foreground-secondary" role="status" aria-label="&lt;p&gt;React&lt;/p&gt;
+">&lt;p&gt;React&lt;/p&gt;
+</span><span class="inline-flex items-center px-2 py-0.5 text-sm rounded-md border print:px-1 print:py-0 print:text-[9px] print:rounded-sm bg-color-secondary border-color text-foreground-secondary" role="status" aria-label="&lt;p&gt;Next.js&lt;/p&gt;
+">&lt;p&gt;Next.js&lt;/p&gt;
+</span><span class="inline-flex items-center px-2 py-0.5 text-sm rounded-md border print:px-1 print:py-0 print:text-[9px] print:rounded-sm bg-color-secondary border-color text-foreground-secondary" role="status" aria-label="&lt;p&gt;HTML/CSS&lt;/p&gt;
+">&lt;p&gt;HTML/CSS&lt;/p&gt;
+</span><span class="inline-flex items-center px-2 py-0.5 text-sm rounded-md border print:px-1 print:py-0 print:text-[9px] print:rounded-sm bg-color-secondary border-color text-foreground-secondary" role="status" aria-label="&lt;p&gt;Tailwind&lt;/p&gt;
+">&lt;p&gt;Tailwind&lt;/p&gt;
+</span></div></div><div><h3 class="text-base font-medium text-foreground">Backend &amp; Cloud</h3><span class="text-sm text-foreground-tertiary">Advanced</span><div class="flex flex-wrap gap-2 mt-1"><span class="inline-flex items-center px-2 py-0.5 text-sm rounded-md border print:px-1 print:py-0 print:text-[9px] print:rounded-sm bg-color-secondary border-color text-foreground-secondary" role="status" aria-label="&lt;p&gt;Node.js&lt;/p&gt;
+">&lt;p&gt;Node.js&lt;/p&gt;
+</span><span class="inline-flex items-center px-2 py-0.5 text-sm rounded-md border print:px-1 print:py-0 print:text-[9px] print:rounded-sm bg-color-secondary border-color text-foreground-secondary" role="status" aria-label="&lt;p&gt;PostgreSQL&lt;/p&gt;
+">&lt;p&gt;PostgreSQL&lt;/p&gt;
+</span><span class="inline-flex items-center px-2 py-0.5 text-sm rounded-md border print:px-1 print:py-0 print:text-[9px] print:rounded-sm bg-color-secondary border-color text-foreground-secondary" role="status" aria-label="&lt;p&gt;AWS&lt;/p&gt;
+">&lt;p&gt;AWS&lt;/p&gt;
+</span><span class="inline-flex items-center px-2 py-0.5 text-sm rounded-md border print:px-1 print:py-0 print:text-[9px] print:rounded-sm bg-color-secondary border-color text-foreground-secondary" role="status" aria-label="&lt;p&gt;Docker&lt;/p&gt;
+">&lt;p&gt;Docker&lt;/p&gt;
+</span></div></div></div></section></div></div></div></div></div>
+      </body>
+      </html>

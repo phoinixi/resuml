@@ -1,0 +1,116 @@
+body {
+		background: #fff;
+		font: 16px 'Fira Mono', Inconsolata, Courier New, serif;
+	  color: #333;
+		line-height: 1.4;
+		margin: 50px 0;
+		margin-bottom: 100px;
+	}
+	a {
+	  color: #7C4EFF;
+	  transition: all .25s;
+	}
+	a:hover {
+	  color: #522eb4;
+	}
+	h1,h2,h3,h4 {
+	  color: #7C4EFF;
+	  font-family: 'Work Sans', Arial, Helvetica, sans-serif;
+	}
+	h1 {
+	  margin: 0;
+	  line-height: 1.25;
+	  font-size: 4.25rem;
+	}
+	h2 {
+	  margin-bottom: 3rem;
+	  font-size: 1.75rem;
+	}
+	h3 {
+	  color: #333;
+	}
+	#title {
+	  margin: 0 0 1.6rem 0;
+	  font-weight: normal;
+	  color: #888;
+	}
+	em {
+		color: #999;
+	}
+	p {
+		line-height: 1.6;
+	}
+	ul {
+		margin-bottom: 0;
+	}
+	ul li {
+	  margin: 0 0 .25rem 0;
+	}
+	header, section {
+	  margin: 0 auto;
+	  padding: 0 2rem;
+	  max-width: 54rem;
+	}
+	section {
+	  margin-bottom: 3rem;
+	}
+	blockquote {
+		margin: 0;
+		margin-bottom: 1rem;
+	}
+	.item {
+		margin-bottom: 1rem;
+	}
+	#resume {
+		/*padding: 0 20px;*/
+	}
+	#basics {
+		/*margin-bottom: -10px;*/
+	}
+	#basics h3 {
+		margin-top: 1.5rem;
+	}
+	#basics .contact {
+	  margin: 0 0 2.6rem 0;
+	  line-height: 1.6;
+	}
+	#basics .contact > div {
+	  width: 49%;
+	  display: inline-block;
+	}
+	#basics .contact strong,
+	#location strong {
+		display: inline-block;
+		/*line-height: 1.6;*/
+		width: 30%;
+	}
+	.date, .position {
+	  font-weight: bold;
+	}
+	.profiles,
+	#skills {
+		overflow: hidden;
+	}
+	.profiles .item {
+	  float: left;
+	  margin: 0 2rem 0 0;
+	}
+	#skills .item {
+		float: left;
+		width: 33%;
+	}
+	#work .item .details {
+	  list-style: none;
+	  margin: 0;
+	  padding: 0;
+	}
+	hr {
+	  margin: 0 0 -4.75rem 0;
+	  border: 0;
+	  background: #fafafa;
+	  height: 4rem;
+	}
+	hr.contact-bg {
+	  margin: 0 0 -4rem 0;
+	  height: 5rem;
+	}

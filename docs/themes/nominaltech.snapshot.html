@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title> </title>
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" />
+		<style>
+			@import url(https://fonts.googleapis.com/css?family=Open+Sans:300|Oswald:300);
+
+body {
+	font-family: 'Open Sans', 'Helvetica Neue Light', sans-serif;
+	font-weight: 300;
+}
+
+h1,h2,h3 {
+	font-family: 'Oswald', sans-serif;
+}
+
+h1 {
+	font-weight: 700;
+}
+
+h2,h3 {
+	font-weight: 300;
+}
+
+main {
+	padding: 20px 0;
+}
+
+.vr {
+	display: inline;
+	margin: 0.5em 0px;
+	width: 1px;
+	height: 1em;
+	border-left: 1px solid gray;
+}
+
+
+section#header img {
+	padding: 20px;
+}
+
+section#header .title .vr {
+	display: none;;
+}
+	
+@media(min-width:768px), print {
+	section#header img {
+		width: 4em;
+		height: 4em;
+		padding: 0px;
+		float: right;
+	}
+	section#header .title h1,h2 {
+		display: inline !important;
+		padding-right: 20px;
+	}
+	section#header .title .vr {
+		display: inline;
+	}
+}
+
+section#skills .details {
+	-moz-column-count: 2;
+	-moz-column-gap: 0px;
+	-webkit-column-count: 2;
+	-webkit-column-gap: 0px;
+	column-count: 2;
+	column-gap: 0px;
+}
+
+.details h4 {
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
+.date {
+	font-size: 15px;
+	line-height: 24px;
+}
+.website {
+	line-height: 18px;
+}
+
+
+/* Fix for print */
+@media print {
+
+	a[href]:after {
+		content: none !important;
+	}
+
+	body {
+		font-size: 9px;
+	}
+	h1 {
+		font-size: 31px;
+	}
+	h2 {
+		font-size: 25px;
+	}
+	h3 {
+		font-size: 19px;
+	}
+
+	.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+		float: left;
+	}
+	.col-sm-12 {
+		width: 100%;
+	}
+	.col-sm-11 {
+		width: 91.66666666666666%;
+	}
+	.col-sm-10 {
+		width: 83.33333333333334%;
+	}
+	.col-sm-9 {
+		width: 75%;
+	}
+	.col-sm-8 {
+		width: 66.66666666666666%;
+	}
+	.col-sm-7 {
+		width: 58.333333333333336%;
+	}
+	.col-sm-6 {
+		width: 50%;
+	}
+	.col-sm-5 {
+		width: 41.66666666666667%;
+	}
+	.col-sm-4 {
+		width: 33.33333333333333%;
+	}
+	.col-sm-3 {
+		width: 25%;
+	}
+	.col-sm-2 {
+		width: 16.666666666666664%;
+	}
+	.col-sm-1 {
+		width: 8.333333333333332%;
+	}
+
+}
+
+		</style>
+
+
+	</head>
+	<body>
+		<div class='container-fluid'>
+			<main class="row">
+			<div class="col-sm-12 col-md-10 col-md-offset-1">
+				<section id='header' class="row">
+				<div class="col-sm-9 col-xs-12 title">
+					<h1>Jane Smith</h1>
+					<h2 class='vr'></h2>
+					<h2>Senior Software Engineer</h2>
+				</div>
+				<div class="col-sm-3 col-xs-12 text-center photo">
+					<img class="media-object img-circle" data-src="holder.js/64x64" alt="64x64" src="&#x2F;&#x2F;www.gravatar.com&#x2F;avatar&#x2F;9e26471d35a78862c17e467d87cddedf?size=100&amp;rating=g&amp;default=blank">
+				</div>
+				</section>
+				<hr style="color: #ccc; height: 4px;" />
+				<section id='about' class="row">
+				<header class="col-sm-3">
+				<h3>About</h3>
+				</header>
+				<div class="col-sm-9">
+					<p>Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.</p>
+					<strong>Phone:</strong> +1-555-987-6543 <br />
+					<strong>Email:</strong> <a href="mailto:jane@example.com">jane@example.com</a><br />
+						<section id="profiles">
+							<strong class="network">
+								linkedin:
+							</strong>
+							<a target="_blank" href="https:&#x2F;&#x2F;linkedin.com&#x2F;in&#x2F;janesmith">janesmith</a>
+							<br />
+							<strong class="network">
+								github:
+							</strong>
+							<a target="_blank" href="https:&#x2F;&#x2F;github.com&#x2F;janesmith">janesmith</a>
+							<br />
+						</section>
+				</div>
+				</section>
+				<hr />
+				<section id='work' class="row">
+				<header class="col-sm-3">
+				<h3>Work Experience</h3>
+				</header>
+				<div class="col-sm-9">
+					<div class="details">
+						<h3><span class="date pull-right">Jan, - Present</span></h3>
+						<strong>Senior Software Engineer</strong>
+						<p></p>
+						<ul>
+							<li>&lt;p&gt;&amp;lt;p&amp;gt;Lead engineer for the platform team, owning core API infrastructure.&amp;lt;&#x2F;p&amp;gt;&lt;&#x2F;p&gt;
+</li>
+							<li>&lt;p&gt;&amp;lt;p&amp;gt;Reduced API latency by 45% through caching and query optimization&amp;lt;&#x2F;p&amp;gt;&lt;&#x2F;p&gt;
+</li>
+							<li>&lt;p&gt;&amp;lt;p&amp;gt;Designed microservices architecture serving 2M daily requests&amp;lt;&#x2F;p&amp;gt;&lt;&#x2F;p&gt;
+</li>
+							<li>&lt;p&gt;&amp;lt;p&amp;gt;Mentored 4 junior engineers through technical growth plans&amp;lt;&#x2F;p&amp;gt;&lt;&#x2F;p&gt;
+</li>
+						</ul>
+						<h3><span class="date pull-right">Jan, - Jan,</span></h3>
+						<strong>Full Stack Developer</strong>
+						<p></p>
+						<ul>
+							<li>&lt;p&gt;&amp;lt;p&amp;gt;Built customer-facing web applications from prototype to production.&amp;lt;&#x2F;p&amp;gt;&lt;&#x2F;p&gt;
+</li>
+							<li>&lt;p&gt;&amp;lt;p&amp;gt;Built real-time dashboard used by 15,000+ daily active users&amp;lt;&#x2F;p&amp;gt;&lt;&#x2F;p&gt;
+</li>
+							<li>&lt;p&gt;&amp;lt;p&amp;gt;Implemented CI&#x2F;CD pipeline reducing deploy time from 2 hours to 8 minutes&amp;lt;&#x2F;p&amp;gt;&lt;&#x2F;p&gt;
+</li>
+						</ul>
+					</div>
+				</div>
+				</section>
+				<hr />
+
+				<section id='education' class="row">
+				<header class="col-sm-3">
+				<h3>Education</h3>
+				</header>
+				<div class="col-sm-9">
+					<div class="details">
+						<h3>University of Technology<span class="date pull-right">Jan,Jan,</span></h3>
+						<strong>Computer Science, Bachelor of Science</strong>
+						<p></p>
+					</div>
+				</div>
+				</section>
+				<hr />
+				<section id='skills' class="row">
+				<header class="col-sm-3">
+				<h3>Skills</h3>
+				</header>
+				<div class="col-sm-9">
+					<div class="details row">
+						<div class='col-sm-12'>
+							<ul>
+								<li>
+								<h4>Languages <span class="pull-right">Expert</span></h4>
+								<ul>
+									<li>&lt;p&gt;TypeScript&lt;&#x2F;p&gt;
+</li>
+									<li>&lt;p&gt;JavaScript&lt;&#x2F;p&gt;
+</li>
+									<li>&lt;p&gt;Python&lt;&#x2F;p&gt;
+</li>
+									<li>&lt;p&gt;Go&lt;&#x2F;p&gt;
+</li>
+								</ul>
+								</li>
+							</ul>
+						</div>
+						<div class='col-sm-12'>
+							<ul>
+								<li>
+								<h4>Frontend <span class="pull-right">Expert</span></h4>
+								<ul>
+									<li>&lt;p&gt;React&lt;&#x2F;p&gt;
+</li>
+									<li>&lt;p&gt;Next.js&lt;&#x2F;p&gt;
+</li>
+									<li>&lt;p&gt;HTML&#x2F;CSS&lt;&#x2F;p&gt;
+</li>
+									<li>&lt;p&gt;Tailwind&lt;&#x2F;p&gt;
+</li>
+								</ul>
+								</li>
+							</ul>
+						</div>
+						<div class='col-sm-12'>
+							<ul>
+								<li>
+								<h4>Backend &amp; Cloud <span class="pull-right">Advanced</span></h4>
+								<ul>
+									<li>&lt;p&gt;Node.js&lt;&#x2F;p&gt;
+</li>
+									<li>&lt;p&gt;PostgreSQL&lt;&#x2F;p&gt;
+</li>
+									<li>&lt;p&gt;AWS&lt;&#x2F;p&gt;
+</li>
+									<li>&lt;p&gt;Docker&lt;&#x2F;p&gt;
+</li>
+								</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				</section>
+				<hr />
+				<footer></footer>
+			</div>
+			</main>
+		</div>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+	</body>
+</html>

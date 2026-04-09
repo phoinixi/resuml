@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jane Smith &ndash; Senior Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com" data-cfasync="false"></script>
+  <script data-cfasync="false">
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            github: {
+              canvas: {
+                default: '#ffffff',
+                subtle: '#f6f8fa',
+                dark: '#22272e',
+                'dark-subtle': '#2d333b'
+              },
+              border: {
+                default: '#d0d7de',
+                dark: '#444c56'
+              },
+              fg: {
+                default: '#24292f',
+                muted: '#57606a',
+                dark: '#e6edf3',
+                'dark-muted': '#9198a1'
+              },
+              accent: {
+                emphasis: '#0969da',
+                dark: '#539bf5'
+              }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <script data-cfasync="false">
+    // Apply theme before body renders to prevent flicker
+    // Must run before Tailwind processes the page
+    (function() {
+      const savedTheme = localStorage.getItem('theme') || 'system';
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else if (savedTheme === 'system') {
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        if (systemTheme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      }
+    })();
+  </script>
+  <style>
+    /* Prevent flash of unstyled content */
+    html {
+      background-color: #ffffff;
+      color: #24292f;
+    }
+
+    html.dark {
+      background-color: rgb(33, 40, 48);
+      color: #e6edf3;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: inherit;
+    }
+
+    /* Lighter text colors for dark mode */
+    .dark .text-github-fg-dark {
+      color: #e6edf3 !important;
+    }
+
+    .dark .text-github-fg-dark-muted {
+      color: #adbac7 !important;
+    }
+
+    .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+      color: #e6edf3 !important;
+    }
+
+    .dark .glass-tile {
+      color: #e6edf3;
+    }
+
+    .dark .glass-tile .text-github-fg-muted {
+      color: #adbac7 !important;
+    }
+
+    /* GitHub Brand frosted glass tiles */
+    .glass-tile {
+      background: rgba(246, 248, 250, 0.7) !important;
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(208, 215, 222, 0.5) !important;
+      border-radius: 8px !important;
+      position: relative;
+      z-index: 0;
+      box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
+    }
+
+    .dark .glass-tile {
+      background: rgba(45, 51, 59, 0.7) !important;
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(68, 76, 86, 0.5) !important;
+      position: relative;
+      z-index: 0;
+      box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.3),
+        0 2px 4px -1px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    }
+
+    ::selection {
+      background: rgba(9, 105, 218, 0.3);
+    }
+
+    .dark ::selection {
+      background: rgba(83, 155, 245, 0.3);
+    }
+
+    .theme-switcher {
+      background: rgba(246, 248, 250, 0.5);
+      backdrop-filter: blur(12px) saturate(150%);
+      -webkit-backdrop-filter: blur(12px) saturate(150%);
+      border: 1px solid rgba(208, 215, 222, 0.3);
+      box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+    }
+
+    .dark .theme-switcher {
+      background: rgba(45, 51, 59, 0.5);
+      backdrop-filter: blur(12px) saturate(150%);
+      -webkit-backdrop-filter: blur(12px) saturate(150%);
+      border: 1px solid rgba(68, 76, 86, 0.3);
+      box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: white !important;
+      }
+      .glass-tile {
+        background: white !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+    }
+
+    .theme-btn {
+      color: #57606a;
+      background: transparent;
+      box-shadow: none;
+      transform: translateY(0);
+    }
+
+    .theme-btn:hover {
+      color: #24292f;
+      background: rgba(0, 0, 0, 0.05);
+      transform: translateY(-1px);
+    }
+
+    .dark .theme-btn {
+      color: #9198a1;
+    }
+
+    .dark .theme-btn:hover {
+      color: #e6edf3;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .theme-btn[data-active="true"] {
+      background: rgba(9, 105, 218, 0.1);
+      color: #0969da;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(9, 105, 218, 0.2);
+    }
+
+    .dark .theme-btn[data-active="true"] {
+      background: rgba(83, 155, 245, 0.15);
+      color: #539bf5;
+      box-shadow: 0 2px 8px rgba(83, 155, 245, 0.2);
+    }
+
+    .theme-btn:active {
+      transform: translateY(0);
+      background: rgba(9, 105, 218, 0.1);
+    }
+
+    .dark .theme-btn:active {
+      background: rgba(83, 155, 245, 0.15);
+    }
+    @media (min-width: 1400px) {
+      .theme-switcher-container {
+        right: max(1rem, calc(50vw - 640px - 3rem)) !important;
+      }
+    }
+  </style>
+</head>
+<body class="text-github-fg-default dark:text-github-fg-dark">
+
+  <!-- Theme Toggle Button -->
+  <div class="no-print fixed z-40 theme-switcher-container" style="top: max(1rem, env(safe-area-inset-top)); right: 1rem;">
+    <div class="theme-switcher flex h-fit items-stretch justify-start overflow-hidden gap-1.5 rounded-2xl p-1" role="radiogroup" aria-label="Theme">
+      <button type="button" id="theme-toggle-light" class="theme-btn inline-flex items-center gap-2 rounded-xl border-0 bg-transparent p-1.5 text-sm transition-all" title="Light theme" role="radio" aria-checked="false" data-active="false">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+      <button type="button" id="theme-toggle-system" class="theme-btn inline-flex items-center gap-2 rounded-xl border-0 bg-transparent p-1.5 text-sm transition-all" title="System theme" role="radio" aria-checked="false" data-active="false">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+      <button type="button" id="theme-toggle-dark" class="theme-btn inline-flex items-center gap-2 rounded-xl border-0 bg-transparent p-1.5 text-sm transition-all" title="Dark theme" role="radio" aria-checked="false" data-active="false">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+
+    <!-- Header / Basics Section -->
+    <header class="mb-8 md:mb-12">
+      <div class="flex flex-row items-center gap-4 md:gap-6 mb-4">
+        <div class="flex-1 min-w-0">
+          <h1 class="text-4xl font-bold mb-2">Jane Smith</h1>
+          <p class="text-xl text-github-fg-muted dark:text-github-fg-dark-muted">Senior Software Engineer</p>
+        </div>
+      </div>
+      <p class="text-base text-github-fg-muted dark:text-github-fg-dark-muted leading-relaxed mb-6">Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.</p>
+
+      <!-- Contact Information -->
+      <div class="flex flex-wrap gap-3 md:gap-4 text-sm">
+        <a href="mailto:jane@example.com" class="flex items-center gap-2 text-github-accent-emphasis dark:text-github-accent-dark hover:underline">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+          </svg>
+          jane@example.com
+        </a>
+        <a href="tel:+1-555-987-6543" class="flex items-center gap-2 text-github-accent-emphasis dark:text-github-accent-dark hover:underline">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+          </svg>
+          +1-555-987-6543
+        </a>
+        <a href="https://janesmith.dev" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-github-accent-emphasis dark:text-github-accent-dark hover:underline">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path>
+          </svg>
+          https://janesmith.dev
+        </a>
+        <span class="flex items-center gap-2 text-github-fg-muted dark:text-github-fg-dark-muted">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+          </svg>
+          San Francisco, California US
+        </span>
+      </div>
+
+      <!-- Profiles -->
+      <div class="flex flex-wrap gap-3 mt-4">
+        <a href="https://linkedin.com/in/janesmith" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3 py-1.5 text-sm bg-github-canvas-subtle dark:bg-github-canvas-dark-subtle border border-github-border-default dark:border-github-border-dark rounded-md hover:border-github-accent-emphasis dark:hover:border-github-accent-dark transition-colors" title="linkedin: janesmith">
+          <!-- GitHub Icon -->
+          <!-- LinkedIn Icon -->
+          <!-- Twitter/X Icon -->
+          <!-- Instagram Icon -->
+          <!-- Facebook Icon -->
+          <!-- YouTube Icon -->
+          <!-- Default Icon for other networks -->
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
+          <span>linkedin</span>
+        </a>
+        <a href="https://github.com/janesmith" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3 py-1.5 text-sm bg-github-canvas-subtle dark:bg-github-canvas-dark-subtle border border-github-border-default dark:border-github-border-dark rounded-md hover:border-github-accent-emphasis dark:hover:border-github-accent-dark transition-colors" title="github: janesmith">
+          <!-- GitHub Icon -->
+          <!-- LinkedIn Icon -->
+          <!-- Twitter/X Icon -->
+          <!-- Instagram Icon -->
+          <!-- Facebook Icon -->
+          <!-- YouTube Icon -->
+          <!-- Default Icon for other networks -->
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
+          <span>github</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Skills -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-github-border-default dark:border-github-border-dark">Skills</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="glass-tile bg-github-canvas-subtle dark:bg-github-canvas-dark-subtle border border-github-border-default dark:border-github-border-dark rounded-lg p-4">
+          <h3 class="font-semibold mb-2">Languages</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 text-sm bg-github-canvas-default dark:bg-github-canvas-dark border border-github-border-default dark:border-github-border-dark rounded font-mono">&lt;p&gt;TypeScript&lt;/p&gt;
+</span>
+            <span class="px-2 py-1 text-sm bg-github-canvas-default dark:bg-github-canvas-dark border border-github-border-default dark:border-github-border-dark rounded font-mono">&lt;p&gt;JavaScript&lt;/p&gt;
+</span>
+            <span class="px-2 py-1 text-sm bg-github-canvas-default dark:bg-github-canvas-dark border border-github-border-default dark:border-github-border-dark rounded font-mono">&lt;p&gt;Python&lt;/p&gt;
+</span>
+            <span class="px-2 py-1 text-sm bg-github-canvas-default dark:bg-github-canvas-dark border border-github-border-default dark:border-github-border-dark rounded font-mono">&lt;p&gt;Go&lt;/p&gt;
+</span>
+          </div>
+        </div>
+        <div class="glass-tile bg-github-canvas-subtle dark:bg-github-canvas-dark-subtle border border-github-border-default dark:border-github-border-dark rounded-lg p-4">
+          <h3 class="font-semibold mb-2">Frontend</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 text-sm bg-github-canvas-default dark:bg-github-canvas-dark border border-github-border-default dark:border-github-border-dark rounded font-mono">&lt;p&gt;React&lt;/p&gt;
+</span>
+            <span class="px-2 py-1 text-sm bg-github-canvas-default dark:bg-github-canvas-dark border border-github-border-default dark:border-github-border-dark rounded font-mono">&lt;p&gt;Next.js&lt;/p&gt;
+</span>
+            <span class="px-2 py-1 text-sm bg-github-canvas-default dark:bg-github-canvas-dark border border-github-border-default dark:border-github-border-dark rounded font-mono">&lt;p&gt;HTML/CSS&lt;/p&gt;
+</span>
+            <span class="px-2 py-1 text-sm bg-github-canvas-default dark:bg-github-canvas-dark border border-github-border-default dark:border-github-border-dark rounded font-mono">&lt;p&gt;Tailwind&lt;/p&gt;
+</span>
+          </div>
+        </div>
+        <div class="glass-tile bg-github-canvas-subtle dark:bg-github-canvas-dark-subtle border border-github-border-default dark:border-github-border-dark rounded-lg p-4">
+          <h3 class="font-semibold mb-2">Backend &amp; Cloud</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 text-sm bg-github-canvas-default dark:bg-github-canvas-dark border border-github-border-default dark:border-github-border-dark rounded font-mono">&lt;p&gt;Node.js&lt;/p&gt;
+</span>
+            <span class="px-2 py-1 text-sm bg-github-canvas-default dark:bg-github-canvas-dark border border-github-border-default dark:border-github-border-dark rounded font-mono">&lt;p&gt;PostgreSQL&lt;/p&gt;
+</span>
+            <span class="px-2 py-1 text-sm bg-github-canvas-default dark:bg-github-canvas-dark border border-github-border-default dark:border-github-border-dark rounded font-mono">&lt;p&gt;AWS&lt;/p&gt;
+</span>
+            <span class="px-2 py-1 text-sm bg-github-canvas-default dark:bg-github-canvas-dark border border-github-border-default dark:border-github-border-dark rounded font-mono">&lt;p&gt;Docker&lt;/p&gt;
+</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-github-border-default dark:border-github-border-dark">Work Experience</h2>
+      <div class="space-y-6">
+        <div class="glass-tile bg-github-canvas-subtle dark:bg-github-canvas-dark-subtle border border-github-border-default dark:border-github-border-dark rounded-lg p-4 md:p-6">
+          <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+            <div>
+              <h3 class="text-xl font-semibold">Senior Software Engineer</h3>
+              <p class="text-github-fg-muted dark:text-github-fg-dark-muted">
+                <a href="https://techcorp.com" target="_blank" rel="noopener noreferrer" class="text-github-accent-emphasis dark:text-github-accent-dark hover:underline">Tech Corp</a>
+              </p>
+            </div>
+            <div class="text-sm text-github-fg-muted dark:text-github-fg-dark-muted mt-1 md:mt-0 md:text-right">
+              Jan, → Present
+            </div>
+          </div>
+          <ul class="list-disc list-outside pl-5 space-y-1 text-github-fg-muted dark:text-github-fg-dark-muted">
+            <li>&lt;p&gt;&amp;lt;p&amp;gt;Lead engineer for the platform team, owning core API infrastructure.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+            <li><p>&lt;p&gt;Reduced API latency by 45% through caching and query optimization&lt;/p&gt;</p>
+</li>
+            <li><p>&lt;p&gt;Designed microservices architecture serving 2M daily requests&lt;/p&gt;</p>
+</li>
+            <li><p>&lt;p&gt;Mentored 4 junior engineers through technical growth plans&lt;/p&gt;</p>
+</li>
+          </ul>
+        </div>
+        <div class="glass-tile bg-github-canvas-subtle dark:bg-github-canvas-dark-subtle border border-github-border-default dark:border-github-border-dark rounded-lg p-4 md:p-6">
+          <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+            <div>
+              <h3 class="text-xl font-semibold">Full Stack Developer</h3>
+              <p class="text-github-fg-muted dark:text-github-fg-dark-muted">
+                StartupXYZ
+              </p>
+            </div>
+            <div class="text-sm text-github-fg-muted dark:text-github-fg-dark-muted mt-1 md:mt-0 md:text-right">
+              Jan, → Jan,
+            </div>
+          </div>
+          <ul class="list-disc list-outside pl-5 space-y-1 text-github-fg-muted dark:text-github-fg-dark-muted">
+            <li>&lt;p&gt;&amp;lt;p&amp;gt;Built customer-facing web applications from prototype to production.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</li>
+            <li><p>&lt;p&gt;Built real-time dashboard used by 15,000+ daily active users&lt;/p&gt;</p>
+</li>
+            <li><p>&lt;p&gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&lt;/p&gt;</p>
+</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-github-border-default dark:border-github-border-dark">Education</h2>
+      <div class="space-y-4">
+        <div class="glass-tile bg-github-canvas-subtle dark:bg-github-canvas-dark-subtle border border-github-border-default dark:border-github-border-dark rounded-lg p-4 md:p-6">
+          <div class="flex flex-col md:flex-row md:justify-between md:items-start">
+            <div>
+              <h3 class="text-xl font-semibold">Bachelor of Science in Computer Science</h3>
+              <p class="text-github-fg-muted dark:text-github-fg-dark-muted">
+                University of Technology
+              </p>
+              <p class="text-sm text-github-fg-muted dark:text-github-fg-dark-muted mt-1">GPA: 3.8</p>
+            </div>
+            <div class="text-sm text-github-fg-muted dark:text-github-fg-dark-muted mt-1 md:mt-0">
+              Jan, → Jan,
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-github-border-default dark:border-github-border-dark">Projects</h2>
+      <div class="space-y-4">
+        <div class="glass-tile bg-github-canvas-subtle dark:bg-github-canvas-dark-subtle border border-github-border-default dark:border-github-border-dark rounded-lg p-4 md:p-6">
+          <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+            <div>
+              <h3 class="text-xl font-semibold">
+                <a href="https://github.com/janesmith/cli-tool" target="_blank" rel="noopener noreferrer" class="text-github-accent-emphasis dark:text-github-accent-dark hover:underline">Open Source CLI Tool</a>
+              </h3>
+              
+            </div>
+            <div class="text-sm text-github-fg-muted dark:text-github-fg-dark-muted mt-1 md:mt-0">
+              Jan,
+            </div>
+          </div>
+          <p class="text-github-fg-muted dark:text-github-fg-dark-muted mb-2">&lt;p&gt;Developer productivity tool with 2,000+ GitHub stars&lt;/p&gt;
+</p>
+          <ul class="list-disc list-outside pl-5 space-y-1 text-sm text-github-fg-muted dark:text-github-fg-dark-muted mb-2">
+            <li><p>Published to npm with 5,000+ weekly downloads</p>
+</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Awards -->
+
+    <!-- Certificates -->
+
+    <!-- Publications -->
+
+    <!-- Volunteer -->
+
+    <!-- Languages -->
+
+    <!-- Interests -->
+
+    <!-- References -->
+
+  </div>
+
+  <script>
+    const themeToggleLight = document.getElementById('theme-toggle-light');
+    const themeToggleSystem = document.getElementById('theme-toggle-system');
+    const themeToggleDark = document.getElementById('theme-toggle-dark');
+
+    function applyTheme(theme) {
+      if (theme === 'system') {
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.classList.toggle('dark', systemTheme === 'dark');
+      } else {
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+      }
+      updateActiveButton(theme);
+    }
+
+    function updateActiveButton(theme) {
+      themeToggleLight.setAttribute('data-active', 'false');
+      themeToggleSystem.setAttribute('data-active', 'false');
+      themeToggleDark.setAttribute('data-active', 'false');
+
+      if (theme === 'light') {
+        themeToggleLight.setAttribute('data-active', 'true');
+      } else if (theme === 'system') {
+        themeToggleSystem.setAttribute('data-active', 'true');
+      } else {
+        themeToggleDark.setAttribute('data-active', 'true');
+      }
+    }
+
+    const savedTheme = localStorage.getItem('theme') || 'system';
+    applyTheme(savedTheme);
+
+    themeToggleLight.addEventListener('click', function() {
+      localStorage.setItem('theme', 'light');
+      applyTheme('light');
+    });
+
+    themeToggleSystem.addEventListener('click', function() {
+      localStorage.setItem('theme', 'system');
+      applyTheme('system');
+    });
+
+    themeToggleDark.addEventListener('click', function() {
+      localStorage.setItem('theme', 'dark');
+      applyTheme('dark');
+    });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      const savedTheme = localStorage.getItem('theme') || 'system';
+      if (savedTheme === 'system') {
+        applyTheme('system');
+      }
+    });
+  </script>
+</body>
+</html>

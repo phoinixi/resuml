@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Resume for Jane Smith</title>
+
+
+
+<meta http-equiv="Generator" content="jsonresume-theme-rickosborne 2022.09.16-T1450" about="Written by Rick Osborne (rickosborne.org)">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;400&display=swap');
+body {
+    font-family: 'Roboto Slab', 'Gentium Book Basic', 'Gentium Plus', 'Gentium Basic', 'Times New Roman', 'Times', ui-serif, serif;
+}
+</style>
+<style>:root {
+    --text: 1.92vw;
+    --cadence-quarter: calc(var(--text) * 0.45);
+    --cadence-half: calc(var(--text) * 0.9);
+    --cadence-one: calc(var(--text) * 1.8);
+    --cadence-two: calc(var(--text) * 3.6);
+    --text-color: #222;
+    --light: #444;
+    --lighter: #666;
+    --ghostly: #eee;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    background: #555;
+    margin: 0;
+    padding: 0;
+    font-size: var(--text);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    text-indent: 0;
+    list-style: none;
+    font-weight: 200;
+    font-style: normal;
+    text-decoration: none;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+    font-size: var(--text);
+}
+
+body {
+    width: 100%;
+    min-height: 100%;
+    overflow-y: auto;
+    background: white;
+    color: var(--text-color);
+    max-width: calc(var(--text) * 50.0);
+    margin: var(--cadence-half) auto;
+    padding: 0;
+    box-shadow: 0 0 var(--cadence-half) black;
+    line-height: var(--cadence-one);
+}
+
+a, a:visited, a:focus, a:hover {
+    color: #248 !important;
+    text-decoration: none;
+}
+
+a:focus, a:hover {
+    color: #36c !important;
+    text-decoration: underline;
+}
+
+#resume {
+    padding: var(--cadence-one);
+    align-content: start;
+    align-items: start;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+#basics {
+    display: grid;
+    grid-template-areas:
+        "name label"
+        "summary summary";
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 0;
+}
+
+#person-name {
+    font-size: 200%;
+    line-height: var(--cadence-two);
+    grid-area: name;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    flex-grow: 1;
+}
+
+#person-label {
+    font-size: 150%;
+    line-height: var(--cadence-two);
+    grid-area: label;
+    color: var(--light);
+}
+
+#person-summary {
+    grid-area: summary;
+    color: var(--lighter);
+    font-style: italic;
+}
+
+.has-image #top {
+    display: flex;
+    flex-direction: row;
+}
+
+.has-image #basics {
+    display: block;
+}
+
+.has-image #person-name {
+    line-height: inherit;
+    margin-bottom: var(--cadence-quarter);
+}
+
+.has-image #person-label {
+    line-height: inherit;
+    font-size: 120%;
+    margin-bottom: var(--cadence-quarter);
+}
+
+.has-image #person-summary {
+    line-height: 120%;
+}
+
+.person-location-parts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0 var(--cadence-quarter);
+}
+
+#avatar {
+    max-width: 60%;
+    padding: 0 20%;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: var(--cadence-half);
+}
+
+#top {
+    flex-basis: 100%;
+    order: 1;
+}
+
+#left {
+    padding-right: var(--cadence-one);
+    grid-area: left;
+    min-width: 60%;
+    flex-basis: 60%;
+    order: 2;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+#right {
+    /*border-left: thin solid var(--ghostly);*/
+    padding-left: var(--cadence-one);
+    grid-area: right;
+    min-width: 30%;
+    flex-basis: 30%;
+    order: 3;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+#right, #right h1, #right h2, #right h3, #right h4, #right h5, #right h6 {
+    font-size: 90%;
+}
+
+.list h1 {
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--lighter);
+    line-height: var(--cadence-two);
+}
+
+.list {
+    margin-bottom: 0;
+}
+
+.list header {
+    color: var(--lighter);
+}
+
+.list header > *:first-child {
+    color: var(--text-color);
+}
+
+.list header > * {
+    display: inline;
+}
+
+.list header .between:after, .language-item .between:after, .person-location-parts .between:after {
+    content: ",\20";
+    color: var(--lighter);
+}
+
+#right .list header > *:first-child, .list header > *:first-child {
+    padding-left: 0;
+    border-left: none;
+    margin-left: 0;
+}
+
+#right .list header > *:last-child:after, .list header > *:last-child:after {
+    content: none;
+    padding-right: unset;
+}
+
+.list header > *:first-child {
+    font-weight: 400;
+}
+
+.dates {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.date-delimiter::before {
+    content: "-";
+}
+
+.dates {
+    break-inside: avoid;
+    white-space: nowrap;
+}
+
+.dates.same-dates .date-start,
+.dates.same-dates .date-delimiter,
+.dates.no-start .date-delimiter,
+.dates.no-end .date-delimiter {
+    display: none;
+}
+
+.education-summary, .work-summary, .project-description {
+    font-style: italic;
+}
+
+.work-domain, .work-location, .work-employer {
+    letter-spacing: -0.05em;
+    color: var(--lighter);
+}
+
+.work-item {
+    margin-bottom: var(--cadence-half);
+}
+
+.work-highlights-list {
+    margin-left: var(--cadence-one);
+}
+
+.work-highlights-item {
+    list-style-type: square;
+}
+
+.work-highlights-item ::marker {
+    color: var(--light);
+}
+
+.work-highlights-item .first-word {
+    font-style: italic;
+}
+
+.skill-item, .interest-item {
+    margin: var(--cadence-quarter) 0;
+}
+
+.skill-item header, .interest-item header {
+    line-height: 120%;
+}
+
+.skill-item:first-of-type, .interest-item:first-of-type {
+    margin-top: 0;
+}
+
+.skill-keyword-list, .interest-keyword-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: calc(var(--cadence-quarter) * 0.5);
+}
+
+.skill-keyword-item, .interest-keyword-item {
+    background-color: var(--ghostly);
+    color: var(--light);
+    border-radius: var(--cadence-quarter);
+    padding: calc(var(--cadence-quarter) * 0.5) var(--cadence-quarter);
+    font-size: 90%;
+    line-height: 90%;
+    text-wrap: avoid;
+    white-space: nowrap;
+}
+
+.skill-level {
+    color: var(--lighter);
+    font-size: 90%;
+    margin: var(--cadence-quarter);
+}
+
+#top {
+    grid-area: top;
+}
+
+#bottom {
+    grid-area: bottom;
+}
+
+#person-url, #person-email, #person-location, .profile-url {
+    display: flex;
+    flex-direction: row;
+    gap: var(--cadence-quarter);
+    align-items: start;
+    align-content: start;
+}
+
+.icon {
+    width: calc(var(--cadence-one) * 0.8);
+    height: calc(var(--cadence-one) * 0.8);
+    opacity: 25%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    padding: calc(var(--cadence-one) * 0.1);
+    padding-left: 0;
+}
+
+#basics-profiles, #basics-contact, #basics-url, #basics-email, #basics-location, .profile-network {
+    display: none;
+}
+
+#person-location .between {
+    width: 0;
+    margin-left: calc(var(--cadence-quarter) * -1.0);
+}
+
+.project-item header {
+    line-height: 120%;
+}
+
+.project-url-a, .project-description {
+    font-size: 90%;
+    line-height: 120%;
+}
+
+.project-description {
+    margin-top: var(--cadence-quarter);
+}
+
+.project-item {
+    margin-bottom: var(--cadence-quarter);
+}
+
+@media print {
+    :root {
+        --text: 8.75pt;
+        --cadence-quarter: calc(var(--text) * 0.4);
+        --cadence-half: calc(var(--text) * 0.8);
+        --cadence-one: calc(var(--text) * 1.6);
+        --cadence-two: calc(var(--text) * 3.2);
+    }
+
+    html {
+        background-color: transparent;
+    }
+
+    body {
+        box-shadow: none;
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        margin: 0 auto;
+        line-height: 130%;
+        break-inside: auto;
+        page-break-inside: auto;
+    }
+
+    a, a:visited, a:focus, a:hover {
+        color: var(--text-color) !important;
+    }
+
+    .no-print {
+        display: none;
+    }
+
+    #resume {
+        padding: 0;
+        margin: 0;
+    }
+
+    #top {
+        page-break-after: avoid;
+        break-after: avoid;
+    }
+
+    #left, #right, #resume {
+        break-before: avoid;
+        page-break-before: avoid;
+        break-inside: auto;
+        page-break-inside: auto;
+    }
+
+    #bottom {
+        page-break-before: avoid;
+        break-before: avoid;
+    }
+
+    #right {
+        padding-top: var(--cadence-half);
+    }
+
+    #left > section, #right > section {
+        break-before: avoid;
+        break-inside: auto;
+        page-break-before: avoid;
+        page-break-inside: auto;
+    }
+
+    .work-highlights-item {
+        font-size: 90%;
+        line-height: 120%;
+    }
+
+    #person-summary, .list h1 {
+        color: var(--light);
+    }
+
+}
+
+@media print and (-webkit-min-device-pixel-ratio:0) {
+    /* Safari */
+    .work-item {
+        margin-bottom: var(--cadence-quarter);
+    }
+    #resume {
+        padding-top: var(--cadence-quarter);
+    }
+    /*.list h1 {*/
+    /*    line-height: 130%;*/
+    /*}*/
+}
+
+@media screen {
+    #how-to-print {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: calc(var(--cadence-half) + 30%);
+        background-color: hsla(60, 100%, 80%, 95%);
+        padding: var(--cadence-quarter);
+        font-size: 80%;
+        border-top: thin solid hsla(60, 100%, 40%, 95%);
+        border-left: thin solid hsla(60, 100%, 40%, 95%);
+        line-height: 120%;
+    }
+}
+</style>
+
+</head>
+<body class="">
+<article id="resume">
+
+<section id="left" class=" "><header id="basics"><h1 id="person-name" class=" ">Jane Smith</h1><span class="between"></span><h2 id="person-label" class=" ">Senior Software Engineer</h2><span class="between"></span><p id="person-summary" class=" ">Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.</p></header>
+<section class="education-list list "><h1>Education</h1><div class=" education-item item-0 item-last item"><header><h2 class="education-area ">Computer Science</h2><span class="between"></span><span class="dates education-dates has-start has-end "><span class=" date-start">Jan, 2013</span><span class="date-delimiter"></span><span class=" date-end">Jan, 2017</span></span><span class="between"></span><span class=" education-studyType">Bachelor of Science</span><span class="between"></span><span class=" no-url">University of Technology</span><span class="between"></span><span class=" education-score">3.8</span></header>
+        <main>
+        
+        </main></div></section>
+<section class="work-list list "><h1>Employment</h1><div class=" work-item item-0  item"><header><h2 class="work-position ">Senior Software Engineer</h2><span class="between"></span><span class="dates work-dates has-start no-end "><span class=" date-start">Jan, 2020</span><span class="date-delimiter"></span></span><span class="between"></span><a href="https://techcorp.com" class="work-employer" target="_blank" rel="external">Tech Corp</a></header>
+        <main>
+        
+        <ul class="work-highlights-list list "><li class=" work-highlights-item item-0  item"><p>&lt;p&gt;Lead engineer for the platform team, owning core API infrastructure.&lt;/p&gt;</p>
+</li></ul>
+        </main></div><div class=" work-item item-1 item-last item"><header><h2 class="work-position ">Full Stack Developer</h2><span class="between"></span><span class="dates work-dates has-start has-end "><span class=" date-start">Jan, 2017</span><span class="date-delimiter"></span><span class=" date-end">Jan, 2020</span></span><span class="between"></span><span class=" no-url">StartupXYZ</span></header>
+        <main>
+        
+        <ul class="work-highlights-list list "><li class=" work-highlights-item item-0  item"><p>&lt;p&gt;Built customer-facing web applications from prototype to production.&lt;/p&gt;</p>
+</li></ul>
+        </main></div></section>
+
+</section>
+<section id="right" class=" ">
+<section id="contact" class="list">
+                <h1 id="basics-contact" class=" ">Contact</h1>
+            
+                <section id="person-url">
+                    <h2 id="basics-url" class=" ">URL</h2>
+                    <img id="img-url" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDMwMCAzMDAiPg0KCQk8Zz4NCgkJCTxwYXRoIGQ9Ik0xNDkuOTk2LDBDNjcuMTU3LDAsMC4wMDEsNjcuMTYxLDAuMDAxLDE0OS45OTdTNjcuMTU3LDMwMCwxNDkuOTk2LDMwMHMxNTAuMDAzLTY3LjE2MywxNTAuMDAzLTE1MC4wMDMNCgkJCQlTMjMyLjgzNSwwLDE0OS45OTYsMHogTTIyNS4zNjMsMTIzLjMwMmwtMzYuNjg2LDM2LjY4NmMtMy45NzksMy45NzktOS4yNjksNi4xNy0xNC44OTUsNi4xN2MtNS42MjUsMC0xMC45MTYtMi4xOTItMTQuODk1LTYuMTY4DQoJCQkJbC0xLjQzNy0xLjQzN2wtMy45MDYsMy45MDZsMS40MzQsMS40MzRjOC4yMTQsOC4yMTQsOC4yMTQsMjEuNTc5LDAsMjkuNzkzbC0zNi42ODEsMzYuNjg2Yy0zLjk3OSwzLjk3OS05LjI2OSw2LjE3LTE0Ljg5OCw2LjE3DQoJCQkJYy01LjYyOCwwLTEwLjkxOS0yLjE5Mi0xNC45LTYuMTczTDc0LjYzNCwyMTYuNWMtOC4yMTQtOC4yMDktOC4yMTQtMjEuNTczLTAuMDAzLTI5Ljc5bDM2LjY4OS0zNi42ODQNCgkJCQljMy45NzktMy45NzksOS4yNjktNi4xNywxNC44OTgtNi4xN3MxMC45MTYsMi4xOTIsMTQuODk4LDYuMTdsMS40MzIsMS40MzJsMy45MDYtMy45MDZsLTEuNDMyLTEuNDMyDQoJCQkJYy04LjIxNC04LjIxMS04LjIxNC0yMS41NzYtMC4wMDUtMjkuNzlsMzYuNjg5LTM2LjY4NmMzLjk4MS0zLjk4MSw5LjI3Mi02LjE3MywxNC44OTgtNi4xNzNzMTAuOTE2LDIuMTkyLDE0Ljg5OCw2LjE3DQoJCQkJbDEzLjg2OCwxMy44NzNDMjMzLjU3NywxMDEuNzIzLDIzMy41NzcsMTE1LjA5LDIyNS4zNjMsMTIzLjMwMnoiLz4NCiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xNDIuNTM5LDE3My40NTlsLTcuMDkzLDcuMDkzbC0xMS4wMDItMTAuOTk5bDcuMDkzLTcuMDkzbC0xLjQzMi0xLjQzMmMtMS4wNC0xLjAzNy0yLjQyMi0xLjYxMS0zLjg5LTEuNjExDQoJCQkJYy0xLjQ3MSwwLTIuODUzLDAuNTczLTMuODkzLDEuNjExbC0zNi42ODYsMzYuNjgxYy0yLjE0NSwyLjE0Ny0yLjE0NSw1LjYzOCwwLDcuNzgzbDEzLjg3LDEzLjg3Mw0KCQkJCWMyLjA4MywyLjA4Myw1LjcwOCwyLjA4LDcuNzg2LDAuMDAzbDM2LjY4MS0zNi42ODZjMi4xNDgtMi4xNDcsMi4xNDgtNS42NDEsMC03Ljc4OUwxNDIuNTM5LDE3My40NTl6Ii8+DQogICAgICAgICAgICA8cGF0aCBkPSJNMjAwLjQ5Myw5MC42NDNjLTEuMDQtMS4wNC0yLjQyNS0xLjYxMy0zLjg5Ni0xLjYxM2MtMS40NzEsMC0yLjg1NiwwLjU3My0zLjg5NiwxLjYxNmwtMzYuNjg2LDM2LjY4NA0KCQkJCWMtMi4xNDIsMi4xNDctMi4xNDIsNS42MzgsMC4wMDMsNy43ODZsMS40MzQsMS40MzJsMTAuODgtMTAuODgzbDExLjAwMiwxMS4wMDJsLTEwLjg4LDEwLjg4M2wxLjQzNCwxLjQzNA0KCQkJCWMyLjA4MywyLjA3Nyw1LjcwMywyLjA4LDcuNzg2LTAuMDAzbDM2LjY4NC0zNi42ODFjMi4xNDUtMi4xNDcsMi4xNDUtNS42MzgsMC03Ljc4NkwyMDAuNDkzLDkwLjY0M3oiLz4NCgkJPC9nPg0KPC9zdmc+DQo=" alt="URL" class="icon">
+                    <a href="https://janesmith.dev" class="person-url-a" target="_blank" rel="external">janesmith.dev</a>
+                </section>
+            
+            
+                <section id="person-email">
+                    <h2 id="basics-email" class=" ">E-mail</h2>
+                    <img id="img-email" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8c3ZnIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8Zz4KICAgICAgICA8cGF0aCBkPSJNMjU2LDBDMTE0LjYxNSwwLDAsMTE0LjYxNSwwLDI1NnMxMTQuNjE1LDI1NiwyNTYsMjU2czI1Ni0xMTQuNjE1LDI1Ni0yNTZTMzk3LjM4NSwwLDI1NiwweiBNNDEyLDM1My41ICAgYzAsMjAuMTkzLTE2LjM3LDM2LjU2Mi0zNi41NjIsMzYuNTYySDEzNi41NjJjLTIwLjE5MywwLTM2LjU2Mi0xNi4zNy0zNi41NjItMzYuNTYydi0xOTVjMC0yMC4xOTMsMTYuMzctMzYuNTYyLDM2LjU2Mi0zNi41NjIgICBoMjM4Ljg3NWMyMC4xOTMsMCwzNi41NjIsMTYuMzcsMzYuNTYyLDM2LjU2MlYzNTMuNXoiLz4KICAgICAgICA8cGF0aCBkPSJNMzM0LjQ2MywxNjYuNzAzTDI1NiwyMTIuMDA0bC03OC40NjMtNDUuMzAxYy04Ljc0NC01LjA0OC0xOS45MjQtMi4wNTItMjQuOTczLDYuNjkxICAgYy01LjA0OCw4Ljc0NC0yLjA1MiwxOS45MjQsNi42OTEsMjQuOTczbDg3LjYwNCw1MC41NzhsMC4wMDEtMC4wMDJjMi43NzcsMS42LDUuOTM2LDIuNDQzLDkuMTM5LDIuNDQ4ICAgYzMuMjA0LTAuMDA0LDYuMzYzLTAuODQ4LDkuMTM5LTIuNDQ4bDAuMDAxLDAuMDAybDg3LjYwNC01MC41NzhjOC43NDQtNS4wNDgsMTEuNzQtMTYuMjI5LDYuNjkxLTI0Ljk3MyAgIEMzNTQuMzg4LDE2NC42NTEsMzQzLjIwNywxNjEuNjU1LDMzNC40NjMsMTY2LjcwM3oiLz4KICAgIDwvZz4KPC9zdmc+Cg==" alt="E-mail" class="icon">
+                    <a href="mailto:jane@example.com" class="person-email-a" target="_blank" rel="external">jane@example.com</a>
+                </section>
+            
+            
+                <section id="person-phone">
+                    <h2 id="basics-phone" class=" ">Phone</h2>
+                    <span id="img-phone" class=" ">Phone</span>
+                    <p class="person-phone-number ">+1-555-987-6543</p>
+                </section>
+            
+            
+                <section id="person-location"><h2 id="basics-location" class=" ">Location</h2><span class="between"></span><img id="img-location" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgMTYgMTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGZpbGw9IiMwMDAiIGQ9Ik04IDBjLTQuNCAwLTggMy42LTggOHMzLjYgOCA4IDggOC0zLjYgOC04LTMuNi04LTgtOHpNNyAxNHYtNWgtNWwxMC01LTUgMTB6Ii8+Cjwvc3ZnPgo=" alt="Location" class="icon"><span class="between"></span><main class="person-location-parts "><span class="person-location-city ">San Francisco</span><span class="between"></span><span class="person-location-region ">California</span><span class="between"></span><span class="person-location-countryCode ">US</span></main></section>
+            
+            <section class="profile-list list "><h2 id="basics-profiles" class=" ">Profiles</h2><div class=" profile-item item-0  item"><a href="https://linkedin.com/in/janesmith" class="profile-url" target="_blank" rel="external">
+                    <span class="profile-network profile-network-linkedin ">linkedin</span>
+                    <span id="img-linkedin" class=" ">linkedin</span>
+                    <span class="profile-username ">janesmith</span>
+                </a></div><div class=" profile-item item-1 item-last item"><a href="https://github.com/janesmith" class="profile-url" target="_blank" rel="external">
+                    <span class="profile-network profile-network-github ">github</span>
+                    <img id="img-github" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgNjQgNjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIHN0cm9rZS13aWR0aD0iMCIgZmlsbD0iIzAwMCIgZD0iTTMyIDAgQzE0IDAgMCAxNCAwIDMyIDAgNTMgMTkgNjIgMjIgNjIgMjQgNjIgMjQgNjEgMjQgNjAgTDI0IDU1IEMxNyA1NyAxNCA1MyAxMyA1MCAxMyA1MCAxMyA0OSAxMSA0NyAxMCA0NiA2IDQ0IDEwIDQ0IDEzIDQ0IDE1IDQ4IDE1IDQ4IDE4IDUyIDIyIDUxIDI0IDUwIDI0IDQ4IDI2IDQ2IDI2IDQ2IDE4IDQ1IDEyIDQyIDEyIDMxIDEyIDI3IDEzIDI0IDE1IDIyIDE1IDIyIDEzIDE4IDE1IDEzIDE1IDEzIDIwIDEzIDI0IDE3IDI3IDE1IDM3IDE1IDQwIDE3IDQ0IDEzIDQ5IDEzIDQ5IDEzIDUxIDIwIDQ5IDIyIDQ5IDIyIDUxIDI0IDUyIDI3IDUyIDMxIDUyIDQyIDQ1IDQ1IDM4IDQ2IDM5IDQ3IDQwIDQ5IDQwIDUyIEw0MCA2MCBDNDAgNjEgNDAgNjIgNDIgNjIgNDUgNjIgNjQgNTMgNjQgMzIgNjQgMTQgNTAgMCAzMiAwIFoiLz4KPC9zdmc+Cg==" alt="github" class="icon">
+                    <span class="profile-username ">janesmith</span>
+                </a></div></section>
+        </section>
+
+
+
+
+<section class="project-list list "><h1>Projects</h1><div class="project-no-type project-item item-0 item-last item"><header><h2 class="project-name ">Open Source CLI Tool</h2><span class="between"></span><span class="dates project-dates has-start no-end "><span class=" date-start">Jan, 2022</span><span class="date-delimiter"></span></span><span class="between"></span><a href="https://github.com/janesmith/cli-tool" class="project-url-a" target="_blank" rel="external">github.com/janesmith/cli-tool</a>
+        </header>
+        <main>
+        <p class="project-description "><p>Developer productivity tool with 2,000+ GitHub stars</p>
+</p>
+        
+        </main>
+        <footer>
+        
+        </footer></div></section>
+<section class="skill-list list "><h1>Skills</h1><div class="skill-no-level skill-item item-0  item"><header><h2 class="skill-name ">Languages</h2><span class="between"></span><span class="skill-level ">Expert</span></header>
+        <ul class="skill-keyword-list list "><li class=" skill-keyword-item item-0  item"><p>TypeScript</p>
+</li><li class=" skill-keyword-item item-1  item"><p>JavaScript</p>
+</li><li class=" skill-keyword-item item-2  item"><p>Python</p>
+</li><li class=" skill-keyword-item item-3 item-last item"><p>Go</p>
+</li></ul></div><div class="skill-no-level skill-item item-1  item"><header><h2 class="skill-name ">Frontend</h2><span class="between"></span><span class="skill-level ">Expert</span></header>
+        <ul class="skill-keyword-list list "><li class=" skill-keyword-item item-0  item"><p>React</p>
+</li><li class=" skill-keyword-item item-1  item"><p>Next.js</p>
+</li><li class=" skill-keyword-item item-2  item"><p>HTML/CSS</p>
+</li><li class=" skill-keyword-item item-3 item-last item"><p>Tailwind</p>
+</li></ul></div><div class="skill-no-level skill-item item-2 item-last item"><header><h2 class="skill-name ">Backend & Cloud</h2><span class="between"></span><span class="skill-level ">Advanced</span></header>
+        <ul class="skill-keyword-list list "><li class=" skill-keyword-item item-0  item"><p>Node.js</p>
+</li><li class=" skill-keyword-item item-1  item"><p>PostgreSQL</p>
+</li><li class=" skill-keyword-item item-2  item"><p>AWS</p>
+</li><li class=" skill-keyword-item item-3 item-last item"><p>Docker</p>
+</li></ul></div></section>
+</section>
+</article>
+<footer class="no-print" id="how-to-print"><p>Save a PDF using your browser's Print-to-PDF functionality.  (Don't worry, this won't show up.)</p></footer>
+</body>
+</html>

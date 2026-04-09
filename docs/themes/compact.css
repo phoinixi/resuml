@@ -1,0 +1,73 @@
+/* Resume styles */
+
+body {
+    font-size: 12px;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.name {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 24px;
+}
+
+.title {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-weight: 200;
+    font-size: 18px;
+}
+
+.contact-info ul {
+    list-style-type: none;
+}
+
+.section-title {
+    font-size: 14px;
+}
+
+.skill {
+    font-weight: bold;
+}
+
+.skills-ul {
+    list-style-type: disc;
+    list-style-position: inside;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.skills-ul li {
+    float: left;
+    margin-right: 8px;
+}
+
+.company, .school {
+    font-size: 14px;
+}
+
+.company-position {
+
+}
+
+.company-summary {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.company-description {
+    margin-bottom: 10px;
+}
+
+.company-description ul {
+    padding-left: 0px;
+    list-style-type: none;
+}
+
+.education-section {
+    margin-bottom: 5px;
+}

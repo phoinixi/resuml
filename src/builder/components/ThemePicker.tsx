@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { X } from 'lucide-react';
-import { fetchThemes, isBundledTheme } from '../services/api';
+import { fetchThemes, getThemeCapability } from '../services/api';
 import type { NpmTheme } from '../services/api';
 
 interface ThemePickerProps {
@@ -70,22 +70,32 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
           {error && (
             <div className="theme-picker-empty">Error: {error}</div>
           )}
-          {!loading && !error && filtered.map((theme) => (
-            <button
-              key={theme.name}
-              className={`theme-picker-card ${theme.name === currentTheme ? 'active' : ''}`}
-              onClick={() => { onSelect(theme.name); }}
-            >
-              <div className="theme-picker-name">
-                {theme.displayName}
-                {isBundledTheme(theme.name) && <span className="theme-badge-instant" title="Instant — renders in browser">⚡</span>}
-              </div>
-              {theme.description && (
-                <div className="theme-picker-desc">{theme.description}</div>
-              )}
-              <div className="theme-picker-meta">{theme.version ? `v${theme.version}` : ''}</div>
-            </button>
-          ))}
+          {!loading && !error && filtered.map((theme) => {
+            const capability = getThemeCapability(theme.name);
+            const isDisabled = capability === 'server';
+            return (
+              <button
+                key={theme.name}
+                className={`theme-picker-card ${theme.name === currentTheme ? 'active' : ''} ${isDisabled ? 'theme-picker-card-disabled' : ''}`}
+                onClick={() => { if (!isDisabled) onSelect(theme.name); }}
+                disabled={isDisabled}
+              >
+                <div className="theme-picker-name">
+                  {theme.displayName}
+                  {capability === 'browser' && <span className="theme-badge-instant" title="Instant — renders in browser">⚡</span>}
+                  {capability === 'snapshot-only' && <span className="theme-badge-preview" title="Preview only — shows sample data">👁</span>}
+                </div>
+                {theme.description && (
+                  <div className="theme-picker-desc">{theme.description}</div>
+                )}
+                <div className="theme-picker-meta">
+                  {theme.version ? `v${theme.version}` : ''}
+                  {capability === 'snapshot-only' && <span className="theme-meta-note"> (preview only)</span>}
+                  {capability === 'server' && <span className="theme-meta-note"> (unavailable)</span>}
+                </div>
+              </button>
+            );
+          })}
           {!loading && !error && filtered.length === 0 && (
             <div className="theme-picker-empty">No themes matching &quot;{search}&quot;</div>
           )}

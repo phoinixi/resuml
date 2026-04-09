@@ -1,0 +1,357 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+        <title>Jane Smith</title>
+        <style>body{
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+#sidepanel {
+    height: 100%;
+    width: 25%;
+    position: fixed;
+    background-color: #373737;
+    color: white;
+}
+
+#sidepanel .info{
+    padding-left: 5px; /*Move the info right 5 px*/
+}
+
+#sidepanel .header{
+    background-color: #282828;
+    padding-left: 5px; /*Move the headers right 5 px*/
+}
+
+#content {
+    width: 74%;
+    padding: 10px 0px; /*Move the right panel down by 10 px*/
+    float: right;
+}
+.item{
+    clear: both;
+    font-size: 15px
+}
+.date{
+    float: left;
+    height: 100%;
+    width: 20%;
+}
+#work .item .date{
+    padding-top: 5px;
+}
+.college{
+    float: right;
+    width: 80%;
+}
+
+#work{
+    display: inline-block;
+}
+
+.institution{
+    font-weight: bold;
+}
+
+.data{
+    float: right;
+    width: 80%;
+}
+
+
+
+.cmpny{
+    margin: 0;
+}
+
+a{
+    color: white;
+}
+h2{
+    margin: 10px 0px 10px 0px;
+}
+
+.summary p{
+    margin: 10px 0px 10px 0px;
+}
+
+#content h2{
+    font-size: 20px
+}
+
+#content .position h2{
+    margin: 0;
+}
+#content ul{
+    padding-left: 0%;
+}
+
+t{
+    color: gray;
+    font-size: smaller
+}
+
+highlightHead{
+    font-weight: bold;
+}
+
+p{
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+#Projects .project .name{
+    margin-bottom: 0%;
+}
+
+#Projects .project .summary p{
+    margin-top: 0%;
+    margin-bottom: 0%;
+}</style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="sidepanel">
+                <div class="info">
+                    <h1>Jane Smith</h1>
+                    <h2>Senior Software Engineer</h2>
+                </div>
+                <section id="basics">
+                    <div class="contact">
+                        <div class="header">
+                            <h2>Personal Info</h2>
+                        </div>
+                        <div class="info">
+                 
+                            <div class="email">
+                                <strong>Email</strong>
+                                </br>
+                                jane@example.com
+                                </br>
+                                </br>
+                            </div>
+                             
+                            <div class="phone">
+                                <strong>Phone</strong>
+                                </br>
+                                +1-555-987-6543
+                                </br>
+                                </br>
+                            </div>
+                             
+                            <section id="profiles">
+                                <div class="item">
+                                    <strong class="network">
+                                        linkedin
+                                    </strong>
+                                     
+                                    <a href=https://linkedin.com/in/janesmith>
+                                    <div class="username">
+                                        janesmith
+                                        </br>
+                                        </br>
+                                    </div>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <strong class="network">
+                                        github
+                                    </strong>
+                                     
+                                    <a href=https://github.com/janesmith>
+                                    <div class="username">
+                                        janesmith
+                                        </br>
+                                        </br>
+                                    </div>
+                                    </a>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+                <br/>
+                <section id="skills">
+                    <div class="header">
+                        <h2>Skills</h2>
+                    </div>
+                    <div class="info">
+                        <div class="item">
+                            <div class="name">
+                                Languages
+                            </div>
+                             
+                            <div class="level">
+                                <em>Expert</em>
+                            </div>
+                             
+                            <ul class="keywords">
+                                <li>&lt;p&gt;TypeScript&lt;/p&gt;
+                </li>
+                                <li>&lt;p&gt;JavaScript&lt;/p&gt;
+                </li>
+                                <li>&lt;p&gt;Python&lt;/p&gt;
+                </li>
+                                <li>&lt;p&gt;Go&lt;/p&gt;
+                </li>
+                            </ul>
+                        </div>
+                        <div class="item">
+                            <div class="name">
+                                Frontend
+                            </div>
+                             
+                            <div class="level">
+                                <em>Expert</em>
+                            </div>
+                             
+                            <ul class="keywords">
+                                <li>&lt;p&gt;React&lt;/p&gt;
+                </li>
+                                <li>&lt;p&gt;Next.js&lt;/p&gt;
+                </li>
+                                <li>&lt;p&gt;HTML/CSS&lt;/p&gt;
+                </li>
+                                <li>&lt;p&gt;Tailwind&lt;/p&gt;
+                </li>
+                            </ul>
+                        </div>
+                        <div class="item">
+                            <div class="name">
+                                Backend &amp; Cloud
+                            </div>
+                             
+                            <div class="level">
+                                <em>Advanced</em>
+                            </div>
+                             
+                            <ul class="keywords">
+                                <li>&lt;p&gt;Node.js&lt;/p&gt;
+                </li>
+                                <li>&lt;p&gt;PostgreSQL&lt;/p&gt;
+                </li>
+                                <li>&lt;p&gt;AWS&lt;/p&gt;
+                </li>
+                                <li>&lt;p&gt;Docker&lt;/p&gt;
+                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <br/>
+            </div>
+            <div id="content">
+                Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.
+                <section id="education">
+                    <hr>
+                    <h2>Education</h2>
+                    <hr> 
+                    <div class="item">
+                        <div class="date">
+                            <span class="startDate">
+                                Jan, 2013 -
+                            </span>
+                            <br> 
+                            <span class="endDate">
+                                Jan, 2017
+                            </span>
+                        </div>
+                        <div class="college">
+                            <div class="institution">
+                                University of Technology
+                            </div>
+                             
+                            <div class="area">
+                                Computer Science
+                            </div>
+                             
+                            <div class="studyType">
+                                Bachelor of Science
+                            </div>
+                                     </div>
+                    </div>
+                </section>
+                <section id="work">
+                    <hr/>
+                    <h2>Experience</h2>
+                    <hr/>
+                    <div class="item">
+                        <div class="date">
+                            <span class="startDate">
+                                Jan, 2020 -
+                            </span>
+                            <br/>             <span class="endDate">
+                                Present
+                            </span>
+                            <br/>             <span class="endDate">
+                                Present
+                            </span>
+                        </div>
+                        <div class="data">
+                            <div class="position">
+                                <h2>
+                                    Senior Software Engineer
+                                </h2>
+                            </div>
+                                         
+                 
+                            <ul class="highlights">
+                                <p><highlightHead></highlightHead>
+                                </p>
+                                <p><highlightHead></highlightHead>
+                                </p>
+                                <p><highlightHead></highlightHead>
+                                </p>
+                                <p><highlightHead></highlightHead>
+                                </p>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="date">
+                            <span class="startDate">
+                                Jan, 2017 -
+                            </span>
+                            <br/> 
+                            <span class="endDate">
+                                Jan, 2020
+                            </span>
+                            <br/>             <span class="endDate">
+                                Present
+                            </span>
+                        </div>
+                        <div class="data">
+                            <div class="position">
+                                <h2>
+                                    Full Stack Developer
+                                </h2>
+                            </div>
+                                         
+                 
+                            <ul class="highlights">
+                                <p><highlightHead></highlightHead>
+                                </p>
+                                <p><highlightHead></highlightHead>
+                                </p>
+                                <p><highlightHead></highlightHead>
+                                </p>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section id="Projects">
+                    <hr/>
+                    <h2>Projects</h2>
+                    <hr/>
+                    <div class="project">
+                        <h3 class="name">
+                            Open Source CLI Tool
+                        </h3>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

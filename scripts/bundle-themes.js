@@ -2,9 +2,10 @@
  * Theme Bundling Script
  *
  * Bundles jsonresume-theme packages for the browser with:
+ *   - Per-theme fs shim with embedded assets (CSS, templates, etc.)
  *   - CSS extraction (separate .css files)
  *   - Build-time snapshots (pre-rendered HTML for instant preview)
- *   - Per-theme fs shim with embedded assets
+ *   - Node.js built-in shims (buffer, stream, util, events, os, etc.)
  *
  * Output:
  *   docs/themes/{name}.js           — bundled render module
@@ -49,16 +50,23 @@ const POPULAR_THEMES = [
   'compact',
 ];
 
+// File extensions to embed in the fs shim
+const TEXT_EXTS = new Set([
+  'css', 'hbs', 'html', 'json', 'txt', 'handlebars', 'mustache', 'template',
+  'pug', 'jade', 'ejs', 'svg', 'less', 'scss',
+]);
+
 // Sample resume for generating snapshots
 const SAMPLE_RESUME = {
   basics: {
     name: 'Jane Smith',
     label: 'Senior Software Engineer',
+    image: '',
     email: 'jane@example.com',
     phone: '+1-555-987-6543',
     url: 'https://janesmith.dev',
     summary: 'Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.',
-    location: { city: 'San Francisco', countryCode: 'US', region: 'California' },
+    location: { address: '', postalCode: '', city: 'San Francisco', countryCode: 'US', region: 'California' },
     profiles: [
       { network: 'LinkedIn', username: 'janesmith', url: 'https://linkedin.com/in/janesmith' },
       { network: 'GitHub', username: 'janesmith', url: 'https://github.com/janesmith' },
@@ -113,7 +121,6 @@ const SAMPLE_RESUME = {
       highlights: ['Published to npm with 5,000+ weekly downloads'],
     },
   ],
-  // Provide empty arrays for sections themes might iterate over
   volunteer: [],
   awards: [],
   certificates: [],
@@ -122,6 +129,30 @@ const SAMPLE_RESUME = {
   interests: [],
   references: [],
 };
+
+/**
+ * Pad resume with safe defaults so themes don't crash on missing fields.
+ * Ported from api/_lib/themeInstaller.ts.
+ */
+function padResume(r) {
+  const basics = r.basics ?? {};
+  const location = basics.location ?? {};
+  const safe = {
+    ...r,
+    basics: {
+      name: '', label: '', image: '', email: '', phone: '', url: '', summary: '',
+      ...basics,
+      location: { address: '', postalCode: '', city: '', countryCode: '', region: '', ...location },
+    },
+  };
+  const arraySections = ['work','volunteer','education','awards','certificates','publications','skills','languages','interests','references','projects'];
+  for (const key of arraySections) {
+    safe[key] = Array.isArray(safe[key]) ? safe[key] : [];
+  }
+  const safeBasics = safe.basics;
+  safeBasics.profiles = Array.isArray(safeBasics.profiles) ? safeBasics.profiles : [];
+  return safe;
+}
 
 // ── Theme file collection ────────────────────────────────────────────
 
@@ -146,7 +177,7 @@ function collectThemeFiles(themeDir) {
         walk(full, rel);
       } else {
         const ext = (entry.name.split('.').pop() || '').toLowerCase();
-        if (['css', 'hbs', 'html', 'json', 'txt', 'handlebars', 'mustache', 'template'].includes(ext)) {
+        if (TEXT_EXTS.has(ext)) {
           try { files[rel] = readFileSync(full, 'utf-8'); }
           catch { /* skip */ }
         }
@@ -163,11 +194,11 @@ function collectThemeFiles(themeDir) {
 function generateThemeFsShim(themeFiles) {
   const { files, dirs } = themeFiles;
   const lines = [
-    `const __files = ${JSON.stringify(files)};`,
-    `const __dirs = ${JSON.stringify(dirs)};`,
+    `var __files = ${JSON.stringify(files)};`,
+    `var __dirs = ${JSON.stringify(dirs)};`,
     '',
     'function normalizePath(p) {',
-    '  return p.replace(/[\\\\]+/g, "/").replace(/^\\/+/, "");',
+    '  return String(p).replace(/[\\\\]+/g, "/").replace(/^\\/+/, "");',
     '}',
     '',
     'function matchFile(p) {',
@@ -175,7 +206,7 @@ function generateThemeFsShim(themeFiles) {
     '  if (__files[clean] !== undefined) return __files[clean];',
     '  var keys = Object.keys(__files);',
     '  for (var i = 0; i < keys.length; i++) {',
-    '    if (clean.endsWith("/" + keys[i]) || clean.endsWith(keys[i])) return __files[keys[i]];',
+    '    if (clean.endsWith("/" + keys[i]) || clean === keys[i]) return __files[keys[i]];',
     '  }',
     '  return undefined;',
     '}',
@@ -185,17 +216,40 @@ function generateThemeFsShim(themeFiles) {
     '  if (__dirs[clean] !== undefined) return __dirs[clean];',
     '  var keys = Object.keys(__dirs);',
     '  for (var i = 0; i < keys.length; i++) {',
-    '    if (clean.endsWith("/" + keys[i]) || clean.endsWith(keys[i])) return __dirs[keys[i]];',
+    '    if (clean.endsWith("/" + keys[i]) || clean === keys[i]) return __dirs[keys[i]];',
     '  }',
     '  return undefined;',
     '}',
     '',
-    'export var readFileSync = function(p) { var r = matchFile(p); return r !== undefined ? r : ""; };',
-    'export var readdirSync = function(p) { var r = matchDir(p); return r !== undefined ? r : []; };',
+    'export var readFileSync = function(p, encoding) {',
+    '  var r = matchFile(p);',
+    '  if (r !== undefined) return r;',
+    '  return typeof encoding === "string" ? "" : "";',
+    '};',
+    '',
+    'export var readdirSync = function(p, opts) {',
+    '  var r = matchDir(p);',
+    '  if (r === undefined) r = [];',
+    '  if (opts && opts.withFileTypes) {',
+    '    return r.map(function(name) {',
+    '      var childPath = normalizePath(p) + "/" + name;',
+    '      var isDir = matchDir(childPath) !== undefined;',
+    '      return { name: name, isFile: function() { return !isDir; }, isDirectory: function() { return isDir; } };',
+    '    });',
+    '  }',
+    '  return r;',
+    '};',
+    '',
     'export var existsSync = function(p) { return matchFile(p) !== undefined || matchDir(p) !== undefined; };',
     'export var writeFileSync = function() {};',
     'export var mkdirSync = function() {};',
-    'export default { readFileSync: readFileSync, readdirSync: readdirSync, existsSync: existsSync, writeFileSync: writeFileSync, mkdirSync: mkdirSync };',
+    'export var statSync = function() { return { isFile: function() { return true; }, isDirectory: function() { return false; }, size: 0, mtime: new Date() }; };',
+    'export var lstatSync = statSync;',
+    'export var unlinkSync = function() {};',
+    'export var rmdirSync = function() {};',
+    'export var createReadStream = function() { return { pipe: function(d) { return d; }, on: function() { return this; } }; };',
+    'export var createWriteStream = function() { return { write: function() {}, end: function() {}, on: function() { return this; } }; };',
+    'export default { readFileSync: readFileSync, readdirSync: readdirSync, existsSync: existsSync, writeFileSync: writeFileSync, mkdirSync: mkdirSync, statSync: statSync, lstatSync: lstatSync, unlinkSync: unlinkSync, rmdirSync: rmdirSync, createReadStream: createReadStream, createWriteStream: createWriteStream };',
   ];
   return lines.join('\n');
 }
@@ -230,14 +284,14 @@ function generateSnapshot(shortName, packageName) {
     const render = theme.render || (theme.default && theme.default.render);
     if (typeof render !== 'function') return null;
 
-    const result = render(SAMPLE_RESUME);
+    const paddedResume = padResume(SAMPLE_RESUME);
+    const result = render(paddedResume);
     // render() may return a string or a Promise
     if (typeof result === 'string') {
       writeFileSync(resolve(THEMES_DIR, `${shortName}.snapshot.html`), result);
       extractCss(result, shortName);
       return result;
     }
-    // If it's a promise, we need to await it
     if (result && typeof result.then === 'function') {
       return result.then((html) => {
         if (typeof html === 'string') {
@@ -324,20 +378,38 @@ async function bundleTheme(shortName, packageName, shimsDir) {
       outfile: resolve(THEMES_DIR, `${shortName}.js`),
       define: {
         'process.env.NODE_ENV': '"production"',
+        'process.env.LANG': '""',
         'global': 'globalThis',
         '__dirname': '"/"',
         '__filename': '"/index.js"',
         'process.browser': 'true',
         'process.platform': '"browser"',
-        'process.version': '"v18.0.0"',
+        'process.version': '"v20.0.0"',
+        'process.versions': '{}',
+        'process.stdout': 'false',
+        'process.stderr': 'false',
       },
       alias: {
         'path': resolve(shimsDir, 'path.js'),
         'fs': resolve(shimsDir, 'fs.js'),
         'url': resolve(shimsDir, 'url.js'),
+        'assert': resolve(shimsDir, 'assert.js'),
+        'buffer': resolve(shimsDir, 'buffer.js'),
+        'stream': resolve(shimsDir, 'stream.js'),
+        'util': resolve(shimsDir, 'util.js'),
+        'events': resolve(shimsDir, 'events.js'),
+        'os': resolve(shimsDir, 'os.js'),
+        // node: prefixed variants
+        'node:fs': resolve(shimsDir, 'fs.js'),
+        'node:path': resolve(shimsDir, 'path.js'),
         'node:url': resolve(shimsDir, 'url.js'),
         'node:crypto': resolve(shimsDir, 'crypto.js'),
-        'assert': resolve(shimsDir, 'assert.js'),
+        'node:buffer': resolve(shimsDir, 'buffer.js'),
+        'node:stream': resolve(shimsDir, 'stream.js'),
+        'node:util': resolve(shimsDir, 'util.js'),
+        'node:events': resolve(shimsDir, 'events.js'),
+        'node:os': resolve(shimsDir, 'os.js'),
+        'node:assert': resolve(shimsDir, 'assert.js'),
       },
       logLevel: 'silent',
     });
@@ -351,6 +423,212 @@ async function bundleTheme(shortName, packageName, shimsDir) {
   }
 }
 
+// ── Shim file writers ────────────────────────────────────────────────
+
+function writeShims(shimsDir) {
+  writeFileSync(resolve(shimsDir, 'path.js'), [
+    'export var join = function() { return [].slice.call(arguments).join("/"); };',
+    'export var resolve = function() { return [].slice.call(arguments).join("/"); };',
+    'export var dirname = function(p) { return p.split("/").slice(0, -1).join("/"); };',
+    'export var basename = function(p, ext) { var b = p.split("/").pop() || ""; return ext && b.endsWith(ext) ? b.slice(0, -ext.length) : b; };',
+    'export var extname = function(p) { var m = p.match(/\\.[^.]+$/); return m ? m[0] : ""; };',
+    'export var sep = "/";',
+    'export var isAbsolute = function(p) { return p.charAt(0) === "/"; };',
+    'export var normalize = function(p) { return p; };',
+    'export var relative = function(from, to) { return to; };',
+    'export var parse = function(p) { return { root: "", dir: dirname(p), base: basename(p), ext: extname(p), name: basename(p, extname(p)) }; };',
+    'export default { join: join, resolve: resolve, dirname: dirname, basename: basename, extname: extname, sep: sep, isAbsolute: isAbsolute, normalize: normalize, relative: relative, parse: parse };',
+  ].join('\n'));
+
+  // fs shim is generated per-theme in bundleTheme()
+
+  writeFileSync(resolve(shimsDir, 'url.js'), [
+    'export var URL = globalThis.URL;',
+    'export var URLSearchParams = globalThis.URLSearchParams;',
+    'export var fileURLToPath = function(u) { return u.replace(/^file:\\/\\//, ""); };',
+    'export var pathToFileURL = function(p) { return new globalThis.URL("file://" + p); };',
+    'export var format = function(u) { return typeof u === "string" ? u : u.href; };',
+    'export var parse = function(u) { return new globalThis.URL(u); };',
+    'export default { URL: URL, URLSearchParams: URLSearchParams, fileURLToPath: fileURLToPath, pathToFileURL: pathToFileURL, format: format, parse: parse };',
+  ].join('\n'));
+
+  writeFileSync(resolve(shimsDir, 'crypto.js'), [
+    'export var createHash = function() { return { update: function() { return this; }, digest: function() { return ""; } }; };',
+    'export var randomBytes = function(n) { return new Uint8Array(n); };',
+    'export var createHmac = function() { return { update: function() { return this; }, digest: function() { return ""; } }; };',
+    'export default { createHash: createHash, randomBytes: randomBytes, createHmac: createHmac };',
+  ].join('\n'));
+
+  writeFileSync(resolve(shimsDir, 'assert.js'), [
+    'var assert = function(v, msg) { if (!v) throw new Error(msg || "Assertion failed"); };',
+    'assert.ok = assert;',
+    'assert.strictEqual = function(a, b) { if (a !== b) throw new Error("Not equal"); };',
+    'assert.deepStrictEqual = function() {};',
+    'assert.fail = function(msg) { throw new Error(msg); };',
+    'export default assert;',
+    'export var ok = assert;',
+    'export var strictEqual = assert.strictEqual;',
+  ].join('\n'));
+
+  writeFileSync(resolve(shimsDir, 'buffer.js'), [
+    'var _enc = typeof TextEncoder !== "undefined" ? new TextEncoder() : null;',
+    'var _dec = typeof TextDecoder !== "undefined" ? new TextDecoder() : null;',
+    '',
+    'function BufferShim(arg) {',
+    '  if (typeof arg === "number") return new Uint8Array(arg);',
+    '  if (arg instanceof Uint8Array) return arg;',
+    '  if (arg instanceof ArrayBuffer) return new Uint8Array(arg);',
+    '  return new Uint8Array(0);',
+    '}',
+    '',
+    'BufferShim.from = function(data, encoding) {',
+    '  if (typeof data === "string") {',
+    '    if (encoding === "base64") {',
+    '      var bin = atob(data);',
+    '      var bytes = new Uint8Array(bin.length);',
+    '      for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);',
+    '      return bytes;',
+    '    }',
+    '    return _enc ? _enc.encode(data) : new Uint8Array(0);',
+    '  }',
+    '  if (Array.isArray(data)) return new Uint8Array(data);',
+    '  if (data instanceof ArrayBuffer) return new Uint8Array(data);',
+    '  if (data instanceof Uint8Array) return new Uint8Array(data);',
+    '  return new Uint8Array(0);',
+    '};',
+    'BufferShim.alloc = function(size) { return new Uint8Array(size); };',
+    'BufferShim.allocUnsafe = function(size) { return new Uint8Array(size); };',
+    'BufferShim.isBuffer = function(obj) { return obj instanceof Uint8Array; };',
+    'BufferShim.isEncoding = function() { return true; };',
+    'BufferShim.byteLength = function(str) { return _enc ? _enc.encode(str).length : str.length; };',
+    'BufferShim.concat = function(list) {',
+    '  var total = 0;',
+    '  for (var i = 0; i < list.length; i++) total += list[i].length;',
+    '  var result = new Uint8Array(total);',
+    '  var offset = 0;',
+    '  for (var j = 0; j < list.length; j++) { result.set(list[j], offset); offset += list[j].length; }',
+    '  return result;',
+    '};',
+    '',
+    'export var Buffer = BufferShim;',
+    'export var SlowBuffer = BufferShim;',
+    'export var INSPECT_MAX_BYTES = 50;',
+    'export var kMaxLength = 2147483647;',
+    'export default { Buffer: BufferShim, SlowBuffer: BufferShim, INSPECT_MAX_BYTES: 50, kMaxLength: 2147483647 };',
+  ].join('\n'));
+
+  writeFileSync(resolve(shimsDir, 'stream.js'), [
+    'function EventBase() { this._e = {}; }',
+    'EventBase.prototype.on = function(ev, fn) { (this._e[ev] = this._e[ev] || []).push(fn); return this; };',
+    'EventBase.prototype.addListener = EventBase.prototype.on;',
+    'EventBase.prototype.once = function(ev, fn) { var self = this; var w = function() { self.removeListener(ev, w); fn.apply(null, arguments); }; return this.on(ev, w); };',
+    'EventBase.prototype.emit = function(ev) { var args = [].slice.call(arguments, 1); (this._e[ev] || []).forEach(function(fn) { fn.apply(null, args); }); return true; };',
+    'EventBase.prototype.removeListener = function(ev, fn) { var l = this._e[ev]; if (l) this._e[ev] = l.filter(function(f) { return f !== fn; }); return this; };',
+    'EventBase.prototype.off = EventBase.prototype.removeListener;',
+    'EventBase.prototype.removeAllListeners = function(ev) { if (ev) delete this._e[ev]; else this._e = {}; return this; };',
+    'EventBase.prototype.setMaxListeners = function() { return this; };',
+    'EventBase.prototype.listeners = function(ev) { return this._e[ev] || []; };',
+    '',
+    'function Readable() { EventBase.call(this); } Readable.prototype = Object.create(EventBase.prototype);',
+    'Readable.prototype.read = function() { return null; };',
+    'Readable.prototype.pipe = function(d) { return d; };',
+    'Readable.prototype.unpipe = function() { return this; };',
+    'Readable.prototype.destroy = function() { return this; };',
+    '',
+    'function Writable() { EventBase.call(this); } Writable.prototype = Object.create(EventBase.prototype);',
+    'Writable.prototype.write = function() { return true; };',
+    'Writable.prototype.end = function() { return this; };',
+    'Writable.prototype.destroy = function() { return this; };',
+    '',
+    'function Transform() { EventBase.call(this); } Transform.prototype = Object.create(EventBase.prototype);',
+    'Transform.prototype.write = function() { return true; };',
+    'Transform.prototype.end = function() { return this; };',
+    'Transform.prototype.pipe = function(d) { return d; };',
+    'Transform.prototype.destroy = function() { return this; };',
+    '',
+    'function PassThrough() { Transform.call(this); } PassThrough.prototype = Object.create(Transform.prototype);',
+    'function Duplex() { EventBase.call(this); } Duplex.prototype = Object.create(EventBase.prototype);',
+    'Duplex.prototype.write = function() { return true; };',
+    'Duplex.prototype.end = function() { return this; };',
+    'Duplex.prototype.read = function() { return null; };',
+    'Duplex.prototype.pipe = function(d) { return d; };',
+    'Duplex.prototype.destroy = function() { return this; };',
+    '',
+    'function Stream() { EventBase.call(this); } Stream.prototype = Object.create(EventBase.prototype);',
+    'Stream.prototype.pipe = function(d) { return d; };',
+    'Stream.Readable = Readable; Stream.Writable = Writable; Stream.Transform = Transform;',
+    'Stream.PassThrough = PassThrough; Stream.Duplex = Duplex; Stream.Stream = Stream;',
+    '',
+    'export { Readable, Writable, Transform, PassThrough, Duplex, Stream };',
+    'export default Stream;',
+  ].join('\n'));
+
+  writeFileSync(resolve(shimsDir, 'util.js'), [
+    'export var inherits = function(ctor, superCtor) { ctor.super_ = superCtor; Object.setPrototypeOf(ctor.prototype, superCtor.prototype); };',
+    'export var deprecate = function(fn) { return fn; };',
+    'export var promisify = function(fn) { return function() { var args = [].slice.call(arguments); return new Promise(function(ok, fail) { args.push(function(err, res) { err ? fail(err) : ok(res); }); fn.apply(null, args); }); }; };',
+    'export var inspect = function(obj) { try { return JSON.stringify(obj); } catch(e) { return String(obj); } };',
+    'export var format = function(f) { if (typeof f !== "string") return [].map.call(arguments, function(a) { return inspect(a); }).join(" "); var i = 1; var args = arguments; return f.replace(/%[sdj%]/g, function(m) { if (m === "%%") return "%"; if (i >= args.length) return m; var v = args[i++]; if (m === "%s") return String(v); if (m === "%d") return Number(v); if (m === "%j") try { return JSON.stringify(v); } catch(e) { return "[Circular]"; } return m; }); };',
+    'export var debuglog = function() { return function() {}; };',
+    'export var isArray = Array.isArray;',
+    'export var isBoolean = function(v) { return typeof v === "boolean"; };',
+    'export var isNull = function(v) { return v === null; };',
+    'export var isNumber = function(v) { return typeof v === "number"; };',
+    'export var isString = function(v) { return typeof v === "string"; };',
+    'export var isUndefined = function(v) { return v === undefined; };',
+    'export var isObject = function(v) { return typeof v === "object" && v !== null; };',
+    'export var isFunction = function(v) { return typeof v === "function"; };',
+    'export var isRegExp = function(v) { return v instanceof RegExp; };',
+    'export var isDate = function(v) { return v instanceof Date; };',
+    'export var isError = function(v) { return v instanceof Error; };',
+    'export var isPrimitive = function(v) { return v === null || typeof v !== "object" && typeof v !== "function"; };',
+    'export var TextEncoder = globalThis.TextEncoder;',
+    'export var TextDecoder = globalThis.TextDecoder;',
+    'export var types = { isAnyArrayBuffer: function() { return false; }, isTypedArray: function(v) { return ArrayBuffer.isView(v); } };',
+    'export default { inherits: inherits, deprecate: deprecate, promisify: promisify, inspect: inspect, format: format, debuglog: debuglog, isArray: isArray, isBoolean: isBoolean, isNull: isNull, isNumber: isNumber, isString: isString, isUndefined: isUndefined, isObject: isObject, isFunction: isFunction, isRegExp: isRegExp, isDate: isDate, isError: isError, isPrimitive: isPrimitive, TextEncoder: TextEncoder, TextDecoder: TextDecoder, types: types };',
+  ].join('\n'));
+
+  writeFileSync(resolve(shimsDir, 'events.js'), [
+    'function EventEmitter() { this._events = {}; this._maxListeners = 10; }',
+    'EventEmitter.prototype.on = function(ev, fn) { (this._events[ev] = this._events[ev] || []).push(fn); return this; };',
+    'EventEmitter.prototype.addListener = EventEmitter.prototype.on;',
+    'EventEmitter.prototype.once = function(ev, fn) { var self = this; var w = function() { self.removeListener(ev, w); fn.apply(null, arguments); }; return this.on(ev, w); };',
+    'EventEmitter.prototype.emit = function(ev) { var args = [].slice.call(arguments, 1); (this._events[ev] || []).forEach(function(fn) { fn.apply(null, args); }); return true; };',
+    'EventEmitter.prototype.removeListener = function(ev, fn) { var l = this._events[ev]; if (l) this._events[ev] = l.filter(function(f) { return f !== fn; }); return this; };',
+    'EventEmitter.prototype.off = EventEmitter.prototype.removeListener;',
+    'EventEmitter.prototype.removeAllListeners = function(ev) { if (ev) delete this._events[ev]; else this._events = {}; return this; };',
+    'EventEmitter.prototype.setMaxListeners = function(n) { this._maxListeners = n; return this; };',
+    'EventEmitter.prototype.getMaxListeners = function() { return this._maxListeners; };',
+    'EventEmitter.prototype.listeners = function(ev) { return this._events[ev] || []; };',
+    'EventEmitter.prototype.listenerCount = function(ev) { return (this._events[ev] || []).length; };',
+    'EventEmitter.prototype.prependListener = EventEmitter.prototype.on;',
+    'EventEmitter.prototype.prependOnceListener = EventEmitter.prototype.once;',
+    'EventEmitter.prototype.eventNames = function() { return Object.keys(this._events); };',
+    'EventEmitter.EventEmitter = EventEmitter;',
+    'EventEmitter.defaultMaxListeners = 10;',
+    'export { EventEmitter };',
+    'export default EventEmitter;',
+  ].join('\n'));
+
+  writeFileSync(resolve(shimsDir, 'os.js'), [
+    'export var platform = function() { return "browser"; };',
+    'export var tmpdir = function() { return "/tmp"; };',
+    'export var homedir = function() { return "/"; };',
+    'export var hostname = function() { return "localhost"; };',
+    'export var type = function() { return "Browser"; };',
+    'export var arch = function() { return "wasm"; };',
+    'export var release = function() { return "0.0.0"; };',
+    'export var EOL = "\\n";',
+    'export var endianness = function() { return "LE"; };',
+    'export var cpus = function() { return []; };',
+    'export var totalmem = function() { return 0; };',
+    'export var freemem = function() { return 0; };',
+    'export var networkInterfaces = function() { return {}; };',
+    'export var userInfo = function() { return { username: "browser", uid: 0, gid: 0, shell: "", homedir: "/" }; };',
+    'export default { platform: platform, tmpdir: tmpdir, homedir: homedir, hostname: hostname, type: type, arch: arch, release: release, EOL: EOL, endianness: endianness, cpus: cpus, totalmem: totalmem, freemem: freemem, networkInterfaces: networkInterfaces, userInfo: userInfo };',
+  ].join('\n'));
+}
+
 // ── Main ─────────────────────────────────────────────────────────────
 
 async function main() {
@@ -361,45 +639,10 @@ async function main() {
 
   mkdirSync(THEMES_DIR, { recursive: true });
 
-  // Create shims directory
+  // Create shims directory and write all shims
   const shimsDir = resolve(__dirname, 'shims');
   mkdirSync(shimsDir, { recursive: true });
-
-  writeFileSync(resolve(shimsDir, 'path.js'), `
-    export const join = (...parts) => parts.join('/');
-    export const resolve = (...parts) => parts.join('/');
-    export const dirname = (p) => p.split('/').slice(0, -1).join('/');
-    export const basename = (p) => p.split('/').pop();
-    export const extname = (p) => { const m = p.match(/\\.[^.]+$/); return m ? m[0] : ''; };
-    export const sep = '/';
-    export default { join, resolve, dirname, basename, extname, sep };
-  `);
-  // fs shim is generated per-theme in bundleTheme()
-  writeFileSync(resolve(shimsDir, 'url.js'), `
-    export const URL = globalThis.URL;
-    export const URLSearchParams = globalThis.URLSearchParams;
-    export const fileURLToPath = (u) => u.replace(/^file:\\/\\//, '');
-    export const pathToFileURL = (p) => new globalThis.URL('file://' + p);
-    export const format = (u) => (typeof u === 'string' ? u : u.href);
-    export const parse = (u) => new globalThis.URL(u);
-    export default { URL, URLSearchParams, fileURLToPath, pathToFileURL, format, parse };
-  `);
-  writeFileSync(resolve(shimsDir, 'crypto.js'), `
-    export const createHash = () => ({ update: function() { return this; }, digest: () => '' });
-    export const randomBytes = (n) => new Uint8Array(n);
-    export const createHmac = () => ({ update: function() { return this; }, digest: () => '' });
-    export default { createHash, randomBytes, createHmac };
-  `);
-  writeFileSync(resolve(shimsDir, 'assert.js'), `
-    const assert = (v, msg) => { if (!v) throw new Error(msg || 'Assertion failed'); };
-    assert.ok = assert;
-    assert.strictEqual = (a, b) => { if (a !== b) throw new Error('Not equal'); };
-    assert.deepStrictEqual = () => {};
-    assert.fail = (msg) => { throw new Error(msg); };
-    export default assert;
-    export const ok = assert;
-    export const strictEqual = assert.strictEqual;
-  `);
+  writeShims(shimsDir);
 
   let themes;
   if (specificThemes) {
@@ -429,9 +672,9 @@ async function main() {
 
     // Install the theme
     try {
-      execSync(`npm install --no-save ${theme.packageName} 2>/dev/null`, {
+      execSync(`npm install --no-save --prefer-offline ${theme.packageName} 2>/dev/null`, {
         cwd: resolve(__dirname, '..'),
-        timeout: 30000,
+        timeout: 60000,
       });
     } catch {
       console.log('❌ install failed');
@@ -452,7 +695,6 @@ async function main() {
     let hasSnapshot = false;
     let hasCss = false;
     const snapshotResult = generateSnapshot(theme.name, theme.packageName);
-    // Handle promise if async render
     if (snapshotResult && typeof snapshotResult.then === 'function') {
       const html = await snapshotResult;
       hasSnapshot = !!html;
@@ -488,7 +730,6 @@ async function main() {
       if (hasSnapshot) parts.push('snapshot');
       console.log(parts.join(', ') + ')');
     } else {
-      // Bundle failed — still useful if we have a snapshot (server fallback)
       manifest.push({
         name: theme.name,
         displayName: theme.name.charAt(0).toUpperCase() + theme.name.slice(1).replace(/-/g, ' '),

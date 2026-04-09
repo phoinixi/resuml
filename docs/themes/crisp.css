@@ -1,0 +1,74 @@
+p.basics-summary {
+      margin: 15px 0 !important;
+    }
+    p.basics-contact {
+      margin: 0 !important;
+    }
+    h3 {
+      margin-top: 10px !important;
+    }
+    h3.section-heading {
+      color: #ef541d !important;
+    }
+    h4.institution-name {
+        color: #777 !important;
+    }
+    .interest-item {
+      line-height: 26px;
+    }
+    a[href] {
+      /* text-decoration: underline !important; */
+      color: #ef541d !important;
+    }
+
+    @media print {
+      a[href] {
+        text-decoration: underline !important;
+        color: #ef541d !important;
+      }
+      a[href]:after {
+        content: none !important;
+      }
+      p, strong, li, body, .skill {
+        color: #999 !important;
+        font-size: 1.2em;
+        line-height: 1.4em;
+      }
+      .basics-contact {
+        font-size: 1.2em;
+        line-height: 1.4em;
+      }
+      h3.section-heading {
+        font-size: 3em;
+        margin-top: 100px;
+        margin-bottom: 20px;
+        padding-top: 30px;
+      }
+      h4 {
+        font-size: 2em;
+      }
+      h3.education-type {
+        font-size: 1.2em;
+        color: #999 !important;
+        margin-top: 50px;
+        margin-bottom: 8px;
+      }
+      h4.education-area {
+        font-size: 1.5em;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+      h4.institution-name {
+        font-size: 1.2em;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        color: #999 !important;
+      }
+      hr {
+        display: none;
+        margin: 0px;
+      }
+      h3 {
+        margin-top: 25px;
+      }
+    }

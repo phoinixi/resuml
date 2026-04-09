@@ -596,11 +596,16 @@
     }
     .theme-picker-card:hover { border-color: var(--accent); background: rgba(88, 166, 255, 0.06); }
     .theme-picker-card.active { border-color: var(--accent); background: rgba(88, 166, 255, 0.12); }
-    .theme-picker-card.disabled {
-      opacity: 0.5;
+    .theme-picker-card.disabled,
+    .theme-picker-card-disabled {
+      opacity: 0.4;
       cursor: not-allowed;
+      pointer-events: none;
     }
+    .theme-picker-card-disabled:hover { border-color: var(--border); background: var(--bg); }
     .theme-picker-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; color: var(--text); }
+    .theme-badge-preview { margin-left: 6px; font-size: 0.85em; }
+    .theme-meta-note { color: var(--muted); font-style: italic; }
     .theme-picker-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.3; }
     .theme-picker-meta { font-size: 0.75rem; color: var(--muted); margin-top: 6px; }
     .theme-picker-cli { font-size: 0.7rem; color: var(--orange); margin-top: 4px; }

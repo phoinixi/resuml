@@ -1,0 +1,99 @@
+body {
+				font-family: 'Lato';
+				background-image: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/snow.png");
+			}
+
+			.oswald-font {
+				font-family: 'oswald';
+				vertical-align: bottom;
+			}
+
+			.name {
+				text-transform: uppercase;
+			}
+			
+			a:hover {
+				text-decoration: none;
+			}
+			
+			.link-github {
+				color: #454545;
+			}
+			
+			.link-github:hover {
+				color: black;
+			}
+			
+			.link-twitter {
+				color: #33CCFF;
+			}
+			
+			.social-link {
+				margin-left: 5px;
+			}
+			
+			.social-link:first-child {
+				margin-left: 0;
+			}
+			
+			.link-blog {
+				color: rgb(243, 111, 36);
+			}
+			
+			.link-blog:hover {
+				color: rgb(211, 97, 32);
+			}
+			
+			.summary {
+				font-size: 1.2em;
+				margin-top: 2em;
+			}
+			
+			.wip {
+				position: absolute;
+				right: 0;
+			}
+			
+			.item-detail h3 {
+				margin-top: 0px;
+				vertical-align: middle;
+			}
+
+			.item-detail .company {
+				font-size: 18px;
+			}
+
+			.item {
+				border-bottom: 1px solid #eee;
+				margin-bottom: 10px;
+				padding-bottom: 10px;
+			}
+
+			.item, .no-break-inside {
+				page-break-inside: avoid;
+			}
+
+			.section {
+				orphans: 10;
+				widows: 10;
+			}
+
+			@media print {
+				@page {
+					margin: 0.75cm 0.75cm 3cm 0.75cm;
+				}
+				a[href]:after {
+					content:"";
+				}
+				.badge {
+					font-weight: normal;
+				}
+				.item {
+					border-bottom: 0px;
+					margin-bottom: 0px;
+					padding-bottom: 5px;
+				}
+				.social-links-wrapper {
+					display: none;
+				}
+			}
