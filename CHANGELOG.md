@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/phoinixi/resuml/compare/v1.6.0...v1.7.0) (2026-04-09)
+
+
+### Features
+
+* pre-bundle all themes for zero-server rendering ([6fac3bf](https://github.com/phoinixi/resuml/commit/6fac3bf0ab6c8103c4e6f79563e36ae97b31704c))
+
 # [1.6.0](https://github.com/phoinixi/resuml/compare/v1.5.2...v1.6.0) (2026-04-09)
 
 
