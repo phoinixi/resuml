@@ -1,3 +1,17 @@
+# [1.5.0](https://github.com/phoinixi/resuml/compare/v1.4.4...v1.5.0) (2026-04-09)
+
+
+### Bug Fixes
+
+* resolve 7 lint errors ([874db6c](https://github.com/phoinixi/resuml/commit/874db6c639cb69d7e62354f14e4614ca1bd06474))
+* restore full theme list + server fallback for non-bundled themes ([8498786](https://github.com/phoinixi/resuml/commit/849878670579411016bc07924c95c7b517c882ed))
+
+
+### Features
+
+* client-side theme rendering — zero server round-trips ([21e6be0](https://github.com/phoinixi/resuml/commit/21e6be02e084cf8c17b500037d5d9dfaf7a88771))
+* pre-install popular themes as deps for instant rendering ([f00d751](https://github.com/phoinixi/resuml/commit/f00d7511a6773f33304533dc90645e07e738941c))
+
 ## [1.4.4](https://github.com/phoinixi/resuml/compare/v1.4.3...v1.4.4) (2026-04-09)
 
 
