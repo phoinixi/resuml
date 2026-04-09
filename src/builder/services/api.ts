@@ -149,7 +149,7 @@ const serverThemeCache = new Map<string, ThemeModule>();
 export async function loadTheme(themeName: string): Promise<ThemeModule> {
   // Check if we already have a worker-loaded theme
   if (loadedWorkerThemes.has(themeName)) {
-    return { render: (resume) => workerRender(resume as Record<string, unknown>) };
+    return { render: (resume) => workerRender(resume) };
   }
 
   // Check if server fallback is cached
@@ -163,7 +163,7 @@ export async function loadTheme(themeName: string): Promise<ThemeModule> {
       const url = `${getThemesBase()}${themeName}.js`;
       await workerLoadTheme(themeName, url);
       loadedWorkerThemes.add(themeName);
-      return { render: (resume) => workerRender(resume as Record<string, unknown>) };
+      return { render: (resume) => workerRender(resume) };
     } catch {
       // Worker load failed — fall through to server
     }

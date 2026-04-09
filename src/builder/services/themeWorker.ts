@@ -4,6 +4,12 @@
  * off the main thread.
  */
 
+interface WorkerThemeLoadedMsg { type: 'themeLoaded'; theme: string }
+interface WorkerThemeErrorMsg { type: 'themeError'; theme: string; error: string }
+interface WorkerHtmlMsg { type: 'html'; id: number; html: string }
+interface WorkerRenderErrorMsg { type: 'renderError'; id: number; error: string }
+type WorkerOutMsg = WorkerThemeLoadedMsg | WorkerThemeErrorMsg | WorkerHtmlMsg | WorkerRenderErrorMsg;
+
 let worker: Worker | null = null;
 let renderIdCounter = 0;
 const pendingRenders = new Map<number, { resolve: (html: string) => void; reject: (err: Error) => void }>();
@@ -17,7 +23,6 @@ function getWorker(): Worker {
   // The real theme-render logic runs via dynamic import() inside the worker.
   const workerCode = `
     let currentTheme = null;
-    let currentThemeName = '';
 
     self.onmessage = async (e) => {
       const msg = e.data;
@@ -31,11 +36,9 @@ function getWorker(): Worker {
             throw new Error('Theme module has no render function');
           }
           currentTheme = { render };
-          currentThemeName = theme;
           self.postMessage({ type: 'themeLoaded', theme });
         } catch (err) {
           currentTheme = null;
-          currentThemeName = '';
           self.postMessage({ type: 'themeError', theme, error: err.message || 'Failed to load theme' });
         }
         return;
@@ -65,7 +68,7 @@ function getWorker(): Worker {
 
   worker = new Worker(workerUrl, { type: 'module' });
 
-  worker.onmessage = (e: MessageEvent) => {
+  worker.onmessage = (e: MessageEvent<WorkerOutMsg>) => {
     const msg = e.data;
 
     if (msg.type === 'themeLoaded') {
@@ -86,13 +89,11 @@ function getWorker(): Worker {
       }
       return;
     }
-    if (msg.type === 'renderError') {
-      const pending = pendingRenders.get(msg.id);
-      if (pending) {
-        pending.reject(new Error(msg.error));
-        pendingRenders.delete(msg.id);
-      }
-      return;
+    // msg.type === 'renderError'
+    const pendingErr = pendingRenders.get(msg.id);
+    if (pendingErr) {
+      pendingErr.reject(new Error(msg.error));
+      pendingRenders.delete(msg.id);
     }
   };
 
@@ -100,10 +101,10 @@ function getWorker(): Worker {
     // Reject all pending operations
     pendingThemeLoad?.reject(new Error(e.message));
     pendingThemeLoad = null;
-    for (const [id, pending] of pendingRenders) {
+    for (const [, pending] of pendingRenders) {
       pending.reject(new Error(e.message));
-      pendingRenders.delete(id);
     }
+    pendingRenders.clear();
   };
 
   return worker;

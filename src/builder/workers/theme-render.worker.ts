@@ -2,8 +2,8 @@
  * Web Worker for off-thread theme rendering.
  *
  * Messages IN:
- *   { type: 'loadTheme', theme: string, url: string }   — import the bundled theme module
- *   { type: 'render',    resume: object, id: number }    — render resume with loaded theme
+ *   { type: 'loadTheme', theme: string, url: string }
+ *   { type: 'render',    resume: object, id: number }
  *
  * Messages OUT:
  *   { type: 'themeLoaded', theme: string }
@@ -16,10 +16,13 @@ interface ThemeModule {
   render: (resume: Record<string, unknown>) => string | Promise<string>;
 }
 
-let currentTheme: ThemeModule | null = null;
-let currentThemeName = '';
+interface LoadThemeMsg { type: 'loadTheme'; theme: string; url: string }
+interface RenderMsg { type: 'render'; resume: Record<string, unknown>; id: number }
+type WorkerInMsg = LoadThemeMsg | RenderMsg;
 
-self.onmessage = async (e: MessageEvent) => {
+let currentTheme: ThemeModule | null = null;
+
+self.onmessage = async (e: MessageEvent<WorkerInMsg>) => {
   const msg = e.data;
 
   if (msg.type === 'loadTheme') {
@@ -30,11 +33,9 @@ self.onmessage = async (e: MessageEvent) => {
         throw new Error('Theme module has no render function');
       }
       currentTheme = mod;
-      currentThemeName = theme;
       self.postMessage({ type: 'themeLoaded', theme });
     } catch (err: unknown) {
       currentTheme = null;
-      currentThemeName = '';
       self.postMessage({
         type: 'themeError',
         theme,
@@ -44,7 +45,8 @@ self.onmessage = async (e: MessageEvent) => {
     return;
   }
 
-  if (msg.type === 'render') {
+  // msg.type === 'render'
+  {
     const { resume, id } = msg;
     if (!currentTheme) {
       self.postMessage({ type: 'renderError', id, error: 'No theme loaded' });
@@ -61,6 +63,5 @@ self.onmessage = async (e: MessageEvent) => {
         error: err instanceof Error ? err.message : 'Render failed',
       });
     }
-    return;
   }
 };
