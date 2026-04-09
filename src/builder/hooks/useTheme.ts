@@ -30,9 +30,7 @@ export function useTheme(themeName: string) {
 
       const result = mod.render(resume as unknown as Record<string, unknown>);
       // render() may return a string (bundled themes) or a Promise<string> (server fallback)
-      const rendered = typeof result === 'object' && result !== null && 'then' in result
-        ? await (result as Promise<string>)
-        : result;
+      const rendered = typeof result === 'string' ? result : await result;
       if (renderId !== renderIdRef.current) return;
 
       setHtml(rendered);

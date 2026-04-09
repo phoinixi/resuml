@@ -78,11 +78,12 @@ export async function fetchThemes(signal?: AbortSignal): Promise<NpmTheme[]> {
   ]);
 
   bundledNames = new Set(manifest.map((t) => t.name));
+  const names = bundledNames;
 
   // Merge: put bundled themes first (with ⚡ flag implied), rest after
   const bundledFirst = npmThemes.sort((a, b) => {
-    const aB = bundledNames!.has(a.name) ? 0 : 1;
-    const bB = bundledNames!.has(b.name) ? 0 : 1;
+    const aB = names.has(a.name) ? 0 : 1;
+    const bB = names.has(b.name) ? 0 : 1;
     if (aB !== bB) return aB - bB;
     return b.weeklyDownloads - a.weeklyDownloads;
   });

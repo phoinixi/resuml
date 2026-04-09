@@ -18,12 +18,15 @@ export function exportJson(resume: Record<string, unknown>): void {
 }
 
 export function exportPdf(html: string): void {
-  const w = window.open('', '_blank');
-  if (!w) return;
-  w.document.write(html);
-  w.document.close();
+  const blob = new Blob([html], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const w = window.open(url, '_blank');
+  if (!w) { URL.revokeObjectURL(url); return; }
+  w.addEventListener('load', () => {
+    w.print();
+    URL.revokeObjectURL(url);
+  }, { once: true });
   w.focus();
-  w.print();
 }
 
 export async function copyShareUrl(yaml: string, themeName: string): Promise<void> {

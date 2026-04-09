@@ -22,15 +22,16 @@ function tryHostTheme(pkgName: string): string | null {
   try {
     // Resolve the main entry (avoids `exports` restrictions on ./package.json).
     // Then walk up from the file until we find a package.json — that's the root.
-    let dir = path.dirname(require.resolve(pkgName));
-    while (true) {
-      if (fs.existsSync(path.join(dir, 'package.json'))) {
-        return dir;
+    let current = path.dirname(require.resolve(pkgName));
+    let parent = '';
+    while (current !== parent) {
+      if (fs.existsSync(path.join(current, 'package.json'))) {
+        return current;
       }
-      const parent = path.dirname(dir);
-      if (parent === dir) return null; // reached fs root without finding package.json
-      dir = parent;
+      parent = current;
+      current = path.dirname(current);
     }
+    return null;
   } catch {
     return null;
   }
