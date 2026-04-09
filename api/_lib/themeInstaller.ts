@@ -62,8 +62,10 @@ function evictOldThemes(): void {
     .sort((a, b) => a.mtime - b.mtime); // oldest first
 
   while (dirs.length >= MAX_CACHED_THEMES) {
-    const oldest = dirs.shift()!;
-    try { fs.rmSync(oldest.dir, { recursive: true, force: true }); } catch { /* ignore */ }
+    const oldest = dirs.shift();
+    if (oldest) {
+      try { fs.rmSync(oldest.dir, { recursive: true, force: true }); } catch { /* ignore */ }
+    }
   }
 }
 
