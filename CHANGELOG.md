@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/phoinixi/resuml/compare/v1.4.1...v1.4.2) (2026-04-09)
+
+
+### Bug Fixes
+
+* version-based cache validation, always install deps for themes ([1d4af67](https://github.com/phoinixi/resuml/commit/1d4af67fd59c7d862264ab823de006fa90908b8e))
+
 ## [1.4.1](https://github.com/phoinixi/resuml/compare/v1.4.0...v1.4.1) (2026-04-09)
 
 
