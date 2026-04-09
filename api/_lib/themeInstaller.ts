@@ -70,21 +70,17 @@ export async function ensureInstalled(themeName: string): Promise<string> {
     });
   }
 
-  // Check if the main entry point exists; if not, the theme needs building
+  // Check if the main entry point exists; themes that only ship source and need a
+  // build step are not supported in the online editor (build takes too long in Lambda).
   const mainEntry = pkgJson.main ?? 'index.js';
   const mainPath = path.join(pkgDir, mainEntry);
-  if (!fs.existsSync(mainPath) && pkgJson.scripts?.['build']) {
-    // Install all deps (including devDependencies for the build)
-    execFileSync('npm', ['install', '--ignore-scripts'], {
-      timeout: 60_000,
-      stdio: 'pipe',
-      cwd: pkgDir,
-    });
-    execFileSync('npm', ['run', 'build'], {
-      timeout: 60_000,
-      stdio: 'pipe',
-      env: { ...process.env, NODE_ENV: 'production' },
-    });
+  if (!fs.existsSync(mainPath)) {
+    // Clean up so the next request doesn't find a broken install
+    fs.rmSync(pkgDir, { recursive: true, force: true });
+    throw new Error(
+      `Theme "${pkgName}" does not include a pre-built package. ` +
+      `Themes that require a compile step are not supported in the online editor.`,
+    );
   }
 
   return pkgDir;

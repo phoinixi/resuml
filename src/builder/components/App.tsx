@@ -18,7 +18,15 @@ export function App() {
   const [themeName, setThemeName] = useState('stackoverflow');
   const [splitPos, setSplitPos] = useState(50);
   const [dragging, setDragging] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 768);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    const handler = (e: MediaQueryListEvent) => { setIsMobile(e.matches); };
+    mq.addEventListener('change', handler);
+    return () => { mq.removeEventListener('change', handler); };
+  }, []);
 
   const { yaml, resume, error, setYaml, updateResume } = useResume(DEFAULT_YAML);
   const { html, loading: themeLoading, themeError, renderResume } = useTheme(themeName);
@@ -39,27 +47,54 @@ export function App() {
     setShowThemePicker(false);
   }, []);
 
-  // Split pane drag
-  const handleDragStart = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
+  // Split pane drag — shared logic for mouse and touch
+  const startDrag = useCallback((mobile: boolean) => {
     const container = containerRef.current;
     if (!container) return;
-
     setDragging(true);
 
-    const onMove = (ev: MouseEvent) => {
+    const calcPct = (clientX: number, clientY: number) => {
       const rect = container.getBoundingClientRect();
-      const pct = ((ev.clientX - rect.left) / rect.width) * 100;
-      setSplitPos(Math.min(80, Math.max(20, pct)));
+      const raw = mobile
+        ? ((clientY - rect.top) / rect.height) * 100
+        : ((clientX - rect.left) / rect.width) * 100;
+      return Math.min(80, Math.max(20, raw));
     };
-    const onUp = () => {
+
+    const onMouseMove = (ev: MouseEvent) => { setSplitPos(calcPct(ev.clientX, ev.clientY)); };
+    const onMouseUp = () => {
       setDragging(false);
-      document.removeEventListener('mousemove', onMove);
-      document.removeEventListener('mouseup', onUp);
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
     };
-    document.addEventListener('mousemove', onMove);
-    document.addEventListener('mouseup', onUp);
+    const onTouchMove = (ev: TouchEvent) => {
+      const t = ev.touches[0];
+      if (t) setSplitPos(calcPct(t.clientX, t.clientY));
+    };
+    const onTouchEnd = () => {
+      setDragging(false);
+      document.removeEventListener('touchmove', onTouchMove);
+      document.removeEventListener('touchend', onTouchEnd);
+    };
+
+    if (mobile) {
+      document.addEventListener('touchmove', onTouchMove, { passive: true });
+      document.addEventListener('touchend', onTouchEnd);
+    } else {
+      document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('mouseup', onMouseUp);
+    }
   }, []);
+
+  const handleDragStart = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    startDrag(isMobile);
+  }, [isMobile, startDrag]);
+
+  const handleTouchStart = useCallback((e: React.TouchEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    startDrag(true);
+  }, [startDrag]);
 
   return (
     <>
@@ -90,7 +125,7 @@ export function App() {
       )}
 
       <div className={`builder-main${dragging ? ' dragging' : ''}`} ref={containerRef}>
-        <div className="builder-editor" style={{ width: `${splitPos}%` }}>
+        <div className="builder-editor" style={isMobile ? { height: `${splitPos}%` } : { width: `${splitPos}%` }}>
           {mode === 'yaml' ? (
             <Editor yaml={yaml} onChange={setYaml} error={error} />
           ) : (
@@ -98,9 +133,14 @@ export function App() {
           )}
         </div>
 
-        <div className="builder-divider" onMouseDown={handleDragStart} title="Drag to resize" />
+        <div
+          className="builder-divider"
+          onMouseDown={handleDragStart}
+          onTouchStart={handleTouchStart}
+          title="Drag to resize"
+        />
 
-        <div className="builder-preview" style={{ width: `${100 - splitPos}%` }}>
+        <div className="builder-preview" style={isMobile ? { height: `${100 - splitPos}%` } : { width: `${100 - splitPos}%` }}>
           <Preview html={html} loading={themeLoading} error={themeError} />
         </div>
 

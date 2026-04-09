@@ -2,6 +2,16 @@
   "buildCommand": "npm run build",
   "outputDirectory": "docs",
   "framework": null,
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+      ]
+    }
+  ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
@@ -9,11 +19,11 @@
   "functions": {
     "api/render.ts": {
       "memory": 1024,
-      "maxDuration": 30
+      "maxDuration": 60
     },
     "api/pdf.ts": {
       "memory": 1024,
-      "maxDuration": 30
+      "maxDuration": 60
     },
     "api/themes.ts": {
       "memory": 256,
