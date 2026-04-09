@@ -64,6 +64,40 @@ function cleanNpmCache(): void {
 }
 
 /**
+ * Symlink any of the theme's listed dependencies that are already present in
+ * the Lambda host node_modules into the theme's own node_modules directory.
+ *
+ * When npm install runs next, it sees those packages as already satisfied
+ * (version check passes) and skips downloading/extracting them. For React-based
+ * themes this avoids re-installing react + react-dom + their 80-odd transitive
+ * deps (~100MB), keeping /tmp usage well within the 512MB Lambda limit.
+ */
+function prelinkHostDeps(pkgDir: string, deps: Record<string, string>): void {
+  let hostNm: string;
+  try {
+    // require.resolve('react') → e.g. /var/task/node_modules/react/index.js
+    // dirname twice → /var/task/node_modules
+    hostNm = path.dirname(path.dirname(require.resolve('react')));
+  } catch {
+    return; // not resolvable (e.g. local dev without react in scope)
+  }
+
+  const themeNm = path.join(pkgDir, 'node_modules');
+  fs.mkdirSync(themeNm, { recursive: true });
+
+  for (const depName of Object.keys(deps)) {
+    const hostPkgDir = path.join(hostNm, depName);
+    const linkTarget = path.join(themeNm, depName);
+    if (!fs.existsSync(hostPkgDir) || fs.existsSync(linkTarget)) continue;
+    try {
+      // Scoped packages (@scope/pkg) need their parent dir to exist first
+      fs.mkdirSync(path.dirname(linkTarget), { recursive: true });
+      fs.symlinkSync(hostPkgDir, linkTarget);
+    } catch { /* ignore */ }
+  }
+}
+
+/**
  * Download a theme from the npm registry and install its deps
  * into an isolated directory — no pollution of the project's node_modules.
  */
@@ -140,6 +174,8 @@ export async function ensureInstalled(themeName: string): Promise<string> {
   // Always installing prod deps is the only safe approach.
   const hasDeps = pkgJson.dependencies !== undefined && Object.keys(pkgJson.dependencies).length > 0;
   if (hasDeps) {
+    // Pre-link any deps already on the host so npm install skips them
+    prelinkHostDeps(pkgDir, pkgJson.dependencies ?? {});
     try {
       execFileSync('npm', ['install', '--omit=dev', '--ignore-scripts', '--legacy-peer-deps', '--cache', '/tmp/.npm-cache', '--no-audit', '--no-fund'], {
         timeout: 55_000,
