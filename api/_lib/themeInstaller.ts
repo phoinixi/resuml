@@ -120,8 +120,20 @@ export async function ensureInstalled(themeName: string): Promise<string> {
     );
   }
 
-  // Install prod dependencies (ignore lifecycle scripts for security)
+  // Try loading the theme without installing node_modules first.
+  // Many themes ship a self-contained bundle — if require() succeeds, skip npm install entirely.
+  let needsDeps = false;
   if (pkgJson.dependencies && Object.keys(pkgJson.dependencies).length > 0) {
+    try {
+      require(pkgDir);
+      // Loaded fine without deps — theme is self-contained
+    } catch {
+      needsDeps = true;
+    }
+  }
+
+  // Install prod dependencies only if the theme couldn't load without them
+  if (needsDeps) {
     try {
       execFileSync('npm', ['install', '--omit=dev', '--ignore-scripts', '--legacy-peer-deps', '--cache', '/tmp/.npm-cache', '--no-audit', '--no-fund'], {
         timeout: 55_000,
