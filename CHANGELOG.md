@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/phoinixi/resuml/compare/v1.4.2...v1.4.3) (2026-04-09)
+
+
+### Bug Fixes
+
+* only show loading spinner when switching themes, not on content edits ([366854d](https://github.com/phoinixi/resuml/commit/366854d454e6b64752285bed55a8dcd49cd1eb6c))
+
 ## [1.4.2](https://github.com/phoinixi/resuml/compare/v1.4.1...v1.4.2) (2026-04-09)
 
 
