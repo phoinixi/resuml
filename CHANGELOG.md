@@ -1,3 +1,10 @@
+## [1.7.3](https://github.com/phoinixi/resuml/compare/v1.7.2...v1.7.3) (2026-04-09)
+
+
+### Bug Fixes
+
+* add glob/globby/require-glob shims for Handlebars partial loading ([184589e](https://github.com/phoinixi/resuml/commit/184589e43b44f5dfb510f259225e28a7d7bb0ada))
+
 ## [1.7.2](https://github.com/phoinixi/resuml/compare/v1.7.1...v1.7.2) (2026-04-09)
 
 
