@@ -19,6 +19,7 @@ export function useTheme(themeName: string) {
 
     setLoading(true);
     setThemeError(null);
+    setHtml(null);
 
     try {
       const response = await fetch(`${getApiBase()}/api/render`, {
