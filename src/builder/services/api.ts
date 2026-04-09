@@ -181,12 +181,13 @@ export async function loadTheme(themeName: string): Promise<ThemeModule> {
       loadedWorkerThemes.add(themeName);
       return { render: (resume) => workerRender(resume) };
     } catch {
-      // Worker load failed — fall through
+      // Bundle exists but Worker crashed (e.g. dynamic require in theme).
+      // Fall through to snapshot if available.
     }
   }
 
-  // For snapshot-only themes, return a module that serves the snapshot
-  if (entry?.hasSnapshot && !entry.browserCompatible) {
+  // Serve snapshot for themes that have one (including bundled themes that crashed)
+  if (entry?.hasSnapshot) {
     const snapshotTheme: ThemeModule = {
       render: async () => {
         const snap = await loadSnapshot(themeName);
@@ -198,24 +199,11 @@ export async function loadTheme(themeName: string): Promise<ThemeModule> {
     return snapshotTheme;
   }
 
-  // Fall back to server render (for themes with no bundle or snapshot)
-  const serverTheme: ThemeModule = {
-    render: async (resume) => {
-      const signal = AbortSignal.timeout(30_000);
-      const response = await fetch(`${getApiBase()}/api/render`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ resume, theme: themeName }),
-        signal,
-      });
-      if (!response.ok) {
-        const err = await (response.json() as Promise<{ error?: string }>).catch(() => ({ error: 'Render failed' }));
-        throw new Error(err.error ?? `Render failed: ${response.status}`);
-      }
-      return response.text();
-    },
-  };
+  // Theme is in manifest but has no bundle and no snapshot — unavailable
+  if (entry) {
+    throw new Error(`Theme "${themeName}" is not available`);
+  }
 
-  serverThemeCache.set(themeName, serverTheme);
-  return serverTheme;
+  // Theme not in manifest at all — not bundled, no server fallback
+  throw new Error(`Theme "${themeName}" is not available. Only bundled themes are supported.`);
 }
