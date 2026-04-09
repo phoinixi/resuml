@@ -13,7 +13,7 @@ interface ErrorBody {
  * When running on localhost or Vercel itself, use relative URLs.
  * When served from GitHub Pages / custom domain, proxy to Vercel.
  */
-function getApiBase(): string {
+export function getApiBase(): string {
   if (typeof window === 'undefined') return '';
   const { hostname } = window.location;
   if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname.endsWith('.vercel.app')) {

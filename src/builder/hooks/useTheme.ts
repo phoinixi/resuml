@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef } from 'react';
 import type { ResumeSchema } from '../../types/resume';
+import { getApiBase } from '../services/api.js';
 
 export function useTheme(themeName: string) {
   const [html, setHtml] = useState<string | null>(null);
@@ -20,7 +21,7 @@ export function useTheme(themeName: string) {
     setThemeError(null);
 
     try {
-      const response = await fetch('/api/render', {
+      const response = await fetch(`${getApiBase()}/api/render`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ resume, theme: themeName }),
