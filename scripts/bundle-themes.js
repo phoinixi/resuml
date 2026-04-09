@@ -100,6 +100,13 @@ async function bundleTheme(shortName, packageName) {
       format: 'esm',
       target: 'es2022',
       platform: 'browser',
+      // Use 'require' condition so packages like underscore/lodash resolve to their
+      // CJS/UMD builds (which export a callable function) instead of their ESM builds
+      // (which export a namespace object that breaks _(collection) call syntax).
+      conditions: ['browser', 'require', 'default'],
+      // Prefer the CJS 'main' field over the ESM 'module' field for packages
+      // that don't use the exports map (older packages).
+      mainFields: ['browser', 'main'],
       outfile: resolve(THEMES_DIR, `${shortName}.js`),
       define: {
         'process.env.NODE_ENV': '"production"',

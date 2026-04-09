@@ -128,10 +128,12 @@ export async function loadTheme(themeName: string): Promise<ThemeModule> {
   // Fall back to server render (same API as before)
   const serverTheme: ThemeModule = {
     render: async (resume) => {
+      const signal = AbortSignal.timeout(30_000);
       const response = await fetch(`${getApiBase()}/api/render`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ resume, theme: themeName }),
+        signal,
       });
       if (!response.ok) {
         const err = await (response.json() as Promise<{ error?: string }>).catch(() => ({ error: 'Render failed' }));
@@ -141,7 +143,8 @@ export async function loadTheme(themeName: string): Promise<ThemeModule> {
     },
   };
 
-  // Don't cache server themes — each call is fresh (like before)
+  // Cache so isThemeLoaded() returns true → no spinner on content-only edits
+  moduleCache.set(themeName, serverTheme);
   return serverTheme;
 }
 
