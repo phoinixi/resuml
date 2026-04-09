@@ -12,6 +12,25 @@ const SAFE_NAME = /^[a-zA-Z0-9._-]+$/;
 
 const CACHE_DIR = path.join(os.tmpdir(), 'resuml-themes');
 
+/**
+ * Create a node_modules symlink at the cache root pointing to the Lambda's own
+ * node_modules. This lets themes that externalize react/react-dom/etc. resolve
+ * them without a separate npm install — Node.js walks up from any theme dir
+ * under CACHE_DIR and finds the symlink at CACHE_DIR/node_modules.
+ */
+function linkLambdaNodeModules(): void {
+  const nmLink = path.join(CACHE_DIR, 'node_modules');
+  if (fs.existsSync(nmLink)) return;
+  try {
+    // require.resolve('react') gives e.g. /var/task/node_modules/react/index.js
+    // two path.dirname calls → /var/task/node_modules
+    const reactEntry = require.resolve('react');
+    const projectNm = path.dirname(path.dirname(reactEntry));
+    fs.mkdirSync(CACHE_DIR, { recursive: true });
+    fs.symlinkSync(projectNm, nmLink);
+  } catch { /* non-fatal: react not resolvable (local dev) */ }
+}
+
 export function toPackageName(theme: string): string {
   if (!SAFE_NAME.test(theme)) {
     throw new Error('Invalid theme name');
@@ -69,11 +88,21 @@ export async function ensureInstalled(themeName: string): Promise<string> {
   const pkgName = toPackageName(themeName);
   const pkgDir = path.join(CACHE_DIR, pkgName);
 
+  // Ensure the cache-level node_modules symlink exists (once per Lambda instance)
+  linkLambdaNodeModules();
+
   if (fs.existsSync(path.join(pkgDir, 'package.json'))) {
-    // Touch the dir so mtime stays current (used for LRU eviction)
-    const now = new Date();
-    try { fs.utimesSync(pkgDir, now, now); } catch { /* ignore */ }
-    return pkgDir;
+    // Verify the main entry is loadable; if not (broken prior install), re-install
+    const cachedPkg = JSON.parse(fs.readFileSync(path.join(pkgDir, 'package.json'), 'utf8')) as { main?: string };
+    const cachedMain = path.join(pkgDir, cachedPkg.main ?? 'index.js');
+    if (fs.existsSync(cachedMain)) {
+      // Touch the dir so mtime stays current (used for LRU eviction)
+      const now = new Date();
+      try { fs.utimesSync(pkgDir, now, now); } catch { /* ignore */ }
+      return pkgDir;
+    }
+    // Broken install — clean up and re-install
+    fs.rmSync(pkgDir, { recursive: true, force: true });
   }
 
   // Evict oldest cached themes before installing a new one
