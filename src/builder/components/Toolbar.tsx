@@ -13,12 +13,13 @@ interface ToolbarProps {
   onAtsToggle: () => void;
   yaml: string;
   resume: ResumeSchema | null;
+  html: string | null;
   onImport: (yaml: string) => void;
 }
 
 export function Toolbar({
   mode, onModeChange, themeName, onThemePickerToggle,
-  showAts, onAtsToggle, yaml, resume, onImport,
+  showAts, onAtsToggle, yaml, resume, html, onImport,
 }: ToolbarProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const shareRef = useRef<HTMLButtonElement>(null);
@@ -41,14 +42,14 @@ export function Toolbar({
   }, [resume]);
 
   const handleExportPdf = useCallback(() => {
-    if (resume) void exportPdf(resume as unknown as Record<string, unknown>, themeName);
-  }, [resume, themeName]);
+    if (html) exportPdf(html);
+  }, [html]);
 
   const downloadOptions = useMemo(() => [
     { label: 'YAML', icon: <FileText size={14} />, onClick: handleExportYaml },
     { label: 'JSON', icon: <FileJson size={14} />, onClick: handleExportJson, disabled: !resume },
-    { label: 'PDF', icon: <FileDown size={14} />, onClick: handleExportPdf, disabled: !resume },
-  ], [handleExportYaml, handleExportJson, handleExportPdf, resume]);
+    { label: 'PDF', icon: <FileDown size={14} />, onClick: handleExportPdf, disabled: !html },
+  ], [handleExportYaml, handleExportJson, handleExportPdf, html]);
 
   const handleShare = useCallback(() => {
     void copyShareUrl(yaml, themeName).then(() => {

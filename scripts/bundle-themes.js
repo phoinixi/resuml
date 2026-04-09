@@ -83,9 +83,10 @@ async function discoverThemes() {
 
 async function bundleTheme(shortName, packageName) {
   const entryContent = `
-    import theme from '${packageName}';
-    export const render = theme.render || theme.default?.render;
-    export const pdfRenderOptions = theme.pdfRenderOptions || theme.default?.pdfRenderOptions;
+    import * as themeNs from '${packageName}';
+    const _t = themeNs.default ?? themeNs;
+    export const render = _t.render ?? themeNs.render;
+    export const pdfRenderOptions = _t.pdfRenderOptions ?? themeNs.pdfRenderOptions;
   `;
 
   const entryFile = resolve(THEMES_DIR, `_entry_${shortName}.js`);
@@ -108,6 +109,10 @@ async function bundleTheme(shortName, packageName) {
       alias: {
         'path': resolve(__dirname, 'shims/path.js'),
         'fs': resolve(__dirname, 'shims/fs.js'),
+        'url': resolve(__dirname, 'shims/url.js'),
+        'node:url': resolve(__dirname, 'shims/url.js'),
+        'node:crypto': resolve(__dirname, 'shims/crypto.js'),
+        'assert': resolve(__dirname, 'shims/assert.js'),
       },
       logLevel: 'silent',
     });
@@ -144,6 +149,31 @@ async function main() {
     export const readFileSync = () => '';
     export const existsSync = () => false;
     export default { readFileSync, existsSync };
+  `);
+  writeFileSync(resolve(shimsDir, 'url.js'), `
+    export const URL = globalThis.URL;
+    export const URLSearchParams = globalThis.URLSearchParams;
+    export const fileURLToPath = (u) => u.replace(/^file:\\/\\//, '');
+    export const pathToFileURL = (p) => new globalThis.URL('file://' + p);
+    export const format = (u) => (typeof u === 'string' ? u : u.href);
+    export const parse = (u) => new globalThis.URL(u);
+    export default { URL, URLSearchParams, fileURLToPath, pathToFileURL, format, parse };
+  `);
+  writeFileSync(resolve(shimsDir, 'crypto.js'), `
+    export const createHash = () => ({ update: function() { return this; }, digest: () => '' });
+    export const randomBytes = (n) => new Uint8Array(n);
+    export const createHmac = () => ({ update: function() { return this; }, digest: () => '' });
+    export default { createHash, randomBytes, createHmac };
+  `);
+  writeFileSync(resolve(shimsDir, 'assert.js'), `
+    const assert = (v, msg) => { if (!v) throw new Error(msg || 'Assertion failed'); };
+    assert.ok = assert;
+    assert.strictEqual = (a, b) => { if (a !== b) throw new Error('Not equal'); };
+    assert.deepStrictEqual = () => {};
+    assert.fail = (msg) => { throw new Error(msg); };
+    export default assert;
+    export const ok = assert;
+    export const strictEqual = assert.strictEqual;
   `);
 
   let themes;
@@ -203,6 +233,7 @@ async function main() {
         name: theme.name,
         displayName: theme.name.charAt(0).toUpperCase() + theme.name.slice(1).replace(/-/g, ' '),
         description: theme.description,
+        version: theme.version || '',
         browserCompatible: true,
         fileSize: stat,
       });
@@ -212,6 +243,7 @@ async function main() {
         name: theme.name,
         displayName: theme.name.charAt(0).toUpperCase() + theme.name.slice(1).replace(/-/g, ' '),
         description: theme.description,
+        version: theme.version || '',
         browserCompatible: false,
         fileSize: 0,
       });

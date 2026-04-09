@@ -6,7 +6,9 @@ node_modules/
 # Builder output
 docs/app/*
 !docs/app/main.js
-docs/themes/
+# Theme bundles: tracked in git so they're available in deployed docs/
+# Large temporary theme cache files are NOT tracked:
+docs/themes/_entry_*.js
 
 # Build outputs
 dist/

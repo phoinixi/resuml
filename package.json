@@ -23,9 +23,10 @@
   ],
   "scripts": {
     "build": "tsup && npm run build:builder",
+    "build:lib": "tsup",
     "build:builder": "node scripts/build-builder.js",
     "dev:builder": "node scripts/dev-server.js",
-    "prepublishOnly": "npm run generate:types && npm run build",
+    "prepublishOnly": "npm run generate:types && npm run build:lib",
     "generate:types": "node scripts/generate-types.cjs",
     "test": "vitest run",
     "test:watch": "vitest",

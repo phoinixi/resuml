@@ -111,6 +111,7 @@ export function App() {
         }}
         yaml={yaml}
         resume={resume}
+        html={html}
         onImport={setYaml}
       />
 

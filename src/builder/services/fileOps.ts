@@ -17,13 +17,13 @@ export function exportJson(resume: Record<string, unknown>): void {
   downloadBlob(blob, 'resume.json');
 }
 
-export async function exportPdf(
-  resume: Record<string, unknown>,
-  theme: string,
-): Promise<void> {
-  const { downloadPdf } = await import('./api');
-  const blob = await downloadPdf(resume, theme);
-  downloadBlob(blob, 'resume.pdf');
+export function exportPdf(html: string): void {
+  const w = window.open('', '_blank');
+  if (!w) return;
+  w.document.write(html);
+  w.document.close();
+  w.focus();
+  w.print();
 }
 
 export async function copyShareUrl(yaml: string, themeName: string): Promise<void> {

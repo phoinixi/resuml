@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { X } from 'lucide-react';
 import { fetchThemes } from '../services/api';
-import type { ThemeInfo } from '../../shared/schemas';
+import type { BrowserTheme } from '../services/api';
 
 interface ThemePickerProps {
   currentTheme: string;
@@ -11,7 +11,7 @@ interface ThemePickerProps {
 
 export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProps) {
   const [search, setSearch] = useState('');
-  const [themes, setThemes] = useState<ThemeInfo[]>([]);
+  const [themes, setThemes] = useState<BrowserTheme[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -80,7 +80,7 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
               {theme.description && (
                 <div className="theme-picker-desc">{theme.description}</div>
               )}
-              <div className="theme-picker-meta">v{theme.version}</div>
+              <div className="theme-picker-meta">{theme.version ? `v${theme.version}` : ''}</div>
             </button>
           ))}
           {!loading && !error && filtered.length === 0 && (

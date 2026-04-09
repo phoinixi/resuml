@@ -1,96 +1,70 @@
-import type { ThemeInfo } from '../../shared/schemas';
-
-interface RenderRequest {
-  readonly resume: Record<string, unknown>;
-  readonly theme: string;
+export interface BrowserTheme {
+  readonly name: string;
+  readonly displayName: string;
+  readonly description: string;
+  readonly version: string;
+  readonly browserCompatible: boolean;
+  readonly fileSize: number;
 }
 
-interface ErrorBody {
-  readonly error: string;
+export interface ThemeModule {
+  render: (resume: Record<string, unknown>) => string;
+  pdfRenderOptions?: unknown;
 }
 
 /**
- * When running on localhost or Vercel itself, use relative URLs.
- * When served from GitHub Pages / custom domain, proxy to Vercel.
+ * Returns the base URL for the bundled theme assets.
+ * Resolves relative to docs/app/main.js so it works on any deployment:
+ *   localhost  → http://localhost:3000/themes/
+ *   Vercel     → https://resuml.vercel.app/themes/
+ *   GitHub Pgs → https://phoinixi.github.io/resuml/themes/
  */
-export function getApiBase(): string {
-  if (typeof window === 'undefined') return '';
-  const { hostname } = window.location;
-  if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname.endsWith('.vercel.app')) {
-    return '';
+function getThemesBase(): string {
+  try {
+    return new URL('../themes/', import.meta.url).href;
+  } catch {
+    return '/themes/';
   }
-  return 'https://resuml.vercel.app';
 }
-const THEME_CACHE_TTL = 30 * 60 * 1000; // 30 minutes
-let themeCacheData: ThemeInfo[] | null = null;
-let themeCacheTime = 0;
-let themeCachePromise: Promise<ThemeInfo[]> | null = null;
 
-export function fetchThemes(signal?: AbortSignal): Promise<ThemeInfo[]> {
-  if (themeCacheData && Date.now() - themeCacheTime < THEME_CACHE_TTL) {
-    return Promise.resolve(themeCacheData);
-  }
+// ── Theme list (manifest.json) ──────────────────────────────────────
 
-  if (themeCachePromise) return themeCachePromise;
+let manifestCache: BrowserTheme[] | null = null;
 
-  themeCachePromise = fetch(`${getApiBase()}/api/themes`, { signal })
-    .then((response) => {
-      if (!response.ok) throw new Error(`Failed to load themes: ${response.status}`);
-      return response.json();
+export function fetchThemes(signal?: AbortSignal): Promise<BrowserTheme[]> {
+  if (manifestCache) return Promise.resolve(manifestCache);
+
+  return fetch(`${getThemesBase()}manifest.json`, { signal })
+    .then((r) => {
+      if (!r.ok) throw new Error(`Failed to load themes: ${r.status}`);
+      return r.json() as Promise<BrowserTheme[]>;
     })
-    .then((data: unknown) => {
-      const parsed = data as ThemeInfo[];
-      themeCacheData = parsed;
-      themeCacheTime = Date.now();
-      themeCachePromise = null;
-      return parsed;
-    })
-    .catch((e: unknown) => {
-      themeCachePromise = null;
-      throw e;
+    .then((data) => {
+      manifestCache = data.filter((t) => t.browserCompatible);
+      return manifestCache;
     });
-
-  return themeCachePromise;
 }
 
 export function prefetchThemes(): void {
-  fetchThemes().catch(() => { /* silent prefetch */ });
+  fetchThemes().catch(() => { /* silent */ });
 }
 
-export async function renderResume(
-  request: RenderRequest,
-  signal?: AbortSignal,
-): Promise<string> {
-  const response = await fetch(`${getApiBase()}/api/render`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(request),
-    signal,
-  });
+// ── Theme module loading ────────────────────────────────────────────
 
-  if (!response.ok) {
-    const err: ErrorBody = await (response.json() as Promise<ErrorBody>).catch(() => ({ error: 'Render failed' }));
-    throw new Error(err.error || `Render failed: ${response.status}`);
-  }
+const moduleCache = new Map<string, ThemeModule>();
 
-  return response.text();
+export function isThemeLoaded(themeName: string): boolean {
+  return moduleCache.has(themeName);
 }
 
-export async function downloadPdf(
-  resume: Record<string, unknown>,
-  theme: string,
-  format: 'A4' | 'Letter' = 'A4',
-): Promise<Blob> {
-  const response = await fetch('/api/pdf', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ resume, theme, format }),
-  });
+export async function loadTheme(themeName: string): Promise<ThemeModule> {
+  const cached = moduleCache.get(themeName);
+  if (cached) return cached;
 
-  if (!response.ok) {
-    const err: ErrorBody = await (response.json() as Promise<ErrorBody>).catch(() => ({ error: 'PDF generation failed' }));
-    throw new Error(err.error || `PDF failed: ${response.status}`);
-  }
-
-  return response.blob();
+  const url = `${getThemesBase()}${themeName}.js`;
+  // Dynamic import — esbuild leaves variable-string imports as-is in ESM output
+  const mod = await import(url) as ThemeModule;
+  moduleCache.set(themeName, mod);
+  return mod;
 }
+

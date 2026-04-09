@@ -1,0 +1,50 @@
+[
+  {
+    "name": "stackoverflow",
+    "displayName": "Stackoverflow",
+    "description": "Stack Overflow theme for JSON Resume — Svelte SSR",
+    "version": "2.2.0",
+    "browserCompatible": true,
+    "fileSize": 235696
+  },
+  {
+    "name": "even",
+    "displayName": "Even",
+    "description": "A flat JSON Resume theme, compatible with the latest resume schema",
+    "version": "0.26.1",
+    "browserCompatible": true,
+    "fileSize": 162223
+  },
+  {
+    "name": "elegant",
+    "displayName": "Elegant",
+    "description": "Elegant theme for jsonresume",
+    "version": "1.16.1",
+    "browserCompatible": true,
+    "fileSize": 275819
+  },
+  {
+    "name": "kendall",
+    "displayName": "Kendall",
+    "description": "A JSON Resume theme built with bootstrap",
+    "version": "0.2.0",
+    "browserCompatible": true,
+    "fileSize": 89935
+  },
+  {
+    "name": "paper",
+    "displayName": "Paper",
+    "description": "A theme for JSON Resume",
+    "version": "0.5.0",
+    "browserCompatible": true,
+    "fileSize": 106128
+  },
+  {
+    "name": "actual",
+    "displayName": "Actual",
+    "description": "Actual theme for JSON Resume",
+    "version": "0.2.2",
+    "browserCompatible": false,
+    "fileSize": 0
+  }
+]
