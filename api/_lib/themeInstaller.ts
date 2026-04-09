@@ -21,6 +21,46 @@ export function toPackageName(theme: string): string {
     : `jsonresume-theme-${theme}`;
 }
 
+/** Keep at most this many cached theme dirs to stay within Lambda /tmp limits */
+const MAX_CACHED_THEMES = 4;
+
+/**
+ * Evict the oldest installed theme dirs (by mtime) when we have too many cached.
+ * Runs before each new install to prevent /tmp from filling up.
+ */
+function evictOldThemes(): void {
+  if (!fs.existsSync(CACHE_DIR)) return;
+
+  const dirs = fs.readdirSync(CACHE_DIR)
+    .map(name => {
+      const dir = path.join(CACHE_DIR, name);
+      try {
+        const stat = fs.statSync(dir);
+        return stat.isDirectory() ? { dir, mtime: stat.mtimeMs } : null;
+      } catch { return null; }
+    })
+    .filter((e): e is { dir: string; mtime: number } => e !== null)
+    .sort((a, b) => a.mtime - b.mtime); // oldest first
+
+  while (dirs.length >= MAX_CACHED_THEMES) {
+    const oldest = dirs.shift()!;
+    try { fs.rmSync(oldest.dir, { recursive: true, force: true }); } catch { /* ignore */ }
+  }
+}
+
+/**
+ * Clean up the npm download cache to reclaim /tmp space after an install.
+ */
+function cleanNpmCache(): void {
+  try {
+    execFileSync('npm', ['cache', 'clean', '--force', '--cache', '/tmp/.npm-cache'], {
+      stdio: 'pipe',
+      env: { HOME: '/tmp' },
+      timeout: 15_000,
+    });
+  } catch { /* non-fatal */ }
+}
+
 /**
  * Download a theme from the npm registry and install its deps
  * into an isolated directory — no pollution of the project's node_modules.
@@ -30,8 +70,14 @@ export async function ensureInstalled(themeName: string): Promise<string> {
   const pkgDir = path.join(CACHE_DIR, pkgName);
 
   if (fs.existsSync(path.join(pkgDir, 'package.json'))) {
+    // Touch the dir so mtime stays current (used for LRU eviction)
+    const now = new Date();
+    try { fs.utimesSync(pkgDir, now, now); } catch { /* ignore */ }
     return pkgDir;
   }
+
+  // Evict oldest cached themes before installing a new one
+  evictOldThemes();
 
   // Fetch tarball URL from the npm registry
   const metaRes = await fetch(`https://registry.npmjs.org/${pkgName}/latest`);
@@ -68,6 +114,8 @@ export async function ensureInstalled(themeName: string): Promise<string> {
       cwd: pkgDir,
       env: { ...process.env, HOME: '/tmp', npm_config_cache: '/tmp/.npm-cache' },
     });
+    // Clean download cache to free /tmp space — installed node_modules stay
+    cleanNpmCache();
   }
 
   // Check if the main entry point exists; themes that only ship source and need a
