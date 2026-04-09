@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/phoinixi/resuml/compare/v1.7.0...v1.7.1) (2026-04-09)
+
+
+### Bug Fixes
+
+* remove server fallback, fall to snapshot on worker crash ([13add8f](https://github.com/phoinixi/resuml/commit/13add8fdebb1b38e28c166d0f6503fb0c6dda3ee))
+
 # [1.7.0](https://github.com/phoinixi/resuml/compare/v1.6.0...v1.7.0) (2026-04-09)
 
 
