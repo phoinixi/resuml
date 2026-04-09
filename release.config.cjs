@@ -5,7 +5,10 @@ module.exports = {
     '@semantic-release/release-notes-generator',
     '@semantic-release/changelog',
     ['@semantic-release/npm', { pkgRoot: '.', provenance: true }],
-    '@semantic-release/github',
+    ['@semantic-release/github', {
+      failComment: false,
+      failTitle: false,
+    }],
     [
       '@semantic-release/git',
       {
