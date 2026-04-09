@@ -12,7 +12,7 @@
     "./cli": "./dist/index.js"
   },
   "bin": {
-    "resuml": "./bin/resuml.cjs"
+    "resuml": "./bin/resuml"
   },
   "files": [
     "bin",
@@ -95,6 +95,10 @@
   },
   "license": "ISC",
   "author": "phoinixi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phoinixi/resuml"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
