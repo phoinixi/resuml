@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef } from 'react';
 import type { ResumeSchema } from '../../types/resume';
 import { loadTheme, loadSnapshot, isThemeLoaded, getThemeCapability } from '../services/api.js';
+import { padResume } from '../utils/padResume.js';
 
 export function useTheme(themeName: string) {
   const [html, setHtml] = useState<string | null>(null);
@@ -39,7 +40,7 @@ export function useTheme(themeName: string) {
       const mod = await loadTheme(themeName);
       if (renderId !== renderIdRef.current) return;
 
-      const result = mod.render(resume as unknown as Record<string, unknown>);
+      const result = mod.render(padResume(resume as unknown as Record<string, unknown>));
       const rendered = typeof result === 'string' ? result : await result;
       if (renderId !== renderIdRef.current) return;
 
