@@ -12,6 +12,30 @@ const SAFE_NAME = /^[a-zA-Z0-9._-]+$/;
 
 const CACHE_DIR = path.join(os.tmpdir(), 'resuml-themes');
 
+/**
+ * Try to resolve a theme from the Lambda's pre-installed (host) node_modules.
+ * These themes are listed as npm dependencies and ship with the deployment —
+ * require() is instantaneous, no download or disk usage.
+ * Returns the package root directory if found, null otherwise.
+ */
+function tryHostTheme(pkgName: string): string | null {
+  try {
+    // Resolve the main entry (avoids `exports` restrictions on ./package.json).
+    // Then walk up from the file until we find a package.json — that's the root.
+    let dir = path.dirname(require.resolve(pkgName));
+    while (true) {
+      if (fs.existsSync(path.join(dir, 'package.json'))) {
+        return dir;
+      }
+      const parent = path.dirname(dir);
+      if (parent === dir) return null; // reached fs root without finding package.json
+      dir = parent;
+    }
+  } catch {
+    return null;
+  }
+}
+
 export function toPackageName(theme: string): string {
   if (!SAFE_NAME.test(theme)) {
     throw new Error('Invalid theme name');
@@ -145,8 +169,12 @@ export async function ensureInstalled(themeName: string): Promise<string> {
   fs.mkdirSync(pkgDir, { recursive: true });
   const tarPath = path.join(CACHE_DIR, `${pkgName}.tgz`);
   fs.writeFileSync(tarPath, buf);
-  await tarExtract({ file: tarPath, cwd: pkgDir, strip: 1 });
-  fs.unlinkSync(tarPath);
+  try {
+    await tarExtract({ file: tarPath, cwd: pkgDir, strip: 1 });
+  } finally {
+    // Clean up tarball regardless of success/failure
+    try { fs.unlinkSync(tarPath); } catch { /* already gone */ }
+  }
 
   // Read package.json from extracted tarball
   const pkgJson = JSON.parse(fs.readFileSync(path.join(pkgDir, 'package.json'), 'utf8')) as {
@@ -266,8 +294,12 @@ function padResume(r: Record<string, unknown>): Record<string, unknown> {
 }
 
 export async function renderWithTheme(themeName: string, resume: Record<string, unknown>): Promise<string> {
+  const pkgName = toPackageName(themeName);
   const paddedResume = padResume(resume);
-  const pkgDir = await ensureInstalled(themeName);
+
+  // Fast path: theme pre-installed as an npm dependency in this deployment
+  const hostDir = tryHostTheme(pkgName);
+  const pkgDir = hostDir ?? await ensureInstalled(themeName);
   const render = loadRenderer(pkgDir);
   // Change cwd to theme dir so themes reading files with relative paths work
   const originalCwd = process.cwd();
