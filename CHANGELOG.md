@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/phoinixi/resuml/compare/v1.4.3...v1.4.4) (2026-04-09)
+
+
+### Bug Fixes
+
+* prelink host node_modules before npm install to prevent ENOSPC ([02aedb6](https://github.com/phoinixi/resuml/commit/02aedb6627586e33eba39eb12c91e6b66b9465a3))
+
 ## [1.4.3](https://github.com/phoinixi/resuml/compare/v1.4.2...v1.4.3) (2026-04-09)
 
 
