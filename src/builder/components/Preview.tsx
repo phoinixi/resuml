@@ -6,9 +6,10 @@ interface PreviewProps {
   html: string | null;
   loading: boolean;
   error: string | null;
+  isSnapshot?: boolean;
 }
 
-export function Preview({ html, loading, error }: PreviewProps) {
+export function Preview({ html, loading, error, isSnapshot }: PreviewProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const previousHtmlRef = useRef<string | null>(null);
 
@@ -38,10 +39,17 @@ export function Preview({ html, loading, error }: PreviewProps) {
 
   return (
     <div className="preview-container">
-      {loading && (
+      {loading && !isSnapshot && (
         <div className="preview-loading">
           <div className="spinner" />
           <span>Rendering preview...</span>
+        </div>
+      )}
+
+      {loading && isSnapshot && (
+        <div className="preview-snapshot-badge">
+          <div className="spinner-small" />
+          <span>Loading theme...</span>
         </div>
       )}
 

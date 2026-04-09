@@ -29,7 +29,7 @@ export function App() {
   }, []);
 
   const { yaml, resume, error, setYaml, updateResume } = useResume(DEFAULT_YAML);
-  const { html, loading: themeLoading, themeError, renderResume } = useTheme(themeName);
+  const { html, loading: themeLoading, themeError, isSnapshot, renderResume } = useTheme(themeName);
   const atsResult = useAts(resume);
 
   // Persist state
@@ -142,7 +142,7 @@ export function App() {
         />
 
         <div className="builder-preview" style={isMobile ? { height: `${100 - splitPos}%` } : { width: `${100 - splitPos}%` }}>
-          <Preview html={html} loading={themeLoading} error={themeError} />
+          <Preview html={html} loading={themeLoading} error={themeError} isSnapshot={isSnapshot} />
         </div>
 
         {showAts && (

@@ -5,6 +5,9 @@
     "description": "Stack Overflow theme for JSON Resume — Svelte SSR",
     "version": "2.2.0",
     "browserCompatible": true,
-    "fileSize": 258748
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 258957,
+    "cssSize": 13769
   }
 ]

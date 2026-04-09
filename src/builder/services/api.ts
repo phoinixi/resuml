@@ -1,10 +1,15 @@
+import { workerLoadTheme, workerRender } from './themeWorker.js';
+
 export interface BrowserTheme {
   readonly name: string;
   readonly displayName: string;
   readonly description: string;
   readonly version: string;
   readonly browserCompatible: boolean;
+  readonly hasSnapshot: boolean;
+  readonly hasCss: boolean;
   readonly fileSize: number;
+  readonly cssSize: number;
 }
 
 export interface NpmTheme {
@@ -32,10 +37,7 @@ function getApiBase(): string {
 
 /**
  * Returns the base URL for the bundled theme assets.
- * Resolves relative to docs/app/main.js so it works on any deployment:
- *   localhost  → http://localhost:3000/themes/
- *   Vercel     → https://resuml.vercel.app/themes/
- *   GitHub Pgs → https://phoinixi.github.io/resuml/themes/
+ * Resolves relative to docs/app/main.js so it works on any deployment.
  */
 function getThemesBase(): string {
   try {
@@ -45,21 +47,26 @@ function getThemesBase(): string {
   }
 }
 
-// ── Theme list ──────────────────────────────────────────────────────────
-// Strategy: load manifest.json (fast, lists bundled themes) AND
-// /api/themes (full npm registry list). Merge them, bundled themes first.
+// ── Theme list ──────────────────────────────────────────────────────
 
 let themeListCache: NpmTheme[] | null = null;
+let manifestCache: BrowserTheme[] | null = null;
 let bundledNames: Set<string> | null = null;
 
 async function loadManifest(): Promise<BrowserTheme[]> {
+  if (manifestCache) return manifestCache;
   try {
     const r = await fetch(`${getThemesBase()}manifest.json`);
     if (!r.ok) return [];
-    return (await r.json() as BrowserTheme[]).filter((t) => t.browserCompatible);
+    manifestCache = (await r.json() as BrowserTheme[]);
+    return manifestCache;
   } catch {
     return [];
   }
+}
+
+function getManifestEntry(name: string): BrowserTheme | undefined {
+  return manifestCache?.find((t) => t.name === name);
 }
 
 async function loadNpmThemes(signal?: AbortSignal): Promise<NpmTheme[]> {
@@ -71,16 +78,14 @@ async function loadNpmThemes(signal?: AbortSignal): Promise<NpmTheme[]> {
 export async function fetchThemes(signal?: AbortSignal): Promise<NpmTheme[]> {
   if (themeListCache) return themeListCache;
 
-  // Load both in parallel; manifest is used to mark which are instant
   const [manifest, npmThemes] = await Promise.all([
     loadManifest(),
     loadNpmThemes(signal),
   ]);
 
-  bundledNames = new Set(manifest.map((t) => t.name));
+  bundledNames = new Set(manifest.filter((t) => t.browserCompatible).map((t) => t.name));
   const names = bundledNames;
 
-  // Merge: put bundled themes first (with ⚡ flag implied), rest after
   const bundledFirst = npmThemes.sort((a, b) => {
     const aB = names.has(a.name) ? 0 : 1;
     const bB = names.has(b.name) ? 0 : 1;
@@ -100,32 +105,71 @@ export function prefetchThemes(): void {
   fetchThemes().catch(() => { /* silent */ });
 }
 
-// ── Theme module loading ────────────────────────────────────────────────
-// Strategy: try client-side bundle (instant), fall back to server /api/render.
+// ── Snapshot loading ────────────────────────────────────────────────
 
-const moduleCache = new Map<string, ThemeModule>();
+const snapshotCache = new Map<string, string>();
 
-export function isThemeLoaded(themeName: string): boolean {
-  return moduleCache.has(themeName);
-}
-
-export async function loadTheme(themeName: string): Promise<ThemeModule> {
-  const cached = moduleCache.get(themeName);
+/** Load a pre-rendered snapshot for instant theme preview. */
+export async function loadSnapshot(themeName: string): Promise<string | null> {
+  const cached = snapshotCache.get(themeName);
   if (cached) return cached;
 
-  // Try browser-bundled version first
+  // Check manifest to see if snapshot exists
+  const manifest = await loadManifest();
+  const entry = manifest.find((t) => t.name === themeName);
+  if (!entry?.hasSnapshot) return null;
+
   try {
-    const url = `${getThemesBase()}${themeName}.js`;
-    const mod = await import(url) as ThemeModule;
-    if (typeof mod.render === 'function') {
-      moduleCache.set(themeName, mod);
-      return mod;
-    }
+    const url = `${getThemesBase()}${themeName}.snapshot.html`;
+    const r = await fetch(url);
+    if (!r.ok) return null;
+    const html = await r.text();
+    snapshotCache.set(themeName, html);
+    return html;
   } catch {
-    // not bundled — fall through to server
+    return null;
+  }
+}
+
+// ── Theme module loading ────────────────────────────────────────────
+// Strategy:
+//   1. If snapshot available → show it instantly while loading the render module
+//   2. Load bundled .js in Web Worker (off main thread)
+//   3. Fall back to server /api/render for non-bundled themes
+
+const loadedWorkerThemes = new Set<string>();
+
+/** Whether we already have the theme render module ready (worker or server). */
+export function isThemeLoaded(themeName: string): boolean {
+  return loadedWorkerThemes.has(themeName) || serverThemeCache.has(themeName);
+}
+
+const serverThemeCache = new Map<string, ThemeModule>();
+
+export async function loadTheme(themeName: string): Promise<ThemeModule> {
+  // Check if we already have a worker-loaded theme
+  if (loadedWorkerThemes.has(themeName)) {
+    return { render: (resume) => workerRender(resume as Record<string, unknown>) };
   }
 
-  // Fall back to server render (same API as before)
+  // Check if server fallback is cached
+  const serverCached = serverThemeCache.get(themeName);
+  if (serverCached) return serverCached;
+
+  // Try loading bundled theme in Web Worker
+  const entry = getManifestEntry(themeName);
+  if (entry?.browserCompatible) {
+    try {
+      const url = `${getThemesBase()}${themeName}.js`;
+      await workerLoadTheme(themeName, url);
+      loadedWorkerThemes.add(themeName);
+      return { render: (resume) => workerRender(resume as Record<string, unknown>) };
+    } catch {
+      // Worker load failed — fall through to server
+    }
+  }
+
+  // Fall back to server render
   const serverTheme: ThemeModule = {
     render: async (resume) => {
       const signal = AbortSignal.timeout(30_000);
@@ -143,8 +187,6 @@ export async function loadTheme(themeName: string): Promise<ThemeModule> {
     },
   };
 
-  // Cache so isThemeLoaded() returns true → no spinner on content-only edits
-  moduleCache.set(themeName, serverTheme);
+  serverThemeCache.set(themeName, serverTheme);
   return serverTheme;
 }
-

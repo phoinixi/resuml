@@ -1,12 +1,16 @@
 /**
  * Theme Bundling Script
  *
- * Discovers jsonresume-theme packages from npm, installs them,
- * and bundles each into a browser-compatible ES module.
+ * Bundles jsonresume-theme packages for the browser with:
+ *   - CSS extraction (separate .css files)
+ *   - Build-time snapshots (pre-rendered HTML for instant preview)
+ *   - Per-theme fs shim with embedded assets
  *
  * Output:
- *   docs/themes/{name}.js       — bundled theme module
- *   docs/themes/manifest.json   — theme metadata registry
+ *   docs/themes/{name}.js           — bundled render module
+ *   docs/themes/{name}.css          — extracted CSS (if any)
+ *   docs/themes/{name}.snapshot.html— pre-rendered HTML with sample data
+ *   docs/themes/manifest.json       — theme metadata registry
  *
  * Usage:
  *   node scripts/bundle-themes.js              # Bundle popular themes
@@ -19,8 +23,10 @@ import { resolve, dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import { mkdirSync, writeFileSync, existsSync, readFileSync, readdirSync } from 'fs';
+import { createRequire } from 'module';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const require = createRequire(import.meta.url);
 const THEMES_DIR = resolve(__dirname, '../docs/themes');
 
 // Popular themes that are known to work in the browser
@@ -43,45 +49,83 @@ const POPULAR_THEMES = [
   'compact',
 ];
 
-async function discoverThemes() {
-  const themes = [];
-  let from = 0;
-  const size = 250;
+// Sample resume for generating snapshots
+const SAMPLE_RESUME = {
+  basics: {
+    name: 'Jane Smith',
+    label: 'Senior Software Engineer',
+    email: 'jane@example.com',
+    phone: '+1-555-987-6543',
+    url: 'https://janesmith.dev',
+    summary: 'Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.',
+    location: { city: 'San Francisco', countryCode: 'US', region: 'California' },
+    profiles: [
+      { network: 'LinkedIn', username: 'janesmith', url: 'https://linkedin.com/in/janesmith' },
+      { network: 'GitHub', username: 'janesmith', url: 'https://github.com/janesmith' },
+    ],
+  },
+  work: [
+    {
+      name: 'Tech Corp',
+      position: 'Senior Software Engineer',
+      url: 'https://techcorp.com',
+      startDate: '2020-03-01',
+      summary: 'Lead engineer for the platform team, owning core API infrastructure.',
+      highlights: [
+        'Reduced API latency by 45% through caching and query optimization',
+        'Designed microservices architecture serving 2M daily requests',
+        'Mentored 4 junior engineers through technical growth plans',
+      ],
+    },
+    {
+      name: 'StartupXYZ',
+      position: 'Full Stack Developer',
+      startDate: '2017-06-01',
+      endDate: '2020-02-28',
+      summary: 'Built customer-facing web applications from prototype to production.',
+      highlights: [
+        'Built real-time dashboard used by 15,000+ daily active users',
+        'Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes',
+      ],
+    },
+  ],
+  education: [
+    {
+      institution: 'University of Technology',
+      area: 'Computer Science',
+      studyType: 'Bachelor of Science',
+      startDate: '2013-09-01',
+      endDate: '2017-05-15',
+      score: '3.8',
+    },
+  ],
+  skills: [
+    { name: 'Languages', level: 'Expert', keywords: ['TypeScript', 'JavaScript', 'Python', 'Go'] },
+    { name: 'Frontend', level: 'Expert', keywords: ['React', 'Next.js', 'HTML/CSS', 'Tailwind'] },
+    { name: 'Backend & Cloud', level: 'Advanced', keywords: ['Node.js', 'PostgreSQL', 'AWS', 'Docker'] },
+  ],
+  projects: [
+    {
+      name: 'Open Source CLI Tool',
+      description: 'Developer productivity tool with 2,000+ GitHub stars',
+      url: 'https://github.com/janesmith/cli-tool',
+      startDate: '2022-01-01',
+      highlights: ['Published to npm with 5,000+ weekly downloads'],
+    },
+  ],
+  // Provide empty arrays for sections themes might iterate over
+  volunteer: [],
+  awards: [],
+  certificates: [],
+  publications: [],
+  languages: [],
+  interests: [],
+  references: [],
+};
 
-  console.log('🔍 Discovering themes from npm...');
+// ── Theme file collection ────────────────────────────────────────────
 
-  // npm search API has pagination, fetch up to 1000
-  for (let page = 0; page < 4; page++) {
-    const url = `https://registry.npmjs.org/-/v1/search?text=jsonresume-theme&size=${size}&from=${from}`;
-    const res = await fetch(url);
-    if (!res.ok) break;
-    const data = await res.json();
-
-    for (const pkg of data.objects) {
-      const name = pkg.package.name;
-      if (!name.startsWith('jsonresume-theme-')) continue;
-      const shortName = name.replace('jsonresume-theme-', '');
-
-      // Skip themes with 0 downloads or very old
-      if (pkg.score?.detail?.popularity === 0) continue;
-
-      themes.push({
-        name: shortName,
-        packageName: name,
-        description: pkg.package.description || '',
-        version: pkg.package.version,
-      });
-    }
-
-    if (data.objects.length < size) break;
-    from += size;
-  }
-
-  console.log(`   Found ${themes.length} themes`);
-  return themes;
-}
-
-/** Recursively collect text files from a theme directory for embedding in the fs shim. */
+/** Recursively collect text files from a theme directory for the fs shim. */
 function collectThemeFiles(themeDir) {
   const files = {};
   const dirs = {};
@@ -102,9 +146,9 @@ function collectThemeFiles(themeDir) {
         walk(full, rel);
       } else {
         const ext = (entry.name.split('.').pop() || '').toLowerCase();
-        if (['css', 'hbs', 'html', 'json', 'txt', 'handlebars', 'mustache'].includes(ext)) {
+        if (['css', 'hbs', 'html', 'json', 'txt', 'handlebars', 'mustache', 'template'].includes(ext)) {
           try { files[rel] = readFileSync(full, 'utf-8'); }
-          catch { /* skip unreadable */ }
+          catch { /* skip */ }
         }
       }
     }
@@ -115,53 +159,145 @@ function collectThemeFiles(themeDir) {
   return { files, dirs };
 }
 
-/** Generate an fs shim that embeds the theme's files so readFileSync/readdirSync work at runtime. */
+/** Generate an fs shim that embeds the theme's files. */
 function generateThemeFsShim(themeFiles) {
   const { files, dirs } = themeFiles;
-  return `
-const __files = ${JSON.stringify(files)};
-const __dirs = ${JSON.stringify(dirs)};
+  const lines = [
+    `const __files = ${JSON.stringify(files)};`,
+    `const __dirs = ${JSON.stringify(dirs)};`,
+    '',
+    'function normalizePath(p) {',
+    '  return p.replace(/[\\\\]+/g, "/").replace(/^\\/+/, "");',
+    '}',
+    '',
+    'function matchFile(p) {',
+    '  var clean = normalizePath(p);',
+    '  if (__files[clean] !== undefined) return __files[clean];',
+    '  var keys = Object.keys(__files);',
+    '  for (var i = 0; i < keys.length; i++) {',
+    '    if (clean.endsWith("/" + keys[i]) || clean.endsWith(keys[i])) return __files[keys[i]];',
+    '  }',
+    '  return undefined;',
+    '}',
+    '',
+    'function matchDir(p) {',
+    '  var clean = normalizePath(p);',
+    '  if (__dirs[clean] !== undefined) return __dirs[clean];',
+    '  var keys = Object.keys(__dirs);',
+    '  for (var i = 0; i < keys.length; i++) {',
+    '    if (clean.endsWith("/" + keys[i]) || clean.endsWith(keys[i])) return __dirs[keys[i]];',
+    '  }',
+    '  return undefined;',
+    '}',
+    '',
+    'export var readFileSync = function(p) { var r = matchFile(p); return r !== undefined ? r : ""; };',
+    'export var readdirSync = function(p) { var r = matchDir(p); return r !== undefined ? r : []; };',
+    'export var existsSync = function(p) { return matchFile(p) !== undefined || matchDir(p) !== undefined; };',
+    'export var writeFileSync = function() {};',
+    'export var mkdirSync = function() {};',
+    'export default { readFileSync: readFileSync, readdirSync: readdirSync, existsSync: existsSync, writeFileSync: writeFileSync, mkdirSync: mkdirSync };',
+  ];
+  return lines.join('\n');
+}
 
-function matchFile(path) {
-  const clean = path.replace(/\\/+/g, '/').replace(/^\\/+/, '');
-  if (__files[clean] !== undefined) return __files[clean];
-  for (const key of Object.keys(__files)) {
-    if (clean.endsWith('/' + key) || clean.endsWith(key)) return __files[key];
+// ── CSS extraction ───────────────────────────────────────────────────
+
+/** Extract <style> blocks from rendered HTML and write to a .css file. */
+function extractCss(html, shortName) {
+  const styleRegex = /<style[^>]*>([\s\S]*?)<\/style>/gi;
+  let css = '';
+  let match;
+  while ((match = styleRegex.exec(html)) !== null) {
+    css += match[1] + '\n';
   }
-  return undefined;
-}
-
-function matchDir(path) {
-  const clean = path.replace(/\\/+/g, '/').replace(/^\\/+/, '');
-  if (__dirs[clean] !== undefined) return __dirs[clean];
-  for (const key of Object.keys(__dirs)) {
-    if (clean.endsWith('/' + key) || clean.endsWith(key)) return __dirs[key];
+  if (css.trim()) {
+    writeFileSync(resolve(THEMES_DIR, `${shortName}.css`), css.trim());
+    return true;
   }
-  return undefined;
+  return false;
 }
 
-export const readFileSync = (path, encoding) => {
-  const r = matchFile(path);
-  return r !== undefined ? r : '';
-};
+// ── Snapshot generation ──────────────────────────────────────────────
 
-export const readdirSync = (path) => {
-  const r = matchDir(path);
-  return r !== undefined ? r : [];
-};
+/** Render a theme with sample data in Node.js and save as snapshot. */
+function generateSnapshot(shortName, packageName) {
+  try {
+    // Clear require cache to get a fresh instance
+    const pkgPath = require.resolve(packageName);
+    delete require.cache[pkgPath];
 
-export const existsSync = (path) => {
-  return matchFile(path) !== undefined || matchDir(path) !== undefined;
-};
+    const theme = require(packageName);
+    const render = theme.render || (theme.default && theme.default.render);
+    if (typeof render !== 'function') return null;
 
-export default { readFileSync, readdirSync, existsSync };
-`;
+    const result = render(SAMPLE_RESUME);
+    // render() may return a string or a Promise
+    if (typeof result === 'string') {
+      writeFileSync(resolve(THEMES_DIR, `${shortName}.snapshot.html`), result);
+      extractCss(result, shortName);
+      return result;
+    }
+    // If it's a promise, we need to await it
+    if (result && typeof result.then === 'function') {
+      return result.then((html) => {
+        if (typeof html === 'string') {
+          writeFileSync(resolve(THEMES_DIR, `${shortName}.snapshot.html`), html);
+          extractCss(html, shortName);
+          return html;
+        }
+        return null;
+      }).catch(() => null);
+    }
+    return null;
+  } catch (e) {
+    console.log(`    (snapshot failed: ${e.message})`);
+    return null;
+  }
 }
+
+// ── npm discovery ────────────────────────────────────────────────────
+
+async function discoverThemes() {
+  const themes = [];
+  let from = 0;
+  const size = 250;
+
+  console.log('🔍 Discovering themes from npm...');
+
+  for (let page = 0; page < 4; page++) {
+    const url = `https://registry.npmjs.org/-/v1/search?text=jsonresume-theme&size=${size}&from=${from}`;
+    const res = await fetch(url);
+    if (!res.ok) break;
+    const data = await res.json();
+
+    for (const pkg of data.objects) {
+      const name = pkg.package.name;
+      if (!name.startsWith('jsonresume-theme-')) continue;
+      const shortName = name.replace('jsonresume-theme-', '');
+      if (pkg.score?.detail?.popularity === 0) continue;
+
+      themes.push({
+        name: shortName,
+        packageName: name,
+        description: pkg.package.description || '',
+        version: pkg.package.version,
+      });
+    }
+
+    if (data.objects.length < size) break;
+    from += size;
+  }
+
+  console.log(`   Found ${themes.length} themes`);
+  return themes;
+}
+
+// ── esbuild bundling ─────────────────────────────────────────────────
 
 async function bundleTheme(shortName, packageName, shimsDir) {
-  // Generate a theme-specific fs shim with embedded file contents so that
-  // readFileSync / readdirSync return real CSS, templates, and partials at runtime.
   const themeDir = resolve(__dirname, `../node_modules/${packageName}`);
+
+  // Generate per-theme fs shim with embedded files
   const themeFiles = collectThemeFiles(themeDir);
   writeFileSync(resolve(shimsDir, 'fs.js'), generateThemeFsShim(themeFiles));
 
@@ -183,12 +319,7 @@ async function bundleTheme(shortName, packageName, shimsDir) {
       format: 'esm',
       target: 'es2022',
       platform: 'browser',
-      // Use 'require' condition so packages like underscore/lodash resolve to their
-      // CJS/UMD builds (which export a callable function) instead of their ESM builds
-      // (which export a namespace object that breaks _(collection) call syntax).
       conditions: ['browser', 'require', 'default'],
-      // Prefer the CJS 'main' field over the ESM 'module' field for packages
-      // that don't use the exports map (older packages).
       mainFields: ['browser', 'main'],
       outfile: resolve(THEMES_DIR, `${shortName}.js`),
       define: {
@@ -200,26 +331,27 @@ async function bundleTheme(shortName, packageName, shimsDir) {
         'process.platform': '"browser"',
         'process.version': '"v18.0.0"',
       },
-      // Polyfill Node.js built-ins as no-ops for browser
       alias: {
-        'path': resolve(__dirname, 'shims/path.js'),
-        'fs': resolve(__dirname, 'shims/fs.js'),
-        'url': resolve(__dirname, 'shims/url.js'),
-        'node:url': resolve(__dirname, 'shims/url.js'),
-        'node:crypto': resolve(__dirname, 'shims/crypto.js'),
-        'assert': resolve(__dirname, 'shims/assert.js'),
+        'path': resolve(shimsDir, 'path.js'),
+        'fs': resolve(shimsDir, 'fs.js'),
+        'url': resolve(shimsDir, 'url.js'),
+        'node:url': resolve(shimsDir, 'url.js'),
+        'node:crypto': resolve(shimsDir, 'crypto.js'),
+        'assert': resolve(shimsDir, 'assert.js'),
       },
       logLevel: 'silent',
     });
 
-    // Clean up entry file
     execSync(`rm -f "${entryFile}"`);
     return true;
   } catch (e) {
+    console.log(`    (bundle error: ${e.message})`);
     execSync(`rm -f "${entryFile}"`);
     return false;
   }
 }
+
+// ── Main ─────────────────────────────────────────────────────────────
 
 async function main() {
   const args = process.argv.slice(2);
@@ -232,15 +364,17 @@ async function main() {
   // Create shims directory
   const shimsDir = resolve(__dirname, 'shims');
   mkdirSync(shimsDir, { recursive: true });
+
   writeFileSync(resolve(shimsDir, 'path.js'), `
     export const join = (...parts) => parts.join('/');
     export const resolve = (...parts) => parts.join('/');
     export const dirname = (p) => p.split('/').slice(0, -1).join('/');
     export const basename = (p) => p.split('/').pop();
     export const extname = (p) => { const m = p.match(/\\.[^.]+$/); return m ? m[0] : ''; };
-    export default { join, resolve, dirname, basename, extname };
+    export const sep = '/';
+    export default { join, resolve, dirname, basename, extname, sep };
   `);
-  // fs shim is generated per-theme in bundleTheme() with embedded file contents
+  // fs shim is generated per-theme in bundleTheme()
   writeFileSync(resolve(shimsDir, 'url.js'), `
     export const URL = globalThis.URL;
     export const URLSearchParams = globalThis.URLSearchParams;
@@ -304,7 +438,7 @@ async function main() {
       continue;
     }
 
-    // Try to get description from installed package
+    // Read package metadata
     try {
       const pkgPath = resolve(__dirname, `../node_modules/${theme.packageName}/package.json`);
       if (existsSync(pkgPath)) {
@@ -314,31 +448,60 @@ async function main() {
       }
     } catch {}
 
-    // Bundle it
+    // Step 1: Generate snapshot (pre-render in Node.js)
+    let hasSnapshot = false;
+    let hasCss = false;
+    const snapshotResult = generateSnapshot(theme.name, theme.packageName);
+    // Handle promise if async render
+    if (snapshotResult && typeof snapshotResult.then === 'function') {
+      const html = await snapshotResult;
+      hasSnapshot = !!html;
+      hasCss = existsSync(resolve(THEMES_DIR, `${theme.name}.css`));
+    } else {
+      hasSnapshot = !!snapshotResult;
+      hasCss = existsSync(resolve(THEMES_DIR, `${theme.name}.css`));
+    }
+
+    // Step 2: Bundle for browser
     const success = await bundleTheme(theme.name, theme.packageName, shimsDir);
 
     if (success) {
       const outFile = resolve(THEMES_DIR, `${theme.name}.js`);
       const stat = existsSync(outFile) ? readFileSync(outFile).length : 0;
+      const cssFile = resolve(THEMES_DIR, `${theme.name}.css`);
+      const cssSize = hasCss && existsSync(cssFile) ? readFileSync(cssFile).length : 0;
+
       manifest.push({
         name: theme.name,
         displayName: theme.name.charAt(0).toUpperCase() + theme.name.slice(1).replace(/-/g, ' '),
         description: theme.description,
         version: theme.version || '',
         browserCompatible: true,
+        hasSnapshot,
+        hasCss,
         fileSize: stat,
+        cssSize,
       });
-      console.log(`✅ (${(stat / 1024).toFixed(0)}KB)`);
+
+      const parts = [`✅ (${(stat / 1024).toFixed(0)}KB`];
+      if (hasCss) parts.push(`css:${(cssSize / 1024).toFixed(0)}KB`);
+      if (hasSnapshot) parts.push('snapshot');
+      console.log(parts.join(', ') + ')');
     } else {
+      // Bundle failed — still useful if we have a snapshot (server fallback)
       manifest.push({
         name: theme.name,
         displayName: theme.name.charAt(0).toUpperCase() + theme.name.slice(1).replace(/-/g, ' '),
         description: theme.description,
         version: theme.version || '',
         browserCompatible: false,
+        hasSnapshot,
+        hasCss: false,
         fileSize: 0,
+        cssSize: 0,
       });
-      console.log('⚠️  browser incompatible');
+      const note = hasSnapshot ? '⚠️  browser incompatible (has snapshot)' : '⚠️  browser incompatible';
+      console.log(note);
     }
   }
 
@@ -346,7 +509,8 @@ async function main() {
   writeFileSync(resolve(THEMES_DIR, 'manifest.json'), JSON.stringify(manifest, null, 2));
 
   const successful = manifest.filter(t => t.browserCompatible).length;
-  console.log(`\n✅ Done! ${successful}/${manifest.length} themes bundled for the browser`);
+  const snapshots = manifest.filter(t => t.hasSnapshot).length;
+  console.log(`\n✅ Done! ${successful}/${manifest.length} themes bundled, ${snapshots} snapshots generated`);
   console.log(`📁 Output: docs/themes/`);
 
   // Clean up shims
