@@ -1,3 +1,10 @@
+## [1.7.4](https://github.com/phoinixi/resuml/compare/v1.7.3...v1.7.4) (2026-04-10)
+
+
+### Bug Fixes
+
+* add process/global polyfill to theme worker ([c3516f1](https://github.com/phoinixi/resuml/commit/c3516f1b0ead9350d3e708d5902c96585826ad25))
+
 ## [1.7.3](https://github.com/phoinixi/resuml/compare/v1.7.2...v1.7.3) (2026-04-09)
 
 
