@@ -3,6 +3,18 @@ import type { ResumeSchema } from '../../types/resume';
 import { tryLoadWorkerTheme, renderInWorker, loadSnapshot, isThemeLoaded } from '../services/api.js';
 import { padResume } from '../utils/padResume.js';
 
+/**
+ * Fix HTML-escaped <p> tags that appear as visible text in bundled themes.
+ * Caused by Handlebars escaping markdown-it output when SafeString fails
+ * across module boundaries in esbuild bundles.
+ */
+function cleanRenderedHtml(html: string): string {
+  return html
+    .replace(/&lt;p&gt;/g, '')
+    .replace(/&lt;\/p&gt;/g, '')
+    .replace(/&lt;br\s*\/?&gt;/g, '<br>');
+}
+
 export function useTheme(themeName: string) {
   const [html, setHtml] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -32,7 +44,7 @@ export function useTheme(themeName: string) {
       try {
         const rendered = await renderInWorker(padResume(resume as unknown as Record<string, unknown>));
         if (stale()) return;
-        setHtml(rendered);
+        setHtml(cleanRenderedHtml(rendered));
         setIsSnapshot(false);
         setLoading(false);
         return;

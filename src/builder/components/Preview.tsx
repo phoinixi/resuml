@@ -13,6 +13,11 @@ export function Preview({ html, loading, error, isSnapshot }: PreviewProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const previousHtmlRef = useRef<string | null>(null);
 
+  // Show loading spinner only when there's no content to display yet
+  const showSpinner = loading && !html;
+  const showSnapshotBadge = loading && isSnapshot && !!html;
+  const showIframe = !!html && !showSpinner;
+
   useEffect(() => {
     const iframe = iframeRef.current;
     if (!iframe) return;
@@ -39,14 +44,14 @@ export function Preview({ html, loading, error, isSnapshot }: PreviewProps) {
 
   return (
     <div className="preview-container">
-      {loading && !isSnapshot && (
+      {showSpinner && (
         <div className="preview-loading">
           <div className="spinner" />
           <span>Rendering preview...</span>
         </div>
       )}
 
-      {loading && isSnapshot && (
+      {showSnapshotBadge && (
         <div className="preview-snapshot-badge">
           <div className="spinner-small" />
           <span>Loading theme...</span>
@@ -71,7 +76,7 @@ export function Preview({ html, loading, error, isSnapshot }: PreviewProps) {
         className="preview-iframe"
         sandbox="allow-same-origin allow-scripts"
         title="Resume preview"
-        style={{ display: html ? 'block' : 'none' }}
+        style={{ display: showIframe ? 'block' : 'none' }}
       />
     </div>
   );
