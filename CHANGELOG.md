@@ -1,3 +1,10 @@
+## [1.7.6](https://github.com/phoinixi/resuml/compare/v1.7.5...v1.7.6) (2026-04-10)
+
+
+### Bug Fixes
+
+* strip escaped p tags from rendered HTML, fix spinner overlay ([c78e05c](https://github.com/phoinixi/resuml/commit/c78e05c4226e68214e7f007ebcc9b9c72f3138c5))
+
 ## [1.7.5](https://github.com/phoinixi/resuml/compare/v1.7.4...v1.7.5) (2026-04-10)
 
 
