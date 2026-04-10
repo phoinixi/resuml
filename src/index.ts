@@ -11,6 +11,7 @@ import { devAction } from './commands/dev';
 import { initAction } from './commands/init';
 import { pdfAction } from './commands/pdf';
 import { themesAction } from './commands/themes';
+import { mcpAction } from './commands/mcp';
 
 // Get the directory name equivalent to __dirname in CommonJS
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
@@ -105,6 +106,12 @@ program
   .description('List available JSON Resume themes and install them.')
   .option('--install <name>', 'Install a theme by name (e.g., stackoverflow, elegant).')
   .action(themesAction);
+
+// MCP Server Command
+program
+  .command('mcp')
+  .description('Start MCP server for AI agent integration (stdio transport).')
+  .action(mcpAction);
 
 // Parse Arguments - only execute when not in test environment
 if (process.env['NODE_ENV'] !== 'test') {

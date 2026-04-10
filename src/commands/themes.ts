@@ -1,45 +1,9 @@
 import chalk from 'chalk';
 import { execSync } from 'child_process';
-import { createRequire } from 'module';
+import { KNOWN_THEMES, isThemeInstalled, getInstalledVersion } from '../utils/themeInfo';
 
 interface ThemesCommandOptions {
   install?: string;
-}
-
-// Popular/known compatible jsonresume themes
-const KNOWN_THEMES = [
-  { name: 'stackoverflow', pkg: 'jsonresume-theme-stackoverflow', description: 'Stack Overflow inspired theme' },
-  { name: 'elegant', pkg: 'jsonresume-theme-elegant', description: 'Elegant and professional' },
-  { name: 'react', pkg: 'jsonresume-theme-react', description: 'Built with React components' },
-  { name: 'even', pkg: 'jsonresume-theme-even', description: 'Clean and minimal' },
-  { name: 'kendall', pkg: 'jsonresume-theme-kendall', description: 'Simple and clean layout' },
-  { name: 'macchiato', pkg: 'jsonresume-theme-macchiato', description: 'Beautiful and modern' },
-  { name: 'flat', pkg: 'jsonresume-theme-flat', description: 'Flat design theme' },
-  { name: 'class', pkg: 'jsonresume-theme-class', description: 'Classic professional look' },
-  { name: 'short', pkg: 'jsonresume-theme-short', description: 'Compact single-page resume' },
-  { name: 'spartan', pkg: 'jsonresume-theme-spartan', description: 'Minimalist Spartan design' },
-  { name: 'paper', pkg: 'jsonresume-theme-paper', description: 'Paper-like clean design' },
-  { name: 'onepage', pkg: 'jsonresume-theme-onepage', description: 'One page resume layout' },
-];
-
-function isThemeInstalled(pkg: string): boolean {
-  try {
-    const require = createRequire(process.cwd() + '/');
-    require.resolve(pkg);
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-function getInstalledVersion(pkg: string): string | null {
-  try {
-    const require = createRequire(process.cwd() + '/');
-    const pkgJson = require(`${pkg}/package.json`) as { version?: string };
-    return pkgJson.version ?? null;
-  } catch {
-    return null;
-  }
 }
 
 function listThemes(): void {
