@@ -4,17 +4,17 @@ import { tryLoadWorkerTheme, renderInWorker, loadSnapshot, isThemeLoaded } from 
 import { padResume } from '../utils/padResume.js';
 
 /**
- * Clean up rendering artifacts from themes that double-escape HTML through
- * markdown-it + Handlebars helpers. Converts escaped HTML entities back to
- * real HTML tags for the common tags themes produce.
+ * Decode HTML entities that themes double-escape through markdown-it +
+ * Handlebars. The output goes into a sandboxed iframe so full decoding is safe.
  */
 function cleanRenderedHtml(html: string): string {
   return html
-    .replace(/&lt;(\/?(?:p|br|em|strong|a|ul|ol|li|code|pre|blockquote|h[1-6])(?:\s[^&]*)?)&gt;/gi, '<$1>')
-    .replace(/&lt;(a\s+href=&quot;[^&]*&quot;)&gt;/gi, (_m, inner: string) =>
-      '<' + inner.replace(/&quot;/g, '"') + '>',
-    )
-    .replace(/&amp;/g, '&');
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x27;/g, "'");
 }
 
 export function useTheme(themeName: string) {
