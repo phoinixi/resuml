@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef } from 'react';
 import type { ResumeSchema } from '../../types/resume';
-import { loadTheme, loadSnapshot, isThemeLoaded, getThemeCapability } from '../services/api.js';
+import { tryLoadWorkerTheme, renderInWorker, loadSnapshot, isThemeLoaded } from '../services/api.js';
 import { padResume } from '../utils/padResume.js';
 
 export function useTheme(themeName: string) {
@@ -15,47 +15,48 @@ export function useTheme(themeName: string) {
     const renderId = ++renderIdRef.current;
     const isThemeSwitch = prevThemeRef.current !== themeName;
     prevThemeRef.current = themeName;
+    const stale = () => renderId !== renderIdRef.current;
 
     setThemeError(null);
 
-    // On theme switch: show snapshot instantly while loading the real render module
-    if (isThemeSwitch) {
-      if (!isThemeLoaded(themeName)) {
-        setLoading(true);
+    // Show loading spinner only on first load of a new theme
+    if (isThemeSwitch && !isThemeLoaded(themeName)) {
+      setLoading(true);
+    }
 
-        // Try to show snapshot immediately (non-blocking)
-        loadSnapshot(themeName).then((snapshot) => {
-          if (renderId !== renderIdRef.current) return;
-          if (snapshot) {
-            setHtml(snapshot);
-            setIsSnapshot(true);
-          } else {
-            setHtml(null);
-          }
-        }).catch(() => { /* ignore */ });
+    // Step 1: Try the Worker
+    const workerReady = await tryLoadWorkerTheme(themeName);
+    if (stale()) return;
+
+    if (workerReady) {
+      try {
+        const rendered = await renderInWorker(padResume(resume as unknown as Record<string, unknown>));
+        if (stale()) return;
+        setHtml(rendered);
+        setIsSnapshot(false);
+        setLoading(false);
+        return;
+      } catch {
+        // Worker render failed — fall through to snapshot
       }
     }
 
-    try {
-      const mod = await loadTheme(themeName);
-      if (renderId !== renderIdRef.current) return;
+    // Step 2: Show snapshot
+    const snapshot = await loadSnapshot(themeName);
+    if (stale()) return;
 
-      const result = mod.render(padResume(resume as unknown as Record<string, unknown>));
-      const rendered = typeof result === 'string' ? result : await result;
-      if (renderId !== renderIdRef.current) return;
-
-      setHtml(rendered);
-      // For snapshot-only themes, keep the snapshot indicator permanently
-      const capability = getThemeCapability(themeName);
-      setIsSnapshot(capability === 'snapshot-only');
+    if (snapshot) {
+      setHtml(snapshot);
+      setIsSnapshot(true);
       setLoading(false);
-    } catch (e: unknown) {
-      if (renderId !== renderIdRef.current) return;
-      if (isThemeSwitch) setHtml(null);
-      setIsSnapshot(false);
-      setThemeError(e instanceof Error ? e.message : 'Failed to render theme');
-      setLoading(false);
+      return;
     }
+
+    // Step 3: Nothing works
+    setHtml(null);
+    setIsSnapshot(false);
+    setThemeError(`Theme "${themeName}" is not available`);
+    setLoading(false);
   }, [themeName]);
 
   return { html, loading, themeError, isSnapshot, renderResume };
