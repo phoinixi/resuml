@@ -1,3 +1,10 @@
+## [1.8.3](https://github.com/phoinixi/resuml/compare/v1.8.2...v1.8.3) (2026-04-10)
+
+
+### Bug Fixes
+
+* decode all HTML entities in rendered theme output ([eb67c68](https://github.com/phoinixi/resuml/commit/eb67c681d39e3e778d33d87803a53ec31c272b5f)), closes [#39](https://github.com/phoinixi/resuml/issues/39)
+
 ## [1.8.2](https://github.com/phoinixi/resuml/compare/v1.8.1...v1.8.2) (2026-04-10)
 
 
