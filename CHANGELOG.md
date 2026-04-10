@@ -1,3 +1,10 @@
+## [1.7.5](https://github.com/phoinixi/resuml/compare/v1.7.4...v1.7.5) (2026-04-10)
+
+
+### Bug Fixes
+
+* remove server fallback, simplify theme loading to sequential flow ([fe34cc6](https://github.com/phoinixi/resuml/commit/fe34cc682ddffa298b53000596e93de7ef89cc8f))
+
 ## [1.7.4](https://github.com/phoinixi/resuml/compare/v1.7.3...v1.7.4) (2026-04-10)
 
 
