@@ -22,6 +22,29 @@ function getWorker(): Worker {
   // Build the worker from the source inline — avoids needing a separate bundle step.
   // The real theme-render logic runs via dynamic import() inside the worker.
   const workerCode = `
+    // Polyfill process for theme bundles that reference it at runtime
+    if (typeof globalThis.process === 'undefined') {
+      globalThis.process = {
+        env: { NODE_ENV: 'production' },
+        browser: true,
+        platform: 'browser',
+        version: 'v20.0.0',
+        versions: {},
+        stdout: { write: function() {} },
+        stderr: { write: function() {} },
+        cwd: function() { return '/'; },
+        chdir: function() {},
+        nextTick: function(fn) { Promise.resolve().then(fn); },
+        argv: [],
+        pid: 1,
+        title: 'browser',
+      };
+    }
+    // Polyfill global for packages that expect it
+    if (typeof globalThis.global === 'undefined') {
+      globalThis.global = globalThis;
+    }
+
     let currentTheme = null;
 
     self.onmessage = async (e) => {
