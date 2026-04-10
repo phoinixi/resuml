@@ -4,12 +4,13 @@ import { tryLoadWorkerTheme, renderInWorker, loadSnapshot, isThemeLoaded } from 
 import { padResume } from '../utils/padResume.js';
 
 /**
- * Fix HTML-escaped <p> tags that appear as visible text in bundled themes.
- * Caused by Handlebars escaping markdown-it output when SafeString fails
- * across module boundaries in esbuild bundles.
+ * Clean up rendering artifacts from themes that double-wrap text through
+ * markdown-it (which adds <p> tags) and then Handlebars helpers (which add
+ * more <p> tags or HTML-escape the existing ones).
  */
 function cleanRenderedHtml(html: string): string {
   return html
+    // Strip HTML-escaped <p> tags (appear as visible "&lt;p&gt;" text)
     .replace(/&lt;p&gt;/g, '')
     .replace(/&lt;\/p&gt;/g, '')
     .replace(/&lt;br\s*\/?&gt;/g, '<br>');
@@ -58,7 +59,7 @@ export function useTheme(themeName: string) {
     if (stale()) return;
 
     if (snapshot) {
-      setHtml(snapshot);
+      setHtml(cleanRenderedHtml(snapshot));
       setIsSnapshot(true);
       setLoading(false);
       return;
