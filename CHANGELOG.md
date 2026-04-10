@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/phoinixi/resuml/compare/v1.8.0...v1.8.1) (2026-04-10)
+
+
+### Bug Fixes
+
+* apply HTML cleanup to snapshots too, not just worker output ([48cfb0b](https://github.com/phoinixi/resuml/commit/48cfb0b44bcf13cab00ba0bcefcc2d7f507b140c))
+
 # [1.8.0](https://github.com/phoinixi/resuml/compare/v1.7.6...v1.8.0) (2026-04-10)
 
 
