@@ -1,3 +1,10 @@
+## [1.8.2](https://github.com/phoinixi/resuml/compare/v1.8.1...v1.8.2) (2026-04-10)
+
+
+### Bug Fixes
+
+* decode escaped HTML entities, not just strip p tag wrappers ([3466a37](https://github.com/phoinixi/resuml/commit/3466a37e92af0e72752f128d236e15ecb4bd5470))
+
 ## [1.8.1](https://github.com/phoinixi/resuml/compare/v1.8.0...v1.8.1) (2026-04-10)
 
 
