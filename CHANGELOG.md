@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/phoinixi/resuml/compare/v1.7.6...v1.8.0) (2026-04-10)
+
+
+### Features
+
+* add MCP server for AI agent resume generation ([29f5499](https://github.com/phoinixi/resuml/commit/29f549937a86df5c4e8e0537662100c8348058f3))
+
 ## [1.7.6](https://github.com/phoinixi/resuml/compare/v1.7.5...v1.7.6) (2026-04-10)
 
 
