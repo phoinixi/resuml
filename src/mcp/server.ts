@@ -521,7 +521,7 @@ ${resumeYaml}
     },
     async (args) => {
       const { yaml, theme } = args;
-      const locale = args['locale'] as string | undefined;
+      const locale = args['locale'];
       suppressStdout();
       try {
         const resume = await processResumeData([yaml]);
@@ -584,8 +584,8 @@ ${resumeYaml}
     },
     async (args) => {
       const { yaml, theme, format } = args;
-      const locale = args['locale'] as string | undefined;
-      const margin = args['margin'] as string | undefined;
+      const locale = args['locale'];
+      const margin = args['margin'];
       suppressStdout();
       try {
         const resume = await processResumeData([yaml]);
