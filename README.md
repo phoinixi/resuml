@@ -301,6 +301,75 @@ console.log(`Matched keywords: ${jdResult.keywords?.matched.join(', ')}`);
 
 See the CLI and API for more details.
 
+## AI Agent Integration (MCP)
+
+Resuml includes a built-in [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server, making it the first resume tool with native AI agent support. Use it with Claude, GitHub Copilot, Cursor, or any MCP-compatible client.
+
+### Setup
+
+Add to your Claude Desktop or MCP client config:
+
+```json
+{
+  "mcpServers": {
+    "resuml": {
+      "command": "npx",
+      "args": ["resuml", "mcp"]
+    }
+  }
+}
+```
+
+Or run directly:
+
+```bash
+resuml mcp
+```
+
+### Available Tools
+
+| Tool | Purpose |
+|------|---------|
+| `resuml_init_resume` | Generate a starter YAML template |
+| `resuml_validate` | Validate resume YAML against JSON Resume schema |
+| `resuml_ats_check` | ATS analysis + job description keyword matching |
+| `resuml_render` | Render resume to HTML using a theme |
+| `resuml_list_themes` | List available themes and install status |
+| `resuml_export_pdf` | Export resume as PDF (requires Playwright) |
+
+### Resources
+
+The MCP server exposes structured data agents can read:
+
+| Resource | URI | Description |
+|----------|-----|-------------|
+| JSON Resume Schema | `resuml://schema/json-resume` | Full schema reference with all sections and field types |
+| ATS Scoring Rubric | `resuml://docs/ats-scoring` | Scoring system, checks performed, and optimization tips |
+| Theme Catalog | `resuml://themes/catalog` | Available themes with descriptions and install status |
+
+### Prompts
+
+Pre-built workflows for common tasks:
+
+| Prompt | Description |
+|--------|-------------|
+| `tailor-resume-to-jd` | Generate a tailored resume optimized for a specific job description |
+| `optimize-ats-score` | Analyze and improve an existing resume to maximize ATS score |
+| `review-resume` | Comprehensive review with ATS analysis and improvement suggestions |
+
+### Example Workflow
+
+Ask your AI assistant:
+
+> "Use the tailor-resume-to-jd prompt to create a resume for this job posting: [paste JD]. My name is Jane Smith, jane@example.com. I have 5 years of experience in TypeScript and React."
+
+The agent will:
+1. Generate tailored resume YAML matching the job description keywords
+2. Validate it against the JSON Resume schema
+3. Run ATS analysis targeting score ≥ 75
+4. Iterate until the score meets the target
+5. Render the final result with a professional theme
+
 ## Troubleshooting
 
 ### Common Issues

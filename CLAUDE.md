@@ -24,9 +24,25 @@ resuml exposes an MCP server for AI agent integration. Add to your Claude Code c
 | `resuml_init_resume` | Generate a starter YAML template |
 | `resuml_validate` | Validate resume YAML against JSON Resume schema |
 | `resuml_ats_check` | ATS analysis + job description keyword matching |
-| `resuml_render` | Render resume to HTML using a theme |
+| `resuml_render` | Render resume to HTML using a theme (supports `locale` param) |
 | `resuml_list_themes` | List available themes and install status |
-| `resuml_export_pdf` | Export resume as PDF (requires Playwright) |
+| `resuml_export_pdf` | Export resume as PDF (supports `margin` and `locale` params) |
+
+### Available Resources
+
+| Resource | URI | Description |
+|----------|-----|-------------|
+| JSON Resume Schema | `resuml://schema/json-resume` | Full schema reference with sections, field types, and formatting rules |
+| ATS Scoring Rubric | `resuml://docs/ats-scoring` | Scoring system, all checks performed, weight system, and optimization tips |
+| Theme Catalog | `resuml://themes/catalog` | Available themes with descriptions and installation status |
+
+### Available Prompts
+
+| Prompt | Description |
+|--------|-------------|
+| `tailor-resume-to-jd` | Generate a tailored resume optimized for a specific job description |
+| `optimize-ats-score` | Analyze and improve an existing resume to maximize ATS score |
+| `review-resume` | Comprehensive review with ATS analysis and improvement suggestions |
 
 ## Workflow: Generate a Tailored Resume from a Job Description
 
