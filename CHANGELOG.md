@@ -1,3 +1,15 @@
+# [1.9.0](https://github.com/phoinixi/resuml/compare/v1.8.3...v1.9.0) (2026-04-12)
+
+
+### Bug Fixes
+
+* **mcp:** remove unnecessary type assertions ([022ea41](https://github.com/phoinixi/resuml/commit/022ea41f4fea0dc92dcdd6080fa865dd1d12f0f8))
+
+
+### Features
+
+* **mcp:** add resources, prompts, and locale/margin support ([08f0098](https://github.com/phoinixi/resuml/commit/08f00981d8dac28ac35170b305b78a5b2a4397c6))
+
 ## [1.8.3](https://github.com/phoinixi/resuml/compare/v1.8.2...v1.8.3) (2026-04-10)
 
 
