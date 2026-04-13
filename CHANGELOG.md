@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/phoinixi/resuml/compare/v1.10.0...v1.11.0) (2026-04-13)
+
+
+### Features
+
+* add JD matching to editor, fitAssessment to ATS, fix default resume score ([559066e](https://github.com/phoinixi/resuml/commit/559066e5e3a389abd08d00ebd90ebe5b23b87657))
+
 # [1.10.0](https://github.com/phoinixi/resuml/compare/v1.9.1...v1.10.0) (2026-04-13)
 
 
