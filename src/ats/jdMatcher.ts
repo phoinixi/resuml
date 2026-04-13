@@ -3,6 +3,25 @@ import type { AtsKeywordMatch } from './types';
 import { getLanguageData } from './i18n/index';
 
 /**
+ * Pre-process text to remove URLs, email addresses, and other non-content noise.
+ */
+function stripNoise(text: string): string {
+  return text
+    // Remove URLs (http(s)://..., www.xxx.com, etc.)
+    .replace(/https?:\/\/[^\s]+/gi, ' ')
+    .replace(/www\.[^\s]+/gi, ' ')
+    // Remove email addresses
+    .replace(/[\w.+-]+@[\w.-]+\.[a-z]{2,}/gi, ' ')
+    // Remove standalone paths/slugs (e.g. /path/to/thing)
+    .replace(/(?:^|\s)\/[\w/.-]+/g, ' ')
+    // Remove camelCase schema-like identifiers (e.g. startDate, endDate)
+    .replace(/\b[a-z]+[A-Z][a-zA-Z]*\b/g, (match) => {
+      // Split camelCase into separate words
+      return match.replace(/([a-z])([A-Z])/g, '$1 $2');
+    });
+}
+
+/**
  * Tokenize text into normalized words, removing stop words and short tokens.
  */
 function tokenize(text: string, stopWords: Set<string>): string[] {
@@ -10,7 +29,15 @@ function tokenize(text: string, stopWords: Set<string>): string[] {
     .toLowerCase()
     .replace(/[^a-zA-Z0-9äöüßÄÖÜàáâãéèêëíìîïóòôõúùûüñç\s/+-]/g, ' ')
     .split(/\s+/)
-    .filter((word) => word.length > 2 && !stopWords.has(word));
+    .filter((word) => {
+      if (word.length <= 2) return false;
+      if (stopWords.has(word)) return false;
+      // Filter URL fragments and domain-like tokens
+      if (word.startsWith('//') || word.startsWith('http')) return false;
+      if (/^\d+$/.test(word)) return false; // pure numbers
+      if (/^[/+-]+$/.test(word)) return false; // pure punctuation
+      return true;
+    });
 }
 
 /**
@@ -210,19 +237,28 @@ function extractKeywords(text: string, language: string, maxKeywords: number = 3
   const langData = getLanguageData(language);
   const stopWords = new Set(langData.stopWords);
 
+  // Step 0: Pre-process text to strip URLs, emails, and other noise
+  const cleanText = stripNoise(text);
+
   // Step 1: Extract compound terms (these bypass TF ranking)
-  const compoundTerms = extractCompoundTerms(text);
+  const compoundTerms = extractCompoundTerms(cleanText);
 
   // Step 2: Detect brand/company/product names to exclude
-  const brandNames = extractBrandNames(text);
+  const brandNames = extractBrandNames(text); // use original text for brand detection (needs uppercase)
 
   // Step 3: Section-aware tokenization
-  const { requirementText, otherText } = splitJdSections(text);
-  const reqTokens = tokenize(requirementText, stopWords).filter((t) => !brandNames.has(t));
-  const otherTokens = tokenize(otherText, stopWords).filter((t) => !brandNames.has(t));
+  // Only use tokens from requirement sections; if no requirements detected, use everything
+  const { requirementText } = splitJdSections(cleanText);
+  const hasRequirementSections = requirementText.trim().length > 0;
 
-  // Boost requirement tokens (count them 3x)
-  const allTokens = [...reqTokens, ...reqTokens, ...reqTokens, ...otherTokens];
+  let allTokens: string[];
+  if (hasRequirementSections) {
+    // Requirement section tokens only — company description/about sections are noise
+    allTokens = tokenize(requirementText, stopWords).filter((t) => !brandNames.has(t));
+  } else {
+    // No detected sections — use all text (small JDs often lack headers)
+    allTokens = tokenize(cleanText, stopWords).filter((t) => !brandNames.has(t));
+  }
   const stemmed = allTokens.map((t) => simpleStem(t, language));
   const tf = buildTfMap(stemmed);
 
@@ -245,7 +281,7 @@ function extractKeywords(text: string, language: string, maxKeywords: number = 3
     .filter(([stem]) => {
       const original = stemToOriginal.get(stem) || stem;
       // Skip if this word is only meaningful as part of a compound term
-      if (compoundWordSet.has(original) && !reqTokens.includes(original)) {
+      if (compoundWordSet.has(original) && !allTokens.includes(original)) {
         return false;
       }
       return true;

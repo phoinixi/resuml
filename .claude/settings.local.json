@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l /Users/phoinixi/workspace/resuml/docs/themes/*.js)",
+      "Bash(npm list:*)",
+      "Bash(node scripts/bundle-themes.js --themes=stackoverflow)",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)"
+    ]
+  }
+}

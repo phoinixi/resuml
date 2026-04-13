@@ -90,6 +90,20 @@ const en: LanguageData = {
     'description', 'overview', 'summary', 'duties', 'bachelor', 'bachelors',
     'master', 'masters', 'degree', 'phd', 'minimum', 'preferred',
     'implement', 'process', 'robust', 'consistent', 'operations',
+    // URL/email/domain fragments
+    'http', 'https', 'www', 'com', 'org', 'net', 'mailto',
+    // Resume/YAML schema field names (in case raw YAML is pasted)
+    'name', 'keywords', 'highlights', 'startdate', 'enddate', 'website',
+    'profiles', 'basics', 'position', 'institution', 'studytype',
+    'fluency', 'issuer', 'network', 'username', 'countrycode', 'region',
+    // Generic nouns that aren't skills
+    'product', 'company', 'service', 'services', 'platform', 'solutions',
+    'ability', 'opportunity', 'candidate', 'applicant', 'position',
+    'salary', 'compensation', 'benefits', 'perks', 'bonus',
+    'development', 'management', 'knowledge', 'modern', 'advanced',
+    'practices', 'nice', 'technologies', 'technology', 'frameworks',
+    'framework', 'tools', 'data', 'based', 'contribute', 'contributions',
+    'migration', 'leading', 'source', 'visit', 'join',
   ],
 };
 
