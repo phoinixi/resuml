@@ -3,6 +3,7 @@ import { analyzeAts } from '../ats/index';
 import { runGenericChecks } from '../ats/genericChecks';
 import { matchJobDescription } from '../ats/jdMatcher';
 import { calculateScore, calculateCombinedScore, scoreToRating } from '../ats/scoring';
+import { assessFit } from '../ats/scoring';
 import type { ResumeSchema } from '../types/resume';
 
 // --- Fixtures ---
@@ -298,5 +299,59 @@ describe('analyzeAts (integration)', () => {
     const result = analyzeAts(minimalResume, { language: 'en' });
     const failedWithSuggestions = result.checks.filter((c) => !c.passed && c.suggestion);
     expect(failedWithSuggestions.length).toBeGreaterThan(0);
+  });
+
+  it('should include fitAssessment when JD is provided', () => {
+    const jd = 'Senior TypeScript developer with React and AWS experience.';
+    const result = analyzeAts(fullResume, { language: 'en', jobDescription: jd });
+    expect(result.fitAssessment).toBeDefined();
+    expect(result.fitAssessment?.level).toBeDefined();
+    expect(result.fitAssessment?.message).toBeTruthy();
+  });
+
+  it('should not include fitAssessment without JD', () => {
+    const result = analyzeAts(fullResume, { language: 'en' });
+    expect(result.fitAssessment).toBeUndefined();
+  });
+
+  it('should return weak fit for mismatched JD', () => {
+    const jd = `
+      Required: Rust, Scala, Haskell, machine learning, quantum computing,
+      blockchain, WebAssembly. Must have PhD in Theoretical Physics.
+      Experience with FPGA programming and embedded systems required.
+    `;
+    const result = analyzeAts(fullResume, { language: 'en', jobDescription: jd });
+    expect(result.fitAssessment?.level).toBe('weak');
+    expect(result.fitAssessment?.message).toContain('Weak fit');
+  });
+});
+
+describe('assessFit', () => {
+  it('should return strong fit for high match', () => {
+    const result = assessFit({ matched: Array(8).fill('kw'), missing: ['a', 'b'], matchPercentage: 80 });
+    expect(result.level).toBe('strong');
+    expect(result.message).toContain('Strong fit');
+  });
+
+  it('should return partial fit for medium match', () => {
+    const result = assessFit({ matched: Array(6).fill('kw'), missing: ['a', 'b', 'c', 'd'], matchPercentage: 60 });
+    expect(result.level).toBe('partial');
+    expect(result.message).toContain('Partial fit');
+    expect(result.message).toContain('gaps');
+  });
+
+  it('should return weak fit for low match', () => {
+    const result = assessFit({ matched: ['kw'], missing: ['a', 'b', 'c', 'd', 'e', 'f'], matchPercentage: 30 });
+    expect(result.level).toBe('weak');
+    expect(result.message).toContain('Weak fit');
+    expect(result.message).toContain('gaps');
+  });
+
+  it('should show top 5 missing keywords', () => {
+    const missing = ['python', 'rust', 'scala', 'haskell', 'erlang', 'assembly'];
+    const result = assessFit({ matched: [], missing, matchPercentage: 0 });
+    expect(result.message).toContain('python');
+    expect(result.message).toContain('erlang');
+    expect(result.message).not.toContain('assembly');
   });
 });

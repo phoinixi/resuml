@@ -2,7 +2,7 @@ export const DEFAULT_YAML = `basics:
   name: 'Jane Smith'
   label: 'Senior Software Engineer'
   email: 'jane@example.com'
-  phone: '+1-555-987-6543'
+  # phone: '+1-555-987-6543'
   url: 'https://janesmith.dev'
   summary: >-
     Full-stack engineer with 8+ years of experience building scalable web
@@ -29,7 +29,7 @@ work:
     highlights:
       - 'Reduced API latency by 45% through caching and query optimization'
       - 'Designed microservices architecture serving 2M daily requests'
-      - 'Mentored 4 junior engineers through technical growth plans'
+      - 'Responsible for mentoring junior engineers through technical growth plans'
   - name: 'StartupXYZ'
     position: 'Full Stack Developer'
     startDate: '2017-06-01'
@@ -38,7 +38,7 @@ work:
     highlights:
       - 'Built real-time dashboard used by 15,000+ daily active users'
       - 'Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes'
-      - 'Increased test coverage from 30% to 92%'
+      - 'Worked on improving test coverage and code quality across the team'
 
 education:
   - institution: 'University of Technology'

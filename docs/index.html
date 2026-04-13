@@ -537,6 +537,74 @@
     .ats-kw-tag.matched { background: rgba(74, 222, 128, 0.15); color: var(--green); }
     .ats-kw-tag.missing { background: rgba(251, 146, 60, 0.15); color: var(--orange); }
 
+    /* ATS Job Description input */
+    .ats-jd-section { padding: 0 16px 8px; }
+    .ats-jd-toggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 12px;
+      color: var(--text);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .ats-jd-toggle:hover { border-color: var(--accent); }
+    .ats-jd-input { margin-top: 8px; }
+    .ats-jd-textarea {
+      width: 100%;
+      min-height: 80px;
+      padding: 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 0.8rem;
+      font-family: inherit;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    .ats-jd-textarea:focus { outline: none; border-color: var(--accent); }
+    .ats-jd-textarea::placeholder { color: var(--muted); }
+    .ats-jd-clear {
+      display: inline-block;
+      margin-top: 4px;
+      padding: 2px 8px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--muted);
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+    .ats-jd-clear:hover { color: var(--text); border-color: var(--text); }
+
+    /* ATS Fit Assessment */
+    .ats-fit {
+      margin: 0 16px 12px;
+      padding: 8px 12px;
+      border-left: 3px solid;
+      border-radius: 0 6px 6px 0;
+      background: rgba(255,255,255,0.03);
+    }
+    .ats-fit-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 2px;
+    }
+    .ats-fit-msg {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
     /* Theme Picker */
     .theme-picker-overlay {
       position: fixed;

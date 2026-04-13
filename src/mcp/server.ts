@@ -188,6 +188,17 @@ and matches them against the resume using stem matching. Results include:
 - **missing**: Keywords not found (add these to improve score)
 - **matchPercentage**: Percentage of JD keywords found in resume
 
+## Fit Assessment
+When a job description is provided, a \`fitAssessment\` field is included in the result:
+| Match % | Level | Meaning |
+|---------|-------|---------|
+| >= 70% | strong | Resume aligns well with the job description |
+| 50-69% | partial | Some alignment; emphasize transferable skills |
+| < 50% | weak | Significant skill gaps; role may not match profile |
+
+The assessment includes the top 5 missing keywords as specific gaps to address.
+Use this to advise users whether to apply or focus effort elsewhere.
+
 ## Tips for improving ATS score
 1. Include all contact information (name, email, phone, city)
 2. Add a LinkedIn profile URL

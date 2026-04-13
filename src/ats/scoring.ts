@@ -1,4 +1,4 @@
-import type { AtsCheck, AtsRating } from './types';
+import type { AtsCheck, AtsRating, AtsFitAssessment, AtsKeywordMatch } from './types';
 
 const weightMultiplier: Record<string, number> = {
   high: 3,
@@ -58,4 +58,28 @@ export function generateSummary(score: number, rating: AtsRating, hasJd: boolean
     return `${base} — includes job description keyword matching.`;
   }
   return `${base} — based on resume structure and content best practices.`;
+}
+
+/**
+ * Assess how well a resume fits a job description based on keyword matching.
+ */
+export function assessFit(keywords: AtsKeywordMatch): AtsFitAssessment {
+  const { matchPercentage, missing } = keywords;
+  if (matchPercentage >= 70) {
+    return {
+      level: 'strong',
+      message: 'Strong fit — your resume aligns well with this job description.',
+    };
+  }
+  const topMissing = missing.slice(0, 5).join(', ');
+  if (matchPercentage >= 50) {
+    return {
+      level: 'partial',
+      message: `Partial fit — consider emphasizing transferable skills. Key gaps: ${topMissing}.`,
+    };
+  }
+  return {
+    level: 'weak',
+    message: `Weak fit — this role requires skills not well represented in your resume. Major gaps: ${topMissing}.`,
+  };
 }

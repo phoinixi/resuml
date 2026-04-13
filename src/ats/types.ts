@@ -1,6 +1,7 @@
 export type AtsCheckCategory = 'contact' | 'content' | 'structure' | 'keywords';
 export type AtsCheckWeight = 'high' | 'medium' | 'low';
 export type AtsRating = 'excellent' | 'good' | 'needs-work' | 'poor';
+export type AtsFitLevel = 'strong' | 'partial' | 'weak';
 
 export interface AtsCheck {
   id: string;
@@ -18,11 +19,17 @@ export interface AtsKeywordMatch {
   matchPercentage: number;
 }
 
+export interface AtsFitAssessment {
+  level: AtsFitLevel;
+  message: string;
+}
+
 export interface AtsResult {
   score: number; // 0-100
   rating: AtsRating;
   checks: AtsCheck[];
   keywords?: AtsKeywordMatch;
+  fitAssessment?: AtsFitAssessment;
   summary: string;
 }
 

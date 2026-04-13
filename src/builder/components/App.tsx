@@ -30,7 +30,8 @@ export function App() {
 
   const { yaml, resume, error, setYaml, updateResume } = useResume(DEFAULT_YAML);
   const { html, loading: themeLoading, themeError, isSnapshot, renderResume } = useTheme(themeName);
-  const atsResult = useAts(resume);
+  const [jobDescription, setJobDescription] = useState('');
+  const atsResult = useAts(resume, jobDescription);
 
   // Persist state
   usePersist(yaml, themeName, setYaml, setThemeName);
@@ -149,6 +150,8 @@ export function App() {
           <div className="builder-ats">
             <AtsPanel
               result={atsResult}
+              jobDescription={jobDescription}
+              onJobDescriptionChange={setJobDescription}
               onClose={() => {
                 setShowAts(false);
               }}

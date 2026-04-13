@@ -1,11 +1,13 @@
 
-import { useMemo } from 'react';
-import { X } from 'lucide-react';
+import { useMemo, useState } from 'react';
+import { X, ChevronDown, ChevronUp } from 'lucide-react';
 import type { AtsResult } from '../../ats/types';
 import { groupChecksByCategory } from '../utils/atsGrouping';
 
 interface AtsPanelProps {
   result: AtsResult | null;
+  jobDescription: string;
+  onJobDescriptionChange: (jd: string) => void;
   onClose: () => void;
 }
 
@@ -13,6 +15,12 @@ function scoreColor(score: number): string {
   if (score >= 80) return '#4ade80';
   if (score >= 60) return '#fbbf24';
   if (score >= 40) return '#fb923c';
+  return '#ef4444';
+}
+
+function fitColor(level: string): string {
+  if (level === 'strong') return '#4ade80';
+  if (level === 'partial') return '#fbbf24';
   return '#ef4444';
 }
 
@@ -26,7 +34,8 @@ function ratingLabel(rating: string): string {
   }
 }
 
-export function AtsPanel({ result, onClose }: AtsPanelProps) {
+export function AtsPanel({ result, jobDescription, onJobDescriptionChange, onClose }: AtsPanelProps) {
+  const [jdExpanded, setJdExpanded] = useState(!!jobDescription);
   const categoryGroups = useMemo(
     () => result ? groupChecksByCategory(result.checks) : {},
     [result],
@@ -62,6 +71,38 @@ export function AtsPanel({ result, onClose }: AtsPanelProps) {
           {ratingLabel(result.rating)}
         </span>
       </div>
+
+      {/* Job Description input */}
+      <div className="ats-jd-section">
+        <button className="ats-jd-toggle" onClick={() => { setJdExpanded(!jdExpanded); }}>
+          <span>Job Description</span>
+          {jdExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+        </button>
+        {jdExpanded && (
+          <div className="ats-jd-input">
+            <textarea
+              className="ats-jd-textarea"
+              placeholder="Paste a job description to match keywords and assess fit..."
+              value={jobDescription}
+              onChange={(e) => { onJobDescriptionChange(e.target.value); }}
+              rows={4}
+            />
+            {jobDescription && (
+              <button className="ats-jd-clear" onClick={() => { onJobDescriptionChange(''); }}>Clear</button>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Fit Assessment */}
+      {result.fitAssessment && (
+        <div className="ats-fit" style={{ borderLeftColor: fitColor(result.fitAssessment.level) }}>
+          <span className="ats-fit-label" style={{ color: fitColor(result.fitAssessment.level) }}>
+            {result.fitAssessment.level === 'strong' ? 'Strong Fit' : result.fitAssessment.level === 'partial' ? 'Partial Fit' : 'Weak Fit'}
+          </span>
+          <span className="ats-fit-msg">{result.fitAssessment.message}</span>
+        </div>
+      )}
 
       <div className="ats-panel-checks">
         {Object.entries(categoryGroups).map(([category, checks]) => (

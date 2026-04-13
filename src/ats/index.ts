@@ -2,7 +2,7 @@ import type { ResumeSchema } from '../types/resume';
 import type { AtsResult, AtsOptions } from './types';
 import { runGenericChecks } from './genericChecks';
 import { matchJobDescription } from './jdMatcher';
-import { calculateScore, calculateCombinedScore, scoreToRating, generateSummary } from './scoring';
+import { calculateScore, calculateCombinedScore, scoreToRating, generateSummary, assessFit } from './scoring';
 
 /**
  * Run ATS analysis on a resume.
@@ -24,8 +24,10 @@ export function analyzeAts(resume: ResumeSchema, options: AtsOptions = {}): AtsR
 
   // Run JD matching if provided
   let keywords;
+  let fitAssessment;
   if (options.jobDescription) {
     keywords = matchJobDescription(resume, options.jobDescription, language);
+    fitAssessment = assessFit(keywords);
   }
 
   // Calculate combined score
@@ -38,8 +40,9 @@ export function analyzeAts(resume: ResumeSchema, options: AtsOptions = {}): AtsR
     rating,
     checks,
     keywords,
+    fitAssessment,
     summary,
   };
 }
 
-export type { AtsResult, AtsOptions, AtsCheck, AtsKeywordMatch } from './types';
+export type { AtsResult, AtsOptions, AtsCheck, AtsKeywordMatch, AtsFitAssessment } from './types';
