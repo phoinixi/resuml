@@ -133,7 +133,7 @@ export function AtsPanel({ result, jobDescription, onJobDescriptionChange, onClo
           <div className="ats-category-title">Keywords ({result.keywords.matchPercentage}% match)</div>
           {result.keywords.matched.length > 0 && (
             <div className="ats-kw-group">
-              <span className="ats-kw-label matched">Matched:</span>
+              <span className="ats-kw-label matched">In your resume &amp; the job:</span>
               <div className="ats-kw-tags">
                 {result.keywords.matched.map((kw) => (
                   <span key={kw} className="ats-kw-tag matched">{kw}</span>
@@ -143,10 +143,20 @@ export function AtsPanel({ result, jobDescription, onJobDescriptionChange, onClo
           )}
           {result.keywords.missing.length > 0 && (
             <div className="ats-kw-group">
-              <span className="ats-kw-label missing">Missing:</span>
+              <span className="ats-kw-label missing">Required by the job — add to your resume:</span>
               <div className="ats-kw-tags">
                 {result.keywords.missing.map((kw) => (
                   <span key={kw} className="ats-kw-tag missing">{kw}</span>
+                ))}
+              </div>
+            </div>
+          )}
+          {result.keywords.extra.length > 0 && (
+            <div className="ats-kw-group">
+              <span className="ats-kw-label extra">In your resume — not required by this job:</span>
+              <div className="ats-kw-tags">
+                {result.keywords.extra.map((kw) => (
+                  <span key={kw} className="ats-kw-tag extra">{kw}</span>
                 ))}
               </div>
             </div>

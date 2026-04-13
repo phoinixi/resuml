@@ -16,6 +16,7 @@ export interface AtsCheck {
 export interface AtsKeywordMatch {
   matched: string[];
   missing: string[];
+  extra: string[];
   matchPercentage: number;
 }
 

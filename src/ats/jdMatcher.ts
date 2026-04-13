@@ -396,5 +396,40 @@ export function matchJobDescription(
     ? Math.round((matched.length / jdKeywords.length) * 100)
     : 0;
 
-  return { matched, missing, matchPercentage };
+  // Find resume skills NOT required by the JD
+  // Extract explicit skill keywords from the resume's skills section
+  const resumeSkillKeywords: string[] = [];
+  for (const s of resume.skills || []) {
+    for (const kw of s.keywords || []) {
+      resumeSkillKeywords.push(kw.toLowerCase());
+    }
+  }
+
+  // Build stemmed set of all JD keywords for matching
+  const jdStemSet = new Set<string>();
+  const jdTokenSet = new Set<string>();
+  for (const kw of jdKeywords) {
+    jdTokenSet.add(kw.toLowerCase());
+    for (const part of kw.split(/\s+/)) {
+      jdStemSet.add(simpleStem(part, language));
+      jdTokenSet.add(part.toLowerCase());
+    }
+  }
+
+  // Also stem the full JD text to catch broader matches
+  const jdFullTokens = tokenize(stripNoise(jobDescription), new Set(langData.stopWords));
+  const jdFullStems = new Set(jdFullTokens.map((t) => simpleStem(t, language)));
+
+  const extra: string[] = [];
+  const seenExtra = new Set<string>();
+  for (const skill of resumeSkillKeywords) {
+    const stem = simpleStem(skill, language);
+    // This skill is "extra" if it doesn't appear anywhere in the JD
+    if (!jdFullStems.has(stem) && !jdTokenSet.has(skill) && !seenExtra.has(skill)) {
+      seenExtra.add(skill);
+      extra.push(skill);
+    }
+  }
+
+  return { matched, missing, extra, matchPercentage };
 }
