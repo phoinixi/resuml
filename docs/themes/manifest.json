@@ -176,17 +176,6 @@
     "cssSize": 18231
   },
   {
-    "name": "bufferbloat",
-    "displayName": "Bufferbloat",
-    "description": "Buffer Bloat theme for JSON Resume, forked from Francesco Esposito's jsonresume-theme-stackoverflow",
-    "version": "1.0.2",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 180894,
-    "cssSize": 0
-  },
-  {
     "name": "nameme",
     "displayName": "Nameme",
     "description": "jsonresume-theme-nameme =======================",
@@ -196,6 +185,17 @@
     "hasCss": true,
     "fileSize": 285845,
     "cssSize": 216
+  },
+  {
+    "name": "bufferbloat",
+    "displayName": "Bufferbloat",
+    "description": "Buffer Bloat theme for JSON Resume, forked from Francesco Esposito's jsonresume-theme-stackoverflow",
+    "version": "1.0.2",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 180894,
+    "cssSize": 0
   },
   {
     "name": "rnord",
@@ -231,28 +231,6 @@
     "cssSize": 3762
   },
   {
-    "name": "stackoverflow",
-    "displayName": "Stackoverflow",
-    "description": "Stack Overflow theme for JSON Resume — Svelte SSR",
-    "version": "3.1.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 260284,
-    "cssSize": 13769
-  },
-  {
-    "name": "engineering",
-    "displayName": "Engineering",
-    "description": "JSON Resume theme for engineers",
-    "version": "0.7.17",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 180584,
-    "cssSize": 0
-  },
-  {
     "name": "eventide",
     "displayName": "Eventide",
     "description": "A flat JSON Resume theme derived from Even",
@@ -262,6 +240,28 @@
     "hasCss": false,
     "fileSize": 1836350,
     "cssSize": 0
+  },
+  {
+    "name": "engineering",
+    "displayName": "Engineering",
+    "description": "JSON Resume theme for engineers",
+    "version": "0.7.21",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 180584,
+    "cssSize": 0
+  },
+  {
+    "name": "stackoverflow",
+    "displayName": "Stackoverflow",
+    "description": "Stack Overflow theme for JSON Resume — Svelte SSR",
+    "version": "3.1.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 260284,
+    "cssSize": 13769
   },
   {
     "name": "awolden",
@@ -297,17 +297,6 @@
     "cssSize": 6626
   },
   {
-    "name": "academic",
-    "displayName": "Academic",
-    "description": "Academic serif theme for JSON Resume with EB Garamond typography, small caps headings, and gold accents. Designed for print and PDF.",
-    "version": "1.3.3",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 13649,
-    "cssSize": 4020
-  },
-  {
     "name": "tech",
     "displayName": "Tech",
     "description": "A clean, modern JSON Resume theme tailored for tech professionals, senior engineers, and startup founders",
@@ -317,6 +306,17 @@
     "hasCss": false,
     "fileSize": 141620,
     "cssSize": 0
+  },
+  {
+    "name": "academic",
+    "displayName": "Academic",
+    "description": "Academic serif theme for JSON Resume with EB Garamond typography, small caps headings, and gold accents. Designed for print and PDF.",
+    "version": "1.3.3",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 13649,
+    "cssSize": 4020
   },
   {
     "name": "spartan-skills",
@@ -352,17 +352,6 @@
     "cssSize": 6458
   },
   {
-    "name": "lowmess",
-    "displayName": "Lowmess",
-    "description": "JSONResume Theme create for Alec Lomas's Resume",
-    "version": "0.0.11",
-    "browserCompatible": false,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0
-  },
-  {
     "name": "cjean",
     "displayName": "Cjean",
     "description": "A clean, professional, and print-optimized JSON Resume theme built with Tailwind CSS and TypeScript.",
@@ -371,6 +360,17 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 76773,
+    "cssSize": 0
+  },
+  {
+    "name": "lowmess",
+    "displayName": "Lowmess",
+    "description": "JSONResume Theme create for Alec Lomas's Resume",
+    "version": "0.0.11",
+    "browserCompatible": false,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 0,
     "cssSize": 0
   },
   {
@@ -396,6 +396,39 @@
     "cssSize": 2588
   },
   {
+    "name": "stackoverflow-ibic",
+    "displayName": "Stackoverflow ibic",
+    "description": "Stack Overflow theme for JSON Resume",
+    "version": "2.0.6",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 139939,
+    "cssSize": 0
+  },
+  {
+    "name": "onepage-simplified",
+    "displayName": "Onepage simplified",
+    "description": "Simplified, compact, printable theme for JSON Resume",
+    "version": "1.3.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 115678,
+    "cssSize": 1746
+  },
+  {
+    "name": "straightforward-with-telephone",
+    "displayName": "Straightforward with telephone",
+    "description": "a straightforward jsonresume theme",
+    "version": "0.2.4",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 125463,
+    "cssSize": 0
+  },
+  {
     "name": "americano-german",
     "displayName": "Americano german",
     "description": "minimalistic german theme for JSON Resume. Based on macchiato-theme.",
@@ -418,17 +451,6 @@
     "cssSize": 0
   },
   {
-    "name": "stackoverflow-ibic",
-    "displayName": "Stackoverflow ibic",
-    "description": "Stack Overflow theme for JSON Resume",
-    "version": "2.0.6",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 139939,
-    "cssSize": 0
-  },
-  {
     "name": "paperalt",
     "displayName": "Paperalt",
     "description": "A modified version of the Paper theme for JSON Resume",
@@ -438,17 +460,6 @@
     "hasCss": true,
     "fileSize": 130544,
     "cssSize": 1790
-  },
-  {
-    "name": "caffeine",
-    "displayName": "Caffeine",
-    "description": "Caffeine theme for JSON Resume",
-    "version": "1.2.3",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 304560,
-    "cssSize": 0
   },
   {
     "name": "class",
@@ -462,6 +473,17 @@
     "cssSize": 4667
   },
   {
+    "name": "caffeine",
+    "displayName": "Caffeine",
+    "description": "Caffeine theme for JSON Resume",
+    "version": "1.2.3",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 304560,
+    "cssSize": 0
+  },
+  {
     "name": "actual",
     "displayName": "Actual",
     "description": "Actual theme for JSON Resume",
@@ -470,6 +492,28 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 1044491,
+    "cssSize": 0
+  },
+  {
+    "name": "react",
+    "displayName": "React",
+    "description": "A React-based theme for JSON Resume",
+    "version": "1.0.4",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 34052,
+    "cssSize": 25049
+  },
+  {
+    "name": "profesh",
+    "displayName": "Profesh",
+    "description": "Professional JSON Resume theme for new developers/recent graduates",
+    "version": "0.4.0",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 253232,
     "cssSize": 0
   },
   {
@@ -506,17 +550,6 @@
     "cssSize": 13565
   },
   {
-    "name": "straightforward-with-telephone",
-    "displayName": "Straightforward with telephone",
-    "description": "a straightforward jsonresume theme",
-    "version": "0.2.4",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 125463,
-    "cssSize": 0
-  },
-  {
     "name": "onepage-plus",
     "displayName": "Onepage plus",
     "description": "An update of the onepage theme (a compact theme for JSON Resume, designed for printing).",
@@ -539,17 +572,6 @@
     "cssSize": 2011
   },
   {
-    "name": "zurb",
-    "displayName": "Zurb",
-    "description": "JSON Resume Template with zurb Foundation for Sites.",
-    "version": "0.4.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 334108,
-    "cssSize": 44966
-  },
-  {
     "name": "eloquent",
     "displayName": "Eloquent",
     "description": "An eloquent JSON Resume theme: fluent, persuasive, for developers",
@@ -559,6 +581,17 @@
     "hasCss": true,
     "fileSize": 207772,
     "cssSize": 31203
+  },
+  {
+    "name": "zurb",
+    "displayName": "Zurb",
+    "description": "JSON Resume Template with zurb Foundation for Sites.",
+    "version": "0.4.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 334108,
+    "cssSize": 44966
   },
   {
     "name": "straightforward-fet-adapt",
@@ -572,14 +605,14 @@
     "cssSize": 0
   },
   {
-    "name": "spartan",
-    "displayName": "Spartan",
-    "description": "Minimal, clean and elegant theme for JSON Resume",
-    "version": "0.3.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
+    "name": "elegant-ryantrinkle",
+    "displayName": "Elegant ryantrinkle",
+    "description": "Elegant theme for jsonresume, adapted from jsonresume-theme-elegant-tautologistics",
+    "version": "0.0.2",
+    "browserCompatible": false,
+    "hasSnapshot": false,
     "hasCss": false,
-    "fileSize": 187436,
+    "fileSize": 0,
     "cssSize": 0
   },
   {
@@ -594,37 +627,15 @@
     "cssSize": 7624
   },
   {
-    "name": "elegant-ryantrinkle",
-    "displayName": "Elegant ryantrinkle",
-    "description": "Elegant theme for jsonresume, adapted from jsonresume-theme-elegant-tautologistics",
-    "version": "0.0.2",
-    "browserCompatible": false,
-    "hasSnapshot": false,
+    "name": "spartan",
+    "displayName": "Spartan",
+    "description": "Minimal, clean and elegant theme for JSON Resume",
+    "version": "0.3.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
     "hasCss": false,
-    "fileSize": 0,
+    "fileSize": 187436,
     "cssSize": 0
-  },
-  {
-    "name": "react",
-    "displayName": "React",
-    "description": "A React-based theme for JSON Resume",
-    "version": "1.0.4",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 34052,
-    "cssSize": 25049
-  },
-  {
-    "name": "tan-responsive",
-    "displayName": "Tan responsive",
-    "description": "A Responsive JSON Resume theme built with bootstrap",
-    "version": "0.0.7",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 108900,
-    "cssSize": 6702
   },
   {
     "name": "dev-ats-es",
@@ -638,6 +649,28 @@
     "cssSize": 0
   },
   {
+    "name": "tan-responsive",
+    "displayName": "Tan responsive",
+    "description": "A Responsive JSON Resume theme built with bootstrap",
+    "version": "0.0.7",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 108900,
+    "cssSize": 6702
+  },
+  {
+    "name": "minyma",
+    "displayName": "Minyma",
+    "description": "A custom theme for jsonresume",
+    "version": "0.0.5",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 126732,
+    "cssSize": 8218
+  },
+  {
     "name": "relaxed",
     "displayName": "Relaxed",
     "description": "A JSON Resume theme optimised for PDF output",
@@ -645,7 +678,7 @@
     "browserCompatible": true,
     "hasSnapshot": false,
     "hasCss": false,
-    "fileSize": 274845,
+    "fileSize": 275046,
     "cssSize": 0
   },
   {
@@ -660,28 +693,6 @@
     "cssSize": 45227
   },
   {
-    "name": "claude",
-    "displayName": "Claude",
-    "description": "A JSON Resume theme designed and built entirely by Claude Code in the terminal",
-    "version": "1.0.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 169730,
-    "cssSize": 8395
-  },
-  {
-    "name": "minyma",
-    "displayName": "Minyma",
-    "description": "A custom theme for jsonresume",
-    "version": "0.0.5",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 126732,
-    "cssSize": 8218
-  },
-  {
     "name": "microdata",
     "displayName": "Microdata",
     "description": "A flat JSON Resume theme, infused with microdata using the schema.org vocabulary",
@@ -690,17 +701,6 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 148003,
-    "cssSize": 0
-  },
-  {
-    "name": "stackoverflowed",
-    "displayName": "Stackoverflowed",
-    "description": "A JSON Resume Theme inspired by the Stack Overflow Developer Story resume format.",
-    "version": "1.1.5",
-    "browserCompatible": false,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 0,
     "cssSize": 0
   },
   {
@@ -715,6 +715,17 @@
     "cssSize": 1936
   },
   {
+    "name": "stackoverflowed",
+    "displayName": "Stackoverflowed",
+    "description": "A JSON Resume Theme inspired by the Stack Overflow Developer Story resume format.",
+    "version": "1.1.5",
+    "browserCompatible": false,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 0,
+    "cssSize": 0
+  },
+  {
     "name": "polymer",
     "displayName": "Polymer",
     "description": "Boilerplate theme for JSON Resume",
@@ -724,28 +735,6 @@
     "hasCss": false,
     "fileSize": 0,
     "cssSize": 0
-  },
-  {
-    "name": "lucide",
-    "displayName": "Lucide",
-    "description": "Lucide theme for JSON Resume",
-    "version": "1.1.0",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 158777,
-    "cssSize": 0
-  },
-  {
-    "name": "jacrys",
-    "displayName": "Jacrys",
-    "description": "A JSON Resume theme modified from M. Adam Kendall's kendall theme",
-    "version": "1.0.4",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 112606,
-    "cssSize": 6472
   },
   {
     "name": "material-moon",
@@ -759,15 +748,15 @@
     "cssSize": 10480
   },
   {
-    "name": "spartan-skills-de",
-    "displayName": "Spartan skills de",
-    "description": "Clone of jsonresume-theme-spartan wit hmore focus of skills section",
-    "version": "0.0.5",
+    "name": "crisp",
+    "displayName": "Crisp",
+    "description": "Theme for JSON Resume based on Futura",
+    "version": "0.2.12",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 134244,
-    "cssSize": 7402
+    "fileSize": 199935,
+    "cssSize": 1559
   },
   {
     "name": "rocketspacer",
@@ -781,15 +770,15 @@
     "cssSize": 4179
   },
   {
-    "name": "crisp",
-    "displayName": "Crisp",
-    "description": "Theme for JSON Resume based on Futura",
-    "version": "0.2.12",
+    "name": "kards",
+    "displayName": "Kards",
+    "description": "Theme for JSON Resume based on Kards design by styleshout",
+    "version": "3.0.0",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 199935,
-    "cssSize": 1559
+    "fileSize": 3196149,
+    "cssSize": 5
   },
   {
     "name": "a11y",
@@ -823,17 +812,6 @@
     "hasCss": false,
     "fileSize": 0,
     "cssSize": 0
-  },
-  {
-    "name": "kards",
-    "displayName": "Kards",
-    "description": "Theme for JSON Resume based on Kards design by styleshout",
-    "version": "3.0.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 3196149,
-    "cssSize": 5
   },
   {
     "name": "noodle",
@@ -891,15 +869,15 @@
     "cssSize": 898
   },
   {
-    "name": "orbit",
-    "displayName": "Orbit",
-    "description": "Theme for JSON Resume based on Orbit design by xriley",
-    "version": "3.0.0",
+    "name": "slick",
+    "displayName": "Slick",
+    "description": "Slick theme for JSON Resume",
+    "version": "0.1.16",
     "browserCompatible": true,
     "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 238259,
-    "cssSize": 0
+    "hasCss": true,
+    "fileSize": 124341,
+    "cssSize": 60122
   },
   {
     "name": "kate",
@@ -913,15 +891,15 @@
     "cssSize": 1822
   },
   {
-    "name": "slick",
-    "displayName": "Slick",
-    "description": "Slick theme for JSON Resume",
-    "version": "0.1.16",
+    "name": "orbit",
+    "displayName": "Orbit",
+    "description": "Theme for JSON Resume based on Orbit design by xriley",
+    "version": "3.0.0",
     "browserCompatible": true,
     "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 124341,
-    "cssSize": 60122
+    "hasCss": false,
+    "fileSize": 238259,
+    "cssSize": 0
   },
   {
     "name": "simple-red",
@@ -932,17 +910,6 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 210639,
-    "cssSize": 0
-  },
-  {
-    "name": "papirus",
-    "displayName": "Papirus",
-    "description": "Papirus theme for JSON Resume",
-    "version": "0.0.5",
-    "browserCompatible": false,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 0,
     "cssSize": 0
   },
   {
@@ -957,14 +924,14 @@
     "cssSize": 2588
   },
   {
-    "name": "straightforward-plus",
-    "displayName": "Straightforward plus",
-    "description": "a fork of a straightforward jsonresume theme",
-    "version": "0.1.0",
-    "browserCompatible": true,
-    "hasSnapshot": false,
+    "name": "papirus",
+    "displayName": "Papirus",
+    "description": "Papirus theme for JSON Resume",
+    "version": "0.0.5",
+    "browserCompatible": false,
+    "hasSnapshot": true,
     "hasCss": false,
-    "fileSize": 126078,
+    "fileSize": 0,
     "cssSize": 0
   },
   {
@@ -979,6 +946,17 @@
     "cssSize": 6997
   },
   {
+    "name": "full",
+    "displayName": "Full",
+    "description": "Simple to the point theme for JSON Resume, based on the short theme",
+    "version": "0.0.4",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 72817,
+    "cssSize": 7045
+  },
+  {
     "name": "kendall-web",
     "displayName": "Kendall web",
     "description": "A JSON Resume theme built with bootstrap",
@@ -990,15 +968,15 @@
     "cssSize": 7536
   },
   {
-    "name": "full",
-    "displayName": "Full",
-    "description": "Simple to the point theme for JSON Resume, based on the short theme",
-    "version": "0.0.4",
+    "name": "straightforward-plus",
+    "displayName": "Straightforward plus",
+    "description": "a fork of a straightforward jsonresume theme",
+    "version": "0.1.0",
     "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 72817,
-    "cssSize": 7045
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 126078,
+    "cssSize": 0
   },
   {
     "name": "elite",
@@ -1078,17 +1056,6 @@
     "cssSize": 0
   },
   {
-    "name": "kendall-markdown",
-    "displayName": "Kendall markdown",
-    "description": "A JSON Resume theme built with bootstrap",
-    "version": "0.2.10",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 206589,
-    "cssSize": 8820
-  },
-  {
     "name": "mocha-responsive",
     "displayName": "Mocha responsive",
     "description": "Custom dark theme for JSON Resume based on Caffeine theme by Kelvin Nguyen (https://github.com/kelyvin)",
@@ -1100,15 +1067,26 @@
     "cssSize": 0
   },
   {
-    "name": "sshorter",
-    "displayName": "Sshorter",
-    "description": "A simple, pdf export focused, german theme for jsonresume.org (improved upon the work of Graeme Maciver and Danial)",
-    "version": "0.3.0",
+    "name": "ks",
+    "displayName": "Ks",
+    "description": "Theme for ksquare employees with JSON Resume",
+    "version": "1.0.14",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 287188,
+    "cssSize": 0
+  },
+  {
+    "name": "kendall-markdown",
+    "displayName": "Kendall markdown",
+    "description": "A JSON Resume theme built with bootstrap",
+    "version": "0.2.10",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 62724,
-    "cssSize": 2215
+    "fileSize": 206589,
+    "cssSize": 8820
   },
   {
     "name": "elegant-tautologistics",
@@ -1133,15 +1111,26 @@
     "cssSize": 0
   },
   {
-    "name": "macchiato-custom",
-    "displayName": "Macchiato custom",
-    "description": "Simple theme for JSON Resume. Based on caffeine-theme.",
-    "version": "1.1.13",
+    "name": "paper_en",
+    "displayName": "Paper_en",
+    "description": "A theme for JSON Resume",
+    "version": "0.1.15",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 223520,
-    "cssSize": 7684
+    "fileSize": 72733,
+    "cssSize": 5830
+  },
+  {
+    "name": "sshorter",
+    "displayName": "Sshorter",
+    "description": "A simple, pdf export focused, german theme for jsonresume.org (improved upon the work of Graeme Maciver and Danial)",
+    "version": "0.3.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 62724,
+    "cssSize": 2215
   },
   {
     "name": "qlh",
@@ -1155,6 +1144,28 @@
     "cssSize": 6513
   },
   {
+    "name": "macchiato-custom",
+    "displayName": "Macchiato custom",
+    "description": "Simple theme for JSON Resume. Based on caffeine-theme.",
+    "version": "1.1.13",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 223520,
+    "cssSize": 7684
+  },
+  {
+    "name": "claude",
+    "displayName": "Claude",
+    "description": "A JSON Resume theme designed and built entirely by Claude Code in the terminal",
+    "version": "1.0.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 169730,
+    "cssSize": 8395
+  },
+  {
     "name": "curzy",
     "displayName": "Curzy",
     "description": "Modified JSON Resume theme from Stack Overflow theme",
@@ -1166,15 +1177,15 @@
     "cssSize": 0
   },
   {
-    "name": "paper_en",
-    "displayName": "Paper_en",
-    "description": "A theme for JSON Resume",
-    "version": "0.1.15",
+    "name": "briefstrap",
+    "displayName": "Briefstrap",
+    "description": "Briefstrap theme for JSON Resume",
+    "version": "1.0.0",
     "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 72733,
-    "cssSize": 5830
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 1711254,
+    "cssSize": 0
   },
   {
     "name": "elegantfixed",
@@ -1199,15 +1210,15 @@
     "cssSize": 5125
   },
   {
-    "name": "briefstrap",
-    "displayName": "Briefstrap",
-    "description": "Briefstrap theme for JSON Resume",
-    "version": "1.0.0",
+    "name": "mooser",
+    "displayName": "Mooser",
+    "description": "A JSON Resume theme built with bootstrap",
+    "version": "0.2.9",
     "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 1711181,
-    "cssSize": 0
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 116823,
+    "cssSize": 10257
   },
   {
     "name": "riga",
@@ -1221,17 +1232,6 @@
     "cssSize": 60576
   },
   {
-    "name": "ozee31",
-    "displayName": "Ozee31",
-    "description": "Theme for my personal cv",
-    "version": "0.0.5",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 285583,
-    "cssSize": 216
-  },
-  {
     "name": "modern-plain",
     "displayName": "Modern plain",
     "description": "A clean, modern JSON Resume theme with a professional two-column layout, PT Sans typography, and optimized for single-page print output",
@@ -1243,28 +1243,6 @@
     "cssSize": 0
   },
   {
-    "name": "github-styled",
-    "displayName": "Github styled",
-    "description": "A GitHub-styled JSON Resume theme with dark/light mode support and mobile responsiveness",
-    "version": "1.4.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 143682,
-    "cssSize": 4066
-  },
-  {
-    "name": "mooser",
-    "displayName": "Mooser",
-    "description": "A JSON Resume theme built with bootstrap",
-    "version": "0.2.9",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 116823,
-    "cssSize": 10257
-  },
-  {
     "name": "elegant-compact",
     "displayName": "Elegant compact",
     "description": "Elegant, responsive theme for jsonresume. Fork of Elegant",
@@ -1274,6 +1252,28 @@
     "hasCss": false,
     "fileSize": 0,
     "cssSize": 0
+  },
+  {
+    "name": "ozee31",
+    "displayName": "Ozee31",
+    "description": "Theme for my personal cv",
+    "version": "0.0.5",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 285583,
+    "cssSize": 216
+  },
+  {
+    "name": "github-styled",
+    "displayName": "Github styled",
+    "description": "A GitHub-styled JSON Resume theme with dark/light mode support and mobile responsiveness",
+    "version": "1.4.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 143682,
+    "cssSize": 4066
   },
   {
     "name": "elegantnew",
@@ -1342,17 +1342,6 @@
     "cssSize": 0
   },
   {
-    "name": "dark-classy-edit",
-    "displayName": "Dark classy edit",
-    "description": "Dark classy edit of the infamous jsonresume theme.",
-    "version": "0.1.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 79430,
-    "cssSize": 3517
-  },
-  {
     "name": "retro",
     "displayName": "Retro",
     "description": "Retro theme for JSON Resume",
@@ -1364,6 +1353,17 @@
     "cssSize": 660
   },
   {
+    "name": "dark-classy-edit",
+    "displayName": "Dark classy edit",
+    "description": "Dark classy edit of the infamous jsonresume theme.",
+    "version": "0.1.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 79430,
+    "cssSize": 3517
+  },
+  {
     "name": "techlead",
     "displayName": "Techlead",
     "description": "A theme inspired by Techlead (millionaire) https://youtu.be/xpaz7nrNmXA?t=528",
@@ -1372,17 +1372,6 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 140975,
-    "cssSize": 0
-  },
-  {
-    "name": "foxyboxy",
-    "displayName": "Foxyboxy",
-    "description": "Foxy Boxy theme for JSON Resume",
-    "version": "0.1.6",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 132464,
     "cssSize": 0
   },
   {
@@ -1397,6 +1386,17 @@
     "cssSize": 3009
   },
   {
+    "name": "foxyboxy",
+    "displayName": "Foxyboxy",
+    "description": "Foxy Boxy theme for JSON Resume",
+    "version": "0.1.6",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 132464,
+    "cssSize": 0
+  },
+  {
     "name": "kwann-nl",
     "displayName": "Kwann nl",
     "description": "Kwan theme for jsonresume. Other resumes may have the coin, but they won't have the 'Kwan'. This clone of the original is Dutch flavoured.",
@@ -1406,6 +1406,28 @@
     "hasCss": false,
     "fileSize": 0,
     "cssSize": 0
+  },
+  {
+    "name": "dev-ats",
+    "displayName": "Dev ats",
+    "description": "JSON Resume theme for developers",
+    "version": "1.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 250775,
+    "cssSize": 0
+  },
+  {
+    "name": "skills",
+    "displayName": "Skills",
+    "description": "Skills theme for JSON Resume",
+    "version": "1.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 124324,
+    "cssSize": 23649
   },
   {
     "name": "onepage-web",
@@ -1419,15 +1441,15 @@
     "cssSize": 2482
   },
   {
-    "name": "skills",
-    "displayName": "Skills",
-    "description": "Skills theme for JSON Resume",
-    "version": "1.0.1",
+    "name": "vp",
+    "displayName": "Vp",
+    "description": "Vp theme for JSON Resume",
+    "version": "1.1.0",
     "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 124324,
-    "cssSize": 23649
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 275344,
+    "cssSize": 0
   },
   {
     "name": "juno",
@@ -1485,28 +1507,6 @@
     "cssSize": 8758
   },
   {
-    "name": "sasha_fixed",
-    "displayName": "Sasha_fixed",
-    "description": "Sasha JSON Resume theme.",
-    "version": "0.0.9",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 52493,
-    "cssSize": 1904
-  },
-  {
-    "name": "el-santo",
-    "displayName": "El santo",
-    "description": "A simple yet elegant theme for JSON Resume",
-    "version": "0.0.7",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 117750,
-    "cssSize": 0
-  },
-  {
     "name": "pico",
     "displayName": "Pico",
     "description": "A minimal theme for JSON Resume using PicoCSS. Built with PDF printing and mobile devices in mind.",
@@ -1518,14 +1518,36 @@
     "cssSize": 0
   },
   {
-    "name": "stackoverflow-mats",
-    "displayName": "Stackoverflow mats",
-    "description": "Stack Overflow theme for JSON Resume",
-    "version": "2.1.0",
+    "name": "sasha_fixed",
+    "displayName": "Sasha_fixed",
+    "description": "Sasha JSON Resume theme.",
+    "version": "0.0.9",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 52493,
+    "cssSize": 1904
+  },
+  {
+    "name": "codecobra",
+    "displayName": "Codecobra",
+    "description": "Caffeine theme for JSON Resume",
+    "version": "2.2.0",
     "browserCompatible": true,
     "hasSnapshot": false,
     "hasCss": false,
-    "fileSize": 136938,
+    "fileSize": 313513,
+    "cssSize": 0
+  },
+  {
+    "name": "el-santo",
+    "displayName": "El santo",
+    "description": "A simple yet elegant theme for JSON Resume",
+    "version": "0.0.7",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 117750,
     "cssSize": 0
   },
   {
@@ -1540,6 +1562,28 @@
     "cssSize": 6541
   },
   {
+    "name": "stackoverflow-mats",
+    "displayName": "Stackoverflow mats",
+    "description": "Stack Overflow theme for JSON Resume",
+    "version": "2.1.0",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 136938,
+    "cssSize": 0
+  },
+  {
+    "name": "compact-pt-br",
+    "displayName": "Compact pt br",
+    "description": "A JSON Resume theme for a compact look in portuguese (brazil)",
+    "version": "1.0.7",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 121303,
+    "cssSize": 1004
+  },
+  {
     "name": "elegant-zh-hant",
     "displayName": "Elegant zh hant",
     "description": "Fork of Elegant theme for jsonresume in Chinese",
@@ -1549,6 +1593,17 @@
     "hasCss": true,
     "fileSize": 599166,
     "cssSize": 34936
+  },
+  {
+    "name": "trivento",
+    "displayName": "Trivento",
+    "description": "CV",
+    "version": "0.1.2",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 218948,
+    "cssSize": 1089
   },
   {
     "name": "creative-confidence",
@@ -1573,15 +1628,15 @@
     "cssSize": 0
   },
   {
-    "name": "trivento",
-    "displayName": "Trivento",
-    "description": "CV",
-    "version": "0.1.2",
+    "name": "jupe",
+    "displayName": "Jupe",
+    "description": "Theme for jsonresume based on elegant",
+    "version": "1.16.3",
     "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 218948,
-    "cssSize": 1089
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 578639,
+    "cssSize": 0
   },
   {
     "name": "striking",
@@ -1606,26 +1661,15 @@
     "cssSize": 3711
   },
   {
-    "name": "jupe",
-    "displayName": "Jupe",
-    "description": "Theme for jsonresume based on elegant",
-    "version": "1.16.3",
-    "browserCompatible": true,
+    "name": "github",
+    "displayName": "Github",
+    "description": "A theme for JSON Resume",
+    "version": "0.0.5",
+    "browserCompatible": false,
     "hasSnapshot": false,
     "hasCss": false,
-    "fileSize": 578639,
+    "fileSize": 0,
     "cssSize": 0
-  },
-  {
-    "name": "compact-pt-br",
-    "displayName": "Compact pt br",
-    "description": "A JSON Resume theme for a compact look in portuguese (brazil)",
-    "version": "1.0.7",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 121303,
-    "cssSize": 1004
   },
   {
     "name": "light-classy-concise",
@@ -1650,21 +1694,21 @@
     "cssSize": 0
   },
   {
+    "name": "cvstrap",
+    "displayName": "Cvstrap",
+    "description": "cvStrap is a classic, clean, professional theme for the JSONResume schema with print-ready and responsive stylesheets, based on Bootstrap 2.0.",
+    "version": "0.0.5",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 219762,
+    "cssSize": 0
+  },
+  {
     "name": "github2",
     "displayName": "Github2",
     "description": "A theme for JSON Resume",
     "version": "0.0.8",
-    "browserCompatible": false,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0
-  },
-  {
-    "name": "github",
-    "displayName": "Github",
-    "description": "A theme for JSON Resume",
-    "version": "0.0.5",
     "browserCompatible": false,
     "hasSnapshot": false,
     "hasCss": false,
@@ -1677,20 +1721,20 @@
     "description": "Printable theme for JSON Resume",
     "version": "1.0.2",
     "browserCompatible": true,
-    "hasSnapshot": true,
+    "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 2250162,
     "cssSize": 0
   },
   {
-    "name": "dev-ats",
-    "displayName": "Dev ats",
-    "description": "JSON Resume theme for developers",
-    "version": "1.0.1",
-    "browserCompatible": true,
+    "name": "elegant-custom",
+    "displayName": "Elegant custom",
+    "description": "ElegantNew theme for jsonresume",
+    "version": "1.0.4",
+    "browserCompatible": false,
     "hasSnapshot": false,
     "hasCss": false,
-    "fileSize": 250775,
+    "fileSize": 0,
     "cssSize": 0
   },
   {
@@ -1716,28 +1760,6 @@
     "cssSize": 1865
   },
   {
-    "name": "elegant-custom",
-    "displayName": "Elegant custom",
-    "description": "ElegantNew theme for jsonresume",
-    "version": "1.0.4",
-    "browserCompatible": false,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0
-  },
-  {
-    "name": "cvstrap",
-    "displayName": "Cvstrap",
-    "description": "cvStrap is a classic, clean, professional theme for the JSONResume schema with print-ready and responsive stylesheets, based on Bootstrap 2.0.",
-    "version": "0.0.5",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 219762,
-    "cssSize": 0
-  },
-  {
     "name": "plick",
     "displayName": "Plick",
     "description": "Plick theme for JSON Resume: a fork of the original Slick theme",
@@ -1749,17 +1771,6 @@
     "cssSize": 61088
   },
   {
-    "name": "autumn-custom",
-    "displayName": "Autumn custom",
-    "description": "Foked, slightly alterd Autumn theme for the JSON Resume Project",
-    "version": "1.1.5",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 209777,
-    "cssSize": 0
-  },
-  {
     "name": "kendall-ksenia",
     "displayName": "Kendall ksenia",
     "description": "A JSON Resume theme built with bootstrap",
@@ -1769,6 +1780,17 @@
     "hasCss": true,
     "fileSize": 112158,
     "cssSize": 6512
+  },
+  {
+    "name": "autumn-custom",
+    "displayName": "Autumn custom",
+    "description": "Foked, slightly alterd Autumn theme for the JSON Resume Project",
+    "version": "1.1.5",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 209777,
+    "cssSize": 0
   },
   {
     "name": "hyperfocus",
@@ -1793,14 +1815,14 @@
     "cssSize": 3017
   },
   {
-    "name": "developpez",
-    "displayName": "Developpez",
-    "description": "Developpez.com theme for JSON Resume",
-    "version": "1.1.3",
-    "browserCompatible": true,
+    "name": "latex",
+    "displayName": "Latex",
+    "description": "A LaTeX theme/output format for JSON resumes.",
+    "version": "0.1.2",
+    "browserCompatible": false,
     "hasSnapshot": false,
     "hasCss": false,
-    "fileSize": 205640,
+    "fileSize": 0,
     "cssSize": 0
   },
   {
@@ -1815,15 +1837,26 @@
     "cssSize": 3343
   },
   {
-    "name": "latex",
-    "displayName": "Latex",
-    "description": "A LaTeX theme/output format for JSON resumes.",
-    "version": "0.1.2",
-    "browserCompatible": false,
+    "name": "developpez",
+    "displayName": "Developpez",
+    "description": "Developpez.com theme for JSON Resume",
+    "version": "1.1.3",
+    "browserCompatible": true,
     "hasSnapshot": false,
     "hasCss": false,
-    "fileSize": 0,
+    "fileSize": 205640,
     "cssSize": 0
+  },
+  {
+    "name": "contempo",
+    "displayName": "Contempo",
+    "description": "Theme for JSON Resume",
+    "version": "0.0.3",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 150538,
+    "cssSize": 1530
   },
   {
     "name": "wb-elegant",
@@ -1859,17 +1892,6 @@
     "cssSize": 1471
   },
   {
-    "name": "futura",
-    "displayName": "Futura",
-    "description": "Theme for JSON Resume based on Modern",
-    "version": "0.1.4",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 187600,
-    "cssSize": 786
-  },
-  {
     "name": "tachyons-clean",
     "displayName": "Tachyons clean",
     "description": "My take on jsonresume",
@@ -1881,15 +1903,15 @@
     "cssSize": 155
   },
   {
-    "name": "contempo",
-    "displayName": "Contempo",
-    "description": "Theme for JSON Resume",
-    "version": "0.0.3",
+    "name": "futura",
+    "displayName": "Futura",
+    "description": "Theme for JSON Resume based on Modern",
+    "version": "0.1.4",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 150538,
-    "cssSize": 1530
+    "fileSize": 187600,
+    "cssSize": 786
   },
   {
     "name": "markdown",
@@ -1903,15 +1925,15 @@
     "cssSize": 0
   },
   {
-    "name": "smart",
-    "displayName": "Smart",
-    "description": "Print-friendly & UX-friendly, customizable JSON Resume theme.",
-    "version": "1.0.2",
+    "name": "kendall-plus",
+    "displayName": "Kendall plus",
+    "description": "A JSON Resume theme built with bootstrap",
+    "version": "0.3.1",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 99772,
-    "cssSize": 9973
+    "fileSize": 114051,
+    "cssSize": 6827
   },
   {
     "name": "jjlorenzoelegant",
@@ -1925,17 +1947,6 @@
     "cssSize": 0
   },
   {
-    "name": "ophir",
-    "displayName": "Ophir",
-    "description": "A flat theme for JSON Resume, compatible with the bleeding edge resume schema",
-    "version": "0.18.2",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 158610,
-    "cssSize": 2989
-  },
-  {
     "name": "direct",
     "displayName": "Direct",
     "description": "A simple yet elegant theme for JSON Resume",
@@ -1947,15 +1958,26 @@
     "cssSize": 2035
   },
   {
-    "name": "kendall-plus",
-    "displayName": "Kendall plus",
-    "description": "A JSON Resume theme built with bootstrap",
-    "version": "0.3.1",
+    "name": "smart",
+    "displayName": "Smart",
+    "description": "Print-friendly & UX-friendly, customizable JSON Resume theme.",
+    "version": "1.0.2",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 114051,
-    "cssSize": 6827
+    "fileSize": 99772,
+    "cssSize": 9973
+  },
+  {
+    "name": "ophir",
+    "displayName": "Ophir",
+    "description": "A flat theme for JSON Resume, compatible with the bleeding edge resume schema",
+    "version": "0.18.2",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 158610,
+    "cssSize": 2989
   },
   {
     "name": "boilerplate-test",
@@ -1969,28 +1991,6 @@
     "cssSize": 837
   },
   {
-    "name": "elegant-projects",
-    "displayName": "Elegant projects",
-    "description": "Elegant theme for jsonresume",
-    "version": "1.10.2",
-    "browserCompatible": false,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0
-  },
-  {
-    "name": "classy-vforesee",
-    "displayName": "Classy vforesee",
-    "description": "An uber-classy JSONResume theme - Edited for Vforesee",
-    "version": "0.0.2",
-    "browserCompatible": false,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0
-  },
-  {
     "name": "nominaltech-nl",
     "displayName": "Nominaltech nl",
     "description": "Nominaltech JSON Resume theme.",
@@ -2002,15 +2002,15 @@
     "cssSize": 1064
   },
   {
-    "name": "fizz",
-    "displayName": "Fizz",
-    "description": "Fizz theme for JSONResume.org",
-    "version": "0.0.5",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 63208,
-    "cssSize": 4661
+    "name": "elegant-projects",
+    "displayName": "Elegant projects",
+    "description": "Elegant theme for jsonresume",
+    "version": "1.10.2",
+    "browserCompatible": false,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 0,
+    "cssSize": 0
   },
   {
     "name": "concise",
@@ -2024,15 +2024,26 @@
     "cssSize": 3722
   },
   {
-    "name": "cv",
-    "displayName": "Cv",
-    "description": "wip nice cv theme",
-    "version": "0.0.0",
+    "name": "classy-vforesee",
+    "displayName": "Classy vforesee",
+    "description": "An uber-classy JSONResume theme - Edited for Vforesee",
+    "version": "0.0.2",
     "browserCompatible": false,
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
     "cssSize": 0
+  },
+  {
+    "name": "fizz",
+    "displayName": "Fizz",
+    "description": "Fizz theme for JSONResume.org",
+    "version": "0.0.5",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 63208,
+    "cssSize": 4661
   },
   {
     "name": "stackoverflow-chinese",
@@ -2046,37 +2057,15 @@
     "cssSize": 0
   },
   {
-    "name": "intern",
-    "displayName": "Intern",
-    "description": "A responsive JSON Resume theme for young professionals.",
-    "version": "0.0.2",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 67158,
-    "cssSize": 3208
-  },
-  {
-    "name": "modern-freelance",
-    "displayName": "Modern freelance",
-    "description": "Default modern theme with additional sections including freelance work",
-    "version": "0.1.10",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 288278,
-    "cssSize": 216
-  },
-  {
-    "name": "macchiato-macea",
-    "displayName": "Macchiato macea",
-    "description": "Simple theme for JSON Resume. Based on macchiato, which based on caffeine-theme.",
-    "version": "1.0.7",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 278889,
-    "cssSize": 6365
+    "name": "cv",
+    "displayName": "Cv",
+    "description": "wip nice cv theme",
+    "version": "0.0.0",
+    "browserCompatible": false,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 0,
+    "cssSize": 0
   },
   {
     "name": "onepage-updated",
@@ -2090,6 +2079,39 @@
     "cssSize": 2433
   },
   {
+    "name": "macchiato-macea",
+    "displayName": "Macchiato macea",
+    "description": "Simple theme for JSON Resume. Based on macchiato, which based on caffeine-theme.",
+    "version": "1.0.7",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 278889,
+    "cssSize": 6365
+  },
+  {
+    "name": "modern-freelance",
+    "displayName": "Modern freelance",
+    "description": "Default modern theme with additional sections including freelance work",
+    "version": "0.1.10",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 288278,
+    "cssSize": 216
+  },
+  {
+    "name": "intern",
+    "displayName": "Intern",
+    "description": "A responsive JSON Resume theme for young professionals.",
+    "version": "0.0.2",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 67158,
+    "cssSize": 3208
+  },
+  {
     "name": "vitae",
     "displayName": "Vitae",
     "description": "Simple theme for JSON Resume with support for light and dark mode",
@@ -2101,10 +2123,21 @@
     "cssSize": 1276
   },
   {
-    "name": "kwan-fix",
-    "displayName": "Kwan fix",
-    "description": "Kwan theme for jsonresume. Other resumes may have the coin, but they won't have the 'Kwan'.",
-    "version": "0.1.2",
+    "name": "timeline",
+    "displayName": "Timeline",
+    "description": "",
+    "version": "0.0.6",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 973032,
+    "cssSize": 141788
+  },
+  {
+    "name": "elegant-hitesh",
+    "displayName": "Elegant hitesh",
+    "description": "Elegant theme for jsonresume",
+    "version": "0.9.10",
     "browserCompatible": false,
     "hasSnapshot": false,
     "hasCss": false,
@@ -2112,10 +2145,10 @@
     "cssSize": 0
   },
   {
-    "name": "elegant-hitesh",
-    "displayName": "Elegant hitesh",
-    "description": "Elegant theme for jsonresume",
-    "version": "0.9.10",
+    "name": "kwan-fix",
+    "displayName": "Kwan fix",
+    "description": "Kwan theme for jsonresume. Other resumes may have the coin, but they won't have the 'Kwan'.",
+    "version": "0.1.2",
     "browserCompatible": false,
     "hasSnapshot": false,
     "hasCss": false,
@@ -2145,17 +2178,6 @@
     "cssSize": 0
   },
   {
-    "name": "stackoverflow-roboto",
-    "displayName": "Stackoverflow roboto",
-    "description": "Stack Overflow theme for JSON Resume, it's fork for bug fixing",
-    "version": "2.0.9",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 137369,
-    "cssSize": 0
-  },
-  {
     "name": "bootstrap-icons",
     "displayName": "Bootstrap icons",
     "description": "A JSON Resume theme built with bootstrap and fontAwesome",
@@ -2165,28 +2187,6 @@
     "hasCss": false,
     "fileSize": 77532,
     "cssSize": 0
-  },
-  {
-    "name": "golden",
-    "displayName": "Golden",
-    "description": "Theme for JSON Resume based on Kards design by styleshout",
-    "version": "0.0.1-npm-publish.1",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 304827,
-    "cssSize": 0
-  },
-  {
-    "name": "timeline",
-    "displayName": "Timeline",
-    "description": "",
-    "version": "0.0.6",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 973032,
-    "cssSize": 141788
   },
   {
     "name": "eloquent-mod",
@@ -2200,6 +2200,17 @@
     "cssSize": 69694
   },
   {
+    "name": "stackoverflow-roboto",
+    "displayName": "Stackoverflow roboto",
+    "description": "Stack Overflow theme for JSON Resume, it's fork for bug fixing",
+    "version": "2.0.9",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 137369,
+    "cssSize": 0
+  },
+  {
     "name": "stackoverflow-fr",
     "displayName": "Stackoverflow fr",
     "description": "French version of the Stack Overflow theme for JSON Resume",
@@ -2208,17 +2219,6 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 201535,
-    "cssSize": 0
-  },
-  {
-    "name": "elegant-pdf",
-    "displayName": "Elegant pdf",
-    "description": "Elegant theme for jsonresume - optimized for printing to pdf",
-    "version": "1.0.0",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 573134,
     "cssSize": 0
   },
   {
@@ -2233,6 +2233,17 @@
     "cssSize": 0
   },
   {
+    "name": "elegant-pdf",
+    "displayName": "Elegant pdf",
+    "description": "Elegant theme for jsonresume - optimized for printing to pdf",
+    "version": "1.0.0",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 573134,
+    "cssSize": 0
+  },
+  {
     "name": "autumn",
     "displayName": "Autumn",
     "description": "Autumn theme for the JSON Resume Project",
@@ -2241,6 +2252,17 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 206873,
+    "cssSize": 0
+  },
+  {
+    "name": "kiss",
+    "displayName": "Kiss",
+    "description": "Keep it simple, stupid. Basic times new roman template",
+    "version": "0.5.0",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 268121,
     "cssSize": 0
   },
   {
@@ -2255,6 +2277,17 @@
     "cssSize": 2336
   },
   {
+    "name": "kittyfarren",
+    "displayName": "Kittyfarren",
+    "description": "Simple purple theme for JSON Resume based on the americano theme.",
+    "version": "1.0.15",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 205820,
+    "cssSize": 0
+  },
+  {
     "name": "kava",
     "displayName": "Kava",
     "description": "Simple theme for JSON Resume. Based on caffeine-theme.",
@@ -2264,6 +2297,17 @@
     "hasCss": true,
     "fileSize": 241322,
     "cssSize": 7155
+  },
+  {
+    "name": "classic",
+    "displayName": "Classic",
+    "description": "Maximally compact JSON resume theme, with classic resume styling.",
+    "version": "0.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 130836,
+    "cssSize": 2276
   },
   {
     "name": "compactbr",
@@ -2277,17 +2321,6 @@
     "cssSize": 898
   },
   {
-    "name": "onepage-fr",
-    "displayName": "Onepage fr",
-    "description": "Compact, printable theme for JSON Resume (french version)",
-    "version": "0.0.7",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 130865,
-    "cssSize": 2011
-  },
-  {
     "name": "slick-bentley",
     "displayName": "Slick bentley",
     "description": "Slick theme for JSON Resume for Matthew Bentley",
@@ -2297,6 +2330,17 @@
     "hasCss": true,
     "fileSize": 124629,
     "cssSize": 60122
+  },
+  {
+    "name": "onepage-fr",
+    "displayName": "Onepage fr",
+    "description": "Compact, printable theme for JSON Resume (french version)",
+    "version": "0.0.7",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 130865,
+    "cssSize": 2011
   },
   {
     "name": "spartacus-nl",
@@ -2310,15 +2354,15 @@
     "cssSize": 4369
   },
   {
-    "name": "classic",
-    "displayName": "Classic",
-    "description": "Maximally compact JSON resume theme, with classic resume styling.",
-    "version": "0.0.1",
+    "name": "kendall-fix",
+    "displayName": "Kendall fix",
+    "description": "A JSON Resume theme built with bootstrap",
+    "version": "0.1.10",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 130836,
-    "cssSize": 2276
+    "fileSize": 66144,
+    "cssSize": 6481
   },
   {
     "name": "stackoverflow2",
@@ -2343,28 +2387,6 @@
     "cssSize": 0
   },
   {
-    "name": "kiss",
-    "displayName": "Kiss",
-    "description": "Keep it simple, stupid. Basic times new roman template",
-    "version": "0.5.0",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 268121,
-    "cssSize": 0
-  },
-  {
-    "name": "kendall-fix",
-    "displayName": "Kendall fix",
-    "description": "A JSON Resume theme built with bootstrap",
-    "version": "0.1.10",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 66144,
-    "cssSize": 6481
-  },
-  {
     "name": "depassementdepile",
     "displayName": "Depassementdepile",
     "description": "Stack Overflow JSON Resume en français",
@@ -2387,17 +2409,6 @@
     "cssSize": 0
   },
   {
-    "name": "slickoverflow",
-    "displayName": "Slickoverflow",
-    "description": "A variation of the original jsonresume stack overflow theme.",
-    "version": "0.0.2",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 139404,
-    "cssSize": 0
-  },
-  {
     "name": "macchiato-ibic",
     "displayName": "Macchiato ibic",
     "description": "Simple theme for JSON Resume. Based on macchiato, which based on caffeine-theme.",
@@ -2409,6 +2420,28 @@
     "cssSize": 6365
   },
   {
+    "name": "clean",
+    "displayName": "Clean",
+    "description": "clean theme for JSON Resume",
+    "version": "0.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 70724,
+    "cssSize": 3488
+  },
+  {
+    "name": "slickoverflow",
+    "displayName": "Slickoverflow",
+    "description": "A variation of the original jsonresume stack overflow theme.",
+    "version": "0.0.2",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 139404,
+    "cssSize": 0
+  },
+  {
     "name": "eloquent-ru",
     "displayName": "Eloquent ru",
     "description": "An eloquent JSON Resume theme: fluent, persuasive, for developers",
@@ -2418,6 +2451,17 @@
     "hasCss": true,
     "fileSize": 274430,
     "cssSize": 69498
+  },
+  {
+    "name": "reactive",
+    "displayName": "Reactive",
+    "description": "A flat and reactive JSON Resume theme.",
+    "version": "0.5.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 104640,
+    "cssSize": 54915
   },
   {
     "name": "pring",
@@ -2442,15 +2486,15 @@
     "cssSize": 0
   },
   {
-    "name": "clean",
-    "displayName": "Clean",
-    "description": "clean theme for JSON Resume",
+    "name": "ceevee",
+    "displayName": "Ceevee",
+    "description": "Ceevee theme for JSON Resume",
     "version": "0.0.1",
     "browserCompatible": true,
     "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 70724,
-    "cssSize": 3488
+    "hasCss": false,
+    "fileSize": 2431330,
+    "cssSize": 0
   },
   {
     "name": "shorter-miles",
@@ -2461,6 +2505,17 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 189770,
+    "cssSize": 0
+  },
+  {
+    "name": "blue",
+    "displayName": "Blue",
+    "description": "",
+    "version": "0.0.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 788,
     "cssSize": 0
   },
   {
@@ -2475,30 +2530,8 @@
     "cssSize": 6481
   },
   {
-    "name": "ceevee",
-    "displayName": "Ceevee",
-    "description": "Ceevee theme for JSON Resume",
-    "version": "0.0.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 2431330,
-    "cssSize": 0
-  },
-  {
-    "name": "lacour",
-    "displayName": "Lacour",
-    "description": "A JSON Resume theme built with bootstrap, in french",
-    "version": "1.1.0",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 115169,
-    "cssSize": 0
-  },
-  {
-    "name": "blue",
-    "displayName": "Blue",
+    "name": "gross",
+    "displayName": "Gross",
     "description": "",
     "version": "0.0.0",
     "browserCompatible": true,
@@ -2519,6 +2552,28 @@
     "cssSize": 0
   },
   {
+    "name": "lacour",
+    "displayName": "Lacour",
+    "description": "A JSON Resume theme built with bootstrap, in french",
+    "version": "1.1.0",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 115169,
+    "cssSize": 0
+  },
+  {
+    "name": "light-classy-responsive-fr",
+    "displayName": "Light classy responsive fr",
+    "description": "An uber-classy-fr JSONResume theme.",
+    "version": "1.0.8",
+    "browserCompatible": false,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 0,
+    "cssSize": 0
+  },
+  {
     "name": "shorter-bill",
     "displayName": "Shorter bill",
     "description": "Minor changes to json-theme-shorter by Dan",
@@ -2530,34 +2585,12 @@
     "cssSize": 2578
   },
   {
-    "name": "gross",
-    "displayName": "Gross",
-    "description": "",
-    "version": "0.0.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 788,
-    "cssSize": 0
-  },
-  {
     "name": "cards",
     "displayName": "Cards",
     "description": "Coming soon...",
     "version": "0.0.0",
     "browserCompatible": false,
     "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0
-  },
-  {
-    "name": "light-classy-responsive-fr",
-    "displayName": "Light classy responsive fr",
-    "description": "An uber-classy-fr JSONResume theme.",
-    "version": "1.0.8",
-    "browserCompatible": false,
-    "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
     "cssSize": 0
@@ -2596,17 +2629,6 @@
     "cssSize": 660
   },
   {
-    "name": "latte",
-    "displayName": "Latte",
-    "description": "Simple theme for JSON Resume. Based on macchiato and caffeine theme.",
-    "version": "1.0.3",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 196434,
-    "cssSize": 6402
-  },
-  {
     "name": "val",
     "displayName": "Val",
     "description": "",
@@ -2616,6 +2638,17 @@
     "hasCss": false,
     "fileSize": 1002,
     "cssSize": 0
+  },
+  {
+    "name": "latte",
+    "displayName": "Latte",
+    "description": "Simple theme for JSON Resume. Based on macchiato and caffeine theme.",
+    "version": "1.0.3",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 196434,
+    "cssSize": 6402
   },
   {
     "name": "macchiato-plus",
@@ -2629,6 +2662,28 @@
     "cssSize": 6365
   },
   {
+    "name": "resu",
+    "displayName": "Resu",
+    "description": "A theme for JSON Resume.",
+    "version": "0.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 75944,
+    "cssSize": 2643
+  },
+  {
+    "name": "elegant-fr-mod",
+    "displayName": "Elegant fr mod",
+    "description": "Elegant theme for jsonresume (french version)",
+    "version": "1.2.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 595612,
+    "cssSize": 34936
+  },
+  {
     "name": "nominaltech",
     "displayName": "Nominaltech",
     "description": "Nominaltech JSON Resume theme.",
@@ -2638,6 +2693,17 @@
     "hasCss": true,
     "fileSize": 52018,
     "cssSize": 1905
+  },
+  {
+    "name": "kendall-fr",
+    "displayName": "Kendall fr",
+    "description": "A French JSON Resume theme built with bootstrap. Original from Adam Kendall : https://github.com/linuxbozo/jsonresume-theme-kendall.git",
+    "version": "0.1.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 95171,
+    "cssSize": 6826
   },
   {
     "name": "engineering-leader",
@@ -2662,50 +2728,6 @@
     "cssSize": 5968
   },
   {
-    "name": "elegant-fr-mod",
-    "displayName": "Elegant fr mod",
-    "description": "Elegant theme for jsonresume (french version)",
-    "version": "1.2.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 595612,
-    "cssSize": 34936
-  },
-  {
-    "name": "elegant-mobile",
-    "displayName": "Elegant mobile",
-    "description": "Elegant theme for jsonresume",
-    "version": "0.0.3",
-    "browserCompatible": false,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0
-  },
-  {
-    "name": "resu",
-    "displayName": "Resu",
-    "description": "A theme for JSON Resume.",
-    "version": "0.0.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 75944,
-    "cssSize": 2643
-  },
-  {
-    "name": "kendall-fr",
-    "displayName": "Kendall fr",
-    "description": "A French JSON Resume theme built with bootstrap. Original from Adam Kendall : https://github.com/linuxbozo/jsonresume-theme-kendall.git",
-    "version": "0.1.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 95171,
-    "cssSize": 6826
-  },
-  {
     "name": "simple",
     "displayName": "Simple",
     "description": "Beautifully simple theme, compatible with jsonresume.org",
@@ -2717,25 +2739,14 @@
     "cssSize": 3095
   },
   {
-    "name": "verbum",
-    "displayName": "Verbum",
-    "description": "Verbum theme for JSON Resume",
-    "version": "0.0.5",
+    "name": "elegant-mobile",
+    "displayName": "Elegant mobile",
+    "description": "Elegant theme for jsonresume",
+    "version": "0.0.3",
     "browserCompatible": false,
-    "hasSnapshot": true,
+    "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
-  },
-  {
-    "name": "spartan-projects",
-    "displayName": "Spartan projects",
-    "description": "Minimal, clean and elegant theme for JSON Resume",
-    "version": "0.1.8",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 192728,
     "cssSize": 0
   },
   {
@@ -2750,15 +2761,15 @@
     "cssSize": 660
   },
   {
-    "name": "kendall-beardtree",
-    "displayName": "Kendall beardtree",
-    "description": "A JSON Resume theme built with bootstrap",
-    "version": "0.0.1",
+    "name": "spartan-projects",
+    "displayName": "Spartan projects",
+    "description": "Minimal, clean and elegant theme for JSON Resume",
+    "version": "0.1.8",
     "browserCompatible": true,
     "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 65919,
-    "cssSize": 6481
+    "hasCss": false,
+    "fileSize": 192728,
+    "cssSize": 0
   },
   {
     "name": "stackoverflow-react-2",
@@ -2772,102 +2783,14 @@
     "cssSize": 0
   },
   {
-    "name": "short-extended",
-    "displayName": "Short extended",
-    "description": "Simple to the point theme for JSON Resume",
-    "version": "1.8.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 84718,
-    "cssSize": 3683
-  },
-  {
-    "name": "elegant-simplified",
-    "displayName": "Elegant simplified",
-    "description": "Fork of Elegant theme for jsonresume w/o volunteer section",
-    "version": "0.0.2",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 39606,
-    "cssSize": 995
-  },
-  {
-    "name": "boldstatement",
-    "displayName": "Boldstatement",
-    "description": "Make a bold statement with this JSON Resume theme.",
-    "version": "0.1.3",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 12912367,
-    "cssSize": 0
-  },
-  {
-    "name": "actual-entropitor",
-    "displayName": "Actual entropitor",
-    "description": "Actual theme for JSON Resume",
-    "version": "1.2.0",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 1046625,
-    "cssSize": 0
-  },
-  {
-    "name": "sky",
-    "displayName": "Sky",
-    "description": "Sky theme for the JSON Resume Project",
-    "version": "1.1.1",
-    "browserCompatible": true,
+    "name": "verbum",
+    "displayName": "Verbum",
+    "description": "Verbum theme for JSON Resume",
+    "version": "0.0.5",
+    "browserCompatible": false,
     "hasSnapshot": true,
     "hasCss": false,
-    "fileSize": 209781,
-    "cssSize": 0
-  },
-  {
-    "name": "genocation",
-    "displayName": "Genocation",
-    "description": "Genocation theme for JSON Resume. Responsive design, with thumbnails, floating menu and skill animated charts",
-    "version": "0.1.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 261212,
-    "cssSize": 12396
-  },
-  {
-    "name": "keloran",
-    "displayName": "Keloran",
-    "description": "A Fork of Kendall with tweaks",
-    "version": "1.0.2",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 67579,
-    "cssSize": 6593
-  },
-  {
-    "name": "kendall-gren",
-    "displayName": "Kendall gren",
-    "description": "A JSON Resume theme built with bootstrap",
-    "version": "0.1.23",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 113537,
-    "cssSize": 7792
-  },
-  {
-    "name": "stackoverflow-skills",
-    "displayName": "Stackoverflow skills",
-    "description": "Stack Overflow theme for JSON Resume",
-    "version": "1.4.1",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 166268,
+    "fileSize": 0,
     "cssSize": 0
   },
   {
@@ -2882,14 +2805,124 @@
     "cssSize": 60121
   },
   {
-    "name": "spartan-v1",
-    "displayName": "Spartan v1",
-    "description": "Minimal, clean and elegant theme for JSON Resume",
-    "version": "0.3.0",
+    "name": "keloran",
+    "displayName": "Keloran",
+    "description": "A Fork of Kendall with tweaks",
+    "version": "1.0.2",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 67579,
+    "cssSize": 6593
+  },
+  {
+    "name": "kendall-beardtree",
+    "displayName": "Kendall beardtree",
+    "description": "A JSON Resume theme built with bootstrap",
+    "version": "0.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 65919,
+    "cssSize": 6481
+  },
+  {
+    "name": "elegant-simplified",
+    "displayName": "Elegant simplified",
+    "description": "Fork of Elegant theme for jsonresume w/o volunteer section",
+    "version": "0.0.2",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 39606,
+    "cssSize": 995
+  },
+  {
+    "name": "short-extended",
+    "displayName": "Short extended",
+    "description": "Simple to the point theme for JSON Resume",
+    "version": "1.8.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 84718,
+    "cssSize": 3683
+  },
+  {
+    "name": "orbit-original",
+    "displayName": "Orbit original",
+    "description": "Theme for JSON Resume based on Orbit design by xriley",
+    "version": "3.0.0",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": false,
-    "fileSize": 187421,
+    "fileSize": 234732,
+    "cssSize": 0
+  },
+  {
+    "name": "actual-entropitor",
+    "displayName": "Actual entropitor",
+    "description": "Actual theme for JSON Resume",
+    "version": "1.2.0",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 1046625,
+    "cssSize": 0
+  },
+  {
+    "name": "boldstatement",
+    "displayName": "Boldstatement",
+    "description": "Make a bold statement with this JSON Resume theme.",
+    "version": "0.1.3",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 12912367,
+    "cssSize": 0
+  },
+  {
+    "name": "sky",
+    "displayName": "Sky",
+    "description": "Sky theme for the JSON Resume Project",
+    "version": "1.1.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 209781,
+    "cssSize": 0
+  },
+  {
+    "name": "kendall-gren",
+    "displayName": "Kendall gren",
+    "description": "A JSON Resume theme built with bootstrap",
+    "version": "0.1.23",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 113537,
+    "cssSize": 7792
+  },
+  {
+    "name": "genocation",
+    "displayName": "Genocation",
+    "description": "Genocation theme for JSON Resume. Responsive design, with thumbnails, floating menu and skill animated charts",
+    "version": "0.1.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 261212,
+    "cssSize": 12396
+  },
+  {
+    "name": "stackoverflow-skills",
+    "displayName": "Stackoverflow skills",
+    "description": "Stack Overflow theme for JSON Resume",
+    "version": "1.4.1",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 166268,
     "cssSize": 0
   },
   {
@@ -2902,6 +2935,39 @@
     "hasCss": true,
     "fileSize": 78136,
     "cssSize": 6328
+  },
+  {
+    "name": "caffeine-tweaked",
+    "displayName": "Caffeine tweaked",
+    "description": "Caffeine theme for JSON Resume",
+    "version": "1.0.4",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 275065,
+    "cssSize": 0
+  },
+  {
+    "name": "spartan-v1",
+    "displayName": "Spartan v1",
+    "description": "Minimal, clean and elegant theme for JSON Resume",
+    "version": "0.3.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 187421,
+    "cssSize": 0
+  },
+  {
+    "name": "ludoo",
+    "displayName": "Ludoo",
+    "description": "A JSON Resume theme built with bootstrap",
+    "version": "0.0.4",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 84243,
+    "cssSize": 6559
   },
   {
     "name": "next",
@@ -2959,6 +3025,17 @@
     "cssSize": 6761
   },
   {
+    "name": "paper-it",
+    "displayName": "Paper it",
+    "description": "An italian theme for JSON Resume",
+    "version": "0.4.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 72871,
+    "cssSize": 6285
+  },
+  {
     "name": "elegant-jali",
     "displayName": "Elegant jali",
     "description": "Modification of elegant theme for jsonresume",
@@ -2981,17 +3058,6 @@
     "cssSize": 0
   },
   {
-    "name": "paper-it",
-    "displayName": "Paper it",
-    "description": "An italian theme for JSON Resume",
-    "version": "0.4.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 72871,
-    "cssSize": 6285
-  },
-  {
     "name": "ankurclass",
     "displayName": "Ankurclass",
     "description": "Class theme for JSONResume.org",
@@ -3003,14 +3069,14 @@
     "cssSize": 4667
   },
   {
-    "name": "sfy",
-    "displayName": "Sfy",
-    "description": "A fork of autumn theme for the JSON Resume Project",
-    "version": "1.0.4",
+    "name": "bhdouglass",
+    "displayName": "Bhdouglass",
+    "description": "A custom theme for jsonresume",
+    "version": "1.0.2",
     "browserCompatible": true,
-    "hasSnapshot": true,
+    "hasSnapshot": false,
     "hasCss": false,
-    "fileSize": 207676,
+    "fileSize": 277574,
     "cssSize": 0
   },
   {
@@ -3025,26 +3091,26 @@
     "cssSize": 0
   },
   {
-    "name": "bhdouglass",
-    "displayName": "Bhdouglass",
-    "description": "A custom theme for jsonresume",
-    "version": "1.0.2",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 277574,
-    "cssSize": 0
-  },
-  {
-    "name": "orbit-original",
-    "displayName": "Orbit original",
-    "description": "Theme for JSON Resume based on Orbit design by xriley",
-    "version": "3.0.0",
+    "name": "sfy",
+    "displayName": "Sfy",
+    "description": "A fork of autumn theme for the JSON Resume Project",
+    "version": "1.0.4",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": false,
-    "fileSize": 234732,
+    "fileSize": 207676,
     "cssSize": 0
+  },
+  {
+    "name": "paper-fixed",
+    "displayName": "Paper fixed",
+    "description": "A theme for JSON Resume",
+    "version": "0.1.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 2917322,
+    "cssSize": 8991
   },
   {
     "name": "print",
@@ -3069,17 +3135,6 @@
     "cssSize": 0
   },
   {
-    "name": "elegant-fr2",
-    "displayName": "Elegant fr2",
-    "description": "Elegant theme for jsonresume (french version)",
-    "version": "1.2.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 595609,
-    "cssSize": 34936
-  },
-  {
     "name": "eternal-de",
     "displayName": "Eternal de",
     "description": "JSON Resume theme eternal (german translation)",
@@ -3089,17 +3144,6 @@
     "hasCss": false,
     "fileSize": 260963,
     "cssSize": 0
-  },
-  {
-    "name": "sasha",
-    "displayName": "Sasha",
-    "description": "Sasha JSON Resume theme.",
-    "version": "0.0.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 51754,
-    "cssSize": 1904
   },
   {
     "name": "srt-it",
@@ -3113,6 +3157,28 @@
     "cssSize": 2790
   },
   {
+    "name": "sasha",
+    "displayName": "Sasha",
+    "description": "Sasha JSON Resume theme.",
+    "version": "0.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 51754,
+    "cssSize": 1904
+  },
+  {
+    "name": "elegant-fr2",
+    "displayName": "Elegant fr2",
+    "description": "Elegant theme for jsonresume (french version)",
+    "version": "1.2.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 595609,
+    "cssSize": 34936
+  },
+  {
     "name": "kwaln-nl",
     "displayName": "Kwaln nl",
     "description": "Kwan theme for jsonresume. Other resumes may have the coin, but they won't have the 'Kwan'. This clone of the original is Dutch flavoured.",
@@ -3122,28 +3188,6 @@
     "hasCss": false,
     "fileSize": 0,
     "cssSize": 0
-  },
-  {
-    "name": "ludoo",
-    "displayName": "Ludoo",
-    "description": "A JSON Resume theme built with bootstrap",
-    "version": "0.0.4",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 84243,
-    "cssSize": 6559
-  },
-  {
-    "name": "onepage-year",
-    "displayName": "Onepage year",
-    "description": "Compact, printable theme for JSON Resume",
-    "version": "0.0.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 130730,
-    "cssSize": 2011
   },
   {
     "name": "flatphill",
@@ -3157,15 +3201,15 @@
     "cssSize": 2587
   },
   {
-    "name": "minimal-classy",
-    "displayName": "Minimal classy",
-    "description": "Minimal Classy Theme for JSON Resume",
-    "version": "0.1.2",
-    "browserCompatible": false,
+    "name": "onepage-year",
+    "displayName": "Onepage year",
+    "description": "Compact, printable theme for JSON Resume",
+    "version": "0.0.1",
+    "browserCompatible": true,
     "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0
+    "hasCss": true,
+    "fileSize": 130730,
+    "cssSize": 2011
   },
   {
     "name": "minimalism",
@@ -3179,15 +3223,15 @@
     "cssSize": 0
   },
   {
-    "name": "paper-fixed",
-    "displayName": "Paper fixed",
-    "description": "A theme for JSON Resume",
-    "version": "0.1.1",
+    "name": "macea",
+    "displayName": "Macea",
+    "description": "Simple theme for JSON Resume. Based on macchiato, which based on caffeine-theme.",
+    "version": "0.0.7",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 2917322,
-    "cssSize": 8991
+    "fileSize": 254462,
+    "cssSize": 6555
   },
   {
     "name": "concise-serif",
@@ -3201,17 +3245,6 @@
     "cssSize": 1710
   },
   {
-    "name": "reactive",
-    "displayName": "Reactive",
-    "description": "A flat and reactive JSON Resume theme.",
-    "version": "0.5.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 104640,
-    "cssSize": 54915
-  },
-  {
     "name": "onepage-mrseanryan",
     "displayName": "Onepage mrseanryan",
     "description": "Compact, printable theme for JSON Resume - modified by mrseanryan",
@@ -3221,6 +3254,17 @@
     "hasCss": false,
     "fileSize": 133926,
     "cssSize": 0
+  },
+  {
+    "name": "short-newmanrsfork",
+    "displayName": "Short newmanrsfork",
+    "description": "Added authors to pubs",
+    "version": "0.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 72274,
+    "cssSize": 1936
   },
   {
     "name": "edify",
@@ -3256,28 +3300,6 @@
     "cssSize": 0
   },
   {
-    "name": "eternal",
-    "displayName": "Eternal",
-    "description": "JSON Resume theme eternal",
-    "version": "0.0.45",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 124722,
-    "cssSize": 0
-  },
-  {
-    "name": "short-newmanrsfork",
-    "displayName": "Short newmanrsfork",
-    "description": "Added authors to pubs",
-    "version": "0.0.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 72274,
-    "cssSize": 1936
-  },
-  {
     "name": "kendall-custom",
     "displayName": "Kendall custom",
     "description": "A JSON Resume theme built with bootstrap",
@@ -3289,15 +3311,26 @@
     "cssSize": 6398
   },
   {
-    "name": "onepage-efficient",
-    "displayName": "Onepage efficient",
-    "description": "Space efficient resume theme. Based on onepage theme by Ainsley Chong",
-    "version": "0.0.2",
+    "name": "eternal",
+    "displayName": "Eternal",
+    "description": "JSON Resume theme eternal",
+    "version": "0.0.45",
     "browserCompatible": true,
     "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 86055,
-    "cssSize": 2228
+    "hasCss": false,
+    "fileSize": 124722,
+    "cssSize": 0
+  },
+  {
+    "name": "spartan-extended",
+    "displayName": "Spartan extended",
+    "description": "Extended version of the spartan them to a extended JSON resume format",
+    "version": "0.6.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 239765,
+    "cssSize": 0
   },
   {
     "name": "fresh",
@@ -3311,6 +3344,17 @@
     "cssSize": 17490
   },
   {
+    "name": "onepage-efficient",
+    "displayName": "Onepage efficient",
+    "description": "Space efficient resume theme. Based on onepage theme by Ainsley Chong",
+    "version": "0.0.2",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 86055,
+    "cssSize": 2228
+  },
+  {
     "name": "light-caffienated",
     "displayName": "Light caffienated",
     "description": "A theme for JSONResume",
@@ -3322,6 +3366,17 @@
     "cssSize": 6393
   },
   {
+    "name": "minimal-classy",
+    "displayName": "Minimal classy",
+    "description": "Minimal Classy Theme for JSON Resume",
+    "version": "0.1.2",
+    "browserCompatible": false,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 0,
+    "cssSize": 0
+  },
+  {
     "name": "stackoverflow-detailed",
     "displayName": "Stackoverflow detailed",
     "description": "Stack Overflow theme for JSON Resume",
@@ -3331,28 +3386,6 @@
     "hasCss": false,
     "fileSize": 138952,
     "cssSize": 0
-  },
-  {
-    "name": "onepage-simplified",
-    "displayName": "Onepage simplified",
-    "description": "Simplified, compact, printable theme for JSON Resume",
-    "version": "1.3.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 115678,
-    "cssSize": 1746
-  },
-  {
-    "name": "kendall-pt-br",
-    "displayName": "Kendall pt br",
-    "description": "A JSON Resume theme built with bootstrap in portugue (brazil)",
-    "version": "0.1.15",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 66351,
-    "cssSize": 6308
   },
   {
     "name": "kwan-no-skills-level",
@@ -3377,15 +3410,15 @@
     "cssSize": 2011
   },
   {
-    "name": "paper-monofont",
-    "displayName": "Paper monofont",
-    "description": "A theme for JSON Resume based on Paper Theme by Tim Daubenschütz",
-    "version": "0.1.0",
+    "name": "kendall-pt-br",
+    "displayName": "Kendall pt br",
+    "description": "A JSON Resume theme built with bootstrap in portugue (brazil)",
+    "version": "0.1.15",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 70895,
-    "cssSize": 6160
+    "fileSize": 66351,
+    "cssSize": 6308
   },
   {
     "name": "onepage-jak119",
@@ -3399,6 +3432,17 @@
     "cssSize": 0
   },
   {
+    "name": "paper-monofont",
+    "displayName": "Paper monofont",
+    "description": "A theme for JSON Resume based on Paper Theme by Tim Daubenschütz",
+    "version": "0.1.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 70895,
+    "cssSize": 6160
+  },
+  {
     "name": "even-gdpr",
     "displayName": "Even gdpr",
     "description": "A flat theme for JSON Resume, compatible with the bleeding edge resume schema",
@@ -3407,17 +3451,6 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 273115,
-    "cssSize": 0
-  },
-  {
-    "name": "md",
-    "displayName": "Md",
-    "description": "It is a theme used to render a jsonresume as markdown",
-    "version": "1.1.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 113077,
     "cssSize": 0
   },
   {
@@ -3432,6 +3465,28 @@
     "cssSize": 2944
   },
   {
+    "name": "md",
+    "displayName": "Md",
+    "description": "It is a theme used to render a jsonresume as markdown",
+    "version": "1.1.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 113077,
+    "cssSize": 0
+  },
+  {
+    "name": "golden",
+    "displayName": "Golden",
+    "description": "Theme for JSON Resume based on Kards design by styleshout",
+    "version": "0.0.1-npm-publish.1",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 304827,
+    "cssSize": 0
+  },
+  {
     "name": "spartan-extended-certs",
     "displayName": "Spartan extended certs",
     "description": "Extended version of the spartan them to a extended JSON resume format to include something else",
@@ -3440,17 +3495,6 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 239791,
-    "cssSize": 0
-  },
-  {
-    "name": "macea",
-    "displayName": "Macea",
-    "description": "Simple theme for JSON Resume. Based on macchiato, which based on caffeine-theme.",
-    "version": "0.0.7",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 254462,
     "cssSize": 0
   },
   {
@@ -3476,17 +3520,6 @@
     "cssSize": 0
   },
   {
-    "name": "eddywashere",
-    "displayName": "Eddywashere",
-    "description": "Theme for JSON Resume",
-    "version": "1.0.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 71902,
-    "cssSize": 4146
-  },
-  {
     "name": "paper-zh-hant",
     "displayName": "Paper zh hant",
     "description": "Fork of Paper theme for jsonresume in Chinese",
@@ -3496,6 +3529,17 @@
     "hasCss": true,
     "fileSize": 70902,
     "cssSize": 5831
+  },
+  {
+    "name": "eddywashere",
+    "displayName": "Eddywashere",
+    "description": "Theme for JSON Resume",
+    "version": "1.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 71902,
+    "cssSize": 4146
   },
   {
     "name": "rhinebeck",
@@ -3509,6 +3553,17 @@
     "cssSize": 6362
   },
   {
+    "name": "basic",
+    "displayName": "Basic",
+    "description": "Basic theme for JSON Resume",
+    "version": "1.0.3",
+    "browserCompatible": false,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 0,
+    "cssSize": 0
+  },
+  {
     "name": "elegant_fork",
     "displayName": "Elegant_fork",
     "description": "Fork of Elegant theme for jsonresume",
@@ -3520,15 +3575,15 @@
     "cssSize": 856
   },
   {
-    "name": "basic",
-    "displayName": "Basic",
-    "description": "Basic theme for JSON Resume",
-    "version": "1.0.3",
-    "browserCompatible": false,
+    "name": "sidepanel",
+    "displayName": "Sidepanel",
+    "description": "Side panel theme for JSON Resume",
+    "version": "0.3.0",
+    "browserCompatible": true,
     "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0
+    "hasCss": true,
+    "fileSize": 96483,
+    "cssSize": 1400
   },
   {
     "name": "print-flexbox",
@@ -3551,17 +3606,6 @@
     "hasCss": false,
     "fileSize": 0,
     "cssSize": 0
-  },
-  {
-    "name": "sidepanel",
-    "displayName": "Sidepanel",
-    "description": "Side panel theme for JSON Resume",
-    "version": "0.3.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 96483,
-    "cssSize": 1400
   },
   {
     "name": "flat-nl",
@@ -3597,17 +3641,6 @@
     "cssSize": 0
   },
   {
-    "name": "elegant-tarq",
-    "displayName": "Elegant tarq",
-    "description": "Personal fork of Elegant theme for jsonresume",
-    "version": "0.9.10",
-    "browserCompatible": false,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0
-  },
-  {
     "name": "hexagon",
     "displayName": "Hexagon",
     "description": "Hexagon theme for JSON Resume",
@@ -3630,6 +3663,17 @@
     "cssSize": 124845
   },
   {
+    "name": "elegant-tarq",
+    "displayName": "Elegant tarq",
+    "description": "Personal fork of Elegant theme for jsonresume",
+    "version": "0.9.10",
+    "browserCompatible": false,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 0,
+    "cssSize": 0
+  },
+  {
     "name": "kendalles",
     "displayName": "Kendalles",
     "description": "A JSON Resume theme built with bootstrap",
@@ -3639,6 +3683,17 @@
     "hasCss": true,
     "fileSize": 66584,
     "cssSize": 6478
+  },
+  {
+    "name": "compact-new",
+    "displayName": "Compact new",
+    "description": "A JSON Resume theme for a compact look",
+    "version": "1.0.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 175194,
+    "cssSize": 0
   },
   {
     "name": "elegant_sargefork",
@@ -3696,26 +3751,26 @@
     "cssSize": 0
   },
   {
-    "name": "compact-new",
-    "displayName": "Compact new",
-    "description": "A JSON Resume theme for a compact look",
-    "version": "1.0.0",
+    "name": "orbit-vforesee",
+    "displayName": "Orbit vforesee",
+    "description": "Theme for JSON Resume based on Orbit - Edited for Vforesee",
+    "version": "0.0.3",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": false,
-    "fileSize": 175194,
+    "fileSize": 250156,
     "cssSize": 0
   },
   {
-    "name": "json",
-    "displayName": "Json",
-    "description": "JSON theme for JSON Resume",
-    "version": "0.0.0",
+    "name": "light-nl",
+    "displayName": "Light nl",
+    "description": "A theme for JSONResume",
+    "version": "3.0.4",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 54056,
-    "cssSize": 88
+    "fileSize": 65987,
+    "cssSize": 5683
   },
   {
     "name": "flat-es",
@@ -3729,15 +3784,15 @@
     "cssSize": 2588
   },
   {
-    "name": "light-nl",
-    "displayName": "Light nl",
-    "description": "A theme for JSONResume",
-    "version": "3.0.4",
+    "name": "json",
+    "displayName": "Json",
+    "description": "JSON theme for JSON Resume",
+    "version": "0.0.0",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 65987,
-    "cssSize": 5683
+    "fileSize": 54056,
+    "cssSize": 88
   },
   {
     "name": "onepage-wide",
@@ -3762,15 +3817,15 @@
     "cssSize": 5229
   },
   {
-    "name": "orbit-vforesee",
-    "displayName": "Orbit vforesee",
-    "description": "Theme for JSON Resume based on Orbit - Edited for Vforesee",
-    "version": "0.0.3",
+    "name": "keloran-fr",
+    "displayName": "Keloran fr",
+    "description": "A translation of Keloran in french",
+    "version": "1.1.0",
     "browserCompatible": true,
     "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 250156,
-    "cssSize": 0
+    "hasCss": true,
+    "fileSize": 67697,
+    "cssSize": 6593
   },
   {
     "name": "crewshin",
@@ -3781,6 +3836,28 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 161797,
+    "cssSize": 0
+  },
+  {
+    "name": "mocaccino",
+    "displayName": "Mocaccino",
+    "description": "Simple theme for JSON Resume. Forked from macchiato.",
+    "version": "1.2.0",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 272132,
+    "cssSize": 0
+  },
+  {
+    "name": "kwan-nl",
+    "displayName": "Kwan nl",
+    "description": "Kwan theme for jsonresume. Other resumes may have the coin, but they won't have the 'Kwan'.",
+    "version": "0.0.1",
+    "browserCompatible": false,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 0,
     "cssSize": 0
   },
   {
@@ -3795,15 +3872,15 @@
     "cssSize": 6826
   },
   {
-    "name": "kwan-nl",
-    "displayName": "Kwan nl",
-    "description": "Kwan theme for jsonresume. Other resumes may have the coin, but they won't have the 'Kwan'.",
-    "version": "0.0.1",
-    "browserCompatible": false,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0
+    "name": "papier",
+    "displayName": "Papier",
+    "description": "Un thème pour JSON Resume",
+    "version": "0.1.3",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 70682,
+    "cssSize": 5831
   },
   {
     "name": "futura-wp",
@@ -3817,15 +3894,15 @@
     "cssSize": 725
   },
   {
-    "name": "papier",
-    "displayName": "Papier",
-    "description": "Un thème pour JSON Resume",
-    "version": "0.1.3",
+    "name": "flat_projects",
+    "displayName": "Flat_projects",
+    "description": "A theme for JSON Resume",
+    "version": "0.3.10",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 70682,
-    "cssSize": 5831
+    "fileSize": 65298,
+    "cssSize": 2574
   },
   {
     "name": "short-remix",
@@ -3848,28 +3925,6 @@
     "hasCss": true,
     "fileSize": 10260,
     "cssSize": 5895
-  },
-  {
-    "name": "keloran-fr",
-    "displayName": "Keloran fr",
-    "description": "A translation of Keloran in french",
-    "version": "1.1.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 67697,
-    "cssSize": 6593
-  },
-  {
-    "name": "flat_projects",
-    "displayName": "Flat_projects",
-    "description": "A theme for JSON Resume",
-    "version": "0.3.10",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 65298,
-    "cssSize": 2574
   },
   {
     "name": "boilerplate-vforesee",
@@ -3902,6 +3957,17 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 138200,
+    "cssSize": 0
+  },
+  {
+    "name": "latexone",
+    "displayName": "Latexone",
+    "description": "a theme for json resume",
+    "version": "0.0.4",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 44386,
     "cssSize": 0
   },
   {
@@ -3938,17 +4004,6 @@
     "cssSize": 16099
   },
   {
-    "name": "lajtha-compact",
-    "displayName": "Lajtha compact",
-    "description": "A compact, single-column JSON Resume theme with a clean style.",
-    "version": "1.0.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 6803,
-    "cssSize": 3082
-  },
-  {
     "name": "eleganto",
     "displayName": "Eleganto",
     "description": "ah3nry eleganto theme for JSON Resume",
@@ -3958,6 +4013,17 @@
     "hasCss": false,
     "fileSize": 755224,
     "cssSize": 0
+  },
+  {
+    "name": "lajtha-compact",
+    "displayName": "Lajtha compact",
+    "description": "A compact, single-column JSON Resume theme with a clean style.",
+    "version": "1.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 6803,
+    "cssSize": 3082
   },
   {
     "name": "hr-md",
@@ -3982,6 +4048,39 @@
     "cssSize": 5908
   },
   {
+    "name": "scholar",
+    "displayName": "Scholar",
+    "description": "JSON Resume theme for students and recent graduates",
+    "version": "1.0.0",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 266305,
+    "cssSize": 0
+  },
+  {
+    "name": "student",
+    "displayName": "Student",
+    "description": "JSON Resume theme for students and recent graduates",
+    "version": "1.0.2",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 250450,
+    "cssSize": 0
+  },
+  {
+    "name": "azure-split",
+    "displayName": "Azure split",
+    "description": "A two-column JSON Resume theme with a blue sidebar, featuring a clean professional layout optimized for A4 printing",
+    "version": "1.0.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 126702,
+    "cssSize": 0
+  },
+  {
     "name": "stackoverflow-skills-below-education",
     "displayName": "Stackoverflow skills below education",
     "description": "Based on Stack Overflow theme for JSON Resume",
@@ -3990,17 +4089,6 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 165037,
-    "cssSize": 0
-  },
-  {
-    "name": "sensible",
-    "displayName": "Sensible",
-    "description": "A JSON Resume theme for a sensible look. Based on compact.",
-    "version": "1.0.2",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 174248,
     "cssSize": 0
   },
   {
@@ -4015,15 +4103,15 @@
     "cssSize": 2011
   },
   {
-    "name": "light",
-    "displayName": "Light",
-    "description": "A theme for JSONResume",
-    "version": "0.0.5",
+    "name": "sensible",
+    "displayName": "Sensible",
+    "description": "A JSON Resume theme for a sensible look. Based on compact.",
+    "version": "1.0.2",
     "browserCompatible": true,
     "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 64691,
-    "cssSize": 6394
+    "hasCss": false,
+    "fileSize": 174248,
+    "cssSize": 0
   },
   {
     "name": "ocean",
@@ -4035,6 +4123,17 @@
     "hasCss": false,
     "fileSize": 0,
     "cssSize": 0
+  },
+  {
+    "name": "light",
+    "displayName": "Light",
+    "description": "A theme for JSONResume",
+    "version": "0.0.5",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 64691,
+    "cssSize": 6394
   },
   {
     "name": "student-onepage",
@@ -4081,28 +4180,6 @@
     "cssSize": 0
   },
   {
-    "name": "austinmcconnell",
-    "displayName": "Austinmcconnell",
-    "description": "Austin's theme for JSON Resume",
-    "version": "0.0.2",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 195964,
-    "cssSize": 0
-  },
-  {
-    "name": "haosio",
-    "displayName": "Haosio",
-    "description": "Haos.io theme for JSON Resume",
-    "version": "0.0.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 70065,
-    "cssSize": 650
-  },
-  {
     "name": "donkeymedia",
     "displayName": "Donkeymedia",
     "description": "A theme for JSON Resume",
@@ -4112,6 +4189,28 @@
     "hasCss": true,
     "fileSize": 64587,
     "cssSize": 2588
+  },
+  {
+    "name": "kendall-fr-plus",
+    "displayName": "Kendall fr plus",
+    "description": "A JSON Resume theme built with bootstrap",
+    "version": "0.2.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 108980,
+    "cssSize": 8044
+  },
+  {
+    "name": "austinmcconnell",
+    "displayName": "Austinmcconnell",
+    "description": "Austin's theme for JSON Resume",
+    "version": "0.0.2",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 195964,
+    "cssSize": 0
   },
   {
     "name": "flatter",
@@ -4136,6 +4235,17 @@
     "cssSize": 2615
   },
   {
+    "name": "haosio",
+    "displayName": "Haosio",
+    "description": "Haos.io theme for JSON Resume",
+    "version": "0.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 70065,
+    "cssSize": 650
+  },
+  {
     "name": "full-jap",
     "displayName": "Full jap",
     "description": "Simple to the point theme for JSON Resume, based on the short theme",
@@ -4155,17 +4265,6 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 175545,
-    "cssSize": 0
-  },
-  {
-    "name": "spartan-extended",
-    "displayName": "Spartan extended",
-    "description": "Extended version of the spartan them to a extended JSON resume format",
-    "version": "0.6.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 239765,
     "cssSize": 0
   },
   {
@@ -4213,36 +4312,14 @@
     "cssSize": 0
   },
   {
-    "name": "newflat",
-    "displayName": "Newflat",
-    "description": "A theme for JSON Resume",
-    "version": "0.1.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 69955,
-    "cssSize": 2717
-  },
-  {
-    "name": "flat-custom-trimed",
-    "displayName": "Flat custom trimed",
-    "description": "A theme for JSON Resume",
-    "version": "0.0.2",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 72862,
-    "cssSize": 2644
-  },
-  {
-    "name": "kendall-modern",
-    "displayName": "Kendall modern",
+    "name": "kendall-de",
+    "displayName": "Kendall de",
     "description": "A JSON Resume theme built with bootstrap",
-    "version": "0.1.6",
+    "version": "0.1.21",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 108603,
-    "cssSize": 6804
+    "fileSize": 87565,
+    "cssSize": 6826
   }
 ]
