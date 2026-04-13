@@ -133,6 +133,11 @@ const en: LanguageData = {
     // Date & time words
     'date', 'dates', 'month', 'months', 'week', 'weeks', 'daily',
     'weekly', 'monthly', 'quarterly', 'annual', 'annually',
+    // More generic words that aren't skills
+    'code', 'coding', 'url', 'contact', 'information', 'apply', 'application',
+    'review', 'reviews', 'quality', 'scale', 'scalable', 'system', 'systems',
+    'solution', 'feature', 'features', 'project', 'projects', 'build',
+    'building', 'deliver', 'delivery', 'cross-functional',
   ],
 };
 
