@@ -91,9 +91,9 @@ function splitJdSections(text: string): { requirementText: string; otherText: st
   for (const line of lines) {
     const trimmed = line.trim();
     // Detect section headers
-    if (reqPatterns.test(trimmed.replace(/[:#*\-]/g, '').trim())) {
+    if (reqPatterns.test(trimmed.replace(/[:#*-]/g, '').trim())) {
       inReqSection = true;
-    } else if (/^(about|summary|who we are|our (company|team|mission)|description|overview|benefits|perks|compensation|salary)/i.test(trimmed.replace(/[:#*\-]/g, '').trim())) {
+    } else if (/^(about|summary|who we are|our (company|team|mission)|description|overview|benefits|perks|compensation|salary)/i.test(trimmed.replace(/[:#*-]/g, '').trim())) {
       inReqSection = false;
     }
 
