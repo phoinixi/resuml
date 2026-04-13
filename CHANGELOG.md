@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/phoinixi/resuml/compare/v1.12.0...v1.12.1) (2026-04-13)
+
+
+### Bug Fixes
+
+* **ats:** strip URLs, schema fields, and location noise from keyword extraction ([3c40fcd](https://github.com/phoinixi/resuml/commit/3c40fcda38b53219ca7404cfb4e559a4804fe3f0))
+
 # [1.12.0](https://github.com/phoinixi/resuml/compare/v1.11.0...v1.12.0) (2026-04-13)
 
 
