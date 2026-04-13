@@ -103,7 +103,36 @@ const en: LanguageData = {
     'development', 'management', 'knowledge', 'modern', 'advanced',
     'practices', 'nice', 'technologies', 'technology', 'frameworks',
     'framework', 'tools', 'data', 'based', 'contribute', 'contributions',
-    'migration', 'leading', 'source', 'visit', 'join',
+    'migration', 'leading', 'source', 'visit',
+    // Common verbs & verb forms (not technical skills, supplement action verbs list)
+    'collaborate', 'collaborating', 'collaboratively', 'communicate',
+    'communicating', 'contributing', 'coordinate', 'coordinating',
+    'demonstrate', 'demonstrating', 'design', 'designing', 'designed',
+    'develop', 'developing', 'developed', 'drive', 'driving', 'driven',
+    'enable', 'enabling', 'evaluate', 'evaluating', 'execute', 'executing',
+    'facilitate', 'facilitating', 'identify', 'identifying', 'influence',
+    'influencing', 'interact', 'interacting', 'lead', 'leverage',
+    'leveraging', 'manage', 'managing', 'mentor', 'mentoring', 'operate',
+    'operating', 'optimize', 'optimizing', 'participate', 'participating',
+    'report', 'reporting', 'solve', 'solving', 'understand', 'understanding',
+    // Common adjectives & descriptors (not technical skills)
+    'fluent', 'proficient', 'deep', 'solid', 'proven', 'hands-on',
+    'detail-oriented', 'results-driven', 'self-motivated', 'proactive',
+    'creative', 'innovative', 'dynamic', 'strategic', 'analytical',
+    'collaborative', 'effective', 'efficient', 'reliable', 'flexible',
+    'adaptable', 'motivated', 'dedicated', 'capable', 'qualified',
+    'diverse', 'inclusive', 'global', 'local', 'remote', 'hybrid',
+    'onsite', 'full-time', 'part-time', 'contract', 'permanent',
+    // Role titles & department names (not skills themselves)
+    'designer', 'designers', 'developer', 'developers', 'engineer',
+    'engineers', 'manager', 'managers', 'director', 'analyst', 'analysts',
+    'architect', 'architects', 'consultant', 'consultants', 'specialist',
+    'specialists', 'coordinator', 'lead', 'principal', 'staff', 'junior',
+    'mid', 'department', 'organization', 'division', 'stakeholder',
+    'stakeholders', 'client', 'clients', 'customer', 'customers',
+    // Date & time words
+    'date', 'dates', 'month', 'months', 'week', 'weeks', 'daily',
+    'weekly', 'monthly', 'quarterly', 'annual', 'annually',
   ],
 };
 

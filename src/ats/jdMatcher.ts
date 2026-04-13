@@ -221,6 +221,24 @@ function extractBrandNames(text: string): Set<string> {
   ];
   for (const b of knownBrands) brands.add(b);
 
+  // Common geographic terms that appear in JD location sections
+  const locations = [
+    'zurich', 'zürich', 'berlin', 'london', 'paris', 'amsterdam', 'munich',
+    'münchen', 'new york', 'san francisco', 'seattle', 'austin', 'boston',
+    'chicago', 'toronto', 'vancouver', 'singapore', 'tokyo', 'sydney',
+    'dublin', 'bangalore', 'hyderabad', 'remote', 'hybrid', 'onsite',
+    'switzerland', 'germany', 'france', 'spain', 'italy', 'netherlands',
+    'united states', 'united kingdom', 'canada', 'australia', 'india',
+    'japan', 'china', 'brazil', 'israel', 'sweden', 'norway', 'denmark',
+    'finland', 'austria', 'belgium', 'portugal', 'ireland', 'poland',
+  ];
+  for (const loc of locations) {
+    brands.add(loc);
+    for (const part of loc.split(/\s+/)) {
+      if (part.length > 2) brands.add(part);
+    }
+  }
+
   return brands;
 }
 
@@ -233,9 +251,15 @@ function extractBrandNames(text: string): Set<string> {
  * 3. Filter out company names, product names, and generic filler words
  * 4. Rank by weighted frequency, prefer technical terms
  */
-function extractKeywords(text: string, language: string, maxKeywords: number = 30): string[] {
+function extractKeywords(text: string, language: string, maxKeywords: number = 30, extraStopWords?: Set<string>): string[] {
   const langData = getLanguageData(language);
-  const stopWords = new Set(langData.stopWords);
+  // Merge stop words + action verbs (action verbs are resume language, not skill keywords)
+  const stopWords = new Set([
+    ...langData.stopWords,
+    ...langData.actionVerbs,
+    ...langData.actionVerbs.map((v) => simpleStem(v, language)),
+    ...(extraStopWords || []),
+  ]);
 
   // Step 0: Pre-process text to strip URLs, emails, and other noise
   const cleanText = stripNoise(text);
@@ -316,8 +340,22 @@ export function matchJobDescription(
   const langData = getLanguageData(language);
   const stopWords = new Set(langData.stopWords);
 
-  // Extract keywords from JD
-  const jdKeywords = extractKeywords(jobDescription, language);
+  // Build extra stop words from the resume owner's name and location
+  const nameStopWords = new Set<string>();
+  if (resume.basics?.name) {
+    for (const part of resume.basics.name.toLowerCase().split(/\s+/)) {
+      if (part.length > 2) nameStopWords.add(part);
+    }
+  }
+  if (resume.basics?.location?.city) {
+    nameStopWords.add(resume.basics.location.city.toLowerCase());
+  }
+  if (resume.basics?.location?.region) {
+    nameStopWords.add(resume.basics.location.region.toLowerCase());
+  }
+
+  // Extract keywords from JD, filtering out resume owner's name parts
+  const jdKeywords = extractKeywords(jobDescription, language, 30, nameStopWords);
 
   // Build stemmed set from resume content
   const resumeText = extractResumeText(resume);
