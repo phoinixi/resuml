@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/phoinixi/resuml/compare/v1.13.0...v1.13.1) (2026-04-13)
+
+
+### Bug Fixes
+
+* **ats:** swap extra/missing order and add more stop words ([99ec276](https://github.com/phoinixi/resuml/commit/99ec276f72e4e0e9c07f429c21339efb73d80c6a))
+
 # [1.13.0](https://github.com/phoinixi/resuml/compare/v1.12.2...v1.13.0) (2026-04-13)
 
 
