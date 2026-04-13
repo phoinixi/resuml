@@ -1,3 +1,10 @@
+## [1.12.2](https://github.com/phoinixi/resuml/compare/v1.12.1...v1.12.2) (2026-04-13)
+
+
+### Bug Fixes
+
+* **ats:** filter action verbs, person names, locations from JD keywords ([1d8245e](https://github.com/phoinixi/resuml/commit/1d8245e1553943ee0e46b8c1842a38bf9f7cd49b))
+
 ## [1.12.1](https://github.com/phoinixi/resuml/compare/v1.12.0...v1.12.1) (2026-04-13)
 
 
