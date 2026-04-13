@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/phoinixi/resuml/compare/v1.12.2...v1.13.0) (2026-04-13)
+
+
+### Features
+
+* **ats:** clarify keyword sections — matched, missing, and extra skills ([ad24dd4](https://github.com/phoinixi/resuml/commit/ad24dd42c020bfa792b271c3f55d7447125cb1cf))
+
 ## [1.12.2](https://github.com/phoinixi/resuml/compare/v1.12.1...v1.12.2) (2026-04-13)
 
 
