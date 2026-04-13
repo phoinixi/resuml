@@ -1,3 +1,15 @@
+# [1.12.0](https://github.com/phoinixi/resuml/compare/v1.11.0...v1.12.0) (2026-04-13)
+
+
+### Bug Fixes
+
+* remove unnecessary regex escape characters in jdMatcher ([951c731](https://github.com/phoinixi/resuml/commit/951c731a69e247e621ba14acf4873fc317344764))
+
+
+### Features
+
+* **ats:** smarter keyword extraction with section-aware parsing and brand filtering ([2d7ce57](https://github.com/phoinixi/resuml/commit/2d7ce572bc0dbd56aae4973472b35a9c96dc7454))
+
 # [1.11.0](https://github.com/phoinixi/resuml/compare/v1.10.0...v1.11.0) (2026-04-13)
 
 
