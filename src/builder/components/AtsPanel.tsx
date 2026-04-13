@@ -75,17 +75,22 @@ export function AtsPanel({ result, jobDescription, onJobDescriptionChange, onClo
       {/* Job Description input */}
       <div className="ats-jd-section">
         <button className="ats-jd-toggle" onClick={() => { setJdExpanded(!jdExpanded); }}>
-          <span>Job Description</span>
+          <span>{jobDescription ? 'Job Description ✓' : 'Match Against Job'}</span>
           {jdExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
         </button>
         {jdExpanded && (
           <div className="ats-jd-input">
+            {!jobDescription && (
+              <p className="ats-jd-hint">
+                Paste a job description to see how well your resume matches — keywords, skill gaps, and fit level.
+              </p>
+            )}
             <textarea
               className="ats-jd-textarea"
-              placeholder="Paste a job description to match keywords and assess fit..."
+              placeholder="Paste the full job description here..."
               value={jobDescription}
               onChange={(e) => { onJobDescriptionChange(e.target.value); }}
-              rows={4}
+              rows={5}
             />
             {jobDescription && (
               <button className="ats-jd-clear" onClick={() => { onJobDescriptionChange(''); }}>Clear</button>

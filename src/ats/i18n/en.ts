@@ -47,6 +47,7 @@ const en: LanguageData = {
   ],
   pronouns: ['i', 'me', 'my', 'mine', 'myself', 'we', 'our', 'ours'],
   stopWords: [
+    // Articles & determiners
     'a', 'an', 'the', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for',
     'of', 'with', 'by', 'from', 'is', 'was', 'are', 'were', 'be', 'been',
     'being', 'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would',
@@ -55,6 +56,40 @@ const en: LanguageData = {
     'out', 'about', 'into', 'over', 'after', 'before', 'between', 'under',
     'above', 'below', 'all', 'each', 'every', 'both', 'few', 'more',
     'most', 'other', 'some', 'such', 'than', 'too', 'very',
+    // Pronouns & possessives (also checked by pronoun check, but filter from JD keywords)
+    'you', 'your', 'yours', 'yourself', 'we', 'our', 'ours', 'ourselves',
+    'they', 'them', 'their', 'theirs', 'he', 'she', 'his', 'her', 'hers',
+    'who', 'whom', 'whose', 'which', 'what', 'where', 'when', 'how', 'why',
+    // Common JD filler words (not meaningful for skill matching)
+    'able', 'also', 'across', 'already', 'always', 'among', 'any', 'apply',
+    'become', 'believe', 'best', 'bring', 'change', 'come', 'committed',
+    'company', 'comfortable', 'critical', 'current', 'day', 'desired',
+    'either', 'end', 'ensure', 'environment', 'equal', 'even', 'excellent',
+    'exciting', 'exceptional', 'expected', 'experience', 'fast', 'field',
+    'find', 'first',
+    'focused', 'follow', 'get', 'give', 'go', 'going', 'good', 'great',
+    'group', 'grow', 'growing', 'growth', 'help', 'here', 'high', 'highly',
+    'ideal', 'impact', 'important', 'include', 'includes', 'including',
+    'industry', 'interested', 'job', 'join', 'just', 'keep', 'key', 'know',
+    'large', 'latest', 'lead', 'level', 'like', 'location', 'long', 'look',
+    'looking', 'love', 'make', 'many', 'much', 'must', 'need', 'new',
+    'next', 'offer', 'one', 'only', 'open', 'opportunity', 'order',
+    'others', 'own', 'pace', 'part', 'partner', 'passionate', 'people',
+    'per', 'play', 'plus', 'position', 'preferred', 'provide', 'put',
+    'qualifications', 'quickly', 'range', 'related', 'required',
+    'requirements', 'requirement', 'responsible', 'responsibilities',
+    'responsibility', 'result', 'right', 'role', 'run',
+    'same', 'see', 'seek', 'seeking', 'set', 'several', 'since',
+    'skills', 'someone', 'start', 'state', 'still', 'strong', 'success',
+    'successful', 'support', 'sure', 'take', 'team', 'then', 'there',
+    'thing', 'think', 'through', 'time', 'together', 'top', 'truly',
+    'try', 'two', 'type', 'use', 'used', 'using', 'value', 'want',
+    'way', 'well', 'while', 'within', 'without', 'work', 'working',
+    'world', 'would', 'year', 'years',
+    // Section headers & structural words (not technical skills)
+    'description', 'overview', 'summary', 'duties', 'bachelor', 'bachelors',
+    'master', 'masters', 'degree', 'phd', 'minimum', 'preferred',
+    'implement', 'process', 'robust', 'consistent', 'operations',
   ],
 };
 
