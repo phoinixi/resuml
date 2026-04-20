@@ -135,9 +135,7 @@
       backdrop-filter: blur(12px) saturate(150%);
       -webkit-backdrop-filter: blur(12px) saturate(150%);
       border: 1px solid rgba(208, 215, 222, 0.3);
-      box-shadow:
-        0 8px 24px rgba(0, 0, 0, 0.08),
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+      box-shadow: none;
     }
 
     .dark .theme-switcher {
@@ -145,9 +143,7 @@
       backdrop-filter: blur(12px) saturate(150%);
       -webkit-backdrop-filter: blur(12px) saturate(150%);
       border: 1px solid rgba(68, 76, 86, 0.3);
-      box-shadow:
-        0 8px 24px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+      box-shadow: none;
     }
 
     .font-mono {
@@ -169,10 +165,105 @@
     }
 
     .theme-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
       color: #57606a;
       background: transparent;
       box-shadow: none;
       transform: translateY(0);
+    }
+
+    .theme-options {
+      display: flex;
+      gap: 0.25rem;
+      max-width: 0;
+      opacity: 0;
+      overflow: hidden;
+      pointer-events: none;
+      transition: max-width 180ms ease, opacity 140ms ease;
+    }
+
+    .theme-switcher[data-open="true"] .theme-options {
+      max-width: 8rem;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .theme-icon-window {
+      width: 1rem;
+      height: 1rem;
+      overflow: hidden;
+    }
+
+    .theme-icon-track {
+      display: flex;
+      flex-direction: column;
+      transition: transform 180ms ease;
+    }
+
+    .theme-icon-track[data-theme="light"] {
+      transform: translateY(0);
+    }
+
+    .theme-icon-track[data-theme="system"] {
+      transform: translateY(-1rem);
+    }
+
+    .theme-icon-track[data-theme="dark"] {
+      transform: translateY(-2rem);
+    }
+
+    .theme-icon {
+      width: 1rem;
+      height: 1rem;
+      flex: 0 0 1rem;
+    }
+
+    .theme-icon-composite {
+      position: relative;
+      width: 1rem;
+      height: 1rem;
+      flex: 0 0 1rem;
+    }
+
+    .theme-icon-base {
+      position: absolute;
+      inset: 0;
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .theme-icon-badge {
+      position: absolute;
+      right: 0.02rem;
+      bottom: 0.02rem;
+      width: 0.52rem;
+      height: 0.52rem;
+      padding: 0.04rem;
+      border-radius: 9999px;
+      background: rgba(246, 248, 250, 0.98);
+      color: #57606a;
+      box-shadow: 0 0 0 1px rgba(208, 215, 222, 0.8);
+    }
+
+    .theme-icon-system-light,
+    .theme-icon-system-dark {
+      opacity: 0;
+    }
+
+    .theme-icon-composite[data-effective-theme="light"] .theme-icon-system-light,
+    .theme-icon-composite[data-effective-theme="dark"] .theme-icon-system-dark {
+      opacity: 1;
+    }
+
+    .dark .theme-icon-badge {
+      background: rgba(34, 39, 46, 0.98);
+      color: #e6edf3;
+      box-shadow: 0 0 0 1px rgba(68, 76, 86, 0.85);
     }
 
     .theme-btn:hover {
@@ -193,14 +284,14 @@
     .theme-btn[data-active="true"] {
       background: rgba(9, 105, 218, 0.1);
       color: #0969da;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 8px rgba(9, 105, 218, 0.2);
+      transform: translateY(0);
+      box-shadow: none;
     }
 
     .dark .theme-btn[data-active="true"] {
       background: rgba(83, 155, 245, 0.15);
       color: #539bf5;
-      box-shadow: 0 2px 8px rgba(83, 155, 245, 0.2);
+      box-shadow: none;
     }
 
     .theme-btn:active {
@@ -211,33 +302,97 @@
     .dark .theme-btn:active {
       background: rgba(83, 155, 245, 0.15);
     }
+
+    .theme-tooltip {
+      position: absolute;
+      top: calc(100% + 0.4rem);
+      right: 0;
+      padding: 0.2rem 0.45rem;
+      border-radius: 0.375rem;
+      background: rgba(36, 41, 47, 0.95);
+      color: #f6f8fa;
+      font-size: 0.75rem;
+      line-height: 1;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-2px);
+      transition: opacity 120ms ease, transform 120ms ease;
+    }
+
+    .theme-switcher[data-open="false"] .theme-btn:hover .theme-tooltip,
+    .theme-btn:focus-visible .theme-tooltip {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .dark .theme-tooltip {
+      background: rgba(230, 237, 243, 0.95);
+      color: #22272e;
+    }
+
     @media (min-width: 1400px) {
       .theme-switcher-container {
         right: max(1rem, calc(50vw - 640px - 3rem)) !important;
       }
     }
+
   </style>
 </head>
 <body class="text-github-fg-default dark:text-github-fg-dark">
 
   <!-- Theme Toggle Button -->
   <div class="no-print fixed z-40 theme-switcher-container" style="top: max(1rem, env(safe-area-inset-top)); right: 1rem;">
-    <div class="theme-switcher flex h-fit items-stretch justify-start overflow-hidden gap-1.5 rounded-2xl p-1" role="radiogroup" aria-label="Theme">
-      <button type="button" id="theme-toggle-light" class="theme-btn inline-flex items-center gap-2 rounded-xl border-0 bg-transparent p-1.5 text-sm transition-all" title="Light theme" role="radio" aria-checked="false" data-active="false">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-        </svg>
+    <div id="theme-switcher" class="theme-switcher flex h-fit items-stretch justify-start overflow-hidden rounded-xl p-0.5" aria-label="Theme" data-open="false">
+      <button type="button" id="theme-toggle" class="theme-btn rounded-lg border-0 text-sm transition-all" title="Theme: system" aria-label="Theme: system" aria-expanded="false" aria-haspopup="true" data-theme="system">
+        <span class="theme-icon-window" aria-hidden="true">
+          <span id="theme-icon-track" class="theme-icon-track" data-theme="system">
+            <svg class="theme-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+            <span class="theme-icon-composite" data-effective-theme="light">
+              <svg class="theme-icon-base" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"></path>
+              </svg>
+              <svg class="theme-icon-badge theme-icon-system-light" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+              </svg>
+              <svg class="theme-icon-badge theme-icon-system-dark" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+              </svg>
+            </span>
+            <svg class="theme-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+          </span>
+        </span>
+        <span id="theme-tooltip" class="theme-tooltip">System</span>
       </button>
-      <button type="button" id="theme-toggle-system" class="theme-btn inline-flex items-center gap-2 rounded-xl border-0 bg-transparent p-1.5 text-sm transition-all" title="System theme" role="radio" aria-checked="false" data-active="false">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"></path>
-        </svg>
-      </button>
-      <button type="button" id="theme-toggle-dark" class="theme-btn inline-flex items-center gap-2 rounded-xl border-0 bg-transparent p-1.5 text-sm transition-all" title="Dark theme" role="radio" aria-checked="false" data-active="false">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-        </svg>
-      </button>
+      <div id="theme-options" class="theme-options" role="menu" aria-label="Select theme">
+        <button type="button" class="theme-btn rounded-lg border-0 text-sm transition-all" data-theme-option="light" title="Light theme" aria-label="Light theme" role="menuitem">
+          <svg class="theme-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+        <button type="button" class="theme-btn rounded-lg border-0 text-sm transition-all" data-theme-option="system" title="System theme" aria-label="System theme" role="menuitem">
+          <span class="theme-icon-composite" data-effective-theme="light">
+            <svg class="theme-icon-base" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"></path>
+            </svg>
+            <svg class="theme-icon-badge theme-icon-system-light" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+            <svg class="theme-icon-badge theme-icon-system-dark" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+          </span>
+        </button>
+        <button type="button" class="theme-btn rounded-lg border-0 text-sm transition-all" data-theme-option="dark" title="Dark theme" aria-label="Dark theme" role="menuitem">
+          <svg class="theme-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -375,14 +530,14 @@
               Jan, → Present
             </div>
           </div>
+          <p class="text-github-fg-muted dark:text-github-fg-dark-muted mb-3">&lt;p&gt;&amp;lt;p&amp;gt;Lead engineer for the platform team, owning core API infrastructure.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</p>
           <ul class="list-disc list-outside pl-5 space-y-1 text-github-fg-muted dark:text-github-fg-dark-muted">
-            <li>&lt;p&gt;&amp;lt;p&amp;gt;Lead engineer for the platform team, owning core API infrastructure.&amp;lt;/p&amp;gt;&lt;/p&gt;
+            <li>&lt;p&gt;&amp;lt;p&amp;gt;Reduced API latency by 45% through caching and query optimization&amp;lt;/p&amp;gt;&lt;/p&gt;
 </li>
-            <li><p>&lt;p&gt;Reduced API latency by 45% through caching and query optimization&lt;/p&gt;</p>
+            <li>&lt;p&gt;&amp;lt;p&amp;gt;Designed microservices architecture serving 2M daily requests&amp;lt;/p&amp;gt;&lt;/p&gt;
 </li>
-            <li><p>&lt;p&gt;Designed microservices architecture serving 2M daily requests&lt;/p&gt;</p>
-</li>
-            <li><p>&lt;p&gt;Mentored 4 junior engineers through technical growth plans&lt;/p&gt;</p>
+            <li>&lt;p&gt;&amp;lt;p&amp;gt;Mentored 4 junior engineers through technical growth plans&amp;lt;/p&amp;gt;&lt;/p&gt;
 </li>
           </ul>
         </div>
@@ -398,12 +553,12 @@
               Jan, → Jan,
             </div>
           </div>
+          <p class="text-github-fg-muted dark:text-github-fg-dark-muted mb-3">&lt;p&gt;&amp;lt;p&amp;gt;Built customer-facing web applications from prototype to production.&amp;lt;/p&amp;gt;&lt;/p&gt;
+</p>
           <ul class="list-disc list-outside pl-5 space-y-1 text-github-fg-muted dark:text-github-fg-dark-muted">
-            <li>&lt;p&gt;&amp;lt;p&amp;gt;Built customer-facing web applications from prototype to production.&amp;lt;/p&amp;gt;&lt;/p&gt;
+            <li>&lt;p&gt;&amp;lt;p&amp;gt;Built real-time dashboard used by 15,000+ daily active users&amp;lt;/p&amp;gt;&lt;/p&gt;
 </li>
-            <li><p>&lt;p&gt;Built real-time dashboard used by 15,000+ daily active users&lt;/p&gt;</p>
-</li>
-            <li><p>&lt;p&gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&lt;/p&gt;</p>
+            <li>&lt;p&gt;&amp;lt;p&amp;gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&amp;lt;/p&amp;gt;&lt;/p&gt;
 </li>
           </ul>
         </div>
@@ -450,7 +605,7 @@
           <p class="text-github-fg-muted dark:text-github-fg-dark-muted mb-2">&lt;p&gt;Developer productivity tool with 2,000+ GitHub stars&lt;/p&gt;
 </p>
           <ul class="list-disc list-outside pl-5 space-y-1 text-sm text-github-fg-muted dark:text-github-fg-dark-muted mb-2">
-            <li><p>Published to npm with 5,000+ weekly downloads</p>
+            <li>&lt;p&gt;Published to npm with 5,000+ weekly downloads&lt;/p&gt;
 </li>
           </ul>
         </div>
@@ -474,9 +629,16 @@
   </div>
 
   <script>
-    const themeToggleLight = document.getElementById('theme-toggle-light');
-    const themeToggleSystem = document.getElementById('theme-toggle-system');
-    const themeToggleDark = document.getElementById('theme-toggle-dark');
+    const themeSwitcher = document.getElementById('theme-switcher');
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIconTrack = document.getElementById('theme-icon-track');
+    const themeTooltip = document.getElementById('theme-tooltip');
+    const themeOptionButtons = Array.from(document.querySelectorAll('[data-theme-option]'));
+    const systemThemeIcons = Array.from(document.querySelectorAll('.theme-icon-composite'));
+
+    function getSystemTheme() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
 
     function applyTheme(theme) {
       if (theme === 'system') {
@@ -485,39 +647,59 @@
       } else {
         document.documentElement.classList.toggle('dark', theme === 'dark');
       }
-      updateActiveButton(theme);
+      updateThemeButton(theme);
     }
 
-    function updateActiveButton(theme) {
-      themeToggleLight.setAttribute('data-active', 'false');
-      themeToggleSystem.setAttribute('data-active', 'false');
-      themeToggleDark.setAttribute('data-active', 'false');
+    function updateThemeButton(theme) {
+      themeToggle.setAttribute('data-theme', theme);
+      themeToggle.setAttribute('title', 'Theme: ' + theme);
+      themeToggle.setAttribute('aria-label', 'Theme: ' + theme);
+      themeIconTrack.setAttribute('data-theme', theme);
+      themeTooltip.textContent = theme.charAt(0).toUpperCase() + theme.slice(1);
 
-      if (theme === 'light') {
-        themeToggleLight.setAttribute('data-active', 'true');
-      } else if (theme === 'system') {
-        themeToggleSystem.setAttribute('data-active', 'true');
-      } else {
-        themeToggleDark.setAttribute('data-active', 'true');
-      }
+      systemThemeIcons.forEach(function(icon) {
+        icon.setAttribute('data-effective-theme', getSystemTheme());
+      });
+
+      themeOptionButtons.forEach(function(button) {
+        const isActiveTheme = button.getAttribute('data-theme-option') === theme;
+
+        button.setAttribute('data-active', String(isActiveTheme));
+        button.hidden = isActiveTheme;
+      });
+    }
+
+    function setThemeMenuOpen(isOpen) {
+      themeSwitcher.setAttribute('data-open', String(isOpen));
+      themeToggle.setAttribute('aria-expanded', String(isOpen));
     }
 
     const savedTheme = localStorage.getItem('theme') || 'system';
     applyTheme(savedTheme);
 
-    themeToggleLight.addEventListener('click', function() {
-      localStorage.setItem('theme', 'light');
-      applyTheme('light');
+    themeToggle.addEventListener('click', function() {
+      setThemeMenuOpen(themeSwitcher.getAttribute('data-open') !== 'true');
     });
 
-    themeToggleSystem.addEventListener('click', function() {
-      localStorage.setItem('theme', 'system');
-      applyTheme('system');
+    themeOptionButtons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        const theme = button.getAttribute('data-theme-option');
+        localStorage.setItem('theme', theme);
+        applyTheme(theme);
+        setThemeMenuOpen(false);
+      });
     });
 
-    themeToggleDark.addEventListener('click', function() {
-      localStorage.setItem('theme', 'dark');
-      applyTheme('dark');
+    document.addEventListener('click', function(event) {
+      if (!themeSwitcher.contains(event.target)) {
+        setThemeMenuOpen(false);
+      }
+    });
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        setThemeMenuOpen(false);
+      }
     });
 
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {

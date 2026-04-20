@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css?family=News+Cycle:400,700");
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	font-weight: 300;
+	color: #555555;
+	line-height: 1.4;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+p {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "News Cycle", "Arial Narrow Bold", "Arial", sans-serif;
+	font-weight: 500;
+}
+
+h3 {
+	font-size: 25px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.section-title {
+	font-weight: 700;
+}
+
+section {
+	margin-top: 20px;
+	border-bottom: 1px solid #eee;
+}
+
+#resume {
+	padding-bottom: 80px;
+}
+
+#resume::before, .row::before {
+	content: " ";
+	display: table;
+}
+
+#resume::after, .row::after {
+	clear: both;
+}
+
+#resume section {
+	padding-bottom: 20px;
+}
+
+#name {
+	border: none;
+	padding-bottom: 0;
+}
+
+#name h1 {
+	font-size: 40px;
+	margin-bottom: 0px;
+}
+
+.lead {
+	font-weight: 500;
+	font-size: 16px;
+	margin: 0 0 10px;
+}
+
+.item {
+	position: relative;
+	padding-bottom: 20px;
+}
+
+.item:last-of-type {
+	padding-bottom: 0;
+}
+
+.date {
+	position: absolute;
+	right: 0;
+	top: 10px;
+}
+
+.summary, .highlights {
+	width: 85%;
+}
+
+.highlights {
+	margin-bottom: 0;
+}
+
+#skills .item {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 2em;
+	padding-bottom: 20px;
+}
+
+#skills .item:last-child {
+	padding-bottom: 0;
+}
+
+.keywords {
+	margin-bottom: 0;
+}
+
+#interests ul {
+	margin-top: 5px;
+}
+
+#references {
+	padding-bottom: 20px;
+	border: none;
+}
+
+.container {
+	margin: 0 auto;
+	width: 780px;
+}
+
+.row {
+	margin-left: -15px;
+	margin-right: -15px;
+	overflow: auto;
+}
+
+.column {
+	padding-left: 15px;
+	padding-right: 15px;
+	float: left;
+}
+
+.column-100 {
+	width: 100%;
+}
+
+.column-80 {
+	width: 80%;
+}
+
+.column-20 {
+	width: 20%;
+}
+
+@media only screen and (min-width : 320px) and (max-width : 767px) {
+	.container {
+		width: 90%;
+	}
+	.column-20, .column-80 {
+		width: 100%;
+	}
+	.section-title {
+		font-size: 30px;
+	}
+	.date {
+		position: initial;
+	}
+	h3 {
+		line-height: 1.2;
+		font-size: 24px;
+		margin-bottom: 5px;
+	}
+	#name {
+		margin-top: 0;
+	}
+}
+
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+	.container {
+		width: 80%;
+	}
+	.column-20, .column-80 {
+		width: 100%;
+	},
+	.date {
+		position: initial;
+	}
+}
+
+@media print {
+	.pagebreak {
+		page-break-before: always;
+	}
+
+	body {
+		font-size: 11px;
+		color: black;
+	}
+
+	#resume {
+		width: 85%;
+		padding-bottom: 0;
+	}
+
+	#name h1 {
+		font-size: 22px;
+		margin-bottom: 0;
+	}
+
+	h3 {
+		font-size: 18px;
+	}
+
+	.lead {
+		font-size: 14px;
+	}
+
+}

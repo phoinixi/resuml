@@ -76,9 +76,7 @@
       backdrop-filter: blur(12px) saturate(150%);
       -webkit-backdrop-filter: blur(12px) saturate(150%);
       border: 1px solid rgba(208, 215, 222, 0.3);
-      box-shadow:
-        0 8px 24px rgba(0, 0, 0, 0.08),
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+      box-shadow: none;
     }
 
     .dark .theme-switcher {
@@ -86,9 +84,7 @@
       backdrop-filter: blur(12px) saturate(150%);
       -webkit-backdrop-filter: blur(12px) saturate(150%);
       border: 1px solid rgba(68, 76, 86, 0.3);
-      box-shadow:
-        0 8px 24px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+      box-shadow: none;
     }
 
     .font-mono {
@@ -110,10 +106,105 @@
     }
 
     .theme-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
       color: #57606a;
       background: transparent;
       box-shadow: none;
       transform: translateY(0);
+    }
+
+    .theme-options {
+      display: flex;
+      gap: 0.25rem;
+      max-width: 0;
+      opacity: 0;
+      overflow: hidden;
+      pointer-events: none;
+      transition: max-width 180ms ease, opacity 140ms ease;
+    }
+
+    .theme-switcher[data-open="true"] .theme-options {
+      max-width: 8rem;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .theme-icon-window {
+      width: 1rem;
+      height: 1rem;
+      overflow: hidden;
+    }
+
+    .theme-icon-track {
+      display: flex;
+      flex-direction: column;
+      transition: transform 180ms ease;
+    }
+
+    .theme-icon-track[data-theme="light"] {
+      transform: translateY(0);
+    }
+
+    .theme-icon-track[data-theme="system"] {
+      transform: translateY(-1rem);
+    }
+
+    .theme-icon-track[data-theme="dark"] {
+      transform: translateY(-2rem);
+    }
+
+    .theme-icon {
+      width: 1rem;
+      height: 1rem;
+      flex: 0 0 1rem;
+    }
+
+    .theme-icon-composite {
+      position: relative;
+      width: 1rem;
+      height: 1rem;
+      flex: 0 0 1rem;
+    }
+
+    .theme-icon-base {
+      position: absolute;
+      inset: 0;
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .theme-icon-badge {
+      position: absolute;
+      right: 0.02rem;
+      bottom: 0.02rem;
+      width: 0.52rem;
+      height: 0.52rem;
+      padding: 0.04rem;
+      border-radius: 9999px;
+      background: rgba(246, 248, 250, 0.98);
+      color: #57606a;
+      box-shadow: 0 0 0 1px rgba(208, 215, 222, 0.8);
+    }
+
+    .theme-icon-system-light,
+    .theme-icon-system-dark {
+      opacity: 0;
+    }
+
+    .theme-icon-composite[data-effective-theme="light"] .theme-icon-system-light,
+    .theme-icon-composite[data-effective-theme="dark"] .theme-icon-system-dark {
+      opacity: 1;
+    }
+
+    .dark .theme-icon-badge {
+      background: rgba(34, 39, 46, 0.98);
+      color: #e6edf3;
+      box-shadow: 0 0 0 1px rgba(68, 76, 86, 0.85);
     }
 
     .theme-btn:hover {
@@ -134,14 +225,14 @@
     .theme-btn[data-active="true"] {
       background: rgba(9, 105, 218, 0.1);
       color: #0969da;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 8px rgba(9, 105, 218, 0.2);
+      transform: translateY(0);
+      box-shadow: none;
     }
 
     .dark .theme-btn[data-active="true"] {
       background: rgba(83, 155, 245, 0.15);
       color: #539bf5;
-      box-shadow: 0 2px 8px rgba(83, 155, 245, 0.2);
+      box-shadow: none;
     }
 
     .theme-btn:active {
@@ -152,6 +243,35 @@
     .dark .theme-btn:active {
       background: rgba(83, 155, 245, 0.15);
     }
+
+    .theme-tooltip {
+      position: absolute;
+      top: calc(100% + 0.4rem);
+      right: 0;
+      padding: 0.2rem 0.45rem;
+      border-radius: 0.375rem;
+      background: rgba(36, 41, 47, 0.95);
+      color: #f6f8fa;
+      font-size: 0.75rem;
+      line-height: 1;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-2px);
+      transition: opacity 120ms ease, transform 120ms ease;
+    }
+
+    .theme-switcher[data-open="false"] .theme-btn:hover .theme-tooltip,
+    .theme-btn:focus-visible .theme-tooltip {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .dark .theme-tooltip {
+      background: rgba(230, 237, 243, 0.95);
+      color: #22272e;
+    }
+
     @media (min-width: 1400px) {
       .theme-switcher-container {
         right: max(1rem, calc(50vw - 640px - 3rem)) !important;

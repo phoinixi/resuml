@@ -1,0 +1,104 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 10pt;
+    line-height: 1.35;
+    padding: 0.2in 0.4in;
+    max-width: 8.5in;
+    margin: 0 auto;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    text-align: center;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20pt;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+  }
+
+  .header .contact-line {
+    font-size: 10pt;
+    color: #000;
+  }
+
+  /* ── SECTION HEADING ── */
+  .section-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 11pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #000;
+    padding-bottom: 1px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  /* ── ENTRY ROWS ── */
+  .entry {
+    margin-bottom: 6px;
+  }
+
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+
+  .entry-left {
+    font-weight: bold;
+    font-size: 10pt;
+  }
+
+  .entry-right {
+    font-size: 10pt;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* ── BULLETS ── */
+  ul {
+    padding-left: 20px;
+    margin: 2px 0 0 0;
+  }
+
+  ul li {
+    font-size: 10pt;
+    margin-bottom: 1px;
+    line-height: 1.35;
+  }
+
+  /* ── EDUCATION specifics ── */
+  .edu-degree {
+    font-weight: normal;
+  }
+
+  .courses-line {
+    font-size: 10pt;
+    margin-top: 2px;
+  }
+
+  .courses-line .courses-label {
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  /* ── SKILLS ── */
+  .skills-line {
+    font-size: 10pt;
+    line-height: 1.4;
+  }
+
+  .skills-line .skills-label {
+    font-weight: bold;
+  }

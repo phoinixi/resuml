@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Jane Smith – Resume</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 10pt;
+    line-height: 1.35;
+    padding: 0.2in 0.4in;
+    max-width: 8.5in;
+    margin: 0 auto;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    text-align: center;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20pt;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+  }
+
+  .header .contact-line {
+    font-size: 10pt;
+    color: #000;
+  }
+
+  /* ── SECTION HEADING ── */
+  .section-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 11pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #000;
+    padding-bottom: 1px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  /* ── ENTRY ROWS ── */
+  .entry {
+    margin-bottom: 6px;
+  }
+
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+
+  .entry-left {
+    font-weight: bold;
+    font-size: 10pt;
+  }
+
+  .entry-right {
+    font-size: 10pt;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* ── BULLETS ── */
+  ul {
+    padding-left: 20px;
+    margin: 2px 0 0 0;
+  }
+
+  ul li {
+    font-size: 10pt;
+    margin-bottom: 1px;
+    line-height: 1.35;
+  }
+
+  /* ── EDUCATION specifics ── */
+  .edu-degree {
+    font-weight: normal;
+  }
+
+  .courses-line {
+    font-size: 10pt;
+    margin-top: 2px;
+  }
+
+  .courses-line .courses-label {
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  /* ── SKILLS ── */
+  .skills-line {
+    font-size: 10pt;
+    line-height: 1.4;
+  }
+
+  .skills-line .skills-label {
+    font-weight: bold;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>Jane Smith</h1>
+  <div class="contact-line">
+    San Francisco | +1-555-987-6543 | jane@example.com
+  </div>
+  <div class="contact-line">
+      <a href="https://linkedin.com/in/janesmith" target="_blank">linkedin</a>
+       | <a href="https://github.com/janesmith" target="_blank">github</a>
+     | <a href="https://janesmith.dev" target="_blank">
+       https://janesmith.dev 
+    </a> 
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section-title">Experience</div>
+
+<div class="entry">
+  <div class="entry-header">
+    <div class="entry-left">
+      Tech Corp, <span style="font-weight:normal;">Senior Software Engineer</span>
+    </div>
+    <div class="entry-right">
+      Jan, 2020 – 
+    </div>
+  </div>
+  <ul>
+    <li>&lt;p&gt;&lt;p&gt;Reduced API latency by 45% through caching and query optimization&lt;/p&gt;&lt;/p&gt;
+</li>
+    <li>&lt;p&gt;&lt;p&gt;Designed microservices architecture serving 2M daily requests&lt;/p&gt;&lt;/p&gt;
+</li>
+    <li>&lt;p&gt;&lt;p&gt;Mentored 4 junior engineers through technical growth plans&lt;/p&gt;&lt;/p&gt;
+</li>
+  </ul>
+</div>
+<div class="entry">
+  <div class="entry-header">
+    <div class="entry-left">
+      StartupXYZ, <span style="font-weight:normal;">Full Stack Developer</span>
+    </div>
+    <div class="entry-right">
+      Jan, 2017 – Jan, 2020
+    </div>
+  </div>
+  <ul>
+    <li>&lt;p&gt;&lt;p&gt;Built real-time dashboard used by 15,000+ daily active users&lt;/p&gt;&lt;/p&gt;
+</li>
+    <li>&lt;p&gt;&lt;p&gt;Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes&lt;/p&gt;&lt;/p&gt;
+</li>
+  </ul>
+</div>
+
+<!-- PROJECTS -->
+<div class="section-title">Projects</div>
+
+<div class="entry">
+  <div class="entry-header">
+    <div class="entry-left">
+      Open Source CLI Tool, <span style="font-weight:normal;">&lt;p&gt;Developer productivity tool with 2,000+ GitHub stars&lt;/p&gt;
+</span>
+    </div>
+    <div class="entry-right">
+      Jan, 2022
+    </div>
+  </div>
+  <ul>
+    <li>&lt;p&gt;Published to npm with 5,000+ weekly downloads&lt;/p&gt;
+</li>
+  </ul>
+</div>
+
+<!-- EDUCATION -->
+<div class="section-title">Education</div>
+
+<div class="entry">
+  <div class="entry-header">
+    <div class="entry-left">
+      University of Technology, <span class="edu-degree">Bachelor of Science Computer Science</span>
+    </div>
+    <div class="entry-right">
+      Jan, 2013 – Jan, 2017
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS AND INTERESTS -->
+<div class="section-title">Skills and Interests</div>
+
+<div class="skills-line">
+  <span class="skills-label">Languages:</span> &lt;p&gt;TypeScript&lt;/p&gt;
+, &lt;p&gt;JavaScript&lt;/p&gt;
+, &lt;p&gt;Python&lt;/p&gt;
+, &lt;p&gt;Go&lt;/p&gt;
+
+</div>
+<div class="skills-line">
+  <span class="skills-label">Frontend:</span> &lt;p&gt;React&lt;/p&gt;
+, &lt;p&gt;Next.js&lt;/p&gt;
+, &lt;p&gt;HTML/CSS&lt;/p&gt;
+, &lt;p&gt;Tailwind&lt;/p&gt;
+
+</div>
+<div class="skills-line">
+  <span class="skills-label">Backend &amp; Cloud:</span> &lt;p&gt;Node.js&lt;/p&gt;
+, &lt;p&gt;PostgreSQL&lt;/p&gt;
+, &lt;p&gt;AWS&lt;/p&gt;
+, &lt;p&gt;Docker&lt;/p&gt;
+
+</div>
+
+</body>
+</html>
