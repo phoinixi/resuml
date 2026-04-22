@@ -15,7 +15,11 @@ export function Preview({ html, loading, error, isSnapshot }: PreviewProps) {
 
   // Show loading spinner only when there's no content to display yet
   const showSpinner = loading && !html;
-  const showSnapshotBadge = loading && isSnapshot && !!html;
+  // Persistent warning when the preview is a pre-rendered sample rather than
+  // the user's actual resume. Many themes can't run client-side so we fall
+  // back to a snapshot — which is a SAMPLE resume, not theirs. Make this
+  // obvious so users don't think they've just lost their data.
+  const showSnapshotWarning = isSnapshot && !!html;
   const showIframe = !!html && !showSpinner;
 
   useEffect(() => {
@@ -51,10 +55,14 @@ export function Preview({ html, loading, error, isSnapshot }: PreviewProps) {
         </div>
       )}
 
-      {showSnapshotBadge && (
-        <div className="preview-snapshot-badge">
-          <div className="spinner-small" />
-          <span>Loading theme...</span>
+      {showSnapshotWarning && (
+        <div className="preview-snapshot-banner" role="status">
+          <AlertTriangle size={14} aria-hidden="true" />
+          <span>
+            <strong>Preview shows sample data.</strong> This theme can't render
+            in-browser — your actual resume will appear on PDF export. Pick a
+            browser-compatible theme for a live preview.
+          </span>
         </div>
       )}
 

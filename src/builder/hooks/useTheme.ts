@@ -6,6 +6,12 @@ import { padResume } from '../utils/padResume.js';
 /**
  * Decode HTML entities that themes double-escape through markdown-it +
  * Handlebars. The output goes into a sandboxed iframe so full decoding is safe.
+ *
+ * Also upgrades hard-coded http:// stylesheet/script URLs to https:// so the
+ * browser doesn't block them as Mixed Content when the site is served over
+ * HTTPS. Many JSON Resume themes ship with legacy HTTP CDN links (e.g.
+ * http://bootswatch.com/.../bootstrap.min.css) that would otherwise render the
+ * theme unstyled.
  */
 function cleanRenderedHtml(html: string): string {
   return html
@@ -14,7 +20,9 @@ function cleanRenderedHtml(html: string): string {
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
-    .replace(/&#x27;/g, "'");
+    .replace(/&#x27;/g, "'")
+    // Upgrade insecure CDN references in <link href="..."> and <script src="...">
+    .replace(/(<(?:link|script|img)\b[^>]*?\b(?:href|src)=["'])http:\/\//gi, '$1https://');
 }
 
 export function useTheme(themeName: string) {

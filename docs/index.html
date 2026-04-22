@@ -380,6 +380,32 @@
       z-index: 10;
       opacity: 0.9;
     }
+    .preview-snapshot-banner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 10px 14px;
+      background: rgba(251, 146, 60, 0.12);
+      border-bottom: 1px solid rgba(251, 146, 60, 0.4);
+      color: #1f2937;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      z-index: 10;
+      backdrop-filter: blur(6px);
+    }
+    .preview-snapshot-banner svg {
+      color: var(--orange);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .preview-snapshot-banner strong {
+      color: var(--orange);
+      font-weight: 700;
+    }
     .spinner-small {
       width: 12px;
       height: 12px;

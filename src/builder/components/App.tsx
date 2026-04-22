@@ -37,7 +37,7 @@ export function App() {
   const hasJobDescription = jobDescription.trim().length > 0;
 
   // Persist state
-  usePersist(yaml, themeName, setYaml, setThemeName);
+  usePersist(yaml, themeName, jobDescription, setYaml, setThemeName, setJobDescription);
 
   // Re-render when resume or theme changes
   useEffect(() => {
