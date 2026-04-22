@@ -32,6 +32,7 @@
     "bundle:themes": "node scripts/bundle-themes.js",
     "bundle:themes:all": "node scripts/bundle-themes.js --all",
     "build:skills": "node scripts/build-skills-db.js",
+    "themes:enrich": "node scripts/enrich-themes-manifest.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "eslint src api --ext .ts,.tsx",

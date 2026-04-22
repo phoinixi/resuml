@@ -8,7 +8,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 291720,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 130,
+    "renderOk": true
   },
   {
     "name": "classy",
@@ -19,7 +21,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 75,
+    "renderOk": false
   },
   {
     "name": "straightforward",
@@ -30,7 +34,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 125545,
-    "cssSize": 2452
+    "cssSize": 2452,
+    "npmWeeklyDownloads": 17,
+    "renderOk": true
   },
   {
     "name": "sceptile",
@@ -41,7 +47,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 33,
+    "renderOk": false
   },
   {
     "name": "modern-extended",
@@ -52,7 +60,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 177981,
-    "cssSize": 150
+    "cssSize": 150,
+    "npmWeeklyDownloads": 29,
+    "renderOk": true
   },
   {
     "name": "msresume",
@@ -63,7 +73,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 13,
+    "renderOk": false
   },
   {
     "name": "waterfall",
@@ -74,7 +86,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 23291,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 9,
+    "renderOk": true
   },
   {
     "name": "cora",
@@ -85,7 +99,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 305512,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 56,
+    "renderOk": false
   },
   {
     "name": "modern2",
@@ -96,7 +112,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 292733,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 12,
+    "renderOk": true
   },
   {
     "name": "timeline-fixed",
@@ -107,7 +125,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 2672604,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 10,
+    "renderOk": true
   },
   {
     "name": "catppuccin",
@@ -118,7 +138,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 11,
+    "renderOk": false
   },
   {
     "name": "simplyelegant",
@@ -129,7 +151,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 830119,
-    "cssSize": 40134
+    "cssSize": 40134,
+    "npmWeeklyDownloads": 16,
+    "renderOk": true
   },
   {
     "name": "even",
@@ -140,7 +164,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 162631,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1466,
+    "renderOk": true
   },
   {
     "name": "dark-classy-responsive",
@@ -151,7 +177,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 12,
+    "renderOk": false
   },
   {
     "name": "dark-classy",
@@ -162,7 +190,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 12,
+    "renderOk": false
   },
   {
     "name": "elegant",
@@ -173,7 +203,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 578631,
-    "cssSize": 18231
+    "cssSize": 18231,
+    "npmWeeklyDownloads": 625,
+    "renderOk": true
   },
   {
     "name": "nameme",
@@ -184,7 +216,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 285845,
-    "cssSize": 216
+    "cssSize": 216,
+    "npmWeeklyDownloads": 4,
+    "renderOk": true
   },
   {
     "name": "bufferbloat",
@@ -195,7 +229,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 180894,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 4,
+    "renderOk": false
   },
   {
     "name": "rnord",
@@ -206,7 +242,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 65080,
-    "cssSize": 4590
+    "cssSize": 4590,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "light-classy-responsive",
@@ -217,7 +255,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 14,
+    "renderOk": false
   },
   {
     "name": "projects",
@@ -228,7 +268,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 160100,
-    "cssSize": 3762
+    "cssSize": 3762,
+    "npmWeeklyDownloads": 14,
+    "renderOk": true
   },
   {
     "name": "eventide",
@@ -239,7 +281,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 1836350,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 16,
+    "renderOk": true
   },
   {
     "name": "engineering",
@@ -250,7 +294,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 180584,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 707,
+    "renderOk": true
   },
   {
     "name": "stackoverflow",
@@ -261,7 +307,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 260284,
-    "cssSize": 13769
+    "cssSize": 13769,
+    "npmWeeklyDownloads": 279,
+    "renderOk": true
   },
   {
     "name": "awolden",
@@ -272,7 +320,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 65773,
-    "cssSize": 3594
+    "cssSize": 3594,
+    "npmWeeklyDownloads": 8,
+    "renderOk": true
   },
   {
     "name": "stackoverflow-ru",
@@ -283,7 +333,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 219059,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "grande",
@@ -294,7 +346,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 221485,
-    "cssSize": 6626
+    "cssSize": 6626,
+    "npmWeeklyDownloads": 8,
+    "renderOk": false
   },
   {
     "name": "tech",
@@ -305,7 +359,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 141620,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 43,
+    "renderOk": false
   },
   {
     "name": "academic",
@@ -316,7 +372,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 13649,
-    "cssSize": 4020
+    "cssSize": 4020,
+    "npmWeeklyDownloads": 96,
+    "renderOk": true
   },
   {
     "name": "spartan-skills",
@@ -327,7 +385,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 134233,
-    "cssSize": 7402
+    "cssSize": 7402,
+    "npmWeeklyDownloads": 10,
+    "renderOk": true
   },
   {
     "name": "modern-with-projects-section",
@@ -338,7 +398,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 290923,
-    "cssSize": 216
+    "cssSize": 216,
+    "npmWeeklyDownloads": 11,
+    "renderOk": true
   },
   {
     "name": "kendall",
@@ -349,7 +411,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 112100,
-    "cssSize": 6458
+    "cssSize": 6458,
+    "npmWeeklyDownloads": 215,
+    "renderOk": true
   },
   {
     "name": "cjean",
@@ -360,7 +424,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 76773,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 17,
+    "renderOk": true
   },
   {
     "name": "lowmess",
@@ -371,7 +437,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 2,
+    "renderOk": false
   },
   {
     "name": "macchiato",
@@ -382,7 +450,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 220411,
-    "cssSize": 6365
+    "cssSize": 6365,
+    "npmWeeklyDownloads": 165,
+    "renderOk": false
   },
   {
     "name": "flat",
@@ -393,7 +463,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 64529,
-    "cssSize": 2588
+    "cssSize": 2588,
+    "npmWeeklyDownloads": 247,
+    "renderOk": true
   },
   {
     "name": "stackoverflow-ibic",
@@ -404,7 +476,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 139939,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 10,
+    "renderOk": false
   },
   {
     "name": "onepage-simplified",
@@ -415,7 +489,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 115678,
-    "cssSize": 1746
+    "cssSize": 1746,
+    "npmWeeklyDownloads": 20,
+    "renderOk": true
   },
   {
     "name": "straightforward-with-telephone",
@@ -426,7 +502,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 125463,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "americano-german",
@@ -437,7 +515,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 195392,
-    "cssSize": 6599
+    "cssSize": 6599,
+    "npmWeeklyDownloads": 8,
+    "renderOk": false
   },
   {
     "name": "light-classy-responsive-m2",
@@ -448,7 +528,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 2,
+    "renderOk": false
   },
   {
     "name": "paperalt",
@@ -459,7 +541,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 130544,
-    "cssSize": 1790
+    "cssSize": 1790,
+    "npmWeeklyDownloads": 96,
+    "renderOk": true
   },
   {
     "name": "class",
@@ -470,7 +554,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 63875,
-    "cssSize": 4667
+    "cssSize": 4667,
+    "npmWeeklyDownloads": 30,
+    "renderOk": true
   },
   {
     "name": "caffeine",
@@ -481,7 +567,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 304560,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 62,
+    "renderOk": false
   },
   {
     "name": "actual",
@@ -492,7 +580,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 1044491,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 71,
+    "renderOk": false
   },
   {
     "name": "react",
@@ -503,7 +593,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 34052,
-    "cssSize": 25049
+    "cssSize": 25049,
+    "npmWeeklyDownloads": 42,
+    "renderOk": false
   },
   {
     "name": "profesh",
@@ -514,7 +606,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 253232,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 8,
+    "renderOk": false
   },
   {
     "name": "one",
@@ -525,7 +619,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 125857,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 50,
+    "renderOk": true
   },
   {
     "name": "paper",
@@ -536,7 +632,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 126983,
-    "cssSize": 1673
+    "cssSize": 1673,
+    "npmWeeklyDownloads": 108,
+    "renderOk": true
   },
   {
     "name": "material",
@@ -547,7 +645,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 359717,
-    "cssSize": 13565
+    "cssSize": 13565,
+    "npmWeeklyDownloads": 168,
+    "renderOk": false
   },
   {
     "name": "onepage-plus",
@@ -558,7 +658,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 68422,
-    "cssSize": 2604
+    "cssSize": 2604,
+    "npmWeeklyDownloads": 86,
+    "renderOk": true
   },
   {
     "name": "onepage",
@@ -569,7 +671,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 68607,
-    "cssSize": 2011
+    "cssSize": 2011,
+    "npmWeeklyDownloads": 50,
+    "renderOk": false
   },
   {
     "name": "eloquent",
@@ -580,7 +684,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 207772,
-    "cssSize": 31203
+    "cssSize": 31203,
+    "npmWeeklyDownloads": 89,
+    "renderOk": false
   },
   {
     "name": "zurb",
@@ -591,7 +697,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 334108,
-    "cssSize": 44966
+    "cssSize": 44966,
+    "npmWeeklyDownloads": 110,
+    "renderOk": true
   },
   {
     "name": "straightforward-fet-adapt",
@@ -602,7 +710,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 132828,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 4,
+    "renderOk": true
   },
   {
     "name": "elegant-ryantrinkle",
@@ -613,7 +723,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 8,
+    "renderOk": false
   },
   {
     "name": "moon",
@@ -624,7 +736,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 305285,
-    "cssSize": 7624
+    "cssSize": 7624,
+    "npmWeeklyDownloads": 91,
+    "renderOk": true
   },
   {
     "name": "spartan",
@@ -635,7 +749,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 187436,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 62,
+    "renderOk": true
   },
   {
     "name": "dev-ats-es",
@@ -646,7 +762,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 249020,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 7,
+    "renderOk": false
   },
   {
     "name": "tan-responsive",
@@ -657,7 +775,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 108900,
-    "cssSize": 6702
+    "cssSize": 6702,
+    "npmWeeklyDownloads": 102,
+    "renderOk": true
   },
   {
     "name": "minyma",
@@ -668,7 +788,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 126732,
-    "cssSize": 8218
+    "cssSize": 8218,
+    "npmWeeklyDownloads": 47,
+    "renderOk": true
   },
   {
     "name": "relaxed",
@@ -679,7 +801,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 275046,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 33,
+    "renderOk": false
   },
   {
     "name": "umennel",
@@ -690,7 +814,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 352788,
-    "cssSize": 45227
+    "cssSize": 45227,
+    "npmWeeklyDownloads": 6,
+    "renderOk": true
   },
   {
     "name": "microdata",
@@ -701,7 +827,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 148003,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 26,
+    "renderOk": true
   },
   {
     "name": "short",
@@ -712,7 +840,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 62166,
-    "cssSize": 1936
+    "cssSize": 1936,
+    "npmWeeklyDownloads": 29,
+    "renderOk": true
   },
   {
     "name": "stackoverflowed",
@@ -723,7 +853,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 32,
+    "renderOk": false
   },
   {
     "name": "polymer",
@@ -734,7 +866,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 22,
+    "renderOk": false
   },
   {
     "name": "material-moon",
@@ -745,7 +879,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 318979,
-    "cssSize": 10480
+    "cssSize": 10480,
+    "npmWeeklyDownloads": 113,
+    "renderOk": true
   },
   {
     "name": "crisp",
@@ -756,7 +892,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 199935,
-    "cssSize": 1559
+    "cssSize": 1559,
+    "npmWeeklyDownloads": 82,
+    "renderOk": true
   },
   {
     "name": "rocketspacer",
@@ -767,7 +905,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 44718,
-    "cssSize": 4179
+    "cssSize": 4179,
+    "npmWeeklyDownloads": 34,
+    "renderOk": true
   },
   {
     "name": "kards",
@@ -778,7 +918,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 3196149,
-    "cssSize": 5
+    "cssSize": 5,
+    "npmWeeklyDownloads": 36,
+    "renderOk": true
   },
   {
     "name": "a11y",
@@ -789,7 +931,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 617268,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 98,
+    "renderOk": false
   },
   {
     "name": "boilerplate",
@@ -800,7 +944,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 61391,
-    "cssSize": 660
+    "cssSize": 660,
+    "npmWeeklyDownloads": 41,
+    "renderOk": true
   },
   {
     "name": "mantra",
@@ -811,7 +957,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 43,
+    "renderOk": false
   },
   {
     "name": "noodle",
@@ -822,7 +970,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 158395,
-    "cssSize": 2868
+    "cssSize": 2868,
+    "npmWeeklyDownloads": 3,
+    "renderOk": true
   },
   {
     "name": "pumpkin",
@@ -833,7 +983,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 156854,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 33,
+    "renderOk": true
   },
   {
     "name": "srt",
@@ -844,7 +996,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 60882,
-    "cssSize": 2791
+    "cssSize": 2791,
+    "npmWeeklyDownloads": 38,
+    "renderOk": true
   },
   {
     "name": "spartacus",
@@ -855,7 +1009,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 126622,
-    "cssSize": 4319
+    "cssSize": 4319,
+    "npmWeeklyDownloads": 20,
+    "renderOk": true
   },
   {
     "name": "compact",
@@ -866,7 +1022,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 119975,
-    "cssSize": 898
+    "cssSize": 898,
+    "npmWeeklyDownloads": 14,
+    "renderOk": true
   },
   {
     "name": "slick",
@@ -877,7 +1035,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 124341,
-    "cssSize": 60122
+    "cssSize": 60122,
+    "npmWeeklyDownloads": 61,
+    "renderOk": true
   },
   {
     "name": "kate",
@@ -888,7 +1048,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 71164,
-    "cssSize": 1822
+    "cssSize": 1822,
+    "npmWeeklyDownloads": 47,
+    "renderOk": true
   },
   {
     "name": "orbit",
@@ -899,7 +1061,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 238259,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 37,
+    "renderOk": true
   },
   {
     "name": "simple-red",
@@ -910,7 +1074,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 210639,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 28,
+    "renderOk": false
   },
   {
     "name": "flat-davidgwking",
@@ -921,7 +1087,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 64565,
-    "cssSize": 2588
+    "cssSize": 2588,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "papirus",
@@ -932,7 +1100,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 22,
+    "renderOk": false
   },
   {
     "name": "paper-plus-plus",
@@ -943,7 +1113,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 138393,
-    "cssSize": 6997
+    "cssSize": 6997,
+    "npmWeeklyDownloads": 85,
+    "renderOk": true
   },
   {
     "name": "full",
@@ -954,7 +1126,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 72817,
-    "cssSize": 7045
+    "cssSize": 7045,
+    "npmWeeklyDownloads": 13,
+    "renderOk": true
   },
   {
     "name": "kendall-web",
@@ -965,7 +1139,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 115229,
-    "cssSize": 7536
+    "cssSize": 7536,
+    "npmWeeklyDownloads": 30,
+    "renderOk": true
   },
   {
     "name": "straightforward-plus",
@@ -976,7 +1152,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 126078,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "elite",
@@ -987,7 +1165,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 24,
+    "renderOk": false
   },
   {
     "name": "ace",
@@ -998,7 +1178,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 320644,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 23,
+    "renderOk": false
   },
   {
     "name": "even-crewshin",
@@ -1009,7 +1191,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 159928,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "refined",
@@ -1020,7 +1204,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 13,
+    "renderOk": false
   },
   {
     "name": "standard-resume",
@@ -1031,7 +1217,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 219188,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 13,
+    "renderOk": true
   },
   {
     "name": "paper_cn",
@@ -1042,7 +1230,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 101005,
-    "cssSize": 5902
+    "cssSize": 5902,
+    "npmWeeklyDownloads": 96,
+    "renderOk": true
   },
   {
     "name": "jdambron-fr",
@@ -1053,7 +1243,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 266576,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 4,
+    "renderOk": false
   },
   {
     "name": "mocha-responsive",
@@ -1064,7 +1256,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 168945,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 12,
+    "renderOk": false
   },
   {
     "name": "ks",
@@ -1075,7 +1269,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 287188,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 12,
+    "renderOk": false
   },
   {
     "name": "kendall-markdown",
@@ -1086,7 +1282,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 206589,
-    "cssSize": 8820
+    "cssSize": 8820,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "elegant-tautologistics",
@@ -1097,7 +1295,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 15,
+    "renderOk": false
   },
   {
     "name": "elephant",
@@ -1108,7 +1308,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 618962,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 2,
+    "renderOk": false
   },
   {
     "name": "paper_en",
@@ -1119,7 +1321,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 72733,
-    "cssSize": 5830
+    "cssSize": 5830,
+    "npmWeeklyDownloads": 39,
+    "renderOk": true
   },
   {
     "name": "sshorter",
@@ -1130,7 +1334,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 62724,
-    "cssSize": 2215
+    "cssSize": 2215,
+    "npmWeeklyDownloads": 41,
+    "renderOk": true
   },
   {
     "name": "qlh",
@@ -1141,7 +1347,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 72369,
-    "cssSize": 6513
+    "cssSize": 6513,
+    "npmWeeklyDownloads": 11,
+    "renderOk": true
   },
   {
     "name": "macchiato-custom",
@@ -1152,7 +1360,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 223520,
-    "cssSize": 7684
+    "cssSize": 7684,
+    "npmWeeklyDownloads": 15,
+    "renderOk": false
   },
   {
     "name": "claude",
@@ -1163,7 +1373,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 169730,
-    "cssSize": 8395
+    "cssSize": 8395,
+    "npmWeeklyDownloads": 11,
+    "renderOk": true
   },
   {
     "name": "curzy",
@@ -1174,7 +1386,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 195230,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 15,
+    "renderOk": false
   },
   {
     "name": "briefstrap",
@@ -1185,7 +1399,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 1711254,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 28,
+    "renderOk": false
   },
   {
     "name": "elegantfixed",
@@ -1196,7 +1412,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 755130,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 11,
+    "renderOk": true
   },
   {
     "name": "class2",
@@ -1207,7 +1425,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 67890,
-    "cssSize": 5125
+    "cssSize": 5125,
+    "npmWeeklyDownloads": 17,
+    "renderOk": true
   },
   {
     "name": "mooser",
@@ -1218,7 +1438,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 116823,
-    "cssSize": 10257
+    "cssSize": 10257,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "riga",
@@ -1229,7 +1451,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 120689,
-    "cssSize": 60576
+    "cssSize": 60576,
+    "npmWeeklyDownloads": 42,
+    "renderOk": false
   },
   {
     "name": "modern-plain",
@@ -1240,7 +1464,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 139367,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 19,
+    "renderOk": true
   },
   {
     "name": "elegant-compact",
@@ -1251,7 +1477,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 13,
+    "renderOk": false
   },
   {
     "name": "ozee31",
@@ -1262,7 +1490,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 285583,
-    "cssSize": 216
+    "cssSize": 216,
+    "npmWeeklyDownloads": 11,
+    "renderOk": true
   },
   {
     "name": "github-styled",
@@ -1273,7 +1503,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 143682,
-    "cssSize": 4066
+    "cssSize": 4066,
+    "npmWeeklyDownloads": 147,
+    "renderOk": true
   },
   {
     "name": "elegantnew",
@@ -1284,7 +1516,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 4,
+    "renderOk": false
   },
   {
     "name": "spartacus-prime",
@@ -1295,7 +1529,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 126926,
-    "cssSize": 4045
+    "cssSize": 4045,
+    "npmWeeklyDownloads": 19,
+    "renderOk": true
   },
   {
     "name": "elegant-maksymgendin",
@@ -1306,7 +1542,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 634552,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "heavypaper",
@@ -1317,7 +1555,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 84252,
-    "cssSize": 5841
+    "cssSize": 5841,
+    "npmWeeklyDownloads": 39,
+    "renderOk": true
   },
   {
     "name": "samk",
@@ -1328,7 +1568,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 122481,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "elegant-mrseanryan",
@@ -1339,7 +1581,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 12,
+    "renderOk": false
   },
   {
     "name": "retro",
@@ -1350,7 +1594,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 62717,
-    "cssSize": 660
+    "cssSize": 660,
+    "npmWeeklyDownloads": 6,
+    "renderOk": true
   },
   {
     "name": "dark-classy-edit",
@@ -1361,7 +1607,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 79430,
-    "cssSize": 3517
+    "cssSize": 3517,
+    "npmWeeklyDownloads": 3,
+    "renderOk": true
   },
   {
     "name": "techlead",
@@ -1372,7 +1620,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 140975,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 11,
+    "renderOk": true
   },
   {
     "name": "juno-nl",
@@ -1383,7 +1633,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 80440,
-    "cssSize": 3009
+    "cssSize": 3009,
+    "npmWeeklyDownloads": 45,
+    "renderOk": true
   },
   {
     "name": "foxyboxy",
@@ -1394,7 +1646,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 132464,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 12,
+    "renderOk": true
   },
   {
     "name": "kwann-nl",
@@ -1405,7 +1659,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 54,
+    "renderOk": false
   },
   {
     "name": "dev-ats",
@@ -1416,7 +1672,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 250775,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 5,
+    "renderOk": false
   },
   {
     "name": "skills",
@@ -1427,7 +1685,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 124324,
-    "cssSize": 23649
+    "cssSize": 23649,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "onepage-web",
@@ -1438,7 +1698,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 81285,
-    "cssSize": 2482
+    "cssSize": 2482,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "vp",
@@ -1449,7 +1711,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 275344,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "juno",
@@ -1460,7 +1724,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 80161,
-    "cssSize": 2969
+    "cssSize": 2969,
+    "npmWeeklyDownloads": 14,
+    "renderOk": true
   },
   {
     "name": "minimal",
@@ -1471,7 +1737,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 75412,
-    "cssSize": 4292
+    "cssSize": 4292,
+    "npmWeeklyDownloads": 22,
+    "renderOk": true
   },
   {
     "name": "shorter",
@@ -1482,7 +1750,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 62513,
-    "cssSize": 2163
+    "cssSize": 2163,
+    "npmWeeklyDownloads": 21,
+    "renderOk": true
   },
   {
     "name": "actual-letter",
@@ -1493,7 +1763,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 1027285,
-    "cssSize": 1587
+    "cssSize": 1587,
+    "npmWeeklyDownloads": 11,
+    "renderOk": false
   },
   {
     "name": "rickosborne",
@@ -1504,7 +1776,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 41692,
-    "cssSize": 8758
+    "cssSize": 8758,
+    "npmWeeklyDownloads": 35,
+    "renderOk": true
   },
   {
     "name": "pico",
@@ -1515,7 +1789,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 5393885,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 2,
+    "renderOk": false
   },
   {
     "name": "sasha_fixed",
@@ -1526,7 +1802,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 52493,
-    "cssSize": 1904
+    "cssSize": 1904,
+    "npmWeeklyDownloads": 12,
+    "renderOk": true
   },
   {
     "name": "codecobra",
@@ -1537,7 +1815,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 313513,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "el-santo",
@@ -1548,7 +1828,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 117750,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 9,
+    "renderOk": false
   },
   {
     "name": "kendall-variation",
@@ -1559,7 +1841,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 66133,
-    "cssSize": 6541
+    "cssSize": 6541,
+    "npmWeeklyDownloads": 12,
+    "renderOk": true
   },
   {
     "name": "stackoverflow-mats",
@@ -1570,7 +1854,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 136938,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 8,
+    "renderOk": false
   },
   {
     "name": "compact-pt-br",
@@ -1581,7 +1867,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 121303,
-    "cssSize": 1004
+    "cssSize": 1004,
+    "npmWeeklyDownloads": 8,
+    "renderOk": true
   },
   {
     "name": "elegant-zh-hant",
@@ -1592,7 +1880,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 599166,
-    "cssSize": 34936
+    "cssSize": 34936,
+    "npmWeeklyDownloads": 10,
+    "renderOk": true
   },
   {
     "name": "trivento",
@@ -1603,7 +1893,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 218948,
-    "cssSize": 1089
+    "cssSize": 1089,
+    "npmWeeklyDownloads": 12,
+    "renderOk": true
   },
   {
     "name": "creative-confidence",
@@ -1614,7 +1906,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 13564,
-    "cssSize": 5911
+    "cssSize": 5911,
+    "npmWeeklyDownloads": 10,
+    "renderOk": true
   },
   {
     "name": "kwan",
@@ -1625,7 +1919,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 7,
+    "renderOk": false
   },
   {
     "name": "jupe",
@@ -1636,7 +1932,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 578639,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 17,
+    "renderOk": true
   },
   {
     "name": "striking",
@@ -1647,7 +1945,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 73176,
-    "cssSize": 9969
+    "cssSize": 9969,
+    "npmWeeklyDownloads": 17,
+    "renderOk": true
   },
   {
     "name": "protos",
@@ -1658,7 +1958,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 124479,
-    "cssSize": 3711
+    "cssSize": 3711,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "github",
@@ -1669,7 +1971,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 15,
+    "renderOk": false
   },
   {
     "name": "light-classy-concise",
@@ -1680,7 +1984,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 6,
+    "renderOk": false
   },
   {
     "name": "elegant-fr",
@@ -1691,7 +1997,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 13,
+    "renderOk": false
   },
   {
     "name": "cvstrap",
@@ -1702,7 +2010,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 219762,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 10,
+    "renderOk": true
   },
   {
     "name": "github2",
@@ -1713,7 +2023,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 9,
+    "renderOk": false
   },
   {
     "name": "apage",
@@ -1724,7 +2036,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 2250162,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "elegant-custom",
@@ -1735,7 +2049,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 5,
+    "renderOk": false
   },
   {
     "name": "faang",
@@ -1746,7 +2062,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 5181,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 4,
+    "renderOk": true
   },
   {
     "name": "aaron",
@@ -1757,7 +2075,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 74665,
-    "cssSize": 1865
+    "cssSize": 1865,
+    "npmWeeklyDownloads": 8,
+    "renderOk": true
   },
   {
     "name": "plick",
@@ -1768,7 +2088,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 266405,
-    "cssSize": 61088
+    "cssSize": 61088,
+    "npmWeeklyDownloads": 13,
+    "renderOk": true
   },
   {
     "name": "kendall-ksenia",
@@ -1779,7 +2101,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 112158,
-    "cssSize": 6512
+    "cssSize": 6512,
+    "npmWeeklyDownloads": 3,
+    "renderOk": true
   },
   {
     "name": "autumn-custom",
@@ -1790,7 +2114,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 209777,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "hyperfocus",
@@ -1801,7 +2127,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 76841,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "fr_flat",
@@ -1812,7 +2140,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 77764,
-    "cssSize": 3017
+    "cssSize": 3017,
+    "npmWeeklyDownloads": 23,
+    "renderOk": true
   },
   {
     "name": "latex",
@@ -1823,7 +2153,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 31,
+    "renderOk": false
   },
   {
     "name": "srt-epost",
@@ -1834,7 +2166,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 79842,
-    "cssSize": 3343
+    "cssSize": 3343,
+    "npmWeeklyDownloads": 8,
+    "renderOk": true
   },
   {
     "name": "developpez",
@@ -1845,7 +2179,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 205640,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 19,
+    "renderOk": false
   },
   {
     "name": "contempo",
@@ -1856,7 +2192,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 150538,
-    "cssSize": 1530
+    "cssSize": 1530,
+    "npmWeeklyDownloads": 9,
+    "renderOk": true
   },
   {
     "name": "wb-elegant",
@@ -1867,7 +2205,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 10,
+    "renderOk": false
   },
   {
     "name": "mu",
@@ -1878,7 +2218,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 69978,
-    "cssSize": 3468
+    "cssSize": 3468,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "elegant-leonth",
@@ -1889,7 +2231,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 103370,
-    "cssSize": 1471
+    "cssSize": 1471,
+    "npmWeeklyDownloads": 10,
+    "renderOk": true
   },
   {
     "name": "tachyons-clean",
@@ -1900,7 +2244,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 85462,
-    "cssSize": 155
+    "cssSize": 155,
+    "npmWeeklyDownloads": 19,
+    "renderOk": true
   },
   {
     "name": "futura",
@@ -1911,7 +2257,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 187600,
-    "cssSize": 786
+    "cssSize": 786,
+    "npmWeeklyDownloads": 9,
+    "renderOk": true
   },
   {
     "name": "markdown",
@@ -1922,7 +2270,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 56161,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 15,
+    "renderOk": false
   },
   {
     "name": "kendall-plus",
@@ -1933,7 +2283,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 114051,
-    "cssSize": 6827
+    "cssSize": 6827,
+    "npmWeeklyDownloads": 3,
+    "renderOk": true
   },
   {
     "name": "jjlorenzoelegant",
@@ -1944,7 +2296,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 7,
+    "renderOk": false
   },
   {
     "name": "direct",
@@ -1955,7 +2309,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 172521,
-    "cssSize": 2035
+    "cssSize": 2035,
+    "npmWeeklyDownloads": 7,
+    "renderOk": true
   },
   {
     "name": "smart",
@@ -1966,7 +2322,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 99772,
-    "cssSize": 9973
+    "cssSize": 9973,
+    "npmWeeklyDownloads": 14,
+    "renderOk": false
   },
   {
     "name": "ophir",
@@ -1977,7 +2335,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 158610,
-    "cssSize": 2989
+    "cssSize": 2989,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "boilerplate-test",
@@ -1988,7 +2348,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 61623,
-    "cssSize": 837
+    "cssSize": 837,
+    "npmWeeklyDownloads": 8,
+    "renderOk": true
   },
   {
     "name": "nominaltech-nl",
@@ -1999,7 +2361,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 51772,
-    "cssSize": 1064
+    "cssSize": 1064,
+    "npmWeeklyDownloads": 163,
+    "renderOk": true
   },
   {
     "name": "elegant-projects",
@@ -2010,7 +2374,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 4,
+    "renderOk": false
   },
   {
     "name": "concise",
@@ -2021,7 +2387,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 76304,
-    "cssSize": 3722
+    "cssSize": 3722,
+    "npmWeeklyDownloads": 15,
+    "renderOk": true
   },
   {
     "name": "classy-vforesee",
@@ -2032,7 +2400,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 2,
+    "renderOk": false
   },
   {
     "name": "fizz",
@@ -2043,7 +2413,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 63208,
-    "cssSize": 4661
+    "cssSize": 4661,
+    "npmWeeklyDownloads": 12,
+    "renderOk": true
   },
   {
     "name": "stackoverflow-chinese",
@@ -2054,7 +2426,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 137214,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 3,
+    "renderOk": false
   },
   {
     "name": "cv",
@@ -2065,7 +2439,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 14,
+    "renderOk": false
   },
   {
     "name": "onepage-updated",
@@ -2076,7 +2452,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 80398,
-    "cssSize": 2433
+    "cssSize": 2433,
+    "npmWeeklyDownloads": 3,
+    "renderOk": true
   },
   {
     "name": "macchiato-macea",
@@ -2087,7 +2465,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 278889,
-    "cssSize": 6365
+    "cssSize": 6365,
+    "npmWeeklyDownloads": 3,
+    "renderOk": false
   },
   {
     "name": "modern-freelance",
@@ -2098,7 +2478,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 288278,
-    "cssSize": 216
+    "cssSize": 216,
+    "npmWeeklyDownloads": 11,
+    "renderOk": true
   },
   {
     "name": "intern",
@@ -2109,7 +2491,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 67158,
-    "cssSize": 3208
+    "cssSize": 3208,
+    "npmWeeklyDownloads": 8,
+    "renderOk": false
   },
   {
     "name": "vitae",
@@ -2120,7 +2504,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 71700,
-    "cssSize": 1276
+    "cssSize": 1276,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "timeline",
@@ -2131,7 +2517,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 973032,
-    "cssSize": 141788
+    "cssSize": 141788,
+    "npmWeeklyDownloads": 19,
+    "renderOk": true
   },
   {
     "name": "elegant-hitesh",
@@ -2142,7 +2530,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 15,
+    "renderOk": false
   },
   {
     "name": "kwan-fix",
@@ -2153,7 +2543,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 10,
+    "renderOk": false
   },
   {
     "name": "jdambron",
@@ -2164,7 +2556,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 266482,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 4,
+    "renderOk": false
   },
   {
     "name": "stackoverflow-plus",
@@ -2175,7 +2569,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 198180,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "bootstrap-icons",
@@ -2186,7 +2582,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 77532,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 12,
+    "renderOk": true
   },
   {
     "name": "eloquent-mod",
@@ -2197,7 +2595,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 409748,
-    "cssSize": 69694
+    "cssSize": 69694,
+    "npmWeeklyDownloads": 3,
+    "renderOk": true
   },
   {
     "name": "stackoverflow-roboto",
@@ -2208,7 +2608,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 137369,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "stackoverflow-fr",
@@ -2219,7 +2621,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 201535,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "elegant-wso",
@@ -2230,7 +2634,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 7,
+    "renderOk": false
   },
   {
     "name": "elegant-pdf",
@@ -2241,7 +2647,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 573134,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "autumn",
@@ -2252,7 +2660,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 206873,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 12,
+    "renderOk": false
   },
   {
     "name": "kiss",
@@ -2263,7 +2673,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 268121,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "joeytall",
@@ -2274,7 +2686,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 68699,
-    "cssSize": 2336
+    "cssSize": 2336,
+    "npmWeeklyDownloads": 5,
+    "renderOk": false
   },
   {
     "name": "kittyfarren",
@@ -2285,7 +2699,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 205820,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "kava",
@@ -2296,7 +2712,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 241322,
-    "cssSize": 7155
+    "cssSize": 7155,
+    "npmWeeklyDownloads": 3,
+    "renderOk": false
   },
   {
     "name": "classic",
@@ -2307,7 +2725,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 130836,
-    "cssSize": 2276
+    "cssSize": 2276,
+    "npmWeeklyDownloads": 4,
+    "renderOk": false
   },
   {
     "name": "compactbr",
@@ -2318,7 +2738,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 120007,
-    "cssSize": 898
+    "cssSize": 898,
+    "npmWeeklyDownloads": 7,
+    "renderOk": true
   },
   {
     "name": "slick-bentley",
@@ -2329,7 +2751,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 124629,
-    "cssSize": 60122
+    "cssSize": 60122,
+    "npmWeeklyDownloads": 10,
+    "renderOk": true
   },
   {
     "name": "onepage-fr",
@@ -2340,7 +2764,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 130865,
-    "cssSize": 2011
+    "cssSize": 2011,
+    "npmWeeklyDownloads": 16,
+    "renderOk": false
   },
   {
     "name": "spartacus-nl",
@@ -2351,7 +2777,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 128330,
-    "cssSize": 4369
+    "cssSize": 4369,
+    "npmWeeklyDownloads": 46,
+    "renderOk": true
   },
   {
     "name": "kendall-fix",
@@ -2362,7 +2790,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 66144,
-    "cssSize": 6481
+    "cssSize": 6481,
+    "npmWeeklyDownloads": 7,
+    "renderOk": true
   },
   {
     "name": "stackoverflow2",
@@ -2373,7 +2803,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 138335,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 13,
+    "renderOk": false
   },
   {
     "name": "spartanbentekkie",
@@ -2384,7 +2816,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 189534,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "depassementdepile",
@@ -2395,7 +2829,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 145282,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 7,
+    "renderOk": false
   },
   {
     "name": "papirus-ru",
@@ -2406,7 +2842,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 3,
+    "renderOk": false
   },
   {
     "name": "macchiato-ibic",
@@ -2417,7 +2855,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 279820,
-    "cssSize": 6365
+    "cssSize": 6365,
+    "npmWeeklyDownloads": 13,
+    "renderOk": false
   },
   {
     "name": "clean",
@@ -2428,7 +2868,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 70724,
-    "cssSize": 3488
+    "cssSize": 3488,
+    "npmWeeklyDownloads": 8,
+    "renderOk": true
   },
   {
     "name": "slickoverflow",
@@ -2439,7 +2881,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 139404,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 5,
+    "renderOk": false
   },
   {
     "name": "eloquent-ru",
@@ -2450,7 +2894,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 274430,
-    "cssSize": 69498
+    "cssSize": 69498,
+    "npmWeeklyDownloads": 32,
+    "renderOk": true
   },
   {
     "name": "reactive",
@@ -2461,7 +2907,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 104640,
-    "cssSize": 54915
+    "cssSize": 54915,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "pring",
@@ -2472,7 +2920,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 29834,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 9,
+    "renderOk": false
   },
   {
     "name": "kwam-nl",
@@ -2483,7 +2933,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 7,
+    "renderOk": false
   },
   {
     "name": "ceevee",
@@ -2494,7 +2946,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 2431330,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 3,
+    "renderOk": true
   },
   {
     "name": "shorter-miles",
@@ -2505,7 +2959,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 189770,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 10,
+    "renderOk": true
   },
   {
     "name": "blue",
@@ -2516,7 +2972,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 788,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 3,
+    "renderOk": false
   },
   {
     "name": "kendall-alt",
@@ -2527,7 +2985,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 66144,
-    "cssSize": 6481
+    "cssSize": 6481,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "gross",
@@ -2538,7 +2998,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 788,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 3,
+    "renderOk": false
   },
   {
     "name": "onepageresume",
@@ -2549,7 +3011,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 187852,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 15,
+    "renderOk": true
   },
   {
     "name": "lacour",
@@ -2560,7 +3024,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 115169,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "light-classy-responsive-fr",
@@ -2571,7 +3037,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 4,
+    "renderOk": false
   },
   {
     "name": "shorter-bill",
@@ -2582,7 +3050,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 125078,
-    "cssSize": 2578
+    "cssSize": 2578,
+    "npmWeeklyDownloads": 7,
+    "renderOk": true
   },
   {
     "name": "cards",
@@ -2593,7 +3063,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 6,
+    "renderOk": false
   },
   {
     "name": "dave",
@@ -2604,7 +3076,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 107122,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 6,
+    "renderOk": false
   },
   {
     "name": "eshaham",
@@ -2615,7 +3089,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 46007,
-    "cssSize": 3505
+    "cssSize": 3505,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "sergio",
@@ -2626,7 +3102,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 68492,
-    "cssSize": 660
+    "cssSize": 660,
+    "npmWeeklyDownloads": 6,
+    "renderOk": true
   },
   {
     "name": "val",
@@ -2637,7 +3115,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 1002,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 4,
+    "renderOk": true
   },
   {
     "name": "latte",
@@ -2648,7 +3128,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 196434,
-    "cssSize": 6402
+    "cssSize": 6402,
+    "npmWeeklyDownloads": 2,
+    "renderOk": false
   },
   {
     "name": "macchiato-plus",
@@ -2659,7 +3141,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 221242,
-    "cssSize": 6365
+    "cssSize": 6365,
+    "npmWeeklyDownloads": 2,
+    "renderOk": false
   },
   {
     "name": "resu",
@@ -2670,7 +3154,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 75944,
-    "cssSize": 2643
+    "cssSize": 2643,
+    "npmWeeklyDownloads": 7,
+    "renderOk": true
   },
   {
     "name": "elegant-fr-mod",
@@ -2681,7 +3167,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 595612,
-    "cssSize": 34936
+    "cssSize": 34936,
+    "npmWeeklyDownloads": 20,
+    "renderOk": true
   },
   {
     "name": "nominaltech",
@@ -2692,7 +3180,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 52018,
-    "cssSize": 1905
+    "cssSize": 1905,
+    "npmWeeklyDownloads": 6,
+    "renderOk": true
   },
   {
     "name": "kendall-fr",
@@ -2703,7 +3193,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 95171,
-    "cssSize": 6826
+    "cssSize": 6826,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "engineering-leader",
@@ -2714,7 +3206,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 122889,
-    "cssSize": 1962
+    "cssSize": 1962,
+    "npmWeeklyDownloads": 8,
+    "renderOk": true
   },
   {
     "name": "uppsala",
@@ -2725,7 +3219,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 85676,
-    "cssSize": 5968
+    "cssSize": 5968,
+    "npmWeeklyDownloads": 10,
+    "renderOk": true
   },
   {
     "name": "simple",
@@ -2736,7 +3232,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 65350,
-    "cssSize": 3095
+    "cssSize": 3095,
+    "npmWeeklyDownloads": 4,
+    "renderOk": true
   },
   {
     "name": "elegant-mobile",
@@ -2747,7 +3245,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 5,
+    "renderOk": false
   },
   {
     "name": "business-card",
@@ -2758,7 +3258,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 56004,
-    "cssSize": 660
+    "cssSize": 660,
+    "npmWeeklyDownloads": 6,
+    "renderOk": true
   },
   {
     "name": "spartan-projects",
@@ -2769,7 +3271,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 192728,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 3,
+    "renderOk": true
   },
   {
     "name": "stackoverflow-react-2",
@@ -2780,7 +3284,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 247696,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 6,
+    "renderOk": true
   },
   {
     "name": "verbum",
@@ -2791,7 +3297,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 10,
+    "renderOk": false
   },
   {
     "name": "slick-nl",
@@ -2802,7 +3310,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 255316,
-    "cssSize": 60121
+    "cssSize": 60121,
+    "npmWeeklyDownloads": 31,
+    "renderOk": true
   },
   {
     "name": "keloran",
@@ -2813,7 +3323,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 67579,
-    "cssSize": 6593
+    "cssSize": 6593,
+    "npmWeeklyDownloads": 7,
+    "renderOk": true
   },
   {
     "name": "kendall-beardtree",
@@ -2824,7 +3336,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 65919,
-    "cssSize": 6481
+    "cssSize": 6481,
+    "npmWeeklyDownloads": 7,
+    "renderOk": true
   },
   {
     "name": "elegant-simplified",
@@ -2835,7 +3349,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 39606,
-    "cssSize": 995
+    "cssSize": 995,
+    "npmWeeklyDownloads": 8,
+    "renderOk": true
   },
   {
     "name": "short-extended",
@@ -2846,7 +3362,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 84718,
-    "cssSize": 3683
+    "cssSize": 3683,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "orbit-original",
@@ -2857,7 +3375,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 234732,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 13,
+    "renderOk": true
   },
   {
     "name": "actual-entropitor",
@@ -2868,7 +3388,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 1046625,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "boldstatement",
@@ -2879,7 +3401,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 12912367,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 16,
+    "renderOk": true
   },
   {
     "name": "sky",
@@ -2890,7 +3414,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 209781,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "kendall-gren",
@@ -2901,7 +3427,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 113537,
-    "cssSize": 7792
+    "cssSize": 7792,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "genocation",
@@ -2912,7 +3440,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 261212,
-    "cssSize": 12396
+    "cssSize": 12396,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "stackoverflow-skills",
@@ -2923,7 +3453,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 166268,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 14,
+    "renderOk": false
   },
   {
     "name": "paper-condensed",
@@ -2934,7 +3466,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 78136,
-    "cssSize": 6328
+    "cssSize": 6328,
+    "npmWeeklyDownloads": 7,
+    "renderOk": true
   },
   {
     "name": "caffeine-tweaked",
@@ -2945,7 +3479,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 275065,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 6,
+    "renderOk": false
   },
   {
     "name": "spartan-v1",
@@ -2956,7 +3492,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 187421,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "ludoo",
@@ -2967,7 +3505,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 84243,
-    "cssSize": 6559
+    "cssSize": 6559,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "next",
@@ -2978,7 +3518,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 67218,
-    "cssSize": 2767
+    "cssSize": 2767,
+    "npmWeeklyDownloads": 7,
+    "renderOk": true
   },
   {
     "name": "ifyoumakeit",
@@ -2989,7 +3531,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 76847,
-    "cssSize": 2743
+    "cssSize": 2743,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "compact-extended",
@@ -3000,7 +3544,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 126064,
-    "cssSize": 988
+    "cssSize": 988,
+    "npmWeeklyDownloads": 8,
+    "renderOk": true
   },
   {
     "name": "psimple",
@@ -3011,7 +3557,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 137311,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "kendall-saathoff",
@@ -3022,7 +3570,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 109487,
-    "cssSize": 6761
+    "cssSize": 6761,
+    "npmWeeklyDownloads": 3,
+    "renderOk": true
   },
   {
     "name": "paper-it",
@@ -3033,7 +3583,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 72871,
-    "cssSize": 6285
+    "cssSize": 6285,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "elegant-jali",
@@ -3044,7 +3596,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 17,
+    "renderOk": false
   },
   {
     "name": "stackoverflow-es",
@@ -3055,7 +3609,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 158065,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 14,
+    "renderOk": false
   },
   {
     "name": "ankurclass",
@@ -3066,7 +3622,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 63871,
-    "cssSize": 4667
+    "cssSize": 4667,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "bhdouglass",
@@ -3077,7 +3635,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 277574,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "kendalifeee",
@@ -3088,7 +3648,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 113117,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 14,
+    "renderOk": true
   },
   {
     "name": "sfy",
@@ -3099,7 +3661,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 207676,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "paper-fixed",
@@ -3110,7 +3674,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 2917322,
-    "cssSize": 8991
+    "cssSize": 8991,
+    "npmWeeklyDownloads": 3,
+    "renderOk": true
   },
   {
     "name": "print",
@@ -3121,7 +3687,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 63304,
-    "cssSize": 2761
+    "cssSize": 2761,
+    "npmWeeklyDownloads": 7,
+    "renderOk": true
   },
   {
     "name": "class-yaucp",
@@ -3132,7 +3700,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 262496,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "eternal-de",
@@ -3143,7 +3713,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 260963,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "srt-it",
@@ -3154,7 +3726,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 70497,
-    "cssSize": 2790
+    "cssSize": 2790,
+    "npmWeeklyDownloads": 9,
+    "renderOk": true
   },
   {
     "name": "sasha",
@@ -3165,7 +3739,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 51754,
-    "cssSize": 1904
+    "cssSize": 1904,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "elegant-fr2",
@@ -3176,7 +3752,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 595609,
-    "cssSize": 34936
+    "cssSize": 34936,
+    "npmWeeklyDownloads": 4,
+    "renderOk": true
   },
   {
     "name": "kwaln-nl",
@@ -3187,7 +3765,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 7,
+    "renderOk": false
   },
   {
     "name": "flatphill",
@@ -3198,7 +3778,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 64556,
-    "cssSize": 2587
+    "cssSize": 2587,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "onepage-year",
@@ -3209,7 +3791,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 130730,
-    "cssSize": 2011
+    "cssSize": 2011,
+    "npmWeeklyDownloads": 3,
+    "renderOk": false
   },
   {
     "name": "minimalism",
@@ -3220,7 +3804,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 90249,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 2,
+    "renderOk": false
   },
   {
     "name": "macea",
@@ -3231,7 +3817,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 254462,
-    "cssSize": 6555
+    "cssSize": 6555,
+    "npmWeeklyDownloads": 10,
+    "renderOk": false
   },
   {
     "name": "concise-serif",
@@ -3242,7 +3830,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 123913,
-    "cssSize": 1710
+    "cssSize": 1710,
+    "npmWeeklyDownloads": 9,
+    "renderOk": true
   },
   {
     "name": "onepage-mrseanryan",
@@ -3253,7 +3843,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 133926,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 29,
+    "renderOk": false
   },
   {
     "name": "short-newmanrsfork",
@@ -3264,7 +3856,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 72274,
-    "cssSize": 1936
+    "cssSize": 1936,
+    "npmWeeklyDownloads": 9,
+    "renderOk": true
   },
   {
     "name": "edify",
@@ -3275,7 +3869,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 66660,
-    "cssSize": 3694
+    "cssSize": 3694,
+    "npmWeeklyDownloads": 17,
+    "renderOk": true
   },
   {
     "name": "the-careercup-good-resume",
@@ -3286,7 +3882,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 199392,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "kendall-bushmanov",
@@ -3297,7 +3895,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "kendall-custom",
@@ -3308,7 +3908,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 122275,
-    "cssSize": 6398
+    "cssSize": 6398,
+    "npmWeeklyDownloads": 4,
+    "renderOk": true
   },
   {
     "name": "eternal",
@@ -3319,7 +3921,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 124722,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "spartan-extended",
@@ -3330,7 +3934,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 239765,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 4,
+    "renderOk": true
   },
   {
     "name": "fresh",
@@ -3341,7 +3947,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 108497,
-    "cssSize": 17490
+    "cssSize": 17490,
+    "npmWeeklyDownloads": 9,
+    "renderOk": true
   },
   {
     "name": "onepage-efficient",
@@ -3352,7 +3960,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 86055,
-    "cssSize": 2228
+    "cssSize": 2228,
+    "npmWeeklyDownloads": 7,
+    "renderOk": false
   },
   {
     "name": "light-caffienated",
@@ -3363,7 +3973,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 59935,
-    "cssSize": 6393
+    "cssSize": 6393,
+    "npmWeeklyDownloads": 8,
+    "renderOk": true
   },
   {
     "name": "minimal-classy",
@@ -3374,7 +3986,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 4,
+    "renderOk": false
   },
   {
     "name": "stackoverflow-detailed",
@@ -3385,7 +3999,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 138952,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "kwan-no-skills-level",
@@ -3396,7 +4012,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 3,
+    "renderOk": false
   },
   {
     "name": "onepage-fork",
@@ -3407,7 +4025,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 68612,
-    "cssSize": 2011
+    "cssSize": 2011,
+    "npmWeeklyDownloads": 5,
+    "renderOk": false
   },
   {
     "name": "kendall-pt-br",
@@ -3418,7 +4038,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 66351,
-    "cssSize": 6308
+    "cssSize": 6308,
+    "npmWeeklyDownloads": 4,
+    "renderOk": true
   },
   {
     "name": "onepage-jak119",
@@ -3429,7 +4051,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 122721,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "paper-monofont",
@@ -3440,7 +4064,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 70895,
-    "cssSize": 6160
+    "cssSize": 6160,
+    "npmWeeklyDownloads": 7,
+    "renderOk": true
   },
   {
     "name": "even-gdpr",
@@ -3451,7 +4077,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 273115,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 3,
+    "renderOk": false
   },
   {
     "name": "kcv",
@@ -3462,7 +4090,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 68610,
-    "cssSize": 2944
+    "cssSize": 2944,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "md",
@@ -3473,7 +4103,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 113077,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 10,
+    "renderOk": true
   },
   {
     "name": "golden",
@@ -3484,7 +4116,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 304827,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 7,
+    "renderOk": false
   },
   {
     "name": "spartan-extended-certs",
@@ -3495,7 +4129,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 239791,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 4,
+    "renderOk": true
   },
   {
     "name": "dinesh",
@@ -3506,7 +4142,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 72165,
-    "cssSize": 2660
+    "cssSize": 2660,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "gnap",
@@ -3517,7 +4155,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 190574,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "paper-zh-hant",
@@ -3528,7 +4168,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 70902,
-    "cssSize": 5831
+    "cssSize": 5831,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "eddywashere",
@@ -3539,7 +4181,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 71902,
-    "cssSize": 4146
+    "cssSize": 4146,
+    "npmWeeklyDownloads": 8,
+    "renderOk": true
   },
   {
     "name": "rhinebeck",
@@ -3550,7 +4194,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 93387,
-    "cssSize": 6362
+    "cssSize": 6362,
+    "npmWeeklyDownloads": 6,
+    "renderOk": true
   },
   {
     "name": "basic",
@@ -3561,7 +4207,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "elegant_fork",
@@ -3572,7 +4220,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 41050,
-    "cssSize": 856
+    "cssSize": 856,
+    "npmWeeklyDownloads": 8,
+    "renderOk": true
   },
   {
     "name": "sidepanel",
@@ -3583,7 +4233,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 96483,
-    "cssSize": 1400
+    "cssSize": 1400,
+    "npmWeeklyDownloads": 13,
+    "renderOk": true
   },
   {
     "name": "print-flexbox",
@@ -3594,7 +4246,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 126095,
-    "cssSize": 6251
+    "cssSize": 6251,
+    "npmWeeklyDownloads": 6,
+    "renderOk": true
   },
   {
     "name": "kwan-linkedin",
@@ -3605,7 +4259,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "flat-nl",
@@ -3616,7 +4272,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 64560,
-    "cssSize": 2588
+    "cssSize": 2588,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "hired",
@@ -3627,7 +4285,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 224777,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "tech-ger",
@@ -3638,7 +4298,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 123487,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "hexagon",
@@ -3649,7 +4311,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 554479,
-    "cssSize": 7795
+    "cssSize": 7795,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "materialize",
@@ -3660,7 +4324,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 318775,
-    "cssSize": 124845
+    "cssSize": 124845,
+    "npmWeeklyDownloads": 14,
+    "renderOk": true
   },
   {
     "name": "elegant-tarq",
@@ -3671,7 +4337,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 3,
+    "renderOk": false
   },
   {
     "name": "kendalles",
@@ -3682,7 +4350,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 66584,
-    "cssSize": 6478
+    "cssSize": 6478,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "compact-new",
@@ -3693,7 +4363,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 175194,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "elegant_sargefork",
@@ -3704,7 +4376,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 41025,
-    "cssSize": 883
+    "cssSize": 883,
+    "npmWeeklyDownloads": 3,
+    "renderOk": true
   },
   {
     "name": "hydejack",
@@ -3715,7 +4389,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 340319,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 13,
+    "renderOk": true
   },
   {
     "name": "wraypro",
@@ -3726,7 +4402,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 104221,
-    "cssSize": 4112
+    "cssSize": 4112,
+    "npmWeeklyDownloads": 11,
+    "renderOk": true
   },
   {
     "name": "kendall-fork",
@@ -3737,7 +4415,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 67528,
-    "cssSize": 6847
+    "cssSize": 6847,
+    "npmWeeklyDownloads": 3,
+    "renderOk": true
   },
   {
     "name": "ah3nry",
@@ -3748,7 +4428,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 859573,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 6,
+    "renderOk": true
   },
   {
     "name": "orbit-vforesee",
@@ -3759,7 +4441,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 250156,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "light-nl",
@@ -3770,7 +4454,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 65987,
-    "cssSize": 5683
+    "cssSize": 5683,
+    "npmWeeklyDownloads": 81,
+    "renderOk": true
   },
   {
     "name": "flat-es",
@@ -3781,7 +4467,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 64569,
-    "cssSize": 2588
+    "cssSize": 2588,
+    "npmWeeklyDownloads": 7,
+    "renderOk": true
   },
   {
     "name": "json",
@@ -3792,7 +4480,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 54056,
-    "cssSize": 88
+    "cssSize": 88,
+    "npmWeeklyDownloads": 4,
+    "renderOk": true
   },
   {
     "name": "onepage-wide",
@@ -3803,7 +4493,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 69130,
-    "cssSize": 2193
+    "cssSize": 2193,
+    "npmWeeklyDownloads": 2,
+    "renderOk": false
   },
   {
     "name": "tom-actual",
@@ -3814,7 +4506,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 1046869,
-    "cssSize": 5229
+    "cssSize": 5229,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "keloran-fr",
@@ -3825,7 +4519,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 67697,
-    "cssSize": 6593
+    "cssSize": 6593,
+    "npmWeeklyDownloads": 3,
+    "renderOk": true
   },
   {
     "name": "crewshin",
@@ -3836,7 +4532,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 161797,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "mocaccino",
@@ -3847,7 +4545,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 272132,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "kwan-nl",
@@ -3858,7 +4558,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 6,
+    "renderOk": false
   },
   {
     "name": "kendall-vforesee",
@@ -3869,7 +4571,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 114750,
-    "cssSize": 6826
+    "cssSize": 6826,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "papier",
@@ -3880,7 +4584,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 70682,
-    "cssSize": 5831
+    "cssSize": 5831,
+    "npmWeeklyDownloads": 11,
+    "renderOk": true
   },
   {
     "name": "futura-wp",
@@ -3891,7 +4597,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 189044,
-    "cssSize": 725
+    "cssSize": 725,
+    "npmWeeklyDownloads": 15,
+    "renderOk": true
   },
   {
     "name": "flat_projects",
@@ -3902,7 +4610,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 65298,
-    "cssSize": 2574
+    "cssSize": 2574,
+    "npmWeeklyDownloads": 9,
+    "renderOk": true
   },
   {
     "name": "short-remix",
@@ -3913,7 +4623,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 63340,
-    "cssSize": 2680
+    "cssSize": 2680,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "jaxxstorm",
@@ -3924,7 +4636,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 10260,
-    "cssSize": 5895
+    "cssSize": 5895,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "boilerplate-vforesee",
@@ -3935,7 +4649,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 73976,
-    "cssSize": 871
+    "cssSize": 871,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "short-nderkach",
@@ -3946,7 +4662,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 71239,
-    "cssSize": 2192
+    "cssSize": 2192,
+    "npmWeeklyDownloads": 6,
+    "renderOk": true
   },
   {
     "name": "neo-overflow",
@@ -3957,7 +4675,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 138200,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "latexone",
@@ -3968,7 +4688,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 44386,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "traiforce",
@@ -3979,7 +4701,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 6800,
-    "cssSize": 3208
+    "cssSize": 3208,
+    "npmWeeklyDownloads": 8,
+    "renderOk": true
   },
   {
     "name": "mix",
@@ -3990,7 +4714,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 149990,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 5,
+    "renderOk": false
   },
   {
     "name": "qimia",
@@ -4001,7 +4727,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 120757,
-    "cssSize": 16099
+    "cssSize": 16099,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "eleganto",
@@ -4012,7 +4740,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 755224,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 3,
+    "renderOk": true
   },
   {
     "name": "lajtha-compact",
@@ -4023,7 +4753,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 6803,
-    "cssSize": 3082
+    "cssSize": 3082,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "hr-md",
@@ -4034,7 +4766,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 72879,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 3,
+    "renderOk": false
   },
   {
     "name": "paper-pt-br",
@@ -4045,7 +4779,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 72854,
-    "cssSize": 5908
+    "cssSize": 5908,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "scholar",
@@ -4056,7 +4792,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 266305,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "student",
@@ -4067,7 +4805,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 250450,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "azure-split",
@@ -4078,7 +4818,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 126702,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "stackoverflow-skills-below-education",
@@ -4089,7 +4831,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 165037,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 5,
+    "renderOk": false
   },
   {
     "name": "onepage_zena",
@@ -4100,7 +4844,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 68726,
-    "cssSize": 2011
+    "cssSize": 2011,
+    "npmWeeklyDownloads": 3,
+    "renderOk": false
   },
   {
     "name": "sensible",
@@ -4111,7 +4857,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 174248,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "ocean",
@@ -4122,7 +4870,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": false
   },
   {
     "name": "light",
@@ -4133,7 +4883,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 64691,
-    "cssSize": 6394
+    "cssSize": 6394,
+    "npmWeeklyDownloads": 14,
+    "renderOk": true
   },
   {
     "name": "student-onepage",
@@ -4144,7 +4896,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 74348,
-    "cssSize": 1491
+    "cssSize": 1491,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   },
   {
     "name": "tim",
@@ -4155,7 +4909,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 113314,
-    "cssSize": 6541
+    "cssSize": 6541,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "pinage404",
@@ -4166,7 +4922,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 4,
+    "renderOk": false
   },
   {
     "name": "eleganter",
@@ -4177,7 +4935,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 586289,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "donkeymedia",
@@ -4188,7 +4948,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 64587,
-    "cssSize": 2588
+    "cssSize": 2588,
+    "npmWeeklyDownloads": 3,
+    "renderOk": true
   },
   {
     "name": "kendall-fr-plus",
@@ -4199,7 +4961,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 108980,
-    "cssSize": 8044
+    "cssSize": 8044,
+    "npmWeeklyDownloads": 4,
+    "renderOk": true
   },
   {
     "name": "austinmcconnell",
@@ -4210,7 +4974,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 195964,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 1,
+    "renderOk": true
   },
   {
     "name": "flatter",
@@ -4221,7 +4987,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 64562,
-    "cssSize": 2588
+    "cssSize": 2588,
+    "npmWeeklyDownloads": 6,
+    "renderOk": true
   },
   {
     "name": "flat-optimized",
@@ -4232,7 +5000,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 84153,
-    "cssSize": 2615
+    "cssSize": 2615,
+    "npmWeeklyDownloads": 6,
+    "renderOk": true
   },
   {
     "name": "haosio",
@@ -4243,7 +5013,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 70065,
-    "cssSize": 650
+    "cssSize": 650,
+    "npmWeeklyDownloads": 3,
+    "renderOk": true
   },
   {
     "name": "full-jap",
@@ -4254,7 +5026,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 73010,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 3,
+    "renderOk": false
   },
   {
     "name": "bzdev",
@@ -4265,7 +5039,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 175545,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 2,
+    "renderOk": true
   },
   {
     "name": "stackoverflow-marion",
@@ -4276,7 +5052,9 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 137573,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 5,
+    "renderOk": false
   },
   {
     "name": "dangerflat",
@@ -4287,7 +5065,9 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 82566,
-    "cssSize": 2586
+    "cssSize": 2586,
+    "npmWeeklyDownloads": 10,
+    "renderOk": true
   },
   {
     "name": "onepage-ds",
@@ -4298,7 +5078,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 122669,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 4,
+    "renderOk": false
   },
   {
     "name": "onepage-nderkach",
@@ -4309,7 +5091,9 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 184327,
-    "cssSize": 0
+    "cssSize": 0,
+    "npmWeeklyDownloads": 14,
+    "renderOk": false
   },
   {
     "name": "kendall-de",
@@ -4320,6 +5104,8 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 87565,
-    "cssSize": 6826
+    "cssSize": 6826,
+    "npmWeeklyDownloads": 5,
+    "renderOk": true
   }
 ]
