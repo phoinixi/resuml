@@ -12,8 +12,11 @@ export function Preview({ html, loading, error }: PreviewProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const previousHtmlRef = useRef<string | null>(null);
 
-  const showSpinner = loading && !html;
+  const showSpinner = loading;
   const showIframe = !!html && !showSpinner;
+  // Suppress error while loading so the user sees a spinner during the
+  // render attempt instead of the previous/incoming error flashing.
+  const showError = !!error && !loading;
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -48,7 +51,7 @@ export function Preview({ html, loading, error }: PreviewProps) {
         </div>
       )}
 
-      {error && (
+      {showError && (
         <div className="preview-error">
           <AlertTriangle size={16} className="preview-error-icon" />
           <span>{error}</span>

@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef } from 'react';
 import type { ResumeSchema } from '../../types/resume';
-import { tryLoadWorkerTheme, renderInWorker, loadSnapshot, isThemeLoaded } from '../services/api.js';
+import { tryLoadWorkerTheme, renderInWorker, loadSnapshot } from '../services/api.js';
 import { padResume } from '../utils/padResume.js';
 
 /*
@@ -46,12 +46,18 @@ export function useTheme(themeName: string) {
     prevThemeRef.current = themeName;
     const stale = () => renderId !== renderIdRef.current;
 
+    // Loading spinner shows during any render attempt so the user doesn't
+    // see a flash of the previous error / stale preview. We only clear the
+    // previous theme error *after* commiting loading=true — so if a render
+    // returns synchronously with an error, the UI doesn't strobe between
+    // "error" → "nothing" → "error".
+    setLoading(true);
     setThemeError(null);
-
-    // Show loading spinner only on first load of a new theme
-    if (isThemeSwitch && !isThemeLoaded(themeName)) {
-      setLoading(true);
-    }
+    // On theme switch, also drop the previous theme's rendered HTML so we
+    // don't briefly show the OLD theme while the new one loads. On same-
+    // theme re-renders (resume edits), keep the html so the spinner can
+    // overlay instead of flashing a blank state.
+    if (isThemeSwitch) setHtml(null);
 
     // Step 1: Try the Worker
     const workerReady = await tryLoadWorkerTheme(themeName);
