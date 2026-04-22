@@ -13,41 +13,101 @@ export interface Token {
   isAllUpper: boolean;  // whether raw has ≥ 2 consecutive uppercase chars (acronym-ish)
 }
 
-const LEADING_TRAILING_PUNCT = /^[^\w+#]+|[^\w+#]+$/g;
+/**
+ * Chars that can appear inside a skill token (letters, digits, plus, hash,
+ * dot, slash, hyphen). Anything else is a separator.
+ *
+ * Char-class check on a single char — constant-time, not ReDoS-susceptible
+ * (CodeQL js/polynomial-redos flagged the previous regex-based tokenizer).
+ */
+function isTokenChar(ch: string): boolean {
+  if (ch >= 'a' && ch <= 'z') return true;
+  if (ch >= 'A' && ch <= 'Z') return true;
+  if (ch >= '0' && ch <= '9') return true;
+  return ch === '.' || ch === '/' || ch === '-' || ch === '+' || ch === '#' || ch === '_';
+}
 
+function isLetter(ch: string): boolean {
+  return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z');
+}
+
+/**
+ * Strip boundary chars that aren't valid leading/trailing parts of a skill
+ * token — e.g. trailing commas, periods followed by space, quotes. Internal
+ * punctuation (Node.js, CI/CD, shadcn/ui) is preserved.
+ */
+function trimTokenBoundary(tok: string): string {
+  let start = 0;
+  let end = tok.length;
+  // Letters, digits, '+' and '#' are valid leading chars; everything else (. / -) gets stripped
+  while (start < end) {
+    const ch = tok[start]!;
+    if (isLetter(ch) || (ch >= '0' && ch <= '9') || ch === '+' || ch === '#') break;
+    start++;
+  }
+  while (end > start) {
+    const ch = tok[end - 1]!;
+    if (isLetter(ch) || (ch >= '0' && ch <= '9') || ch === '+' || ch === '#') break;
+    end--;
+  }
+  return start === 0 && end === tok.length ? tok : tok.slice(start, end);
+}
+
+/**
+ * Linear-time tokenizer. Iterates once over the string, accumulating runs of
+ * token chars. Avoids regex alternation and unbounded quantifiers to keep
+ * worst-case complexity O(n) even on adversarial inputs.
+ */
 export function tokenize(text: string): Token[] {
   const tokens: Token[] = [];
-  // Split on whitespace + sentence punctuation (comma, period followed by space, etc.)
-  // but preserve punctuation inside tokens.
-  const raw = text.split(/\s+|(?<=[.,;:!?])\s+|(?<=\S)\s+(?=\S)/).filter(Boolean);
-  for (const chunk of raw) {
-    // Further split on external punctuation boundaries but keep internal
-    const pieces = chunk.split(/[()[\]{}"'“”‘’`]+/);
-    for (const p of pieces) {
-      if (!p) continue;
-      const cleaned = p.replace(LEADING_TRAILING_PUNCT, '');
-      if (!cleaned) continue;
-      if (cleaned.length < 1) continue;
-      // Drop tokens that have any junk-only content
-      if (!/[a-zA-Z0-9+#]/.test(cleaned)) continue;
-      // Count letters to decide if this is acronym-shaped (all caps)
-      const letters = cleaned.replace(/[^a-zA-Z]/g, '');
-      const isAllUpper = letters.length >= 2 && letters === letters.toUpperCase();
-      tokens.push({ raw: cleaned, norm: cleaned.toLowerCase(), isAllUpper });
+  const len = text.length;
+  let i = 0;
+  while (i < len) {
+    // Skip separators
+    while (i < len && !isTokenChar(text[i]!)) i++;
+    // Accumulate token
+    const start = i;
+    while (i < len && isTokenChar(text[i]!)) i++;
+    if (i === start) continue;
+    const raw = trimTokenBoundary(text.slice(start, i));
+    if (!raw) continue;
+    // Require at least one letter or digit or + or #
+    let hasCore = false;
+    for (let k = 0; k < raw.length; k++) {
+      const ch = raw[k]!;
+      if (isLetter(ch) || (ch >= '0' && ch <= '9') || ch === '+' || ch === '#') {
+        hasCore = true;
+        break;
+      }
     }
+    if (!hasCore) continue;
+    // Compute isAllUpper by scanning letters once
+    let letterCount = 0;
+    let upperCount = 0;
+    for (let k = 0; k < raw.length; k++) {
+      const ch = raw[k]!;
+      if (isLetter(ch)) {
+        letterCount++;
+        if (ch >= 'A' && ch <= 'Z') upperCount++;
+      }
+    }
+    const isAllUpper = letterCount >= 2 && upperCount === letterCount;
+    tokens.push({ raw, norm: raw.toLowerCase(), isAllUpper });
   }
   return tokens;
 }
 
 /**
- * Normalize a skill label into token strings. Splits on whitespace only — internal
- * punctuation (dots, slashes, hyphens, plus/hash) stays attached to its token.
+ * Normalize a skill label into token strings. Splits on whitespace only —
+ * internal punctuation (dots, slashes, hyphens, plus/hash) stays attached to
+ * its token. Skill labels come from our own JSON, not user input, so the
+ * simple regex split is safe here.
  */
 function phraseToTokens(phrase: string): string[] {
   return phrase
     .toLowerCase()
     .split(/\s+/)
-    .map((t) => t.replace(LEADING_TRAILING_PUNCT, ''))
+    .map((t) => trimTokenBoundary(t))
     .filter(Boolean);
 }
 

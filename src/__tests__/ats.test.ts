@@ -329,6 +329,23 @@ describe('ATS JD Matcher', () => {
     }
   });
 
+  it('should tokenize adversarial input in near-linear time (ReDoS guard)', () => {
+    // Previous regex-based tokenizer had a polynomial-ReDoS vulnerability
+    // flagged by CodeQL (js/polynomial-redos). Rewriting to a single-pass
+    // iterator eliminated it — this test guards against regressions.
+    const adversarial = '"'.repeat(50_000) + ' TypeScript ' + '.'.repeat(50_000);
+    const jd = adversarial;
+    const t0 = performance.now();
+    const result = matchJobDescription(fullResume, jd, 'en');
+    const elapsed = performance.now() - t0;
+    // Budget: 500 ms on any reasonable CI runner. Linear-time behaviour keeps
+    // this well under 100 ms in practice; polynomial regressions would blow
+    // through the budget by orders of magnitude.
+    expect(elapsed).toBeLessThan(500);
+    // Sanity: the real skill in the middle still surfaces
+    expect(result.matched.some((k) => k.toLowerCase() === 'typescript')).toBe(true);
+  });
+
   it('should prefer skills from requirement sections', () => {
     // The first paragraph is company blurb — it shouldn't drown the actual
     // requirements below.
