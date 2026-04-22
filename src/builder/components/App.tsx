@@ -5,6 +5,7 @@ import { Preview } from './Preview';
 import { Toolbar } from './Toolbar';
 import { AtsPanel } from './AtsPanel';
 import { ThemePicker } from './ThemePicker';
+import { JobDescriptionModal } from './JobDescriptionModal';
 import { useResume } from '../hooks/useResume';
 import { useTheme } from '../hooks/useTheme';
 import { useAts } from '../hooks/useAts';
@@ -14,6 +15,7 @@ import { DEFAULT_YAML } from '../defaults';
 export function App() {
   const [mode, setMode] = useState<'yaml' | 'form'>('form');
   const [showAts, setShowAts] = useState(false);
+  const [showJdModal, setShowJdModal] = useState(false);
   const [showThemePicker, setShowThemePicker] = useState(false);
   const [themeName, setThemeName] = useState('stackoverflow');
   const [splitPos, setSplitPos] = useState(50);
@@ -32,6 +34,7 @@ export function App() {
   const { html, loading: themeLoading, themeError, isSnapshot, renderResume } = useTheme(themeName);
   const [jobDescription, setJobDescription] = useState('');
   const atsResult = useAts(resume, jobDescription);
+  const hasJobDescription = jobDescription.trim().length > 0;
 
   // Persist state
   usePersist(yaml, themeName, setYaml, setThemeName);
@@ -47,6 +50,21 @@ export function App() {
     setThemeName(name);
     setShowThemePicker(false);
   }, []);
+
+  const handleJdSave = useCallback((jd: string) => {
+    const trimmed = jd.trim();
+    setJobDescription(trimmed);
+    if (trimmed) setShowAts(true);
+    else setShowAts(false);
+  }, []);
+
+  const handleAtsToggle = useCallback(() => {
+    if (!hasJobDescription) {
+      setShowJdModal(true);
+      return;
+    }
+    setShowAts((v) => !v);
+  }, [hasJobDescription]);
 
   // Split pane drag — shared logic for mouse and touch
   const startDrag = useCallback((mobile: boolean) => {
@@ -107,9 +125,9 @@ export function App() {
           setShowThemePicker(!showThemePicker);
         }}
         showAts={showAts}
-        onAtsToggle={() => {
-          setShowAts(!showAts);
-        }}
+        onAtsToggle={handleAtsToggle}
+        hasJobDescription={hasJobDescription}
+        onJdOpen={() => { setShowJdModal(true); }}
         yaml={yaml}
         resume={resume}
         html={html}
@@ -123,6 +141,14 @@ export function App() {
           onClose={() => {
             setShowThemePicker(false);
           }}
+        />
+      )}
+
+      {showJdModal && (
+        <JobDescriptionModal
+          value={jobDescription}
+          onSave={handleJdSave}
+          onClose={() => { setShowJdModal(false); }}
         />
       )}
 
@@ -140,6 +166,8 @@ export function App() {
           onMouseDown={handleDragStart}
           onTouchStart={handleTouchStart}
           title="Drag to resize"
+          role="separator"
+          aria-orientation={isMobile ? 'horizontal' : 'vertical'}
         />
 
         <div className="builder-preview" style={isMobile ? { height: `${100 - splitPos}%` } : { width: `${100 - splitPos}%` }}>
@@ -150,8 +178,8 @@ export function App() {
           <div className="builder-ats">
             <AtsPanel
               result={atsResult}
-              jobDescription={jobDescription}
-              onJobDescriptionChange={setJobDescription}
+              hasJobDescription={hasJobDescription}
+              onOpenJdModal={() => { setShowJdModal(true); }}
               onClose={() => {
                 setShowAts(false);
               }}

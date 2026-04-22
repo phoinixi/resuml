@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useId } from 'react';
 import { X } from 'lucide-react';
 import { fetchThemes, getThemeCapability } from '../services/api';
 import type { NpmTheme } from '../services/api';
@@ -14,6 +14,7 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
   const [themes, setThemes] = useState<NpmTheme[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const titleId = useId();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -34,6 +35,14 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
     return () => { controller.abort(); };
   }, []);
 
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', onKey);
+    return () => { document.removeEventListener('keydown', onKey); };
+  }, [onClose]);
+
   const filtered = useMemo(() => {
     if (!search) return themes;
     const q = search.toLowerCase();
@@ -45,13 +54,23 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
   }, [themes, search]);
 
   return (
-    <div className="theme-picker-overlay" onClick={(e) => {
-      if ((e.target as HTMLElement).classList.contains('theme-picker-overlay')) onClose();
-    }}>
+    <div
+      className="theme-picker-overlay"
+      onClick={(e) => {
+        if ((e.target as HTMLElement).classList.contains('theme-picker-overlay')) onClose();
+      }}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={titleId}
+    >
       <div className="theme-picker">
         <div className="theme-picker-header">
-          <h3>Choose Theme</h3>
-          <button className="theme-picker-close" onClick={onClose}><X size={18} /></button>
+          <h3 id={titleId}>Choose Theme</h3>
+          <button
+            className="theme-picker-close"
+            onClick={onClose}
+            aria-label="Close theme picker"
+          ><X size={18} aria-hidden="true" /></button>
         </div>
         <div className="theme-picker-search">
           <input
@@ -60,6 +79,7 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
             placeholder="Search themes..."
             value={search}
             onInput={(e) => { setSearch((e.target as HTMLInputElement).value); }}
+            aria-label="Search themes"
             autoFocus
           />
         </div>
@@ -79,11 +99,12 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
                 className={`theme-picker-card ${theme.name === currentTheme ? 'active' : ''} ${isDisabled ? 'theme-picker-card-disabled' : ''}`}
                 onClick={() => { if (!isDisabled) onSelect(theme.name); }}
                 disabled={isDisabled}
+                aria-pressed={theme.name === currentTheme}
               >
                 <div className="theme-picker-name">
                   {theme.displayName}
-                  {capability === 'browser' && <span className="theme-badge-instant" title="Instant — renders in browser">⚡</span>}
-                  {capability === 'snapshot-only' && <span className="theme-badge-preview" title="Preview only — shows sample data">👁</span>}
+                  {capability === 'browser' && <span className="theme-badge-instant" title="Instant — renders in browser" aria-label="Renders instantly in browser">⚡</span>}
+                  {capability === 'snapshot-only' && <span className="theme-badge-preview" title="Preview only — shows sample data" aria-label="Preview only, shows sample data">👁</span>}
                 </div>
                 {theme.description && (
                   <div className="theme-picker-desc">{theme.description}</div>
