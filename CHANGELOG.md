@@ -1,3 +1,10 @@
+## [1.13.2](https://github.com/phoinixi/resuml/compare/v1.13.1...v1.13.2) (2026-04-22)
+
+
+### Bug Fixes
+
+* **build:** emit ESM and fix bin loader for Node 24 ([0b112cc](https://github.com/phoinixi/resuml/commit/0b112cc5381393b099aa6ada6ff86667d6b9b8a4)), closes [#15](https://github.com/phoinixi/resuml/issues/15)
+
 ## [1.13.1](https://github.com/phoinixi/resuml/compare/v1.13.0...v1.13.1) (2026-04-13)
 
 
