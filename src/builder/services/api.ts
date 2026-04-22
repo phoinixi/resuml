@@ -101,6 +101,22 @@ export async function fetchThemes(signal?: AbortSignal): Promise<NpmTheme[]> {
     manifest.filter((t) => !t.browserCompatible && t.hasSnapshot).map((t) => t.name),
   );
 
+  // Merge real npm weekly downloads from the manifest (scripts/enrich-themes-
+  // manifest.mjs) over the server-side /api/themes response, which today
+  // returns a placeholder (10000 for every theme).
+  const downloadsByName = new Map<string, number>();
+  for (const t of manifest) {
+    if (typeof t.npmWeeklyDownloads === 'number') {
+      downloadsByName.set(t.name, t.npmWeeklyDownloads);
+    }
+  }
+  const merged: NpmTheme[] = npmThemes.map((t) => {
+    const manifestDownloads = downloadsByName.get(t.name);
+    return manifestDownloads !== undefined
+      ? { ...t, weeklyDownloads: manifestDownloads }
+      : t;
+  });
+
   const tier = (name: string): number => {
     if (rendersOk.has(name)) return 0;
     if (bundledNames?.has(name)) return 1;
@@ -108,7 +124,7 @@ export async function fetchThemes(signal?: AbortSignal): Promise<NpmTheme[]> {
     return 3;
   };
 
-  const sorted = npmThemes.sort((a, b) => {
+  const sorted = merged.sort((a, b) => {
     const ta = tier(a.name);
     const tb = tier(b.name);
     if (ta !== tb) return ta - tb;
