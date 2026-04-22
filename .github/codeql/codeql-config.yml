@@ -1,0 +1,25 @@
+name: "CodeQL config"
+
+# Exclude generated artefacts and vendored snapshots. These files are either
+# machine-generated or downloaded from npm — scanning them wastes minutes per
+# run and surfaces irrelevant alerts inside third-party code.
+paths-ignore:
+  # Theme snapshots rendered by scripts/bundle-themes.js (~300 HTML/CSS files
+  # pulled from npm jsonresume-theme-* packages)
+  - docs/themes/**
+  # Built builder bundle (esbuild output of src/builder/**)
+  - docs/app/**
+  # Build output
+  - dist/**
+  # Generated taxonomy data (emitted by scripts/build-skills-db.js; the source
+  # is O*NET + data/skills/emerging.json which are scanned)
+  - data/skills/skills.json
+  # Third-party deps (default, but explicit)
+  - node_modules/**
+  # Test fixtures / example resumes
+  - examples/**
+  - '**/*.snapshot.html'
+
+# Keep the default query suite
+queries:
+  - uses: security-and-quality

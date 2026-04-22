@@ -1,46 +1,18 @@
 
-import { useRef, useEffect } from 'react';
 import { AlertTriangle } from 'lucide-react';
 
 interface PreviewProps {
   html: string | null;
   loading: boolean;
   error: string | null;
-  isSnapshot?: boolean;
 }
 
-export function Preview({ html, loading, error, isSnapshot }: PreviewProps) {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const previousHtmlRef = useRef<string | null>(null);
-
-  // Show loading spinner only when there's no content to display yet
-  const showSpinner = loading && !html;
-  const showSnapshotBadge = loading && isSnapshot && !!html;
+export function Preview({ html, loading, error }: PreviewProps) {
+  const showSpinner = loading;
   const showIframe = !!html && !showSpinner;
-
-  useEffect(() => {
-    const iframe = iframeRef.current;
-    if (!iframe) return;
-
-    if (!html) {
-      previousHtmlRef.current = null;
-      const doc = iframe.contentDocument;
-      if (doc) {
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
-        doc.open(); doc.write(''); doc.close();
-      }
-      return;
-    }
-
-    if (html === previousHtmlRef.current) return;
-    previousHtmlRef.current = html;
-
-    const doc = iframe.contentDocument;
-    if (doc) {
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      doc.open(); doc.write(html); doc.close();
-    }
-  }, [html]);
+  // Suppress error while loading so the user sees a spinner during the
+  // render attempt instead of the previous/incoming error flashing.
+  const showError = !!error && !loading;
 
   return (
     <div className="preview-container">
@@ -51,14 +23,7 @@ export function Preview({ html, loading, error, isSnapshot }: PreviewProps) {
         </div>
       )}
 
-      {showSnapshotBadge && (
-        <div className="preview-snapshot-badge">
-          <div className="spinner-small" />
-          <span>Loading theme...</span>
-        </div>
-      )}
-
-      {error && (
+      {showError && (
         <div className="preview-error">
           <AlertTriangle size={16} className="preview-error-icon" />
           <span>{error}</span>
@@ -71,8 +36,16 @@ export function Preview({ html, loading, error, isSnapshot }: PreviewProps) {
         </div>
       )}
 
+      {/*
+       * Use `srcDoc` rather than doc.open()/doc.write(): the latter reuses
+       * the iframe's window across renders, so themes that register custom
+       * elements (stackoverflow's <time-duration>, others) throw on the
+       * second write with "already used with this registry". Updating
+       * srcDoc navigates the iframe to a fresh document, giving each
+       * render a clean CustomElementRegistry.
+       */}
       <iframe
-        ref={iframeRef}
+        srcDoc={html ?? ''}
         className="preview-iframe"
         sandbox="allow-same-origin allow-scripts"
         title="Resume preview"

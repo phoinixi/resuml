@@ -213,6 +213,11 @@ function generateThemeFsShim(themeFiles) {
     '',
     'function matchDir(p) {',
     '  var clean = normalizePath(p);',
+    '  // Root ("/"/".") after stripping leading slash is "" — look up "." which',
+    '  // the collector uses for the top-level directory listing.',
+    '  if (clean === "" || clean === ".") {',
+    '    if (__dirs["."] !== undefined) return __dirs["."];',
+    '  }',
     '  if (__dirs[clean] !== undefined) return __dirs[clean];',
     '  var keys = Object.keys(__dirs);',
     '  for (var i = 0; i < keys.length; i++) {',
@@ -348,6 +353,89 @@ async function discoverThemes() {
 
 // ── esbuild bundling ─────────────────────────────────────────────────
 
+/**
+ * esbuild plugin that fixes legacy CJS patterns that break under ESM's
+ * implicit strict mode. Specifically: top-level implicit-global assignments
+ * like `COURSES_COLUMNS = 3;` (onepage, several older themes) which throw
+ * `ReferenceError` in strict mode. Rewrite them to `var` declarations.
+ *
+ * Scope: applied to any .js file inside jsonresume-theme-* packages. Keep the
+ * regex conservative — only match top-level (start-of-line) SCREAMING_SNAKE
+ * identifier assignments. This misses camelCase globals but avoids rewriting
+ * legitimate property assignments inside functions.
+ */
+/**
+ * Known-bad CJS patterns in specific dependencies. Applied via esbuild onLoad.
+ * Keep patches minimal and scoped — a regex that's too broad breaks working
+ * themes that happen to match.
+ */
+const LEGACY_PATCHES = [
+  // swag 0.7.x branches on `typeof window` and, in a browser, assigns to
+  // `window.Swag` instead of `module.exports`. After ESM bundling, the theme
+  // then gets `undefined` from `require('swag')`. Force the module-exports
+  // branch by hiding `window` only for this file.
+  {
+    filter: /node_modules\/swag\/lib\/swag\.js$/,
+    transform: (src) => src.replace(
+      /typeof\s+window\s*!==\s*["']undefined["']\s*&&\s*window\s*!==\s*null/g,
+      'false',
+    ),
+  },
+  // onepage uses implicit globals inside its render function: `splitCourses`,
+  // `columnIndex`. Declare them up-front so strict mode doesn't reject them.
+  {
+    filter: /node_modules\/jsonresume-theme-onepage\/[^/]*\.js$/,
+    transform: (src) => {
+      // Only insert declarations once at top of render() body
+      return src.replace(
+        /(function\s+render\s*\([^)]*\)\s*\{)/,
+        '$1\n  var splitCourses, columnIndex;\n',
+      );
+    },
+  },
+];
+
+/**
+ * esbuild plugin that fixes legacy CJS patterns that break under ESM's
+ * implicit strict mode. Two layers:
+ *   1. Targeted LEGACY_PATCHES for known bad packages (swag, specific themes).
+ *   2. Generic: rewrite top-level `SCREAMING_SNAKE = ...` assignments to
+ *      `var SCREAMING_SNAKE = ...` so implicit globals work under strict.
+ */
+function legacyThemeGlobalsPlugin() {
+  return {
+    name: 'legacy-theme-globals',
+    setup(build) {
+      build.onLoad({ filter: /\.js$/ }, async (args) => {
+        const { readFile } = await import('node:fs/promises');
+        const isThemePkg = /node_modules\/jsonresume-theme-[^/]+\/[^/]*\.js$/.test(args.path);
+        const matchingPatches = LEGACY_PATCHES.filter((p) => p.filter.test(args.path));
+        if (!isThemePkg && matchingPatches.length === 0) return null;
+
+        const original = await readFile(args.path, 'utf8');
+        let contents = original;
+
+        // 1. Generic rewrite for theme packages: `FOO_BAR = ...` → `var FOO_BAR = ...`
+        if (isThemePkg) {
+          contents = contents.replace(
+            /^([ \t]*)([A-Z][A-Z0-9_]{2,})\s*=\s*/gm,
+            (match, indent, name, offset, full) => {
+              const preceding = full.slice(Math.max(0, offset - 5), offset);
+              if (/\b(var|let|const)\s*$/.test(preceding)) return match;
+              return `${indent}var ${name} = `;
+            }
+          );
+        }
+
+        // 2. Targeted source patches (layered on top of the generic rewrite)
+        for (const patch of matchingPatches) contents = patch.transform(contents);
+
+        return contents !== original ? { contents, loader: 'js' } : null;
+      });
+    },
+  };
+}
+
 async function bundleTheme(shortName, packageName, shimsDir) {
   const themeDir = resolve(__dirname, `../node_modules/${packageName}`);
 
@@ -376,6 +464,27 @@ async function bundleTheme(shortName, packageName, shimsDir) {
       conditions: ['browser', 'require', 'default'],
       mainFields: ['browser', 'main'],
       outfile: resolve(THEMES_DIR, `${shortName}.js`),
+      // Runtime prelude prepended to every bundled theme:
+      // - `require.extensions` is a Node CJS API that handlebars-wax uses
+      //   unconditionally (to intercept .handlebars/.hbs during require).
+      //   In browser ESM, `require` is undefined, so we stub it.
+      // - We deliberately do NOT alias `window = globalThis`. Legacy CJS
+      //   packages like `swag` branch on `typeof window` — if window is
+      //   defined they assign `window.Swag = Swag = {}` and skip setting
+      //   `module.exports`, leaving the theme with `Swag.registerHelpers`
+      //   undefined. We want the module-exports branch in workers.
+      banner: {
+        js: [
+          // `require.extensions` is read by handlebars-wax at module load; no
+          // ESM equivalent, so we provide a stub.
+          'var require = globalThis.require || (function(){ var r = function(){ throw new Error("require not available in browser"); }; r.extensions = {}; r.cache = {}; return r; })();',
+          'if (!require.extensions) require.extensions = {};',
+          // Runtime process shim: `process.env.X` literal access is handled
+          // by esbuild's `define`, but dynamic access like `process.cwd()` or
+          // `process.stdout.write` needs an actual object at runtime.
+          'if (typeof globalThis.process === "undefined") globalThis.process = { env: { NODE_ENV: "production" }, browser: true, platform: "browser", version: "v20.0.0", versions: {}, stdout: { write: function(){} }, stderr: { write: function(){} }, cwd: function(){ return "/"; }, chdir: function(){}, nextTick: function(fn){ Promise.resolve().then(fn); }, argv: [], pid: 1, title: "browser" };',
+        ].join(''),
+      },
       define: {
         'process.env.NODE_ENV': '"production"',
         'process.env.LANG': '""',
@@ -416,6 +525,7 @@ async function bundleTheme(shortName, packageName, shimsDir) {
         'require-glob': resolve(shimsDir, 'require-glob.js'),
         'fast-glob': resolve(shimsDir, 'globby.js'),
       },
+      plugins: [legacyThemeGlobalsPlugin()],
       logLevel: 'silent',
     });
 
@@ -638,26 +748,47 @@ function writeShims(shimsDir) {
     'import { readdirSync, readFileSync, existsSync } from "fs";',
     '',
     '// Minimal glob pattern matching against embedded file list',
+    'function collapseSlashes(p) { return String(p).replace(/\\/+/g, "/"); }',
     'function minimatch(filepath, pattern) {',
-    '  var re = pattern',
-    '    .replace(/[.+^${}()|[\\]\\\\]/g, "\\\\$&")',
-    '    .replace(/\\*\\*/g, "___GLOBSTAR___")',
-    '    .replace(/\\*/g, "[^/]*")',
-    '    .replace(/___GLOBSTAR___/g, ".*")',
-    '    .replace(/\\?/g, "[^/]");',
-    '  // Handle {a,b} alternatives',
-    '  re = re.replace(/\\{([^}]+)\\}/g, function(_, alts) {',
-    '    return "(" + alts.split(",").join("|") + ")";',
+    '  filepath = collapseSlashes(filepath);',
+    '  pattern = collapseSlashes(pattern);',
+    '  // Step 1: expand `{a,b,c}` alternatives into placeholders BEFORE',
+    '  // escaping — otherwise the escape step turns `{hbs,js}` into',
+    '  // `\\{hbs,js\\}` and the alternation regex no longer sees braces.',
+    '  var alts = [];',
+    '  pattern = pattern.replace(/\\{([^}]+)\\}/g, function(_, list) {',
+    '    alts.push("(" + list.split(",").join("|") + ")");',
+    '    return "___ALT" + (alts.length - 1) + "___";',
     '  });',
-    '  return new RegExp("^" + re + "$").test(filepath);',
+    '  // Step 2: handle globstars. `**/` matches zero or more full path',
+    '  // segments (so `a/**/b` matches `a/b`, `a/x/b`, `a/x/y/b`). Lone `**`',
+    '  // (no trailing slash) matches any chars including `/`.',
+    '  pattern = pattern.replace(/\\*\\*\\//g, "___GLOBSTAR_SEG___");',
+    '  pattern = pattern.replace(/\\*\\*/g, "___GLOBSTAR___");',
+    '  // Step 3: escape remaining regex metachars (but not *, ?, /)',
+    '  var re = pattern',
+    '    .replace(/[.+^$()|[\\]\\\\]/g, "\\\\$&")',
+    '    .replace(/\\*/g, "[^/]*")',
+    '    .replace(/\\?/g, "[^/]");',
+    '  re = re.replace(/___GLOBSTAR_SEG___/g, "(?:.*/)?");',
+    '  re = re.replace(/___GLOBSTAR___/g, ".*");',
+    '  // Step 4: restore alternations',
+    '  re = re.replace(/___ALT(\\d+)___/g, function(_, i) { return alts[Number(i)]; });',
+    '  try { return new RegExp("^" + re + "$").test(filepath); }',
+    '  catch (e) { return false; }',
     '}',
     '',
+    'function joinPath(dir, name) {',
+    '  if (!dir || dir === "/") return "/" + name;',
+    '  if (dir.charAt(dir.length - 1) === "/") return dir + name;',
+    '  return dir + "/" + name;',
+    '}',
     'function getAllPaths(dir) {',
     '  var results = [];',
     '  try {',
     '    var entries = readdirSync(dir);',
     '    for (var i = 0; i < entries.length; i++) {',
-    '      var full = dir ? dir + "/" + entries[i] : entries[i];',
+    '      var full = joinPath(dir, entries[i]);',
     '      results.push(full);',
     '      var sub = getAllPaths(full);',
     '      for (var j = 0; j < sub.length; j++) results.push(sub[j]);',
@@ -710,6 +841,11 @@ function writeShims(shimsDir) {
     'export default globby;',
   ].join('\n'));
 
+  // require-glob: export as a function with a `.sync` PROPERTY. Consumers do
+  // `var requireGlob = require('require-glob'); requireGlob.sync(pattern)` —
+  // the property must survive esbuild's CJS/ESM interop. Default-only export
+  // would strip `.sync`, so we use a proxy-like object pattern: default is
+  // the function, and the function has `.sync` set before export.
   writeFileSync(resolve(shimsDir, 'require-glob.js'), [
     'import { sync as globSync } from "glob";',
     'import { readFileSync } from "fs";',
@@ -728,8 +864,11 @@ function writeShims(shimsDir) {
     '  return result;',
     '}',
     'requireGlob.sync = requireGlob;',
-    'export default requireGlob;',
+    '// Named export preserves `.sync` through esbuild\'s CJS interop —',
+    '// consumers that `require(\'require-glob\')` receive the function itself.',
+    'export { requireGlob as default };',
     'export { requireGlob };',
+    'export var sync = requireGlob;',
   ].join('\n'));
 }
 

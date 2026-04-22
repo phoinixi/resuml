@@ -10,6 +10,14 @@ export interface BrowserTheme {
   readonly hasCss: boolean;
   readonly fileSize: number;
   readonly cssSize: number;
+  /**
+   * True when the bundled theme renders a sample resume successfully in a
+   * blob-worker probe (see scripts/enrich-themes-manifest.mjs). Themes that
+   * are bundled but fail at render (e.g. missing Handlebars helpers) are
+   * marked false and filtered to the bottom of the picker.
+   */
+  readonly renderOk?: boolean;
+  readonly npmWeeklyDownloads?: number;
 }
 
 export interface NpmTheme {
@@ -24,7 +32,7 @@ export interface ThemeModule {
   render: (resume: Record<string, unknown>) => string | Promise<string>;
 }
 
-export type ThemeCapability = 'browser' | 'snapshot-only' | 'unavailable';
+export type ThemeCapability = 'browser' | 'broken' | 'snapshot-only' | 'unavailable';
 
 function getApiBase(): string {
   if (typeof window === 'undefined') return '';
@@ -80,18 +88,46 @@ export async function fetchThemes(signal?: AbortSignal): Promise<NpmTheme[]> {
     loadNpmThemes(signal),
   ]);
 
+  // Tier ranking (lower = better, sorted first):
+  //   0: bundled + passes render probe (show first, users will have a good time)
+  //   1: bundled but render probe failed (still shows something via error UI)
+  //   2: snapshot-only (thumbnail available, can't render live)
+  //   3: unavailable
+  const rendersOk = new Set(
+    manifest.filter((t) => t.browserCompatible && t.renderOk !== false).map((t) => t.name),
+  );
   bundledNames = new Set(manifest.filter((t) => t.browserCompatible).map((t) => t.name));
   snapshotOnlyNames = new Set(
     manifest.filter((t) => !t.browserCompatible && t.hasSnapshot).map((t) => t.name),
   );
 
-  const names = bundledNames;
-  const snaps = snapshotOnlyNames;
+  // Merge real npm weekly downloads from the manifest (scripts/enrich-themes-
+  // manifest.mjs) over the server-side /api/themes response, which today
+  // returns a placeholder (10000 for every theme).
+  const downloadsByName = new Map<string, number>();
+  for (const t of manifest) {
+    if (typeof t.npmWeeklyDownloads === 'number') {
+      downloadsByName.set(t.name, t.npmWeeklyDownloads);
+    }
+  }
+  const merged: NpmTheme[] = npmThemes.map((t) => {
+    const manifestDownloads = downloadsByName.get(t.name);
+    return manifestDownloads !== undefined
+      ? { ...t, weeklyDownloads: manifestDownloads }
+      : t;
+  });
 
-  const sorted = npmThemes.sort((a, b) => {
-    const aRank = names.has(a.name) ? 0 : snaps.has(a.name) ? 1 : 2;
-    const bRank = names.has(b.name) ? 0 : snaps.has(b.name) ? 1 : 2;
-    if (aRank !== bRank) return aRank - bRank;
+  const tier = (name: string): number => {
+    if (rendersOk.has(name)) return 0;
+    if (bundledNames?.has(name)) return 1;
+    if (snapshotOnlyNames?.has(name)) return 2;
+    return 3;
+  };
+
+  const sorted = merged.sort((a, b) => {
+    const ta = tier(a.name);
+    const tb = tier(b.name);
+    if (ta !== tb) return ta - tb;
     return b.weeklyDownloads - a.weeklyDownloads;
   });
 
@@ -104,7 +140,10 @@ export function isBundledTheme(name: string): boolean {
 }
 
 export function getThemeCapability(name: string): ThemeCapability {
-  if (bundledNames?.has(name)) return 'browser';
+  const entry = manifestCache?.find((t) => t.name === name);
+  if (entry?.browserCompatible) {
+    return entry.renderOk === false ? 'broken' : 'browser';
+  }
   if (snapshotOnlyNames?.has(name)) return 'snapshot-only';
   return 'unavailable';
 }
@@ -153,8 +192,18 @@ export function isThemeLoaded(themeName: string): boolean {
 export async function tryLoadWorkerTheme(themeName: string): Promise<boolean> {
   if (loadedWorkerThemes.has(themeName)) return true;
 
+  // Ensure the manifest cache is populated before reading from it. Without
+  // this, the very first render (before the user opens the ThemePicker)
+  // couldn't see `browserCompatible` / `renderOk` flags and short-circuited
+  // to the "can't render" state even for working themes like stackoverflow.
+  await loadManifest();
+
   const entry = getManifestEntry(themeName);
   if (!entry?.browserCompatible) return false;
+  // Pre-flight flag from enrich-themes-manifest.mjs — themes we've already
+  // observed throwing at render time. Skip the worker round-trip and surface
+  // the error state directly.
+  if (entry.renderOk === false) return false;
 
   try {
     const url = `${getThemesBase()}${themeName}.js`;
