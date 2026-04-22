@@ -1,5 +1,4 @@
 
-import { useRef, useEffect } from 'react';
 import { AlertTriangle } from 'lucide-react';
 
 interface PreviewProps {
@@ -9,38 +8,11 @@ interface PreviewProps {
 }
 
 export function Preview({ html, loading, error }: PreviewProps) {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const previousHtmlRef = useRef<string | null>(null);
-
   const showSpinner = loading;
   const showIframe = !!html && !showSpinner;
   // Suppress error while loading so the user sees a spinner during the
   // render attempt instead of the previous/incoming error flashing.
   const showError = !!error && !loading;
-
-  useEffect(() => {
-    const iframe = iframeRef.current;
-    if (!iframe) return;
-
-    if (!html) {
-      previousHtmlRef.current = null;
-      const doc = iframe.contentDocument;
-      if (doc) {
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
-        doc.open(); doc.write(''); doc.close();
-      }
-      return;
-    }
-
-    if (html === previousHtmlRef.current) return;
-    previousHtmlRef.current = html;
-
-    const doc = iframe.contentDocument;
-    if (doc) {
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      doc.open(); doc.write(html); doc.close();
-    }
-  }, [html]);
 
   return (
     <div className="preview-container">
@@ -64,8 +36,16 @@ export function Preview({ html, loading, error }: PreviewProps) {
         </div>
       )}
 
+      {/*
+       * Use `srcDoc` rather than doc.open()/doc.write(): the latter reuses
+       * the iframe's window across renders, so themes that register custom
+       * elements (stackoverflow's <time-duration>, others) throw on the
+       * second write with "already used with this registry". Updating
+       * srcDoc navigates the iframe to a fresh document, giving each
+       * render a clean CustomElementRegistry.
+       */}
       <iframe
-        ref={iframeRef}
+        srcDoc={html ?? ''}
         className="preview-iframe"
         sandbox="allow-same-origin allow-scripts"
         title="Resume preview"

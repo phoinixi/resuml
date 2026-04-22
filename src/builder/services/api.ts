@@ -192,6 +192,12 @@ export function isThemeLoaded(themeName: string): boolean {
 export async function tryLoadWorkerTheme(themeName: string): Promise<boolean> {
   if (loadedWorkerThemes.has(themeName)) return true;
 
+  // Ensure the manifest cache is populated before reading from it. Without
+  // this, the very first render (before the user opens the ThemePicker)
+  // couldn't see `browserCompatible` / `renderOk` flags and short-circuited
+  // to the "can't render" state even for working themes like stackoverflow.
+  await loadManifest();
+
   const entry = getManifestEntry(themeName);
   if (!entry?.browserCompatible) return false;
   // Pre-flight flag from enrich-themes-manifest.mjs — themes we've already
