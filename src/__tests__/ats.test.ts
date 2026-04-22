@@ -230,11 +230,129 @@ describe('ATS JD Matcher', () => {
     expect(result.matchPercentage).toBe(0);
   });
 
-  it('should work with stemmed matching', () => {
-    const jd = 'Looking for someone who optimizes performance and implements solutions.';
+  it('should match aliases of the same skill', () => {
+    // TypeScript has alias "TS"; React has aliases "React.js", "ReactJS". Both
+    // forms should resolve to the same canonical skill when scoring.
+    const jd = `
+      Required: TS, React.js, PostgreSQL.
+    `;
     const result = matchJobDescription(fullResume, jd, 'en');
-    // "optimization" in resume should stem-match "optimizes" in JD
-    expect(result.matchPercentage).toBeGreaterThan(0);
+    const matchedLower = result.matched.map((m) => m.toLowerCase());
+    // The resume uses "TypeScript" and "React" — aliases "TS" / "React.js" in
+    // the JD should still resolve to matches.
+    expect(matchedLower).toContain('typescript');
+    expect(matchedLower).toContain('react');
+  });
+
+  it('should not surface contraction fragments as missing keywords', () => {
+    // Free-form JD prose with contractions. Without the fix, "doesn't" split
+    // on the apostrophe and leaked "doesn" as a required keyword.
+    const jd = `
+      We ship fast and the team doesn't wait. We aren't fans of bureaucracy —
+      if something isn't working, we won't hesitate to change it.
+      Must have: TypeScript, React, Node.js.
+    `;
+    const result = matchJobDescription(fullResume, jd, 'en');
+    const allKeywords = [...result.missing, ...result.matched].map((k) => k.toLowerCase());
+    expect(allKeywords).not.toContain('doesn');
+    expect(allKeywords).not.toContain('aren');
+    expect(allKeywords).not.toContain('isn');
+    expect(allKeywords).not.toContain('won');
+  });
+
+  it('should not surface common adverbs, pronouns, or prose verbs as missing keywords', () => {
+    // Real-world JD excerpt that previously produced noisy keywords like
+    // "actually", "something", "move", "feel", "reach", "because", "push",
+    // "ship", "asks", "often", "everything", "anyone", "unfamiliar",
+    // "faster", "waiting", "lane", "actually".
+    const jd = `
+      We move faster because we actually ship. If something feels off,
+      anyone can push back — no one is waiting in a lane. Often, a
+      teammate asks for help and we reach out. You'll be comfortable
+      with everything being unfamiliar on day one.
+      Required: TypeScript, React, Node.js, AWS.
+    `;
+    const result = matchJobDescription(fullResume, jd, 'en');
+    const allKeywords = [...result.missing, ...result.matched].map((k) => k.toLowerCase());
+    const offenders = [
+      'actually', 'something', 'move', 'feel', 'feels', 'reach',
+      'because', 'push', 'ship', 'asks', 'often', 'everything',
+      'anyone', 'unfamiliar', 'faster', 'waiting', 'lane',
+    ];
+    for (const word of offenders) {
+      expect(allKeywords, `"${word}" should not appear as a keyword`).not.toContain(word);
+    }
+  });
+
+  it('should match multi-token skills as a single canonical term', () => {
+    const jd = `
+      You'll work with CI/CD pipelines, REST APIs, and Tailwind CSS on
+      Google Cloud Platform.
+    `;
+    const result = matchJobDescription(fullResume, jd, 'en');
+    const allKeywords = [...result.missing, ...result.matched];
+    // Multi-word skills should surface as their canonical form, not split
+    expect(allKeywords).toContain('CI/CD');
+    expect(allKeywords).toContain('REST API');
+    expect(allKeywords).toContain('Tailwind CSS');
+    expect(allKeywords).toContain('Google Cloud');
+    // Longest-match: "Google Cloud Platform" shouldn't also emit bare "Google"
+    expect(allKeywords).not.toContain('Google');
+  });
+
+  it('should not match acronyms as common English words', () => {
+    // Previously "ARE" (alias of "Acronis Recovery Expert") leaked by matching
+    // the verb "are" in prose. Acronym-shaped aliases must only match all-caps.
+    const jd = `
+      We are looking for engineers who are curious. You'll join a team that is
+      shipping weekly and we are remote-first.
+      Requirements: TypeScript, React.
+    `;
+    const result = matchJobDescription(fullResume, jd, 'en');
+    const allKeywords = [...result.missing, ...result.matched];
+    expect(allKeywords.some((k) => k.toLowerCase().includes('acronis'))).toBe(false);
+    expect(allKeywords.some((k) => k.toLowerCase() === 'are')).toBe(false);
+    expect(allKeywords.some((k) => k.toLowerCase() === 'is')).toBe(false);
+  });
+
+  it('should not match generic single-word skill names against prose', () => {
+    // O*NET contains products literally named "Switch", "Access", "Contact".
+    // These must not match verbs/nouns of the same spelling in prose.
+    const jd = `
+      You'll switch teams and rotate through different access patterns.
+      We plan quarterly and push code daily. Required: React, PostgreSQL.
+    `;
+    const result = matchJobDescription(fullResume, jd, 'en');
+    const allKeywords = [...result.missing, ...result.matched].map((k) => k.toLowerCase());
+    for (const noise of ['switch', 'access', 'contact', 'plan', 'push', 'access software', 'switch software']) {
+      expect(allKeywords, `"${noise}" leaked`).not.toContain(noise);
+    }
+  });
+
+  it('should prefer skills from requirement sections', () => {
+    // The first paragraph is company blurb — it shouldn't drown the actual
+    // requirements below.
+    const jd = `
+      About Acme: we build distributed systems at scale. Our company uses
+      Python and PostgreSQL today, and we love open source.
+
+      Requirements:
+      - 5+ years of TypeScript and React experience
+      - Experience with GraphQL and Next.js
+
+      Preferred:
+      - Tailwind CSS
+      - Playwright for e2e testing
+    `;
+    const result = matchJobDescription(fullResume, jd, 'en');
+    const missing = result.missing;
+    const matched = result.matched;
+    const required = [...missing, ...matched];
+    // Requirement-section skills should appear
+    expect(required).toContain('TypeScript');
+    expect(required).toContain('React');
+    expect(required).toContain('GraphQL');
+    expect(required).toContain('Next.js');
   });
 });
 
