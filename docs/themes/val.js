@@ -1,3 +1,4 @@
+var require = globalThis.require || (function(){ var r = function(){ throw new Error("require not available in browser"); }; r.extensions = {}; r.cache = {}; return r; })();if (!require.extensions) require.extensions = {};if (typeof globalThis.process === "undefined") globalThis.process = { env: { NODE_ENV: "production" }, browser: true, platform: "browser", version: "v20.0.0", versions: {}, stdout: { write: function(){} }, stderr: { write: function(){} }, cwd: function(){ return "/"; }, chdir: function(){}, nextTick: function(fn){ Promise.resolve().then(fn); }, argv: [], pid: 1, title: "browser" };
 var s=Object.defineProperty;var a=(e,n)=>{for(var t in n)s(e,t,{get:n[t],enumerable:!0})};var r={};a(r,{default:()=>i,render:()=>h});function d(e){return`
   <!DOCTYPE html>
   <html>

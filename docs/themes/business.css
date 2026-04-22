@@ -1,0 +1,124 @@
+body {
+	background: #fff;
+	font: 15px Arial, Helvetica, sans-serif;
+	line-height: 1.4;
+	margin: 50px 0;
+	margin-bottom: 100px;
+}
+
+.divider {
+	margin-left: 20px;
+	height: 20px;
+	width: 3px;
+	display: inline-block;
+	background-color: #253F8E;
+	margin-right: 5px;
+}
+
+.row {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.row > .title, .description {
+	width: 49%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.row > .title {
+	font-weight: bold;
+}
+
+.no-bold {
+	font-weight: normal;
+}
+
+.blue {
+	color: #253F8E;
+}
+
+a {
+	text-decoration: none;
+	color: #253F8E;
+	font-weight: lighter;
+}
+
+/* Use dash (-) as list-style-type */
+ul.dash{
+	margin: 0;
+    list-style-type: none;
+		padding-left: 8px;
+}
+
+ul.dash > li:before {
+    content: "-"; /* en dash here */
+    position: absolute;
+    margin-left: -0.8em;
+}
+
+h2 {
+	font-size: 1.2em;
+	font-weight: normal;
+	border-bottom: 2px solid #253F8E;
+	padding-bottom: 0;
+	margin-top: 40px;
+}
+
+.location {
+	display: inline-block;
+	position: relative;
+	top: -5px;
+}
+
+h1 {
+	font-size: 24px;
+	margin-bottom: 4px;
+}
+
+h4 {
+	margin-bottom: 0px;
+	margin-top: 5px;
+}
+
+em {
+	color: #999;
+}
+p {
+	line-height: 1.4;
+}
+ul {
+	margin-bottom: 0;
+}
+section {
+	margin-bottom: 2em;
+}
+blockquote {
+	margin: 0;
+	margin-bottom: 1em;
+}
+.item {
+	margin-bottom: 1em;
+}
+#resume {
+	margin: 0 auto;
+	max-width: 780px;
+	padding: 0 20px;
+}
+#basics {
+	margin-bottom: -10px;
+}
+#basics h3 {
+	margin-top: 1.5em;
+}
+#basics .contact strong,
+#location strong {
+	clear: both;
+	float: left;
+	line-height: 1.3;
+	width: 120px;
+}
+#profiles,
+#skills {
+	overflow: hidden;
+}
