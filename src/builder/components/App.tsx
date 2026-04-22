@@ -10,14 +10,37 @@ import { useResume } from '../hooks/useResume';
 import { useTheme } from '../hooks/useTheme';
 import { useAts } from '../hooks/useAts';
 import { usePersist } from '../hooks/usePersist';
+import { loadFromStorage } from '../services/persist';
 import { DEFAULT_YAML } from '../defaults';
 
+/**
+ * Read persisted state synchronously before the first render so we never show
+ * the default sample ("Jane Smith") flashing in on hard reload. URL-hash
+ * sharing is still async (compressed payload needs async unzip) — for that
+ * path usePersist's useEffect swaps state after mount.
+ */
+function readInitialState(): { yaml: string; theme: string; jobDescription: string } {
+  if (typeof window === 'undefined') {
+    return { yaml: DEFAULT_YAML, theme: 'stackoverflow', jobDescription: '' };
+  }
+  const stored = loadFromStorage();
+  return {
+    yaml: stored.yaml ?? DEFAULT_YAML,
+    theme: stored.theme ?? 'stackoverflow',
+    jobDescription: stored.jobDescription ?? '',
+  };
+}
+
 export function App() {
+  // Sync-read persisted state up front so first paint shows the user's data,
+  // not the default template. Shared-URL loading still happens post-mount.
+  const [initialState] = useState(readInitialState);
+
   const [mode, setMode] = useState<'yaml' | 'form'>('form');
   const [showAts, setShowAts] = useState(false);
   const [showJdModal, setShowJdModal] = useState(false);
   const [showThemePicker, setShowThemePicker] = useState(false);
-  const [themeName, setThemeName] = useState('stackoverflow');
+  const [themeName, setThemeName] = useState(initialState.theme);
   const [splitPos, setSplitPos] = useState(50);
   const [dragging, setDragging] = useState(false);
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 768);
@@ -30,13 +53,13 @@ export function App() {
     return () => { mq.removeEventListener('change', handler); };
   }, []);
 
-  const { yaml, resume, error, setYaml, updateResume } = useResume(DEFAULT_YAML);
-  const { html, loading: themeLoading, themeError, isSnapshot, renderResume } = useTheme(themeName);
-  const [jobDescription, setJobDescription] = useState('');
+  const { yaml, resume, error, setYaml, updateResume } = useResume(initialState.yaml);
+  const { html, loading: themeLoading, themeError, renderResume } = useTheme(themeName);
+  const [jobDescription, setJobDescription] = useState(initialState.jobDescription);
   const atsResult = useAts(resume, jobDescription);
   const hasJobDescription = jobDescription.trim().length > 0;
 
-  // Persist state
+  // Persist state (also restores from URL hash async if present)
   usePersist(yaml, themeName, jobDescription, setYaml, setThemeName, setJobDescription);
 
   // Re-render when resume or theme changes
@@ -171,7 +194,7 @@ export function App() {
         />
 
         <div className="builder-preview" style={isMobile ? { height: `${100 - splitPos}%` } : { width: `${100 - splitPos}%` }}>
-          <Preview html={html} loading={themeLoading} error={themeError} isSnapshot={isSnapshot} />
+          <Preview html={html} loading={themeLoading} error={themeError} />
         </div>
 
         {showAts && (

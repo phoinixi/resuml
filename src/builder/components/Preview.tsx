@@ -6,20 +6,13 @@ interface PreviewProps {
   html: string | null;
   loading: boolean;
   error: string | null;
-  isSnapshot?: boolean;
 }
 
-export function Preview({ html, loading, error, isSnapshot }: PreviewProps) {
+export function Preview({ html, loading, error }: PreviewProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const previousHtmlRef = useRef<string | null>(null);
 
-  // Show loading spinner only when there's no content to display yet
   const showSpinner = loading && !html;
-  // Persistent warning when the preview is a pre-rendered sample rather than
-  // the user's actual resume. Many themes can't run client-side so we fall
-  // back to a snapshot — which is a SAMPLE resume, not theirs. Make this
-  // obvious so users don't think they've just lost their data.
-  const showSnapshotWarning = isSnapshot && !!html;
   const showIframe = !!html && !showSpinner;
 
   useEffect(() => {
@@ -52,17 +45,6 @@ export function Preview({ html, loading, error, isSnapshot }: PreviewProps) {
         <div className="preview-loading">
           <div className="spinner" />
           <span>Rendering preview...</span>
-        </div>
-      )}
-
-      {showSnapshotWarning && (
-        <div className="preview-snapshot-banner" role="status">
-          <AlertTriangle size={14} aria-hidden="true" />
-          <span>
-            <strong>Preview shows sample data.</strong> This theme can't render
-            in-browser — your actual resume will appear on PDF export. Pick a
-            browser-compatible theme for a live preview.
-          </span>
         </div>
       )}
 
