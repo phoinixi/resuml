@@ -1,3 +1,10 @@
+## [1.17.1](https://github.com/phoinixi/resuml/compare/v1.17.0...v1.17.1) (2026-04-23)
+
+
+### Bug Fixes
+
+* **mobile:** prevent iOS input-zoom horizontal scroll ([ae9df7a](https://github.com/phoinixi/resuml/commit/ae9df7a062f54c52bb9cd2946d5ace25775f898e))
+
 # [1.17.0](https://github.com/phoinixi/resuml/compare/v1.16.0...v1.17.0) (2026-04-23)
 
 
