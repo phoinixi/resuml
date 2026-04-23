@@ -1,3 +1,15 @@
+# [1.14.0](https://github.com/phoinixi/resuml/compare/v1.13.2...v1.14.0) (2026-04-23)
+
+
+### Bug Fixes
+
+* lint errors + widen implicit-global rewrite in theme bundler ([76582ef](https://github.com/phoinixi/resuml/commit/76582efc3c417954c977ea711e3fb8484c822cd1)), closes [#17](https://github.com/phoinixi/resuml/issues/17)
+
+
+### Features
+
+* **ats:** skills-taxonomy matcher + JD/ATS UX split ([#17](https://github.com/phoinixi/resuml/issues/17)) ([f1ab96e](https://github.com/phoinixi/resuml/commit/f1ab96e24480f292aaa1700980f31a1200aeb083))
+
 ## [1.13.2](https://github.com/phoinixi/resuml/compare/v1.13.1...v1.13.2) (2026-04-22)
 
 
