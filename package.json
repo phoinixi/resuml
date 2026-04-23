@@ -59,7 +59,7 @@
     "jsonresume-theme-kendall": "^0.2.0",
     "jsonresume-theme-paper": "^0.5.0",
     "jsonresume-theme-react": "^1.0.4",
-    "jsonresume-theme-stackoverflow": "^2.1.0",
+    "jsonresume-theme-stackoverflow": "^3.1.2",
     "lodash.merge": "^4.6.2",
     "lucide-react": "^1.7.0",
     "react": "^19.1.0",
