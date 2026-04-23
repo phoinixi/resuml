@@ -138,8 +138,14 @@ async function fetchAndExtract(url: URL): Promise<FetchJdResult> {
   const extracted = extractJobDescription(html, url);
   if (!extracted.text || extracted.text.split(/\s+/).length < 20) {
     const host = url.hostname.replace(/^www\./, '');
+    // Very short HTML with no structured content is almost certainly a
+    // JS-rendered SPA shell (Gem, Ashby, SmartRecruiters widgets, etc.)
+    // whose real content only exists after the browser runs the app bundle.
+    const looksLikeSpa = html.length < 20_000 && !/application\/ld\+json/i.test(html);
     const hint = host.endsWith('linkedin.com')
-      ? 'LinkedIn may have shown a login/anti-bot page. Try opening the job in an incognito window and paste the description here.'
+      ? 'LinkedIn likely showed a login or anti-bot page. Open the job in an incognito window, copy the description, and paste it here.'
+      : looksLikeSpa
+      ? `This site (${host}) renders the job description in the browser after the page loads, so there's nothing to grab from the raw HTML. Open the link in a new tab, copy the description, and paste it here.`
       : 'The page did not return a readable job description. Paste the description text here instead.';
     throw new Error(hint);
   }
