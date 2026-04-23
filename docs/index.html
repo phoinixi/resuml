@@ -967,6 +967,12 @@
       cursor: pointer;
       transition: all 0.15s;
       text-align: left;
+      /* Prevent long descriptions (markdown-formatted npm summaries, raw
+         URLs, code fences) from spilling outside the card. Break anywhere. */
+      overflow: hidden;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      min-width: 0;
     }
     .theme-picker-card:hover { border-color: var(--accent); background: rgba(88, 166, 255, 0.06); }
     .theme-picker-card.active { border-color: var(--accent); background: rgba(88, 166, 255, 0.12); }
@@ -993,7 +999,16 @@
     .theme-picker-card-broken { opacity: 0.7; }
     .theme-picker-card-broken:hover { opacity: 1; border-color: var(--orange); }
     .theme-meta-note { color: var(--muted); font-style: italic; }
-    .theme-picker-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.3; }
+    .theme-picker-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.3;
+      /* Clamp to 3 lines so raw npm READMEs/URLs don't blow up the card */
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
     .theme-picker-meta {
       font-size: 0.72rem;
       color: var(--muted);
@@ -1020,27 +1035,93 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .toolbar { flex-wrap: wrap; height: auto; padding: 8px; }
-      .toolbar-right { flex-wrap: wrap; }
-      .toolbar-btn { padding: 4px 8px; font-size: 0.75rem; }
-      .toolbar-jd-btn.primary { padding: 5px 10px; }
-      .builder-main { flex-direction: column; }
-      .builder-editor { width: 100% !important; height: 50%; }
-      .builder-preview { width: 100% !important; height: 50%; }
+      /* Compact single-row toolbar: brand + mode toggle | scroll-overflow
+         actions. Horizontally scrollable if it still doesn't fit. */
+      .toolbar {
+        height: 44px;
+        padding: 6px 8px;
+        gap: 6px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .toolbar::-webkit-scrollbar { display: none; }
+      .toolbar-left, .toolbar-center, .toolbar-right {
+        flex-shrink: 0;
+        gap: 6px;
+      }
+      .toolbar-brand { font-size: 0.95rem; margin-right: 4px; }
+      .toolbar-mode-btn { padding: 4px 10px; font-size: 0.72rem; }
+      .toolbar-theme-btn, .toolbar-btn {
+        padding: 4px 8px;
+        font-size: 0.72rem;
+      }
+      /* Drop icons-only on narrow screens for import/share/ATS to save space */
+      .toolbar-btn .lucide { flex-shrink: 0; }
+      .toolbar-jd-btn { padding: 4px 10px; font-size: 0.72rem; }
+      .toolbar-jd-btn.primary { padding: 4px 10px; }
+
+      /* Flex-based split (height-based) instead of % — percentages computed
+         against the parent don't account for the fact that the divider has
+         its own fixed height, which caused the overlap visible in the
+         screenshot. Flex lets divider take its own row and the two panes
+         fill the rest. */
+      .builder-main { flex-direction: column; min-height: 0; }
+      .builder-editor {
+        width: 100% !important;
+        flex: 1 1 0;
+        min-height: 0;
+        overflow: hidden;
+      }
+      .builder-preview {
+        width: 100% !important;
+        flex: 1 1 0;
+        min-height: 0;
+        overflow: hidden;
+      }
       .builder-divider {
         width: 100%;
-        height: 6px;
+        height: 10px;                  /* bigger touch target */
         cursor: row-resize;
+        flex: 0 0 10px;
+        touch-action: none;            /* prevent scroll hijack while dragging */
+        background: var(--border);
+        position: relative;
+      }
+      .builder-divider::after {
+        /* visible drag handle */
+        content: "";
+        position: absolute;
+        left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+        width: 36px; height: 3px;
+        background: var(--muted);
+        border-radius: 2px;
+        opacity: 0.6;
       }
       .builder-ats {
         width: 100%;
         height: 60%;
         top: auto;
+        bottom: 0;
         box-shadow: 0 -8px 28px rgba(0,0,0,0.45);
       }
+
+      /* Preview iframe: allow horizontal scroll so theme layouts wider
+         than the phone viewport don't get clipped silently. */
+      .preview-iframe { min-width: 100%; }
+      .preview-container { overflow: auto; }
+
       .jd-modal { max-height: 96vh; }
       .jd-modal-textarea { min-height: 180px; }
       .jd-modal-footer { flex-wrap: wrap; }
+    }
+
+    /* Very narrow phones: also collapse the mode toggle */
+    @media (max-width: 480px) {
+      .toolbar-brand { display: none; }
+      .toolbar-mode-btn { padding: 4px 8px; font-size: 0.7rem; }
     }
   </style>
 </head>

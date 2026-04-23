@@ -176,7 +176,15 @@ export function App() {
       )}
 
       <div className={`builder-main${dragging ? ' dragging' : ''}`} ref={containerRef}>
-        <div className="builder-editor" style={isMobile ? { height: `${splitPos}%` } : { width: `${splitPos}%` }}>
+        <div
+          className="builder-editor"
+          style={isMobile
+            // Flex-grow on mobile so the divider's 10px gets subtracted from
+            // the total proportionally, avoiding the overflow/overlap visible
+            // with height percentages.
+            ? { flex: `${splitPos} 1 0`, width: '100%' }
+            : { width: `${splitPos}%` }}
+        >
           {mode === 'yaml' ? (
             <Editor yaml={yaml} onChange={setYaml} error={error} />
           ) : (
@@ -193,7 +201,12 @@ export function App() {
           aria-orientation={isMobile ? 'horizontal' : 'vertical'}
         />
 
-        <div className="builder-preview" style={isMobile ? { height: `${100 - splitPos}%` } : { width: `${100 - splitPos}%` }}>
+        <div
+          className="builder-preview"
+          style={isMobile
+            ? { flex: `${100 - splitPos} 1 0`, width: '100%' }
+            : { width: `${100 - splitPos}%` }}
+        >
           <Preview html={html} loading={themeLoading} error={themeError} />
         </div>
 

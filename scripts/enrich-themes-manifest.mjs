@@ -97,7 +97,10 @@ async function enrichRender(manifest) {
     certificates: [{ name: 'C', date: '2020', issuer: 'Is' }],
     awards: [{ title: 'A', date: '2020', awarder: 'Aw', summary: 'S' }],
     volunteer: [{ organization: 'V', position: 'P', startDate: '2020', summary: 'S', highlights: ['H'] }],
-    meta: { theme: 'test' },
+    // Include `meta.palette` so themes like material (which set
+    // meta.palette.primary without defensive checks) don't trip the probe
+    // — matches what the runtime padResume provides.
+    meta: { theme: 'test', palette: { primary: '', secondary: '' } },
   };
 
   for (let i = 0; i < manifest.length; i++) {
