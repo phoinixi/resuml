@@ -43,7 +43,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
 
   const rawUrl =
     req.method === 'POST'
-      ? (req.body as { url?: unknown })?.url
+      ? (req.body as { url?: unknown }).url
       : (req.query['url'] as string | undefined);
 
   if (typeof rawUrl !== 'string' || !rawUrl.trim()) {
