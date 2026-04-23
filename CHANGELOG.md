@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/phoinixi/resuml/compare/v1.15.0...v1.15.1) (2026-04-23)
+
+
+### Bug Fixes
+
+* **bundler:** deep-clone sample resume per theme snapshot ([16336f5](https://github.com/phoinixi/resuml/commit/16336f50a3a7e712aabd783901c1d14ba88d5906))
+
 # [1.15.0](https://github.com/phoinixi/resuml/compare/v1.14.3...v1.15.0) (2026-04-23)
 
 
