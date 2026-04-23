@@ -1089,10 +1089,24 @@ async function main() {
     }
   }
 
-  // Write manifest
-  writeFileSync(resolve(THEMES_DIR, 'manifest.json'), JSON.stringify(manifest, null, 2));
+  // Write manifest. When the run is scoped (e.g. --themes=stackoverflow) we
+  // merge into the existing manifest instead of replacing it. Otherwise a
+  // targeted rebuild of one theme would wipe the other 400 entries and the
+  // theme picker would hide everything it can no longer find.
+  const manifestPath = resolve(THEMES_DIR, 'manifest.json');
+  const isScoped = themesArg !== undefined;
+  let finalManifest = manifest;
+  if (isScoped && existsSync(manifestPath)) {
+    const existing = JSON.parse(readFileSync(manifestPath, 'utf8'));
+    const touched = new Set(manifest.map((t) => t.name));
+    finalManifest = [
+      ...existing.filter((t) => !touched.has(t.name)),
+      ...manifest,
+    ].sort((a, b) => a.name.localeCompare(b.name));
+  }
+  writeFileSync(manifestPath, JSON.stringify(finalManifest, null, 2));
 
-  const successful = manifest.filter(t => t.browserCompatible).length;
+  const successful = finalManifest.filter(t => t.browserCompatible).length;
   const snapshots = manifest.filter(t => t.hasSnapshot).length;
   console.log(`\n✅ Done! ${successful}/${manifest.length} themes bundled, ${snapshots} snapshots generated`);
   console.log(`📁 Output: docs/themes/`);
