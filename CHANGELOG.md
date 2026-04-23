@@ -1,3 +1,15 @@
+# [1.16.0](https://github.com/phoinixi/resuml/compare/v1.15.1...v1.16.0) (2026-04-23)
+
+
+### Bug Fixes
+
+* **lint:** remove non-null assertion in SortableList key ([4d6897e](https://github.com/phoinixi/resuml/commit/4d6897ec5922b7ee1ff44442a4020d380ae13df0))
+
+
+### Features
+
+* **builder:** drag-to-reorder + modern form fields ([e223087](https://github.com/phoinixi/resuml/commit/e2230874bec03baf74e0e58a9df85f57063a8c83))
+
 ## [1.15.1](https://github.com/phoinixi/resuml/compare/v1.15.0...v1.15.1) (2026-04-23)
 
 
