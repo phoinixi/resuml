@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/phoinixi/resuml/compare/v1.18.1...v1.19.0) (2026-04-23)
+
+
+### Features
+
+* **web:** add /about landing page and in-app link ([cfc1c82](https://github.com/phoinixi/resuml/commit/cfc1c82548652f40d5191ce93e77bf6dc3b26a34))
+
 ## [1.18.1](https://github.com/phoinixi/resuml/compare/v1.18.0...v1.18.1) (2026-04-23)
 
 
