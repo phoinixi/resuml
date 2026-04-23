@@ -1,3 +1,10 @@
+## [1.14.3](https://github.com/phoinixi/resuml/compare/v1.14.2...v1.14.3) (2026-04-23)
+
+
+### Bug Fixes
+
+* **theme-picker:** uniform single-row cards — name + badge + downloads ([67571a9](https://github.com/phoinixi/resuml/commit/67571a91777209ee0471d2a2e19e627a420517ec))
+
 ## [1.14.2](https://github.com/phoinixi/resuml/compare/v1.14.1...v1.14.2) (2026-04-23)
 
 
