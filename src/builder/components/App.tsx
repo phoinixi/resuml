@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
+import { Maximize2, Minimize2 } from 'lucide-react';
 import { Editor } from './Editor';
 import { FormMode } from './FormMode';
 import { Preview } from './Preview';
@@ -44,7 +45,10 @@ export function App() {
   const [splitPos, setSplitPos] = useState(50);
   const [dragging, setDragging] = useState(false);
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 640);
+  /** Desktop-only: 'split' | 'editor' | 'preview'. Collapses one side fully. */
+  const [focus, setFocus] = useState<'split' | 'editor' | 'preview'>('split');
   const containerRef = useRef<HTMLDivElement>(null);
+  const dividerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 640px)');
@@ -89,54 +93,44 @@ export function App() {
     setShowAts((v) => !v);
   }, [hasJobDescription]);
 
-  // Split pane drag — shared logic for mouse and touch
-  const startDrag = useCallback((mobile: boolean) => {
+  // Split pane drag: unified pointer events via setPointerCapture. One
+  // listener chain handles mouse, touch, and stylus. Browsers with
+  // PointerEvent support (all modern) deliver pointermove reliably even
+  // when the pointer leaves the divider element — the capture binds
+  // delivery to the original target.
+  const handlePointerDown = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     const container = containerRef.current;
-    if (!container) return;
+    const divider = dividerRef.current;
+    if (!container || !divider) return;
+    // Ignore right-click / middle-click / touch drags that aren't primary
+    if (e.button !== 0 && e.pointerType === 'mouse') return;
+    e.preventDefault();
+    divider.setPointerCapture(e.pointerId);
     setDragging(true);
 
-    const calcPct = (clientX: number, clientY: number) => {
+    const onMove = (ev: PointerEvent) => {
       const rect = container.getBoundingClientRect();
-      const raw = mobile
-        ? ((clientY - rect.top) / rect.height) * 100
-        : ((clientX - rect.left) / rect.width) * 100;
-      return Math.min(80, Math.max(20, raw));
+      const raw = isMobile
+        ? ((ev.clientY - rect.top) / rect.height) * 100
+        : ((ev.clientX - rect.left) / rect.width) * 100;
+      setSplitPos(Math.min(85, Math.max(15, raw)));
     };
-
-    const onMouseMove = (ev: MouseEvent) => { setSplitPos(calcPct(ev.clientX, ev.clientY)); };
-    const onMouseUp = () => {
+    const onUp = (ev: PointerEvent) => {
       setDragging(false);
-      document.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('mouseup', onMouseUp);
+      divider.releasePointerCapture(ev.pointerId);
+      divider.removeEventListener('pointermove', onMove);
+      divider.removeEventListener('pointerup', onUp);
+      divider.removeEventListener('pointercancel', onUp);
     };
-    const onTouchMove = (ev: TouchEvent) => {
-      const t = ev.touches[0];
-      if (t) setSplitPos(calcPct(t.clientX, t.clientY));
-    };
-    const onTouchEnd = () => {
-      setDragging(false);
-      document.removeEventListener('touchmove', onTouchMove);
-      document.removeEventListener('touchend', onTouchEnd);
-    };
+    divider.addEventListener('pointermove', onMove);
+    divider.addEventListener('pointerup', onUp);
+    divider.addEventListener('pointercancel', onUp);
+  }, [isMobile]);
 
-    if (mobile) {
-      document.addEventListener('touchmove', onTouchMove, { passive: true });
-      document.addEventListener('touchend', onTouchEnd);
-    } else {
-      document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseup', onMouseUp);
-    }
+  const handleDividerDouble = useCallback(() => {
+    // Double-click / double-tap the divider to reset to 50/50.
+    setSplitPos(50);
   }, []);
-
-  const handleDragStart = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    startDrag(isMobile);
-  }, [isMobile, startDrag]);
-
-  const handleTouchStart = useCallback((e: React.TouchEvent<HTMLDivElement>) => {
-    e.stopPropagation();
-    startDrag(true);
-  }, [startDrag]);
 
   return (
     <>
@@ -175,39 +169,97 @@ export function App() {
         />
       )}
 
-      <div className={`builder-main${dragging ? ' dragging' : ''}`} ref={containerRef}>
+      <div
+        className={`builder-main${dragging ? ' dragging' : ''} focus-${focus}`}
+        ref={containerRef}
+      >
         <div
           className="builder-editor"
-          style={isMobile
-            // Flex-grow on mobile so the divider's 10px gets subtracted from
-            // the total proportionally, avoiding the overflow/overlap visible
-            // with height percentages.
-            ? { flex: `${splitPos} 1 0`, width: '100%' }
-            : { width: `${splitPos}%` }}
+          style={
+            focus === 'editor' ? { flex: '1 1 0', width: '100%' } :
+            focus === 'preview' ? { flex: '0 0 0', display: 'none' } :
+            isMobile
+              ? { flex: `${splitPos} 1 0`, width: '100%' }
+              : { flex: `${splitPos} 1 0`, width: 'auto' }
+          }
         >
           {mode === 'yaml' ? (
             <Editor yaml={yaml} onChange={setYaml} error={error} />
           ) : (
             <FormMode resume={resume} onChange={updateResume} />
           )}
+          {!isMobile && focus !== 'editor' && (
+            <button
+              type="button"
+              className="builder-focus-toggle builder-focus-editor"
+              onClick={() => { setFocus('editor'); }}
+              title="Expand editor"
+              aria-label="Expand editor"
+            >
+              <Maximize2 size={14} aria-hidden="true" />
+            </button>
+          )}
+          {!isMobile && focus === 'editor' && (
+            <button
+              type="button"
+              className="builder-focus-toggle builder-focus-editor"
+              onClick={() => { setFocus('split'); }}
+              title="Back to split view"
+              aria-label="Back to split view"
+            >
+              <Minimize2 size={14} aria-hidden="true" />
+            </button>
+          )}
         </div>
 
-        <div
-          className="builder-divider"
-          onMouseDown={handleDragStart}
-          onTouchStart={handleTouchStart}
-          title="Drag to resize"
-          role="separator"
-          aria-orientation={isMobile ? 'horizontal' : 'vertical'}
-        />
+        {focus === 'split' && (
+          <div
+            ref={dividerRef}
+            className="builder-divider"
+            onPointerDown={handlePointerDown}
+            onDoubleClick={handleDividerDouble}
+            title="Drag to resize · Double-click to reset"
+            role="separator"
+            aria-orientation={isMobile ? 'horizontal' : 'vertical'}
+            aria-valuenow={Math.round(splitPos)}
+            aria-valuemin={15}
+            aria-valuemax={85}
+          />
+        )}
 
         <div
           className="builder-preview"
-          style={isMobile
-            ? { flex: `${100 - splitPos} 1 0`, width: '100%' }
-            : { width: `${100 - splitPos}%` }}
+          style={
+            focus === 'preview' ? { flex: '1 1 0', width: '100%' } :
+            focus === 'editor' ? { flex: '0 0 0', display: 'none' } :
+            isMobile
+              ? { flex: `${100 - splitPos} 1 0`, width: '100%' }
+              : { flex: `${100 - splitPos} 1 0`, width: 'auto' }
+          }
         >
           <Preview html={html} loading={themeLoading} error={themeError} />
+          {!isMobile && focus !== 'preview' && (
+            <button
+              type="button"
+              className="builder-focus-toggle builder-focus-preview"
+              onClick={() => { setFocus('preview'); }}
+              title="Expand preview"
+              aria-label="Expand preview"
+            >
+              <Maximize2 size={14} aria-hidden="true" />
+            </button>
+          )}
+          {!isMobile && focus === 'preview' && (
+            <button
+              type="button"
+              className="builder-focus-toggle builder-focus-preview"
+              onClick={() => { setFocus('split'); }}
+              title="Back to split view"
+              aria-label="Back to split view"
+            >
+              <Minimize2 size={14} aria-hidden="true" />
+            </button>
+          )}
         </div>
 
         {showAts && (
