@@ -1,5 +1,5 @@
 import React, { useRef, useCallback, useMemo } from 'react';
-import { Target, FolderOpen, Link, Palette, FileText, FileJson, FileDown, Briefcase, Check } from 'lucide-react';
+import { Target, FolderOpen, Link, Palette, FileText, FileJson, FileDown, Briefcase, Check, Info } from 'lucide-react';
 import type { ResumeSchema } from '../../types/resume';
 import { exportYaml, exportJson, exportPdf, copyShareUrl, readFile } from '../services/fileOps';
 import { DownloadDropdown } from './DownloadDropdown';
@@ -69,11 +69,14 @@ export function Toolbar({
   return (
     <div className="toolbar" role="toolbar" aria-label="Resume builder actions">
       <div className="toolbar-left">
+        <span className="toolbar-brand">resuml</span>
         <a
-          className="toolbar-brand"
+          className="toolbar-about-link"
           href="/about"
-          title="About resuml — your data stays in your browser"
-        >resuml</a>
+          title="What is resuml? Your data stays in your browser."
+        >
+          <Info size={13} aria-hidden="true" /> About
+        </a>
         <div className="toolbar-mode-toggle" role="radiogroup" aria-label="Edit mode">
           <button
             className={`toolbar-mode-btn ${mode === 'form' ? 'active' : ''}`}
