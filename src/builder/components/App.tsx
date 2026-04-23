@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { Maximize2, Minimize2 } from 'lucide-react';
+import { Maximize2, Minimize2, Info } from 'lucide-react';
 import { Editor } from './Editor';
 import { FormMode } from './FormMode';
 import { Preview } from './Preview';
@@ -275,6 +275,14 @@ export function App() {
           </div>
         )}
       </div>
+
+      <a
+        className="builder-about-corner"
+        href="/about"
+        title="What is resuml? Your data stays in your browser."
+      >
+        <Info size={11} aria-hidden="true" /> About
+      </a>
     </>
   );
 }
