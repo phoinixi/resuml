@@ -325,7 +325,7 @@
       <ul class="check-list">
         <li>All editing, rendering, and PDF export run in your browser.</li>
         <li>Your resume data is never uploaded to a server.</li>
-        <li>No analytics, no tracking pixels, no third-party cookies.</li>
+        <li>No tracking pixels, no third-party cookies, no cross-site tracking.</li>
         <li>Open source. Every line is public on GitHub.</li>
       </ul>
       <ul class="check-list cross-list">
@@ -333,9 +333,12 @@
         <li>No "free tier" that hides a premium plan behind your data.</li>
       </ul>
       <div class="callout">
-        <strong>The one exception:</strong> when you open the theme picker, the app fetches a
-        public list of theme names and download counts from a small serverless endpoint. That
-        request carries no resume content, just which themes exist on npm.
+        <strong>What does leave the browser?</strong> Only three things, and never your resume:
+        <ol style="margin: 8px 0 0; padding-left: 20px; line-height: 1.7;">
+          <li>The theme picker fetches the public list of theme names and npm download counts.</li>
+          <li>If you paste a job-posting URL, the fetcher grabs that page to extract the description text.</li>
+          <li>Cookieless, aggregate page-view analytics (Vercel Web Analytics). No cookies, no personal data, no cross-site tracking, no resume content. Just counts of how many people visit.</li>
+        </ol>
       </div>
       <div class="callout">
         <strong>Share links</strong> put your resume into the URL hash (after <code>#</code>).
