@@ -137,6 +137,8 @@ const SAMPLE_RESUME = {
 function padResume(r) {
   const basics = r.basics ?? {};
   const location = basics.location ?? {};
+  const meta = r.meta ?? {};
+  const palette = meta.palette ?? {};
   const safe = {
     ...r,
     basics: {
@@ -144,6 +146,9 @@ function padResume(r) {
       ...basics,
       location: { address: '', postalCode: '', city: '', countryCode: '', region: '', ...location },
     },
+    // Guard against themes like material that read meta.palette.primary without
+    // defensive checks.
+    meta: { ...meta, palette: { primary: '', secondary: '', ...palette } },
   };
   const arraySections = ['work','volunteer','education','awards','certificates','publications','skills','languages','interests','references','projects'];
   for (const key of arraySections) {
@@ -393,6 +398,29 @@ const LEGACY_PATCHES = [
       );
     },
   },
+  // jsonresume-theme-react tries to assign `window` and `document` which are
+  // read-only in the browser (we're already in a browser — no need to
+  // polyfill). Guard the assignments so they don't throw. It also uses a
+  // pattern not covered by the generic rewrite:
+  //     const modulePath = path.join(__dirname, 'dist/index.cjs');
+  //     require(modulePath);
+  // Inline the variable so esbuild can statically bundle dist/index.cjs.
+  {
+    filter: /node_modules\/jsonresume-theme-react\/index\.cjs$/,
+    transform: (src) => src
+      .replace(
+        /global\.window\s*=\s*global\.window\s*\|\|\s*\{[^}]*\};?/g,
+        'try { if (typeof window === "undefined") globalThis.window = {}; } catch (_) {}',
+      )
+      .replace(
+        /global\.document\s*=\s*global\.document\s*\|\|\s*\{[\s\S]*?\};/g,
+        'try { if (typeof document === "undefined") globalThis.document = { createElement: () => ({}), addEventListener: () => {} }; } catch (_) {}',
+      )
+      .replace(
+        /const\s+modulePath\s*=\s*path\.join\(\s*__dirname\s*,\s*['"]([^'"]+)['"]\s*\);([\s\S]*?)require\(modulePath\)/,
+        (_, rel, middle) => `const modulePath = './${rel}';${middle}require('./${rel}')`,
+      ),
+  },
 ];
 
 /**
@@ -406,7 +434,7 @@ function legacyThemeGlobalsPlugin() {
   return {
     name: 'legacy-theme-globals',
     setup(build) {
-      build.onLoad({ filter: /\.js$/ }, async (args) => {
+      build.onLoad({ filter: /\.c?js$/ }, async (args) => {
         const { readFile } = await import('node:fs/promises');
         const isThemePkg = /node_modules\/jsonresume-theme-[^/]+\/[^/]*\.js$/.test(args.path);
         const matchingPatches = LEGACY_PATCHES.filter((p) => p.filter.test(args.path));
@@ -436,8 +464,28 @@ function legacyThemeGlobalsPlugin() {
           ]);
           contents = contents.replace(
             /^([ \t]*)([a-zA-Z_$][\w$]*)\s*=(?!=)/gm,
-            (match, indent, name) => {
+            (match, indent, name, offset, full) => {
               if (RESERVED.has(name)) return match;
+              // Skip expression-context assignments (not a new statement):
+              //   - `var a, b,\n    c = ...`  (multi-var continuation)
+              //   - `foo(\n  bar = 1\n)`      (argument expression)
+              //   - `[\n  x = 1\n]`           (array element assignment)
+              //   - `a ?\n  b = 1 :\n  c = 2` (ternary branch)
+              //   - `a ||\n  b = 1`           (short-circuit)
+              // A new statement context, on the other hand, lives after
+              // `{` `}` `;` — in those cases the rewrite is correct.
+              const before = full.slice(0, offset).replace(/\s+$/, '');
+              const prevChar = before.charAt(before.length - 1);
+              if (prevChar === ',' || prevChar === '(' || prevChar === '[' ||
+                  prevChar === '?' || prevChar === ':') return match;
+              const prev2 = before.slice(-2);
+              if (prev2 === '||' || prev2 === '&&' || prev2 === '=>') return match;
+              // Inside `for (` init clause — rare but valid (var isn't allowed
+              // there unless at the very start, and esbuild will handle the
+              // already-correct `for (var i = 0; ...)` form).
+              const lineStart = full.lastIndexOf('\n', offset - 1) + 1;
+              const lineBefore = full.slice(lineStart, offset);
+              if (/\bfor\s*\(\s*$/.test(lineBefore)) return match;
               return `${indent}var ${name} =`;
             }
           );
@@ -445,6 +493,39 @@ function legacyThemeGlobalsPlugin() {
 
         // 2. Targeted source patches (layered on top of the generic rewrite)
         for (const patch of matchingPatches) contents = patch.transform(contents);
+
+        // 3. Resolve dynamic requires statically so esbuild can bundle them.
+        // Two common patterns in themes:
+        //   a) const HELPERS = join(__dirname, 'theme/hbs-helpers');
+        //      require(join(HELPERS, 'file.js'))
+        //   b) require(path.join(__dirname, 'dist/index.cjs'))
+        // esbuild leaves computed requires as runtime calls, which our
+        // browser shim rejects. Rewrite to static relative paths.
+        if (isThemePkg) {
+          // Pattern (b): inline `require((path.)?join(__dirname, 'literal'))`
+          contents = contents.replace(
+            /require\(\s*(?:\w+\.)?join\(\s*__dirname\s*,\s*['"]([^'"]+)['"]\s*\)\s*\)/g,
+            (_, rel) => `require(${JSON.stringify('./' + rel)})`,
+          );
+          // Pattern (a): resolve via tracked join-constants.
+          const joinConsts = {};
+          for (const m of contents.matchAll(
+            /\b(?:const|var|let)\s+(\w+)\s*=\s*(?:\w+\.)?join\(\s*__dirname\s*,\s*['"]([^'"]+)['"]\s*\)/g
+          )) {
+            joinConsts[m[1]] = m[2];
+          }
+          if (Object.keys(joinConsts).length > 0) {
+            contents = contents.replace(
+              /require\(\s*(?:\w+\.)?join\(\s*(\w+)\s*,\s*['"]([^'"]+)['"]\s*\)\s*\)/g,
+              (match, name, file) => {
+                const prefix = joinConsts[name];
+                if (prefix === undefined) return match;
+                const rel = `./${prefix}/${file}`.replace(/\/+/g, '/');
+                return `require(${JSON.stringify(rel)})`;
+              }
+            );
+          }
+        }
 
         return contents !== original ? { contents, loader: 'js' } : null;
       });
@@ -498,7 +579,7 @@ async function bundleTheme(shortName, packageName, shimsDir) {
           // Runtime process shim: `process.env.X` literal access is handled
           // by esbuild's `define`, but dynamic access like `process.cwd()` or
           // `process.stdout.write` needs an actual object at runtime.
-          'if (typeof globalThis.process === "undefined") globalThis.process = { env: { NODE_ENV: "production" }, browser: true, platform: "browser", version: "v20.0.0", versions: {}, stdout: { write: function(){} }, stderr: { write: function(){} }, cwd: function(){ return "/"; }, chdir: function(){}, nextTick: function(fn){ Promise.resolve().then(fn); }, argv: [], pid: 1, title: "browser" };',
+          'if (typeof globalThis.process === "undefined") globalThis.process = { env: { NODE_ENV: "production" }, browser: true, platform: "browser", version: "v20.0.0", versions: { node: "20.0.0", v8: "11.3.0" }, stdout: { write: function(){} }, stderr: { write: function(){} }, cwd: function(){ return "/"; }, chdir: function(){}, nextTick: function(fn){ Promise.resolve().then(fn); }, argv: [], pid: 1, title: "browser" };',
         ].join(''),
       },
       define: {

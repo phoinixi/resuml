@@ -6,6 +6,8 @@
 export function padResume(r: Record<string, unknown>): Record<string, unknown> {
   const basics = (r['basics'] ?? {}) as Record<string, unknown>;
   const location = (basics['location'] ?? {}) as Record<string, unknown>;
+  const meta = (r['meta'] ?? {}) as Record<string, unknown>;
+  const palette = (meta['palette'] ?? {}) as Record<string, unknown>;
   const safe: Record<string, unknown> = {
     ...r,
     basics: {
@@ -13,6 +15,10 @@ export function padResume(r: Record<string, unknown>): Record<string, unknown> {
       ...basics,
       location: { address: '', postalCode: '', city: '', countryCode: '', region: '', ...location },
     },
+    // Some themes (e.g. material) assume `meta.palette.primary` exists and
+    // crash with "Cannot set properties of undefined" when it doesn't.
+    // Supply the full shape so themes can mutate without guards.
+    meta: { ...meta, palette: { primary: '', secondary: '', ...palette } },
   };
   const arraySections = [
     'work', 'volunteer', 'education', 'awards', 'certificates',

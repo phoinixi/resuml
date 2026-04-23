@@ -177,20 +177,30 @@ export async function loadSnapshot(themeName: string): Promise<string | null> {
 }
 
 // ── Theme module loading ────────────────────────────────────────────
-// Simple: Worker → snapshot fallback. No server. No race conditions.
+// Simple: Worker → error-state fallback. No server. No race conditions.
 
-const loadedWorkerThemes = new Set<string>();
+/**
+ * Tracks which theme the Worker *currently* has as its active render
+ * function. On a theme switch, we MUST call workerLoadTheme again to
+ * replace the worker's `currentTheme` — otherwise renders go through the
+ * previously-active theme's render() even though our UI shows the new
+ * theme's name. Dynamic import in the worker is cached by the browser,
+ * so re-calling is cheap when the module has been loaded before.
+ */
+let activeWorkerTheme: string | null = null;
+const attemptedThemes = new Set<string>();
 
 export function isThemeLoaded(themeName: string): boolean {
-  return loadedWorkerThemes.has(themeName);
+  return activeWorkerTheme === themeName;
 }
 
 /**
- * Try to load a theme in the Worker. Returns true if the Worker is ready
- * to render this theme, false if it failed (caller should use snapshot).
+ * Ensure the Worker has `themeName` as its active render function.
+ * Returns true on success, false if the theme isn't browser-renderable.
  */
 export async function tryLoadWorkerTheme(themeName: string): Promise<boolean> {
-  if (loadedWorkerThemes.has(themeName)) return true;
+  // Already the active theme — nothing to do.
+  if (activeWorkerTheme === themeName) return true;
 
   // Ensure the manifest cache is populated before reading from it. Without
   // this, the very first render (before the user opens the ThemePicker)
@@ -208,7 +218,8 @@ export async function tryLoadWorkerTheme(themeName: string): Promise<boolean> {
   try {
     const url = `${getThemesBase()}${themeName}.js`;
     await workerLoadTheme(themeName, url);
-    loadedWorkerThemes.add(themeName);
+    activeWorkerTheme = themeName;
+    attemptedThemes.add(themeName);
     return true;
   } catch {
     return false;
