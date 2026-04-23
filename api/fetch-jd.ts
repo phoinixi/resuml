@@ -71,13 +71,32 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
   const normalized = normalizeJobUrl(parsed);
 
   try {
-    const result = await fetchAndExtract(normalized);
+    let result: FetchJdResult;
+    try {
+      result = await fetchAndExtract(normalized);
+    } catch (fastErr: unknown) {
+      // The static fetch returned a SPA shell (Gem, Ashby, Workday, some
+      // SmartRecruiters widgets). Fall back to a headless-browser fetch so
+      // JS-rendered pages still work.
+      if (shouldTryHeadless(fastErr)) {
+        result = await fetchWithHeadless(normalized);
+      } else {
+        throw fastErr;
+      }
+    }
     res.setHeader('Cache-Control', 'public, max-age=600');
     res.status(200).json(result);
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : 'Failed to fetch URL';
     res.status(502).json({ error: message, source: normalized.toString() });
   }
+}
+
+const SPA_ERROR_MARKER = '__SPA__';
+
+function shouldTryHeadless(err: unknown): boolean {
+  if (!(err instanceof Error)) return false;
+  return err.message.includes(SPA_ERROR_MARKER);
 }
 
 /**
@@ -137,19 +156,64 @@ async function fetchAndExtract(url: URL): Promise<FetchJdResult> {
 
   const extracted = extractJobDescription(html, url);
   if (!extracted.text || extracted.text.split(/\s+/).length < 20) {
-    const host = url.hostname.replace(/^www\./, '');
     // Very short HTML with no structured content is almost certainly a
-    // JS-rendered SPA shell (Gem, Ashby, SmartRecruiters widgets, etc.)
-    // whose real content only exists after the browser runs the app bundle.
+    // JS-rendered SPA shell. Tag the error so the caller knows to retry
+    // with a headless browser.
     const looksLikeSpa = html.length < 20_000 && !/application\/ld\+json/i.test(html);
+    if (looksLikeSpa) {
+      throw new Error(`${SPA_ERROR_MARKER} SPA shell detected`);
+    }
+    const host = url.hostname.replace(/^www\./, '');
     const hint = host.endsWith('linkedin.com')
       ? 'LinkedIn likely showed a login or anti-bot page. Open the job in an incognito window, copy the description, and paste it here.'
-      : looksLikeSpa
-      ? `This site (${host}) renders the job description in the browser after the page loads, so there's nothing to grab from the raw HTML. Open the link in a new tab, copy the description, and paste it here.`
       : 'The page did not return a readable job description. Paste the description text here instead.';
     throw new Error(hint);
   }
   return { ...extracted, source: url.toString() };
+}
+
+/**
+ * Fallback path for SPAs: boot a headless Chromium, navigate to the URL,
+ * wait for the page to settle, then extract rendered text. Heavier (cold
+ * starts a browser process) so it's only used when the static fetch hits
+ * an empty SPA shell.
+ */
+async function fetchWithHeadless(url: URL): Promise<FetchJdResult> {
+  const [{ default: chromium }, { chromium: playwright }] = await Promise.all([
+    import('@sparticuz/chromium'),
+    import('playwright-core'),
+  ]);
+
+  const browser = await playwright.launch({
+    args: chromium.args,
+    executablePath: await chromium.executablePath(),
+    headless: true,
+  });
+  try {
+    const page = await browser.newPage({ userAgent: USER_AGENT });
+    await page.goto(url.toString(), { waitUntil: 'networkidle', timeout: 20_000 });
+    // Give late-mounting React/Svelte apps one more tick to commit.
+    await page.waitForTimeout(800);
+    const html = await page.content();
+    const extracted = extractJobDescription(html, url);
+    if (!extracted.text || extracted.text.split(/\s+/).length < 20) {
+      // Last-resort: pull visible text directly from the live DOM so we
+      // aren't bound by the static selectors.
+      const bodyText: string = await page.evaluate(() => {
+        const el = (document.querySelector('main, article') ?? document.body) as HTMLElement | null;
+        return (el?.innerText ?? '').trim();
+      });
+      if (bodyText.split(/\s+/).length >= 20) {
+        return { text: bodyText, title: extracted.title, source: url.toString() };
+      }
+      throw new Error(
+        'The page rendered, but did not contain readable job description text. Paste the description here instead.',
+      );
+    }
+    return { ...extracted, source: url.toString() };
+  } finally {
+    await browser.close().catch(() => { /* best effort */ });
+  }
 }
 
 /**

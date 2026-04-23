@@ -100,8 +100,9 @@ export function JobDescriptionModal({ value, onSave, onClose }: JobDescriptionMo
         <div className="jd-modal-body">
           <p className="jd-modal-desc">
             <Sparkles size={14} aria-hidden="true" />
-            Paste a job description, or a link to one (LinkedIn, Greenhouse,
-            Lever, Indeed, Workable). Runs locally in your browser.
+            Paste a job description or a link to one (LinkedIn, Greenhouse,
+            Lever, Indeed, Workable, Gem, Ashby, most ATS). Analysis runs
+            locally in your browser.
           </p>
           <label htmlFor={fieldId} className="jd-modal-label">
             Paste the job description or URL
