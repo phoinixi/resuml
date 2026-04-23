@@ -69,7 +69,11 @@ export function Toolbar({
   return (
     <div className="toolbar" role="toolbar" aria-label="Resume builder actions">
       <div className="toolbar-left">
-        <span className="toolbar-brand">resuml</span>
+        <a
+          className="toolbar-brand"
+          href="/about"
+          title="About resuml — your data stays in your browser"
+        >resuml</a>
         <div className="toolbar-mode-toggle" role="radiogroup" aria-label="Edit mode">
           <button
             className={`toolbar-mode-btn ${mode === 'form' ? 'active' : ''}`}

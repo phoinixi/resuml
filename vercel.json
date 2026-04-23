@@ -14,6 +14,9 @@
   ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/robots.txt", "destination": "/robots.txt" },
+    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "functions": {
