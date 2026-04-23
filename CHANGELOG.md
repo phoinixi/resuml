@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/phoinixi/resuml/compare/v1.16.0...v1.17.0) (2026-04-23)
+
+
+### Features
+
+* **builder:** pointer-based resize and desktop focus toggles ([7d3ba05](https://github.com/phoinixi/resuml/commit/7d3ba05ed4a4bdd25bd35e7db10bf0f0f99b597d))
+
 # [1.16.0](https://github.com/phoinixi/resuml/compare/v1.15.1...v1.16.0) (2026-04-23)
 
 
