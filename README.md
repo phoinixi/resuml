@@ -14,7 +14,7 @@
 
 ---
 
-## Two ways to use it
+## Three ways to use it
 
 ### 🌐 [resuml.app](https://resuml.app) — the web app
 
@@ -61,9 +61,7 @@ Then ask Claude Code things like:
 
 Claude will generate the YAML, validate it, iterate until the score clears, and render the final HTML. See **[DOCS.md](DOCS.md#ai-agent-integration-mcp)** for all tools, resources, and prompts.
 
----
-
-## Or use the CLI
+### 💻 The CLI
 
 ```bash
 npm install -g resuml
