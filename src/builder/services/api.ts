@@ -37,10 +37,21 @@ export type ThemeCapability = 'browser' | 'broken' | 'snapshot-only' | 'unavaila
 function getApiBase(): string {
   if (typeof window === 'undefined') return '';
   const { hostname } = window.location;
-  if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname.endsWith('.vercel.app')) {
+  // Self-hosted origins — use relative paths (same-origin /api/*):
+  //   - local dev
+  //   - Vercel previews (any *.vercel.app)
+  //   - the production domain (resuml.app and subdomains)
+  if (
+    hostname === 'localhost' ||
+    hostname === '127.0.0.1' ||
+    hostname.endsWith('.vercel.app') ||
+    hostname === 'resuml.app' ||
+    hostname.endsWith('.resuml.app')
+  ) {
     return '';
   }
-  return 'https://resuml.vercel.app';
+  // Fallback (e.g. if the builder is embedded elsewhere): hit production.
+  return 'https://resuml.app';
 }
 
 function getThemesBase(): string {
