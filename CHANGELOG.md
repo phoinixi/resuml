@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/phoinixi/resuml/compare/v1.17.1...v1.18.0) (2026-04-23)
+
+
+### Features
+
+* **domain:** point production origin + og:url at resuml.app ([bce7b6b](https://github.com/phoinixi/resuml/commit/bce7b6bc8391610e096a9608c3a9dce53639253a))
+
 ## [1.17.1](https://github.com/phoinixi/resuml/compare/v1.17.0...v1.17.1) (2026-04-23)
 
 
