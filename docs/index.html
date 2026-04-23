@@ -59,7 +59,14 @@
       }
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; overflow: hidden; }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      /* Belt-and-braces against rogue horizontal overflow (iOS input zoom,
+         long theme names, etc.) — contain scroll to vertical only. */
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
       background: var(--bg);
@@ -1237,6 +1244,11 @@
 
     /* Responsive */
     @media (max-width: 640px) {
+      /* iOS Safari zooms any input/textarea/select with font-size < 16px,
+         and the overshoot pushes the page horizontally. Force 16px on all
+         editable fields so tap-to-focus stays in place. */
+      input, textarea, select { font-size: 16px !important; }
+
       /* Desktop-only split/preview toggle hidden on phones. */
       .builder-focus-toggle { display: none; }
 
