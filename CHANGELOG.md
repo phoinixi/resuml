@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/phoinixi/resuml/compare/v1.14.3...v1.15.0) (2026-04-23)
+
+
+### Features
+
+* **theme-picker:** visual thumbnails + lower mobile breakpoint ([026934b](https://github.com/phoinixi/resuml/commit/026934b5baf0c0f0681d0ab192669ad05e76840d))
+
 ## [1.14.3](https://github.com/phoinixi/resuml/compare/v1.14.2...v1.14.3) (2026-04-23)
 
 
