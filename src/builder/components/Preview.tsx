@@ -37,17 +37,23 @@ export function Preview({ html, loading, error }: PreviewProps) {
       )}
 
       {/*
-       * Use `srcDoc` rather than doc.open()/doc.write(): the latter reuses
-       * the iframe's window across renders, so themes that register custom
-       * elements (stackoverflow's <time-duration>, others) throw on the
-       * second write with "already used with this registry". Updating
-       * srcDoc navigates the iframe to a fresh document, giving each
-       * render a clean CustomElementRegistry.
+       * `srcDoc` (not doc.open/doc.write): each change navigates the iframe
+       * to a fresh document, which also gives us a clean
+       * CustomElementRegistry (stackoverflow registers <time-duration>).
+       *
+       * `sandbox="allow-scripts"` — NOT `allow-same-origin`. Themes run
+       * arbitrary render code against user-controlled resume data (which
+       * can come from a share-link URL hash), so the iframe must be
+       * treated as untrusted. Without `allow-same-origin` the iframe
+       * lives at a null origin and can't read the parent's localStorage,
+       * cookies, or DOM. Scripts inside still run (themes need that for
+       * web components / inline JS) but in an isolated origin — a
+       * malicious shared resume can't exfiltrate the user's stored data.
        */}
       <iframe
         srcDoc={html ?? ''}
         className="preview-iframe"
-        sandbox="allow-same-origin allow-scripts"
+        sandbox="allow-scripts"
         title="Resume preview"
         style={{ display: showIframe ? 'block' : 'none' }}
       />

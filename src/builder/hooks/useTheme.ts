@@ -29,8 +29,16 @@ function cleanRenderedHtml(html: string): string {
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
     .replace(/&#x27;/g, "'")
-    // Upgrade insecure CDN references in <link href="..."> and <script src="...">
-    .replace(/(<(?:link|script|img)\b[^>]*?\b(?:href|src)=["'])http:\/\//gi, '$1https://');
+    // Upgrade insecure CDN references in the tag attributes most commonly
+    // used by JSON Resume themes for external assets. Missing an upgrade
+    // means the browser blocks the resource as Mixed Content and the
+    // theme renders unstyled.
+    .replace(
+      /(<(?:link|script|img|iframe|video|audio|source|track|embed|object)\b[^>]*?\b(?:href|src|data|poster)=["'])http:\/\//gi,
+      '$1https://',
+    )
+    // `@import url("http://…")` inside inline <style> blocks.
+    .replace(/(@import\s+(?:url\()?["']?)http:\/\//gi, '$1https://');
 }
 
 export function useTheme(themeName: string) {
