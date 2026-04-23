@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/phoinixi/resuml/compare/v1.19.2...v1.20.0) (2026-04-23)
+
+
+### Features
+
+* **web:** add explicit About link in toolbar ([a9c3333](https://github.com/phoinixi/resuml/commit/a9c3333011ef823fabec960aaaa750831ba1a363))
+
 ## [1.19.2](https://github.com/phoinixi/resuml/compare/v1.19.1...v1.19.2) (2026-04-23)
 
 ## [1.19.1](https://github.com/phoinixi/resuml/compare/v1.19.0...v1.19.1) (2026-04-23)
