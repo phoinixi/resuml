@@ -1,3 +1,22 @@
+# [1.21.0](https://github.com/phoinixi/resuml/compare/v1.20.1...v1.21.0) (2026-04-23)
+
+
+### Bug Fixes
+
+* **bundler:** merge into existing manifest for scoped runs ([1b0479a](https://github.com/phoinixi/resuml/commit/1b0479a1e155220c7a0d75f1b2f3b8c482948f50))
+* **jd:** clearer error when a job site is a JS-only SPA ([9498e88](https://github.com/phoinixi/resuml/commit/9498e8805062f3b825914f8e38ba42fc78b25f4b))
+* **lint:** drop unnecessary optional chain on req.body ([a72c914](https://github.com/phoinixi/resuml/commit/a72c91421573a38d154c589aa8d1bb4df79ffe61))
+* **themes:** restore full manifest wiped by last rebundle ([cca2586](https://github.com/phoinixi/resuml/commit/cca25867eebdcdae65e608b5bd22c2c0d63f97d0))
+* **web:** move About link to subtle bottom-right corner ([078e504](https://github.com/phoinixi/resuml/commit/078e504343dde307880991af03914e6a8ca7f9c1))
+
+
+### Features
+
+* **analytics:** add Vercel Speed Insights ([7527dd8](https://github.com/phoinixi/resuml/commit/7527dd86eeb8e34f013e71593edab244801bd499))
+* **analytics:** cookieless Vercel Web Analytics ([fd362a2](https://github.com/phoinixi/resuml/commit/fd362a2edbb6e82029bd2928c238fdce808a0d5b))
+* **jd:** fetch job descriptions from a URL ([0766697](https://github.com/phoinixi/resuml/commit/07666978b64cf9dc865a1d66c50be5504e894b42))
+* **jd:** headless-browser fallback for JS-only job sites ([239ba48](https://github.com/phoinixi/resuml/commit/239ba48cd98096e9598259a87aea9422f4d51920))
+
 ## [1.20.1](https://github.com/phoinixi/resuml/compare/v1.20.0...v1.20.1) (2026-04-23)
 
 
