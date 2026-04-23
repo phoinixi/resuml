@@ -119,6 +119,15 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
             const capability = getThemeCapability(theme.name);
             const isDisabled = capability === 'unavailable';
             const downloads = formatDownloads(theme.weeklyDownloads);
+            // Uniform card: name + capability badge on the left, download
+            // count (or em-dash if unknown) on the right. Description and
+            // version are dropped — they were inconsistently available
+            // across npm packages and made cards look ragged.
+            const title = [
+              theme.description,
+              theme.weeklyDownloads ? `${theme.weeklyDownloads.toLocaleString()} weekly npm downloads` : null,
+              theme.version ? `v${theme.version}` : null,
+            ].filter(Boolean).join(' • ');
             return (
               <button
                 key={theme.name}
@@ -126,8 +135,9 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
                 onClick={() => { if (!isDisabled) onSelect(theme.name); }}
                 disabled={isDisabled}
                 aria-pressed={theme.name === currentTheme}
+                title={title}
               >
-                <div className="theme-picker-name">
+                <span className="theme-picker-name">
                   <span className="theme-picker-name-text">{theme.displayName}</span>
                   {capability === 'browser' && (
                     <Zap size={12} className="theme-badge-instant" aria-label="Renders instantly in browser" />
@@ -138,21 +148,10 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
                   {capability === 'snapshot-only' && (
                     <Eye size={12} className="theme-badge-preview" aria-label="Preview only — thumbnail in picker, no live render" />
                   )}
-                </div>
-                {theme.description && (
-                  <div className="theme-picker-desc">{theme.description}</div>
-                )}
-                <div className="theme-picker-meta">
-                  {downloads && (
-                    <span className="theme-picker-downloads" title={`${theme.weeklyDownloads.toLocaleString()} weekly npm downloads`}>
-                      <Download size={10} aria-hidden="true" /> {downloads}/wk
-                    </span>
-                  )}
-                  {theme.version && <span>v{theme.version}</span>}
-                  {capability === 'broken' && <span className="theme-meta-note">renders poorly in-browser</span>}
-                  {capability === 'snapshot-only' && <span className="theme-meta-note">preview only</span>}
-                  {capability === 'unavailable' && <span className="theme-meta-note">unavailable</span>}
-                </div>
+                </span>
+                <span className="theme-picker-downloads" title={`${theme.weeklyDownloads.toLocaleString()} weekly npm downloads`}>
+                  <Download size={10} aria-hidden="true" /> {downloads || '—'}/wk
+                </span>
               </button>
             );
           })}
