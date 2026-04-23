@@ -954,26 +954,76 @@
     }
     .theme-picker-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 8px;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
       padding: 0 20px 20px;
       overflow-y: auto;
     }
     .theme-picker-card {
       background: var(--bg);
       border: 2px solid var(--border);
-      border-radius: 8px;
-      padding: 10px 12px;
+      border-radius: 10px;
+      padding: 0;
       cursor: pointer;
-      transition: all 0.15s;
+      transition: transform 0.15s, border-color 0.15s, background 0.15s;
       text-align: left;
+      min-width: 0;
+      appearance: none;
+      font: inherit;
+      color: inherit;
+      /* NOTE: deliberately no overflow:hidden here — in some engines it
+         combined with the grid's implicit block-size to collapse the
+         cell. Clip via the thumb's own overflow instead. */
+    }
+    .theme-picker-card:hover { transform: translateY(-1px); }
+    .theme-picker-thumb {
+      display: block;
+      width: 100%;
+      /* Padding-top trick keeps the 3:4 aspect ratio even when the img is
+         missing/hidden (CSS aspect-ratio collapses in that case). */
+      padding-top: 133.333%;
+      background:
+        linear-gradient(135deg, rgba(88,166,255,0.06), rgba(165,180,252,0.08)),
+        var(--surface-elevated);
+      overflow: hidden;
+      position: relative;
+    }
+    .theme-picker-thumb img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .theme-picker-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
+      padding: 8px 12px;
       min-width: 0;
-      overflow: hidden;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
     }
+    /* Loading / missing thumb: show a clear placeholder with the theme name
+       centered, instead of collapsing to a thin line. This covers three
+       cases: image still downloading, 404 (theme has no snapshot), and
+       broken themes that never rendered a snapshot. */
+    .theme-picker-thumb {
+      /* padding-top trick already set above gives the box its 3:4 height */
+    }
+    .theme-picker-thumb::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px dashed rgba(140, 140, 160, 0.25);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+    .theme-picker-thumb img:not([src=""]) ~ ::before { display: none; }
+    .theme-picker-card img[src=""] { display: none; }
     .theme-picker-card:hover { border-color: var(--accent); background: rgba(88, 166, 255, 0.06); }
     .theme-picker-card.active { border-color: var(--accent); background: rgba(88, 166, 255, 0.12); }
     .theme-picker-card.disabled,
@@ -1024,7 +1074,7 @@
     }
 
     /* Responsive */
-    @media (max-width: 768px) {
+    @media (max-width: 640px) {
       /* Compact single-row toolbar: brand + mode toggle | scroll-overflow
          actions. Horizontally scrollable if it still doesn't fit. */
       .toolbar {

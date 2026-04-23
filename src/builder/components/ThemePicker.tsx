@@ -119,40 +119,53 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
             const capability = getThemeCapability(theme.name);
             const isDisabled = capability === 'unavailable';
             const downloads = formatDownloads(theme.weeklyDownloads);
-            // Uniform card: name + capability badge on the left, download
-            // count (or em-dash if unknown) on the right. Description and
-            // version are dropped — they were inconsistently available
-            // across npm packages and made cards look ragged.
             const title = [
               theme.description,
               theme.weeklyDownloads ? `${theme.weeklyDownloads.toLocaleString()} weekly npm downloads` : null,
               theme.version ? `v${theme.version}` : null,
             ].filter(Boolean).join(' • ');
             return (
-              <button
+              <div
                 key={theme.name}
+                role="button"
+                tabIndex={isDisabled ? -1 : 0}
                 className={`theme-picker-card ${theme.name === currentTheme ? 'active' : ''} ${isDisabled ? 'theme-picker-card-disabled' : ''} ${capability === 'broken' ? 'theme-picker-card-broken' : ''}`}
                 onClick={() => { if (!isDisabled) onSelect(theme.name); }}
-                disabled={isDisabled}
+                onKeyDown={(e) => {
+                  if (isDisabled) return;
+                  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect(theme.name); }
+                }}
                 aria-pressed={theme.name === currentTheme}
+                aria-disabled={isDisabled}
                 title={title}
               >
-                <span className="theme-picker-name">
-                  <span className="theme-picker-name-text">{theme.displayName}</span>
-                  {capability === 'browser' && (
-                    <Zap size={12} className="theme-badge-instant" aria-label="Renders instantly in browser" />
-                  )}
-                  {capability === 'broken' && (
-                    <AlertTriangle size={12} className="theme-badge-broken" aria-label="Known to fail at render" />
-                  )}
-                  {capability === 'snapshot-only' && (
-                    <Eye size={12} className="theme-badge-preview" aria-label="Preview only — thumbnail in picker, no live render" />
-                  )}
+                <span className="theme-picker-thumb">
+                  <img
+                    src={`themes/${theme.name}.thumb.jpg`}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                  />
                 </span>
-                <span className="theme-picker-downloads" title={`${theme.weeklyDownloads.toLocaleString()} weekly npm downloads`}>
-                  <Download size={10} aria-hidden="true" /> {downloads || '—'}/wk
+                <span className="theme-picker-footer">
+                  <span className="theme-picker-name">
+                    <span className="theme-picker-name-text">{theme.displayName}</span>
+                    {capability === 'browser' && (
+                      <Zap size={12} className="theme-badge-instant" aria-label="Renders instantly in browser" />
+                    )}
+                    {capability === 'broken' && (
+                      <AlertTriangle size={12} className="theme-badge-broken" aria-label="Known to fail at render" />
+                    )}
+                    {capability === 'snapshot-only' && (
+                      <Eye size={12} className="theme-badge-preview" aria-label="Preview only — thumbnail in picker, no live render" />
+                    )}
+                  </span>
+                  <span className="theme-picker-downloads" title={`${theme.weeklyDownloads.toLocaleString()} weekly npm downloads`}>
+                    <Download size={10} aria-hidden="true" /> {downloads || '—'}/wk
+                  </span>
                 </span>
-              </button>
+              </div>
             );
           })}
           {!loading && !error && filtered.length === 0 && (

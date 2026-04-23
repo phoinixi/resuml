@@ -43,11 +43,11 @@ export function App() {
   const [themeName, setThemeName] = useState(initialState.theme);
   const [splitPos, setSplitPos] = useState(50);
   const [dragging, setDragging] = useState(false);
-  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 640);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const mq = window.matchMedia('(max-width: 768px)');
+    const mq = window.matchMedia('(max-width: 640px)');
     const handler = (e: MediaQueryListEvent) => { setIsMobile(e.matches); };
     mq.addEventListener('change', handler);
     return () => { mq.removeEventListener('change', handler); };
