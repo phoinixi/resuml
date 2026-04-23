@@ -41,14 +41,34 @@ export function FormMode({ resume, onChange }: FormModeProps) {
   return (
     <div className="form-container">
       <Section title="Basics" defaultOpen>
-        <TextInput label="Name" value={basics.name ?? ''} onChange={(v) => { update(['basics', 'name'], v); }} />
-        <TextInput label="Label / Title" value={basics.label ?? ''} onChange={(v) => { update(['basics', 'label'], v); }} />
-        <TextInput label="Email" value={basics.email ?? ''} onChange={(v) => { update(['basics', 'email'], v); }} />
-        <TextInput label="Phone" value={basics.phone ?? ''} onChange={(v) => { update(['basics', 'phone'], v); }} />
-        <TextInput label="Website" value={basics.url ?? ''} onChange={(v) => { update(['basics', 'url'], v); }} />
-        <TextArea label="Summary" value={basics.summary ?? ''} onChange={(v) => { update(['basics', 'summary'], v); }} />
-        <TextInput label="City" value={location.city ?? ''} onChange={(v) => { update(['basics', 'location', 'city'], v); }} />
-        <TextInput label="Country" value={location.countryCode ?? ''} onChange={(v) => { update(['basics', 'location', 'countryCode'], v); }} />
+        <TextInput label="Name" placeholder="Full name" value={basics.name ?? ''}
+          onChange={(v) => { update(['basics', 'name'], v); }} />
+        <TextInput label="Label / Title" placeholder="e.g. Senior Software Engineer"
+          value={basics.label ?? ''}
+          onChange={(v) => { update(['basics', 'label'], v); }} />
+        <div className="form-row">
+          <TextInput label="Email" type="email" placeholder="you@example.com"
+            value={basics.email ?? ''}
+            onChange={(v) => { update(['basics', 'email'], v); }} />
+          <TextInput label="Phone" type="tel" placeholder="+1 …"
+            value={basics.phone ?? ''}
+            onChange={(v) => { update(['basics', 'phone'], v); }} />
+        </div>
+        <TextInput label="Website" type="url" placeholder="https://…"
+          value={basics.url ?? ''}
+          onChange={(v) => { update(['basics', 'url'], v); }} />
+        <TextArea label="Summary" rows={5}
+          placeholder="2–4 sentences that position you for the role you want."
+          hint="Lead with your title and years of experience. Mirror terminology from the target job."
+          value={basics.summary ?? ''}
+          onChange={(v) => { update(['basics', 'summary'], v); }} />
+        <div className="form-row">
+          <TextInput label="City" value={location.city ?? ''}
+            onChange={(v) => { update(['basics', 'location', 'city'], v); }} />
+          <TextInput label="Country" placeholder="ISO code, e.g. US"
+            value={location.countryCode ?? ''}
+            onChange={(v) => { update(['basics', 'location', 'countryCode'], v); }} />
+        </div>
         <ProfilesSection profiles={(basics.profiles ?? []) as Record<string, unknown>[]} update={update} />
       </Section>
 
