@@ -24,7 +24,25 @@ Free, open source, no signup. Your resume data stays in your browser — we don'
 
 resuml ships with a built-in [MCP server](https://modelcontextprotocol.io/) so Claude Code can read your resume, tailor it to a job description, check the ATS score, and render it — all from a chat.
 
-Add to your Claude Code config (`.claude.json` or via `claude mcp add`):
+**One-command setup (recommended):**
+
+```bash
+claude mcp add resuml -- npx resuml mcp
+```
+
+That registers resuml for the current project. Add `--scope user` to make it available across all projects:
+
+```bash
+claude mcp add --scope user resuml -- npx resuml mcp
+```
+
+Verify it's wired up:
+
+```bash
+claude mcp list
+```
+
+**Or, for teams sharing the config via git**, create `.mcp.json` at the repo root:
 
 ```json
 {
@@ -37,7 +55,7 @@ Add to your Claude Code config (`.claude.json` or via `claude mcp add`):
 }
 ```
 
-Then ask Claude things like:
+Then ask Claude Code things like:
 
 > "Tailor my resume at `resume.yaml` to this job description, hit ATS score ≥ 80, and render it with the stackoverflow theme."
 
