@@ -1,3 +1,10 @@
+## [1.20.1](https://github.com/phoinixi/resuml/compare/v1.20.0...v1.20.1) (2026-04-23)
+
+
+### Bug Fixes
+
+* **preview:** wait for iframe load before revealing ([6326559](https://github.com/phoinixi/resuml/commit/63265590ca9306d9eb3d0646d6a49e54dc21b4f8))
+
 # [1.20.0](https://github.com/phoinixi/resuml/compare/v1.19.2...v1.20.0) (2026-04-23)
 
 
