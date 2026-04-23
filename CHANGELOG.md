@@ -1,3 +1,10 @@
+## [1.18.1](https://github.com/phoinixi/resuml/compare/v1.18.0...v1.18.1) (2026-04-23)
+
+
+### Bug Fixes
+
+* **security:** isolate preview iframe + widen http→https upgrade ([a98525c](https://github.com/phoinixi/resuml/commit/a98525c17d0e2d107e61d8e59aaa485ac59ca5f1))
+
 # [1.18.0](https://github.com/phoinixi/resuml/compare/v1.17.1...v1.18.0) (2026-04-23)
 
 
