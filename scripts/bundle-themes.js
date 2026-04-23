@@ -415,14 +415,30 @@ function legacyThemeGlobalsPlugin() {
         const original = await readFile(args.path, 'utf8');
         let contents = original;
 
-        // 1. Generic rewrite for theme packages: `FOO_BAR = ...` → `var FOO_BAR = ...`
+        // 1. Generic rewrite for theme packages: a line-leading `ident = expr`
+        // (where `ident` is not a JS keyword) becomes `var ident = expr`. ESM
+        // modules are strict-mode-only and throw `ReferenceError` on implicit
+        // global assignments — themes that skip `var` (e.g. onepage's
+        // `COURSES_COLUMNS = 3` at module scope, riga's `w = resume.work[i]`
+        // inside a for-loop) die at runtime without this.
+        //
+        // Property-chain assignments (`foo.bar = x`) don't match — the dot
+        // breaks the identifier before we reach `=`. The `(?!=)` guard skips
+        // `==` comparisons.
         if (isThemePkg) {
+          const RESERVED = new Set([
+            'var', 'let', 'const', 'function', 'return', 'if', 'else', 'for',
+            'while', 'do', 'switch', 'case', 'default', 'break', 'continue',
+            'throw', 'try', 'catch', 'finally', 'new', 'delete', 'typeof',
+            'void', 'in', 'of', 'instanceof', 'class', 'extends', 'super',
+            'this', 'import', 'export', 'from', 'as', 'async', 'await',
+            'yield', 'true', 'false', 'null', 'undefined', 'debugger',
+          ]);
           contents = contents.replace(
-            /^([ \t]*)([A-Z][A-Z0-9_]{2,})\s*=\s*/gm,
-            (match, indent, name, offset, full) => {
-              const preceding = full.slice(Math.max(0, offset - 5), offset);
-              if (/\b(var|let|const)\s*$/.test(preceding)) return match;
-              return `${indent}var ${name} = `;
+            /^([ \t]*)([a-zA-Z_$][\w$]*)\s*=(?!=)/gm,
+            (match, indent, name) => {
+              if (RESERVED.has(name)) return match;
+              return `${indent}var ${name} =`;
             }
           );
         }

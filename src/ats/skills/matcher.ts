@@ -31,6 +31,10 @@ function isLetter(ch: string): boolean {
   return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z');
 }
 
+function isDigit(ch: string): boolean {
+  return ch >= '0' && ch <= '9';
+}
+
 /**
  * Strip boundary chars that aren't valid leading/trailing parts of a skill
  * token — e.g. trailing commas, periods followed by space, quotes. Internal
@@ -41,13 +45,13 @@ function trimTokenBoundary(tok: string): string {
   let end = tok.length;
   // Letters, digits, '+' and '#' are valid leading chars; everything else (. / -) gets stripped
   while (start < end) {
-    const ch = tok[start]!;
-    if (isLetter(ch) || (ch >= '0' && ch <= '9') || ch === '+' || ch === '#') break;
+    const ch = tok.charAt(start);
+    if (isLetter(ch) || isDigit(ch) || ch === '+' || ch === '#') break;
     start++;
   }
   while (end > start) {
-    const ch = tok[end - 1]!;
-    if (isLetter(ch) || (ch >= '0' && ch <= '9') || ch === '+' || ch === '#') break;
+    const ch = tok.charAt(end - 1);
+    if (isLetter(ch) || isDigit(ch) || ch === '+' || ch === '#') break;
     end--;
   }
   return start === 0 && end === tok.length ? tok : tok.slice(start, end);
@@ -64,18 +68,18 @@ export function tokenize(text: string): Token[] {
   let i = 0;
   while (i < len) {
     // Skip separators
-    while (i < len && !isTokenChar(text[i]!)) i++;
+    while (i < len && !isTokenChar(text.charAt(i))) i++;
     // Accumulate token
     const start = i;
-    while (i < len && isTokenChar(text[i]!)) i++;
+    while (i < len && isTokenChar(text.charAt(i))) i++;
     if (i === start) continue;
     const raw = trimTokenBoundary(text.slice(start, i));
     if (!raw) continue;
     // Require at least one letter or digit or + or #
     let hasCore = false;
     for (let k = 0; k < raw.length; k++) {
-      const ch = raw[k]!;
-      if (isLetter(ch) || (ch >= '0' && ch <= '9') || ch === '+' || ch === '#') {
+      const ch = raw.charAt(k);
+      if (isLetter(ch) || isDigit(ch) || ch === '+' || ch === '#') {
         hasCore = true;
         break;
       }
@@ -85,7 +89,7 @@ export function tokenize(text: string): Token[] {
     let letterCount = 0;
     let upperCount = 0;
     for (let k = 0; k < raw.length; k++) {
-      const ch = raw[k]!;
+      const ch = raw.charAt(k);
       if (isLetter(ch)) {
         letterCount++;
         if (ch >= 'A' && ch <= 'Z') upperCount++;
@@ -149,9 +153,9 @@ export class SkillIndex {
     skills.forEach((skill, i) => {
       for (const phrase of [skill.canonical, ...skill.aliases]) {
         const tokens = phraseToTokens(phrase);
-        if (tokens.length === 0) continue;
+        const first = tokens[0];
+        if (!first) continue;
         maxLen = Math.max(maxLen, tokens.length);
-        const first = tokens[0]!;
         const list = this.byFirstToken.get(first);
         const entry: PhraseCandidate = {
           skillIdx: i,
@@ -182,8 +186,9 @@ export class SkillIndex {
 
     let i = 0;
     while (i < tokens.length) {
-      const first = tokens[i]!.norm;
-      const bucket = this.byFirstToken.get(first);
+      const head = tokens[i];
+      if (!head) break;
+      const bucket = this.byFirstToken.get(head.norm);
       if (!bucket) { i++; continue; }
 
       let matched = false;
@@ -192,12 +197,13 @@ export class SkillIndex {
         if (i + len > tokens.length) continue;
         let ok = true;
         for (let k = 0; k < len; k++) {
-          if (tokens[i + k]!.norm !== cand.phraseTokens[k]) { ok = false; break; }
+          const tok = tokens[i + k];
+          if (!tok || tok.norm !== cand.phraseTokens[k]) { ok = false; break; }
         }
         if (!ok) continue;
         // Acronym guard: require the original text to be all-caps when the
         // phrase is acronym-shaped (e.g. "ARE" only matches "ARE", not "are")
-        if (cand.requiresCaseMatch && !tokens[i]!.isAllUpper) continue;
+        if (cand.requiresCaseMatch && !head.isAllUpper) continue;
         hits.set(cand.skillIdx, (hits.get(cand.skillIdx) ?? 0) + 1);
         i += len;
         matched = true;
@@ -208,7 +214,9 @@ export class SkillIndex {
 
     const result: SkillMatch[] = [];
     for (const [skillIdx, count] of hits) {
-      result.push({ skill: this.skills[skillIdx]!, occurrences: count });
+      const skill = this.skills[skillIdx];
+      if (!skill) continue;
+      result.push({ skill, occurrences: count });
     }
     // Sort: hot skills first, then by frequency, then canonical asc
     result.sort((a, b) => {
