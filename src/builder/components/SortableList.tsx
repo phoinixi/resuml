@@ -63,11 +63,15 @@ export function SortableList<T>({
       }, screenReaderInstructions: { draggable: ariaLabel } }}
     >
       <SortableContext items={ids} strategy={verticalListSortingStrategy}>
-        {items.map((item, i) => (
-          <SortableRow key={ids[i]} id={ids[i]!}>
-            {(handle) => renderItem(item, i, handle)}
-          </SortableRow>
-        ))}
+        {items.map((item, i) => {
+          const id = ids[i];
+          if (!id) return null;
+          return (
+            <SortableRow key={id} id={id}>
+              {(handle) => renderItem(item, i, handle)}
+            </SortableRow>
+          );
+        })}
       </SortableContext>
     </DndContext>
   );
