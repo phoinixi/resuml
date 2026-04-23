@@ -19,7 +19,7 @@ let workerUrl: string | null = null;
 function getWorker(): Worker {
   if (worker) return worker;
 
-  // Build the worker from the source inline — avoids needing a separate bundle step.
+  // Build the worker from the source inline, avoids needing a separate bundle step.
   // The real theme-render logic runs via dynamic import() inside the worker.
   const workerCode = `
     // Polyfill process for theme bundles that reference it at runtime

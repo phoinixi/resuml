@@ -16,13 +16,13 @@
 
 ## Three ways to use it
 
-### 🌐 [resuml.app](https://resuml.app) — the web app
+### 🌐 The web app at [resuml.app](https://resuml.app)
 
-Free, open source, no signup. Your resume data stays in your browser — we don't store or track anything. Write in YAML or use the form editor, pick from 300+ themes, check your ATS match against a job description, and export to PDF.
+Free, open source, no signup. Your resume data stays in your browser. We don't store or track anything. Write in YAML or use the form editor, pick from 300+ themes, check your ATS match against a job description, and export to PDF.
 
 ### 🤖 With Claude Code / AI agents (MCP)
 
-resuml ships with a built-in [MCP server](https://modelcontextprotocol.io/) so Claude Code can read your resume, tailor it to a job description, check the ATS score, and render it — all from a chat.
+resuml ships with a built-in [MCP server](https://modelcontextprotocol.io/) so Claude Code can read your resume, tailor it to a job description, check the ATS score, and render it, all from a chat.
 
 **One-command setup (recommended):**
 
@@ -96,7 +96,7 @@ Full CLI reference, Node.js API, ATS rubric, CI/CD setup, and every MCP tool liv
 ## Requirements
 
 - Node.js ≥ 20, npm ≥ 10
-- Nothing else — validation, ATS, rendering, and PDF all run locally
+- Nothing else. Validation, ATS, rendering, and PDF all run locally
 
 ## Contributing
 

@@ -6,14 +6,14 @@
  *   - npmWeeklyDownloads: rough "actual usage" proxy (npm API)
  *   - renderOk: whether the bundled theme renders a sample resume without
  *     throwing (Playwright + blob worker). Themes that fail here are the
- *     ones that silently showed sample data before — surface them as broken.
+ *     ones that silently showed sample data before, surface them as broken.
  *
  * Usage:
  *   node scripts/enrich-themes-manifest.mjs                # both
  *   node scripts/enrich-themes-manifest.mjs --downloads-only
  *   node scripts/enrich-themes-manifest.mjs --render-only  # needs dev server at :3010
  *
- * The render probe is slow (tens of seconds) — keep the output committed.
+ * The render probe is slow (tens of seconds), keep the output committed.
  */
 
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -99,7 +99,7 @@ async function enrichRender(manifest) {
     volunteer: [{ organization: 'V', position: 'P', startDate: '2020', summary: 'S', highlights: ['H'] }],
     // Include `meta.palette` so themes like material (which set
     // meta.palette.primary without defensive checks) don't trip the probe
-    // — matches what the runtime padResume provides.
+    //, matches what the runtime padResume provides.
     meta: { theme: 'test', palette: { primary: '', secondary: '' } },
   };
 

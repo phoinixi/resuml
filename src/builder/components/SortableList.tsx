@@ -16,7 +16,7 @@ import { GripVertical } from 'lucide-react';
  * Pass an array of items and a `renderItem` function; the list handles
  * pointer + keyboard drag, and calls `onReorder` with the new array.
  *
- * Drag target is just the `<GripVertical>` handle — the rest of the row
+ * Drag target is just the `<GripVertical>` handle, the rest of the row
  * remains clickable/editable as normal. Keyboard: Tab to a handle,
  * Space/Enter to pick up, arrow keys to move, Space/Enter to drop.
  */

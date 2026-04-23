@@ -3,12 +3,12 @@
  * Build the skills taxonomy used by the ATS keyword matcher.
  *
  * Sources:
- *   1. O*NET (US Department of Labor, public domain) — "Technology Skills"
+ *   1. O*NET (US Department of Labor, public domain), "Technology Skills"
  *      and "Tools Used" for all IT occupations (SOC codes 15-*).
- *   2. src/ats/skills/emerging.ts — hand-curated allowlist of modern
+ *   2. src/ats/skills/emerging.ts, hand-curated allowlist of modern
  *      frameworks/tools O*NET hasn't absorbed yet.
  *
- * Output: data/skills/skills.json — bundled by the app at build time.
+ * Output: data/skills/skills.json, bundled by the app at build time.
  *
  * Run: node scripts/build-skills-db.js
  *   --onet-zip <path>   Use a local O*NET zip instead of downloading
@@ -122,7 +122,7 @@ function nameToCanonicalAndAliases(raw) {
     const acronym = words.map((w) => w[0]).join('');
     if (acronym.length >= 3 && acronym.length <= 6) aliases.add(acronym);
   }
-  // Don't auto-generate vendor-prefix tail aliases — too many collide with
+  // Don't auto-generate vendor-prefix tail aliases, too many collide with
   // common English words ("Microsoft Project" → "Project", "Oracle Forms" →
   // "Forms"). Use data/skills/emerging.json for curated shortforms instead.
 
@@ -136,7 +136,7 @@ function nameToCanonicalAndAliases(raw) {
 /**
  * Single-word skill names that collide with common English prose. O*NET
  * contains obscure products literally named "Switch", "Access", "Contact",
- * "Notes", "Software development" etc. — matching those against prose
+ * "Notes", "Software development" etc., matching those against prose
  * produces nonsense. Drop them and rely on the emerging-tech allowlist
  * for the genuine single-word brands (e.g. "React", "Docker", "Vite").
  */
@@ -219,7 +219,7 @@ async function main() {
   const techRows = parseTsv(join(base, 'Technology Skills.txt'));
   const toolRows = parseTsv(join(base, 'Tools Used.txt'));
 
-  // Keep only IT/software occupations (SOC 15-*) — drops noise from unrelated jobs
+  // Keep only IT/software occupations (SOC 15-*), drops noise from unrelated jobs
   const itOnly = (rows) => rows.filter((r) => r['O*NET-SOC Code']?.startsWith('15-'));
 
   const skillsMap = new Map();  // canonical (lowercased) → {id, canonical, aliases, type, hot, sources}
@@ -228,7 +228,7 @@ async function main() {
     if (!rawName || !keepEntry(rawName, commodityTitle)) return;
     const { canonical, aliases } = nameToCanonicalAndAliases(rawName);
     if (!canonical || canonical.length < 2) return;
-    // Apply ban to the canonical form (post-suffix-strip) — "Software
+    // Apply ban to the canonical form (post-suffix-strip), "Software
     // development tools" → "Software development" should trip the phrase ban.
     if (!keepEntry(canonical, commodityTitle)) return;
     const key = canonical.toLowerCase();
@@ -285,7 +285,7 @@ async function main() {
     }
   }
 
-  // Output — sorted by canonical name for stable diffs
+  // Output, sorted by canonical name for stable diffs
   const skills = [...skillsMap.values()].sort((a, b) =>
     a.canonical.localeCompare(b.canonical)
   );

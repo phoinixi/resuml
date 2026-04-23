@@ -17,7 +17,7 @@ import { DEFAULT_YAML } from '../defaults';
 /**
  * Read persisted state synchronously before the first render so we never show
  * the default sample ("Jane Smith") flashing in on hard reload. URL-hash
- * sharing is still async (compressed payload needs async unzip) — for that
+ * sharing is still async (compressed payload needs async unzip), for that
  * path usePersist's useEffect swaps state after mount.
  */
 function readInitialState(): { yaml: string; theme: string; jobDescription: string } {
@@ -96,7 +96,7 @@ export function App() {
   // Split pane drag: unified pointer events via setPointerCapture. One
   // listener chain handles mouse, touch, and stylus. Browsers with
   // PointerEvent support (all modern) deliver pointermove reliably even
-  // when the pointer leaves the divider element — the capture binds
+  // when the pointer leaves the divider element, the capture binds
   // delivery to the original target.
   const handlePointerDown = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     const container = containerRef.current;

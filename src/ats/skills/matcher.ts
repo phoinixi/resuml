@@ -17,7 +17,7 @@ export interface Token {
  * Chars that can appear inside a skill token (letters, digits, plus, hash,
  * dot, slash, hyphen). Anything else is a separator.
  *
- * Char-class check on a single char — constant-time, not ReDoS-susceptible
+ * Char-class check on a single char, constant-time, not ReDoS-susceptible
  * (CodeQL js/polynomial-redos flagged the previous regex-based tokenizer).
  */
 function isTokenChar(ch: string): boolean {
@@ -37,7 +37,7 @@ function isDigit(ch: string): boolean {
 
 /**
  * Strip boundary chars that aren't valid leading/trailing parts of a skill
- * token — e.g. trailing commas, periods followed by space, quotes. Internal
+ * token, e.g. trailing commas, periods followed by space, quotes. Internal
  * punctuation (Node.js, CI/CD, shadcn/ui) is preserved.
  */
 function trimTokenBoundary(tok: string): string {
@@ -102,7 +102,7 @@ export function tokenize(text: string): Token[] {
 }
 
 /**
- * Normalize a skill label into token strings. Splits on whitespace only —
+ * Normalize a skill label into token strings. Splits on whitespace only,
  * internal punctuation (dots, slashes, hyphens, plus/hash) stays attached to
  * its token. Skill labels come from our own JSON, not user input, so the
  * simple regex split is safe here.
@@ -118,7 +118,7 @@ function phraseToTokens(phrase: string): string[] {
 interface PhraseCandidate {
   skillIdx: number;
   phraseTokens: string[];  // lowercase, whitespace-split
-  requiresCaseMatch: boolean;  // true for all-caps acronyms — avoids "IS"/"IT"/"NO" collisions
+  requiresCaseMatch: boolean;  // true for all-caps acronyms, avoids "IS"/"IT"/"NO" collisions
 }
 
 /**
@@ -174,7 +174,7 @@ export class SkillIndex {
   }
 
   /**
-   * Scan text for skills. Longest-match wins at each position — e.g. "Next.js"
+   * Scan text for skills. Longest-match wins at each position, e.g. "Next.js"
    * doesn't also fire "Next", and "Google Cloud Platform" doesn't also fire
    * "Google".
    *
@@ -231,7 +231,7 @@ export class SkillIndex {
   get maxPhraseTokens(): number { return this.maxPhraseLen; }
 }
 
-/** Synchronous constructor (takes preloaded data — used by tests). */
+/** Synchronous constructor (takes preloaded data, used by tests). */
 export function buildSkillIndex(skills: readonly Skill[]): SkillIndex {
   return new SkillIndex(skills);
 }

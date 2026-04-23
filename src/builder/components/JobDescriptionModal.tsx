@@ -65,8 +65,8 @@ export function JobDescriptionModal({ value, onSave, onClose }: JobDescriptionMo
         <div className="jd-modal-body">
           <p className="jd-modal-desc">
             <Sparkles size={14} aria-hidden="true" />
-            Paste a job description to unlock tailored feedback — keyword match,
-            skill gaps and fit assessment. Runs locally in your browser.
+            Paste a job description to unlock tailored feedback: keyword match,
+            skill gaps, and fit assessment. Runs locally in your browser.
           </p>
           <label htmlFor={fieldId} className="jd-modal-label">
             Paste the job description

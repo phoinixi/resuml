@@ -372,7 +372,7 @@ async function main() {
     const resourceUris = resources.map(r => r.uri);
     info(`Found ${resources.length} resources:`);
     for (const r of resources) {
-      info(`  ${r.uri} — ${r.description?.slice(0, 60) || r.name}`);
+      info(`  ${r.uri}, ${r.description?.slice(0, 60) || r.name}`);
     }
     assert(resourceUris.includes('resuml://schema/json-resume'), 'Resource: json-resume schema');
     assert(resourceUris.includes('resuml://docs/ats-scoring'), 'Resource: ats-scoring rubric');
@@ -477,7 +477,7 @@ async function main() {
     assert(atsBasicData.rating, `Rating: ${atsBasicData.rating}`);
     assert(Array.isArray(atsBasicData.checks), `Has ${atsBasicData.checks.length} checks`);
     assert(atsBasicData.summary, 'Has summary text');
-    info(`Score: ${atsBasicData.score}/100 — Rating: ${atsBasicData.rating}`);
+    info(`Score: ${atsBasicData.score}/100, Rating: ${atsBasicData.rating}`);
     info(`Summary: ${truncate(atsBasicData.summary, 150)}`);
 
     const passedChecks = atsBasicData.checks.filter(c => c.passed);
@@ -499,7 +499,7 @@ async function main() {
     assert(Array.isArray(atsJdData.keywords?.matched), 'Has matched keywords');
     assert(Array.isArray(atsJdData.keywords?.missing), 'Has missing keywords');
     assert(typeof atsJdData.keywords?.matchPercentage === 'number', 'Has match percentage');
-    info(`Score: ${atsJdData.score}/100 — Rating: ${atsJdData.rating}`);
+    info(`Score: ${atsJdData.score}/100, Rating: ${atsJdData.rating}`);
     info(`Keyword match: ${atsJdData.keywords.matchPercentage}%`);
     info(`Matched (${atsJdData.keywords.matched.length}): ${atsJdData.keywords.matched.join(', ')}`);
     info(`Missing (${atsJdData.keywords.missing.length}): ${atsJdData.keywords.missing.join(', ')}`);
@@ -550,7 +550,7 @@ async function main() {
     });
     const pdfContent = JSON.parse(pdfResult.content[0].text);
     if (pdfContent.error?.includes('Playwright')) {
-      info('⏭  Skipped — Playwright not installed (expected in CI)');
+      info('⏭  Skipped, Playwright not installed (expected in CI)');
       ok('Graceful error when Playwright missing');
       passed++;
     } else if (pdfContent.pdf) {

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Simple MCP client — sends one tool/resource/prompt call and prints the result.
+ * Simple MCP client, sends one tool/resource/prompt call and prints the result.
  *
  * Usage:
  *   node scripts/mcp-call.mjs tool <toolName> '<json args>'

@@ -5,7 +5,7 @@ import { analyzeAts } from '../../ats/index';
 
 /**
  * Runs ATS analysis only when a job description is provided.
- * Without a JD there is no job to tailor for — the panel shows the JD input
+ * Without a JD there is no job to tailor for, the panel shows the JD input
  * instead of a decontextualized score.
  */
 export function useAts(resume: ResumeSchema | null, jobDescription?: string): AtsResult | null {

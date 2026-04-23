@@ -16,7 +16,7 @@ vi.mock('chalk', () => ({
   },
 }));
 
-// Mock playwright — return an object whose chromium.launch fails,
+// Mock playwright, return an object whose chromium.launch fails,
 // so pdf.ts's loadPlaywright will trigger handleCommandError when launch throws
 vi.mock('playwright', () => ({
   __esModule: true,

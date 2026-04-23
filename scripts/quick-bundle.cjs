@@ -3,7 +3,7 @@
  * for the browser as an ESM module.
  *
  * Shims Node.js builtins (fs, path, url, crypto) so themes that
- * reference them at import time still bundle — the shims are no-ops
+ * reference them at import time still bundle, the shims are no-ops
  * or minimal polyfills that cover what Handlebars-based themes need.
  */
 const esbuild = require('esbuild');

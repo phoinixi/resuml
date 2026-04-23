@@ -55,9 +55,9 @@ export function generateSummary(score: number, rating: AtsRating, hasJd: boolean
 
   const base = `ATS Score: ${score}/100 (${ratingLabel})`;
   if (hasJd) {
-    return `${base} — includes job description keyword matching.`;
+    return `${base}, includes job description keyword matching.`;
   }
-  return `${base} — based on resume structure and content best practices.`;
+  return `${base}, based on resume structure and content best practices.`;
 }
 
 /**
@@ -68,18 +68,18 @@ export function assessFit(keywords: AtsKeywordMatch): AtsFitAssessment {
   if (matchPercentage >= 70) {
     return {
       level: 'strong',
-      message: 'Strong fit — your resume aligns well with this job description.',
+      message: 'Strong fit, your resume aligns well with this job description.',
     };
   }
   const topMissing = missing.slice(0, 5).join(', ');
   if (matchPercentage >= 50) {
     return {
       level: 'partial',
-      message: `Partial fit — consider emphasizing transferable skills. Key gaps: ${topMissing}.`,
+      message: `Partial fit, consider emphasizing transferable skills. Key gaps: ${topMissing}.`,
     };
   }
   return {
     level: 'weak',
-    message: `Weak fit — this role requires skills not well represented in your resume. Major gaps: ${topMissing}.`,
+    message: `Weak fit, this role requires skills not well represented in your resume. Major gaps: ${topMissing}.`,
   };
 }

@@ -41,13 +41,13 @@ export function Preview({ html, loading, error }: PreviewProps) {
        * to a fresh document, which also gives us a clean
        * CustomElementRegistry (stackoverflow registers <time-duration>).
        *
-       * `sandbox="allow-scripts"` — NOT `allow-same-origin`. Themes run
+       * `sandbox="allow-scripts"`, NOT `allow-same-origin`. Themes run
        * arbitrary render code against user-controlled resume data (which
        * can come from a share-link URL hash), so the iframe must be
        * treated as untrusted. Without `allow-same-origin` the iframe
        * lives at a null origin and can't read the parent's localStorage,
        * cookies, or DOM. Scripts inside still run (themes need that for
-       * web components / inline JS) but in an isolated origin — a
+       * web components / inline JS) but in an isolated origin, a
        * malicious shared resume can't exfiltrate the user's stored data.
        */}
       <iframe

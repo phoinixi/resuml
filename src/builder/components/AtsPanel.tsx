@@ -114,10 +114,10 @@ export function AtsPanel({ result, hasJobDescription, onOpenJdModal, onClose }: 
 
           {result.keywords && (
             <section className="ats-keywords" aria-label="Keyword match">
-              <div className="ats-category-title">Keywords — {result.keywords.matchPercentage}% match</div>
+              <div className="ats-category-title">Keywords · {result.keywords.matchPercentage}% match</div>
               {result.keywords.missing.length > 0 && (
                 <div className="ats-kw-group">
-                  <span className="ats-kw-label missing">Required by the job — add to your resume:</span>
+                  <span className="ats-kw-label missing">Required by the job. Add to your resume:</span>
                   <div className="ats-kw-tags">
                     {result.keywords.missing.map((kw) => (
                       <span key={kw} className="ats-kw-tag missing">{kw}</span>
@@ -137,7 +137,7 @@ export function AtsPanel({ result, hasJobDescription, onOpenJdModal, onClose }: 
               )}
               {result.keywords.extra.length > 0 && (
                 <div className="ats-kw-group">
-                  <span className="ats-kw-label extra">In your resume — not required by this job:</span>
+                  <span className="ats-kw-label extra">In your resume. Not required by this job:</span>
                   <div className="ats-kw-tags">
                     {result.keywords.extra.map((kw) => (
                       <span key={kw} className="ats-kw-tag extra">{kw}</span>

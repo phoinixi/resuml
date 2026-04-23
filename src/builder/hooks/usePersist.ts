@@ -22,7 +22,7 @@ export function usePersist(
         if (result) {
           setYaml(result.yaml);
           if (result.theme) setThemeName(result.theme);
-          // URL-shared resumes don't carry JD — fall through to localStorage
+          // URL-shared resumes don't carry JD, fall through to localStorage
           const stored = loadFromStorage();
           if (stored.jobDescription) setJobDescription(stored.jobDescription);
           return;

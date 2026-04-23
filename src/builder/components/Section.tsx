@@ -3,7 +3,7 @@ import { ChevronDown } from 'lucide-react';
 
 interface SectionProps {
   title: string;
-  /** Shown as a muted badge in the header — usually the count of items. */
+  /** Shown as a muted badge in the header, usually the count of items. */
   count?: number;
   children: ReactNode;
   /** Force-open on mount regardless of `hasContent`. */

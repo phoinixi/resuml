@@ -37,7 +37,7 @@ export type ThemeCapability = 'browser' | 'broken' | 'snapshot-only' | 'unavaila
 function getApiBase(): string {
   if (typeof window === 'undefined') return '';
   const { hostname } = window.location;
-  // Self-hosted origins — use relative paths (same-origin /api/*):
+  // Self-hosted origins, use relative paths (same-origin /api/*):
   //   - local dev
   //   - Vercel previews (any *.vercel.app)
   //   - the production domain (resuml.app and subdomains)
@@ -193,7 +193,7 @@ export async function loadSnapshot(themeName: string): Promise<string | null> {
 /**
  * Tracks which theme the Worker *currently* has as its active render
  * function. On a theme switch, we MUST call workerLoadTheme again to
- * replace the worker's `currentTheme` — otherwise renders go through the
+ * replace the worker's `currentTheme`, otherwise renders go through the
  * previously-active theme's render() even though our UI shows the new
  * theme's name. Dynamic import in the worker is cached by the browser,
  * so re-calling is cheap when the module has been loaded before.
@@ -210,7 +210,7 @@ export function isThemeLoaded(themeName: string): boolean {
  * Returns true on success, false if the theme isn't browser-renderable.
  */
 export async function tryLoadWorkerTheme(themeName: string): Promise<boolean> {
-  // Already the active theme — nothing to do.
+  // Already the active theme, nothing to do.
   if (activeWorkerTheme === themeName) return true;
 
   // Ensure the manifest cache is populated before reading from it. Without
@@ -221,7 +221,7 @@ export async function tryLoadWorkerTheme(themeName: string): Promise<boolean> {
 
   const entry = getManifestEntry(themeName);
   if (!entry?.browserCompatible) return false;
-  // Pre-flight flag from enrich-themes-manifest.mjs — themes we've already
+  // Pre-flight flag from enrich-themes-manifest.mjs, themes we've already
   // observed throwing at render time. Skip the worker round-trip and surface
   // the error state directly.
   if (entry.renderOk === false) return false;

@@ -8,10 +8,10 @@
  *   - Node.js built-in shims (buffer, stream, util, events, os, etc.)
  *
  * Output:
- *   docs/themes/{name}.js           — bundled render module
- *   docs/themes/{name}.css          — extracted CSS (if any)
- *   docs/themes/{name}.snapshot.html— pre-rendered HTML with sample data
- *   docs/themes/manifest.json       — theme metadata registry
+ *   docs/themes/{name}.js          , bundled render module
+ *   docs/themes/{name}.css         , extracted CSS (if any)
+ *   docs/themes/{name}.snapshot.html: pre-rendered HTML with sample data
+ *   docs/themes/manifest.json      , theme metadata registry
  *
  * Usage:
  *   node scripts/bundle-themes.js              # Bundle popular themes
@@ -218,7 +218,7 @@ function generateThemeFsShim(themeFiles) {
     '',
     'function matchDir(p) {',
     '  var clean = normalizePath(p);',
-    '  // Root ("/"/".") after stripping leading slash is "" — look up "." which',
+    '  // Root ("/"/".") after stripping leading slash is "", look up "." which',
     '  // the collector uses for the top-level directory listing.',
     '  if (clean === "" || clean === ".") {',
     '    if (__dirs["."] !== undefined) return __dirs["."];',
@@ -294,7 +294,7 @@ function generateSnapshot(shortName, packageName) {
     const render = theme.render || (theme.default && theme.default.render);
     if (typeof render !== 'function') return null;
 
-    // Deep-clone SAMPLE_RESUME — some themes preprocess (e.g. markdown-ify)
+    // Deep-clone SAMPLE_RESUME, some themes preprocess (e.g. markdown-ify)
     // fields and mutate the input, which would then pollute subsequent
     // themes' snapshots (keywords end up as "<p>TypeScript</p>" etc.).
     const paddedResume = padResume(JSON.parse(JSON.stringify(SAMPLE_RESUME)));
@@ -368,13 +368,13 @@ async function discoverThemes() {
  * `ReferenceError` in strict mode. Rewrite them to `var` declarations.
  *
  * Scope: applied to any .js file inside jsonresume-theme-* packages. Keep the
- * regex conservative — only match top-level (start-of-line) SCREAMING_SNAKE
+ * regex conservative, only match top-level (start-of-line) SCREAMING_SNAKE
  * identifier assignments. This misses camelCase globals but avoids rewriting
  * legitimate property assignments inside functions.
  */
 /**
  * Known-bad CJS patterns in specific dependencies. Applied via esbuild onLoad.
- * Keep patches minimal and scoped — a regex that's too broad breaks working
+ * Keep patches minimal and scoped, a regex that's too broad breaks working
  * themes that happen to match.
  */
 const LEGACY_PATCHES = [
@@ -402,7 +402,7 @@ const LEGACY_PATCHES = [
     },
   },
   // jsonresume-theme-react tries to assign `window` and `document` which are
-  // read-only in the browser (we're already in a browser — no need to
+  // read-only in the browser (we're already in a browser, no need to
   // polyfill). Guard the assignments so they don't throw. It also uses a
   // pattern not covered by the generic rewrite:
   //     const modulePath = path.join(__dirname, 'dist/index.cjs');
@@ -449,11 +449,11 @@ function legacyThemeGlobalsPlugin() {
         // 1. Generic rewrite for theme packages: a line-leading `ident = expr`
         // (where `ident` is not a JS keyword) becomes `var ident = expr`. ESM
         // modules are strict-mode-only and throw `ReferenceError` on implicit
-        // global assignments — themes that skip `var` (e.g. onepage's
+        // global assignments, themes that skip `var` (e.g. onepage's
         // `COURSES_COLUMNS = 3` at module scope, riga's `w = resume.work[i]`
         // inside a for-loop) die at runtime without this.
         //
-        // Property-chain assignments (`foo.bar = x`) don't match — the dot
+        // Property-chain assignments (`foo.bar = x`) don't match, the dot
         // breaks the identifier before we reach `=`. The `(?!=)` guard skips
         // `==` comparisons.
         if (isThemePkg) {
@@ -476,14 +476,14 @@ function legacyThemeGlobalsPlugin() {
               //   - `a ?\n  b = 1 :\n  c = 2` (ternary branch)
               //   - `a ||\n  b = 1`           (short-circuit)
               // A new statement context, on the other hand, lives after
-              // `{` `}` `;` — in those cases the rewrite is correct.
+              // `{` `}` `;`, in those cases the rewrite is correct.
               const before = full.slice(0, offset).replace(/\s+$/, '');
               const prevChar = before.charAt(before.length - 1);
               if (prevChar === ',' || prevChar === '(' || prevChar === '[' ||
                   prevChar === '?' || prevChar === ':') return match;
               const prev2 = before.slice(-2);
               if (prev2 === '||' || prev2 === '&&' || prev2 === '=>') return match;
-              // Inside `for (` init clause — rare but valid (var isn't allowed
+              // Inside `for (` init clause, rare but valid (var isn't allowed
               // there unless at the very start, and esbuild will handle the
               // already-correct `for (var i = 0; ...)` form).
               const lineStart = full.lastIndexOf('\n', offset - 1) + 1;
@@ -569,7 +569,7 @@ async function bundleTheme(shortName, packageName, shimsDir) {
       //   unconditionally (to intercept .handlebars/.hbs during require).
       //   In browser ESM, `require` is undefined, so we stub it.
       // - We deliberately do NOT alias `window = globalThis`. Legacy CJS
-      //   packages like `swag` branch on `typeof window` — if window is
+      //   packages like `swag` branch on `typeof window`, if window is
       //   defined they assign `window.Swag = Swag = {}` and skip setting
       //   `module.exports`, leaving the theme with `Swag.registerHelpers`
       //   undefined. We want the module-exports branch in workers.
@@ -843,7 +843,7 @@ function writeShims(shimsDir) {
     'export default { platform: platform, tmpdir: tmpdir, homedir: homedir, hostname: hostname, type: type, arch: arch, release: release, EOL: EOL, endianness: endianness, cpus: cpus, totalmem: totalmem, freemem: freemem, networkInterfaces: networkInterfaces, userInfo: userInfo };',
   ].join('\n'));
 
-  // glob/globby/require-glob shims — these use the fs shim's embedded file list
+  // glob/globby/require-glob shims, these use the fs shim's embedded file list
   writeFileSync(resolve(shimsDir, 'glob.js'), [
     'import { readdirSync, readFileSync, existsSync } from "fs";',
     '',
@@ -853,7 +853,7 @@ function writeShims(shimsDir) {
     '  filepath = collapseSlashes(filepath);',
     '  pattern = collapseSlashes(pattern);',
     '  // Step 1: expand `{a,b,c}` alternatives into placeholders BEFORE',
-    '  // escaping — otherwise the escape step turns `{hbs,js}` into',
+    '  // escaping, otherwise the escape step turns `{hbs,js}` into',
     '  // `\\{hbs,js\\}` and the alternation regex no longer sees braces.',
     '  var alts = [];',
     '  pattern = pattern.replace(/\\{([^}]+)\\}/g, function(_, list) {',
@@ -942,7 +942,7 @@ function writeShims(shimsDir) {
   ].join('\n'));
 
   // require-glob: export as a function with a `.sync` PROPERTY. Consumers do
-  // `var requireGlob = require('require-glob'); requireGlob.sync(pattern)` —
+  // `var requireGlob = require('require-glob'); requireGlob.sync(pattern)`,
   // the property must survive esbuild's CJS/ESM interop. Default-only export
   // would strip `.sync`, so we use a proxy-like object pattern: default is
   // the function, and the function has `.sync` set before export.
@@ -964,7 +964,7 @@ function writeShims(shimsDir) {
     '  return result;',
     '}',
     'requireGlob.sync = requireGlob;',
-    '// Named export preserves `.sync` through esbuild\'s CJS interop —',
+    '// Named export preserves `.sync` through esbuild\'s CJS interop,',
     '// consumers that `require(\'require-glob\')` receive the function itself.',
     'export { requireGlob as default };',
     'export { requireGlob };',

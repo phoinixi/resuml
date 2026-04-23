@@ -6,7 +6,7 @@ import { padResume } from '../utils/padResume.js';
 /*
  * Design note: when a theme can't render client-side we do NOT fall back to
  * its pre-rendered snapshot. Snapshots contain SAMPLE data (Jane Smith),
- * which is actively misleading in the preview — users interpret it as
+ * which is actively misleading in the preview, users interpret it as
  * "my resume got lost". We surface a clear error state instead and keep
  * snapshots scoped to theme-picker thumbnails.
  */
@@ -56,7 +56,7 @@ export function useTheme(themeName: string) {
 
     // Loading spinner shows during any render attempt so the user doesn't
     // see a flash of the previous error / stale preview. We only clear the
-    // previous theme error *after* commiting loading=true — so if a render
+    // previous theme error *after* commiting loading=true, so if a render
     // returns synchronously with an error, the UI doesn't strobe between
     // "error" → "nothing" → "error".
     setLoading(true);
@@ -79,13 +79,13 @@ export function useTheme(themeName: string) {
         setLoading(false);
         return;
       } catch {
-        // Worker render failed — fall through to the "can't render" state
+        // Worker render failed, fall through to the "can't render" state
       }
     }
 
     // Step 2: Theme can't render client-side. We deliberately do NOT fall back
     // to the theme's pre-rendered snapshot because that contains SAMPLE data
-    // (Jane Smith / Tech Corp) — showing it in the preview makes users think
+    // (Jane Smith / Tech Corp), showing it in the preview makes users think
     // they've lost their data. Instead show a clear empty state with
     // instructions (handled by Preview via `themeError`).
     //

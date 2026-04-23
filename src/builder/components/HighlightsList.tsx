@@ -7,7 +7,7 @@ interface HighlightsListProps {
 }
 
 // Check if a highlight starts with a strong action verb (partial overlap with
-// src/ats/i18n/en.ts — kept short here for an inline in-editor hint).
+// src/ats/i18n/en.ts, kept short here for an inline in-editor hint).
 const ACTION_VERB_HINT = /^(Led|Led\s|Built|Designed|Developed|Shipped|Launched|Owned|Drove|Grew|Reduced|Improved|Increased|Mentored|Managed|Automated|Implemented|Refactored|Scaled|Architected|Optimized|Optimised|Migrated|Coordinated|Delivered|Created|Partnered|Established|Raised|Standardi[sz]ed|Spearheaded|Introduced|Rolled)/;
 const METRIC_HINT = /\d/;
 
@@ -47,7 +47,7 @@ export function HighlightsList({ highlights, onUpdate }: HighlightsListProps) {
               ><X size={14} aria-hidden="true" /></button>
               {(weakStart || noMetric) && (
                 <span className="form-field-hints">
-                  {weakStart && <span className="form-field-hint">starts weak — try an action verb</span>}
+                  {weakStart && <span className="form-field-hint">starts weak, try an action verb</span>}
                   {noMetric && <span className="form-field-hint">consider adding a metric</span>}
                 </span>
               )}

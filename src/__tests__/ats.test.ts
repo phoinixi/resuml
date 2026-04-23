@@ -238,7 +238,7 @@ describe('ATS JD Matcher', () => {
     `;
     const result = matchJobDescription(fullResume, jd, 'en');
     const matchedLower = result.matched.map((m) => m.toLowerCase());
-    // The resume uses "TypeScript" and "React" — aliases "TS" / "React.js" in
+    // The resume uses "TypeScript" and "React", aliases "TS" / "React.js" in
     // the JD should still resolve to matches.
     expect(matchedLower).toContain('typescript');
     expect(matchedLower).toContain('react');
@@ -248,7 +248,7 @@ describe('ATS JD Matcher', () => {
     // Free-form JD prose with contractions. Without the fix, "doesn't" split
     // on the apostrophe and leaked "doesn" as a required keyword.
     const jd = `
-      We ship fast and the team doesn't wait. We aren't fans of bureaucracy —
+      We ship fast and the team doesn't wait. We aren't fans of bureaucracy,
       if something isn't working, we won't hesitate to change it.
       Must have: TypeScript, React, Node.js.
     `;
@@ -267,7 +267,7 @@ describe('ATS JD Matcher', () => {
     // "faster", "waiting", "lane", "actually".
     const jd = `
       We move faster because we actually ship. If something feels off,
-      anyone can push back — no one is waiting in a lane. Often, a
+      anyone can push back, no one is waiting in a lane. Often, a
       teammate asks for help and we reach out. You'll be comfortable
       with everything being unfamiliar on day one.
       Required: TypeScript, React, Node.js, AWS.
@@ -332,7 +332,7 @@ describe('ATS JD Matcher', () => {
   it('should tokenize adversarial input in near-linear time (ReDoS guard)', () => {
     // Previous regex-based tokenizer had a polynomial-ReDoS vulnerability
     // flagged by CodeQL (js/polynomial-redos). Rewriting to a single-pass
-    // iterator eliminated it — this test guards against regressions.
+    // iterator eliminated it, this test guards against regressions.
     const adversarial = '"'.repeat(50_000) + ' TypeScript ' + '.'.repeat(50_000);
     const jd = adversarial;
     const t0 = performance.now();
@@ -347,7 +347,7 @@ describe('ATS JD Matcher', () => {
   });
 
   it('should prefer skills from requirement sections', () => {
-    // The first paragraph is company blurb — it shouldn't drown the actual
+    // The first paragraph is company blurb, it shouldn't drown the actual
     // requirements below.
     const jd = `
       About Acme: we build distributed systems at scale. Our company uses

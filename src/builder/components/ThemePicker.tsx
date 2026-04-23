@@ -105,7 +105,7 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
               checked={showBroken}
               onChange={(e) => { setShowBroken(e.target.checked); }}
             />
-            <span>Show all ({hiddenCount} hidden — don't render cleanly)</span>
+            <span>Show all ({hiddenCount} hidden, don't render cleanly)</span>
           </label>
         </div>
         <div className="theme-picker-grid">
@@ -158,11 +158,11 @@ export function ThemePicker({ currentTheme, onSelect, onClose }: ThemePickerProp
                       <AlertTriangle size={12} className="theme-badge-broken" aria-label="Known to fail at render" />
                     )}
                     {capability === 'snapshot-only' && (
-                      <Eye size={12} className="theme-badge-preview" aria-label="Preview only — thumbnail in picker, no live render" />
+                      <Eye size={12} className="theme-badge-preview" aria-label="Preview only: thumbnail in picker, no live render" />
                     )}
                   </span>
                   <span className="theme-picker-downloads" title={`${theme.weeklyDownloads.toLocaleString()} weekly npm downloads`}>
-                    <Download size={10} aria-hidden="true" /> {downloads || '—'}/wk
+                    <Download size={10} aria-hidden="true" /> {downloads || '-'}/wk
                   </span>
                 </span>
               </div>

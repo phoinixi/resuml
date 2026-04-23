@@ -1,4 +1,4 @@
-# resuml — Detailed documentation
+# resuml: detailed documentation
 
 > For the short intro, see [README.md](README.md). For the web app, go to [resuml.app](https://resuml.app).
 
@@ -115,10 +115,10 @@ resuml validate --resume resume.yaml --ats --format json
 
 Passing `--jd` extracts keywords from the job description using TF-based ranking with stem matching, then compares to your resume. You get:
 
-- **Match percentage** — how many JD keywords appear in your resume
-- **Matched keywords** — what you already cover
-- **Missing keywords** — what to consider adding
-- **Extra keywords** — skills in your resume the JD didn't mention
+- **Match percentage**: how many JD keywords appear in your resume
+- **Matched keywords**: what you already cover
+- **Missing keywords**: what to consider adding
+- **Extra keywords**: skills in your resume the JD didn't mention
 
 ### Scoring
 
@@ -334,8 +334,8 @@ Claude Code will:
 
 **Theme rendering issues**
 - Ensure the theme is installed (`npm install jsonresume-theme-<name>`)
-- Third-party themes may have their own bugs — try a different theme
+- Third-party themes may have their own bugs. Try a different theme.
 - The web app at [resuml.app](https://resuml.app) pre-checks themes and flags broken ones
 
 **Dev server issues**
-- The default port is 3000 — pass `--port` to override
+- The default port is 3000. Pass `--port` to override.

@@ -73,7 +73,7 @@ async function main() {
   const browser = await chromium.launch();
   // Render at ~2x the display size (display ≈ 240×320 in the picker grid)
   // so thumbnails still look crisp on retina. JPEG keeps repo size down
-  // compared to PNG — ~15–25 KB per image vs 150+ for PNG.
+  // compared to PNG, ~15–25 KB per image vs 150+ for PNG.
   const ctx = await browser.newContext({
     viewport: { width: 480, height: 640 },
     deviceScaleFactor: 1,
@@ -92,7 +92,7 @@ async function main() {
       });
       // Small wait so webfonts/CSS transitions settle.
       await page.waitForTimeout(400);
-      // Clamp to the hero portion — long resumes lose legibility when
+      // Clamp to the hero portion, long resumes lose legibility when
       // the whole page is scaled down to thumb size.
       await page.screenshot({
         path: resolve(THEMES_DIR, `${name}.thumb.jpg`),
