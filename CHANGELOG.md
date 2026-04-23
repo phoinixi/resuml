@@ -1,3 +1,10 @@
+## [1.14.1](https://github.com/phoinixi/resuml/compare/v1.14.0...v1.14.1) (2026-04-23)
+
+
+### Bug Fixes
+
+* **builder+themes:** theme-switch bug, react theme, material + more polyfills ([d84f0dd](https://github.com/phoinixi/resuml/commit/d84f0dde4e39e54a58d8021095b135fe3370aa82))
+
 # [1.14.0](https://github.com/phoinixi/resuml/compare/v1.13.2...v1.14.0) (2026-04-23)
 
 
