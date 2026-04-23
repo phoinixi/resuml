@@ -1,3 +1,10 @@
+## [1.14.2](https://github.com/phoinixi/resuml/compare/v1.14.1...v1.14.2) (2026-04-23)
+
+
+### Bug Fixes
+
+* **mobile:** clean up toolbar + fix column-to-row divider resize ([531a732](https://github.com/phoinixi/resuml/commit/531a732d5dd70e13d48dfa38c8e39f9e8d46793b))
+
 ## [1.14.1](https://github.com/phoinixi/resuml/compare/v1.14.0...v1.14.1) (2026-04-23)
 
 
