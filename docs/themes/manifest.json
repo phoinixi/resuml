@@ -8,9 +8,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 292411,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 140,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "classy",
@@ -21,9 +19,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 89,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "straightforward",
@@ -34,9 +30,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 126236,
-    "cssSize": 2452,
-    "npmWeeklyDownloads": 18,
-    "renderOk": true
+    "cssSize": 2452
   },
   {
     "name": "sceptile",
@@ -47,9 +41,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 33,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "waterfall",
@@ -60,9 +52,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 23988,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 9,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "modern-extended",
@@ -73,9 +63,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 178672,
-    "cssSize": 150,
-    "npmWeeklyDownloads": 29,
-    "renderOk": true
+    "cssSize": 150
   },
   {
     "name": "cora",
@@ -86,9 +74,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 306203,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 52,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "msresume",
@@ -99,9 +85,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 11,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "modern2",
@@ -112,9 +96,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 293424,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 14,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "berlin-grid-ats",
@@ -125,9 +107,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 237,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "dark-classy-responsive",
@@ -138,9 +118,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 12,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "catppuccin",
@@ -151,9 +129,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 10,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "timeline-fixed",
@@ -164,9 +140,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 2673295,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 10,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "simplyelegant",
@@ -177,9 +151,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 830873,
-    "cssSize": 40134,
-    "npmWeeklyDownloads": 15,
-    "renderOk": true
+    "cssSize": 40134
   },
   {
     "name": "even",
@@ -190,9 +162,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 163268,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1480,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "dark-classy",
@@ -203,9 +173,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 12,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "light-classy-responsive",
@@ -216,9 +184,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 14,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "projects",
@@ -229,9 +195,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 160737,
-    "cssSize": 3762,
-    "npmWeeklyDownloads": 13,
-    "renderOk": true
+    "cssSize": 3762
   },
   {
     "name": "nameme",
@@ -242,9 +206,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 286536,
-    "cssSize": 216,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 216
   },
   {
     "name": "rnord",
@@ -255,9 +217,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 65769,
-    "cssSize": 4590,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 4590
   },
   {
     "name": "elegant",
@@ -268,9 +228,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 579371,
-    "cssSize": 18231,
-    "npmWeeklyDownloads": 684,
-    "renderOk": true
+    "cssSize": 18231
   },
   {
     "name": "bufferbloat",
@@ -281,9 +239,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 349896,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "engineering",
@@ -294,9 +250,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 181275,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 613,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "stackoverflow",
@@ -307,9 +261,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 260975,
-    "cssSize": 13769,
-    "npmWeeklyDownloads": 304,
-    "renderOk": true
+    "cssSize": 13769
   },
   {
     "name": "spartan-skills",
@@ -320,9 +272,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 134924,
-    "cssSize": 7402,
-    "npmWeeklyDownloads": 10,
-    "renderOk": true
+    "cssSize": 7402
   },
   {
     "name": "eventide",
@@ -333,9 +283,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 1836987,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 15,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "awolden",
@@ -346,9 +294,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 66462,
-    "cssSize": 3594,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
+    "cssSize": 3594
   },
   {
     "name": "lowmess",
@@ -359,9 +305,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "kendall",
@@ -372,9 +316,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 112791,
-    "cssSize": 6458,
-    "npmWeeklyDownloads": 235,
-    "renderOk": true
+    "cssSize": 6458
   },
   {
     "name": "grande",
@@ -385,9 +327,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 222557,
-    "cssSize": 6626,
-    "npmWeeklyDownloads": 7,
-    "renderOk": true
+    "cssSize": 6626
   },
   {
     "name": "tech",
@@ -398,9 +338,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 142263,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 40,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "modern-with-projects-section",
@@ -411,9 +349,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 291614,
-    "cssSize": 216,
-    "npmWeeklyDownloads": 12,
-    "renderOk": true
+    "cssSize": 216
   },
   {
     "name": "light-classy-responsive-m2",
@@ -424,22 +360,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": false
-  },
-  {
-    "name": "cjean",
-    "displayName": "Cjean",
-    "description": "A clean, professional, and print-optimized JSON Resume theme built with Tailwind CSS and TypeScript.",
-    "version": "1.3.1",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 77410,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 20,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "straightforward-with-telephone",
@@ -450,22 +371,18 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 126154,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 0
   },
   {
-    "name": "actual",
-    "displayName": "Actual",
-    "description": "Actual theme for JSON Resume",
-    "version": "0.2.2",
+    "name": "cjean",
+    "displayName": "Cjean",
+    "description": "A clean, professional, and print-optimized JSON Resume theme built with Tailwind CSS and TypeScript.",
+    "version": "1.3.1",
     "browserCompatible": true,
     "hasSnapshot": false,
     "hasCss": false,
-    "fileSize": 1045182,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 98,
-    "renderOk": false
+    "fileSize": 77410,
+    "cssSize": 0
   },
   {
     "name": "elegant-ryantrinkle",
@@ -476,22 +393,18 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 7,
-    "renderOk": false
+    "cssSize": 0
   },
   {
-    "name": "macchiato",
-    "displayName": "Macchiato",
-    "description": "Simple theme for JSON Resume. Based on caffeine-theme.",
-    "version": "1.1.0",
+    "name": "actual",
+    "displayName": "Actual",
+    "description": "Actual theme for JSON Resume",
+    "version": "0.2.2",
     "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 221483,
-    "cssSize": 6365,
-    "npmWeeklyDownloads": 163,
-    "renderOk": true
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 1045182,
+    "cssSize": 0
   },
   {
     "name": "straightforward-fet-adapt",
@@ -502,9 +415,18 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 133519,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 0
+  },
+  {
+    "name": "macchiato",
+    "displayName": "Macchiato",
+    "description": "Simple theme for JSON Resume. Based on caffeine-theme.",
+    "version": "1.1.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 221483,
+    "cssSize": 6365
   },
   {
     "name": "flat",
@@ -515,9 +437,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 65218,
-    "cssSize": 2588,
-    "npmWeeklyDownloads": 273,
-    "renderOk": true
+    "cssSize": 2588
   },
   {
     "name": "light-classy-concise",
@@ -528,9 +448,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 6,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "academic",
@@ -541,9 +459,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 14286,
-    "cssSize": 4020,
-    "npmWeeklyDownloads": 88,
-    "renderOk": true
+    "cssSize": 4020
   },
   {
     "name": "react",
@@ -554,9 +470,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 451591,
-    "cssSize": 25049,
-    "npmWeeklyDownloads": 42,
-    "renderOk": true
+    "cssSize": 25049
   },
   {
     "name": "paper",
@@ -567,9 +481,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 127674,
-    "cssSize": 1673,
-    "npmWeeklyDownloads": 139,
-    "renderOk": true
+    "cssSize": 1673
   },
   {
     "name": "caffeine",
@@ -580,9 +492,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 71,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "stackoverflow-ibic",
@@ -593,9 +503,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 308941,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 10,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "onepage-simplified",
@@ -606,22 +514,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 116315,
-    "cssSize": 1746,
-    "npmWeeklyDownloads": 18,
-    "renderOk": true
-  },
-  {
-    "name": "eloquent",
-    "displayName": "Eloquent",
-    "description": "An eloquent JSON Resume theme: fluent, persuasive, for developers",
-    "version": "5.0.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 208463,
-    "cssSize": 31203,
-    "npmWeeklyDownloads": 109,
-    "renderOk": false
+    "cssSize": 1746
   },
   {
     "name": "umennel",
@@ -632,22 +525,18 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 353479,
-    "cssSize": 45227,
-    "npmWeeklyDownloads": 6,
-    "renderOk": true
+    "cssSize": 45227
   },
   {
-    "name": "material",
-    "displayName": "Material",
-    "description": "Material Design Json Resume Theme",
-    "version": "1.3.1",
+    "name": "eloquent",
+    "displayName": "Eloquent",
+    "description": "An eloquent JSON Resume theme: fluent, persuasive, for developers",
+    "version": "5.0.0",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 360408,
-    "cssSize": 13565,
-    "npmWeeklyDownloads": 254,
-    "renderOk": true
+    "fileSize": 208463,
+    "cssSize": 31203
   },
   {
     "name": "spartan-skills-de",
@@ -658,9 +547,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 134935,
-    "cssSize": 7402,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 7402
   },
   {
     "name": "stackoverflow-ru",
@@ -671,9 +558,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 388169,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "noodle",
@@ -684,9 +569,18 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 159032,
-    "cssSize": 2868,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 2868
+  },
+  {
+    "name": "material",
+    "displayName": "Material",
+    "description": "Material Design Json Resume Theme",
+    "version": "1.3.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 360408,
+    "cssSize": 13565
   },
   {
     "name": "class",
@@ -697,9 +591,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 64564,
-    "cssSize": 4667,
-    "npmWeeklyDownloads": 34,
-    "renderOk": true
+    "cssSize": 4667
   },
   {
     "name": "profesh",
@@ -710,9 +602,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 9,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "stackoverflowed",
@@ -723,9 +613,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 25,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "github-styled",
@@ -736,9 +624,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 144373,
-    "cssSize": 4066,
-    "npmWeeklyDownloads": 56,
-    "renderOk": true
+    "cssSize": 4066
   },
   {
     "name": "flat-davidgwking",
@@ -749,9 +635,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 65254,
-    "cssSize": 2588,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 2588
   },
   {
     "name": "straightforward-plus",
@@ -762,9 +646,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 126769,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "spartan",
@@ -775,9 +657,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 188127,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 93,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "onepage",
@@ -785,12 +665,10 @@
     "description": "Compact, printable theme for JSON Resume",
     "version": "0.0.3",
     "browserCompatible": true,
-    "hasSnapshot": false,
+    "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 69127,
-    "cssSize": 2011,
-    "npmWeeklyDownloads": 54,
-    "renderOk": true
+    "cssSize": 2011
   },
   {
     "name": "paperalt",
@@ -801,9 +679,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 131235,
-    "cssSize": 1790,
-    "npmWeeklyDownloads": 90,
-    "renderOk": true
+    "cssSize": 1790
   },
   {
     "name": "zurb",
@@ -814,9 +690,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 334801,
-    "cssSize": 44966,
-    "npmWeeklyDownloads": 109,
-    "renderOk": true
+    "cssSize": 44966
   },
   {
     "name": "one",
@@ -827,9 +701,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 126552,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 49,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "onepage-plus",
@@ -840,9 +712,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 69111,
-    "cssSize": 2604,
-    "npmWeeklyDownloads": 89,
-    "renderOk": true
+    "cssSize": 2604
   },
   {
     "name": "dark-classy-edit",
@@ -853,9 +723,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 80119,
-    "cssSize": 3517,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 3517
   },
   {
     "name": "moon",
@@ -866,9 +734,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 305976,
-    "cssSize": 7624,
-    "npmWeeklyDownloads": 92,
-    "renderOk": true
+    "cssSize": 7624
   },
   {
     "name": "tan-responsive",
@@ -879,9 +745,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 109591,
-    "cssSize": 6702,
-    "npmWeeklyDownloads": 104,
-    "renderOk": true
+    "cssSize": 6702
   },
   {
     "name": "nominaltech-nl",
@@ -892,9 +756,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 52463,
-    "cssSize": 1064,
-    "npmWeeklyDownloads": 163,
-    "renderOk": true
+    "cssSize": 1064
   },
   {
     "name": "dev-ats-es",
@@ -905,22 +767,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 7,
-    "renderOk": false
-  },
-  {
-    "name": "short",
-    "displayName": "Short",
-    "description": "Simple to the point theme for JSON Resume",
-    "version": "0.1.7",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 62855,
-    "cssSize": 1936,
-    "npmWeeklyDownloads": 35,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "a11y",
@@ -931,9 +778,18 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 96,
-    "renderOk": false
+    "cssSize": 0
+  },
+  {
+    "name": "short",
+    "displayName": "Short",
+    "description": "Simple to the point theme for JSON Resume",
+    "version": "0.1.7",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 62855,
+    "cssSize": 1936
   },
   {
     "name": "relaxed",
@@ -944,9 +800,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 275737,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 32,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "minyma",
@@ -957,9 +811,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 127434,
-    "cssSize": 8218,
-    "npmWeeklyDownloads": 44,
-    "renderOk": true
+    "cssSize": 8218
   },
   {
     "name": "jacrys",
@@ -970,9 +822,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 113297,
-    "cssSize": 6472,
-    "npmWeeklyDownloads": 56,
-    "renderOk": true
+    "cssSize": 6472
   },
   {
     "name": "crisp",
@@ -983,9 +833,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 200626,
-    "cssSize": 1559,
-    "npmWeeklyDownloads": 80,
-    "renderOk": true
+    "cssSize": 1559
   },
   {
     "name": "kards",
@@ -996,22 +844,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 3196848,
-    "cssSize": 5,
-    "npmWeeklyDownloads": 45,
-    "renderOk": true
-  },
-  {
-    "name": "polymer",
-    "displayName": "Polymer",
-    "description": "Boilerplate theme for JSON Resume",
-    "version": "0.0.6",
-    "browserCompatible": false,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 24,
-    "renderOk": false
+    "cssSize": 5
   },
   {
     "name": "even-crewshin",
@@ -1022,22 +855,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 160565,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": false
-  },
-  {
-    "name": "microdata",
-    "displayName": "Microdata",
-    "description": "A flat JSON Resume theme, infused with microdata using the schema.org vocabulary",
-    "version": "0.2.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 148640,
-    "cssSize": 7682,
-    "npmWeeklyDownloads": 23,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "light-classy-responsive-fr",
@@ -1048,9 +866,29 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 4,
-    "renderOk": false
+    "cssSize": 0
+  },
+  {
+    "name": "polymer",
+    "displayName": "Polymer",
+    "description": "Boilerplate theme for JSON Resume",
+    "version": "0.0.6",
+    "browserCompatible": false,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 0,
+    "cssSize": 0
+  },
+  {
+    "name": "microdata",
+    "displayName": "Microdata",
+    "description": "A flat JSON Resume theme, infused with microdata using the schema.org vocabulary",
+    "version": "0.2.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 148640,
+    "cssSize": 7682
   },
   {
     "name": "material-moon",
@@ -1061,9 +899,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 319670,
-    "cssSize": 10480,
-    "npmWeeklyDownloads": 112,
-    "renderOk": true
+    "cssSize": 10480
   },
   {
     "name": "americano-german",
@@ -1074,9 +910,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 196464,
-    "cssSize": 6599,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
+    "cssSize": 6599
   },
   {
     "name": "mantra",
@@ -1087,9 +921,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 39,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "lucide",
@@ -1100,9 +932,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 328329,
-    "cssSize": 4629,
-    "npmWeeklyDownloads": 31,
-    "renderOk": true
+    "cssSize": 4629
   },
   {
     "name": "rocketspacer",
@@ -1113,9 +943,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 45407,
-    "cssSize": 4179,
-    "npmWeeklyDownloads": 30,
-    "renderOk": true
+    "cssSize": 4179
   },
   {
     "name": "boilerplate",
@@ -1126,9 +954,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 62080,
-    "cssSize": 660,
-    "npmWeeklyDownloads": 45,
-    "renderOk": true
+    "cssSize": 660
   },
   {
     "name": "orbit",
@@ -1139,9 +965,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 238958,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 44,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "kate",
@@ -1152,35 +976,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 71857,
-    "cssSize": 1822,
-    "npmWeeklyDownloads": 44,
-    "renderOk": true
-  },
-  {
-    "name": "slick",
-    "displayName": "Slick",
-    "description": "Slick theme for JSON Resume",
-    "version": "0.1.16",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 125030,
-    "cssSize": 60122,
-    "npmWeeklyDownloads": 62,
-    "renderOk": true
-  },
-  {
-    "name": "pumpkin",
-    "displayName": "Pumpkin",
-    "description": "A dark, orangy theme based on the original flat theme",
-    "version": "1.1.4",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 157548,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 35,
-    "renderOk": true
+    "cssSize": 1822
   },
   {
     "name": "classy-vforesee",
@@ -1191,9 +987,29 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": false
+    "cssSize": 0
+  },
+  {
+    "name": "slick",
+    "displayName": "Slick",
+    "description": "Slick theme for JSON Resume",
+    "version": "0.1.16",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 125030,
+    "cssSize": 60122
+  },
+  {
+    "name": "pumpkin",
+    "displayName": "Pumpkin",
+    "description": "A dark, orangy theme based on the original flat theme",
+    "version": "1.1.4",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 157548,
+    "cssSize": 0
   },
   {
     "name": "compact",
@@ -1204,9 +1020,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 120666,
-    "cssSize": 898,
-    "npmWeeklyDownloads": 12,
-    "renderOk": true
+    "cssSize": 898
   },
   {
     "name": "srt",
@@ -1217,9 +1031,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 61571,
-    "cssSize": 2791,
-    "npmWeeklyDownloads": 32,
-    "renderOk": true
+    "cssSize": 2791
   },
   {
     "name": "spartacus",
@@ -1230,9 +1042,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 127313,
-    "cssSize": 4319,
-    "npmWeeklyDownloads": 21,
-    "renderOk": true
+    "cssSize": 4319
   },
   {
     "name": "papirus",
@@ -1243,9 +1053,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 24,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "paper-plus-plus",
@@ -1256,9 +1064,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 139084,
-    "cssSize": 6997,
-    "npmWeeklyDownloads": 81,
-    "renderOk": true
+    "cssSize": 6997
   },
   {
     "name": "the-careercup-good-resume",
@@ -1269,9 +1075,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 200083,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "kendall-fr",
@@ -1282,9 +1086,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 95862,
-    "cssSize": 6826,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 6826
   },
   {
     "name": "kwann-nl",
@@ -1295,9 +1097,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 55,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "juno-nl",
@@ -1308,9 +1108,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 81129,
-    "cssSize": 3009,
-    "npmWeeklyDownloads": 45,
-    "renderOk": true
+    "cssSize": 3009
   },
   {
     "name": "refined",
@@ -1321,9 +1119,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 13,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "standard-resume",
@@ -1334,9 +1130,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 219879,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 12,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "ace",
@@ -1347,22 +1141,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 321325,
-    "cssSize": 2754,
-    "npmWeeklyDownloads": 23,
-    "renderOk": true
-  },
-  {
-    "name": "riga",
-    "displayName": "Riga",
-    "description": "Riga theme for JSON Resume (https://github.com/jsonresume)",
-    "version": "1.0.16",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 121383,
-    "cssSize": 60576,
-    "npmWeeklyDownloads": 43,
-    "renderOk": true
+    "cssSize": 2754
   },
   {
     "name": "simple-red",
@@ -1373,9 +1152,18 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 211338,
-    "cssSize": 5821,
-    "npmWeeklyDownloads": 27,
-    "renderOk": true
+    "cssSize": 5821
+  },
+  {
+    "name": "riga",
+    "displayName": "Riga",
+    "description": "Riga theme for JSON Resume (https://github.com/jsonresume)",
+    "version": "1.0.16",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 121383,
+    "cssSize": 60576
   },
   {
     "name": "sshorter",
@@ -1386,87 +1174,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 63413,
-    "cssSize": 2215,
-    "npmWeeklyDownloads": 43,
-    "renderOk": true
-  },
-  {
-    "name": "paper_cn",
-    "displayName": "Paper_cn",
-    "description": "A theme for JSON Resume",
-    "version": "0.1.75",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 101694,
-    "cssSize": 5902,
-    "npmWeeklyDownloads": 95,
-    "renderOk": true
-  },
-  {
-    "name": "elite",
-    "displayName": "Elite",
-    "description": "Elite theme for JSONResume",
-    "version": "1.2.0",
-    "browserCompatible": false,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 22,
-    "renderOk": false
-  },
-  {
-    "name": "briefstrap",
-    "displayName": "Briefstrap",
-    "description": "Briefstrap theme for JSON Resume",
-    "version": "1.0.0",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": true,
-    "fileSize": 1711951,
-    "cssSize": 209959,
-    "npmWeeklyDownloads": 30,
-    "renderOk": false
-  },
-  {
-    "name": "full",
-    "displayName": "Full",
-    "description": "Simple to the point theme for JSON Resume, based on the short theme",
-    "version": "0.0.4",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 73506,
-    "cssSize": 7045,
-    "npmWeeklyDownloads": 15,
-    "renderOk": true
-  },
-  {
-    "name": "stackunderflow",
-    "displayName": "Stackunderflow",
-    "description": "A variation of the jsonresume slick overflow theme.",
-    "version": "0.0.20",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 232121,
-    "cssSize": 9903,
-    "npmWeeklyDownloads": 7,
-    "renderOk": true
-  },
-  {
-    "name": "kendall-web",
-    "displayName": "Kendall web",
-    "description": "A JSON Resume theme built with bootstrap",
-    "version": "0.5.7",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 115920,
-    "cssSize": 7536,
-    "npmWeeklyDownloads": 25,
-    "renderOk": true
+    "cssSize": 2215
   },
   {
     "name": "macchiato-custom",
@@ -1477,9 +1185,73 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 224592,
-    "cssSize": 7684,
-    "npmWeeklyDownloads": 15,
-    "renderOk": true
+    "cssSize": 7684
+  },
+  {
+    "name": "paper_cn",
+    "displayName": "Paper_cn",
+    "description": "A theme for JSON Resume",
+    "version": "0.1.75",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 101694,
+    "cssSize": 5902
+  },
+  {
+    "name": "elite",
+    "displayName": "Elite",
+    "description": "Elite theme for JSONResume",
+    "version": "1.2.0",
+    "browserCompatible": false,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 0,
+    "cssSize": 0
+  },
+  {
+    "name": "briefstrap",
+    "displayName": "Briefstrap",
+    "description": "Briefstrap theme for JSON Resume",
+    "version": "1.0.0",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": true,
+    "fileSize": 1711951,
+    "cssSize": 209959
+  },
+  {
+    "name": "stackunderflow",
+    "displayName": "Stackunderflow",
+    "description": "A variation of the jsonresume slick overflow theme.",
+    "version": "0.0.20",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 232121,
+    "cssSize": 9903
+  },
+  {
+    "name": "full",
+    "displayName": "Full",
+    "description": "Simple to the point theme for JSON Resume, based on the short theme",
+    "version": "0.0.4",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 73506,
+    "cssSize": 7045
+  },
+  {
+    "name": "kendall-web",
+    "displayName": "Kendall web",
+    "description": "A JSON Resume theme built with bootstrap",
+    "version": "0.5.7",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 115920,
+    "cssSize": 7536
   },
   {
     "name": "jupe",
@@ -1490,9 +1262,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 579379,
-    "cssSize": 18279,
-    "npmWeeklyDownloads": 19,
-    "renderOk": true
+    "cssSize": 18279
   },
   {
     "name": "jdambron-fr",
@@ -1503,9 +1273,18 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 423075,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 0
+  },
+  {
+    "name": "onepage-jak119",
+    "displayName": "Onepage jak119",
+    "description": "An updated fork of ainsleychong/jsonresume-theme-onepage. Compact, printable theme for JSON Resume",
+    "version": "0.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 123235,
+    "cssSize": 0
   },
   {
     "name": "paper_en",
@@ -1516,22 +1295,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 73422,
-    "cssSize": 5830,
-    "npmWeeklyDownloads": 39,
-    "renderOk": true
-  },
-  {
-    "name": "onepage-jak119",
-    "displayName": "Onepage jak119",
-    "description": "An updated fork of ainsleychong/jsonresume-theme-onepage. Compact, printable theme for JSON Resume",
-    "version": "0.0.1",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 123235,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 5830
   },
   {
     "name": "heavypaper",
@@ -1542,9 +1306,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 84941,
-    "cssSize": 5841,
-    "npmWeeklyDownloads": 37,
-    "renderOk": true
+    "cssSize": 5841
   },
   {
     "name": "ozee31",
@@ -1555,22 +1317,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 286274,
-    "cssSize": 216,
-    "npmWeeklyDownloads": 11,
-    "renderOk": true
-  },
-  {
-    "name": "mocha-responsive",
-    "displayName": "Mocha responsive",
-    "description": "Custom dark theme for JSON Resume based on Caffeine theme by Kelvin Nguyen (https://github.com/kelyvin)",
-    "version": "1.1.1",
-    "browserCompatible": false,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 11,
-    "renderOk": false
+    "cssSize": 216
   },
   {
     "name": "spartacus-nl",
@@ -1581,9 +1328,18 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 129021,
-    "cssSize": 4369,
-    "npmWeeklyDownloads": 45,
-    "renderOk": true
+    "cssSize": 4369
+  },
+  {
+    "name": "mocha-responsive",
+    "displayName": "Mocha responsive",
+    "description": "Custom dark theme for JSON Resume based on Caffeine theme by Kelvin Nguyen (https://github.com/kelyvin)",
+    "version": "1.1.1",
+    "browserCompatible": false,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 0,
+    "cssSize": 0
   },
   {
     "name": "claude",
@@ -1594,9 +1350,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 170367,
-    "cssSize": 8395,
-    "npmWeeklyDownloads": 9,
-    "renderOk": true
+    "cssSize": 8395
   },
   {
     "name": "foxyboxy",
@@ -1607,9 +1361,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 133155,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 11,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "elegant-tautologistics",
@@ -1620,9 +1372,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 15,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "curzy",
@@ -1633,9 +1383,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 258289,
-    "cssSize": 10385,
-    "npmWeeklyDownloads": 16,
-    "renderOk": true
+    "cssSize": 10385
   },
   {
     "name": "class2",
@@ -1646,9 +1394,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 68578,
-    "cssSize": 5125,
-    "npmWeeklyDownloads": 17,
-    "renderOk": true
+    "cssSize": 5125
   },
   {
     "name": "techlead",
@@ -1659,9 +1405,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 141666,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "onepage-mrseanryan",
@@ -1672,9 +1416,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 29,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "developpez",
@@ -1685,9 +1427,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 207340,
-    "cssSize": 10714,
-    "npmWeeklyDownloads": 19,
-    "renderOk": true
+    "cssSize": 10714
   },
   {
     "name": "qlh",
@@ -1698,9 +1438,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 73060,
-    "cssSize": 6513,
-    "npmWeeklyDownloads": 11,
-    "renderOk": true
+    "cssSize": 6513
   },
   {
     "name": "elegant-compact",
@@ -1711,22 +1449,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 13,
-    "renderOk": false
-  },
-  {
-    "name": "actual-letter",
-    "displayName": "Actual letter",
-    "description": "Actual letter theme for JSON Resume",
-    "version": "0.1.6",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 1027976,
-    "cssSize": 1587,
-    "npmWeeklyDownloads": 11,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "ophir",
@@ -1737,9 +1460,18 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 159247,
-    "cssSize": 2989,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "cssSize": 2989
+  },
+  {
+    "name": "actual-letter",
+    "displayName": "Actual letter",
+    "description": "Actual letter theme for JSON Resume",
+    "version": "0.1.6",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 1027976,
+    "cssSize": 1587
   },
   {
     "name": "shorter",
@@ -1750,9 +1482,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 63202,
-    "cssSize": 2163,
-    "npmWeeklyDownloads": 21,
-    "renderOk": true
+    "cssSize": 2163
   },
   {
     "name": "spartacus-prime",
@@ -1763,9 +1493,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 127617,
-    "cssSize": 4045,
-    "npmWeeklyDownloads": 17,
-    "renderOk": true
+    "cssSize": 4045
   },
   {
     "name": "juno",
@@ -1776,9 +1504,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 80850,
-    "cssSize": 2969,
-    "npmWeeklyDownloads": 13,
-    "renderOk": true
+    "cssSize": 2969
   },
   {
     "name": "samk",
@@ -1789,9 +1515,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 123172,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "elegantfixed",
@@ -1802,9 +1526,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 755874,
-    "cssSize": 40054,
-    "npmWeeklyDownloads": 14,
-    "renderOk": true
+    "cssSize": 40054
   },
   {
     "name": "minimal",
@@ -1815,9 +1537,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 76105,
-    "cssSize": 4292,
-    "npmWeeklyDownloads": 46,
-    "renderOk": true
+    "cssSize": 4292
   },
   {
     "name": "hyperfocus",
@@ -1828,9 +1548,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 77530,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "elegant-mrseanryan",
@@ -1841,35 +1559,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 12,
-    "renderOk": false
-  },
-  {
-    "name": "tachyons-clean",
-    "displayName": "Tachyons clean",
-    "description": "My take on jsonresume",
-    "version": "0.0.9",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 86151,
-    "cssSize": 155,
-    "npmWeeklyDownloads": 21,
-    "renderOk": true
-  },
-  {
-    "name": "modern-plain",
-    "displayName": "Modern plain",
-    "description": "A clean, modern JSON Resume theme with a professional two-column layout, PT Sans typography, and optimized for single-page print output",
-    "version": "1.1.5",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 140058,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 18,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "kendall-german",
@@ -1880,9 +1570,18 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 112663,
-    "cssSize": 6458,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 6458
+  },
+  {
+    "name": "tachyons-clean",
+    "displayName": "Tachyons clean",
+    "description": "My take on jsonresume",
+    "version": "0.0.9",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 86151,
+    "cssSize": 155
   },
   {
     "name": "sasha_fixed",
@@ -1893,9 +1592,18 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 53184,
-    "cssSize": 1904,
-    "npmWeeklyDownloads": 17,
-    "renderOk": true
+    "cssSize": 1904
+  },
+  {
+    "name": "modern-plain",
+    "displayName": "Modern plain",
+    "description": "A clean, modern JSON Resume theme with a professional two-column layout, PT Sans typography, and optimized for single-page print output",
+    "version": "1.1.5",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 140058,
+    "cssSize": 0
   },
   {
     "name": "striking",
@@ -1906,9 +1614,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 73865,
-    "cssSize": 9969,
-    "npmWeeklyDownloads": 16,
-    "renderOk": true
+    "cssSize": 9969
   },
   {
     "name": "elegantnew",
@@ -1919,9 +1625,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 6,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "fr_flat",
@@ -1932,9 +1636,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 78453,
-    "cssSize": 3017,
-    "npmWeeklyDownloads": 23,
-    "renderOk": true
+    "cssSize": 3017
   },
   {
     "name": "elegant-hitesh",
@@ -1945,9 +1647,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 14,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "stackoverflow-mats",
@@ -1958,9 +1658,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 199995,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 9,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "dev-ats",
@@ -1971,9 +1669,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 4,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "protos",
@@ -1984,9 +1680,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 125170,
-    "cssSize": 3711,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 3711
   },
   {
     "name": "pico",
@@ -1997,9 +1691,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 5394576,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "el-santo",
@@ -2010,9 +1702,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 7,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "kendall-variation",
@@ -2023,9 +1713,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 66824,
-    "cssSize": 6541,
-    "npmWeeklyDownloads": 12,
-    "renderOk": true
+    "cssSize": 6541
   },
   {
     "name": "markdown",
@@ -2036,9 +1724,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 56854,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 12,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "elegant-jali",
@@ -2049,35 +1735,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 17,
-    "renderOk": false
-  },
-  {
-    "name": "github",
-    "displayName": "Github",
-    "description": "A theme for JSON Resume",
-    "version": "0.0.5",
-    "browserCompatible": false,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 12,
-    "renderOk": false
-  },
-  {
-    "name": "rickosborne",
-    "displayName": "Rickosborne",
-    "description": "Rick O's theme for registry.jsonresume.org",
-    "version": "2022.9.16-T1450",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 42381,
-    "cssSize": 8758,
-    "npmWeeklyDownloads": 31,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "fizz",
@@ -2088,9 +1746,29 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 63897,
-    "cssSize": 4661,
-    "npmWeeklyDownloads": 11,
-    "renderOk": true
+    "cssSize": 4661
+  },
+  {
+    "name": "github",
+    "displayName": "Github",
+    "description": "A theme for JSON Resume",
+    "version": "0.0.5",
+    "browserCompatible": false,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 0,
+    "cssSize": 0
+  },
+  {
+    "name": "rickosborne",
+    "displayName": "Rickosborne",
+    "description": "Rick O's theme for registry.jsonresume.org",
+    "version": "2022.9.16-T1450",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 42381,
+    "cssSize": 8758
   },
   {
     "name": "onepage-updated",
@@ -2101,9 +1779,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 81087,
-    "cssSize": 2433,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 2433
   },
   {
     "name": "trivento",
@@ -2114,9 +1790,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 219637,
-    "cssSize": 1089,
-    "npmWeeklyDownloads": 10,
-    "renderOk": true
+    "cssSize": 1089
   },
   {
     "name": "elegant-leonth",
@@ -2127,9 +1801,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 104061,
-    "cssSize": 1471,
-    "npmWeeklyDownloads": 9,
-    "renderOk": true
+    "cssSize": 1471
   },
   {
     "name": "apage",
@@ -2140,9 +1812,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 2250853,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "aaron",
@@ -2153,9 +1823,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 75354,
-    "cssSize": 1865,
-    "npmWeeklyDownloads": 7,
-    "renderOk": true
+    "cssSize": 1865
   },
   {
     "name": "skills",
@@ -2166,9 +1834,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 125015,
-    "cssSize": 23649,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 23649
   },
   {
     "name": "materialize",
@@ -2179,9 +1845,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 319464,
-    "cssSize": 124845,
-    "npmWeeklyDownloads": 11,
-    "renderOk": true
+    "cssSize": 124845
   },
   {
     "name": "github2",
@@ -2192,9 +1856,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 7,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "elegant-fr-mod",
@@ -2205,9 +1867,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 596359,
-    "cssSize": 34936,
-    "npmWeeklyDownloads": 18,
-    "renderOk": true
+    "cssSize": 34936
   },
   {
     "name": "elegant-zh-hant",
@@ -2218,22 +1878,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 599921,
-    "cssSize": 34936,
-    "npmWeeklyDownloads": 10,
-    "renderOk": true
-  },
-  {
-    "name": "eloquent-ru",
-    "displayName": "Eloquent ru",
-    "description": "An eloquent JSON Resume theme: fluent, persuasive, for developers",
-    "version": "5.1.0-ru",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 275121,
-    "cssSize": 69498,
-    "npmWeeklyDownloads": 39,
-    "renderOk": true
+    "cssSize": 34936
   },
   {
     "name": "macchiato-ibic",
@@ -2244,9 +1889,18 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 280657,
-    "cssSize": 6365,
-    "npmWeeklyDownloads": 13,
-    "renderOk": true
+    "cssSize": 6365
+  },
+  {
+    "name": "eloquent-ru",
+    "displayName": "Eloquent ru",
+    "description": "An eloquent JSON Resume theme: fluent, persuasive, for developers",
+    "version": "5.1.0-ru",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 275121,
+    "cssSize": 69498
   },
   {
     "name": "wb-elegant",
@@ -2257,9 +1911,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 10,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "stackoverflow-skills",
@@ -2270,9 +1922,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 229535,
-    "cssSize": 10371,
-    "npmWeeklyDownloads": 12,
-    "renderOk": true
+    "cssSize": 10371
   },
   {
     "name": "boilerplate-test",
@@ -2283,9 +1933,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 62312,
-    "cssSize": 837,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
+    "cssSize": 837
   },
   {
     "name": "elegant-fr",
@@ -2296,9 +1944,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 14,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "eloquent-mod",
@@ -2309,9 +1955,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 410439,
-    "cssSize": 69694,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 69694
   },
   {
     "name": "bootstrap-icons",
@@ -2322,9 +1966,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 78223,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 9,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "shorter-miles",
@@ -2335,9 +1977,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 190461,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 10,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "contempo",
@@ -2348,9 +1988,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 151229,
-    "cssSize": 1530,
-    "npmWeeklyDownloads": 9,
-    "renderOk": true
+    "cssSize": 1530
   },
   {
     "name": "joeytall",
@@ -2358,12 +1996,10 @@
     "description": "Compact, printable theme for JSON Resume",
     "version": "1.0.1",
     "browserCompatible": true,
-    "hasSnapshot": false,
+    "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 69211,
-    "cssSize": 2336,
-    "npmWeeklyDownloads": 6,
-    "renderOk": true
+    "cssSize": 2336
   },
   {
     "name": "jjlorenzoelegant",
@@ -2374,9 +2010,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 7,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "kendall-fix",
@@ -2387,35 +2021,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 66835,
-    "cssSize": 6481,
-    "npmWeeklyDownloads": 7,
-    "renderOk": true
-  },
-  {
-    "name": "cvstrap",
-    "displayName": "Cvstrap",
-    "description": "cvStrap is a classic, clean, professional theme for the JSONResume schema with print-ready and responsive stylesheets, based on Bootstrap 2.0.",
-    "version": "0.0.5",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 220451,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 10,
-    "renderOk": true
-  },
-  {
-    "name": "plick",
-    "displayName": "Plick",
-    "description": "Plick theme for JSON Resume: a fork of the original Slick theme",
-    "version": "0.1.22",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 267114,
-    "cssSize": 61088,
-    "npmWeeklyDownloads": 13,
-    "renderOk": true
+    "cssSize": 6481
   },
   {
     "name": "stackoverflow-fr",
@@ -2426,22 +2032,29 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 309095,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 0
   },
   {
-    "name": "clean",
-    "displayName": "Clean",
-    "description": "clean theme for JSON Resume",
-    "version": "0.0.1",
+    "name": "cvstrap",
+    "displayName": "Cvstrap",
+    "description": "cvStrap is a classic, clean, professional theme for the JSONResume schema with print-ready and responsive stylesheets, based on Bootstrap 2.0.",
+    "version": "0.0.5",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 220451,
+    "cssSize": 0
+  },
+  {
+    "name": "plick",
+    "displayName": "Plick",
+    "description": "Plick theme for JSON Resume: a fork of the original Slick theme",
+    "version": "0.1.22",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 71413,
-    "cssSize": 3488,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
+    "fileSize": 267114,
+    "cssSize": 61088
   },
   {
     "name": "stackoverflow-chinese",
@@ -2452,9 +2065,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 308938,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "onepage-fr",
@@ -2462,12 +2073,21 @@
     "description": "Compact, printable theme for JSON Resume (french version)",
     "version": "0.0.7",
     "browserCompatible": true,
-    "hasSnapshot": false,
+    "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 131428,
-    "cssSize": 2011,
-    "npmWeeklyDownloads": 16,
-    "renderOk": true
+    "cssSize": 2011
+  },
+  {
+    "name": "clean",
+    "displayName": "Clean",
+    "description": "clean theme for JSON Resume",
+    "version": "0.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 71413,
+    "cssSize": 3488
   },
   {
     "name": "kwan",
@@ -2478,9 +2098,18 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 8,
-    "renderOk": false
+    "cssSize": 0
+  },
+  {
+    "name": "intern",
+    "displayName": "Intern",
+    "description": "A responsive JSON Resume theme for young professionals.",
+    "version": "0.0.2",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 67670,
+    "cssSize": 3208
   },
   {
     "name": "creative-confidence",
@@ -2491,22 +2120,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 14201,
-    "cssSize": 5911,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
-  },
-  {
-    "name": "intern",
-    "displayName": "Intern",
-    "description": "A responsive JSON Resume theme for young professionals.",
-    "version": "0.0.2",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": true,
-    "fileSize": 67670,
-    "cssSize": 3208,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
+    "cssSize": 5911
   },
   {
     "name": "uppsala",
@@ -2517,22 +2131,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 86365,
-    "cssSize": 5968,
-    "npmWeeklyDownloads": 10,
-    "renderOk": true
-  },
-  {
-    "name": "autumn-custom",
-    "displayName": "Autumn custom",
-    "description": "Foked, slightly alterd Autumn theme for the JSON Resume Project",
-    "version": "1.1.5",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 210849,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 5968
   },
   {
     "name": "retro",
@@ -2543,9 +2142,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 63406,
-    "cssSize": 660,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "cssSize": 660
   },
   {
     "name": "stackoverflow-es",
@@ -2556,22 +2153,18 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 221148,
-    "cssSize": 10516,
-    "npmWeeklyDownloads": 12,
-    "renderOk": true
+    "cssSize": 10516
   },
   {
-    "name": "faang",
-    "displayName": "Faang",
-    "description": "",
-    "version": "0.1.1",
-    "browserCompatible": false,
+    "name": "autumn-custom",
+    "displayName": "Autumn custom",
+    "description": "Foked, slightly alterd Autumn theme for the JSON Resume Project",
+    "version": "1.1.5",
+    "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": false
+    "fileSize": 210849,
+    "cssSize": 0
   },
   {
     "name": "slickoverflow",
@@ -2582,9 +2175,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 202461,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "stackoverflow-plus",
@@ -2595,22 +2186,18 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 198871,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 0
   },
   {
-    "name": "futura",
-    "displayName": "Futura",
-    "description": "Theme for JSON Resume based on Modern",
-    "version": "0.1.4",
-    "browserCompatible": true,
+    "name": "faang",
+    "displayName": "Faang",
+    "description": "",
+    "version": "0.1.1",
+    "browserCompatible": false,
     "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 188291,
-    "cssSize": 786,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
+    "hasCss": false,
+    "fileSize": 0,
+    "cssSize": 0
   },
   {
     "name": "kava",
@@ -2621,22 +2208,18 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 242394,
-    "cssSize": 7155,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 7155
   },
   {
-    "name": "mu",
-    "displayName": "Mu",
-    "description": "Matteo Ugolini theme for JSON Resume",
+    "name": "futura",
+    "displayName": "Futura",
+    "description": "Theme for JSON Resume based on Modern",
     "version": "0.1.4",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 70667,
-    "cssSize": 3468,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "fileSize": 188291,
+    "cssSize": 786
   },
   {
     "name": "elegant-projects",
@@ -2647,9 +2230,18 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 4,
-    "renderOk": false
+    "cssSize": 0
+  },
+  {
+    "name": "mu",
+    "displayName": "Mu",
+    "description": "Matteo Ugolini theme for JSON Resume",
+    "version": "0.1.4",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 70667,
+    "cssSize": 3468
   },
   {
     "name": "stackoverflow2",
@@ -2660,9 +2252,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 201392,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 13,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "kendall-ksenia",
@@ -2673,22 +2263,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 112849,
-    "cssSize": 6512,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
-  },
-  {
-    "name": "smart",
-    "displayName": "Smart",
-    "description": "Print-friendly & UX-friendly, customizable JSON Resume theme.",
-    "version": "1.0.2",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 100463,
-    "cssSize": 9973,
-    "npmWeeklyDownloads": 10,
-    "renderOk": false
+    "cssSize": 6512
   },
   {
     "name": "elephant",
@@ -2699,9 +2274,18 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 619702,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": false
+    "cssSize": 0
+  },
+  {
+    "name": "smart",
+    "displayName": "Smart",
+    "description": "Print-friendly & UX-friendly, customizable JSON Resume theme.",
+    "version": "1.0.2",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 100463,
+    "cssSize": 9973
   },
   {
     "name": "kittyfarren",
@@ -2712,9 +2296,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 206892,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "onepage-nderkach",
@@ -2722,12 +2304,10 @@
     "description": "Compact, printable theme for JSON Resume",
     "version": "0.0.8",
     "browserCompatible": true,
-    "hasSnapshot": false,
+    "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 184841,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 14,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "kwaln-nl",
@@ -2738,9 +2318,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 7,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "verbum",
@@ -2751,9 +2329,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 12,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "keloran",
@@ -2764,22 +2340,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 68270,
-    "cssSize": 6593,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
-  },
-  {
-    "name": "concise",
-    "displayName": "Concise",
-    "description": "Custom 'concise' theme for JSON Resume",
-    "version": "0.0.7",
-    "browserCompatible": false,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 15,
-    "renderOk": false
+    "cssSize": 6593
   },
   {
     "name": "compact-pt-br",
@@ -2790,9 +2351,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 121994,
-    "cssSize": 1004,
-    "npmWeeklyDownloads": 6,
-    "renderOk": true
+    "cssSize": 1004
   },
   {
     "name": "modern-freelance",
@@ -2803,9 +2362,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 288969,
-    "cssSize": 216,
-    "npmWeeklyDownloads": 11,
-    "renderOk": true
+    "cssSize": 216
   },
   {
     "name": "dave",
@@ -2816,9 +2373,18 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 107831,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 7,
-    "renderOk": false
+    "cssSize": 0
+  },
+  {
+    "name": "concise",
+    "displayName": "Concise",
+    "description": "Custom 'concise' theme for JSON Resume",
+    "version": "0.0.7",
+    "browserCompatible": false,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 0,
+    "cssSize": 0
   },
   {
     "name": "kendall-plus",
@@ -2829,9 +2395,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 114742,
-    "cssSize": 6827,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 6827
   },
   {
     "name": "stackoverflow-react-2",
@@ -2842,9 +2406,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 248387,
-    "cssSize": 9415,
-    "npmWeeklyDownloads": 6,
-    "renderOk": true
+    "cssSize": 9415
   },
   {
     "name": "json",
@@ -2855,9 +2417,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 54745,
-    "cssSize": 88,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 88
   },
   {
     "name": "sergio",
@@ -2868,9 +2428,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 69181,
-    "cssSize": 660,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 660
   },
   {
     "name": "kwan-fix",
@@ -2881,9 +2439,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 10,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "onepage-efficient",
@@ -2891,12 +2447,10 @@
     "description": "Space efficient resume theme. Based on onepage theme by Ainsley Chong",
     "version": "0.0.2",
     "browserCompatible": true,
-    "hasSnapshot": false,
+    "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 86571,
-    "cssSize": 2228,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
+    "cssSize": 2228
   },
   {
     "name": "engineering-leader",
@@ -2907,9 +2461,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 8,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "onepage-web",
@@ -2920,9 +2472,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 81974,
-    "cssSize": 2482,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 2482
   },
   {
     "name": "kendall-alt",
@@ -2933,9 +2483,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 66835,
-    "cssSize": 6481,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "cssSize": 6481
   },
   {
     "name": "elegant-pdf",
@@ -2946,9 +2494,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 573874,
-    "cssSize": 18398,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 18398
   },
   {
     "name": "kendall-beardtree",
@@ -2959,9 +2505,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 66610,
-    "cssSize": 6481,
-    "npmWeeklyDownloads": 6,
-    "renderOk": true
+    "cssSize": 6481
   },
   {
     "name": "compactbr",
@@ -2972,9 +2516,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 120698,
-    "cssSize": 898,
-    "npmWeeklyDownloads": 7,
-    "renderOk": true
+    "cssSize": 898
   },
   {
     "name": "concise-serif",
@@ -2985,22 +2527,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 124604,
-    "cssSize": 1710,
-    "npmWeeklyDownloads": 9,
-    "renderOk": true
-  },
-  {
-    "name": "cv",
-    "displayName": "Cv",
-    "description": "wip nice cv theme",
-    "version": "0.0.0",
-    "browserCompatible": false,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 14,
-    "renderOk": false
+    "cssSize": 1710
   },
   {
     "name": "short-newmanrsfork",
@@ -3011,35 +2538,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 72963,
-    "cssSize": 1936,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
-  },
-  {
-    "name": "latex",
-    "displayName": "Latex",
-    "description": "A LaTeX theme/output format for JSON resumes.",
-    "version": "0.1.2",
-    "browserCompatible": false,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 28,
-    "renderOk": false
-  },
-  {
-    "name": "srt-it",
-    "displayName": "Srt it",
-    "description": "Italian version of SRT theme for JSON Resume",
-    "version": "0.0.3",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 71186,
-    "cssSize": 2790,
-    "npmWeeklyDownloads": 9,
-    "renderOk": true
+    "cssSize": 1936
   },
   {
     "name": "elegant-simplified",
@@ -3050,35 +2549,40 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 40297,
-    "cssSize": 995,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
+    "cssSize": 995
   },
   {
-    "name": "autumn",
-    "displayName": "Autumn",
-    "description": "Autumn theme for the JSON Resume Project",
-    "version": "1.0.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 207945,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 11,
-    "renderOk": true
-  },
-  {
-    "name": "mooser",
-    "displayName": "Mooser",
-    "description": "A JSON Resume theme built with bootstrap",
-    "version": "0.2.9",
+    "name": "srt-it",
+    "displayName": "Srt it",
+    "description": "Italian version of SRT theme for JSON Resume",
+    "version": "0.0.3",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 117514,
-    "cssSize": 10257,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "fileSize": 71186,
+    "cssSize": 2790
+  },
+  {
+    "name": "cv",
+    "displayName": "Cv",
+    "description": "wip nice cv theme",
+    "version": "0.0.0",
+    "browserCompatible": false,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 0,
+    "cssSize": 0
+  },
+  {
+    "name": "latex",
+    "displayName": "Latex",
+    "description": "A LaTeX theme/output format for JSON resumes.",
+    "version": "0.1.2",
+    "browserCompatible": false,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 0,
+    "cssSize": 0
   },
   {
     "name": "onepage-fork",
@@ -3086,12 +2590,10 @@
     "description": "Compact, printable theme for JSON Resume",
     "version": "0.0.3",
     "browserCompatible": true,
-    "hasSnapshot": false,
+    "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 69124,
-    "cssSize": 2011,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "cssSize": 2011
   },
   {
     "name": "spartan-v1",
@@ -3102,9 +2604,29 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 188112,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 0
+  },
+  {
+    "name": "mooser",
+    "displayName": "Mooser",
+    "description": "A JSON Resume theme built with bootstrap",
+    "version": "0.2.9",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 117514,
+    "cssSize": 10257
+  },
+  {
+    "name": "autumn",
+    "displayName": "Autumn",
+    "description": "Autumn theme for the JSON Resume Project",
+    "version": "1.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 207945,
+    "cssSize": 0
   },
   {
     "name": "nominaltech",
@@ -3115,9 +2637,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 52709,
-    "cssSize": 1905,
-    "npmWeeklyDownloads": 6,
-    "renderOk": true
+    "cssSize": 1905
   },
   {
     "name": "elegant-custom",
@@ -3128,9 +2648,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 5,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "jdambron",
@@ -3141,9 +2659,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 422977,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "sfy",
@@ -3154,9 +2670,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 208748,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "depassementdepile",
@@ -3167,9 +2681,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 145973,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 7,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "vitae",
@@ -3180,9 +2692,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "shorter-bill",
@@ -3193,9 +2703,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 125769,
-    "cssSize": 2578,
-    "npmWeeklyDownloads": 7,
-    "renderOk": true
+    "cssSize": 2578
   },
   {
     "name": "lacour",
@@ -3203,12 +2711,10 @@
     "description": "A JSON Resume theme built with bootstrap, in french",
     "version": "1.1.0",
     "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
+    "hasSnapshot": true,
+    "hasCss": true,
     "fileSize": 115669,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 6143
   },
   {
     "name": "next",
@@ -3219,9 +2725,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 67907,
-    "cssSize": 2767,
-    "npmWeeklyDownloads": 9,
-    "renderOk": true
+    "cssSize": 2767
   },
   {
     "name": "bhdouglass",
@@ -3229,12 +2733,10 @@
     "description": "A custom theme for jsonresume",
     "version": "1.0.2",
     "browserCompatible": false,
-    "hasSnapshot": false,
+    "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 5,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "kendall-markdown",
@@ -3245,9 +2747,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 207280,
-    "cssSize": 8820,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 8820
   },
   {
     "name": "business-card",
@@ -3258,22 +2758,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 56693,
-    "cssSize": 660,
-    "npmWeeklyDownloads": 7,
-    "renderOk": true
-  },
-  {
-    "name": "flatphill",
-    "displayName": "Flatphill",
-    "description": "A theme for JSON Resume",
-    "version": "0.0.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 65245,
-    "cssSize": 2587,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "cssSize": 660
   },
   {
     "name": "compact-extended",
@@ -3284,9 +2769,18 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 126755,
-    "cssSize": 988,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
+    "cssSize": 988
+  },
+  {
+    "name": "flatphill",
+    "displayName": "Flatphill",
+    "description": "A theme for JSON Resume",
+    "version": "0.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 65245,
+    "cssSize": 2587
   },
   {
     "name": "kwam-nl",
@@ -3297,9 +2791,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 7,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "spartan-projects",
@@ -3310,9 +2802,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 193419,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "actual-entropitor",
@@ -3323,22 +2813,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 1047316,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": false
-  },
-  {
-    "name": "slick-nl",
-    "displayName": "Slick nl",
-    "description": "Slick theme for JSON Resume",
-    "version": "0.1.4",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 256005,
-    "cssSize": 60121,
-    "npmWeeklyDownloads": 31,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "spartanbentekkie",
@@ -3349,9 +2824,18 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 190225,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "cssSize": 0
+  },
+  {
+    "name": "slick-nl",
+    "displayName": "Slick nl",
+    "description": "Slick theme for JSON Resume",
+    "version": "0.1.4",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 256005,
+    "cssSize": 60121
   },
   {
     "name": "short-extended",
@@ -3362,9 +2846,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 85407,
-    "cssSize": 3683,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 3683
   },
   {
     "name": "orbit-original",
@@ -3375,61 +2857,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 235431,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 18,
-    "renderOk": true
-  },
-  {
-    "name": "srt-epost",
-    "displayName": "Srt epost",
-    "description": "SRT theme for JSON Resume",
-    "version": "0.1.6",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 80531,
-    "cssSize": 3343,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
-  },
-  {
-    "name": "kiss",
-    "displayName": "Kiss",
-    "description": "Keep it simple, stupid. Basic times new roman template",
-    "version": "0.5.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 268812,
-    "cssSize": 1825,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
-  },
-  {
-    "name": "classic",
-    "displayName": "Classic",
-    "description": "Maximally compact JSON resume theme, with classic resume styling.",
-    "version": "0.0.1",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": true,
-    "fileSize": 131350,
-    "cssSize": 2276,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
-  },
-  {
-    "name": "reactive",
-    "displayName": "Reactive",
-    "description": "A flat and reactive JSON Resume theme.",
-    "version": "0.5.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 105277,
-    "cssSize": 54915,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "straightforward-certs",
@@ -3440,9 +2868,51 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 126423,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 0
+  },
+  {
+    "name": "srt-epost",
+    "displayName": "Srt epost",
+    "description": "SRT theme for JSON Resume",
+    "version": "0.1.6",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 80531,
+    "cssSize": 3343
+  },
+  {
+    "name": "kiss",
+    "displayName": "Kiss",
+    "description": "Keep it simple, stupid. Basic times new roman template",
+    "version": "0.5.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 268812,
+    "cssSize": 1825
+  },
+  {
+    "name": "reactive",
+    "displayName": "Reactive",
+    "description": "A flat and reactive JSON Resume theme.",
+    "version": "0.5.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 105277,
+    "cssSize": 54915
+  },
+  {
+    "name": "classic",
+    "displayName": "Classic",
+    "description": "Maximally compact JSON resume theme, with classic resume styling.",
+    "version": "0.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 131350,
+    "cssSize": 2276
   },
   {
     "name": "elegant_fork",
@@ -3453,9 +2923,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 41741,
-    "cssSize": 856,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
+    "cssSize": 856
   },
   {
     "name": "elegant-maksymgendin",
@@ -3466,9 +2934,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 635292,
-    "cssSize": 18246,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 18246
   },
   {
     "name": "fresh",
@@ -3479,9 +2945,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 109186,
-    "cssSize": 17490,
-    "npmWeeklyDownloads": 10,
-    "renderOk": true
+    "cssSize": 17490
   },
   {
     "name": "md",
@@ -3492,35 +2956,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 113768,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
-  },
-  {
-    "name": "latte",
-    "displayName": "Latte",
-    "description": "Simple theme for JSON Resume. Based on macchiato and caffeine theme.",
-    "version": "1.0.3",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 197506,
-    "cssSize": 6402,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
-  },
-  {
-    "name": "slick-bentley",
-    "displayName": "Slick bentley",
-    "description": "Slick theme for JSON Resume for Matthew Bentley",
-    "version": "0.2.3",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 125318,
-    "cssSize": 60122,
-    "npmWeeklyDownloads": 10,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "tyler",
@@ -3531,9 +2967,29 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 74455,
-    "cssSize": 1060,
-    "npmWeeklyDownloads": 9,
-    "renderOk": true
+    "cssSize": 1060
+  },
+  {
+    "name": "slick-bentley",
+    "displayName": "Slick bentley",
+    "description": "Slick theme for JSON Resume for Matthew Bentley",
+    "version": "0.2.3",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 125318,
+    "cssSize": 60122
+  },
+  {
+    "name": "latte",
+    "displayName": "Latte",
+    "description": "Simple theme for JSON Resume. Based on macchiato and caffeine theme.",
+    "version": "1.0.3",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 197506,
+    "cssSize": 6402
   },
   {
     "name": "lukemeads",
@@ -3544,9 +3000,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 90259,
-    "cssSize": 7334,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 7334
   },
   {
     "name": "ankurclass",
@@ -3557,9 +3011,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 64560,
-    "cssSize": 4667,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "cssSize": 4667
   },
   {
     "name": "business-professional-compact",
@@ -3570,9 +3022,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 5,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "even-gdpr",
@@ -3583,22 +3033,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 273806,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": false
-  },
-  {
-    "name": "print",
-    "displayName": "Print",
-    "description": "A fork of theme short for my printing purposes",
-    "version": "0.1.9",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 63993,
-    "cssSize": 2761,
-    "npmWeeklyDownloads": 7,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "sky",
@@ -3609,9 +3044,18 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 210853,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 0
+  },
+  {
+    "name": "print",
+    "displayName": "Print",
+    "description": "A fork of theme short for my printing purposes",
+    "version": "0.1.9",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 63993,
+    "cssSize": 2761
   },
   {
     "name": "macchiato-macea",
@@ -3622,9 +3066,18 @@
     "hasSnapshot": false,
     "hasCss": true,
     "fileSize": 279726,
-    "cssSize": 6365,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 6365
+  },
+  {
+    "name": "onepage-ds",
+    "displayName": "Onepage ds",
+    "description": "Compact, printable theme for JSON Resume",
+    "version": "0.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 123183,
+    "cssSize": 0
   },
   {
     "name": "direct",
@@ -3635,35 +3088,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 173212,
-    "cssSize": 2035,
-    "npmWeeklyDownloads": 7,
-    "renderOk": true
-  },
-  {
-    "name": "onepage-ds",
-    "displayName": "Onepage ds",
-    "description": "Compact, printable theme for JSON Resume",
-    "version": "0.0.1",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 123183,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
-  },
-  {
-    "name": "timeline",
-    "displayName": "Timeline",
-    "description": "",
-    "version": "0.0.6",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 973723,
-    "cssSize": 141788,
-    "npmWeeklyDownloads": 19,
-    "renderOk": true
+    "cssSize": 2035
   },
   {
     "name": "macchiato-plus",
@@ -3674,9 +3099,18 @@
     "hasSnapshot": false,
     "hasCss": true,
     "fileSize": 222314,
-    "cssSize": 6365,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 6365
+  },
+  {
+    "name": "timeline",
+    "displayName": "Timeline",
+    "description": "",
+    "version": "0.0.6",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 973723,
+    "cssSize": 141788
   },
   {
     "name": "class-yaucp",
@@ -3687,9 +3121,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "elegant-wso",
@@ -3700,9 +3132,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 7,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "ceevee",
@@ -3713,9 +3143,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 2432019,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "ifyoumakeit",
@@ -3726,9 +3154,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 77536,
-    "cssSize": 2743,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 2743
   },
   {
     "name": "onepageresume",
@@ -3739,22 +3165,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 188543,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 13,
-    "renderOk": true
-  },
-  {
-    "name": "papier",
-    "displayName": "Papier",
-    "description": "Un thème pour JSON Resume",
-    "version": "0.1.3",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 71371,
-    "cssSize": 5831,
-    "npmWeeklyDownloads": 11,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "stackoverflow-roboto",
@@ -3765,9 +3176,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 306371,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "onepage-year",
@@ -3775,12 +3184,21 @@
     "description": "Compact, printable theme for JSON Resume",
     "version": "0.0.1",
     "browserCompatible": true,
-    "hasSnapshot": false,
+    "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 131244,
-    "cssSize": 2011,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 2011
+  },
+  {
+    "name": "papier",
+    "displayName": "Papier",
+    "description": "Un thème pour JSON Resume",
+    "version": "0.1.3",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 71371,
+    "cssSize": 5831
   },
   {
     "name": "elegant-mobile",
@@ -3791,9 +3209,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 4,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "boldstatement",
@@ -3801,12 +3217,10 @@
     "description": "Make a bold statement with this JSON Resume theme.",
     "version": "0.1.3",
     "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
+    "hasSnapshot": true,
+    "hasCss": true,
     "fileSize": 12913058,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 16,
-    "renderOk": true
+    "cssSize": 297860
   },
   {
     "name": "simple",
@@ -3817,9 +3231,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 66039,
-    "cssSize": 3095,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "cssSize": 3095
   },
   {
     "name": "elegant-fr2",
@@ -3830,9 +3242,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 596356,
-    "cssSize": 34936,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 34936
   },
   {
     "name": "paper-monofont",
@@ -3843,9 +3253,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 71584,
-    "cssSize": 6160,
-    "npmWeeklyDownloads": 7,
-    "renderOk": true
+    "cssSize": 6160
   },
   {
     "name": "elegant-tarq",
@@ -3856,9 +3264,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "crewshin",
@@ -3869,9 +3275,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 162434,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 6,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "edify",
@@ -3882,9 +3286,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 67349,
-    "cssSize": 3694,
-    "npmWeeklyDownloads": 17,
-    "renderOk": true
+    "cssSize": 3694
   },
   {
     "name": "kendall-saathoff",
@@ -3895,9 +3297,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 110178,
-    "cssSize": 6761,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 6761
   },
   {
     "name": "kendall-gren",
@@ -3908,9 +3308,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 114228,
-    "cssSize": 7792,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 7792
   },
   {
     "name": "resu",
@@ -3921,9 +3319,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 76633,
-    "cssSize": 2643,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
+    "cssSize": 2643
   },
   {
     "name": "rhinebeck",
@@ -3934,9 +3330,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 94076,
-    "cssSize": 6362,
-    "npmWeeklyDownloads": 6,
-    "renderOk": true
+    "cssSize": 6362
   },
   {
     "name": "onepage_zena",
@@ -3944,12 +3338,10 @@
     "description": "A fork of Ainsley Chong's onepage theme.",
     "version": "0.0.2",
     "browserCompatible": true,
-    "hasSnapshot": false,
+    "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 69238,
-    "cssSize": 2011,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 2011
   },
   {
     "name": "elegant_sargefork",
@@ -3960,9 +3352,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 41716,
-    "cssSize": 883,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 883
   },
   {
     "name": "spartan-extended-certs",
@@ -3973,9 +3363,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 240482,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "pring",
@@ -3986,22 +3374,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 30471,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 6,
-    "renderOk": false
-  },
-  {
-    "name": "kendalles",
-    "displayName": "Kendalles",
-    "description": "A JSON Resume theme built with bootstrap",
-    "version": "0.0.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 67275,
-    "cssSize": 6478,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "short-nderkach",
@@ -4012,9 +3385,18 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 71928,
-    "cssSize": 2192,
-    "npmWeeklyDownloads": 6,
-    "renderOk": true
+    "cssSize": 2192
+  },
+  {
+    "name": "kendalles",
+    "displayName": "Kendalles",
+    "description": "A JSON Resume theme built with bootstrap",
+    "version": "0.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 67275,
+    "cssSize": 6478
   },
   {
     "name": "kendall-pt-br",
@@ -4025,9 +3407,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 67042,
-    "cssSize": 6308,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 6308
   },
   {
     "name": "sasha",
@@ -4038,9 +3418,18 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 52445,
-    "cssSize": 1904,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "cssSize": 1904
+  },
+  {
+    "name": "mix",
+    "displayName": "Mix",
+    "description": "A simple theme for JSON Resume",
+    "version": "0.0.9",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 150504,
+    "cssSize": 0
   },
   {
     "name": "blue",
@@ -4051,22 +3440,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 1425,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": false
-  },
-  {
-    "name": "mix",
-    "displayName": "Mix",
-    "description": "A simple theme for JSON Resume",
-    "version": "0.0.9",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 150504,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "aboutcontent",
@@ -4077,9 +3451,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 1348120,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "genocation",
@@ -4090,48 +3462,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 261909,
-    "cssSize": 12396,
-    "npmWeeklyDownloads": 6,
-    "renderOk": true
-  },
-  {
-    "name": "papirus-ru",
-    "displayName": "Papirus ru",
-    "description": "Papirus theme for JSON Resume",
-    "version": "0.0.1",
-    "browserCompatible": false,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": false
-  },
-  {
-    "name": "light-caffienated",
-    "displayName": "Light caffienated",
-    "description": "A theme for JSONResume",
-    "version": "0.0.6",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 60626,
-    "cssSize": 6393,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
-  },
-  {
-    "name": "val",
-    "displayName": "Val",
-    "description": "",
-    "version": "1.1.4",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 1639,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 12396
   },
   {
     "name": "minimalism",
@@ -4142,9 +3473,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 90940,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "kwan-no-skills-level",
@@ -4155,9 +3484,29 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": false
+    "cssSize": 0
+  },
+  {
+    "name": "papirus-ru",
+    "displayName": "Papirus ru",
+    "description": "Papirus theme for JSON Resume",
+    "version": "0.0.1",
+    "browserCompatible": false,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 0,
+    "cssSize": 0
+  },
+  {
+    "name": "light-caffienated",
+    "displayName": "Light caffienated",
+    "description": "A theme for JSONResume",
+    "version": "0.0.6",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 60626,
+    "cssSize": 6393
   },
   {
     "name": "orbit-vforesee",
@@ -4168,22 +3517,18 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 250855,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 0
   },
   {
-    "name": "austinmcconnell",
-    "displayName": "Austinmcconnell",
-    "description": "Austin's theme for JSON Resume",
-    "version": "0.0.2",
+    "name": "val",
+    "displayName": "Val",
+    "description": "",
+    "version": "1.1.4",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": false,
-    "fileSize": 196655,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "fileSize": 1639,
+    "cssSize": 0
   },
   {
     "name": "hexagon",
@@ -4194,9 +3539,18 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 555170,
-    "cssSize": 7795,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 7795
+  },
+  {
+    "name": "austinmcconnell",
+    "displayName": "Austinmcconnell",
+    "description": "Austin's theme for JSON Resume",
+    "version": "0.0.2",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 196655,
+    "cssSize": 0
   },
   {
     "name": "eshaham",
@@ -4207,9 +3561,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 46696,
-    "cssSize": 3505,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 3505
   },
   {
     "name": "paper-condensed",
@@ -4220,22 +3572,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 78897,
-    "cssSize": 6328,
-    "npmWeeklyDownloads": 7,
-    "renderOk": true
-  },
-  {
-    "name": "stackoverflow-marion",
-    "displayName": "Stackoverflow marion",
-    "description": "Stack Overflow theme for JSON Resume (Marion's version)",
-    "version": "1.4.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 200632,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "cssSize": 6328
   },
   {
     "name": "spartan-extended",
@@ -4246,22 +3583,18 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 240456,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 0
   },
   {
-    "name": "cards",
-    "displayName": "Cards",
-    "description": "Coming soon...",
-    "version": "0.0.0",
-    "browserCompatible": false,
-    "hasSnapshot": false,
+    "name": "stackoverflow-marion",
+    "displayName": "Stackoverflow marion",
+    "description": "Stack Overflow theme for JSON Resume (Marion's version)",
+    "version": "1.4.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
     "hasCss": false,
-    "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": false
+    "fileSize": 200632,
+    "cssSize": 0
   },
   {
     "name": "kwan-nl",
@@ -4272,22 +3605,18 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 6,
-    "renderOk": false
+    "cssSize": 0
   },
   {
-    "name": "gross",
-    "displayName": "Gross",
-    "description": "",
+    "name": "cards",
+    "displayName": "Cards",
+    "description": "Coming soon...",
     "version": "0.0.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
+    "browserCompatible": false,
+    "hasSnapshot": false,
     "hasCss": false,
-    "fileSize": 1425,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": false
+    "fileSize": 0,
+    "cssSize": 0
   },
   {
     "name": "minimal-classy",
@@ -4298,9 +3627,18 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 4,
-    "renderOk": false
+    "cssSize": 0
+  },
+  {
+    "name": "gross",
+    "displayName": "Gross",
+    "description": "",
+    "version": "0.0.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 1425,
+    "cssSize": 0
   },
   {
     "name": "light-nl",
@@ -4311,9 +3649,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 66678,
-    "cssSize": 5683,
-    "npmWeeklyDownloads": 84,
-    "renderOk": true
+    "cssSize": 5683
   },
   {
     "name": "kendall-fork",
@@ -4324,9 +3660,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 68219,
-    "cssSize": 6847,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 6847
   },
   {
     "name": "golden",
@@ -4337,9 +3671,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 305534,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 7,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "ludoo",
@@ -4350,9 +3682,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 84940,
-    "cssSize": 6559,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 6559
   },
   {
     "name": "qimia",
@@ -4363,9 +3693,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 121448,
-    "cssSize": 16099,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 16099
   },
   {
     "name": "haosio",
@@ -4376,9 +3704,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 70754,
-    "cssSize": 650,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 650
   },
   {
     "name": "hired",
@@ -4389,9 +3715,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 225468,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "bzdev",
@@ -4402,9 +3726,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 176244,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "tom-actual",
@@ -4415,9 +3737,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 1047560,
-    "cssSize": 5229,
-    "npmWeeklyDownloads": 1,
-    "renderOk": false
+    "cssSize": 5229
   },
   {
     "name": "hr-md",
@@ -4428,22 +3748,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 73571,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": false
-  },
-  {
-    "name": "stackoverflow-skills-below-education",
-    "displayName": "Stackoverflow skills below education",
-    "description": "Based on Stack Overflow theme for JSON Resume",
-    "version": "1.0.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 228096,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "kindrobot",
@@ -4454,9 +3759,18 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 122858,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 0
+  },
+  {
+    "name": "stackoverflow-skills-below-education",
+    "displayName": "Stackoverflow skills below education",
+    "description": "Based on Stack Overflow theme for JSON Resume",
+    "version": "1.0.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 228096,
+    "cssSize": 0
   },
   {
     "name": "so-moon",
@@ -4467,9 +3781,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 199661,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "keloran-fr",
@@ -4480,9 +3792,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 68388,
-    "cssSize": 6593,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 6593
   },
   {
     "name": "kendalifeee",
@@ -4490,12 +3800,10 @@
     "description": "A JSON Resume theme built with bootstrap",
     "version": "0.0.5",
     "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
+    "hasSnapshot": true,
+    "hasCss": true,
     "fileSize": 113808,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 14,
-    "renderOk": true
+    "cssSize": 6458
   },
   {
     "name": "tim",
@@ -4506,9 +3814,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 114005,
-    "cssSize": 6541,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 6541
   },
   {
     "name": "kendall-custom",
@@ -4519,9 +3825,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 122966,
-    "cssSize": 6398,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 6398
   },
   {
     "name": "flat-custom-trimed",
@@ -4532,9 +3836,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 73551,
-    "cssSize": 2644,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 2644
   },
   {
     "name": "elegant_sargefork_no_volunteer",
@@ -4545,22 +3847,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 40958,
-    "cssSize": 883,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
-  },
-  {
-    "name": "kcv",
-    "displayName": "Kcv",
-    "description": "A theme for JSON Resume by Keepler",
-    "version": "1.0.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 69299,
-    "cssSize": 2944,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 883
   },
   {
     "name": "short-remix",
@@ -4571,35 +3858,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 64029,
-    "cssSize": 2680,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
-  },
-  {
-    "name": "kendall-de",
-    "displayName": "Kendall de",
-    "description": "A JSON Resume theme built with bootstrap",
-    "version": "0.1.21",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 88256,
-    "cssSize": 6826,
-    "npmWeeklyDownloads": 6,
-    "renderOk": true
-  },
-  {
-    "name": "paper-fixed",
-    "displayName": "Paper fixed",
-    "description": "A theme for JSON Resume",
-    "version": "0.1.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 2918011,
-    "cssSize": 8991,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 2680
   },
   {
     "name": "test",
@@ -4610,9 +3869,29 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 63384,
-    "cssSize": 672,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 672
+  },
+  {
+    "name": "kendall-de",
+    "displayName": "Kendall de",
+    "description": "A JSON Resume theme built with bootstrap",
+    "version": "0.1.21",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 88256,
+    "cssSize": 6826
+  },
+  {
+    "name": "kcv",
+    "displayName": "Kcv",
+    "description": "A theme for JSON Resume by Keepler",
+    "version": "1.0.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 69299,
+    "cssSize": 2944
   },
   {
     "name": "dinesh",
@@ -4620,12 +3899,10 @@
     "description": "Compact, printable theme for JSON Resume",
     "version": "0.0.7",
     "browserCompatible": true,
-    "hasSnapshot": false,
+    "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 72677,
-    "cssSize": 2660,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 2660
   },
   {
     "name": "tech-ger",
@@ -4636,22 +3913,18 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 124001,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 0
   },
   {
-    "name": "fullmoon",
-    "displayName": "Fullmoon",
-    "description": "Fullmoon theme for JSON Resume",
-    "version": "0.1.2",
+    "name": "paper-fixed",
+    "displayName": "Paper fixed",
+    "description": "A theme for JSON Resume",
+    "version": "0.1.1",
     "browserCompatible": true,
     "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 203102,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "hasCss": true,
+    "fileSize": 2918011,
+    "cssSize": 8991
   },
   {
     "name": "kendall-vforesee",
@@ -4662,9 +3935,18 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 115441,
-    "cssSize": 6826,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 6826
+  },
+  {
+    "name": "fullmoon",
+    "displayName": "Fullmoon",
+    "description": "Fullmoon theme for JSON Resume",
+    "version": "0.1.2",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 203102,
+    "cssSize": 0
   },
   {
     "name": "paper-zh-hant",
@@ -4675,22 +3957,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 71591,
-    "cssSize": 5831,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
-  },
-  {
-    "name": "hydejack",
-    "displayName": "Hydejack",
-    "description": "A standalone version of Hydejack's resume layout",
-    "version": "0.6.0",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 341010,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 13,
-    "renderOk": true
+    "cssSize": 5831
   },
   {
     "name": "kwan-linkedin",
@@ -4701,9 +3968,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "ocean",
@@ -4714,9 +3979,18 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": false
+    "cssSize": 0
+  },
+  {
+    "name": "hydejack",
+    "displayName": "Hydejack",
+    "description": "A standalone version of Hydejack's resume layout",
+    "version": "0.6.0",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 341010,
+    "cssSize": 0
   },
   {
     "name": "macea",
@@ -4727,9 +4001,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 255299,
-    "cssSize": 6555,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
+    "cssSize": 6555
   },
   {
     "name": "full-jap",
@@ -4740,9 +4012,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 73699,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "jaxxstorm",
@@ -4753,9 +4023,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 10897,
-    "cssSize": 5895,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 5895
   },
   {
     "name": "boilerplate-vforesee",
@@ -4766,9 +4034,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 74665,
-    "cssSize": 871,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 871
   },
   {
     "name": "psimple",
@@ -4779,35 +4045,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 200390,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
-  },
-  {
-    "name": "eternal-de",
-    "displayName": "Eternal de",
-    "description": "JSON Resume theme eternal (german translation)",
-    "version": "0.0.10",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 261654,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
-  },
-  {
-    "name": "stackoverflow-detailed",
-    "displayName": "Stackoverflow detailed",
-    "description": "Stack Overflow theme for JSON Resume",
-    "version": "0.3.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 308427,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "full-ext",
@@ -4818,9 +4056,29 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 76326,
-    "cssSize": 8020,
-    "npmWeeklyDownloads": 7,
-    "renderOk": true
+    "cssSize": 8020
+  },
+  {
+    "name": "stackoverflow-detailed",
+    "displayName": "Stackoverflow detailed",
+    "description": "Stack Overflow theme for JSON Resume",
+    "version": "0.3.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 308427,
+    "cssSize": 0
+  },
+  {
+    "name": "eternal-de",
+    "displayName": "Eternal de",
+    "description": "JSON Resume theme eternal (german translation)",
+    "version": "0.0.10",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 261654,
+    "cssSize": 0
   },
   {
     "name": "paper-it",
@@ -4831,9 +4089,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 73560,
-    "cssSize": 6285,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "cssSize": 6285
   },
   {
     "name": "paper-pt-br",
@@ -4844,9 +4100,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 73543,
-    "cssSize": 5908,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 5908
   },
   {
     "name": "print-flexbox",
@@ -4857,9 +4111,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 126786,
-    "cssSize": 6251,
-    "npmWeeklyDownloads": 6,
-    "renderOk": true
+    "cssSize": 6251
   },
   {
     "name": "eternal",
@@ -4870,9 +4122,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 125413,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "futura-wp",
@@ -4883,48 +4133,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 189735,
-    "cssSize": 725,
-    "npmWeeklyDownloads": 15,
-    "renderOk": true
-  },
-  {
-    "name": "dangerflat",
-    "displayName": "Dangerflat",
-    "description": "A theme for JSON Resume",
-    "version": "0.1.3",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 83255,
-    "cssSize": 2586,
-    "npmWeeklyDownloads": 10,
-    "renderOk": true
-  },
-  {
-    "name": "flat_projects",
-    "displayName": "Flat_projects",
-    "description": "A theme for JSON Resume",
-    "version": "0.3.10",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 65987,
-    "cssSize": 2574,
-    "npmWeeklyDownloads": 10,
-    "renderOk": true
-  },
-  {
-    "name": "flat-nl",
-    "displayName": "Flat nl",
-    "description": "A theme for JSON Resume",
-    "version": "0.3.7",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 65249,
-    "cssSize": 2588,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "cssSize": 725
   },
   {
     "name": "sensible",
@@ -4935,9 +4144,40 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 174939,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 0
+  },
+  {
+    "name": "dangerflat",
+    "displayName": "Dangerflat",
+    "description": "A theme for JSON Resume",
+    "version": "0.1.3",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 83255,
+    "cssSize": 2586
+  },
+  {
+    "name": "flat-nl",
+    "displayName": "Flat nl",
+    "description": "A theme for JSON Resume",
+    "version": "0.3.7",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 65249,
+    "cssSize": 2588
+  },
+  {
+    "name": "flat_projects",
+    "displayName": "Flat_projects",
+    "description": "A theme for JSON Resume",
+    "version": "0.3.10",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 65987,
+    "cssSize": 2574
   },
   {
     "name": "compact-new",
@@ -4948,22 +4188,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 175885,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
-  },
-  {
-    "name": "eddywashere",
-    "displayName": "Eddywashere",
-    "description": "Theme for JSON Resume",
-    "version": "1.0.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 72591,
-    "cssSize": 4146,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "basic",
@@ -4974,9 +4199,18 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": false
+    "cssSize": 0
+  },
+  {
+    "name": "eddywashere",
+    "displayName": "Eddywashere",
+    "description": "Theme for JSON Resume",
+    "version": "1.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 72591,
+    "cssSize": 4146
   },
   {
     "name": "lajtha-compact",
@@ -4987,9 +4221,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 7440,
-    "cssSize": 3082,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 3082
   },
   {
     "name": "joomla-flats",
@@ -5000,9 +4232,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 220376,
-    "cssSize": 153556,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 153556
   },
   {
     "name": "elegant-tautologistics-ptbr",
@@ -5013,9 +4243,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "thorough",
@@ -5023,12 +4251,10 @@
     "description": "Thorough theme for JSON Resume",
     "version": "1.1.0",
     "browserCompatible": true,
-    "hasSnapshot": false,
+    "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 119465,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "traditional",
@@ -5039,9 +4265,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "neo-overflow",
@@ -5052,9 +4276,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 307202,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "kendall-modern",
@@ -5065,9 +4287,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 109294,
-    "cssSize": 6804,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 6804
   },
   {
     "name": "gnap",
@@ -5078,9 +4298,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 191265,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "onepage-wide",
@@ -5091,48 +4309,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 69698,
-    "cssSize": 2193,
-    "npmWeeklyDownloads": 2,
-    "renderOk": false
-  },
-  {
-    "name": "flatter",
-    "displayName": "Flatter",
-    "description": "A theme for JSON Resume",
-    "version": "0.3.8",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 65251,
-    "cssSize": 2588,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
-  },
-  {
-    "name": "wraypro",
-    "displayName": "Wraypro",
-    "description": "A theme for JSON Resume",
-    "version": "0.0.5",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 104910,
-    "cssSize": 4112,
-    "npmWeeklyDownloads": 12,
-    "renderOk": true
-  },
-  {
-    "name": "ravgift",
-    "displayName": "Ravgift",
-    "description": "JSON Resume theme. Based on macchiato-theme.",
-    "version": "1.0.2",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 254515,
-    "cssSize": 6365,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 2193
   },
   {
     "name": "eleganter",
@@ -5143,9 +4320,29 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 587029,
-    "cssSize": 18394,
-    "npmWeeklyDownloads": 1,
-    "renderOk": true
+    "cssSize": 18394
+  },
+  {
+    "name": "ravgift",
+    "displayName": "Ravgift",
+    "description": "JSON Resume theme. Based on macchiato-theme.",
+    "version": "1.0.2",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 254515,
+    "cssSize": 6365
+  },
+  {
+    "name": "flatter",
+    "displayName": "Flatter",
+    "description": "A theme for JSON Resume",
+    "version": "0.3.8",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 65251,
+    "cssSize": 2588
   },
   {
     "name": "kendall-bushmanov",
@@ -5156,9 +4353,18 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 1,
-    "renderOk": false
+    "cssSize": 0
+  },
+  {
+    "name": "wraypro",
+    "displayName": "Wraypro",
+    "description": "A theme for JSON Resume",
+    "version": "0.0.5",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 104910,
+    "cssSize": 4112
   },
   {
     "name": "elegant_sargefork-no-volunteer",
@@ -5169,9 +4375,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 40958,
-    "cssSize": 883,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 883
   },
   {
     "name": "sidepanel",
@@ -5182,9 +4386,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 97172,
-    "cssSize": 1400,
-    "npmWeeklyDownloads": 13,
-    "renderOk": true
+    "cssSize": 1400
   },
   {
     "name": "basic-fr",
@@ -5195,9 +4397,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "murtaza",
@@ -5208,9 +4408,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 63295,
-    "cssSize": 672,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 672
   },
   {
     "name": "elegant-mobile-jjlorenzo",
@@ -5221,22 +4419,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 4,
-    "renderOk": false
-  },
-  {
-    "name": "latexone",
-    "displayName": "Latexone",
-    "description": "a theme for json resume",
-    "version": "0.0.4",
-    "browserCompatible": true,
-    "hasSnapshot": false,
-    "hasCss": false,
-    "fileSize": 45075,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "short-stephenfork",
@@ -5247,9 +4430,18 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 63856,
-    "cssSize": 1988,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 1988
+  },
+  {
+    "name": "latexone",
+    "displayName": "Latexone",
+    "description": "a theme for json resume",
+    "version": "0.0.4",
+    "browserCompatible": true,
+    "hasSnapshot": false,
+    "hasCss": false,
+    "fileSize": 45075,
+    "cssSize": 0
   },
   {
     "name": "light",
@@ -5260,9 +4452,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 65382,
-    "cssSize": 6394,
-    "npmWeeklyDownloads": 15,
-    "renderOk": true
+    "cssSize": 6394
   },
   {
     "name": "ah3nry",
@@ -5273,9 +4463,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 860327,
-    "cssSize": 40331,
-    "npmWeeklyDownloads": 6,
-    "renderOk": true
+    "cssSize": 40331
   },
   {
     "name": "newflat",
@@ -5286,9 +4474,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 70644,
-    "cssSize": 2717,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 2717
   },
   {
     "name": "mint",
@@ -5296,25 +4482,10 @@
     "description": "Compact, printable theme for JSON Resume",
     "version": "0.0.1",
     "browserCompatible": true,
-    "hasSnapshot": false,
+    "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 123141,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
-  },
-  {
-    "name": "kendall-fr-plus",
-    "displayName": "Kendall fr plus",
-    "description": "A JSON Resume theme built with bootstrap",
-    "version": "0.2.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 109671,
-    "cssSize": 8044,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "student",
@@ -5325,9 +4496,18 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": false
+    "cssSize": 0
+  },
+  {
+    "name": "kendall-fr-plus",
+    "displayName": "Kendall fr plus",
+    "description": "A JSON Resume theme built with bootstrap",
+    "version": "0.2.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 109671,
+    "cssSize": 8044
   },
   {
     "name": "scholar",
@@ -5338,9 +4518,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "simplistic",
@@ -5351,9 +4529,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 197962,
-    "cssSize": 2613,
-    "npmWeeklyDownloads": 6,
-    "renderOk": true
+    "cssSize": 2613
   },
   {
     "name": "stackoverflow-crewshin",
@@ -5364,9 +4540,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 306446,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "coffee",
@@ -5377,9 +4551,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "student-onepage",
@@ -5390,9 +4562,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 75037,
-    "cssSize": 1491,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "cssSize": 1491
   },
   {
     "name": "jat",
@@ -5403,9 +4573,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 12,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "short-with-location",
@@ -5416,22 +4584,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 126386,
-    "cssSize": 25,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
-  },
-  {
-    "name": "flat-projects",
-    "displayName": "Flat projects",
-    "description": "A theme for JSON Resume, with support for projects",
-    "version": "1.0.4",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": true,
-    "fileSize": 78312,
-    "cssSize": 2703,
-    "npmWeeklyDownloads": 12,
-    "renderOk": true
+    "cssSize": 25
   },
   {
     "name": "orbit-remasterized-fr",
@@ -5442,9 +4595,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 231799,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "kendall-projects",
@@ -5455,22 +4606,18 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 114160,
-    "cssSize": 6458,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "cssSize": 6458
   },
   {
-    "name": "business",
-    "displayName": "Business",
-    "description": "A very serious theme for JSON Resume",
-    "version": "0.0.1",
+    "name": "flat-projects",
+    "displayName": "Flat projects",
+    "description": "A theme for JSON Resume, with support for projects",
+    "version": "1.0.4",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 71092,
-    "cssSize": 1555,
-    "npmWeeklyDownloads": 5,
-    "renderOk": true
+    "fileSize": 78312,
+    "cssSize": 2703
   },
   {
     "name": "kendall-fcamblor",
@@ -5481,22 +4628,18 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 157699,
-    "cssSize": 6656,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 6656
   },
   {
-    "name": "macchiato--rafi",
-    "displayName": "Macchiato  rafi",
-    "description": "Forked JSON Resume theme",
-    "version": "1.2.1",
+    "name": "business",
+    "displayName": "Business",
+    "description": "A very serious theme for JSON Resume",
+    "version": "0.0.1",
     "browserCompatible": true,
     "hasSnapshot": true,
     "hasCss": true,
-    "fileSize": 241302,
-    "cssSize": 6365,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "fileSize": 71092,
+    "cssSize": 1555
   },
   {
     "name": "nickoverflow",
@@ -5507,9 +4650,18 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 305916,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 0
+  },
+  {
+    "name": "macchiato--rafi",
+    "displayName": "Macchiato  rafi",
+    "description": "Forked JSON Resume theme",
+    "version": "1.2.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 241302,
+    "cssSize": 6365
   },
   {
     "name": "traiforce",
@@ -5520,9 +4672,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 7437,
-    "cssSize": 3208,
-    "npmWeeklyDownloads": 8,
-    "renderOk": true
+    "cssSize": 3208
   },
   {
     "name": "contempo-vforesee",
@@ -5533,9 +4683,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 153744,
-    "cssSize": 1932,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 1932
   },
   {
     "name": "pinage404",
@@ -5546,9 +4694,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 4,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "eleganto",
@@ -5559,9 +4705,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 755978,
-    "cssSize": 40169,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 40169
   },
   {
     "name": "flat-optimized",
@@ -5572,9 +4716,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 84842,
-    "cssSize": 2615,
-    "npmWeeklyDownloads": 7,
-    "renderOk": true
+    "cssSize": 2615
   },
   {
     "name": "react-tailwind",
@@ -5585,9 +4727,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 2770020,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 9,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "americano",
@@ -5598,22 +4738,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 206875,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
-  },
-  {
-    "name": "ransome",
-    "displayName": "Ransome",
-    "description": "Ransome Coleman's theme for JSON Resume",
-    "version": "1.0.1",
-    "browserCompatible": true,
-    "hasSnapshot": true,
-    "hasCss": false,
-    "fileSize": 305779,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "standard-resume-extended",
@@ -5624,9 +4749,18 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 225930,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 0
+  },
+  {
+    "name": "ransome",
+    "displayName": "Ransome",
+    "description": "Ransome Coleman's theme for JSON Resume",
+    "version": "1.0.1",
+    "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": false,
+    "fileSize": 305779,
+    "cssSize": 0
   },
   {
     "name": "onepageresume-alt",
@@ -5637,9 +4771,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 88955,
-    "cssSize": 1378,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 1378
   },
   {
     "name": "azure-split",
@@ -5650,9 +4782,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 127393,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "mocaccino",
@@ -5663,9 +4793,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 273204,
-    "cssSize": 6365,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 6365
   },
   {
     "name": "real",
@@ -5676,9 +4804,7 @@
     "hasSnapshot": false,
     "hasCss": false,
     "fileSize": 0,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 8,
-    "renderOk": false
+    "cssSize": 0
   },
   {
     "name": "srt-wide",
@@ -5689,9 +4815,7 @@
     "hasSnapshot": true,
     "hasCss": false,
     "fileSize": 127903,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 0
   },
   {
     "name": "bordeaux",
@@ -5702,9 +4826,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 126370,
-    "cssSize": 4047,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 4047
   },
   {
     "name": "flat-zh-fork",
@@ -5715,9 +4837,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 62357,
-    "cssSize": 2785,
-    "npmWeeklyDownloads": 3,
-    "renderOk": true
+    "cssSize": 2785
   },
   {
     "name": "flat-year",
@@ -5728,9 +4848,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 141653,
-    "cssSize": 2588,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "cssSize": 2588
   },
   {
     "name": "onepageresumefixed",
@@ -5741,9 +4859,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 58895,
-    "cssSize": 1230,
-    "npmWeeklyDownloads": 10,
-    "renderOk": true
+    "cssSize": 1230
   },
   {
     "name": "avenauche",
@@ -5754,9 +4870,7 @@
     "hasSnapshot": true,
     "hasCss": true,
     "fileSize": 223565,
-    "cssSize": 6853,
-    "npmWeeklyDownloads": 2,
-    "renderOk": true
+    "cssSize": 6853
   },
   {
     "name": "resume-decentral1se",
@@ -5764,11 +4878,20 @@
     "description": "Theme for https://resume.decentral1.se.",
     "version": "0.0.2",
     "browserCompatible": true,
+    "hasSnapshot": true,
+    "hasCss": true,
+    "fileSize": 75179,
+    "cssSize": 2101
+  },
+  {
+    "name": "rirekisho",
+    "displayName": "Rirekisho",
+    "description": "JSON resume theme in Japanese rirekisho format",
+    "version": "1.0.0",
+    "browserCompatible": true,
     "hasSnapshot": false,
     "hasCss": false,
-    "fileSize": 75179,
-    "cssSize": 0,
-    "npmWeeklyDownloads": 4,
-    "renderOk": true
+    "fileSize": 14721,
+    "cssSize": 0
   }
 ]

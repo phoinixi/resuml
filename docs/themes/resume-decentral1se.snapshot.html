@@ -1,0 +1,340 @@
+<!doctype html>
+<html>
+  <head>
+
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, user-scalable=no, minimal-ui'>
+
+  <title>Jane Smith</title>
+
+  <style>
+  body {
+  background: #EEEEEE;
+  font: 13px "Times New Roman", Times, sans-serif;
+  line-height: 1.4;
+  margin: 40px 0;
+}
+em {
+  color: #999;
+}
+p {
+  line-height: 1.4;
+}
+ul {
+  margin-bottom: 0;
+}
+li {
+  margin-bottom: 2px;
+}
+a {
+  text-decoration: none;
+}
+
+#resume {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 80px 100px;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 4px #aaa;
+  -webkit-box-shadow: 2px 2px 4px #aaa;
+}
+
+.coursesList {
+  width: 28%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.largeFont {
+  font-size: 20px;
+}
+
+.smallFont {
+  font-size: 13px;
+}
+
+.sectionBlock {
+  display: flex;
+  width: 100%;
+}
+
+.sectionName {
+  width: 18%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.sectionContent {
+  width: 80%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.sectionContent ul {
+  padding-left: 20px;
+  margin-top: 6px;
+  list-style-type: circle;
+}
+
+.sectionContent .title {
+  font-weight: bold;
+}
+
+.sectionContent .date {
+  display: block;
+}
+
+.sectionContent .separator {
+  height: 14px;
+}
+
+.sectionLine {
+  border-style: dashed;
+  border-width: 1px;
+  border-color: #CFCFCF;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.divider {
+  font-weight: bold;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.summary {
+  margin-top: 6px;
+}
+
+.skillBlock {
+  margin-bottom: 4px;
+}
+
+.jobBlock {
+  page-break-inside: avoid;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 40em) {
+  body {
+    margin: 0;
+    font-size: 14px;
+  }
+  #resume {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 0.5em 1em;
+    border: none;
+  }
+  .sectionBlock {
+    flex-direction: column;
+  }
+  .sectionContent {
+    width: 100%;
+  }
+  .sectionContent .date {
+    padding-right: 2em;
+  }
+  .sectionName {
+    width: auto;
+  }
+  .largeFont {
+    font-size: 20px;
+  }
+  .smallFont {
+    font-size: 14px;
+  }
+}
+
+@media print {
+  body {
+    background: #FFFFFF;
+  }
+  #resume {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 0px 0px;
+    border: 0px;
+    background: #fff;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+
+  a {
+    color: black;
+  }
+}
+
+  </style>
+
+  </head>
+  <body>
+
+  <div id='resume'>
+  <div id='nameBlock' class='largeFont'>
+    <span class='name'>
+      Jane Smith,
+    </span>
+    <span class='label'>Senior Software Engineer</span>
+  </div>
+  <div id='basicsBlock' class='smallFont'>
+    <div class='contactBlock'>
+      <span class='email'>jane@example.com</span>
+      <span class='divider'>|</span>
+      <span class='phone'>+1-555-987-6543</span>
+        <span class='divider'>|</span>
+        <span class='address'>
+          San Francisco, California, US
+        </span>
+    </div>
+      <div id='profilesBlock'>
+            <span class='url'>
+              <a href='https://linkedin.com/in/janesmith'>LinkedIn</a>
+            </span>
+            <span class='divider'>|</span>
+            <span class='url'>
+              <a href='https://github.com/janesmith'>GitHub</a>
+            </span>
+            
+      </div>
+  </div>
+  <div class='sectionLine'></div>
+
+  <div id='summaryBlock' class="sectionBlock">
+    <div class='sectionName'>
+      <span>SUMMARY</span>
+    </div>
+    <div class='sectionContent'>
+      <span>Full-stack engineer with 8+ years of experience building scalable web applications. Passionate about clean architecture, performance optimization, and mentoring teams.</span>
+    </div>
+  </div>
+  <div class='sectionLine'></div>
+
+  <div id='workBlock' class="sectionBlock">
+    <div class='sectionName'>
+      <span>EXPERIENCE</span>
+    </div>
+    <div class='sectionContent'>
+      <div class="jobBlock">
+        <div class='blockHeader'>
+          <span class='title'>
+            <br>
+          </span>
+          <span class='title'>
+             Senior Software Engineer
+          </span>
+          <span class='date'>
+            2020-03-01 - Present
+          </span>
+        </div>
+
+        <div><a href=''></a></div>
+
+        <div></div>
+
+        <ul class='highlights'>
+          <li>Lead engineer for the platform team, owning core API infrastructure.</li>
+          <li>Reduced API latency by 45% through caching and query optimization</li>
+          <li>Designed microservices architecture serving 2M daily requests</li>
+          <li>Mentored 4 junior engineers through technical growth plans</li>
+        </ul>
+
+
+
+
+        <div class='separator'></div>
+      </div>
+      <div class="jobBlock">
+        <div class='blockHeader'>
+          <span class='title'>
+            <br>
+          </span>
+          <span class='title'>
+             Full Stack Developer
+          </span>
+          <span class='date'>
+            2017-06-01 - 2020-02-28
+          </span>
+        </div>
+
+        <div><a href=''></a></div>
+
+        <div></div>
+
+        <ul class='highlights'>
+          <li>Built customer-facing web applications from prototype to production.</li>
+          <li>Built real-time dashboard used by 15,000+ daily active users</li>
+          <li>Implemented CI/CD pipeline reducing deploy time from 2 hours to 8 minutes</li>
+        </ul>
+
+
+
+
+        
+      </div>
+    </div>
+  </div>
+  <div class='sectionLine'></div>
+
+  <div id='skills' class="sectionBlock">
+    <div class='sectionName'>
+      <span>SKILLS</span>
+    </div>
+    <div class='sectionContent'>
+      <div class='skillBlock'>
+        <span class='title'>Languages <em>(Expert)</em>:</span>
+          <span>TypeScript</span>, 
+          <span>JavaScript</span>, 
+          <span>Python</span>, 
+          <span>Go</span>
+      </div>
+      <div class='skillBlock'>
+        <span class='title'>Frontend <em>(Expert)</em>:</span>
+          <span>React</span>, 
+          <span>Next.js</span>, 
+          <span>HTML/CSS</span>, 
+          <span>Tailwind</span>
+      </div>
+      <div class='skillBlock'>
+        <span class='title'>Backend &amp; Cloud <em>(Advanced)</em>:</span>
+          <span>Node.js</span>, 
+          <span>PostgreSQL</span>, 
+          <span>AWS</span>, 
+          <span>Docker</span>
+      </div>
+    </div>
+  </div>
+  <div class='sectionLine'></div>
+
+
+
+
+
+
+
+  <div id='education' class="sectionBlock">
+    <div class='sectionName'>
+      <span>EDUCATION</span>
+    </div>
+    <div class='sectionContent'>
+      <div class='educationBlock'>
+        <span class='title'>
+          University of Technology
+        </span>
+        <span class='date'>
+          2013-09-01 &mdash; 2017-05-15
+        </span>
+        <div class=''>
+          Bachelor of Science  - Computer Science
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class='sectionLine'></div>
+
+
+
+  </body>
+</html>

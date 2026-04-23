@@ -294,7 +294,10 @@ function generateSnapshot(shortName, packageName) {
     const render = theme.render || (theme.default && theme.default.render);
     if (typeof render !== 'function') return null;
 
-    const paddedResume = padResume(SAMPLE_RESUME);
+    // Deep-clone SAMPLE_RESUME — some themes preprocess (e.g. markdown-ify)
+    // fields and mutate the input, which would then pollute subsequent
+    // themes' snapshots (keywords end up as "<p>TypeScript</p>" etc.).
+    const paddedResume = padResume(JSON.parse(JSON.stringify(SAMPLE_RESUME)));
     const result = render(paddedResume);
     // render() may return a string or a Promise
     if (typeof result === 'string') {
