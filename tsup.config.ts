@@ -2,7 +2,7 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig([
   {
-    entry: ['src/index.ts', 'src/api.ts', 'src/mcp/server.ts'],
+    entry: ['src/index.ts', 'src/mcp/server.ts'],
     format: ['esm'],
     target: 'es2022',
     sourcemap: true,
@@ -10,6 +10,6 @@ export default defineConfig([
     dts: true,
     platform: 'node',
     outDir: 'dist',
-    external: ['playwright', 'playwright-core', '@modelcontextprotocol/sdk'],
+    external: ['playwright', '@modelcontextprotocol/sdk'],
   },
 ]);

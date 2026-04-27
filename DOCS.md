@@ -11,7 +11,6 @@
 - [Themes](#themes)
 - [Example YAML structure](#example-yaml-structure)
 - [CI/CD integration](#cicd-auto-build-on-push)
-- [Node.js API](#nodejs-api)
 - [AI agent integration (MCP)](#ai-agent-integration-mcp)
 - [Troubleshooting](#troubleshooting)
 
@@ -232,32 +231,6 @@ jobs:
           path: |
             resume.html
             resume.json
-```
-
-## Node.js API
-
-```js
-import {
-  processResumeData,
-  loadResumeFiles,
-  loadTheme,
-  analyzeAts
-} from 'resuml';
-
-const { yamlContents } = await loadResumeFiles('resume.yaml');
-const resume = await processResumeData(yamlContents);
-
-const theme = await loadTheme('stackoverflow');
-const html = await theme.render(resume, { locale: 'en' });
-
-const ats = analyzeAts(resume, { language: 'en' });
-console.log(`ATS score: ${ats.score}/100`);
-
-const matched = analyzeAts(resume, {
-  language: 'en',
-  jobDescription: 'Looking for a senior TypeScript developer...'
-});
-console.log(`Matched: ${matched.keywords?.matched.join(', ')}`);
 ```
 
 ## AI agent integration (MCP)

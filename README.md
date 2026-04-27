@@ -66,10 +66,15 @@ Claude will generate the YAML, validate it, iterate until the score clears, and 
 ```bash
 npm install -g resuml
 
+# install a theme on demand (any jsonresume-theme-* package)
+npm install -g jsonresume-theme-stackoverflow
+
 resuml validate --resume resume.yaml --ats --jd job.txt
 resuml render   --resume resume.yaml --theme stackoverflow --output resume.html
 resuml pdf      --resume resume.yaml --theme stackoverflow --output resume.pdf
 ```
+
+`resuml pdf` and snapshot rendering need Playwright. Install it once with `npm install -g playwright` (it's an optional peer dep so the base install stays slim).
 
 **Minimal `resume.yaml`:**
 
@@ -89,14 +94,14 @@ work:
       - Led team of 12 engineers
 ```
 
-Full CLI reference, Node.js API, ATS rubric, CI/CD setup, and every MCP tool live in **[DOCS.md](DOCS.md)**.
+Full CLI reference, ATS rubric, CI/CD setup, and every MCP tool live in **[DOCS.md](DOCS.md)**.
 
 ---
 
 ## Requirements
 
 - Node.js ≥ 20, npm ≥ 10
-- Nothing else. Validation, ATS, rendering, and PDF all run locally
+- Optional: `playwright` for `resuml pdf`
 
 ## Contributing
 

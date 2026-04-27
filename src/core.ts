@@ -43,7 +43,7 @@ export async function processResumeData(yamlContents: string[]): Promise<Resume>
   };
 
   // Merge data: Concatenate arrays, deep merge objects
-  const mergedData = dataObjects.reduce((acc, data) => merge(acc, data, customizer), {}) as Resume;
+  const mergedData = dataObjects.reduce((acc, data) => merge(acc, data, customizer), {});
 
   // Validate using the official JSON Resume validator
   return new Promise((resolve, reject) => {
