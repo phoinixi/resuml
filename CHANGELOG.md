@@ -1,3 +1,18 @@
+# [2.0.0](https://github.com/phoinixi/resuml/compare/v1.21.0...v2.0.0) (2026-04-27)
+
+
+### Features
+
+* split web app into separate repo, slim CLI to its essentials ([2a2762e](https://github.com/phoinixi/resuml/commit/2a2762e90355b8941c5edbb91458c6c9f0c00d92))
+
+
+### BREAKING CHANGES
+
+* the public Node.js library API and the React
+builder UI are no longer part of this package. Users who imported
+from `resuml` programmatically must switch to invoking the CLI
+binary or the hosted app.
+
 # [1.21.0](https://github.com/phoinixi/resuml/compare/v1.20.1...v1.21.0) (2026-04-23)
 
 
