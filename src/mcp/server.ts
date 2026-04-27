@@ -539,7 +539,7 @@ ${resumeYaml}
         const themeModule = loadTheme(theme, { autoInstall: false });
         const renderOptions: Record<string, unknown> = {};
         if (locale) renderOptions['locale'] = locale;
-        const html = await themeModule.render(resume as unknown as Record<string, unknown>, renderOptions);
+        const html = await themeModule.render(resume, renderOptions);
         restoreStdout();
         return { content: [{ type: 'text' as const, text: html }] };
       } catch (e: unknown) {
@@ -603,7 +603,7 @@ ${resumeYaml}
         const themeModule = loadTheme(theme, { autoInstall: false });
         const renderOptions: Record<string, unknown> = {};
         if (locale) renderOptions['locale'] = locale;
-        const html = await themeModule.render(resume as unknown as Record<string, unknown>, renderOptions);
+        const html = await themeModule.render(resume, renderOptions);
 
         let chromium;
         try {

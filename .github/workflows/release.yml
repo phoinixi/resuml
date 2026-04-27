@@ -43,7 +43,7 @@ jobs:
         run: npm test
 
       - name: Build
-        run: npm run build:lib
+        run: npm run build
 
       - name: Release
         env:
