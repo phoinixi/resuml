@@ -3,6 +3,7 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { z } from 'zod';
 import { processResumeData } from '../core';
 import { analyzeAts } from '../ats/index';
+import { listRubricMarkdown, getRubricEntry } from '../ats/rubric';
 import { loadTheme } from '../utils/themeLoader';
 import { generateResumeYaml } from '../utils/resumeTemplate';
 import { KNOWN_THEMES, isThemeInstalled, getInstalledVersion } from '../utils/themeInfo';
@@ -131,88 +132,11 @@ languages:
 - Summary: 2-4 sentences positioning the candidate for the specific role
 `;
 
-const ATS_SCORING_RUBRIC = `# ATS Scoring Rubric
-
-resuml performs deterministic, offline ATS (Applicant Tracking System) analysis.
-
-## Scoring system
-
-### Rating scale
-| Score | Rating | Description |
-|-------|--------|-------------|
-| 90-100 | Excellent | Resume is well-optimized for ATS |
-| 75-89 | Good | Resume passes most ATS checks |
-| 60-74 | Needs Work | Several improvements recommended |
-| 0-59 | Poor | Significant issues found |
-
-### Weight system
-Each check has a weight that affects the final score:
-- **High weight (3x)**: Critical checks that significantly impact ATS parsing
-- **Medium weight (2x)**: Important but not critical checks
-- **Low weight (1x)**: Nice-to-have improvements
-
-### Combined scoring (with job description)
-When a job description is provided:
-- Generic checks: 60% of final score
-- Keyword match: 40% of final score
-
-## Checks performed
-
-### Contact Information (category: contact)
-| Check | Weight | What it verifies |
-|-------|--------|-----------------|
-| contact-complete | High | Name, email, phone, and city are all present |
-| has-linkedin | Medium | LinkedIn profile exists in profiles section |
-
-### Content Quality (category: content)
-| Check | Weight | What it verifies |
-|-------|--------|-----------------|
-| has-summary | High | Professional summary exists (15-100 words) |
-| work-highlights | High | Each work entry has at least 2 highlights |
-| action-verbs | Medium | Highlights start with action verbs |
-| quantified-impact | Medium | 50%+ of highlights include numbers/metrics |
-| no-first-person | Low | No first-person pronouns (I, my, me, we) |
-
-### Resume Structure (category: structure)
-| Check | Weight | What it verifies |
-|-------|--------|-----------------|
-| date-consistency | Medium | All dates are valid ISO 8601 format |
-| skills-populated | Medium | At least 3 skill categories defined |
-| education-complete | Medium | Education section has institution and area |
-| essential-sections | High | Work, education, and skills sections present |
-
-## Job description matching
-When a job description is provided, resuml extracts keywords using TF-based extraction
-and matches them against the resume using stem matching. Results include:
-- **matched**: Keywords found in the resume
-- **missing**: Keywords not found (add these to improve score)
-- **matchPercentage**: Percentage of JD keywords found in resume
-
-## Fit Assessment
-When a job description is provided, a \`fitAssessment\` field is included in the result:
-| Match % | Level | Meaning |
-|---------|-------|---------|
-| >= 70% | strong | Resume aligns well with the job description |
-| 50-69% | partial | Some alignment; emphasize transferable skills |
-| < 50% | weak | Significant skill gaps; role may not match profile |
-
-The assessment includes the top 5 missing keywords as specific gaps to address.
-Use this to advise users whether to apply or focus effort elsewhere.
-
-## Tips for improving ATS score
-1. Include all contact information (name, email, phone, city)
-2. Add a LinkedIn profile URL
-3. Write a 2-4 sentence professional summary
-4. Use action verbs to start each highlight
-5. Quantify achievements with numbers (%, $, time saved, team size)
-6. Include at least 3 skill categories with relevant keywords
-7. When targeting a job, mirror exact terminology from the job description
-`;
 
 function createServer(): McpServer {
   const server = new McpServer({
     name: 'resuml',
-    version: '1.0.0',
+    version: '2.0.0',
   });
 
   // ═══════════════════════════════════════════════════════════════════
@@ -237,20 +161,20 @@ function createServer(): McpServer {
     }),
   );
 
-  // ── ATS Scoring Rubric ────────────────────────────────────────────
+  // ── ATS Rubric ───────────────────────────────────────────────────
 
   server.registerResource(
-    'ats-scoring-rubric',
-    'resuml://docs/ats-scoring',
+    'ats-rubric',
+    'resuml://docs/ats-rubric',
     {
-      description: 'ATS scoring rubric: checks performed, weight system, rating scale, and tips for improving score',
+      description: 'Tiered ATS rubric: every check, its tier, weight, evidence level, description, and source URL.',
       mimeType: 'text/markdown',
     },
     () => ({
       contents: [{
-        uri: 'resuml://docs/ats-scoring',
+        uri: 'resuml://docs/ats-rubric',
         mimeType: 'text/markdown',
-        text: ATS_SCORING_RUBRIC,
+        text: listRubricMarkdown(),
       }],
     }),
   );
@@ -327,7 +251,7 @@ ${candidateEmail ? `10. Use candidate email: ${candidateEmail}` : ''}
 ## Workflow
 After generating the YAML:
 1. Use \`resuml_validate\` to check schema compliance
-2. Use \`resuml_ats_check\` with the job description text. Target: score >= 75, keyword match >= 70%
+2. Use \`resuml_ats_check\` with the job description text. Target: total >= 75, parsing tier grade A, hard-skill-overlap >= 70%
 3. If ATS score is low, revise the YAML and re-check
 4. Use \`resuml_render\` with theme "even" for the final output
 
@@ -366,7 +290,7 @@ ${jobDescription ? `## Job Description\n${jobDescription}\n` : ''}
 ## Instructions
 
 1. First, run \`resuml_ats_check\` on the current YAML${jobDescription ? ' with the job description' : ''} to get the baseline score
-2. Read the ATS scoring rubric (resuml://docs/ats-scoring) to understand what checks are performed
+2. Read the ATS rubric (resuml://docs/ats-rubric) to understand what checks are performed, their tier, and weight
 3. Review each failed or low-scoring check and fix the issues:
    - Missing contact info → add it
    - No summary → write a 2-4 sentence professional summary
@@ -514,6 +438,29 @@ ${resumeYaml}
           isError: true,
         };
       }
+    },
+  );
+
+  // ── resuml_ats_explain ──────────────────────────────────────────────
+
+  server.registerTool(
+    'resuml_ats_explain',
+    {
+      title: 'ATS Rubric Explain',
+      description: 'Return the rubric entry (tier, weight, evidence level, description, source) for a given check id.',
+      inputSchema: {
+        checkId: z.string().describe('Check id, e.g. quantification-density'),
+      },
+    },
+    ({ checkId }) => {
+      const entry = getRubricEntry(checkId);
+      if (!entry) {
+        return {
+          content: [{ type: 'text' as const, text: JSON.stringify({ error: `Unknown check id: ${checkId}` }) }],
+          isError: true,
+        };
+      }
+      return { content: [{ type: 'text' as const, text: JSON.stringify(entry, null, 2) }] };
     },
   );
 
