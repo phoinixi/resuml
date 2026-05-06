@@ -1,4 +1,4 @@
-name: "CodeQL config"
+name: 'CodeQL config'
 
 # Exclude generated artefacts and vendored snapshots. These files are either
 # machine-generated or downloaded from npm — scanning them wastes minutes per

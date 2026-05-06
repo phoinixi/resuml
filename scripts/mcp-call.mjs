@@ -17,10 +17,9 @@ import { existsSync } from 'fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
-const entry = existsSync(resolve(ROOT, 'dist/index.js'))
-  ? './dist/index.js' : './dist/index.cjs';
+const entry = existsSync(resolve(ROOT, 'dist/index.js')) ? './dist/index.js' : './dist/index.cjs';
 
-const [,, cmd, arg1, arg2] = process.argv;
+const [, , cmd, arg1, arg2] = process.argv;
 
 async function run() {
   const proc = spawn('node', [entry, 'mcp'], { cwd: ROOT, stdio: ['pipe', 'pipe', 'pipe'] });
@@ -60,7 +59,9 @@ async function run() {
     capabilities: {},
     clientInfo: { name: 'mcp-call', version: '1.0.0' },
   });
-  proc.stdin.write(JSON.stringify({ jsonrpc: '2.0', method: 'notifications/initialized', params: {} }) + '\n');
+  proc.stdin.write(
+    JSON.stringify({ jsonrpc: '2.0', method: 'notifications/initialized', params: {} }) + '\n'
+  );
 
   let result;
   switch (cmd) {
@@ -87,7 +88,9 @@ async function run() {
       result = await send('prompts/list', {});
       break;
     default:
-      console.error('Usage: mcp-call.mjs tool|resource|prompt|list-tools|list-resources|list-prompts');
+      console.error(
+        'Usage: mcp-call.mjs tool|resource|prompt|list-tools|list-resources|list-prompts'
+      );
       process.exit(1);
   }
 
@@ -96,4 +99,7 @@ async function run() {
   proc.kill();
 }
 
-run().catch(e => { console.error(e); process.exit(1); });
+run().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});

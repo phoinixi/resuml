@@ -1,48 +1,76 @@
 import type { ResumeSchema } from '../types/resume';
-import type { AtsResult, AtsOptions } from './types';
-import { runGenericChecks } from './genericChecks';
-import { matchJobDescription } from './jdMatcher';
-import { calculateScore, calculateCombinedScore, scoreToRating, generateSummary, assessFit } from './scoring';
+import type {
+  TieredAtsResult,
+  AtsOptions,
+  CheckResult,
+  TierResult,
+  Tier,
+  AtsConfig,
+  KnockoutSignal,
+} from './types';
+import { allParsingChecks } from './checks/parsing';
+import { allRecruiterChecks } from './checks/recruiter';
+import { allMatchChecks, extractKnockouts } from './checks/match';
+import {
+  computeTierScore,
+  computeTotalScore,
+  gradeFromScore,
+  scoreToRating,
+  generateSummary,
+} from './scoring';
+import { defaultConfig, effectiveWeight } from '../utils/config';
 
-/**
- * Run ATS analysis on a resume.
- *
- * Performs deterministic, offline checks:
- * 1. Generic best-practice checks (contact, content, structure)
- * 2. Optional job-description keyword matching
- *
- * @param resume - Validated resume data
- * @param options - ATS analysis options
- * @returns Full ATS analysis result with score, checks, and suggestions
- */
-export function analyzeAts(resume: ResumeSchema, options: AtsOptions = {}): AtsResult {
-  const language = options.language || 'en';
+function applyConfig(checks: CheckResult[], cfg: AtsConfig): CheckResult[] {
+  return checks
+    .filter((c) => !cfg.disable.includes(c.id))
+    .map((c) => ({ ...c, weight: effectiveWeight(c.id, c.weight, cfg) }));
+}
 
-  // Run generic checks
-  const checks = runGenericChecks(resume, language);
-  const genericScore = calculateScore(checks);
+function buildTier(_tier: Tier, checks: CheckResult[], cfg: AtsConfig): TierResult {
+  const filtered = applyConfig(checks, cfg);
+  const score = computeTierScore(filtered);
+  return {
+    score,
+    grade: gradeFromScore(score, cfg.thresholds.grade),
+    checks: filtered,
+  };
+}
 
-  // Run JD matching if provided
-  let keywords;
-  let fitAssessment;
+export function analyzeAts(resume: ResumeSchema, options: AtsOptions = {}): TieredAtsResult {
+  const cfg = options.config ?? defaultConfig;
+  const language = options.language ?? cfg.locale;
+
+  const parsingChecks = allParsingChecks.map((fn) => fn(resume, language));
+
+  const recruiterChecks = allRecruiterChecks.map((fn) => fn(resume, language, cfg));
+
+  const parsing = buildTier('parsing', parsingChecks, cfg);
+  const recruiter = buildTier('recruiter', recruiterChecks, cfg);
+
+  let match: TierResult | undefined;
+  let knockouts: KnockoutSignal[] = [];
   if (options.jobDescription) {
-    keywords = matchJobDescription(resume, options.jobDescription, language);
-    fitAssessment = assessFit(keywords);
+    const matchChecks = allMatchChecks.map((fn) =>
+      fn(resume, language, { jobDescription: options.jobDescription })
+    );
+    match = buildTier('match', matchChecks, cfg);
+    knockouts = extractKnockouts(resume, options.jobDescription);
   }
 
-  // Calculate combined score
-  const finalScore = calculateCombinedScore(genericScore, keywords?.matchPercentage);
-  const rating = scoreToRating(finalScore);
-  const summary = generateSummary(finalScore, rating, !!keywords);
+  const totalScore = computeTotalScore(
+    { parsing: parsing.score, match: match?.score, recruiter: recruiter.score },
+    cfg.weights.tiers
+  );
+  const rating = scoreToRating(totalScore, cfg.thresholds.rating);
+  const summary = generateSummary(totalScore, rating, !!options.jobDescription, knockouts.length);
 
   return {
-    score: finalScore,
+    score: totalScore,
     rating,
-    checks,
-    keywords,
-    fitAssessment,
+    tiers: match ? { parsing, match, recruiter } : { parsing, recruiter },
+    knockouts,
     summary,
   };
 }
 
-export type { AtsResult, AtsOptions, AtsCheck, AtsKeywordMatch, AtsFitAssessment } from './types';
+export type { TieredAtsResult, AtsOptions, CheckResult, TierResult, KnockoutSignal } from './types';

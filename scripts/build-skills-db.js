@@ -51,7 +51,9 @@ function download(url, dest) {
         return;
       }
       res.pipe(file);
-      file.on('finish', () => { file.close(resolvePromise); });
+      file.on('finish', () => {
+        file.close(resolvePromise);
+      });
     });
     req.on('error', reject);
   });
@@ -141,23 +143,86 @@ function nameToCanonicalAndAliases(raw) {
  * for the genuine single-word brands (e.g. "React", "Docker", "Vite").
  */
 const GENERIC_SINGLE_WORD_BAN = new Set([
-  'access', 'apps', 'cache', 'channel', 'channels', 'clear', 'clone',
-  'code', 'connect', 'contact', 'deploy', 'design', 'drive', 'ease',
-  'enable', 'express', 'fast', 'flow', 'focus', 'forms', 'frame',
-  'groove', 'hive', 'impact', 'link', 'mail', 'mind', 'monitor',
-  'motion', 'notes', 'notify', 'pages', 'plan', 'pop', 'present',
-  'publish', 'pulse', 'relay', 'reports', 'schedule', 'scope',
-  'sense', 'share', 'shift', 'show', 'simple', 'sketch', 'slate',
-  'slides', 'snap', 'source', 'space', 'sphere', 'spotlight', 'stack',
-  'stream', 'switch', 'tabs', 'taskmaster', 'teams', 'trigger',
-  'update', 'vision', 'voice', 'word',
+  'access',
+  'apps',
+  'cache',
+  'channel',
+  'channels',
+  'clear',
+  'clone',
+  'code',
+  'connect',
+  'contact',
+  'deploy',
+  'design',
+  'drive',
+  'ease',
+  'enable',
+  'express',
+  'fast',
+  'flow',
+  'focus',
+  'forms',
+  'frame',
+  'groove',
+  'hive',
+  'impact',
+  'link',
+  'mail',
+  'mind',
+  'monitor',
+  'motion',
+  'notes',
+  'notify',
+  'pages',
+  'plan',
+  'pop',
+  'present',
+  'publish',
+  'pulse',
+  'relay',
+  'reports',
+  'schedule',
+  'scope',
+  'sense',
+  'share',
+  'shift',
+  'show',
+  'simple',
+  'sketch',
+  'slate',
+  'slides',
+  'snap',
+  'source',
+  'space',
+  'sphere',
+  'spotlight',
+  'stack',
+  'stream',
+  'switch',
+  'tabs',
+  'taskmaster',
+  'teams',
+  'trigger',
+  'update',
+  'vision',
+  'voice',
+  'word',
 ]);
 
 const GENERIC_PHRASE_BAN = new Set([
-  'software development', 'software engineering', 'project management',
-  'data management', 'content management', 'information management',
-  'knowledge management', 'document management', 'operating system',
-  'operating systems', 'computer systems', 'application software',
+  'software development',
+  'software engineering',
+  'project management',
+  'data management',
+  'content management',
+  'information management',
+  'knowledge management',
+  'document management',
+  'operating system',
+  'operating systems',
+  'computer systems',
+  'application software',
 ]);
 
 /**
@@ -167,7 +232,7 @@ const GENERIC_PHRASE_BAN = new Set([
 function keepEntry(name, _commodityTitle) {
   const lower = name.toLowerCase().trim();
   // Reject obvious non-skills
-  if (/^\d+[a-z]{0,3}$/i.test(lower)) return false;  // "3M", "24SevenOffice Project"
+  if (/^\d+[a-z]{0,3}$/i.test(lower)) return false; // "3M", "24SevenOffice Project"
   if (lower.length < 2) return false;
   if (lower.length > 60) return false;
   // Skip entries with fluffy qualifiers
@@ -204,7 +269,8 @@ async function main() {
   const extractDir = join(CACHE_DIR, 'onet');
 
   if (!existsSync(zipPath)) {
-    if (!args.download) throw new Error(`O*NET zip missing at ${zipPath}. Re-run without --no-download.`);
+    if (!args.download)
+      throw new Error(`O*NET zip missing at ${zipPath}. Re-run without --no-download.`);
     console.log(`Downloading O*NET from ${ONET_URL}…`);
     await download(ONET_URL, zipPath);
   }
@@ -222,7 +288,7 @@ async function main() {
   // Keep only IT/software occupations (SOC 15-*), drops noise from unrelated jobs
   const itOnly = (rows) => rows.filter((r) => r['O*NET-SOC Code']?.startsWith('15-'));
 
-  const skillsMap = new Map();  // canonical (lowercased) → {id, canonical, aliases, type, hot, sources}
+  const skillsMap = new Map(); // canonical (lowercased) → {id, canonical, aliases, type, hot, sources}
 
   function upsert(rawName, commodityTitle, hot, source) {
     if (!rawName || !keepEntry(rawName, commodityTitle)) return;
@@ -262,11 +328,11 @@ async function main() {
   const emergingPath = join(ROOT, 'data/skills/emerging.json');
   if (existsSync(emergingPath)) {
     const emerging = JSON.parse(readFileSync(emergingPath, 'utf8'));
-    for (const s of (emerging.skills || [])) {
+    for (const s of emerging.skills || []) {
       const key = s.canonical.toLowerCase();
       const existing = skillsMap.get(key);
       if (existing) {
-        for (const a of (s.aliases || [])) {
+        for (const a of s.aliases || []) {
           if (!existing.aliases.includes(a)) existing.aliases.push(a);
         }
         if (!existing.sources.includes('emerging')) existing.sources.push('emerging');
@@ -286,22 +352,30 @@ async function main() {
   }
 
   // Output, sorted by canonical name for stable diffs
-  const skills = [...skillsMap.values()].sort((a, b) =>
-    a.canonical.localeCompare(b.canonical)
-  );
+  const skills = [...skillsMap.values()].sort((a, b) => a.canonical.localeCompare(b.canonical));
 
   if (!existsSync(dirname(OUT_FILE))) mkdirSync(dirname(OUT_FILE), { recursive: true });
-  writeFileSync(OUT_FILE, JSON.stringify({
-    version: 1,
-    generatedAt: new Date().toISOString(),
-    sources: ['onet-29.0', 'resuml-emerging'],
-    license: 'O*NET: public domain; emerging list: MIT (this repo)',
-    count: skills.length,
-    skills,
-  }, null, 0));
+  writeFileSync(
+    OUT_FILE,
+    JSON.stringify(
+      {
+        version: 1,
+        generatedAt: new Date().toISOString(),
+        sources: ['onet-29.0', 'resuml-emerging'],
+        license: 'O*NET: public domain; emerging list: MIT (this repo)',
+        count: skills.length,
+        skills,
+      },
+      null,
+      0
+    )
+  );
 
   console.log(`✅ Wrote ${skills.length} skills → ${OUT_FILE}`);
-  const byType = skills.reduce((acc, s) => { acc[s.type] = (acc[s.type] || 0) + 1; return acc; }, {});
+  const byType = skills.reduce((acc, s) => {
+    acc[s.type] = (acc[s.type] || 0) + 1;
+    return acc;
+  }, {});
   console.log('   Types:', byType);
   console.log('   Hot:', skills.filter((s) => s.hot).length);
   const size = (JSON.stringify(skills).length / 1024).toFixed(1);

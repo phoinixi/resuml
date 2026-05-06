@@ -39,9 +39,13 @@ export async function devAction(options: DevCommandOptions): Promise<void> {
 
     // Watch for file changes if inputPath is a directory
     if (fs.existsSync(inputPath) && fs.statSync(inputPath).isDirectory()) {
-      watchDirectory(inputPath, () => { void renderResume(options); });
+      watchDirectory(inputPath, () => {
+        void renderResume(options);
+      });
     } else if (fs.existsSync(inputPath)) {
-      watchFile(inputPath, () => { void renderResume(options); });
+      watchFile(inputPath, () => {
+        void renderResume(options);
+      });
     }
 
     // Simple HTTP server

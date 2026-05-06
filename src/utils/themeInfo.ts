@@ -7,7 +7,11 @@ export interface ThemeInfo {
 }
 
 export const KNOWN_THEMES: ThemeInfo[] = [
-  { name: 'stackoverflow', pkg: 'jsonresume-theme-stackoverflow', description: 'Stack Overflow inspired theme' },
+  {
+    name: 'stackoverflow',
+    pkg: 'jsonresume-theme-stackoverflow',
+    description: 'Stack Overflow inspired theme',
+  },
   { name: 'elegant', pkg: 'jsonresume-theme-elegant', description: 'Elegant and professional' },
   { name: 'react', pkg: 'jsonresume-theme-react', description: 'Built with React components' },
   { name: 'even', pkg: 'jsonresume-theme-even', description: 'Clean and minimal' },

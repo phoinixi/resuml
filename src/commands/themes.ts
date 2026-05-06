@@ -16,7 +16,9 @@ function listThemes(): void {
   console.log(
     `  ${'Status'.padEnd(10)}${'Name'.padEnd(nameWidth)}${'Package'.padEnd(pkgWidth)}Description`
   );
-  console.log(`  ${'─'.repeat(10)}${'─'.repeat(nameWidth)}${'─'.repeat(pkgWidth)}${'─'.repeat(30)}`);
+  console.log(
+    `  ${'─'.repeat(10)}${'─'.repeat(nameWidth)}${'─'.repeat(pkgWidth)}${'─'.repeat(30)}`
+  );
 
   for (const theme of KNOWN_THEMES) {
     const installed = isThemeInstalled(theme.pkg);
@@ -34,25 +36,32 @@ function listThemes(): void {
   console.log(`  ${chalk.cyan('resuml themes --install <name>')}`);
   console.log(`  ${chalk.cyan('resuml themes --install stackoverflow')}\n`);
   console.log(
-    chalk.blue('Browse all themes: ') +
-      'https://www.npmjs.com/search?q=jsonresume-theme\n'
+    chalk.blue('Browse all themes: ') + 'https://www.npmjs.com/search?q=jsonresume-theme\n'
   );
 }
 
 function installTheme(name: string): void {
   // Check if it's a known short name
   const known = KNOWN_THEMES.find((t) => t.name === name);
-  const pkg = known ? known.pkg : name.startsWith('jsonresume-theme-') ? name : `jsonresume-theme-${name}`;
+  const pkg = known
+    ? known.pkg
+    : name.startsWith('jsonresume-theme-')
+      ? name
+      : `jsonresume-theme-${name}`;
 
   console.log(chalk.blue(`\n📦 Installing ${pkg}...\n`));
 
   try {
     execSync(`npm install ${pkg}`, { stdio: 'inherit' });
     console.log(chalk.green(`\n✅ Successfully installed ${pkg}`));
-    console.log(chalk.blue(`\nUse it with: ${chalk.cyan(`resuml render --theme ${known?.name || name}`)}\n`));
+    console.log(
+      chalk.blue(`\nUse it with: ${chalk.cyan(`resuml render --theme ${known?.name || name}`)}\n`)
+    );
   } catch {
     console.error(chalk.red(`\n❌ Failed to install ${pkg}`));
-    console.error(chalk.yellow(`Make sure the package exists: https://www.npmjs.com/package/${pkg}\n`));
+    console.error(
+      chalk.yellow(`Make sure the package exists: https://www.npmjs.com/package/${pkg}\n`)
+    );
   }
 }
 

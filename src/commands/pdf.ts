@@ -24,6 +24,7 @@ interface PlaywrightBrowser {
 interface PlaywrightPage {
   setContent(html: string, options?: { waitUntil?: string }): Promise<void>;
   pdf(options?: Record<string, unknown>): Promise<Buffer>;
+  evaluate<T>(fn: () => T): Promise<T>;
 }
 
 interface PlaywrightBrowserType {
@@ -99,6 +100,31 @@ export async function pdfAction(options: PdfCommandOptions): Promise<void> {
       const page = await browser.newPage();
       await page.setContent(htmlOutput, { waitUntil: 'networkidle' });
 
+      const bodyText = await page.evaluate(() => document.body.innerText || '');
+      const bodyWords = bodyText.trim().split(/\s+/).filter(Boolean).length;
+      const resumeContentParts: string[] = [];
+      if (resumeData.basics?.summary) resumeContentParts.push(resumeData.basics.summary);
+      for (const w of resumeData.work || []) {
+        if (w.summary) resumeContentParts.push(w.summary);
+        resumeContentParts.push(...(w.highlights || []));
+      }
+      for (const p of resumeData.projects || []) {
+        if (p.description) resumeContentParts.push(p.description);
+        resumeContentParts.push(...(p.highlights || []));
+      }
+      for (const s of resumeData.skills || []) {
+        if (s.name) resumeContentParts.push(s.name);
+        resumeContentParts.push(...(s.keywords || []));
+      }
+      const resumeWords = resumeContentParts.join(' ').split(/\s+/).filter(Boolean).length;
+      if (resumeWords > 0 && bodyWords < resumeWords * 0.7) {
+        console.warn(
+          chalk.yellow(
+            `pdf-text-extractable: rendered text ${bodyWords} words vs resume ${resumeWords} (under 70%). Theme may use image-based glyphs.`
+          )
+        );
+      }
+
       const pdfBuffer = await page.pdf({
         format,
         margin,
@@ -108,6 +134,15 @@ export async function pdfAction(options: PdfCommandOptions): Promise<void> {
 
       fs.mkdirSync(path.dirname(path.resolve(outputPath)), { recursive: true });
       fs.writeFileSync(outputPath, pdfBuffer);
+
+      const sizeMb = pdfBuffer.length / (1024 * 1024);
+      if (sizeMb > 2.5) {
+        console.warn(
+          chalk.yellow(
+            `pdf-size-under-2.5mb: PDF is ${sizeMb.toFixed(2)} MB (Greenhouse limit 2.5 MB).`
+          )
+        );
+      }
 
       console.log(chalk.green(`✅ Successfully generated ${outputPath}`));
     } finally {

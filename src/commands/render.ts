@@ -42,7 +42,8 @@ export async function renderAction(options: RenderCommandOptions): Promise<void>
     const defaultFilename = `resume.${defaultExtension}`;
     const outputPath = options.output || defaultFilename;
 
-    if (options.format === 'pdf') { // eslint-disable-line @typescript-eslint/no-unnecessary-condition
+    if (options.format === 'pdf') {
+      // eslint-disable-line @typescript-eslint/no-unnecessary-condition
       console.log(chalk.blue(`Generating PDF output at ${outputPath}...`));
       const { chromium } = await import('playwright');
       const browser = await chromium.launch();

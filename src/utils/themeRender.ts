@@ -67,7 +67,9 @@ async function renderJsonResumeTheme(
   const jsonResumeData = resumeData; // In real implementation, convert if necessary
 
   // Dynamically import the theme
-  const themePackage = await import(themePackageName) as { default: { render: (d: unknown) => string } };
+  const themePackage = (await import(themePackageName)) as {
+    default: { render: (d: unknown) => string };
+  };
   const renderedHTML = themePackage.default.render(jsonResumeData);
 
   return {
@@ -92,7 +94,9 @@ async function renderRyamlTheme(
   const themePackageName = `@resuml/theme-${themeName}`;
 
   // Dynamically import the theme (better than require)
-  const themePackage = await import(themePackageName) as { default: { render: (d: unknown, c: unknown, l: string) => string } };
+  const themePackage = (await import(themePackageName)) as {
+    default: { render: (d: unknown, c: unknown, l: string) => string };
+  };
   const renderedHTML = themePackage.default.render(resumeData, themeConfig, language);
 
   return {

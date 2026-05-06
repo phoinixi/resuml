@@ -1,6 +1,12 @@
 import type { ResumeSchema } from '../types/resume';
-import type { AtsKeywordMatch } from './types';
 import { getSkillIndex, type SkillMatch } from './skills';
+
+interface AtsKeywordMatch {
+  matched: string[];
+  missing: string[];
+  extra: string[];
+  matchPercentage: number;
+}
 
 /**
  * Extract text content from a resume for skill matching.
@@ -44,14 +50,19 @@ function extractResumeText(resume: ResumeSchema): string {
  */
 function splitJdSections(text: string): { requirementText: string; fullText: string } {
   const lines = text.split('\n');
-  const reqPatterns = /^(required|requirements?|minimum|preferred|qualifications?|must[\s-]have|nice[\s-]to[\s-]have|what you.?ll|what we.?re looking|skills|technical|you.?ll need|responsibilities|you will)/i;
-  const nonReqPatterns = /^(about|summary|who we are|our (company|team|mission)|description|overview|benefits|perks|compensation|salary)/i;
+  const reqPatterns =
+    /^(required|requirements?|minimum|preferred|qualifications?|must[\s-]have|nice[\s-]to[\s-]have|what you.?ll|what we.?re looking|skills|technical|you.?ll need|responsibilities|you will)/i;
+  const nonReqPatterns =
+    /^(about|summary|who we are|our (company|team|mission)|description|overview|benefits|perks|compensation|salary)/i;
 
   let inReqSection = false;
   const reqLines: string[] = [];
 
   for (const line of lines) {
-    const header = line.trim().replace(/[:#*-]/g, '').trim();
+    const header = line
+      .trim()
+      .replace(/[:#*-]/g, '')
+      .trim();
     if (reqPatterns.test(header)) inReqSection = true;
     else if (nonReqPatterns.test(header)) inReqSection = false;
     if (inReqSection) reqLines.push(line);
@@ -76,29 +87,26 @@ interface RankedSkill {
   score: number;
 }
 
-function rankSkills(
-  fullMatches: SkillMatch[],
-  requirementMatches: SkillMatch[],
-): RankedSkill[] {
+function rankSkills(fullMatches: SkillMatch[], requirementMatches: SkillMatch[]): RankedSkill[] {
   const reqIds = new Set(requirementMatches.map((m) => m.skill.id));
-  return fullMatches.map((m) => {
-    const inRequirementSection = reqIds.has(m.skill.id);
-    const score =
-      m.occurrences * 1.0 +
-      (inRequirementSection ? 3.0 : 0) +
-      (m.skill.hot ? 1.5 : 0);
-    return {
-      canonical: m.skill.canonical,
-      occurrences: m.occurrences,
-      inRequirementSection,
-      hot: m.skill.hot,
-      score,
-    };
-  }).sort((a, b) => {
-    if (a.inRequirementSection !== b.inRequirementSection) return a.inRequirementSection ? -1 : 1;
-    if (a.score !== b.score) return b.score - a.score;
-    return a.canonical.localeCompare(b.canonical);
-  });
+  return fullMatches
+    .map((m) => {
+      const inRequirementSection = reqIds.has(m.skill.id);
+      const score =
+        m.occurrences * 1.0 + (inRequirementSection ? 3.0 : 0) + (m.skill.hot ? 1.5 : 0);
+      return {
+        canonical: m.skill.canonical,
+        occurrences: m.occurrences,
+        inRequirementSection,
+        hot: m.skill.hot,
+        score,
+      };
+    })
+    .sort((a, b) => {
+      if (a.inRequirementSection !== b.inRequirementSection) return a.inRequirementSection ? -1 : 1;
+      if (a.score !== b.score) return b.score - a.score;
+      return a.canonical.localeCompare(b.canonical);
+    });
 }
 
 /**
@@ -111,7 +119,7 @@ function rankSkills(
 export function matchJobDescription(
   resume: ResumeSchema,
   jobDescription: string,
-  _language: string = 'en',
+  _language: string = 'en'
 ): AtsKeywordMatch {
   if (!jobDescription.trim()) {
     return { matched: [], missing: [], extra: [], matchPercentage: 0 };
@@ -144,9 +152,8 @@ export function matchJobDescription(
     else missing.push(r.canonical);
   }
 
-  const matchPercentage = ranked.length > 0
-    ? Math.round((matched.length / ranked.length) * 100)
-    : 0;
+  const matchPercentage =
+    ranked.length > 0 ? Math.round((matched.length / ranked.length) * 100) : 0;
 
   // Resume skills not referenced by the JD
   const jdSkillIds = new Set(fullMatches.map((m) => m.skill.id));

@@ -3,7 +3,8 @@ import { processResumeData } from '../core';
 import { loadResumeFiles } from '../utils/loadResume';
 import { handleCommandError } from '../utils/errorHandler';
 import { analyzeAts } from '../ats/index';
-import type { AtsResult, AtsCheck } from '../ats/index';
+import type { TieredAtsResult } from '../ats/index';
+import { loadConfig } from '../utils/config';
 
 interface ValidateCommandOptions {
   resume?: string;
@@ -12,68 +13,64 @@ interface ValidateCommandOptions {
   jd?: string;
   atsThreshold?: string;
   format?: string;
+  config?: string;
 }
 
-function formatAtsReport(result: AtsResult, debug: boolean, chalk: typeof import('chalk').default): void {
-  const scoreColor = result.score >= 75 ? chalk.green : result.score >= 60 ? chalk.yellow : chalk.red;
+function formatAtsReport(
+  result: TieredAtsResult,
+  debug: boolean,
+  chalk: typeof import('chalk').default
+): void {
+  const scoreColor =
+    result.score >= 75 ? chalk.green : result.score >= 60 ? chalk.yellow : chalk.red;
   console.log('');
-  console.log(chalk.bold('═══ ATS Analysis Report ═══'));
+  console.log(chalk.bold('=== ATS Analysis Report ==='));
   console.log('');
-  console.log(`  Score: ${scoreColor(chalk.bold(`${result.score}/100`))} (${result.rating.replace('-', ' ')})`);
+  console.log(
+    `  Score: ${scoreColor(chalk.bold(`${result.score}/100`))} (${result.rating.replace('-', ' ')})`
+  );
   console.log(`  ${result.summary}`);
   console.log('');
 
-  // Group checks by category
-  const categories: Record<string, AtsCheck[]> = {};
-  for (const check of result.checks) {
-    const list = categories[check.category];
-    if (!list) {
-      categories[check.category] = [check];
-    } else {
-      list.push(check);
-    }
-  }
-
-  const categoryLabels: Record<string, string> = {
-    contact: 'Contact Information',
-    content: 'Content Quality',
-    structure: 'Resume Structure',
-    keywords: 'Keywords',
+  const tierLabels: Record<string, string> = {
+    parsing: 'Parsing',
+    recruiter: 'Recruiter',
+    match: 'JD Match',
   };
 
-  for (const [cat, checks] of Object.entries(categories)) {
-    const label = categoryLabels[cat] || cat;
-    console.log(chalk.bold(`  ${label}`));
+  for (const [tierName, tier] of Object.entries(result.tiers)) {
+    const label = tierLabels[tierName] ?? tierName;
+    console.log(chalk.bold(`  ${label} (${tier.score}/100, grade ${tier.grade})`));
 
-    for (const check of checks) {
-      if (!debug && check.passed) continue; // In normal mode, only show failures
-      const icon = check.passed ? chalk.green('✓') : chalk.red('✗');
+    for (const check of tier.checks) {
+      if (!debug && (check.status === 'pass' || check.status === 'skipped')) continue;
+      const icon =
+        check.status === 'pass'
+          ? chalk.green('v')
+          : check.status === 'skipped'
+            ? chalk.dim('-')
+            : check.status === 'warn'
+              ? chalk.yellow('!')
+              : chalk.red('x');
       const scoreText = chalk.dim(`[${check.score}]`);
       console.log(`    ${icon} ${check.message} ${scoreText}`);
-      if (!check.passed && check.suggestion) {
-        console.log(chalk.dim(`      → ${check.suggestion}`));
+      for (const hint of check.hints) {
+        console.log(chalk.dim(`      -> ${hint}`));
       }
     }
     console.log('');
   }
 
-  // JD keyword section
-  if (result.keywords) {
-    console.log(chalk.bold('  Job Description Match'));
-    const kw = result.keywords;
-    const matchColor = kw.matchPercentage >= 70 ? chalk.green : kw.matchPercentage >= 50 ? chalk.yellow : chalk.red;
-    console.log(`    Match: ${matchColor(`${kw.matchPercentage}%`)} (${kw.matched.length}/${kw.matched.length + kw.missing.length} keywords)`);
-    if (kw.matched.length > 0) {
-      console.log(chalk.green(`    ✓ Matched: ${kw.matched.join(', ')}`));
-    }
-    if (kw.missing.length > 0) {
-      console.log(chalk.red(`    ✗ Missing: ${kw.missing.join(', ')}`));
-      console.log(chalk.dim('      → Consider incorporating these keywords into your resume where relevant.'));
+  if (result.knockouts.length > 0) {
+    console.log(chalk.bold('  Knockout Signals'));
+    for (const k of result.knockouts) {
+      console.log(chalk.red(`    ! ${k.signal}: ${k.evidence}`));
+      console.log(chalk.dim(`      -> ${k.recommendation}`));
     }
     console.log('');
   }
 
-  console.log(chalk.dim('═══════════════════════════'));
+  console.log(chalk.dim('==========================='));
 }
 
 export async function validateAction(options: ValidateCommandOptions): Promise<void> {
@@ -109,9 +106,11 @@ export async function validateAction(options: ValidateCommandOptions): Promise<v
         }
       }
 
+      const cfg = loadConfig(options.config ? { configPath: options.config } : {});
       const result = analyzeAts(resumeData, {
-        language: 'en',
+        language: cfg.locale,
         jobDescription,
+        config: cfg,
       });
 
       if (options.format === 'json') {

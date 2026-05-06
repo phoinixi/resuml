@@ -44,7 +44,7 @@ export async function initAction(options: InitCommandOptions): Promise<void> {
       }
     }
 
-    console.log(chalk.blue('\n📝 Let\'s set up your resume!\n'));
+    console.log(chalk.blue("\n📝 Let's set up your resume!\n"));
 
     const name = await ask(rl, 'Your full name', 'John Doe');
     const email = await ask(rl, 'Email address', 'john@example.com');
@@ -55,11 +55,35 @@ export async function initAction(options: InitCommandOptions): Promise<void> {
     fs.mkdirSync(path.dirname(fullPath), { recursive: true });
     fs.writeFileSync(fullPath, yaml, 'utf8');
 
+    const configPath = path.join(path.dirname(fullPath), 'resuml.config.yaml');
+    const template = `# resuml ATS configuration
+# Override defaults; everything is optional.
+# Run \`resuml ats config --print\` to see the merged effective config.
+ats:
+  weights:
+    tiers:
+      parsing: 30
+      match: 50
+      recruiter: 20
+  thresholds:
+    seniorYoeCutoff: 10
+  disable: []
+`;
+    try {
+      fs.writeFileSync(configPath, template, { encoding: 'utf8', flag: 'wx' });
+      console.log(chalk.green(`Created resuml.config.yaml`));
+    } catch (err) {
+      // EEXIST is the expected race-safe outcome when the file already exists.
+      if ((err as NodeJS.ErrnoException).code !== 'EEXIST') throw err;
+    }
+
     console.log(chalk.green(`\n✅ Created ${outputPath}`));
     console.log(chalk.blue('\nNext steps:'));
     console.log(`  1. Edit ${outputPath} to fill in your details`);
     console.log('  2. Run ' + chalk.cyan('resuml validate --resume ' + outputPath));
-    console.log('  3. Run ' + chalk.cyan('resuml render --resume ' + outputPath + ' --theme stackoverflow'));
+    console.log(
+      '  3. Run ' + chalk.cyan('resuml render --resume ' + outputPath + ' --theme stackoverflow')
+    );
   } finally {
     rl.close();
   }
