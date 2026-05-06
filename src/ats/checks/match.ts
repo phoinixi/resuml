@@ -1,5 +1,5 @@
 import type { ResumeSchema } from '../../types/resume';
-import type { CheckResult } from '../types';
+import type { CheckResult, KnockoutSignal } from '../types';
 import { matchJobDescription } from '../jdMatcher';
 import { computeYoeYears } from './yoe';
 
@@ -127,3 +127,52 @@ export const hardSkillOverlap: MatchCheckFn = (resume, language, { jobDescriptio
 export const allMatchChecks = [
   hardSkillOverlap, titleAlignment, educationLevel, yoeMatch,
 ];
+
+interface KnockoutPattern {
+  signal: string;
+  jdPattern: RegExp;
+  resumeMatch: (r: ResumeSchema) => boolean;
+  recommendation: string;
+}
+
+const KNOCKOUTS: KnockoutPattern[] = [
+  {
+    signal: 'work-auth',
+    jdPattern: /(work\s*auth|authorization to work|right to work|us citizen|green card|h-?1b|visa sponsorship)/i,
+    resumeMatch: (r) => /(work auth|authorized|citizen|green card|visa)/i.test(r.basics?.summary || ''),
+    recommendation: 'Confirm authorization status in the application form.',
+  },
+  {
+    signal: 'location',
+    jdPattern: /(must be located|on-?site|relocate|based in)\s+([a-zA-Z ,]+)/i,
+    resumeMatch: (r) => !!r.basics?.location?.city,
+    recommendation: 'Verify location requirement against your basics.location.city.',
+  },
+  {
+    signal: 'clearance',
+    jdPattern: /(ts\/sci|secret clearance|security clearance|active clearance)/i,
+    resumeMatch: (r) => /clearance/i.test(JSON.stringify(r)),
+    recommendation: 'Confirm clearance level on the application form.',
+  },
+  {
+    signal: 'certification',
+    jdPattern: /(cissp|aws certified|pmp|ccna|cpa|required certification)/i,
+    resumeMatch: (r) => (r.certificates?.length ?? 0) > 0,
+    recommendation: 'List required certificates in the certificates section if held.',
+  },
+];
+
+export function extractKnockouts(resume: ResumeSchema, jobDescription: string): KnockoutSignal[] {
+  const out: KnockoutSignal[] = [];
+  for (const k of KNOCKOUTS) {
+    const m = jobDescription.match(k.jdPattern);
+    if (!m) continue;
+    if (k.resumeMatch(resume)) continue;
+    out.push({
+      signal: k.signal,
+      evidence: `JD: "${m[0]}"; resume silent.`,
+      recommendation: k.recommendation,
+    });
+  }
+  return out;
+}
