@@ -33,7 +33,7 @@ vi.mock('../utils/themeLoader', () => ({
 
 // Mock core processResumeData
 vi.mock('../core', async (importOriginal) => {
-  const actualCore = (await importOriginal());
+  const actualCore = await importOriginal() as object;
   return {
     ...actualCore,
     processResumeData: vi.fn().mockResolvedValue({ basics: { name: 'Mocked Resume' } }),
@@ -42,7 +42,7 @@ vi.mock('../core', async (importOriginal) => {
 
 // Mock the file system
 vi.mock('fs', async (importOriginal) => {
-  const actual = (await importOriginal());
+  const actual = await importOriginal() as object;
   return {
     ...actual,
     readFileSync: vi.fn((path) => {
@@ -64,7 +64,7 @@ vi.mock('fs', async (importOriginal) => {
 
 // Mock the path module
 vi.mock('path', async (importOriginal) => {
-  const actual = (await importOriginal());
+  const actual = await importOriginal() as object;
   return {
     ...actual,
     join: (...args: string[]) => args.join('/'),

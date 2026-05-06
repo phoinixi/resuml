@@ -1,6 +1,12 @@
 import type { ResumeSchema } from '../types/resume';
-import type { AtsKeywordMatch } from './types';
 import { getSkillIndex, type SkillMatch } from './skills';
+
+interface AtsKeywordMatch {
+  matched: string[];
+  missing: string[];
+  extra: string[];
+  matchPercentage: number;
+}
 
 /**
  * Extract text content from a resume for skill matching.

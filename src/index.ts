@@ -130,4 +130,4 @@ export { loadResumeFiles } from './utils/loadResume';
 export { loadTheme } from './utils/themeLoader';
 export * as themeRender from './utils/themeRender';
 export { analyzeAts } from './ats/index';
-export type { AtsResult, AtsOptions } from './ats/index';
+export type { TieredAtsResult, AtsOptions } from './ats/index';
