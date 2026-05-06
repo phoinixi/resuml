@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/phoinixi/resuml/compare/v3.0.0...v3.1.0) (2026-05-06)
+
+
+### Features
+
+* expose library API via exports map ([2100874](https://github.com/phoinixi/resuml/commit/2100874fb86dea5058ba7b3e11a4accd26cf8d61))
+
 # [3.0.0](https://github.com/phoinixi/resuml/compare/v2.0.0...v3.0.0) (2026-05-06)
 
 
