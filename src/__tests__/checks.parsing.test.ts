@@ -1,14 +1,20 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { describe, it, expect } from 'vitest';
 import {
-  conventionalSections, dateFormatConsistency, contactInBody,
-  reverseChronOrder, educationComplete,
+  conventionalSections,
+  dateFormatConsistency,
+  contactInBody,
+  reverseChronOrder,
+  educationComplete,
 } from '../ats/checks/parsing';
 import type { ResumeSchema } from '../types/resume';
 
 const base: ResumeSchema = {
   basics: { name: 'X', email: 'x@y.com', phone: '+1', location: { city: 'NYC' } },
   work: [{ name: 'A', position: 'Dev', startDate: '2020-01', highlights: ['Built X'] }],
-  education: [{ institution: 'U', area: 'CS', studyType: 'BSc', startDate: '2015-01', endDate: '2019-01' }],
+  education: [
+    { institution: 'U', area: 'CS', studyType: 'BSc', startDate: '2015-01', endDate: '2019-01' },
+  ],
   skills: [{ name: 'Code', keywords: ['ts'] }],
 };
 
@@ -36,23 +42,31 @@ describe('contact-in-body', () => {
     expect(contactInBody(base, 'en').status).toBe('pass');
   });
   it('fails without email', () => {
-    expect(contactInBody({ ...base, basics: { ...base.basics!, email: undefined } }, 'en').status).toBe('fail');
+    expect(
+      contactInBody({ ...base, basics: { ...base.basics!, email: undefined } }, 'en').status
+    ).toBe('fail');
   });
 });
 
 describe('reverse-chron-order', () => {
   it('passes when work descending', () => {
-    const r = { ...base, work: [
-      { ...base.work![0], startDate: '2022-01' },
-      { ...base.work![0], startDate: '2020-01' },
-    ]};
+    const r = {
+      ...base,
+      work: [
+        { ...base.work![0], startDate: '2022-01' },
+        { ...base.work![0], startDate: '2020-01' },
+      ],
+    };
     expect(reverseChronOrder(r, 'en').status).toBe('pass');
   });
   it('fails when out of order', () => {
-    const r = { ...base, work: [
-      { ...base.work![0], startDate: '2018-01' },
-      { ...base.work![0], startDate: '2020-01' },
-    ]};
+    const r = {
+      ...base,
+      work: [
+        { ...base.work![0], startDate: '2018-01' },
+        { ...base.work![0], startDate: '2020-01' },
+      ],
+    };
     expect(reverseChronOrder(r, 'en').status).toBe('fail');
   });
   it('skipped with single entry', () => {

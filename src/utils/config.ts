@@ -81,16 +81,20 @@ export function loadConfig(opts: LoadConfigOptions = {}): AtsConfig {
   if (!fs.existsSync(file)) return defaultConfig;
 
   const raw = fs.readFileSync(file, 'utf8');
-  const parsed = yaml.parse(raw) ?? {};
+  const parsed = (yaml.parse(raw) as unknown) ?? {};
   const result = fileSchema.safeParse(parsed);
   if (!result.success) {
     const issue = result.error.issues[0];
     const where = issue?.path.join('.') ?? '<root>';
     throw new Error(`Invalid resuml.config.yaml at "${where}": ${issue?.message}`);
   }
-  return merge({}, defaultConfig, result.data.ats ?? {}) as AtsConfig;
+  return merge({}, defaultConfig, result.data.ats ?? {});
 }
 
-export function effectiveWeight(checkId: string, defaultWeight: 'high' | 'medium' | 'low', config: AtsConfig): 'high' | 'medium' | 'low' {
+export function effectiveWeight(
+  checkId: string,
+  defaultWeight: 'high' | 'medium' | 'low',
+  config: AtsConfig
+): 'high' | 'medium' | 'low' {
   return config.weights.checks[checkId] ?? defaultWeight;
 }

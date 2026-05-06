@@ -14,7 +14,9 @@ export const conventionalSections: CheckFn = (resume) => {
   });
   const passed = missing.length === 0;
   return {
-    id: 'conventional-sections', tier: 'parsing', weight: 'high',
+    id: 'conventional-sections',
+    tier: 'parsing',
+    weight: 'high',
     status: passed ? 'pass' : 'fail',
     score: Math.round(((required.length - missing.length) / required.length) * 100),
     message: passed
@@ -31,22 +33,36 @@ export const dateFormatConsistency: CheckFn = (resume) => {
     if (w.endDate) all.push({ date: w.endDate, where: `work "${w.name || ''}".endDate` });
   }
   for (const e of resume.education || []) {
-    if (e.startDate) all.push({ date: e.startDate, where: `education "${e.institution || ''}".startDate` });
-    if (e.endDate) all.push({ date: e.endDate, where: `education "${e.institution || ''}".endDate` });
+    if (e.startDate)
+      all.push({ date: e.startDate, where: `education "${e.institution || ''}".startDate` });
+    if (e.endDate)
+      all.push({ date: e.endDate, where: `education "${e.institution || ''}".endDate` });
   }
   if (all.length === 0) {
-    return { id: 'date-format-consistency', tier: 'parsing', weight: 'medium',
-      status: 'skipped', score: 0, message: 'No dates to check.', hints: [] };
+    return {
+      id: 'date-format-consistency',
+      tier: 'parsing',
+      weight: 'medium',
+      status: 'skipped',
+      score: 0,
+      message: 'No dates to check.',
+      hints: [],
+    };
   }
   const bad = all.filter((d) => !ISO_DATE.test(d.date));
   const passed = bad.length === 0;
   return {
-    id: 'date-format-consistency', tier: 'parsing', weight: 'medium',
+    id: 'date-format-consistency',
+    tier: 'parsing',
+    weight: 'medium',
     status: passed ? 'pass' : bad.length <= 1 ? 'warn' : 'fail',
     score: Math.round(((all.length - bad.length) / all.length) * 100),
     message: passed
       ? 'All dates use ISO-8601 format.'
-      : `Non-ISO dates: ${bad.slice(0, 3).map((b) => `${b.where}=${b.date}`).join('; ')}.`,
+      : `Non-ISO dates: ${bad
+          .slice(0, 3)
+          .map((b) => `${b.where}=${b.date}`)
+          .join('; ')}.`,
     hints: passed ? [] : ['Use YYYY-MM or YYYY-MM-DD for every date field.'],
   };
 };
@@ -62,7 +78,9 @@ export const contactInBody: CheckFn = (resume) => {
   const missing = checks.filter((c) => !c.ok).map((c) => c.field);
   const passed = missing.length === 0;
   return {
-    id: 'contact-in-body', tier: 'parsing', weight: 'high',
+    id: 'contact-in-body',
+    tier: 'parsing',
+    weight: 'high',
     status: passed ? 'pass' : 'fail',
     score: Math.round(((checks.length - missing.length) / checks.length) * 100),
     message: passed
@@ -75,18 +93,29 @@ export const contactInBody: CheckFn = (resume) => {
 export const reverseChronOrder: CheckFn = (resume) => {
   const work = resume.work || [];
   if (work.length < 2) {
-    return { id: 'reverse-chron-order', tier: 'parsing', weight: 'medium',
-      status: 'skipped', score: 100, message: 'Single or no work entry.', hints: [] };
+    return {
+      id: 'reverse-chron-order',
+      tier: 'parsing',
+      weight: 'medium',
+      status: 'skipped',
+      score: 100,
+      message: 'Single or no work entry.',
+      hints: [],
+    };
   }
   let outOfOrder = 0;
   for (let i = 0; i < work.length - 1; i++) {
-    const a = work[i]!.startDate || '';
-    const b = work[i + 1]!.startDate || '';
+    const curr = work[i];
+    const next = work[i + 1];
+    const a = curr?.startDate || '';
+    const b = next?.startDate || '';
     if (a && b && a < b) outOfOrder++;
   }
   const passed = outOfOrder === 0;
   return {
-    id: 'reverse-chron-order', tier: 'parsing', weight: 'medium',
+    id: 'reverse-chron-order',
+    tier: 'parsing',
+    weight: 'medium',
     status: passed ? 'pass' : 'fail',
     score: passed ? 100 : Math.max(0, 100 - outOfOrder * 50),
     message: passed
@@ -99,14 +128,22 @@ export const reverseChronOrder: CheckFn = (resume) => {
 export const educationComplete: CheckFn = (resume) => {
   const edu = resume.education || [];
   if (edu.length === 0) {
-    return { id: 'education-complete', tier: 'parsing', weight: 'low',
-      status: 'fail', score: 0, message: 'No education entries.',
-      hints: ['Add at least one education entry with institution, area, and studyType.'] };
+    return {
+      id: 'education-complete',
+      tier: 'parsing',
+      weight: 'low',
+      status: 'fail',
+      score: 0,
+      message: 'No education entries.',
+      hints: ['Add at least one education entry with institution, area, and studyType.'],
+    };
   }
   const incomplete = edu.filter((e) => !e.institution || !e.area || !e.studyType);
   const passed = incomplete.length === 0;
   return {
-    id: 'education-complete', tier: 'parsing', weight: 'low',
+    id: 'education-complete',
+    tier: 'parsing',
+    weight: 'low',
     status: passed ? 'pass' : 'fail',
     score: Math.round(((edu.length - incomplete.length) / edu.length) * 100),
     message: passed
@@ -117,5 +154,9 @@ export const educationComplete: CheckFn = (resume) => {
 };
 
 export const allParsingChecks = [
-  conventionalSections, dateFormatConsistency, contactInBody, reverseChronOrder, educationComplete,
+  conventionalSections,
+  dateFormatConsistency,
+  contactInBody,
+  reverseChronOrder,
+  educationComplete,
 ];

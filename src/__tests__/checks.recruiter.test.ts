@@ -1,21 +1,39 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { describe, it, expect } from 'vitest';
 import {
-  summaryLength, actionVerbStart, quantificationDensity, pronounLeakage,
-  bulletsPerRole, wordCountTotal, highlightLength, hasLinkedin, skillsPopulated,
+  summaryLength,
+  actionVerbStart,
+  quantificationDensity,
+  pronounLeakage,
+  bulletsPerRole,
+  wordCountTotal,
+  highlightLength,
+  hasLinkedin,
+  skillsPopulated,
 } from '../ats/checks/recruiter';
 import { defaultConfig } from '../utils/config';
 import type { ResumeSchema } from '../types/resume';
 
 const base: ResumeSchema = {
   basics: {
-    name: 'X', email: 'x@y.com',
-    summary: 'Senior frontend tech lead with eight years building React platforms at scale. Shipped significant accessibility wins across multiple products. Mentored engineers and improved delivery.',
+    name: 'X',
+    email: 'x@y.com',
+    summary:
+      'Senior frontend tech lead with eight years building React platforms at scale. Shipped significant accessibility wins across multiple products. Mentored engineers and improved delivery.',
     profiles: [{ network: 'LinkedIn', url: 'https://linkedin.com/in/x' }],
   },
-  work: [{
-    name: 'Co', position: 'Lead', startDate: '2020-01',
-    highlights: ['Reduced load by 40%', 'Built design system used by 5 teams', 'Shipped a11y audit'],
-  }],
+  work: [
+    {
+      name: 'Co',
+      position: 'Lead',
+      startDate: '2020-01',
+      highlights: [
+        'Reduced load by 40%',
+        'Built design system used by 5 teams',
+        'Shipped a11y audit',
+      ],
+    },
+  ],
   skills: [
     { name: 'Frontend', keywords: ['react', 'typescript'] },
     { name: 'Tooling', keywords: ['vite'] },
@@ -30,7 +48,9 @@ describe('summary-length', () => {
     expect(summaryLength(base, 'en', cfg).status).toBe('pass');
   });
   it('fails when missing', () => {
-    expect(summaryLength({ ...base, basics: { ...base.basics!, summary: undefined } }, 'en', cfg).status).toBe('fail');
+    expect(
+      summaryLength({ ...base, basics: { ...base.basics!, summary: undefined } }, 'en', cfg).status
+    ).toBe('fail');
   });
 });
 
