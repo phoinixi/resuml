@@ -74,7 +74,7 @@ export function listRubricMarkdown(): string {
   const sections = tiers.map((t) => {
     const entries = rubricByTier(t);
     const lines = entries
-      .map((e) => `- **${e.id}** (${e.weight}, ${e.evidenceLevel}) — ${e.description}${e.source ? `\n  Source: ${e.source}` : ''}`)
+      .map((e) => `- **${e.id}** (${e.weight}, ${e.evidenceLevel}): ${e.description}${e.source ? `\n  Source: ${e.source}` : ''}`)
       .join('\n');
     return `## Tier: ${t}\n\n${lines}`;
   });
