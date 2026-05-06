@@ -12,6 +12,7 @@ import { initAction } from './commands/init';
 import { pdfAction } from './commands/pdf';
 import { themesAction } from './commands/themes';
 import { mcpAction } from './commands/mcp';
+import { atsExplain, atsConfigPrint } from './commands/ats';
 
 // Get the directory name equivalent to __dirname in CommonJS
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
@@ -113,6 +114,19 @@ program
   .command('mcp')
   .description('Start MCP server for AI agent integration (stdio transport).')
   .action(mcpAction);
+
+// ATS Subcommand
+const ats = program.command('ats').description('ATS rubric utilities.');
+
+ats.command('explain [id]')
+  .description('Print rubric entry for a check id, or full rubric if id omitted.')
+  .action((id?: string) => atsExplain(id));
+
+ats.command('config')
+  .description('Print the effective merged ATS config.')
+  .option('--print', 'Print the merged config (default action).')
+  .option('--config <path>', 'Path to resuml.config.yaml.')
+  .action((opts: { config?: string }) => atsConfigPrint(opts));
 
 // Parse Arguments - only execute when not in test environment
 if (process.env['NODE_ENV'] !== 'test') {
