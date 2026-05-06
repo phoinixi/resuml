@@ -99,4 +99,17 @@ describe('init command', () => {
     expect(content).toContain('john@example.com');
     expect(content).toContain('Software Engineer');
   });
+
+  it('should create resuml.config.yaml alongside resume.yaml', async () => {
+    const outputPath = path.join(tmpDir, 'resume.yaml');
+    await main(['node', 'resuml', 'init', '--output', outputPath]);
+
+    const configPath = path.join(tmpDir, 'resuml.config.yaml');
+    expect(fs.existsSync(configPath)).toBe(true);
+    const content = fs.readFileSync(configPath, 'utf8');
+    expect(content).toContain('ats:');
+    expect(content).toContain('parsing: 30');
+    expect(content).toContain('match: 50');
+    expect(content).toContain('recruiter: 20');
+  });
 });

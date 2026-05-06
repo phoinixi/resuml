@@ -55,6 +55,25 @@ export async function initAction(options: InitCommandOptions): Promise<void> {
     fs.mkdirSync(path.dirname(fullPath), { recursive: true });
     fs.writeFileSync(fullPath, yaml, 'utf8');
 
+    const configPath = path.join(path.dirname(fullPath), 'resuml.config.yaml');
+    if (!fs.existsSync(configPath)) {
+      const template = `# resuml ATS configuration
+# Override defaults; everything is optional.
+# Run \`resuml ats config --print\` to see the merged effective config.
+ats:
+  weights:
+    tiers:
+      parsing: 30
+      match: 50
+      recruiter: 20
+  thresholds:
+    seniorYoeCutoff: 10
+  disable: []
+`;
+      fs.writeFileSync(configPath, template, 'utf8');
+      console.log(chalk.green(`Created resuml.config.yaml`));
+    }
+
     console.log(chalk.green(`\n✅ Created ${outputPath}`));
     console.log(chalk.blue('\nNext steps:'));
     console.log(`  1. Edit ${outputPath} to fill in your details`);
