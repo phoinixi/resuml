@@ -18,13 +18,13 @@
 
 ## Why YAML
 
-| | YAML | JSON |
-|---|---|---|
-| **Comments** | ✅ `# explain your choices` | ❌ Not supported |
-| **Multi-line strings** | ✅ `summary: >-` block syntax | ❌ Escape everything |
-| **Readability** | ✅ Clean, minimal syntax | ⚠️ Brackets & quotes everywhere |
-| **Diffing** | ✅ Clean git diffs | ⚠️ Noisy diffs |
-| **Compatibility** | ✅ Valid JSON Resume schema | ✅ Native |
+|                        | YAML                          | JSON                            |
+| ---------------------- | ----------------------------- | ------------------------------- |
+| **Comments**           | ✅ `# explain your choices`   | ❌ Not supported                |
+| **Multi-line strings** | ✅ `summary: >-` block syntax | ❌ Escape everything            |
+| **Readability**        | ✅ Clean, minimal syntax      | ⚠️ Brackets & quotes everywhere |
+| **Diffing**            | ✅ Clean git diffs            | ⚠️ Noisy diffs                  |
+| **Compatibility**      | ✅ Valid JSON Resume schema   | ✅ Native                       |
 
 YAML is a superset of JSON, so your resume stays fully compatible with the [JSON Resume](https://jsonresume.org/) ecosystem.
 
@@ -38,30 +38,30 @@ Requires Node.js ≥ 20 and npm ≥ 10.
 
 ## CLI commands and options
 
-| Command | Description |
-|---------|-------------|
-| `validate` | Validate resume data against the JSON Resume schema |
-| `validate --ats` | Run ATS compatibility analysis |
-| `tojson` | Convert YAML to JSON |
-| `render` | Render the resume to HTML using a theme |
-| `pdf` | Render to PDF |
-| `dev` | Dev server with hot-reload |
-| `mcp` | Start the MCP server for AI agents |
+| Command          | Description                                         |
+| ---------------- | --------------------------------------------------- |
+| `validate`       | Validate resume data against the JSON Resume schema |
+| `validate --ats` | Run ATS compatibility analysis                      |
+| `tojson`         | Convert YAML to JSON                                |
+| `render`         | Render the resume to HTML using a theme             |
+| `pdf`            | Render to PDF                                       |
+| `dev`            | Dev server with hot-reload                          |
+| `mcp`            | Start the MCP server for AI agents                  |
 
 ### Options
 
-| Option | Alias | Description |
-|--------|-------|-------------|
-| `--resume` | `-r` | Input YAML file(s) or directory |
-| `--output` | `-o` | Output file path |
-| `--theme` | `-t` | Theme name |
-| `--port` | `-p` | Dev server port (default: 3000) |
-| `--language` | | Locale (default: `en`) |
-| `--debug` | | Detailed errors |
-| `--ats` | | Run ATS analysis (with `validate`) |
-| `--jd` | | Path to job description file (with `--ats`) |
-| `--ats-threshold` | | Minimum score (0-100); exits 1 if below |
-| `--format` | | Output format for validate: `text` or `json` |
+| Option            | Alias | Description                                  |
+| ----------------- | ----- | -------------------------------------------- |
+| `--resume`        | `-r`  | Input YAML file(s) or directory              |
+| `--output`        | `-o`  | Output file path                             |
+| `--theme`         | `-t`  | Theme name                                   |
+| `--port`          | `-p`  | Dev server port (default: 3000)              |
+| `--language`      |       | Locale (default: `en`)                       |
+| `--debug`         |       | Detailed errors                              |
+| `--ats`           |       | Run ATS analysis (with `validate`)           |
+| `--jd`            |       | Path to job description file (with `--ats`)  |
+| `--ats-threshold` |       | Minimum score (0-100); exits 1 if below      |
+| `--format`        |       | Output format for validate: `text` or `json` |
 
 ### Quick start
 
@@ -94,10 +94,12 @@ resuml validate --resume resume.yaml --ats --format json
 11 deterministic checks across 3 categories.
 
 **Contact information**
+
 - Complete contact details (name, email, phone, city)
 - LinkedIn profile present
 
 **Content quality**
+
 - Professional summary (length and presence)
 - Work highlights (≥ 2 per entry)
 - Action verbs (highlights start with strong verbs)
@@ -105,6 +107,7 @@ resuml validate --resume resume.yaml --ats --format json
 - No first-person pronouns
 
 **Resume structure**
+
 - Date consistency (no unexplained gaps > 6 months)
 - Skills populated (≥ 3 categories with keywords)
 - Education completeness
@@ -121,12 +124,12 @@ Passing `--jd` extracts keywords from the job description using TF-based ranking
 
 ### Scoring
 
-| Score | Rating | Meaning |
-|-------|--------|---------|
-| 90-100 | Excellent | Well-optimized for ATS |
-| 75-89 | Good | Minor improvements possible |
-| 60-74 | Needs Work | Several issues to address |
-| 0-59 | Poor | Significant improvements needed |
+| Score  | Rating     | Meaning                         |
+| ------ | ---------- | ------------------------------- |
+| 90-100 | Excellent  | Well-optimized for ATS          |
+| 75-89  | Good       | Minor improvements possible     |
+| 60-74  | Needs Work | Several issues to address       |
+| 0-59   | Poor       | Significant improvements needed |
 
 With a JD: final score = 60% generic checks + 40% keyword match.
 
@@ -147,13 +150,13 @@ npm install jsonresume-theme-stackoverflow
 resuml render --resume resume.yaml --theme stackoverflow
 ```
 
-| Theme | Install | Style |
-|-------|---------|-------|
+| Theme                                                                              | Install                                | Style               |
+| ---------------------------------------------------------------------------------- | -------------------------------------- | ------------------- |
 | [stackoverflow](https://github.com/francoislaberge/jsonresume-theme-stackoverflow) | `npm i jsonresume-theme-stackoverflow` | Clean, professional |
-| [elegant](https://github.com/mudassir0909/jsonresume-theme-elegant) | `npm i jsonresume-theme-elegant` | Modern |
-| [kendall](https://github.com/LinuxBozo/jsonresume-theme-kendall) | `npm i jsonresume-theme-kendall` | Minimal |
-| [flat](https://github.com/erming/jsonresume-theme-flat) | `npm i jsonresume-theme-flat` | Flat |
-| [onepage](https://github.com/aonemd/jsonresume-theme-onepage) | `npm i jsonresume-theme-onepage` | Single-page |
+| [elegant](https://github.com/mudassir0909/jsonresume-theme-elegant)                | `npm i jsonresume-theme-elegant`       | Modern              |
+| [kendall](https://github.com/LinuxBozo/jsonresume-theme-kendall)                   | `npm i jsonresume-theme-kendall`       | Minimal             |
+| [flat](https://github.com/erming/jsonresume-theme-flat)                            | `npm i jsonresume-theme-flat`          | Flat                |
+| [onepage](https://github.com/aonemd/jsonresume-theme-onepage)                      | `npm i jsonresume-theme-onepage`       | Single-page         |
 
 Browse all at [jsonresume.org/themes](https://jsonresume.org/themes/). The web app at [resuml.app](https://resuml.app) bundles 300+ of them and renders live.
 
@@ -274,41 +277,44 @@ Claude Code will:
 
 ### Tools
 
-| Tool | Purpose |
-|------|---------|
-| `resuml_init_resume` | Generate a starter YAML template |
-| `resuml_validate` | Validate resume YAML against the JSON Resume schema |
-| `resuml_ats_check` | ATS analysis + JD keyword matching |
-| `resuml_render` | Render to HTML using a theme (supports `locale`) |
-| `resuml_list_themes` | List available themes and install status |
-| `resuml_export_pdf` | Export as PDF (supports `margin`, `locale`) |
+| Tool                 | Purpose                                             |
+| -------------------- | --------------------------------------------------- |
+| `resuml_init_resume` | Generate a starter YAML template                    |
+| `resuml_validate`    | Validate resume YAML against the JSON Resume schema |
+| `resuml_ats_check`   | ATS analysis + JD keyword matching                  |
+| `resuml_render`      | Render to HTML using a theme (supports `locale`)    |
+| `resuml_list_themes` | List available themes and install status            |
+| `resuml_export_pdf`  | Export as PDF (supports `margin`, `locale`)         |
 
 ### Resources
 
-| URI | Description |
-|-----|-------------|
-| `resuml://schema/json-resume` | Full JSON Resume schema reference |
-| `resuml://docs/ats-scoring` | ATS scoring rubric, checks, weights, and tips |
-| `resuml://themes/catalog` | Available themes with descriptions |
+| URI                           | Description                                   |
+| ----------------------------- | --------------------------------------------- |
+| `resuml://schema/json-resume` | Full JSON Resume schema reference             |
+| `resuml://docs/ats-scoring`   | ATS scoring rubric, checks, weights, and tips |
+| `resuml://themes/catalog`     | Available themes with descriptions            |
 
 ### Prompts
 
-| Prompt | Description |
-|--------|-------------|
-| `tailor-resume-to-jd` | Tailor a resume for a specific job description |
-| `optimize-ats-score` | Analyze and improve an existing resume's ATS score |
-| `review-resume` | Comprehensive review + improvement suggestions |
+| Prompt                | Description                                        |
+| --------------------- | -------------------------------------------------- |
+| `tailor-resume-to-jd` | Tailor a resume for a specific job description     |
+| `optimize-ats-score`  | Analyze and improve an existing resume's ATS score |
+| `review-resume`       | Comprehensive review + improvement suggestions     |
 
 ## Troubleshooting
 
 **Validation errors**
+
 - Check YAML indentation and required fields
 - Run with `--debug` for stack traces
 
 **Theme rendering issues**
+
 - Ensure the theme is installed (`npm install jsonresume-theme-<name>`)
 - Third-party themes may have their own bugs. Try a different theme.
 - The web app at [resuml.app](https://resuml.app) pre-checks themes and flags broken ones
 
 **Dev server issues**
+
 - The default port is 3000. Pass `--port` to override.

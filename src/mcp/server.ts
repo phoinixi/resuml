@@ -13,8 +13,12 @@ const originalLog = console.log;
 const originalWarn = console.warn;
 
 function suppressStdout() {
-  console.log = (...args: unknown[]) => { console.error('[resuml]', ...args); };
-  console.warn = (...args: unknown[]) => { console.error('[resuml]', ...args); };
+  console.log = (...args: unknown[]) => {
+    console.error('[resuml]', ...args);
+  };
+  console.warn = (...args: unknown[]) => {
+    console.error('[resuml]', ...args);
+  };
 }
 
 function restoreStdout() {
@@ -132,7 +136,6 @@ languages:
 - Summary: 2-4 sentences positioning the candidate for the specific role
 `;
 
-
 function createServer(): McpServer {
   const server = new McpServer({
     name: 'resuml',
@@ -149,16 +152,19 @@ function createServer(): McpServer {
     'json-resume-schema',
     'resuml://schema/json-resume',
     {
-      description: 'JSON Resume schema reference with all sections, field types, and formatting rules',
+      description:
+        'JSON Resume schema reference with all sections, field types, and formatting rules',
       mimeType: 'text/markdown',
     },
     () => ({
-      contents: [{
-        uri: 'resuml://schema/json-resume',
-        mimeType: 'text/markdown',
-        text: JSON_RESUME_SCHEMA_REFERENCE,
-      }],
-    }),
+      contents: [
+        {
+          uri: 'resuml://schema/json-resume',
+          mimeType: 'text/markdown',
+          text: JSON_RESUME_SCHEMA_REFERENCE,
+        },
+      ],
+    })
   );
 
   // ── ATS Rubric ───────────────────────────────────────────────────
@@ -167,16 +173,19 @@ function createServer(): McpServer {
     'ats-rubric',
     'resuml://docs/ats-rubric',
     {
-      description: 'Tiered ATS rubric: every check, its tier, weight, evidence level, description, and source URL.',
+      description:
+        'Tiered ATS rubric: every check, its tier, weight, evidence level, description, and source URL.',
       mimeType: 'text/markdown',
     },
     () => ({
-      contents: [{
-        uri: 'resuml://docs/ats-rubric',
-        mimeType: 'text/markdown',
-        text: listRubricMarkdown(),
-      }],
-    }),
+      contents: [
+        {
+          uri: 'resuml://docs/ats-rubric',
+          mimeType: 'text/markdown',
+          text: listRubricMarkdown(),
+        },
+      ],
+    })
   );
 
   // ── Theme Catalog ─────────────────────────────────────────────────
@@ -197,13 +206,15 @@ function createServer(): McpServer {
         version: getInstalledVersion(t.pkg),
       }));
       return {
-        contents: [{
-          uri: 'resuml://themes/catalog',
-          mimeType: 'application/json',
-          text: JSON.stringify({ themes, totalCount: themes.length }, null, 2),
-        }],
+        contents: [
+          {
+            uri: 'resuml://themes/catalog',
+            mimeType: 'application/json',
+            text: JSON.stringify({ themes, totalCount: themes.length }, null, 2),
+          },
+        ],
       };
-    },
+    }
   );
 
   // ═══════════════════════════════════════════════════════════════════
@@ -221,15 +232,21 @@ function createServer(): McpServer {
         jobDescription: z.string().describe('The full job description text'),
         candidateName: z.string().optional().describe('Candidate full name'),
         candidateEmail: z.string().optional().describe('Candidate email address'),
-        candidateBackground: z.string().optional().describe('Brief summary of the candidate background, skills, and experience to incorporate'),
+        candidateBackground: z
+          .string()
+          .optional()
+          .describe(
+            'Brief summary of the candidate background, skills, and experience to incorporate'
+          ),
       },
     },
     ({ jobDescription, candidateName, candidateEmail, candidateBackground }) => ({
-      messages: [{
-        role: 'user',
-        content: {
-          type: 'text',
-          text: `Create a tailored resume in YAML format optimized for the following job description.
+      messages: [
+        {
+          role: 'user',
+          content: {
+            type: 'text',
+            text: `Create a tailored resume in YAML format optimized for the following job description.
 
 ## Job Description
 ${jobDescription}
@@ -256,9 +273,10 @@ After generating the YAML:
 4. Use \`resuml_render\` with theme "even" for the final output
 
 Output the resume YAML first, then run the validation and ATS check tools.`,
+          },
         },
-      }],
-    }),
+      ],
+    })
   );
 
   // ── Optimize ATS Score ────────────────────────────────────────────
@@ -270,16 +288,20 @@ Output the resume YAML first, then run the validation and ATS check tools.`,
       description: 'Analyze and improve an existing resume YAML to maximize its ATS score',
       argsSchema: {
         resumeYaml: z.string().describe('The current resume YAML content'),
-        jobDescription: z.string().optional().describe('Optional job description to optimize against'),
+        jobDescription: z
+          .string()
+          .optional()
+          .describe('Optional job description to optimize against'),
         targetScore: z.string().optional().describe('Target ATS score (default: 85)'),
       },
     },
     ({ resumeYaml, jobDescription, targetScore }) => ({
-      messages: [{
-        role: 'user',
-        content: {
-          type: 'text',
-          text: `Optimize this resume YAML to maximize its ATS score${targetScore ? ` (target: ${targetScore})` : ' (target: 85+)'}.
+      messages: [
+        {
+          role: 'user',
+          content: {
+            type: 'text',
+            text: `Optimize this resume YAML to maximize its ATS score${targetScore ? ` (target: ${targetScore})` : ' (target: 85+)'}.
 
 ## Current Resume YAML
 \`\`\`yaml
@@ -301,9 +323,10 @@ ${jobDescription ? `## Job Description\n${jobDescription}\n` : ''}
 5. Repeat until the target score is reached
 
 Output the improved YAML with a summary of changes made.`,
+          },
         },
-      }],
-    }),
+      ],
+    })
   );
 
   // ── Review Resume ─────────────────────────────────────────────────
@@ -312,17 +335,19 @@ Output the improved YAML with a summary of changes made.`,
     'review-resume',
     {
       title: 'Review Resume',
-      description: 'Comprehensive review of a resume YAML with ATS analysis and improvement suggestions',
+      description:
+        'Comprehensive review of a resume YAML with ATS analysis and improvement suggestions',
       argsSchema: {
         resumeYaml: z.string().describe('The resume YAML content to review'),
       },
     },
     ({ resumeYaml }) => ({
-      messages: [{
-        role: 'user',
-        content: {
-          type: 'text',
-          text: `Perform a comprehensive review of this resume.
+      messages: [
+        {
+          role: 'user',
+          content: {
+            type: 'text',
+            text: `Perform a comprehensive review of this resume.
 
 ## Resume YAML
 \`\`\`yaml
@@ -345,9 +370,10 @@ ${resumeYaml}
    - **Strengths**: What the resume does well
    - **Improvements**: Specific, actionable suggestions
    - **Revised YAML**: An improved version if significant changes are recommended`,
+          },
         },
-      }],
-    }),
+      ],
+    })
   );
 
   // ═══════════════════════════════════════════════════════════════════
@@ -371,10 +397,10 @@ ${resumeYaml}
       const yaml = generateResumeYaml(
         name ?? 'Your Name',
         email ?? 'email@example.com',
-        title ?? 'Professional Title',
+        title ?? 'Professional Title'
       );
       return { content: [{ type: 'text' as const, text: yaml }] };
-    },
+    }
   );
 
   // ── resuml_validate ─────────────────────────────────────────────────
@@ -394,16 +420,23 @@ ${resumeYaml}
         await processResumeData([yaml]);
         restoreStdout();
         return {
-          content: [{ type: 'text' as const, text: JSON.stringify({ valid: true, errors: [] }, null, 2) }],
+          content: [
+            { type: 'text' as const, text: JSON.stringify({ valid: true, errors: [] }, null, 2) },
+          ],
         };
       } catch (e: unknown) {
         restoreStdout();
         const message = e instanceof Error ? e.message : String(e);
         return {
-          content: [{ type: 'text' as const, text: JSON.stringify({ valid: false, errors: [message] }, null, 2) }],
+          content: [
+            {
+              type: 'text' as const,
+              text: JSON.stringify({ valid: false, errors: [message] }, null, 2),
+            },
+          ],
         };
       }
-    },
+    }
   );
 
   // ── resuml_ats_check ────────────────────────────────────────────────
@@ -412,10 +445,14 @@ ${resumeYaml}
     'resuml_ats_check',
     {
       title: 'ATS Check',
-      description: 'Run ATS (Applicant Tracking System) analysis on a resume, optionally matching against a job description',
+      description:
+        'Run ATS (Applicant Tracking System) analysis on a resume, optionally matching against a job description',
       inputSchema: {
         yaml: z.string().describe('Resume content in YAML format'),
-        jobDescription: z.string().optional().describe('Job description text to match keywords against'),
+        jobDescription: z
+          .string()
+          .optional()
+          .describe('Job description text to match keywords against'),
         language: z.enum(['en', 'de']).optional().describe('Language for analysis (default: en)'),
       },
     },
@@ -434,11 +471,16 @@ ${resumeYaml}
       } catch (e: unknown) {
         restoreStdout();
         return {
-          content: [{ type: 'text' as const, text: JSON.stringify({ error: e instanceof Error ? e.message : String(e) }) }],
+          content: [
+            {
+              type: 'text' as const,
+              text: JSON.stringify({ error: e instanceof Error ? e.message : String(e) }),
+            },
+          ],
           isError: true,
         };
       }
-    },
+    }
   );
 
   // ── resuml_ats_explain ──────────────────────────────────────────────
@@ -447,7 +489,8 @@ ${resumeYaml}
     'resuml_ats_explain',
     {
       title: 'ATS Rubric Explain',
-      description: 'Return the rubric entry (tier, weight, evidence level, description, source) for a given check id.',
+      description:
+        'Return the rubric entry (tier, weight, evidence level, description, source) for a given check id.',
       inputSchema: {
         checkId: z.string().describe('Check id, e.g. quantification-density'),
       },
@@ -456,12 +499,17 @@ ${resumeYaml}
       const entry = getRubricEntry(checkId);
       if (!entry) {
         return {
-          content: [{ type: 'text' as const, text: JSON.stringify({ error: `Unknown check id: ${checkId}` }) }],
+          content: [
+            {
+              type: 'text' as const,
+              text: JSON.stringify({ error: `Unknown check id: ${checkId}` }),
+            },
+          ],
           isError: true,
         };
       }
       return { content: [{ type: 'text' as const, text: JSON.stringify(entry, null, 2) }] };
-    },
+    }
   );
 
   // ── resuml_render ───────────────────────────────────────────────────
@@ -473,7 +521,10 @@ ${resumeYaml}
       description: 'Render a resume to HTML using a specified theme',
       inputSchema: {
         yaml: z.string().describe('Resume content in YAML format'),
-        theme: z.string().default('even').describe('Theme name (e.g. even, stackoverflow, elegant, paper, kendall)'),
+        theme: z
+          .string()
+          .default('even')
+          .describe('Theme name (e.g. even, stackoverflow, elegant, paper, kendall)'),
         locale: z.string().optional().describe('Locale for theme rendering (e.g. en, de)'),
       },
     },
@@ -500,7 +551,7 @@ ${resumeYaml}
           isError: true,
         };
       }
-    },
+    }
   );
 
   // ── resuml_list_themes ──────────────────────────────────────────────
@@ -522,7 +573,7 @@ ${resumeYaml}
       return {
         content: [{ type: 'text' as const, text: JSON.stringify({ themes }, null, 2) }],
       };
-    },
+    }
   );
 
   // ── resuml_export_pdf ───────────────────────────────────────────────
@@ -537,7 +588,12 @@ ${resumeYaml}
         theme: z.string().default('even').describe('Theme name'),
         format: z.enum(['A4', 'Letter']).default('A4').describe('Paper format'),
         locale: z.string().optional().describe('Locale for theme rendering (e.g. en, de)'),
-        margin: z.string().optional().describe('Page margins. Single value (e.g. "10mm") for all sides, two values (e.g. "10mm,15mm") for vertical/horizontal, or four values (e.g. "10mm,15mm,10mm,15mm") for top/right/bottom/left'),
+        margin: z
+          .string()
+          .optional()
+          .describe(
+            'Page margins. Single value (e.g. "10mm") for all sides, two values (e.g. "10mm,15mm") for vertical/horizontal, or four values (e.g. "10mm,15mm,10mm,15mm") for top/right/bottom/left'
+          ),
       },
     },
     async (args) => {
@@ -559,7 +615,14 @@ ${resumeYaml}
         } catch {
           restoreStdout();
           return {
-            content: [{ type: 'text' as const, text: JSON.stringify({ error: 'Playwright is not installed. Run: npm install playwright' }) }],
+            content: [
+              {
+                type: 'text' as const,
+                text: JSON.stringify({
+                  error: 'Playwright is not installed. Run: npm install playwright',
+                }),
+              },
+            ],
             isError: true,
           };
         }
@@ -577,23 +640,30 @@ ${resumeYaml}
         restoreStdout();
 
         return {
-          content: [{
-            type: 'text' as const,
-            text: JSON.stringify({
-              pdf: Buffer.from(pdfBuffer).toString('base64'),
-              encoding: 'base64',
-              format,
-            }),
-          }],
+          content: [
+            {
+              type: 'text' as const,
+              text: JSON.stringify({
+                pdf: Buffer.from(pdfBuffer).toString('base64'),
+                encoding: 'base64',
+                format,
+              }),
+            },
+          ],
         };
       } catch (e: unknown) {
         restoreStdout();
         return {
-          content: [{ type: 'text' as const, text: JSON.stringify({ error: e instanceof Error ? e.message : String(e) }) }],
+          content: [
+            {
+              type: 'text' as const,
+              text: JSON.stringify({ error: e instanceof Error ? e.message : String(e) }),
+            },
+          ],
           isError: true,
         };
       }
-    },
+    }
   );
 
   return server;

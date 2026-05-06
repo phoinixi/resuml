@@ -84,3 +84,7 @@ scripts/shims/
 scripts/_shims/
 .vercel
 .env*.local
+
+# Personal resume / JD fixtures (never commit)
+francesco-*
+jd-*.txt

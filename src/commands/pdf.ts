@@ -104,7 +104,11 @@ export async function pdfAction(options: PdfCommandOptions): Promise<void> {
       const bodyWords = bodyText.trim().split(/\s+/).filter(Boolean).length;
       const resumeWords = JSON.stringify(resumeData).split(/\s+/).filter(Boolean).length;
       if (bodyWords < resumeWords * 0.7) {
-        console.warn(chalk.yellow(`pdf-text-extractable: rendered text ${bodyWords} words vs resume ${resumeWords} (under 70%). Theme may use image-based glyphs.`));
+        console.warn(
+          chalk.yellow(
+            `pdf-text-extractable: rendered text ${bodyWords} words vs resume ${resumeWords} (under 70%). Theme may use image-based glyphs.`
+          )
+        );
       }
 
       const pdfBuffer = await page.pdf({
@@ -119,7 +123,11 @@ export async function pdfAction(options: PdfCommandOptions): Promise<void> {
 
       const sizeMb = pdfBuffer.length / (1024 * 1024);
       if (sizeMb > 2.5) {
-        console.warn(chalk.yellow(`pdf-size-under-2.5mb: PDF is ${sizeMb.toFixed(2)} MB (Greenhouse limit 2.5 MB).`));
+        console.warn(
+          chalk.yellow(
+            `pdf-size-under-2.5mb: PDF is ${sizeMb.toFixed(2)} MB (Greenhouse limit 2.5 MB).`
+          )
+        );
       }
 
       console.log(chalk.green(`✅ Successfully generated ${outputPath}`));

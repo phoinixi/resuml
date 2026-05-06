@@ -21,7 +21,9 @@ function getCliVersion(): string {
   const packageJsonPath = path.resolve(currentDir, '../package.json');
   if (fs.existsSync(packageJsonPath)) {
     try {
-      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8')) as { version?: string };
+      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8')) as {
+        version?: string;
+      };
       return packageJson.version ?? '0.0.0';
     } catch {
       return '0.0.0';
@@ -45,7 +47,10 @@ program
   .option('--debug', 'Show detailed validation errors.')
   .option('--ats', 'Run ATS (Applicant Tracking System) compatibility analysis.')
   .option('--jd <path>', 'Path to a job description file for keyword matching (requires --ats).')
-  .option('--ats-threshold <score>', 'Minimum ATS score (0-100). Exit with code 1 if below threshold.')
+  .option(
+    '--ats-threshold <score>',
+    'Minimum ATS score (0-100). Exit with code 1 if below threshold.'
+  )
   .option('--format <type>', 'Output format for ATS results (text or json).', 'text')
   .option('--config <path>', 'Path to resuml.config.yaml (default: ./resuml.config.yaml).')
   .action(validateAction);
@@ -118,15 +123,21 @@ program
 // ATS Subcommand
 const ats = program.command('ats').description('ATS rubric utilities.');
 
-ats.command('explain [id]')
+ats
+  .command('explain [id]')
   .description('Print rubric entry for a check id, or full rubric if id omitted.')
-  .action((id?: string) => atsExplain(id));
+  .action((id?: string) => {
+    atsExplain(id);
+  });
 
-ats.command('config')
+ats
+  .command('config')
   .description('Print the effective merged ATS config.')
   .option('--print', 'Print the merged config (default action).')
   .option('--config <path>', 'Path to resuml.config.yaml.')
-  .action((opts: { config?: string }) => atsConfigPrint(opts));
+  .action((opts: { config?: string }) => {
+    atsConfigPrint(opts);
+  });
 
 // Parse Arguments - only execute when not in test environment
 if (process.env['NODE_ENV'] !== 'test') {

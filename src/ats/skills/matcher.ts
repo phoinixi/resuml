@@ -10,7 +10,7 @@ import type { Skill, SkillMatch } from './types';
 export interface Token {
   raw: string;
   norm: string;
-  isAllUpper: boolean;  // whether raw has ≥ 2 consecutive uppercase chars (acronym-ish)
+  isAllUpper: boolean; // whether raw has ≥ 2 consecutive uppercase chars (acronym-ish)
 }
 
 /**
@@ -117,8 +117,8 @@ function phraseToTokens(phrase: string): string[] {
 
 interface PhraseCandidate {
   skillIdx: number;
-  phraseTokens: string[];  // lowercase, whitespace-split
-  requiresCaseMatch: boolean;  // true for all-caps acronyms, avoids "IS"/"IT"/"NO" collisions
+  phraseTokens: string[]; // lowercase, whitespace-split
+  requiresCaseMatch: boolean; // true for all-caps acronyms, avoids "IS"/"IT"/"NO" collisions
 }
 
 /**
@@ -182,14 +182,17 @@ export class SkillIndex {
    */
   scan(text: string): SkillMatch[] {
     const tokens = tokenize(text);
-    const hits = new Map<number, number>();  // skillIdx → occurrences
+    const hits = new Map<number, number>(); // skillIdx → occurrences
 
     let i = 0;
     while (i < tokens.length) {
       const head = tokens[i];
       if (!head) break;
       const bucket = this.byFirstToken.get(head.norm);
-      if (!bucket) { i++; continue; }
+      if (!bucket) {
+        i++;
+        continue;
+      }
 
       let matched = false;
       for (const cand of bucket) {
@@ -198,7 +201,10 @@ export class SkillIndex {
         let ok = true;
         for (let k = 0; k < len; k++) {
           const tok = tokens[i + k];
-          if (!tok || tok.norm !== cand.phraseTokens[k]) { ok = false; break; }
+          if (!tok || tok.norm !== cand.phraseTokens[k]) {
+            ok = false;
+            break;
+          }
         }
         if (!ok) continue;
         // Acronym guard: require the original text to be all-caps when the
@@ -227,8 +233,12 @@ export class SkillIndex {
     return result;
   }
 
-  get size(): number { return this.skills.length; }
-  get maxPhraseTokens(): number { return this.maxPhraseLen; }
+  get size(): number {
+    return this.skills.length;
+  }
+  get maxPhraseTokens(): number {
+    return this.maxPhraseLen;
+  }
 }
 
 /** Synchronous constructor (takes preloaded data, used by tests). */

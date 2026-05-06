@@ -14,33 +14,34 @@
 
 ## File structure
 
-| File | Status | Responsibility |
-|---|---|---|
-| `src/ats/types.ts` | rewrite | New `Tier`, `TierResult`, `TieredAtsResult`, `CheckResult`, `KnockoutSignal`, `RubricEntry` types. Legacy `AtsResult`, `AtsCheck`, `AtsCheckCategory`, `AtsKeywordMatch`, `AtsFitAssessment`, `AtsFitLevel` removed. |
-| `src/ats/rubric.ts` | new | Static rubric registry: `{id, tier, weight, description, source, evidence}` per check. |
-| `src/ats/scoring.ts` | rewrite | New `gradeFromScore`, `computeTierScore`, `computeTotalScore`, `effectiveWeight`. Legacy `calculateScore`, `calculateCombinedScore`, `assessFit`, `generateSummary` removed. |
-| `src/utils/config.ts` | new | Discover `resuml.config.yaml`, zod validate, deep-merge with defaults. |
-| `src/ats/checks/parsing.ts` | new | `conventional-sections`, `date-format-consistency`, `contact-in-body`, `reverse-chron-order`, `education-complete`. |
-| `src/ats/checks/recruiter.ts` | new | `summary-length`, `action-verb-start`, `quantification-density`, `pronoun-leakage`, `bullets-per-role`, `word-count-total`, `highlight-length`, `has-linkedin`, `skills-populated`. |
-| `src/ats/checks/match.ts` | new | `hard-skill-overlap`, `title-alignment`, `education-level`, `yoe-match`, `knockout-mirrors`. |
-| `src/ats/genericChecks.ts` | delete | Replaced by `src/ats/checks/*`. |
-| `src/ats/index.ts` | rewrite | Orchestrator returns `TieredAtsResult`; integrates config; emits hints with YAML paths; omits `match` when no JD. |
-| `src/commands/validate.ts` | rewrite | Tiered console report; new JSON shape; threshold compares against total. |
-| `src/commands/ats.ts` | new | `resuml ats explain <id>`, `resuml ats config --print`. |
-| `src/commands/init.ts` | edit | Also writes `resuml.config.yaml` template alongside `resume.yaml`. |
-| `src/commands/pdf.ts` | edit | Render-time `pdf-text-extractable` and `pdf-size-under-2.5mb` warnings. |
-| `src/mcp/server.ts` | edit | `resuml_ats_check` returns new shape; new `resuml_ats_explain` tool; `resuml://docs/ats-scoring` swapped for `resuml://docs/ats-rubric`; prompts updated to tier vocabulary. |
-| `src/index.ts` | edit | Register `ats` command; export new types. |
-| `src/__tests__/ats.test.ts` | rewrite | Tiered output assertions; per-check fixtures; config-merge tests. |
-| `src/__tests__/config.test.ts` | new | Config discovery, validation, deep-merge. |
-| `CLAUDE.md` | edit | ATS section describes tier model. |
-| `package.json` | edit | Version bumped to 2.0.0 by semantic-release on `feat!:` commit. |
+| File                           | Status  | Responsibility                                                                                                                                                                                                       |
+| ------------------------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/ats/types.ts`             | rewrite | New `Tier`, `TierResult`, `TieredAtsResult`, `CheckResult`, `KnockoutSignal`, `RubricEntry` types. Legacy `AtsResult`, `AtsCheck`, `AtsCheckCategory`, `AtsKeywordMatch`, `AtsFitAssessment`, `AtsFitLevel` removed. |
+| `src/ats/rubric.ts`            | new     | Static rubric registry: `{id, tier, weight, description, source, evidence}` per check.                                                                                                                               |
+| `src/ats/scoring.ts`           | rewrite | New `gradeFromScore`, `computeTierScore`, `computeTotalScore`, `effectiveWeight`. Legacy `calculateScore`, `calculateCombinedScore`, `assessFit`, `generateSummary` removed.                                         |
+| `src/utils/config.ts`          | new     | Discover `resuml.config.yaml`, zod validate, deep-merge with defaults.                                                                                                                                               |
+| `src/ats/checks/parsing.ts`    | new     | `conventional-sections`, `date-format-consistency`, `contact-in-body`, `reverse-chron-order`, `education-complete`.                                                                                                  |
+| `src/ats/checks/recruiter.ts`  | new     | `summary-length`, `action-verb-start`, `quantification-density`, `pronoun-leakage`, `bullets-per-role`, `word-count-total`, `highlight-length`, `has-linkedin`, `skills-populated`.                                  |
+| `src/ats/checks/match.ts`      | new     | `hard-skill-overlap`, `title-alignment`, `education-level`, `yoe-match`, `knockout-mirrors`.                                                                                                                         |
+| `src/ats/genericChecks.ts`     | delete  | Replaced by `src/ats/checks/*`.                                                                                                                                                                                      |
+| `src/ats/index.ts`             | rewrite | Orchestrator returns `TieredAtsResult`; integrates config; emits hints with YAML paths; omits `match` when no JD.                                                                                                    |
+| `src/commands/validate.ts`     | rewrite | Tiered console report; new JSON shape; threshold compares against total.                                                                                                                                             |
+| `src/commands/ats.ts`          | new     | `resuml ats explain <id>`, `resuml ats config --print`.                                                                                                                                                              |
+| `src/commands/init.ts`         | edit    | Also writes `resuml.config.yaml` template alongside `resume.yaml`.                                                                                                                                                   |
+| `src/commands/pdf.ts`          | edit    | Render-time `pdf-text-extractable` and `pdf-size-under-2.5mb` warnings.                                                                                                                                              |
+| `src/mcp/server.ts`            | edit    | `resuml_ats_check` returns new shape; new `resuml_ats_explain` tool; `resuml://docs/ats-scoring` swapped for `resuml://docs/ats-rubric`; prompts updated to tier vocabulary.                                         |
+| `src/index.ts`                 | edit    | Register `ats` command; export new types.                                                                                                                                                                            |
+| `src/__tests__/ats.test.ts`    | rewrite | Tiered output assertions; per-check fixtures; config-merge tests.                                                                                                                                                    |
+| `src/__tests__/config.test.ts` | new     | Config discovery, validation, deep-merge.                                                                                                                                                                            |
+| `CLAUDE.md`                    | edit    | ATS section describes tier model.                                                                                                                                                                                    |
+| `package.json`                 | edit    | Version bumped to 2.0.0 by semantic-release on `feat!:` commit.                                                                                                                                                      |
 
 ---
 
 ## Task 1: Foundation types
 
 **Files:**
+
 - Modify: `src/ats/types.ts`
 - Test: covered by later tasks (types are structural)
 
@@ -139,6 +140,7 @@ BREAKING CHANGE: AtsResult/AtsCheck replaced by TieredAtsResult/CheckResult."
 ## Task 2: Config loader with zod schema
 
 **Files:**
+
 - Create: `src/utils/config.ts`
 - Test: `src/__tests__/config.test.ts`
 
@@ -164,7 +166,7 @@ describe('loadConfig', () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'resuml-cfg-'));
     fs.writeFileSync(
       path.join(dir, 'resuml.config.yaml'),
-      'ats:\n  weights:\n    tiers:\n      parsing: 50\n  disable: [pronoun-leakage]\n',
+      'ats:\n  weights:\n    tiers:\n      parsing: 50\n  disable: [pronoun-leakage]\n'
     );
     const cfg = loadConfig({ cwd: dir });
     expect(cfg.weights.tiers.parsing).toBe(50);
@@ -174,7 +176,10 @@ describe('loadConfig', () => {
 
   it('throws on invalid config', () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'resuml-cfg-'));
-    fs.writeFileSync(path.join(dir, 'resuml.config.yaml'), 'ats:\n  weights:\n    tiers:\n      parsing: "high"\n');
+    fs.writeFileSync(
+      path.join(dir, 'resuml.config.yaml'),
+      'ats:\n  weights:\n    tiers:\n      parsing: "high"\n'
+    );
     expect(() => loadConfig({ cwd: dir })).toThrow(/parsing/);
   });
 
@@ -289,7 +294,11 @@ export function loadConfig(opts: LoadConfigOptions = {}): AtsConfig {
   return merge({}, defaultConfig, result.data.ats ?? {}) as AtsConfig;
 }
 
-export function effectiveWeight(checkId: string, defaultWeight: 'high' | 'medium' | 'low', config: AtsConfig): 'high' | 'medium' | 'low' {
+export function effectiveWeight(
+  checkId: string,
+  defaultWeight: 'high' | 'medium' | 'low',
+  config: AtsConfig
+): 'high' | 'medium' | 'low' {
   return config.weights.checks[checkId] ?? defaultWeight;
 }
 ```
@@ -311,6 +320,7 @@ git commit -m "feat(config): add resuml.config.yaml loader with zod schema"
 ## Task 3: New scoring math
 
 **Files:**
+
 - Modify: `src/ats/scoring.ts`
 - Test: `src/__tests__/scoring.test.ts`
 
@@ -324,14 +334,33 @@ import { gradeFromScore, computeTierScore, computeTotalScore, scoreToRating } fr
 import { defaultConfig } from '../utils/config';
 import type { CheckResult } from '../ats/types';
 
-const mk = (id: string, score: number, weight: CheckResult['weight'], status: CheckResult['status'] = 'pass'): CheckResult => ({
-  id, tier: 'parsing', score, weight, status, message: '', hints: [],
+const mk = (
+  id: string,
+  score: number,
+  weight: CheckResult['weight'],
+  status: CheckResult['status'] = 'pass'
+): CheckResult => ({
+  id,
+  tier: 'parsing',
+  score,
+  weight,
+  status,
+  message: '',
+  hints: [],
 });
 
 describe('gradeFromScore', () => {
   it.each([
-    [95, 'A'], [90, 'A'], [89, 'B'], [80, 'B'],
-    [79, 'C'], [70, 'C'], [69, 'D'], [60, 'D'], [59, 'F'], [0, 'F'],
+    [95, 'A'],
+    [90, 'A'],
+    [89, 'B'],
+    [80, 'B'],
+    [79, 'C'],
+    [70, 'C'],
+    [69, 'D'],
+    [60, 'D'],
+    [59, 'F'],
+    [0, 'F'],
   ])('maps %d → %s', (score, grade) => {
     expect(gradeFromScore(score, defaultConfig.thresholds.grade)).toBe(grade);
   });
@@ -351,7 +380,10 @@ describe('computeTierScore', () => {
 
 describe('computeTotalScore', () => {
   it('blends parsing 30 / match 50 / recruiter 20 when JD present', () => {
-    const total = computeTotalScore({ parsing: 90, match: 60, recruiter: 80 }, defaultConfig.weights.tiers);
+    const total = computeTotalScore(
+      { parsing: 90, match: 60, recruiter: 80 },
+      defaultConfig.weights.tiers
+    );
     // 90*0.3 + 60*0.5 + 80*0.2 = 27 + 30 + 16 = 73
     expect(total).toBe(73);
   });
@@ -364,9 +396,12 @@ describe('computeTotalScore', () => {
 });
 
 describe('scoreToRating', () => {
-  it.each([[95, 'excellent'], [80, 'good'], [65, 'needs-work'], [50, 'poor']])(
-    '%d → %s', (s, r) => expect(scoreToRating(s, defaultConfig.thresholds.rating)).toBe(r),
-  );
+  it.each([
+    [95, 'excellent'],
+    [80, 'good'],
+    [65, 'needs-work'],
+    [50, 'poor'],
+  ])('%d → %s', (s, r) => expect(scoreToRating(s, defaultConfig.thresholds.rating)).toBe(r));
 });
 ```
 
@@ -409,17 +444,22 @@ export function computeTierScore(checks: CheckResult[]): number {
 
 export function computeTotalScore(
   tiers: { parsing: number; match?: number; recruiter: number },
-  weights: AtsConfig['weights']['tiers'],
+  weights: AtsConfig['weights']['tiers']
 ): number {
   if (tiers.match === undefined) {
     const sum = weights.parsing + weights.recruiter;
     const wp = weights.parsing / sum;
     const wr = weights.recruiter / sum;
-    return Math.round(tiers.parsing * (sum === 50 ? 0.4 : wp) + tiers.recruiter * (sum === 50 ? 0.6 : wr));
+    return Math.round(
+      tiers.parsing * (sum === 50 ? 0.4 : wp) + tiers.recruiter * (sum === 50 ? 0.6 : wr)
+    );
   }
   const sum = weights.parsing + weights.match + weights.recruiter;
   return Math.round(
-    (tiers.parsing * weights.parsing + tiers.match * weights.match + tiers.recruiter * weights.recruiter) / sum,
+    (tiers.parsing * weights.parsing +
+      tiers.match * weights.match +
+      tiers.recruiter * weights.recruiter) /
+      sum
   );
 }
 
@@ -430,9 +470,20 @@ export function scoreToRating(score: number, t: AtsConfig['thresholds']['rating'
   return 'poor';
 }
 
-export function generateSummary(score: number, rating: AtsRating, hasJd: boolean, knockouts: number): string {
-  const ratingLabel = { excellent: 'Excellent', good: 'Good', 'needs-work': 'Needs Work', poor: 'Poor' }[rating];
-  const knockoutNote = knockouts > 0 ? ` ${knockouts} knockout signal${knockouts === 1 ? '' : 's'} flagged.` : '';
+export function generateSummary(
+  score: number,
+  rating: AtsRating,
+  hasJd: boolean,
+  knockouts: number
+): string {
+  const ratingLabel = {
+    excellent: 'Excellent',
+    good: 'Good',
+    'needs-work': 'Needs Work',
+    poor: 'Poor',
+  }[rating];
+  const knockoutNote =
+    knockouts > 0 ? ` ${knockouts} knockout signal${knockouts === 1 ? '' : 's'} flagged.` : '';
   return `ATS ${score}/100 (${ratingLabel}).${hasJd ? ' Includes JD match.' : ''}${knockoutNote}`;
 }
 ```
@@ -456,6 +507,7 @@ git commit -m "feat(ats)!: tier-aware scoring math (gradeFromScore, computeTierS
 ## Task 4: Static rubric registry
 
 **Files:**
+
 - Create: `src/ats/rubric.ts`
 - Test: `src/__tests__/rubric.test.ts`
 
@@ -470,15 +522,30 @@ import { rubric, getRubricEntry, listRubricMarkdown } from '../ats/rubric';
 describe('rubric registry', () => {
   it('contains every check id used by tiers', () => {
     const ids = rubric.map((r) => r.id);
-    expect(ids).toEqual(expect.arrayContaining([
-      'conventional-sections', 'date-format-consistency', 'contact-in-body',
-      'reverse-chron-order', 'education-complete',
-      'pdf-text-extractable', 'pdf-size-under-2.5mb',
-      'hard-skill-overlap', 'title-alignment', 'education-level', 'yoe-match',
-      'summary-length', 'action-verb-start', 'quantification-density',
-      'pronoun-leakage', 'bullets-per-role', 'word-count-total', 'highlight-length',
-      'has-linkedin', 'skills-populated',
-    ]));
+    expect(ids).toEqual(
+      expect.arrayContaining([
+        'conventional-sections',
+        'date-format-consistency',
+        'contact-in-body',
+        'reverse-chron-order',
+        'education-complete',
+        'pdf-text-extractable',
+        'pdf-size-under-2.5mb',
+        'hard-skill-overlap',
+        'title-alignment',
+        'education-level',
+        'yoe-match',
+        'summary-length',
+        'action-verb-start',
+        'quantification-density',
+        'pronoun-leakage',
+        'bullets-per-role',
+        'word-count-total',
+        'highlight-length',
+        'has-linkedin',
+        'skills-populated',
+      ])
+    );
   });
 
   it('marks pronoun-leakage as convention not evidence', () => {
@@ -508,64 +575,171 @@ import type { RubricEntry, Tier } from './types';
 
 export const rubric: RubricEntry[] = [
   // Parsing tier — Greenhouse-doc-grounded
-  { id: 'conventional-sections', tier: 'parsing', weight: 'high', evidenceLevel: 'evidence',
+  {
+    id: 'conventional-sections',
+    tier: 'parsing',
+    weight: 'high',
+    evidenceLevel: 'evidence',
     description: 'Required JSON Resume sections (basics, work, education) are present.',
-    source: 'https://support.greenhouse.io/hc/en-us/articles/200989175-Unsuccessful-resume-parse' },
-  { id: 'date-format-consistency', tier: 'parsing', weight: 'medium', evidenceLevel: 'evidence',
+    source: 'https://support.greenhouse.io/hc/en-us/articles/200989175-Unsuccessful-resume-parse',
+  },
+  {
+    id: 'date-format-consistency',
+    tier: 'parsing',
+    weight: 'medium',
+    evidenceLevel: 'evidence',
     description: 'Dates use ISO-8601 (YYYY-MM-DD or YYYY-MM); no mixed formats; no >6mo gaps.',
-    source: 'https://hireflow.net/blog/taleo-resume-parsing-problems-explained' },
-  { id: 'contact-in-body', tier: 'parsing', weight: 'high', evidenceLevel: 'evidence',
+    source: 'https://hireflow.net/blog/taleo-resume-parsing-problems-explained',
+  },
+  {
+    id: 'contact-in-body',
+    tier: 'parsing',
+    weight: 'high',
+    evidenceLevel: 'evidence',
     description: 'Email and phone present in basics block (parseable by Textkernel/Sovren).',
-    source: 'https://developer.textkernel.com/tx-platform/v10/faq/' },
-  { id: 'reverse-chron-order', tier: 'parsing', weight: 'medium', evidenceLevel: 'evidence',
-    description: 'work[] and education[] sorted descending by startDate.' },
-  { id: 'education-complete', tier: 'parsing', weight: 'low', evidenceLevel: 'evidence',
-    description: 'Each education entry has institution, area, and studyType.' },
-  { id: 'pdf-text-extractable', tier: 'parsing', weight: 'high', evidenceLevel: 'evidence',
+    source: 'https://developer.textkernel.com/tx-platform/v10/faq/',
+  },
+  {
+    id: 'reverse-chron-order',
+    tier: 'parsing',
+    weight: 'medium',
+    evidenceLevel: 'evidence',
+    description: 'work[] and education[] sorted descending by startDate.',
+  },
+  {
+    id: 'education-complete',
+    tier: 'parsing',
+    weight: 'low',
+    evidenceLevel: 'evidence',
+    description: 'Each education entry has institution, area, and studyType.',
+  },
+  {
+    id: 'pdf-text-extractable',
+    tier: 'parsing',
+    weight: 'high',
+    evidenceLevel: 'evidence',
     description: 'Rendered PDF body text is selectable (≥70% of resume word count extractable).',
-    source: 'https://www.ashbyhq.com/product-updates/ai-assisted-application-review' },
-  { id: 'pdf-size-under-2.5mb', tier: 'parsing', weight: 'medium', evidenceLevel: 'evidence',
+    source: 'https://www.ashbyhq.com/product-updates/ai-assisted-application-review',
+  },
+  {
+    id: 'pdf-size-under-2.5mb',
+    tier: 'parsing',
+    weight: 'medium',
+    evidenceLevel: 'evidence',
     description: 'Rendered PDF is under 2.5 MB (Greenhouse documented limit).',
-    source: 'https://support.greenhouse.io/hc/en-us/articles/200989175-Unsuccessful-resume-parse' },
+    source: 'https://support.greenhouse.io/hc/en-us/articles/200989175-Unsuccessful-resume-parse',
+  },
 
   // Match tier — JD-aware
-  { id: 'hard-skill-overlap', tier: 'match', weight: 'high', evidenceLevel: 'evidence',
-    description: 'Hard skill overlap with JD using bundled O*NET-trie skill index. ESCO migration tracked separately.' },
-  { id: 'title-alignment', tier: 'match', weight: 'high', evidenceLevel: 'evidence',
-    description: 'Most-recent work[].position aligns with JD title via token Jaccard after stripping seniority modifiers.' },
-  { id: 'education-level', tier: 'match', weight: 'medium', evidenceLevel: 'evidence',
-    description: 'Max studyType meets/exceeds JD education requirement (Bachelor/Master/PhD detection).' },
-  { id: 'yoe-match', tier: 'match', weight: 'high', evidenceLevel: 'evidence',
-    description: 'Total years of experience (overlap-merged from work[]) meets JD years requirement.' },
+  {
+    id: 'hard-skill-overlap',
+    tier: 'match',
+    weight: 'high',
+    evidenceLevel: 'evidence',
+    description:
+      'Hard skill overlap with JD using bundled O*NET-trie skill index. ESCO migration tracked separately.',
+  },
+  {
+    id: 'title-alignment',
+    tier: 'match',
+    weight: 'high',
+    evidenceLevel: 'evidence',
+    description:
+      'Most-recent work[].position aligns with JD title via token Jaccard after stripping seniority modifiers.',
+  },
+  {
+    id: 'education-level',
+    tier: 'match',
+    weight: 'medium',
+    evidenceLevel: 'evidence',
+    description:
+      'Max studyType meets/exceeds JD education requirement (Bachelor/Master/PhD detection).',
+  },
+  {
+    id: 'yoe-match',
+    tier: 'match',
+    weight: 'high',
+    evidenceLevel: 'evidence',
+    description:
+      'Total years of experience (overlap-merged from work[]) meets JD years requirement.',
+  },
 
   // Recruiter tier — Rezi/Teal/Enhancv-grounded numbers
-  { id: 'summary-length', tier: 'recruiter', weight: 'medium', evidenceLevel: 'convention',
+  {
+    id: 'summary-length',
+    tier: 'recruiter',
+    weight: 'medium',
+    evidenceLevel: 'convention',
     description: 'Professional summary 20-50 words / 2-4 sentences.',
-    source: 'https://www.rezi.ai/rezi-docs/the-rezi-score-explained' },
-  { id: 'action-verb-start', tier: 'recruiter', weight: 'medium', evidenceLevel: 'convention',
-    description: 'Highlights start with an action verb.' },
-  { id: 'quantification-density', tier: 'recruiter', weight: 'high', evidenceLevel: 'convention',
-    description: 'At least 50% of highlights include numbers/metrics.' },
-  { id: 'pronoun-leakage', tier: 'recruiter', weight: 'low', evidenceLevel: 'convention',
+    source: 'https://www.rezi.ai/rezi-docs/the-rezi-score-explained',
+  },
+  {
+    id: 'action-verb-start',
+    tier: 'recruiter',
+    weight: 'medium',
+    evidenceLevel: 'convention',
+    description: 'Highlights start with an action verb.',
+  },
+  {
+    id: 'quantification-density',
+    tier: 'recruiter',
+    weight: 'high',
+    evidenceLevel: 'convention',
+    description: 'At least 50% of highlights include numbers/metrics.',
+  },
+  {
+    id: 'pronoun-leakage',
+    tier: 'recruiter',
+    weight: 'low',
+    evidenceLevel: 'convention',
     description: 'Convention, not ATS: ATS does not filter on pronouns; this is recruiter style.',
-    source: 'https://resume.io/blog/first-person-resume' },
-  { id: 'bullets-per-role', tier: 'recruiter', weight: 'medium', evidenceLevel: 'convention',
+    source: 'https://resume.io/blog/first-person-resume',
+  },
+  {
+    id: 'bullets-per-role',
+    tier: 'recruiter',
+    weight: 'medium',
+    evidenceLevel: 'convention',
     description: 'Each work entry has 3-6 highlights (10 for senior).',
-    source: 'https://www.rezi.ai/rezi-docs/the-rezi-score-explained' },
-  { id: 'word-count-total', tier: 'recruiter', weight: 'low', evidenceLevel: 'convention',
+    source: 'https://www.rezi.ai/rezi-docs/the-rezi-score-explained',
+  },
+  {
+    id: 'word-count-total',
+    tier: 'recruiter',
+    weight: 'low',
+    evidenceLevel: 'convention',
     description: 'Total resume body 400-800 words (1600 senior).',
-    source: 'https://www.rezi.ai/rezi-docs/the-rezi-score-explained' },
-  { id: 'highlight-length', tier: 'recruiter', weight: 'low', evidenceLevel: 'convention',
-    description: 'Each highlight fits within two visual lines (~30 words).' },
-  { id: 'has-linkedin', tier: 'recruiter', weight: 'low', evidenceLevel: 'convention',
-    description: 'LinkedIn profile present in basics.profiles.' },
-  { id: 'skills-populated', tier: 'recruiter', weight: 'medium', evidenceLevel: 'convention',
-    description: 'At least 3 skill categories with keywords.' },
+    source: 'https://www.rezi.ai/rezi-docs/the-rezi-score-explained',
+  },
+  {
+    id: 'highlight-length',
+    tier: 'recruiter',
+    weight: 'low',
+    evidenceLevel: 'convention',
+    description: 'Each highlight fits within two visual lines (~30 words).',
+  },
+  {
+    id: 'has-linkedin',
+    tier: 'recruiter',
+    weight: 'low',
+    evidenceLevel: 'convention',
+    description: 'LinkedIn profile present in basics.profiles.',
+  },
+  {
+    id: 'skills-populated',
+    tier: 'recruiter',
+    weight: 'medium',
+    evidenceLevel: 'convention',
+    description: 'At least 3 skill categories with keywords.',
+  },
 ];
 
 const byId: Map<string, RubricEntry> = new Map(rubric.map((r) => [r.id, r]));
 
-export function getRubricEntry(id: string, opts: { strict?: boolean } = {}): RubricEntry | undefined {
+export function getRubricEntry(
+  id: string,
+  opts: { strict?: boolean } = {}
+): RubricEntry | undefined {
   const entry = byId.get(id);
   if (!entry && opts.strict) throw new Error(`Unknown rubric id: ${id}`);
   return entry;
@@ -580,7 +754,10 @@ export function listRubricMarkdown(): string {
   const sections = tiers.map((t) => {
     const entries = rubricByTier(t);
     const lines = entries
-      .map((e) => `- **${e.id}** (${e.weight}, ${e.evidenceLevel}) — ${e.description}${e.source ? `\n  Source: ${e.source}` : ''}`)
+      .map(
+        (e) =>
+          `- **${e.id}** (${e.weight}, ${e.evidenceLevel}) — ${e.description}${e.source ? `\n  Source: ${e.source}` : ''}`
+      )
       .join('\n');
     return `## Tier: ${t}\n\n${lines}`;
   });
@@ -605,6 +782,7 @@ git commit -m "feat(ats): add rubric registry with evidence vs convention metada
 ## Task 5: Parsing-tier checks
 
 **Files:**
+
 - Create: `src/ats/checks/parsing.ts`
 - Test: `src/__tests__/checks.parsing.test.ts`
 
@@ -615,15 +793,20 @@ Create `src/__tests__/checks.parsing.test.ts`:
 ```ts
 import { describe, it, expect } from 'vitest';
 import {
-  conventionalSections, dateFormatConsistency, contactInBody,
-  reverseChronOrder, educationComplete,
+  conventionalSections,
+  dateFormatConsistency,
+  contactInBody,
+  reverseChronOrder,
+  educationComplete,
 } from '../ats/checks/parsing';
 import type { ResumeSchema } from '../types/resume';
 
 const base: ResumeSchema = {
   basics: { name: 'X', email: 'x@y.com', phone: '+1', location: { city: 'NYC' } },
   work: [{ name: 'A', position: 'Dev', startDate: '2020-01', highlights: ['Built X'] }],
-  education: [{ institution: 'U', area: 'CS', studyType: 'BSc', startDate: '2015-01', endDate: '2019-01' }],
+  education: [
+    { institution: 'U', area: 'CS', studyType: 'BSc', startDate: '2015-01', endDate: '2019-01' },
+  ],
   skills: [{ name: 'Code', keywords: ['ts'] }],
 };
 
@@ -651,23 +834,31 @@ describe('contact-in-body', () => {
     expect(contactInBody(base, 'en').status).toBe('pass');
   });
   it('fails without email', () => {
-    expect(contactInBody({ ...base, basics: { ...base.basics!, email: undefined } }, 'en').status).toBe('fail');
+    expect(
+      contactInBody({ ...base, basics: { ...base.basics!, email: undefined } }, 'en').status
+    ).toBe('fail');
   });
 });
 
 describe('reverse-chron-order', () => {
   it('passes when work descending', () => {
-    const r = { ...base, work: [
-      { ...base.work![0], startDate: '2022-01' },
-      { ...base.work![0], startDate: '2020-01' },
-    ]};
+    const r = {
+      ...base,
+      work: [
+        { ...base.work![0], startDate: '2022-01' },
+        { ...base.work![0], startDate: '2020-01' },
+      ],
+    };
     expect(reverseChronOrder(r, 'en').status).toBe('pass');
   });
   it('fails when out of order', () => {
-    const r = { ...base, work: [
-      { ...base.work![0], startDate: '2018-01' },
-      { ...base.work![0], startDate: '2020-01' },
-    ]};
+    const r = {
+      ...base,
+      work: [
+        { ...base.work![0], startDate: '2018-01' },
+        { ...base.work![0], startDate: '2020-01' },
+      ],
+    };
     expect(reverseChronOrder(r, 'en').status).toBe('fail');
   });
   it('skipped with single entry', () => {
@@ -710,7 +901,9 @@ export const conventionalSections: CheckFn = (resume) => {
   });
   const passed = missing.length === 0;
   return {
-    id: 'conventional-sections', tier: 'parsing', weight: 'high',
+    id: 'conventional-sections',
+    tier: 'parsing',
+    weight: 'high',
     status: passed ? 'pass' : 'fail',
     score: Math.round(((required.length - missing.length) / required.length) * 100),
     message: passed
@@ -727,22 +920,36 @@ export const dateFormatConsistency: CheckFn = (resume) => {
     if (w.endDate) all.push({ date: w.endDate, where: `work "${w.name || ''}".endDate` });
   }
   for (const e of resume.education || []) {
-    if (e.startDate) all.push({ date: e.startDate, where: `education "${e.institution || ''}".startDate` });
-    if (e.endDate) all.push({ date: e.endDate, where: `education "${e.institution || ''}".endDate` });
+    if (e.startDate)
+      all.push({ date: e.startDate, where: `education "${e.institution || ''}".startDate` });
+    if (e.endDate)
+      all.push({ date: e.endDate, where: `education "${e.institution || ''}".endDate` });
   }
   if (all.length === 0) {
-    return { id: 'date-format-consistency', tier: 'parsing', weight: 'medium',
-      status: 'skipped', score: 0, message: 'No dates to check.', hints: [] };
+    return {
+      id: 'date-format-consistency',
+      tier: 'parsing',
+      weight: 'medium',
+      status: 'skipped',
+      score: 0,
+      message: 'No dates to check.',
+      hints: [],
+    };
   }
   const bad = all.filter((d) => !ISO_DATE.test(d.date));
   const passed = bad.length === 0;
   return {
-    id: 'date-format-consistency', tier: 'parsing', weight: 'medium',
+    id: 'date-format-consistency',
+    tier: 'parsing',
+    weight: 'medium',
     status: passed ? 'pass' : bad.length <= 1 ? 'warn' : 'fail',
     score: Math.round(((all.length - bad.length) / all.length) * 100),
     message: passed
       ? 'All dates use ISO-8601 format.'
-      : `Non-ISO dates: ${bad.slice(0, 3).map((b) => `${b.where}=${b.date}`).join('; ')}.`,
+      : `Non-ISO dates: ${bad
+          .slice(0, 3)
+          .map((b) => `${b.where}=${b.date}`)
+          .join('; ')}.`,
     hints: passed ? [] : ['Use YYYY-MM or YYYY-MM-DD for every date field.'],
   };
 };
@@ -758,7 +965,9 @@ export const contactInBody: CheckFn = (resume) => {
   const missing = checks.filter((c) => !c.ok).map((c) => c.field);
   const passed = missing.length === 0;
   return {
-    id: 'contact-in-body', tier: 'parsing', weight: 'high',
+    id: 'contact-in-body',
+    tier: 'parsing',
+    weight: 'high',
     status: passed ? 'pass' : 'fail',
     score: Math.round(((checks.length - missing.length) / checks.length) * 100),
     message: passed
@@ -771,8 +980,15 @@ export const contactInBody: CheckFn = (resume) => {
 export const reverseChronOrder: CheckFn = (resume) => {
   const work = resume.work || [];
   if (work.length < 2) {
-    return { id: 'reverse-chron-order', tier: 'parsing', weight: 'medium',
-      status: 'skipped', score: 100, message: 'Single or no work entry.', hints: [] };
+    return {
+      id: 'reverse-chron-order',
+      tier: 'parsing',
+      weight: 'medium',
+      status: 'skipped',
+      score: 100,
+      message: 'Single or no work entry.',
+      hints: [],
+    };
   }
   let outOfOrder = 0;
   for (let i = 0; i < work.length - 1; i++) {
@@ -782,7 +998,9 @@ export const reverseChronOrder: CheckFn = (resume) => {
   }
   const passed = outOfOrder === 0;
   return {
-    id: 'reverse-chron-order', tier: 'parsing', weight: 'medium',
+    id: 'reverse-chron-order',
+    tier: 'parsing',
+    weight: 'medium',
     status: passed ? 'pass' : 'fail',
     score: passed ? 100 : Math.max(0, 100 - outOfOrder * 50),
     message: passed
@@ -795,14 +1013,22 @@ export const reverseChronOrder: CheckFn = (resume) => {
 export const educationComplete: CheckFn = (resume) => {
   const edu = resume.education || [];
   if (edu.length === 0) {
-    return { id: 'education-complete', tier: 'parsing', weight: 'low',
-      status: 'fail', score: 0, message: 'No education entries.',
-      hints: ['Add at least one education entry with institution, area, and studyType.'] };
+    return {
+      id: 'education-complete',
+      tier: 'parsing',
+      weight: 'low',
+      status: 'fail',
+      score: 0,
+      message: 'No education entries.',
+      hints: ['Add at least one education entry with institution, area, and studyType.'],
+    };
   }
   const incomplete = edu.filter((e) => !e.institution || !e.area || !e.studyType);
   const passed = incomplete.length === 0;
   return {
-    id: 'education-complete', tier: 'parsing', weight: 'low',
+    id: 'education-complete',
+    tier: 'parsing',
+    weight: 'low',
     status: passed ? 'pass' : 'fail',
     score: Math.round(((edu.length - incomplete.length) / edu.length) * 100),
     message: passed
@@ -813,7 +1039,11 @@ export const educationComplete: CheckFn = (resume) => {
 };
 
 export const allParsingChecks = [
-  conventionalSections, dateFormatConsistency, contactInBody, reverseChronOrder, educationComplete,
+  conventionalSections,
+  dateFormatConsistency,
+  contactInBody,
+  reverseChronOrder,
+  educationComplete,
 ];
 ```
 
@@ -834,6 +1064,7 @@ git commit -m "feat(ats): parsing-tier checks (conventional-sections, date-forma
 ## Task 6: Recruiter-tier checks
 
 **Files:**
+
 - Create: `src/ats/checks/recruiter.ts`
 - Test: `src/__tests__/checks.recruiter.test.ts`
 
@@ -844,22 +1075,39 @@ Create `src/__tests__/checks.recruiter.test.ts`:
 ```ts
 import { describe, it, expect } from 'vitest';
 import {
-  summaryLength, actionVerbStart, quantificationDensity, pronounLeakage,
-  bulletsPerRole, wordCountTotal, highlightLength, hasLinkedin, skillsPopulated,
+  summaryLength,
+  actionVerbStart,
+  quantificationDensity,
+  pronounLeakage,
+  bulletsPerRole,
+  wordCountTotal,
+  highlightLength,
+  hasLinkedin,
+  skillsPopulated,
 } from '../ats/checks/recruiter';
 import { defaultConfig } from '../utils/config';
 import type { ResumeSchema } from '../types/resume';
 
 const base: ResumeSchema = {
   basics: {
-    name: 'X', email: 'x@y.com',
-    summary: 'Senior frontend tech lead with eight years building React platforms. Shipped accessibility wins. Mentored teams.',
+    name: 'X',
+    email: 'x@y.com',
+    summary:
+      'Senior frontend tech lead with eight years building React platforms. Shipped accessibility wins. Mentored teams.',
     profiles: [{ network: 'LinkedIn', url: 'https://linkedin.com/in/x' }],
   },
-  work: [{
-    name: 'Co', position: 'Lead', startDate: '2020-01',
-    highlights: ['Reduced load by 40%', 'Built design system used by 5 teams', 'Shipped a11y audit'],
-  }],
+  work: [
+    {
+      name: 'Co',
+      position: 'Lead',
+      startDate: '2020-01',
+      highlights: [
+        'Reduced load by 40%',
+        'Built design system used by 5 teams',
+        'Shipped a11y audit',
+      ],
+    },
+  ],
   skills: [
     { name: 'Frontend', keywords: ['react', 'typescript'] },
     { name: 'Tooling', keywords: ['vite'] },
@@ -874,7 +1122,9 @@ describe('summary-length', () => {
     expect(summaryLength(base, 'en', cfg).status).toBe('pass');
   });
   it('fails when missing', () => {
-    expect(summaryLength({ ...base, basics: { ...base.basics!, summary: undefined } }, 'en', cfg).status).toBe('fail');
+    expect(
+      summaryLength({ ...base, basics: { ...base.basics!, summary: undefined } }, 'en', cfg).status
+    ).toBe('fail');
   });
 });
 
@@ -963,7 +1213,11 @@ type CheckFn = (resume: ResumeSchema, language: string, cfg: AtsConfig) => Check
 
 const wordCount = (s: string) => s.trim().split(/\s+/).filter(Boolean).length;
 const firstWord = (s: string) =>
-  s.trim().split(/\s+/)[0]?.toLowerCase().replace(/[^a-zA-ZäöüßÄÖÜàáâãéèêëíìîïóòôõúùûüñç]/g, '') || '';
+  s
+    .trim()
+    .split(/\s+/)[0]
+    ?.toLowerCase()
+    .replace(/[^a-zA-ZäöüßÄÖÜàáâãéèêëíìîïóòôõúùûüñç]/g, '') || '';
 
 function isSenior(resume: ResumeSchema, cfg: AtsConfig): boolean {
   return computeYoeYears(resume.work || []) >= cfg.thresholds.seniorYoeCutoff;
@@ -972,72 +1226,136 @@ function isSenior(resume: ResumeSchema, cfg: AtsConfig): boolean {
 export const summaryLength: CheckFn = (resume) => {
   const s = resume.basics?.summary?.trim();
   if (!s) {
-    return { id: 'summary-length', tier: 'recruiter', weight: 'medium',
-      status: 'fail', score: 0, message: 'No professional summary.',
-      hints: ['Add a 2-4 sentence summary (20-50 words) to basics.summary.'] };
+    return {
+      id: 'summary-length',
+      tier: 'recruiter',
+      weight: 'medium',
+      status: 'fail',
+      score: 0,
+      message: 'No professional summary.',
+      hints: ['Add a 2-4 sentence summary (20-50 words) to basics.summary.'],
+    };
   }
   const w = wordCount(s);
   if (w >= 20 && w <= 50) {
-    return { id: 'summary-length', tier: 'recruiter', weight: 'medium',
-      status: 'pass', score: 100, message: `Summary length good (${w} words).`, hints: [] };
+    return {
+      id: 'summary-length',
+      tier: 'recruiter',
+      weight: 'medium',
+      status: 'pass',
+      score: 100,
+      message: `Summary length good (${w} words).`,
+      hints: [],
+    };
   }
   if (w >= 10 && w <= 80) {
-    return { id: 'summary-length', tier: 'recruiter', weight: 'medium',
-      status: 'warn', score: 70,
+    return {
+      id: 'summary-length',
+      tier: 'recruiter',
+      weight: 'medium',
+      status: 'warn',
+      score: 70,
       message: `Summary ${w < 20 ? 'short' : 'long'} (${w} words). Aim for 20-50.`,
-      hints: [w < 20 ? 'Expand to 20-50 words.' : 'Trim to the most impactful 20-50 words.'] };
+      hints: [w < 20 ? 'Expand to 20-50 words.' : 'Trim to the most impactful 20-50 words.'],
+    };
   }
-  return { id: 'summary-length', tier: 'recruiter', weight: 'medium',
-    status: 'fail', score: Math.max(0, 100 - Math.abs(w - 35) * 2),
+  return {
+    id: 'summary-length',
+    tier: 'recruiter',
+    weight: 'medium',
+    status: 'fail',
+    score: Math.max(0, 100 - Math.abs(w - 35) * 2),
     message: `Summary length ${w} words is far from target.`,
-    hints: ['Rewrite the summary in 2-4 sentences (20-50 words).'] };
+    hints: ['Rewrite the summary in 2-4 sentences (20-50 words).'],
+  };
 };
 
 export const actionVerbStart: CheckFn = (resume, language) => {
   const verbs = new Set(getLanguageData(language).actionVerbs);
   const all: { text: string; path: string }[] = [];
-  (resume.work || []).forEach((w, i) => (w.highlights || []).forEach((h, j) =>
-    all.push({ text: h, path: `work[${i}].highlights[${j}]` })));
-  (resume.projects || []).forEach((p, i) => (p.highlights || []).forEach((h, j) =>
-    all.push({ text: h, path: `projects[${i}].highlights[${j}]` })));
+  (resume.work || []).forEach((w, i) =>
+    (w.highlights || []).forEach((h, j) =>
+      all.push({ text: h, path: `work[${i}].highlights[${j}]` })
+    )
+  );
+  (resume.projects || []).forEach((p, i) =>
+    (p.highlights || []).forEach((h, j) =>
+      all.push({ text: h, path: `projects[${i}].highlights[${j}]` })
+    )
+  );
   if (all.length === 0) {
-    return { id: 'action-verb-start', tier: 'recruiter', weight: 'medium',
-      status: 'skipped', score: 0, message: 'No highlights.', hints: [] };
+    return {
+      id: 'action-verb-start',
+      tier: 'recruiter',
+      weight: 'medium',
+      status: 'skipped',
+      score: 0,
+      message: 'No highlights.',
+      hints: [],
+    };
   }
   const without = all.filter((h) => !verbs.has(firstWord(h.text)));
   const passed = without.length === 0;
   return {
-    id: 'action-verb-start', tier: 'recruiter', weight: 'medium',
+    id: 'action-verb-start',
+    tier: 'recruiter',
+    weight: 'medium',
     status: passed ? 'pass' : without.length / all.length > 0.3 ? 'fail' : 'warn',
     score: Math.round(((all.length - without.length) / all.length) * 100),
     message: passed
       ? 'All highlights start with action verbs.'
       : `${without.length} of ${all.length} highlights miss an action verb.`,
-    hints: passed ? [] : without.slice(0, 3).map((h) => `${h.path}: start with an action verb instead of "${firstWord(h.text)}".`),
+    hints: passed
+      ? []
+      : without
+          .slice(0, 3)
+          .map((h) => `${h.path}: start with an action verb instead of "${firstWord(h.text)}".`),
   };
 };
 
-const QUANT_RE = /\d+%?|\$[\d,]+|[\d,]+\+?\s*(users|clients|customers|people|team|members|projects|applications|servers|services|endpoints|requests|transactions)/i;
+const QUANT_RE =
+  /\d+%?|\$[\d,]+|[\d,]+\+?\s*(users|clients|customers|people|team|members|projects|applications|servers|services|endpoints|requests|transactions)/i;
 
 export const quantificationDensity: CheckFn = (resume) => {
   const all: { text: string; path: string }[] = [];
-  (resume.work || []).forEach((w, i) => (w.highlights || []).forEach((h, j) =>
-    all.push({ text: h, path: `work[${i}].highlights[${j}]` })));
-  (resume.projects || []).forEach((p, i) => (p.highlights || []).forEach((h, j) =>
-    all.push({ text: h, path: `projects[${i}].highlights[${j}]` })));
+  (resume.work || []).forEach((w, i) =>
+    (w.highlights || []).forEach((h, j) =>
+      all.push({ text: h, path: `work[${i}].highlights[${j}]` })
+    )
+  );
+  (resume.projects || []).forEach((p, i) =>
+    (p.highlights || []).forEach((h, j) =>
+      all.push({ text: h, path: `projects[${i}].highlights[${j}]` })
+    )
+  );
   if (all.length === 0) {
-    return { id: 'quantification-density', tier: 'recruiter', weight: 'high',
-      status: 'skipped', score: 0, message: 'No highlights.', hints: [] };
+    return {
+      id: 'quantification-density',
+      tier: 'recruiter',
+      weight: 'high',
+      status: 'skipped',
+      score: 0,
+      message: 'No highlights.',
+      hints: [],
+    };
   }
   const quantified = all.filter((h) => QUANT_RE.test(h.text));
   const ratio = quantified.length / all.length;
   const status = ratio >= 0.5 ? 'pass' : ratio >= 0.3 ? 'warn' : 'fail';
   return {
-    id: 'quantification-density', tier: 'recruiter', weight: 'high',
-    status, score: Math.min(100, Math.round(ratio * 200)),
+    id: 'quantification-density',
+    tier: 'recruiter',
+    weight: 'high',
+    status,
+    score: Math.min(100, Math.round(ratio * 200)),
     message: `${quantified.length}/${all.length} highlights quantified (${Math.round(ratio * 100)}%).`,
-    hints: status === 'pass' ? [] : all.filter((h) => !QUANT_RE.test(h.text)).slice(0, 3)
-      .map((h) => `${h.path}: add a number/metric.`),
+    hints:
+      status === 'pass'
+        ? []
+        : all
+            .filter((h) => !QUANT_RE.test(h.text))
+            .slice(0, 3)
+            .map((h) => `${h.path}: add a number/metric.`),
   };
 };
 
@@ -1047,7 +1365,9 @@ export const pronounLeakage: CheckFn = (resume, language) => {
   if (resume.basics?.summary) blocks.push({ text: resume.basics.summary, path: 'basics.summary' });
   (resume.work || []).forEach((w, i) => {
     if (w.summary) blocks.push({ text: w.summary, path: `work[${i}].summary` });
-    (w.highlights || []).forEach((h, j) => blocks.push({ text: h, path: `work[${i}].highlights[${j}]` }));
+    (w.highlights || []).forEach((h, j) =>
+      blocks.push({ text: h, path: `work[${i}].highlights[${j}]` })
+    );
   });
   let hits: { pronoun: string; path: string }[] = [];
   for (const b of blocks) {
@@ -1058,21 +1378,32 @@ export const pronounLeakage: CheckFn = (resume, language) => {
   }
   const passed = hits.length === 0;
   return {
-    id: 'pronoun-leakage', tier: 'recruiter', weight: 'low',
+    id: 'pronoun-leakage',
+    tier: 'recruiter',
+    weight: 'low',
     status: passed ? 'pass' : hits.length > 3 ? 'fail' : 'warn',
     score: passed ? 100 : Math.max(0, 100 - hits.length * 15),
     message: passed
       ? 'No first-person pronouns.'
       : `${hits.length} pronoun(s): ${[...new Set(hits.map((h) => h.pronoun))].join(', ')}.`,
-    hints: passed ? [] : hits.slice(0, 3).map((h) => `${h.path}: drop "${h.pronoun}" (convention, not ATS).`),
+    hints: passed
+      ? []
+      : hits.slice(0, 3).map((h) => `${h.path}: drop "${h.pronoun}" (convention, not ATS).`),
   };
 };
 
 export const bulletsPerRole: CheckFn = (resume, _l, cfg) => {
   const work = resume.work || [];
   if (work.length === 0) {
-    return { id: 'bullets-per-role', tier: 'recruiter', weight: 'medium',
-      status: 'skipped', score: 0, message: 'No work entries.', hints: [] };
+    return {
+      id: 'bullets-per-role',
+      tier: 'recruiter',
+      weight: 'medium',
+      status: 'skipped',
+      score: 0,
+      message: 'No work entries.',
+      hints: [],
+    };
   }
   const senior = isSenior(resume, cfg);
   const min = cfg.thresholds.bulletsPerRole.min;
@@ -1084,13 +1415,23 @@ export const bulletsPerRole: CheckFn = (resume, _l, cfg) => {
   });
   const passed = offenders.length === 0;
   return {
-    id: 'bullets-per-role', tier: 'recruiter', weight: 'medium',
-    status: passed ? 'pass' : work.length === 1 ? 'warn' : offenders.length > work.length / 2 ? 'fail' : 'warn',
+    id: 'bullets-per-role',
+    tier: 'recruiter',
+    weight: 'medium',
+    status: passed
+      ? 'pass'
+      : work.length === 1
+        ? 'warn'
+        : offenders.length > work.length / 2
+          ? 'fail'
+          : 'warn',
     score: Math.round(((work.length - offenders.length) / work.length) * 100),
     message: passed
       ? `All roles have ${min}-${max} highlights.`
       : `${offenders.length} role(s) outside ${min}-${max} highlights.`,
-    hints: passed ? [] : offenders.slice(0, 3).map((o) => `${o.path}: ${o.n} highlights, target ${min}-${max}.`),
+    hints: passed
+      ? []
+      : offenders.slice(0, 3).map((o) => `${o.path}: ${o.n} highlights, target ${min}-${max}.`),
   };
 };
 
@@ -1112,40 +1453,60 @@ export const wordCountTotal: CheckFn = (resume, _l, cfg) => {
   const passed = total >= min && total <= max;
   const status = passed ? 'pass' : total < min * 0.7 || total > max * 1.5 ? 'fail' : 'warn';
   return {
-    id: 'word-count-total', tier: 'recruiter', weight: 'low',
-    status, score: passed ? 100 : Math.max(0, 100 - Math.round(Math.abs((total - (min + max) / 2)) / 10)),
+    id: 'word-count-total',
+    tier: 'recruiter',
+    weight: 'low',
+    status,
+    score: passed ? 100 : Math.max(0, 100 - Math.round(Math.abs(total - (min + max) / 2) / 10)),
     message: `Resume body: ${total} words (target ${min}-${max}${senior ? ', senior' : ''}).`,
-    hints: passed ? [] : [total < min ? 'Add more depth to highlights.' : 'Trim less impactful highlights.'],
+    hints: passed
+      ? []
+      : [total < min ? 'Add more depth to highlights.' : 'Trim less impactful highlights.'],
   };
 };
 
 export const highlightLength: CheckFn = (resume) => {
   const all: { text: string; path: string }[] = [];
-  (resume.work || []).forEach((w, i) => (w.highlights || []).forEach((h, j) =>
-    all.push({ text: h, path: `work[${i}].highlights[${j}]` })));
+  (resume.work || []).forEach((w, i) =>
+    (w.highlights || []).forEach((h, j) =>
+      all.push({ text: h, path: `work[${i}].highlights[${j}]` })
+    )
+  );
   if (all.length === 0) {
-    return { id: 'highlight-length', tier: 'recruiter', weight: 'low',
-      status: 'skipped', score: 0, message: 'No highlights.', hints: [] };
+    return {
+      id: 'highlight-length',
+      tier: 'recruiter',
+      weight: 'low',
+      status: 'skipped',
+      score: 0,
+      message: 'No highlights.',
+      hints: [],
+    };
   }
   const long = all.filter((h) => wordCount(h.text) > 30);
   const passed = long.length === 0;
   return {
-    id: 'highlight-length', tier: 'recruiter', weight: 'low',
+    id: 'highlight-length',
+    tier: 'recruiter',
+    weight: 'low',
     status: passed ? 'pass' : long.length / all.length > 0.3 ? 'fail' : 'warn',
     score: Math.round(((all.length - long.length) / all.length) * 100),
-    message: passed
-      ? 'All highlights ≤30 words.'
-      : `${long.length} highlight(s) >30 words.`,
+    message: passed ? 'All highlights ≤30 words.' : `${long.length} highlight(s) >30 words.`,
     hints: passed ? [] : long.slice(0, 3).map((h) => `${h.path}: trim to ≤30 words.`),
   };
 };
 
 export const hasLinkedin: CheckFn = (resume) => {
   const profiles = resume.basics?.profiles || [];
-  const found = profiles.some((p) => p.network?.toLowerCase() === 'linkedin' || p.url?.toLowerCase().includes('linkedin.com'));
+  const found = profiles.some(
+    (p) => p.network?.toLowerCase() === 'linkedin' || p.url?.toLowerCase().includes('linkedin.com')
+  );
   return {
-    id: 'has-linkedin', tier: 'recruiter', weight: 'low',
-    status: found ? 'pass' : 'warn', score: found ? 100 : 0,
+    id: 'has-linkedin',
+    tier: 'recruiter',
+    weight: 'low',
+    status: found ? 'pass' : 'warn',
+    score: found ? 100 : 0,
     message: found ? 'LinkedIn profile present.' : 'No LinkedIn profile.',
     hints: found ? [] : ['Add a LinkedIn profile to basics.profiles.'],
   };
@@ -1156,7 +1517,9 @@ export const skillsPopulated: CheckFn = (resume) => {
   const withKeywords = skills.filter((s) => (s.keywords?.length ?? 0) > 0);
   const passed = withKeywords.length >= 3;
   return {
-    id: 'skills-populated', tier: 'recruiter', weight: 'medium',
+    id: 'skills-populated',
+    tier: 'recruiter',
+    weight: 'medium',
     status: passed ? 'pass' : withKeywords.length === 0 ? 'fail' : 'warn',
     score: Math.min(100, Math.round((withKeywords.length / 3) * 100)),
     message: passed
@@ -1167,8 +1530,15 @@ export const skillsPopulated: CheckFn = (resume) => {
 };
 
 export const allRecruiterChecks = [
-  summaryLength, actionVerbStart, quantificationDensity, pronounLeakage,
-  bulletsPerRole, wordCountTotal, highlightLength, hasLinkedin, skillsPopulated,
+  summaryLength,
+  actionVerbStart,
+  quantificationDensity,
+  pronounLeakage,
+  bulletsPerRole,
+  wordCountTotal,
+  highlightLength,
+  hasLinkedin,
+  skillsPopulated,
 ];
 ```
 
@@ -1220,6 +1590,7 @@ git commit -m "feat(ats): recruiter-tier checks (summary, verbs, quant, pronouns
 ## Task 7: Match-tier checks
 
 **Files:**
+
 - Create: `src/ats/checks/yoe.ts` (extract `computeYoeYears` shared helper)
 - Create: `src/ats/checks/match.ts`
 - Test: `src/__tests__/checks.match.test.ts`
@@ -1271,19 +1642,25 @@ import type { ResumeSchema } from '../types/resume';
 
 const resume: ResumeSchema = {
   basics: { name: 'X', email: 'x@y.com' },
-  work: [
-    { name: 'Co', position: 'Senior Frontend Engineer', startDate: '2018-01' },
-  ],
+  work: [{ name: 'Co', position: 'Senior Frontend Engineer', startDate: '2018-01' }],
   education: [{ institution: 'U', area: 'CS', studyType: 'Bachelor of Science' }],
   skills: [{ name: 'FE', keywords: ['react', 'typescript'] }],
 };
 
 describe('title-alignment', () => {
   it('passes when titles align', () => {
-    expect(titleAlignment(resume, 'en', { jobDescription: 'Looking for a Frontend Engineer with React experience.' }).status).toBe('pass');
+    expect(
+      titleAlignment(resume, 'en', {
+        jobDescription: 'Looking for a Frontend Engineer with React experience.',
+      }).status
+    ).toBe('pass');
   });
   it('warns on partial alignment', () => {
-    expect(titleAlignment(resume, 'en', { jobDescription: 'We need a Backend Engineer for Go services.' }).status).not.toBe('pass');
+    expect(
+      titleAlignment(resume, 'en', {
+        jobDescription: 'We need a Backend Engineer for Go services.',
+      }).status
+    ).not.toBe('pass');
   });
   it('skipped without JD', () => {
     expect(titleAlignment(resume, 'en', {}).status).toBe('skipped');
@@ -1292,7 +1669,9 @@ describe('title-alignment', () => {
 
 describe('education-level', () => {
   it('passes when bachelor meets bachelor requirement', () => {
-    expect(educationLevel(resume, 'en', { jobDescription: 'Bachelor degree required.' }).status).toBe('pass');
+    expect(
+      educationLevel(resume, 'en', { jobDescription: 'Bachelor degree required.' }).status
+    ).toBe('pass');
   });
   it('fails when JD requires PhD', () => {
     expect(educationLevel(resume, 'en', { jobDescription: 'PhD required.' }).status).toBe('fail');
@@ -1304,10 +1683,14 @@ describe('education-level', () => {
 
 describe('yoe-match', () => {
   it('passes when YOE meets requirement', () => {
-    expect(yoeMatch(resume, 'en', { jobDescription: '3+ years of frontend experience.' }).status).toBe('pass');
+    expect(
+      yoeMatch(resume, 'en', { jobDescription: '3+ years of frontend experience.' }).status
+    ).toBe('pass');
   });
   it('fails when JD asks 20 years', () => {
-    expect(yoeMatch(resume, 'en', { jobDescription: 'Minimum 20 years of experience required.' }).status).toBe('fail');
+    expect(
+      yoeMatch(resume, 'en', { jobDescription: 'Minimum 20 years of experience required.' }).status
+    ).toBe('fail');
   });
 });
 
@@ -1332,20 +1715,40 @@ import type { CheckResult } from '../types';
 import { matchJobDescription } from '../jdMatcher';
 import { computeYoeYears } from './yoe';
 
-interface MatchOpts { jobDescription?: string }
+interface MatchOpts {
+  jobDescription?: string;
+}
 
 type MatchCheckFn = (resume: ResumeSchema, language: string, opts: MatchOpts) => CheckResult;
 
 const SENIORITY = /\b(junior|senior|lead|staff|principal|head of|vp|chief)\b/gi;
-const STOPWORDS = new Set(['a','an','the','of','at','for','in','on','to','with','and','or']);
+const STOPWORDS = new Set([
+  'a',
+  'an',
+  'the',
+  'of',
+  'at',
+  'for',
+  'in',
+  'on',
+  'to',
+  'with',
+  'and',
+  'or',
+]);
 
 function tokenize(s: string): string[] {
-  return s.toLowerCase().replace(SENIORITY, '').replace(/[^a-z0-9 ]/g, ' ')
-    .split(/\s+/).filter((w) => w && !STOPWORDS.has(w));
+  return s
+    .toLowerCase()
+    .replace(SENIORITY, '')
+    .replace(/[^a-z0-9 ]/g, ' ')
+    .split(/\s+/)
+    .filter((w) => w && !STOPWORDS.has(w));
 }
 
 function jaccard(a: string[], b: string[]): number {
-  const A = new Set(a), B = new Set(b);
+  const A = new Set(a),
+    B = new Set(b);
   let inter = 0;
   for (const x of A) if (B.has(x)) inter++;
   const union = A.size + B.size - inter;
@@ -1355,27 +1758,50 @@ function jaccard(a: string[], b: string[]): number {
 function extractJdTitle(jd: string): string | undefined {
   const lines = jd.split('\n').slice(0, 8);
   for (const l of lines) {
-    const m = l.match(/(?:role|position|title)[\s:-]+(.+)/i) || l.match(/looking for (?:an? )?(.+?)(?:\s+with|\s+to|$)/i);
+    const m =
+      l.match(/(?:role|position|title)[\s:-]+(.+)/i) ||
+      l.match(/looking for (?:an? )?(.+?)(?:\s+with|\s+to|$)/i);
     if (m) return m[1]!.trim();
   }
-  return lines.find((l) => /\b(engineer|developer|manager|designer|analyst|scientist|architect|lead)\b/i.test(l))?.trim();
+  return lines
+    .find((l) =>
+      /\b(engineer|developer|manager|designer|analyst|scientist|architect|lead)\b/i.test(l)
+    )
+    ?.trim();
 }
 
 export const titleAlignment: MatchCheckFn = (resume, _l, { jobDescription }) => {
   if (!jobDescription) {
-    return { id: 'title-alignment', tier: 'match', weight: 'high', status: 'skipped', score: 0, message: 'No JD.', hints: [] };
+    return {
+      id: 'title-alignment',
+      tier: 'match',
+      weight: 'high',
+      status: 'skipped',
+      score: 0,
+      message: 'No JD.',
+      hints: [],
+    };
   }
   const resumeTitle = resume.work?.[0]?.position || resume.basics?.label;
   const jdTitle = extractJdTitle(jobDescription);
   if (!resumeTitle || !jdTitle) {
-    return { id: 'title-alignment', tier: 'match', weight: 'high', status: 'warn', score: 50,
+    return {
+      id: 'title-alignment',
+      tier: 'match',
+      weight: 'high',
+      status: 'warn',
+      score: 50,
       message: 'Could not extract title from JD or resume.',
-      hints: ['Set basics.label to your target title.'] };
+      hints: ['Set basics.label to your target title.'],
+    };
   }
   const j = jaccard(tokenize(resumeTitle), tokenize(jdTitle));
   const status = j >= 0.6 ? 'pass' : j >= 0.3 ? 'warn' : 'fail';
   return {
-    id: 'title-alignment', tier: 'match', weight: 'high', status,
+    id: 'title-alignment',
+    tier: 'match',
+    weight: 'high',
+    status,
     score: Math.round(j * 100),
     message: `Title overlap ${Math.round(j * 100)}% (resume "${resumeTitle}" vs JD "${jdTitle}").`,
     hints: status === 'pass' ? [] : [`Consider aligning basics.label closer to "${jdTitle}".`],
@@ -1398,17 +1824,34 @@ function eduLevel(text: string): number {
 
 export const educationLevel: MatchCheckFn = (resume, _l, { jobDescription }) => {
   if (!jobDescription) {
-    return { id: 'education-level', tier: 'match', weight: 'medium', status: 'skipped', score: 0, message: 'No JD.', hints: [] };
+    return {
+      id: 'education-level',
+      tier: 'match',
+      weight: 'medium',
+      status: 'skipped',
+      score: 0,
+      message: 'No JD.',
+      hints: [],
+    };
   }
   const required = eduLevel(jobDescription);
   if (required === 0) {
-    return { id: 'education-level', tier: 'match', weight: 'medium', status: 'skipped', score: 0,
-      message: 'JD does not specify education level.', hints: [] };
+    return {
+      id: 'education-level',
+      tier: 'match',
+      weight: 'medium',
+      status: 'skipped',
+      score: 0,
+      message: 'JD does not specify education level.',
+      hints: [],
+    };
   }
   const have = Math.max(0, ...(resume.education || []).map((e) => eduLevel(e.studyType || '')));
   const passed = have >= required;
   return {
-    id: 'education-level', tier: 'match', weight: 'medium',
+    id: 'education-level',
+    tier: 'match',
+    weight: 'medium',
     status: passed ? 'pass' : 'fail',
     score: passed ? 100 : Math.round((have / required) * 100),
     message: `Resume level ${have}, JD required ${required}.`,
@@ -1420,42 +1863,73 @@ const YOE_RE = /(\d+)\s*\+?\s*(?:to\s*\d+\s*)?years?/i;
 
 export const yoeMatch: MatchCheckFn = (resume, _l, { jobDescription }) => {
   if (!jobDescription) {
-    return { id: 'yoe-match', tier: 'match', weight: 'high', status: 'skipped', score: 0, message: 'No JD.', hints: [] };
+    return {
+      id: 'yoe-match',
+      tier: 'match',
+      weight: 'high',
+      status: 'skipped',
+      score: 0,
+      message: 'No JD.',
+      hints: [],
+    };
   }
   const m = jobDescription.match(YOE_RE);
   if (!m) {
-    return { id: 'yoe-match', tier: 'match', weight: 'high', status: 'skipped', score: 0,
-      message: 'JD does not specify years requirement.', hints: [] };
+    return {
+      id: 'yoe-match',
+      tier: 'match',
+      weight: 'high',
+      status: 'skipped',
+      score: 0,
+      message: 'JD does not specify years requirement.',
+      hints: [],
+    };
   }
   const required = parseInt(m[1]!, 10);
   const have = Math.floor(computeYoeYears(resume.work || []));
   const status = have >= required ? 'pass' : have >= required - 1 ? 'warn' : 'fail';
   return {
-    id: 'yoe-match', tier: 'match', weight: 'high', status,
+    id: 'yoe-match',
+    tier: 'match',
+    weight: 'high',
+    status,
     score: Math.min(100, Math.round((have / required) * 100)),
     message: `${have} YOE detected vs ${required} required.`,
-    hints: status === 'pass' ? [] : ['Highlight relevant earlier roles or projects to fill the gap.'],
+    hints:
+      status === 'pass' ? [] : ['Highlight relevant earlier roles or projects to fill the gap.'],
   };
 };
 
 export const hardSkillOverlap: MatchCheckFn = (resume, language, { jobDescription }) => {
   if (!jobDescription) {
-    return { id: 'hard-skill-overlap', tier: 'match', weight: 'high', status: 'skipped', score: 0, message: 'No JD.', hints: [] };
+    return {
+      id: 'hard-skill-overlap',
+      tier: 'match',
+      weight: 'high',
+      status: 'skipped',
+      score: 0,
+      message: 'No JD.',
+      hints: [],
+    };
   }
   const km = matchJobDescription(resume, jobDescription, language);
   const pct = km.matchPercentage;
   const status = pct >= 70 ? 'pass' : pct >= 50 ? 'warn' : 'fail';
   return {
-    id: 'hard-skill-overlap', tier: 'match', weight: 'high', status,
+    id: 'hard-skill-overlap',
+    tier: 'match',
+    weight: 'high',
+    status,
     score: pct,
     message: `${km.matched.length}/${km.matched.length + km.missing.length} hard skills matched (${pct}%).`,
-    hints: status === 'pass' ? [] : km.missing.slice(0, 5).map((s) => `Add evidence of "${s}" to skills/highlights.`),
+    hints:
+      status === 'pass'
+        ? []
+        : km.missing.slice(0, 5).map((s) => `Add evidence of "${s}" to skills/highlights.`),
   };
 };
 
-export const allMatchChecks = [
-  hardSkillOverlap, titleAlignment, educationLevel, yoeMatch,
-];
+export const allMatchChecks = [hardSkillOverlap, titleAlignment, educationLevel, yoeMatch];
 ```
 
 - [ ] **Step 6: Run tests to verify they pass**
@@ -1475,6 +1949,7 @@ git commit -m "feat(ats): match-tier checks (hard-skill-overlap, title, educatio
 ## Task 8: Knockout mirrors
 
 **Files:**
+
 - Modify: `src/ats/checks/match.ts` (add `extractKnockouts`)
 - Test: `src/__tests__/knockouts.test.ts`
 
@@ -1536,8 +2011,10 @@ interface KnockoutPattern {
 const KNOCKOUTS: KnockoutPattern[] = [
   {
     signal: 'work-auth',
-    jdPattern: /(work\s*auth|authorization to work|right to work|us citizen|green card|h-?1b|visa sponsorship)/i,
-    resumeMatch: (r) => /(work auth|authorized|citizen|green card|visa)/i.test(r.basics?.summary || ''),
+    jdPattern:
+      /(work\s*auth|authorization to work|right to work|us citizen|green card|h-?1b|visa sponsorship)/i,
+    resumeMatch: (r) =>
+      /(work auth|authorized|citizen|green card|visa)/i.test(r.basics?.summary || ''),
     recommendation: 'Confirm authorization status in the application form.',
   },
   {
@@ -1593,6 +2070,7 @@ git commit -m "feat(ats): knockout-mirror surfacing (work-auth, location, cleara
 ## Task 9: Orchestrator returning `TieredAtsResult`
 
 **Files:**
+
 - Rewrite: `src/ats/index.ts`
 - Delete: `src/ats/genericChecks.ts`
 - Test: `src/__tests__/ats.test.ts` (rewrite existing)
@@ -1608,16 +2086,35 @@ import type { ResumeSchema } from '../types/resume';
 
 const resume: ResumeSchema = {
   basics: {
-    name: 'Jane Doe', email: 'jane@example.com', phone: '+1-555-0100',
+    name: 'Jane Doe',
+    email: 'jane@example.com',
+    phone: '+1-555-0100',
     location: { city: 'NYC' },
-    summary: 'Senior frontend tech lead with eight years building React platforms. Shipped accessibility wins at scale. Mentored teams.',
+    summary:
+      'Senior frontend tech lead with eight years building React platforms. Shipped accessibility wins at scale. Mentored teams.',
     profiles: [{ network: 'LinkedIn', url: 'https://linkedin.com/in/jane' }],
   },
-  work: [{
-    name: 'Co', position: 'Senior Frontend Engineer', startDate: '2020-01',
-    highlights: ['Reduced load by 40%', 'Built design system used by 5 teams', 'Shipped a11y audit'],
-  }],
-  education: [{ institution: 'U', area: 'CS', studyType: 'Bachelor of Science', startDate: '2014-09', endDate: '2018-06' }],
+  work: [
+    {
+      name: 'Co',
+      position: 'Senior Frontend Engineer',
+      startDate: '2020-01',
+      highlights: [
+        'Reduced load by 40%',
+        'Built design system used by 5 teams',
+        'Shipped a11y audit',
+      ],
+    },
+  ],
+  education: [
+    {
+      institution: 'U',
+      area: 'CS',
+      studyType: 'Bachelor of Science',
+      startDate: '2014-09',
+      endDate: '2018-06',
+    },
+  ],
   skills: [
     { name: 'Frontend', keywords: ['react', 'typescript'] },
     { name: 'Tooling', keywords: ['vite'] },
@@ -1637,7 +2134,9 @@ describe('analyzeAts', () => {
   });
 
   it('includes match tier when JD provided', () => {
-    const r = analyzeAts(resume, { jobDescription: '3+ years of React + TypeScript. Bachelor required.' });
+    const r = analyzeAts(resume, {
+      jobDescription: '3+ years of React + TypeScript. Bachelor required.',
+    });
     expect(r.tiers.match).toBeDefined();
     expect(r.tiers.match!.checks.length).toBeGreaterThan(0);
   });
@@ -1649,7 +2148,9 @@ describe('analyzeAts', () => {
   });
 
   it('honours config.disable to remove a check', () => {
-    const r = analyzeAts(resume, { config: { ...defaultConfigForTest(), disable: ['has-linkedin'] } });
+    const r = analyzeAts(resume, {
+      config: { ...defaultConfigForTest(), disable: ['has-linkedin'] },
+    });
     const ids = r.tiers.recruiter.checks.map((c) => c.id);
     expect(ids).not.toContain('has-linkedin');
   });
@@ -1674,7 +2175,13 @@ import type { TieredAtsResult, AtsOptions, CheckResult, TierResult, Tier } from 
 import { allParsingChecks } from './checks/parsing';
 import { allRecruiterChecks } from './checks/recruiter';
 import { allMatchChecks, extractKnockouts } from './checks/match';
-import { computeTierScore, computeTotalScore, gradeFromScore, scoreToRating, generateSummary } from './scoring';
+import {
+  computeTierScore,
+  computeTotalScore,
+  gradeFromScore,
+  scoreToRating,
+  generateSummary,
+} from './scoring';
 import { defaultConfig, effectiveWeight } from '../utils/config';
 
 function applyConfig(checks: CheckResult[], cfg = defaultConfig): CheckResult[] {
@@ -1709,14 +2216,16 @@ export function analyzeAts(resume: ResumeSchema, options: AtsOptions = {}): Tier
   let match: TierResult | undefined;
   let knockouts: TieredAtsResult['knockouts'] = [];
   if (options.jobDescription) {
-    const matchChecks = allMatchChecks.map((fn) => fn(resume, language, { jobDescription: options.jobDescription }));
+    const matchChecks = allMatchChecks.map((fn) =>
+      fn(resume, language, { jobDescription: options.jobDescription })
+    );
     match = buildTier('match', matchChecks, cfg);
     knockouts = extractKnockouts(resume, options.jobDescription);
   }
 
   const totalScore = computeTotalScore(
     { parsing: parsing.score, match: match?.score, recruiter: recruiter.score },
-    cfg.weights.tiers,
+    cfg.weights.tiers
   );
   const rating = scoreToRating(totalScore, cfg.thresholds.rating);
   const summary = generateSummary(totalScore, rating, !!options.jobDescription, knockouts.length);
@@ -1730,9 +2239,7 @@ export function analyzeAts(resume: ResumeSchema, options: AtsOptions = {}): Tier
   };
 }
 
-export type {
-  TieredAtsResult, AtsOptions, CheckResult, TierResult, KnockoutSignal,
-} from './types';
+export type { TieredAtsResult, AtsOptions, CheckResult, TierResult, KnockoutSignal } from './types';
 ```
 
 - [ ] **Step 4: Delete `src/ats/genericChecks.ts`**
@@ -1763,6 +2270,7 @@ git commit -m "feat(ats)!: tiered orchestrator returning TieredAtsResult"
 ## Task 10: CLI `validate` — tiered report and JSON
 
 **Files:**
+
 - Rewrite: `src/commands/validate.ts`
 - Test: extend `src/__tests__/cli.test.ts` if it exists, else manual smoke
 
@@ -1788,25 +2296,47 @@ interface ValidateCommandOptions {
 }
 
 function tierColor(grade: string, chalk: typeof import('chalk').default) {
-  return grade === 'A' ? chalk.green : grade === 'B' ? chalk.cyan : grade === 'C' ? chalk.yellow : chalk.red;
+  return grade === 'A'
+    ? chalk.green
+    : grade === 'B'
+      ? chalk.cyan
+      : grade === 'C'
+        ? chalk.yellow
+        : chalk.red;
 }
 
-function formatTier(label: string, tier: TierResult, debug: boolean, chalk: typeof import('chalk').default) {
-  console.log(chalk.bold(`  ${label}  ${tierColor(tier.grade, chalk)(tier.grade)} (${tier.score}/100)`));
+function formatTier(
+  label: string,
+  tier: TierResult,
+  debug: boolean,
+  chalk: typeof import('chalk').default
+) {
+  console.log(
+    chalk.bold(`  ${label}  ${tierColor(tier.grade, chalk)(tier.grade)} (${tier.score}/100)`)
+  );
   for (const c of tier.checks) {
     if (!debug && c.status === 'pass') continue;
     if (c.status === 'skipped') continue;
-    const icon = { pass: chalk.green('✓'), warn: chalk.yellow('!'), fail: chalk.red('✗'), skipped: chalk.dim('—') }[c.status];
+    const icon = {
+      pass: chalk.green('✓'),
+      warn: chalk.yellow('!'),
+      fail: chalk.red('✗'),
+      skipped: chalk.dim('—'),
+    }[c.status];
     console.log(`    ${icon} ${c.id} — ${c.message} ${chalk.dim(`[${c.score}]`)}`);
     for (const h of c.hints) console.log(chalk.dim(`        → ${h}`));
   }
   console.log('');
 }
 
-function formatTiered(result: TieredAtsResult, debug: boolean, chalk: typeof import('chalk').default) {
+function formatTiered(
+  result: TieredAtsResult,
+  debug: boolean,
+  chalk: typeof import('chalk').default
+) {
   const overall = tierColor(
     result.score >= 90 ? 'A' : result.score >= 75 ? 'B' : result.score >= 60 ? 'C' : 'F',
-    chalk,
+    chalk
   );
   console.log('');
   console.log(chalk.bold('═══ ATS Analysis (tiered) ═══'));
@@ -1893,6 +2423,7 @@ git commit -m "feat(cli)!: tiered ATS report and new JSON shape in validate"
 ## Task 11: New `ats` command (`explain`, `config --print`)
 
 **Files:**
+
 - Create: `src/commands/ats.ts`
 - Modify: `src/index.ts`
 - Test: `src/__tests__/ats-command.test.ts`
@@ -1984,11 +2515,13 @@ import { atsExplain, atsConfigPrint } from './commands/ats';
 
 const ats = program.command('ats').description('ATS rubric utilities.');
 
-ats.command('explain [id]')
+ats
+  .command('explain [id]')
   .description('Print rubric entry for a check id, or full rubric if id omitted.')
   .action((id?: string) => atsExplain(id));
 
-ats.command('config')
+ats
+  .command('config')
   .description('Print the effective merged ATS config.')
   .option('--print', 'Print the merged config (default action).')
   .option('--config <path>', 'Path to resuml.config.yaml.')
@@ -2012,6 +2545,7 @@ git commit -m "feat(cli): add 'ats explain' and 'ats config --print' commands"
 ## Task 12: `init` writes `resuml.config.yaml`
 
 **Files:**
+
 - Modify: `src/commands/init.ts`
 
 - [ ] **Step 1: Write the test**
@@ -2060,6 +2594,7 @@ git commit -m "feat(init): scaffold resuml.config.yaml alongside resume.yaml"
 ## Task 13: PDF render-time checks
 
 **Files:**
+
 - Modify: `src/commands/pdf.ts`
 
 - [ ] **Step 1: Add PDF size warning after `fs.writeFileSync`**
@@ -2070,7 +2605,11 @@ Edit `src/commands/pdf.ts` around line 110 (after `fs.writeFileSync(outputPath, 
 const sizeBytes = pdfBuffer.length;
 const sizeMb = sizeBytes / (1024 * 1024);
 if (sizeMb > 2.5) {
-  console.warn(chalk.yellow(`⚠ pdf-size-under-2.5mb: PDF is ${sizeMb.toFixed(2)} MB (Greenhouse limit 2.5 MB).`));
+  console.warn(
+    chalk.yellow(
+      `⚠ pdf-size-under-2.5mb: PDF is ${sizeMb.toFixed(2)} MB (Greenhouse limit 2.5 MB).`
+    )
+  );
 }
 ```
 
@@ -2083,7 +2622,11 @@ const bodyText = (await page.evaluate(() => document.body.innerText || '')) as s
 const bodyWords = bodyText.trim().split(/\s+/).filter(Boolean).length;
 const resumeWords = JSON.stringify(resumeData).split(/\s+/).filter(Boolean).length;
 if (bodyWords < resumeWords * 0.7) {
-  console.warn(chalk.yellow(`⚠ pdf-text-extractable: rendered text ${bodyWords} words vs resume ${resumeWords} (<70%). Theme may use image-based glyphs.`));
+  console.warn(
+    chalk.yellow(
+      `⚠ pdf-text-extractable: rendered text ${bodyWords} words vs resume ${resumeWords} (<70%). Theme may use image-based glyphs.`
+    )
+  );
 }
 ```
 
@@ -2114,6 +2657,7 @@ git commit -m "feat(pdf): render-time warnings for text-extractable and 2.5MB si
 ## Task 14: MCP server — new shape, explain tool, rubric resource
 
 **Files:**
+
 - Modify: `src/mcp/server.ts`
 
 - [ ] **Step 1: Update `resuml_ats_check`**
@@ -2131,16 +2675,19 @@ server.registerResource(
   'ats-rubric',
   'resuml://docs/ats-rubric',
   {
-    description: 'Tiered ATS rubric: every check, its tier, weight, evidence level, description, and source URL.',
+    description:
+      'Tiered ATS rubric: every check, its tier, weight, evidence level, description, and source URL.',
     mimeType: 'text/markdown',
   },
   () => ({
-    contents: [{
-      uri: 'resuml://docs/ats-rubric',
-      mimeType: 'text/markdown',
-      text: listRubricMarkdown(),
-    }],
-  }),
+    contents: [
+      {
+        uri: 'resuml://docs/ats-rubric',
+        mimeType: 'text/markdown',
+        text: listRubricMarkdown(),
+      },
+    ],
+  })
 );
 ```
 
@@ -2155,7 +2702,8 @@ server.registerTool(
   'resuml_ats_explain',
   {
     title: 'ATS Rubric Explain',
-    description: 'Return the rubric entry (tier, weight, evidence level, description, source) for a given check id.',
+    description:
+      'Return the rubric entry (tier, weight, evidence level, description, source) for a given check id.',
     inputSchema: {
       checkId: z.string().describe('Check id, e.g. quantification-density'),
     },
@@ -2164,12 +2712,17 @@ server.registerTool(
     const entry = getRubricEntry(checkId);
     if (!entry) {
       return {
-        content: [{ type: 'text' as const, text: JSON.stringify({ error: `Unknown check id: ${checkId}` }) }],
+        content: [
+          {
+            type: 'text' as const,
+            text: JSON.stringify({ error: `Unknown check id: ${checkId}` }),
+          },
+        ],
         isError: true,
       };
     }
     return { content: [{ type: 'text' as const, text: JSON.stringify(entry, null, 2) }] };
-  },
+  }
 );
 ```
 
@@ -2216,6 +2769,7 @@ git commit -m "feat(mcp)!: tiered ats_check shape, ats_explain tool, ats-rubric 
 ## Task 15: Update CLAUDE.md and docs
 
 **Files:**
+
 - Modify: `CLAUDE.md`
 
 - [ ] **Step 1: Replace ATS section in `CLAUDE.md`**
@@ -2227,7 +2781,7 @@ Find the section under `## Workflow: Generate a Tailored Resume from a Job Descr
    - **Parsing** (grade A target): conventional sections, ISO dates, contact in body, reverse-chron order.
    - **Match** (when JD provided): hard skill overlap, title alignment, education level, years of experience.
    - **Recruiter** (style): action verbs, quantification ≥50%, summary 20-50 words, 3-6 bullets per role.
-   Total target: ≥75. Knockout signals (work-auth, location, clearance) are surfaced separately and not scored.
+     Total target: ≥75. Knockout signals (work-auth, location, clearance) are surfaced separately and not scored.
 ```
 
 Also update the table at the top of the file (`| Tool | Purpose |`) to add the new tool:
@@ -2256,6 +2810,7 @@ git commit -m "docs(claude): describe tiered ATS rubric, ats_explain tool, ats-r
 ## Task 16: Final integration sweep + version bump
 
 **Files:**
+
 - Modify: any remaining stale imports
 - Verify: full lint/typecheck/test/build/format
 
@@ -2278,6 +2833,7 @@ Expected: clean dist output.
 - [ ] **Step 4: End-to-end smoke against the user's own files**
 
 Run:
+
 ```
 node dist/index.js validate -r francesco-esposito-cv.yml --ats --jd jd-getyourguide-em.txt
 node dist/index.js validate -r francesco-esposito-cv-em.yml --ats --jd jd-getyourguide-em.txt --format json | python3 -m json.tool | head -80

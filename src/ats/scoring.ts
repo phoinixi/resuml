@@ -29,17 +29,22 @@ export function computeTierScore(checks: CheckResult[]): number {
 
 export function computeTotalScore(
   tiers: { parsing: number; match?: number; recruiter: number },
-  weights: AtsConfig['weights']['tiers'],
+  weights: AtsConfig['weights']['tiers']
 ): number {
   if (tiers.match === undefined) {
     const sum = weights.parsing + weights.recruiter;
     const wp = weights.parsing / sum;
     const wr = weights.recruiter / sum;
-    return Math.round(tiers.parsing * (sum === 50 ? 0.4 : wp) + tiers.recruiter * (sum === 50 ? 0.6 : wr));
+    return Math.round(
+      tiers.parsing * (sum === 50 ? 0.4 : wp) + tiers.recruiter * (sum === 50 ? 0.6 : wr)
+    );
   }
   const sum = weights.parsing + weights.match + weights.recruiter;
   return Math.round(
-    (tiers.parsing * weights.parsing + tiers.match * weights.match + tiers.recruiter * weights.recruiter) / sum,
+    (tiers.parsing * weights.parsing +
+      tiers.match * weights.match +
+      tiers.recruiter * weights.recruiter) /
+      sum
   );
 }
 
@@ -50,8 +55,19 @@ export function scoreToRating(score: number, t: AtsConfig['thresholds']['rating'
   return 'poor';
 }
 
-export function generateSummary(score: number, rating: AtsRating, hasJd: boolean, knockouts: number): string {
-  const ratingLabel = { excellent: 'Excellent', good: 'Good', 'needs-work': 'Needs Work', poor: 'Poor' }[rating];
-  const knockoutNote = knockouts > 0 ? ` ${knockouts} knockout signal${knockouts === 1 ? '' : 's'} flagged.` : '';
+export function generateSummary(
+  score: number,
+  rating: AtsRating,
+  hasJd: boolean,
+  knockouts: number
+): string {
+  const ratingLabel = {
+    excellent: 'Excellent',
+    good: 'Good',
+    'needs-work': 'Needs Work',
+    poor: 'Poor',
+  }[rating];
+  const knockoutNote =
+    knockouts > 0 ? ` ${knockouts} knockout signal${knockouts === 1 ? '' : 's'} flagged.` : '';
   return `ATS ${score}/100 (${ratingLabel}).${hasJd ? ' Includes JD match.' : ''}${knockoutNote}`;
 }

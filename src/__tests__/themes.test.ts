@@ -36,7 +36,9 @@ describe('themes command', () => {
   it('should list available themes', () => {
     themesAction({});
 
-    expect(console.log).toHaveBeenCalledWith(expect.stringContaining('Compatible JSON Resume Themes'));
+    expect(console.log).toHaveBeenCalledWith(
+      expect.stringContaining('Compatible JSON Resume Themes')
+    );
     expect(console.log).toHaveBeenCalledWith(expect.stringContaining('stackoverflow'));
     expect(console.log).toHaveBeenCalledWith(expect.stringContaining('elegant'));
   });

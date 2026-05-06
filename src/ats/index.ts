@@ -1,9 +1,23 @@
 import type { ResumeSchema } from '../types/resume';
-import type { TieredAtsResult, AtsOptions, CheckResult, TierResult, Tier, AtsConfig, KnockoutSignal } from './types';
+import type {
+  TieredAtsResult,
+  AtsOptions,
+  CheckResult,
+  TierResult,
+  Tier,
+  AtsConfig,
+  KnockoutSignal,
+} from './types';
 import { allParsingChecks } from './checks/parsing';
 import { allRecruiterChecks } from './checks/recruiter';
 import { allMatchChecks, extractKnockouts } from './checks/match';
-import { computeTierScore, computeTotalScore, gradeFromScore, scoreToRating, generateSummary } from './scoring';
+import {
+  computeTierScore,
+  computeTotalScore,
+  gradeFromScore,
+  scoreToRating,
+  generateSummary,
+} from './scoring';
 import { defaultConfig, effectiveWeight } from '../utils/config';
 
 function applyConfig(checks: CheckResult[], cfg: AtsConfig): CheckResult[] {
@@ -39,7 +53,7 @@ export function analyzeAts(resume: ResumeSchema, options: AtsOptions = {}): Tier
   let knockouts: KnockoutSignal[] = [];
   if (options.jobDescription) {
     const matchChecks = allMatchChecks.map((fn) =>
-      fn(resume, language, { jobDescription: options.jobDescription }),
+      fn(resume, language, { jobDescription: options.jobDescription })
     );
     match = buildTier('match', matchChecks, cfg);
     knockouts = extractKnockouts(resume, options.jobDescription);
@@ -47,7 +61,7 @@ export function analyzeAts(resume: ResumeSchema, options: AtsOptions = {}): Tier
 
   const totalScore = computeTotalScore(
     { parsing: parsing.score, match: match?.score, recruiter: recruiter.score },
-    cfg.weights.tiers,
+    cfg.weights.tiers
   );
   const rating = scoreToRating(totalScore, cfg.thresholds.rating);
   const summary = generateSummary(totalScore, rating, !!options.jobDescription, knockouts.length);
@@ -61,6 +75,4 @@ export function analyzeAts(resume: ResumeSchema, options: AtsOptions = {}): Tier
   };
 }
 
-export type {
-  TieredAtsResult, AtsOptions, CheckResult, TierResult, KnockoutSignal,
-} from './types';
+export type { TieredAtsResult, AtsOptions, CheckResult, TierResult, KnockoutSignal } from './types';

@@ -15,7 +15,7 @@ describe('loadConfig', () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'resuml-cfg-'));
     fs.writeFileSync(
       path.join(dir, 'resuml.config.yaml'),
-      'ats:\n  weights:\n    tiers:\n      parsing: 50\n  disable: [pronoun-leakage]\n',
+      'ats:\n  weights:\n    tiers:\n      parsing: 50\n  disable: [pronoun-leakage]\n'
     );
     const cfg = loadConfig({ cwd: dir });
     expect(cfg.weights.tiers.parsing).toBe(50);
@@ -25,7 +25,10 @@ describe('loadConfig', () => {
 
   it('throws on invalid config', () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'resuml-cfg-'));
-    fs.writeFileSync(path.join(dir, 'resuml.config.yaml'), 'ats:\n  weights:\n    tiers:\n      parsing: "high"\n');
+    fs.writeFileSync(
+      path.join(dir, 'resuml.config.yaml'),
+      'ats:\n  weights:\n    tiers:\n      parsing: "high"\n'
+    );
     expect(() => loadConfig({ cwd: dir })).toThrow(/parsing/);
   });
 

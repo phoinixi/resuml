@@ -14,7 +14,7 @@ export function atsExplain(id?: string): void {
     process.exit(1);
     return;
   }
-  console.log(chalk.bold(`${entry.id}`));
+  console.log(chalk.bold(entry.id));
   console.log(`  Tier:        ${entry.tier}`);
   console.log(`  Weight:      ${entry.weight}`);
   console.log(`  Evidence:    ${entry.evidenceLevel}`);

@@ -19,31 +19,31 @@ resuml exposes an MCP server for AI agent integration. Add to your Claude Code c
 
 ### Available Tools
 
-| Tool | Purpose |
-|------|---------|
-| `resuml_init_resume` | Generate a starter YAML template |
-| `resuml_validate` | Validate resume YAML against JSON Resume schema |
-| `resuml_ats_check` | Tiered ATS analysis (Parsing / Match / Recruiter) with knockout signals |
-| `resuml_ats_explain` | Return the rubric entry for a check id |
-| `resuml_render` | Render resume to HTML using a theme (supports `locale` param) |
-| `resuml_list_themes` | List available themes and install status |
-| `resuml_export_pdf` | Export resume as PDF (supports `margin` and `locale` params) |
+| Tool                 | Purpose                                                                 |
+| -------------------- | ----------------------------------------------------------------------- |
+| `resuml_init_resume` | Generate a starter YAML template                                        |
+| `resuml_validate`    | Validate resume YAML against JSON Resume schema                         |
+| `resuml_ats_check`   | Tiered ATS analysis (Parsing / Match / Recruiter) with knockout signals |
+| `resuml_ats_explain` | Return the rubric entry for a check id                                  |
+| `resuml_render`      | Render resume to HTML using a theme (supports `locale` param)           |
+| `resuml_list_themes` | List available themes and install status                                |
+| `resuml_export_pdf`  | Export resume as PDF (supports `margin` and `locale` params)            |
 
 ### Available Resources
 
-| Resource | URI | Description |
-|----------|-----|-------------|
+| Resource           | URI                           | Description                                                            |
+| ------------------ | ----------------------------- | ---------------------------------------------------------------------- |
 | JSON Resume Schema | `resuml://schema/json-resume` | Full schema reference with sections, field types, and formatting rules |
-| Tiered ATS Rubric | `resuml://docs/ats-rubric` | Per-tier rubric with evidence level and source URL per check |
-| Theme Catalog | `resuml://themes/catalog` | Available themes with descriptions and installation status |
+| Tiered ATS Rubric  | `resuml://docs/ats-rubric`    | Per-tier rubric with evidence level and source URL per check           |
+| Theme Catalog      | `resuml://themes/catalog`     | Available themes with descriptions and installation status             |
 
 ### Available Prompts
 
-| Prompt | Description |
-|--------|-------------|
+| Prompt                | Description                                                         |
+| --------------------- | ------------------------------------------------------------------- |
 | `tailor-resume-to-jd` | Generate a tailored resume optimized for a specific job description |
-| `optimize-ats-score` | Analyze and improve an existing resume to maximize ATS score |
-| `review-resume` | Comprehensive review with ATS analysis and improvement suggestions |
+| `optimize-ats-score`  | Analyze and improve an existing resume to maximize ATS score        |
+| `review-resume`       | Comprehensive review with ATS analysis and improvement suggestions  |
 
 ## Workflow: Generate a Tailored Resume from a Job Description
 
@@ -54,7 +54,7 @@ resuml exposes an MCP server for AI agent integration. Add to your Claude Code c
    - **Parsing** (target grade A): conventional sections, ISO dates, contact in body, reverse-chron order
    - **Match** (when JD provided): hard skill overlap, title alignment, education level, years of experience
    - **Recruiter** (style): action verbs, quantification 50%+, summary 20-50 words, 3-6 bullets per role
-   Total target: 75+. Knockout signals (work-auth, location, clearance) are surfaced separately and not scored. Use `resuml_ats_explain <check-id>` to read the rubric entry for any flagged check.
+     Total target: 75+. Knockout signals (work-auth, location, clearance) are surfaced separately and not scored. Use `resuml_ats_explain <check-id>` to read the rubric entry for any flagged check.
 5. **Iterate**: if total score is low, revise YAML and re-check
 6. **Render**: use `resuml_render` with a theme (recommended: `even`, `stackoverflow`, `elegant`, `paper`)
 7. **Export**: use `resuml_export_pdf` for the final PDF
@@ -92,7 +92,7 @@ work:
     position: 'Job Title'
     url: 'https://company.com'
     startDate: '2020-01-01'
-    endDate: '2023-12-31'       # omit for current position
+    endDate: '2023-12-31' # omit for current position
     summary: 'Role description'
     highlights:
       - 'Achievement with measurable result'

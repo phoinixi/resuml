@@ -44,7 +44,7 @@ export async function initAction(options: InitCommandOptions): Promise<void> {
       }
     }
 
-    console.log(chalk.blue('\n📝 Let\'s set up your resume!\n'));
+    console.log(chalk.blue("\n📝 Let's set up your resume!\n"));
 
     const name = await ask(rl, 'Your full name', 'John Doe');
     const email = await ask(rl, 'Email address', 'john@example.com');
@@ -78,7 +78,9 @@ ats:
     console.log(chalk.blue('\nNext steps:'));
     console.log(`  1. Edit ${outputPath} to fill in your details`);
     console.log('  2. Run ' + chalk.cyan('resuml validate --resume ' + outputPath));
-    console.log('  3. Run ' + chalk.cyan('resuml render --resume ' + outputPath + ' --theme stackoverflow'));
+    console.log(
+      '  3. Run ' + chalk.cyan('resuml render --resume ' + outputPath + ' --theme stackoverflow')
+    );
   } finally {
     rl.close();
   }

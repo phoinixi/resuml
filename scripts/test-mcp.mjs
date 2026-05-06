@@ -220,11 +220,13 @@ class McpTestClient {
         protocolVersion: '2025-03-26',
         capabilities: {},
         clientInfo: { name: 'test-client', version: '1.0.0' },
-      }).then((result) => {
-        // Send initialized notification
-        this.notify('notifications/initialized', {});
-        resolve(result);
-      }).catch(reject);
+      })
+        .then((result) => {
+          // Send initialized notification
+          this.notify('notifications/initialized', {});
+          resolve(result);
+        })
+        .catch(reject);
     });
   }
 
@@ -309,9 +311,15 @@ function subheader(text) {
   console.log(`\n\x1b[33m── ${text} ${'─'.repeat(Math.max(0, 64 - text.length))}\x1b[0m\n`);
 }
 
-function ok(msg) { console.log(`  \x1b[32m✓\x1b[0m ${msg}`); }
-function fail(msg) { console.log(`  \x1b[31m✗\x1b[0m ${msg}`); }
-function info(msg) { console.log(`  \x1b[90m${msg}\x1b[0m`); }
+function ok(msg) {
+  console.log(`  \x1b[32m✓\x1b[0m ${msg}`);
+}
+function fail(msg) {
+  console.log(`  \x1b[31m✗\x1b[0m ${msg}`);
+}
+function info(msg) {
+  console.log(`  \x1b[90m${msg}\x1b[0m`);
+}
 
 function truncate(str, max = 200) {
   if (str.length <= max) return str;
@@ -322,8 +330,13 @@ let passed = 0;
 let failed = 0;
 
 function assert(condition, label, detail) {
-  if (condition) { ok(label); passed++; }
-  else { fail(`${label}${detail ? ': ' + detail : ''}`); failed++; }
+  if (condition) {
+    ok(label);
+    passed++;
+  } else {
+    fail(`${label}${detail ? ': ' + detail : ''}`);
+    failed++;
+  }
 }
 
 // ── Main Test ───────────────────────────────────────────────────────
@@ -359,9 +372,16 @@ async function main() {
 
     header('2. List Tools');
     const { tools } = await client.listTools();
-    const toolNames = tools.map(t => t.name);
+    const toolNames = tools.map((t) => t.name);
     info(`Found ${tools.length} tools: ${toolNames.join(', ')}`);
-    for (const expected of ['resuml_init_resume', 'resuml_validate', 'resuml_ats_check', 'resuml_render', 'resuml_list_themes', 'resuml_export_pdf']) {
+    for (const expected of [
+      'resuml_init_resume',
+      'resuml_validate',
+      'resuml_ats_check',
+      'resuml_render',
+      'resuml_list_themes',
+      'resuml_export_pdf',
+    ]) {
       assert(toolNames.includes(expected), `Tool "${expected}" registered`);
     }
 
@@ -369,7 +389,7 @@ async function main() {
 
     header('3. List Resources');
     const { resources } = await client.listResources();
-    const resourceUris = resources.map(r => r.uri);
+    const resourceUris = resources.map((r) => r.uri);
     info(`Found ${resources.length} resources:`);
     for (const r of resources) {
       info(`  ${r.uri}, ${r.description?.slice(0, 60) || r.name}`);
@@ -402,16 +422,22 @@ async function main() {
     const catalog = await client.readResource('resuml://themes/catalog');
     const catalogData = JSON.parse(catalog.contents[0].text);
     assert(catalogData.themes.length > 0, `Theme catalog has ${catalogData.themes.length} themes`);
-    assert(catalogData.themes.some(t => t.name === 'even'), 'Catalog includes "even" theme');
-    assert(catalogData.themes.some(t => t.name === 'stackoverflow'), 'Catalog includes "stackoverflow" theme');
-    const installedThemes = catalogData.themes.filter(t => t.installed);
-    info(`Installed themes: ${installedThemes.map(t => t.name).join(', ') || 'none'}`);
+    assert(
+      catalogData.themes.some((t) => t.name === 'even'),
+      'Catalog includes "even" theme'
+    );
+    assert(
+      catalogData.themes.some((t) => t.name === 'stackoverflow'),
+      'Catalog includes "stackoverflow" theme'
+    );
+    const installedThemes = catalogData.themes.filter((t) => t.installed);
+    info(`Installed themes: ${installedThemes.map((t) => t.name).join(', ') || 'none'}`);
 
     // ── List Prompts ──────────────────────────────────────────────
 
     header('5. List Prompts');
     const { prompts } = await client.listPrompts();
-    const promptNames = prompts.map(p => p.name);
+    const promptNames = prompts.map((p) => p.name);
     info(`Found ${prompts.length} prompts: ${promptNames.join(', ')}`);
     assert(promptNames.includes('tailor-resume-to-jd'), 'Prompt: tailor-resume-to-jd');
     assert(promptNames.includes('optimize-ats-score'), 'Prompt: optimize-ats-score');
@@ -424,7 +450,8 @@ async function main() {
       jobDescription: JOB_DESCRIPTION,
       candidateName: 'Alex Chen',
       candidateEmail: 'alex.chen@example.com',
-      candidateBackground: '7 years ML data engineering at Meta, AWS, Nvidia. Expert in Python, Spark, Airflow.',
+      candidateBackground:
+        '7 years ML data engineering at Meta, AWS, Nvidia. Expert in Python, Spark, Airflow.',
     });
     assert(prompt.messages?.length > 0, 'Prompt returns messages');
     const promptText = prompt.messages[0].content.text;
@@ -460,7 +487,9 @@ async function main() {
     assert(valData.errors.length === 0, `No errors (count=${valData.errors.length})`);
 
     subheader('8b. Invalid resume');
-    const badResult = await client.callTool('resuml_validate', { yaml: 'this is not valid yaml: [' });
+    const badResult = await client.callTool('resuml_validate', {
+      yaml: 'this is not valid yaml: [',
+    });
     const badData = JSON.parse(badResult.content[0].text);
     assert(badData.valid === false, `Invalid YAML detected (valid=${badData.valid})`);
     assert(badData.errors.length > 0, `Errors reported (count=${badData.errors.length})`);
@@ -480,8 +509,8 @@ async function main() {
     info(`Score: ${atsBasicData.score}/100, Rating: ${atsBasicData.rating}`);
     info(`Summary: ${truncate(atsBasicData.summary, 150)}`);
 
-    const passedChecks = atsBasicData.checks.filter(c => c.passed);
-    const failedChecks = atsBasicData.checks.filter(c => !c.passed);
+    const passedChecks = atsBasicData.checks.filter((c) => c.passed);
+    const failedChecks = atsBasicData.checks.filter((c) => !c.passed);
     info(`Checks: ${passedChecks.length} passed, ${failedChecks.length} failed`);
     for (const c of failedChecks) {
       info(`  ⚠ [${c.id}] ${c.message}`);
@@ -501,8 +530,12 @@ async function main() {
     assert(typeof atsJdData.keywords?.matchPercentage === 'number', 'Has match percentage');
     info(`Score: ${atsJdData.score}/100, Rating: ${atsJdData.rating}`);
     info(`Keyword match: ${atsJdData.keywords.matchPercentage}%`);
-    info(`Matched (${atsJdData.keywords.matched.length}): ${atsJdData.keywords.matched.join(', ')}`);
-    info(`Missing (${atsJdData.keywords.missing.length}): ${atsJdData.keywords.missing.join(', ')}`);
+    info(
+      `Matched (${atsJdData.keywords.matched.length}): ${atsJdData.keywords.matched.join(', ')}`
+    );
+    info(
+      `Missing (${atsJdData.keywords.missing.length}): ${atsJdData.keywords.missing.join(', ')}`
+    );
 
     // ── Tool: resuml_list_themes ──────────────────────────────────
 
@@ -510,7 +543,7 @@ async function main() {
     const themesResult = await client.callTool('resuml_list_themes');
     const themesData = JSON.parse(themesResult.content[0].text);
     assert(Array.isArray(themesData.themes), `Has ${themesData.themes.length} themes`);
-    const installed = themesData.themes.filter(t => t.installed);
+    const installed = themesData.themes.filter((t) => t.installed);
     info(`Total themes: ${themesData.themes.length}, Installed: ${installed.length}`);
     for (const t of installed) {
       info(`  📦 ${t.name} (${t.version})`);
@@ -531,7 +564,10 @@ async function main() {
       info(`Render error: ${truncate(html, 150)}`);
     } else {
       assert(html.includes('Alex Chen'), 'HTML contains candidate name');
-      assert(html.includes('Senior ML') || html.includes('Meta') || html.includes('Stanford'), 'HTML contains resume content');
+      assert(
+        html.includes('Senior ML') || html.includes('Meta') || html.includes('Stanford'),
+        'HTML contains resume content'
+      );
       assert(html.length > 1000, `HTML is substantial (${html.length} chars)`);
       info(`HTML output: ${html.length} chars`);
       info(`Preview: ${truncate(html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' '), 150)}`);
@@ -571,7 +607,6 @@ async function main() {
     console.log('');
 
     if (failed > 0) process.exitCode = 1;
-
   } catch (err) {
     console.error('\n\x1b[31mFatal error:\x1b[0m', err.message || err);
     process.exitCode = 1;

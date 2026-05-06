@@ -16,14 +16,19 @@ fs.mkdirSync(THEMES_DIR, { recursive: true });
 fs.mkdirSync(SHIMS_DIR, { recursive: true });
 
 // Write browser shims for Node built-ins
-fs.writeFileSync(path.join(SHIMS_DIR, 'fs.js'), `
+fs.writeFileSync(
+  path.join(SHIMS_DIR, 'fs.js'),
+  `
   export function readFileSync() { return ''; }
   export function writeFileSync() {}
   export function existsSync() { return false; }
   export function mkdirSync() {}
   export default { readFileSync, writeFileSync, existsSync, mkdirSync };
-`);
-fs.writeFileSync(path.join(SHIMS_DIR, 'path.js'), `
+`
+);
+fs.writeFileSync(
+  path.join(SHIMS_DIR, 'path.js'),
+  `
   export function join(...p) { return p.join('/'); }
   export function resolve(...p) { return p.join('/'); }
   export function dirname(p) { return p.replace(/\\/[^/]*$/, ''); }
@@ -31,14 +36,20 @@ fs.writeFileSync(path.join(SHIMS_DIR, 'path.js'), `
   export function extname(p) { const m = p.match(/\\.[^.]+$/); return m ? m[0] : ''; }
   export const sep = '/';
   export default { join, resolve, dirname, basename, extname, sep };
-`);
-fs.writeFileSync(path.join(SHIMS_DIR, 'url.js'), `
+`
+);
+fs.writeFileSync(
+  path.join(SHIMS_DIR, 'url.js'),
+  `
   export function fileURLToPath(u) { return u.replace('file://', ''); }
   export function pathToFileURL(p) { return 'file://' + p; }
   export class URL { constructor(u) { this.href = u; } }
   export default { fileURLToPath, pathToFileURL, URL };
-`);
-fs.writeFileSync(path.join(SHIMS_DIR, 'crypto.js'), `
+`
+);
+fs.writeFileSync(
+  path.join(SHIMS_DIR, 'crypto.js'),
+  `
   export function randomUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
       var r = Math.random() * 16 | 0;
@@ -49,12 +60,11 @@ fs.writeFileSync(path.join(SHIMS_DIR, 'crypto.js'), `
     return { update() { return this; }, digest() { return 'stub'; } };
   }
   export default { randomUUID, createHash };
-`);
+`
+);
 
 // Themes to bundle (must already be in node_modules)
-const themes = [
-  'stackoverflow',
-];
+const themes = ['stackoverflow'];
 
 async function bundleTheme(name) {
   const pkg = `jsonresume-theme-${name}`;
@@ -63,7 +73,7 @@ async function bundleTheme(name) {
     export var render = theme.render;
     export var pdfRenderOptions = theme.pdfRenderOptions;
   `;
-  
+
   const entryFile = path.join(THEMES_DIR, `_entry_${name}.js`);
   fs.writeFileSync(entryFile, entryCode);
 
@@ -78,21 +88,21 @@ async function bundleTheme(name) {
       outfile: path.join(THEMES_DIR, `${name}.js`),
       define: {
         'process.env.NODE_ENV': '"production"',
-        'global': 'globalThis',
+        global: 'globalThis',
       },
       alias: {
-        'fs': path.join(SHIMS_DIR, 'fs.js'),
-        'path': path.join(SHIMS_DIR, 'path.js'),
-        'url': path.join(SHIMS_DIR, 'url.js'),
+        fs: path.join(SHIMS_DIR, 'fs.js'),
+        path: path.join(SHIMS_DIR, 'path.js'),
+        url: path.join(SHIMS_DIR, 'url.js'),
         'node:crypto': path.join(SHIMS_DIR, 'crypto.js'),
-        'crypto': path.join(SHIMS_DIR, 'crypto.js'),
+        crypto: path.join(SHIMS_DIR, 'crypto.js'),
         'node:fs': path.join(SHIMS_DIR, 'fs.js'),
         'node:path': path.join(SHIMS_DIR, 'path.js'),
         'node:url': path.join(SHIMS_DIR, 'url.js'),
       },
       logLevel: 'warning',
     });
-    
+
     fs.unlinkSync(entryFile);
     const size = fs.statSync(path.join(THEMES_DIR, `${name}.js`)).size;
     console.log(`OK ${name}: ${(size / 1024).toFixed(0)}KB`);
@@ -111,7 +121,7 @@ async function main() {
   }
 
   // Write manifest
-  const manifest = results.map(r => ({
+  const manifest = results.map((r) => ({
     name: r.name,
     displayName: r.name.charAt(0).toUpperCase() + r.name.slice(1).replace(/-/g, ' '),
     description: '',
@@ -123,7 +133,9 @@ async function main() {
   // Cleanup shims
   fs.rmSync(SHIMS_DIR, { recursive: true, force: true });
 
-  console.log(`\nManifest written with ${results.filter(r => r.ok).length}/${results.length} themes`);
+  console.log(
+    `\nManifest written with ${results.filter((r) => r.ok).length}/${results.length} themes`
+  );
 }
 
 main();

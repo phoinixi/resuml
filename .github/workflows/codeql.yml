@@ -1,13 +1,13 @@
-name: "CodeQL"
+name: 'CodeQL'
 
 # Replaces GitHub's default CodeQL setup so we can apply path exclusions
 # (theme snapshots, built bundles, generated data). Keep default setup
 # DISABLED in repo Settings → Code security → Code scanning.
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
   pull_request:
-    branches: [ "main" ]
+    branches: ['main']
   schedule:
     # Weekly full scan — matches the default setup cadence
     - cron: '17 6 * * 1'
@@ -25,7 +25,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript-typescript', 'actions' ]
+        language: ['javascript-typescript', 'actions']
 
     steps:
       - name: Checkout
@@ -40,4 +40,4 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
         with:
-          category: "/language:${{ matrix.language }}"
+          category: '/language:${{ matrix.language }}'

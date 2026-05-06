@@ -4,7 +4,10 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
 export interface ThemeModule {
-  render: (resume: Record<string, unknown>, options?: Record<string, unknown>) => string | Promise<string>;
+  render: (
+    resume: Record<string, unknown>,
+    options?: Record<string, unknown>
+  ) => string | Promise<string>;
 }
 
 /**
@@ -51,7 +54,7 @@ export function loadTheme(themeName: string, options?: { autoInstall?: boolean }
         if (!autoInstall) {
           throw new Error(
             `Theme package ${jsonResumeThemeName} or ${nativeThemeName} not found in node_modules.\n` +
-            `Please install the theme package manually.`
+              `Please install the theme package manually.`
           );
         }
         // Both attempts failed - auto-install the theme
