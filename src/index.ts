@@ -46,6 +46,7 @@ program
   .option('--jd <path>', 'Path to a job description file for keyword matching (requires --ats).')
   .option('--ats-threshold <score>', 'Minimum ATS score (0-100). Exit with code 1 if below threshold.')
   .option('--format <type>', 'Output format for ATS results (text or json).', 'text')
+  .option('--config <path>', 'Path to resuml.config.yaml (default: ./resuml.config.yaml).')
   .action(validateAction);
 
 // ToJSON Command

@@ -4,6 +4,7 @@ import { loadResumeFiles } from '../utils/loadResume';
 import { handleCommandError } from '../utils/errorHandler';
 import { analyzeAts } from '../ats/index';
 import type { TieredAtsResult } from '../ats/index';
+import { loadConfig } from '../utils/config';
 
 interface ValidateCommandOptions {
   resume?: string;
@@ -12,6 +13,7 @@ interface ValidateCommandOptions {
   jd?: string;
   atsThreshold?: string;
   format?: string;
+  config?: string;
 }
 
 function formatAtsReport(result: TieredAtsResult, debug: boolean, chalk: typeof import('chalk').default): void {
@@ -91,9 +93,11 @@ export async function validateAction(options: ValidateCommandOptions): Promise<v
         }
       }
 
+      const cfg = loadConfig(options.config ? { configPath: options.config } : {});
       const result = analyzeAts(resumeData, {
-        language: 'en',
+        language: cfg.locale,
         jobDescription,
+        config: cfg,
       });
 
       if (options.format === 'json') {
