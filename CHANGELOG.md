@@ -1,3 +1,13 @@
+# [3.0.0](https://github.com/phoinixi/resuml/compare/v2.0.0...v3.0.0) (2026-05-06)
+
+
+* feat(ats)!: v2.0 tiered ATS rubric (Parsing / Match / Recruiter) ([653649b](https://github.com/phoinixi/resuml/commit/653649baaeadab896b9af15577b7d48b9de9a04b))
+
+
+### BREAKING CHANGES
+
+* AtsResult replaced by TieredAtsResult (tiers parsing/match?/recruiter, knockouts, summary). AtsCheck replaced by CheckResult with status pass/warn/fail/skipped and YAML-path hints. calculateScore / calculateCombinedScore / assessFit removed. MCP resuml_ats_check returns the new shape; resuml://docs/ats-scoring resource removed in favour of resuml://docs/ats-rubric.
+
 # [2.0.0](https://github.com/phoinixi/resuml/compare/v1.21.0...v2.0.0) (2026-04-27)
 
 
