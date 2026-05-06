@@ -16,12 +16,19 @@ interface ValidateCommandOptions {
   config?: string;
 }
 
-function formatAtsReport(result: TieredAtsResult, debug: boolean, chalk: typeof import('chalk').default): void {
-  const scoreColor = result.score >= 75 ? chalk.green : result.score >= 60 ? chalk.yellow : chalk.red;
+function formatAtsReport(
+  result: TieredAtsResult,
+  debug: boolean,
+  chalk: typeof import('chalk').default
+): void {
+  const scoreColor =
+    result.score >= 75 ? chalk.green : result.score >= 60 ? chalk.yellow : chalk.red;
   console.log('');
   console.log(chalk.bold('=== ATS Analysis Report ==='));
   console.log('');
-  console.log(`  Score: ${scoreColor(chalk.bold(`${result.score}/100`))} (${result.rating.replace('-', ' ')})`);
+  console.log(
+    `  Score: ${scoreColor(chalk.bold(`${result.score}/100`))} (${result.rating.replace('-', ' ')})`
+  );
   console.log(`  ${result.summary}`);
   console.log('');
 
@@ -36,9 +43,15 @@ function formatAtsReport(result: TieredAtsResult, debug: boolean, chalk: typeof 
     console.log(chalk.bold(`  ${label} (${tier.score}/100, grade ${tier.grade})`));
 
     for (const check of tier.checks) {
-      const passed = check.status === 'pass';
-      if (!debug && passed) continue;
-      const icon = passed ? chalk.green('v') : check.status === 'warn' ? chalk.yellow('!') : chalk.red('x');
+      if (!debug && (check.status === 'pass' || check.status === 'skipped')) continue;
+      const icon =
+        check.status === 'pass'
+          ? chalk.green('v')
+          : check.status === 'skipped'
+            ? chalk.dim('-')
+            : check.status === 'warn'
+              ? chalk.yellow('!')
+              : chalk.red('x');
       const scoreText = chalk.dim(`[${check.score}]`);
       console.log(`    ${icon} ${check.message} ${scoreText}`);
       for (const hint of check.hints) {
