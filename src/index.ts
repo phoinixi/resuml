@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import { Command } from 'commander';
 import path from 'path';
 import fs from 'fs';
@@ -139,21 +137,17 @@ ats
     atsConfigPrint(opts);
   });
 
-// Parse Arguments - only execute when not in test environment
-if (process.env['NODE_ENV'] !== 'test') {
-  void (async () => {
-    try {
-      await program.parseAsync(process.argv);
-    } catch (e: unknown) {
-      console.error('Command line error:', (e as Error).message);
-      process.exit(1);
-    }
-  })();
-}
-
 export { processResumeData } from './core';
 export { loadResumeFiles } from './utils/loadResume';
 export { loadTheme } from './utils/themeLoader';
 export * as themeRender from './utils/themeRender';
 export { analyzeAts } from './ats/index';
-export type { TieredAtsResult, AtsOptions } from './ats/index';
+export type {
+  TieredAtsResult,
+  AtsOptions,
+  CheckResult,
+  TierResult,
+  KnockoutSignal,
+} from './ats/index';
+export type { ResumeSchema, Iso8601 } from './types/resume';
+export type { ResumeSchema as Resume } from './types/resume';

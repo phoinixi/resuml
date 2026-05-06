@@ -3,6 +3,32 @@
   "version": "3.0.0",
   "description": "Generate JSON resumes from YAML with theme support. CLI + MCP server for AI agents.",
   "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./types": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/types/index.js"
+    },
+    "./ats": {
+      "types": "./dist/ats/index.d.ts",
+      "import": "./dist/ats/index.js"
+    },
+    "./skills": {
+      "types": "./dist/skills/index.d.ts",
+      "import": "./dist/skills/index.js"
+    },
+    "./mcp": {
+      "types": "./dist/mcp/server.d.ts",
+      "import": "./dist/mcp/server.js"
+    },
+    "./package.json": "./package.json"
+  },
   "bin": {
     "resuml": "./bin/resuml"
   },
@@ -11,8 +37,7 @@
     "dist",
     "data/skills",
     "DOCS.md",
-    "README.md",
-    "src/types"
+    "README.md"
   ],
   "scripts": {
     "build": "tsup",
