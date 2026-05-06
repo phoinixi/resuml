@@ -33,7 +33,7 @@ vi.mock('../utils/themeLoader', () => ({
 
 // Mock core processResumeData
 vi.mock('../core', async (importOriginal) => {
-  const actualCore = await importOriginal() as object;
+  const actualCore = await importOriginal<typeof import('../core')>();
   return {
     ...actualCore,
     processResumeData: vi.fn().mockResolvedValue({ basics: { name: 'Mocked Resume' } }),
@@ -42,7 +42,7 @@ vi.mock('../core', async (importOriginal) => {
 
 // Mock the file system
 vi.mock('fs', async (importOriginal) => {
-  const actual = await importOriginal() as object;
+  const actual = await importOriginal<typeof import('fs')>();
   return {
     ...actual,
     readFileSync: vi.fn((path) => {
@@ -64,7 +64,7 @@ vi.mock('fs', async (importOriginal) => {
 
 // Mock the path module
 vi.mock('path', async (importOriginal) => {
-  const actual = await importOriginal() as object;
+  const actual = await importOriginal<typeof import('path')>();
   return {
     ...actual,
     join: (...args: string[]) => args.join('/'),
@@ -123,11 +123,9 @@ describe('CLI', () => {
   });
 
   it('should handle theme loading error', async () => {
-    (loadTheme as import('vitest').MockedFunction<typeof loadTheme>).mockImplementation(
-      () => {
-        throw new Error('Theme not found');
-      }
-    );
+    (loadTheme as import('vitest').MockedFunction<typeof loadTheme>).mockImplementation(() => {
+      throw new Error('Theme not found');
+    });
 
     await main(['node', 'resuml', 'render', '--resume', 'dummy.yaml', '--theme', 'test-theme']);
 
