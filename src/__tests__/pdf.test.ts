@@ -34,7 +34,7 @@ vi.mock('../utils/loadResume', () => ({
 
 // Mock core processResumeData
 vi.mock('../core', async (importOriginal) => {
-  const actualCore = await importOriginal() as object;
+  const actualCore = (await importOriginal()) as object;
   return {
     ...actualCore,
     processResumeData: vi.fn().mockResolvedValue({ basics: { name: 'Test User' } }),
@@ -51,7 +51,7 @@ vi.mock('../utils/themeLoader', () => ({
 
 // Mock fs
 vi.mock('fs', async (importOriginal) => {
-  const actual = await importOriginal() as object;
+  const actual = (await importOriginal()) as object;
   return {
     ...actual,
     readFileSync: vi.fn((p) => {
@@ -71,7 +71,7 @@ vi.mock('fs', async (importOriginal) => {
 
 // Mock path
 vi.mock('path', async (importOriginal) => {
-  const actual = await importOriginal() as object;
+  const actual = (await importOriginal()) as object;
   return {
     ...actual,
     join: (...args: string[]) => args.join('/'),
@@ -116,21 +116,13 @@ describe('pdf command', () => {
   it('should require --theme option', async () => {
     // pdfAction throws before try-catch when --theme is missing,
     // and cli.ts rethrows in test mode
-    await expect(
-      main(['node', 'resuml', 'pdf', '--resume', 'dummy.yaml'])
-    ).rejects.toThrow('--theme option is required');
+    await expect(main(['node', 'resuml', 'pdf', '--resume', 'dummy.yaml'])).rejects.toThrow(
+      '--theme option is required'
+    );
   });
 
   it('should show graceful error when playwright fails', async () => {
-    await main([
-      'node',
-      'resuml',
-      'pdf',
-      '--resume',
-      'dummy.yaml',
-      '--theme',
-      'test-theme',
-    ]);
+    await main(['node', 'resuml', 'pdf', '--resume', 'dummy.yaml', '--theme', 'test-theme']);
 
     // Should get an error about playwright failing
     expect(console.error).toHaveBeenCalledWith(
