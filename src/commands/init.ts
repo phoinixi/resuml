@@ -56,8 +56,7 @@ export async function initAction(options: InitCommandOptions): Promise<void> {
     fs.writeFileSync(fullPath, yaml, 'utf8');
 
     const configPath = path.join(path.dirname(fullPath), 'resuml.config.yaml');
-    if (!fs.existsSync(configPath)) {
-      const template = `# resuml ATS configuration
+    const template = `# resuml ATS configuration
 # Override defaults; everything is optional.
 # Run \`resuml ats config --print\` to see the merged effective config.
 ats:
@@ -70,8 +69,12 @@ ats:
     seniorYoeCutoff: 10
   disable: []
 `;
-      fs.writeFileSync(configPath, template, 'utf8');
+    try {
+      fs.writeFileSync(configPath, template, { encoding: 'utf8', flag: 'wx' });
       console.log(chalk.green(`Created resuml.config.yaml`));
+    } catch (err) {
+      // EEXIST is the expected race-safe outcome when the file already exists.
+      if ((err as NodeJS.ErrnoException).code !== 'EEXIST') throw err;
     }
 
     console.log(chalk.green(`\n✅ Created ${outputPath}`));

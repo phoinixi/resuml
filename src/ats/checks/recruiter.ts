@@ -11,7 +11,7 @@ const firstWord = (s: string) =>
     .trim()
     .split(/\s+/)[0]
     ?.toLowerCase()
-    .replace(/[^a-zA-ZäöüßÄÖÜàáâãéèêëíìîïóòôõúùûüñç]/g, '') || '';
+    .replace(/[^a-zA-ZäöüßÄÖÜàáâãéèêëíìîïóòôõúùûñç]/g, '') || '';
 
 function isSenior(resume: ResumeSchema, cfg: AtsConfig): boolean {
   return computeYoeYears(resume.work) >= cfg.thresholds.seniorYoeCutoff;
@@ -292,10 +292,20 @@ export const highlightLength: CheckFn = (resume) => {
   };
 };
 
+function isLinkedInUrl(url: string | undefined): boolean {
+  if (!url) return false;
+  try {
+    const host = new URL(url).hostname.toLowerCase();
+    return host === 'linkedin.com' || host.endsWith('.linkedin.com');
+  } catch {
+    return false;
+  }
+}
+
 export const hasLinkedin: CheckFn = (resume) => {
   const profiles = resume.basics?.profiles || [];
   const found = profiles.some(
-    (p) => p.network?.toLowerCase() === 'linkedin' || p.url?.toLowerCase().includes('linkedin.com')
+    (p) => p.network?.toLowerCase() === 'linkedin' || isLinkedInUrl(p.url)
   );
   return {
     id: 'has-linkedin',
