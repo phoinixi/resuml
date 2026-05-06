@@ -42,6 +42,12 @@ describe('yoe-match', () => {
   it('fails when JD asks 20 years', () => {
     expect(yoeMatch(resume, 'en', { jobDescription: 'Minimum 20 years of experience required.' }).status).toBe('fail');
   });
+  it('parses ASCII-hyphen ranges (3-5 years)', () => {
+    expect(yoeMatch(resume, 'en', { jobDescription: 'We need 3-5 years of frontend experience.' }).status).toBe('pass');
+  });
+  it('parses en-dash ranges (3–5 years)', () => {
+    expect(yoeMatch(resume, 'en', { jobDescription: 'We need 3–5 years of frontend experience.' }).status).toBe('pass');
+  });
 });
 
 describe('hard-skill-overlap', () => {

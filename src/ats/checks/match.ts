@@ -87,7 +87,7 @@ export const educationLevel: MatchCheckFn = (resume, _l, { jobDescription }) => 
   };
 };
 
-const YOE_RE = /(\d+)\s*\+?\s*(?:to\s*\d+\s*)?years?/i;
+const YOE_RE = /(\d+)\s*(?:\+|[-–—]\s*\d+|to\s*\d+)?\s*years?/i;
 
 export const yoeMatch: MatchCheckFn = (resume, _l, { jobDescription }) => {
   if (!jobDescription) {
