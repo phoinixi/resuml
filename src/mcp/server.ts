@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { processResumeData } from '../core';
 import { analyzeAts } from '../ats/index';
 import { listRubricMarkdown, getRubricEntry } from '../ats/rubric';
+import { loadConfig } from '../utils/config';
 import { loadTheme } from '../utils/themeLoader';
 import { generateResumeYaml } from '../utils/resumeTemplate';
 import { KNOWN_THEMES, isThemeInstalled, getInstalledVersion } from '../utils/themeInfo';
@@ -460,9 +461,11 @@ ${resumeYaml}
       suppressStdout();
       try {
         const resume = await processResumeData([yaml]);
+        const cfg = loadConfig();
         const result = analyzeAts(resume, {
-          language: language ?? 'en',
+          language: language ?? cfg.locale,
           jobDescription,
+          config: cfg,
         });
         restoreStdout();
         return {

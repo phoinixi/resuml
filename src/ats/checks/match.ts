@@ -43,19 +43,26 @@ function jaccard(a: string[], b: string[]): number {
   return union === 0 ? 0 : inter / union;
 }
 
+function trimTitle(t: string): string {
+  // Drop trailing ", X" or " - X" segments that bring company/team noise into Jaccard.
+  return t
+    .trim()
+    .replace(/\s*[,\-–—]\s.*$/, '')
+    .trim();
+}
+
 function extractJdTitle(jd: string): string | undefined {
   const lines = jd.split('\n').slice(0, 8);
   for (const l of lines) {
     const m =
       l.match(/(?:role|position|title)[\s:-]+(.+)/i) ||
       l.match(/looking for (?:an? )?(.+?)(?:\s+with|\s+to|$)/i);
-    if (m?.[1]) return m[1].trim();
+    if (m?.[1]) return trimTitle(m[1]);
   }
-  return lines
-    .find((l) =>
-      /\b(engineer|developer|manager|designer|analyst|scientist|architect|lead)\b/i.test(l)
-    )
-    ?.trim();
+  const fallback = lines.find((l) =>
+    /\b(engineer|developer|manager|designer|analyst|scientist|architect|lead)\b/i.test(l)
+  );
+  return fallback ? trimTitle(fallback) : undefined;
 }
 
 export const titleAlignment: MatchCheckFn = (resume, _l, { jobDescription }) => {
@@ -222,7 +229,7 @@ export const allMatchChecks = [hardSkillOverlap, titleAlignment, educationLevel,
 interface KnockoutPattern {
   signal: string;
   jdPattern: RegExp;
-  resumeMatch: (r: ResumeSchema) => boolean;
+  resumeMatch: (r: ResumeSchema, m: RegExpMatchArray) => boolean;
   recommendation: string;
 }
 
@@ -238,7 +245,12 @@ const KNOCKOUTS: KnockoutPattern[] = [
   {
     signal: 'location',
     jdPattern: /(must be located|on-?site|relocate|based in)\s+([a-zA-Z ,]+)/i,
-    resumeMatch: (r) => !!r.basics?.location?.city,
+    resumeMatch: (r, m) => {
+      const jdLoc = (m[2] ?? '').toLowerCase().trim();
+      const resumeCity = (r.basics?.location?.city ?? '').toLowerCase().trim();
+      if (!jdLoc || !resumeCity) return false;
+      return jdLoc.includes(resumeCity) || resumeCity.includes(jdLoc.split(/[, ]+/)[0] ?? '');
+    },
     recommendation: 'Verify location requirement against your basics.location.city.',
   },
   {
@@ -260,7 +272,7 @@ export function extractKnockouts(resume: ResumeSchema, jobDescription: string): 
   for (const k of KNOCKOUTS) {
     const m = jobDescription.match(k.jdPattern);
     if (!m) continue;
-    if (k.resumeMatch(resume)) continue;
+    if (k.resumeMatch(resume, m)) continue;
     out.push({
       signal: k.signal,
       evidence: `JD: "${m[0]}"; resume silent.`,

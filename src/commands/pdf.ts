@@ -102,8 +102,22 @@ export async function pdfAction(options: PdfCommandOptions): Promise<void> {
 
       const bodyText = await page.evaluate(() => document.body.innerText || '');
       const bodyWords = bodyText.trim().split(/\s+/).filter(Boolean).length;
-      const resumeWords = JSON.stringify(resumeData).split(/\s+/).filter(Boolean).length;
-      if (bodyWords < resumeWords * 0.7) {
+      const resumeContentParts: string[] = [];
+      if (resumeData.basics?.summary) resumeContentParts.push(resumeData.basics.summary);
+      for (const w of resumeData.work || []) {
+        if (w.summary) resumeContentParts.push(w.summary);
+        resumeContentParts.push(...(w.highlights || []));
+      }
+      for (const p of resumeData.projects || []) {
+        if (p.description) resumeContentParts.push(p.description);
+        resumeContentParts.push(...(p.highlights || []));
+      }
+      for (const s of resumeData.skills || []) {
+        if (s.name) resumeContentParts.push(s.name);
+        resumeContentParts.push(...(s.keywords || []));
+      }
+      const resumeWords = resumeContentParts.join(' ').split(/\s+/).filter(Boolean).length;
+      if (resumeWords > 0 && bodyWords < resumeWords * 0.7) {
         console.warn(
           chalk.yellow(
             `pdf-text-extractable: rendered text ${bodyWords} words vs resume ${resumeWords} (under 70%). Theme may use image-based glyphs.`

@@ -40,9 +40,7 @@ export function analyzeAts(resume: ResumeSchema, options: AtsOptions = {}): Tier
   const cfg = options.config ?? defaultConfig;
   const language = options.language ?? cfg.locale;
 
-  const parsingChecks = allParsingChecks
-    .map((fn) => fn(resume, language))
-    .filter((c) => c.id !== 'pdf-text-extractable' && c.id !== 'pdf-size-under-2.5mb');
+  const parsingChecks = allParsingChecks.map((fn) => fn(resume, language));
 
   const recruiterChecks = allRecruiterChecks.map((fn) => fn(resume, language, cfg));
 
