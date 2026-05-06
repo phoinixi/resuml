@@ -17,7 +17,7 @@ const en: LanguageData = {
     'deployed', 'designed', 'developed', 'devised', 'engineered', 'implemented',
     'installed', 'integrated', 'launched', 'maintained', 'migrated', 'modernized',
     'optimized', 'overhauled', 'programmed', 'prototyped', 'refactored',
-    'reengineered', 'resolved', 'restructured', 'revamped', 'scaled',
+    'reengineered', 'resolved', 'restructured', 'revamped', 'scaled', 'shipped',
     'standardized', 'streamlined', 'tested', 'troubleshot', 'upgraded',
     // Achievement & Impact
     'accelerated', 'accomplished', 'boosted', 'completed', 'contributed',
