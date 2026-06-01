@@ -50,6 +50,8 @@ export interface RubricEntry {
 export interface AtsOptions {
   language?: string;
   jobDescription?: string;
+  /** Posting title, when known separately from the body (job search). */
+  jobTitle?: string;
   threshold?: number;
   config?: AtsConfig;
 }

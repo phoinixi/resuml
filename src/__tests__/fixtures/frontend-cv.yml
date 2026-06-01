@@ -1,0 +1,49 @@
+basics:
+  name: Alex Rivera
+  label: Frontend Tech Lead
+  email: alex@example.com
+  phone: '+1-555-0199'
+  summary: >
+    Senior frontend engineer with 10 years building React applications and design
+    systems at scale. Led front-end architecture migrations and performance
+    initiatives across multiple product teams.
+  location:
+    city: San Francisco
+    countryCode: US
+    region: California
+
+work:
+  - name: Acme Corp
+    position: Frontend Tech Lead
+    startDate: '2020-03'
+    highlights:
+      - Built a React component library adopted across 6 product teams
+      - Led migration from Create React App to Next.js, reducing time-to-interactive by 45%
+      - Introduced TypeScript across the frontend codebase, eliminating a class of runtime errors
+      - Optimized CSS-in-JS bundle by extracting critical CSS, improving FCP by 30%
+      - Mentored 4 junior engineers through structured React and TypeScript training
+  - name: Beta Inc
+    position: Senior Frontend Engineer
+    startDate: '2016-06'
+    endDate: '2020-02'
+    highlights:
+      - Developed React dashboards consuming REST APIs built by the backend team
+      - Implemented Storybook component catalog, cutting UI review cycles by 50%
+      - Rebuilt CSS design tokens system, unifying visual language across 3 products
+
+education:
+  - institution: State University
+    area: Computer Science
+    studyType: Bachelor of Science
+    startDate: '2010-09'
+    endDate: '2014-06'
+
+skills:
+  - name: Frontend
+    keywords:
+      - React
+      - TypeScript
+      - Next.js
+      - CSS
+      - Vite
+      - Storybook

@@ -88,3 +88,6 @@ scripts/_shims/
 # Personal resume / JD fixtures (never commit)
 francesco-*
 jd-*.txt
+
+# squad framework — local active feature pointer
+.framework/.active-feature

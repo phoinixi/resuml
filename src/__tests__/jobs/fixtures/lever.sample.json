@@ -1,0 +1,11 @@
+[
+  {
+    "id": "abc-123",
+    "text": "Staff Frontend Engineer",
+    "hostedUrl": "https://jobs.lever.co/acme/abc-123",
+    "categories": { "location": "Remote", "team": "Web" },
+    "createdAt": 1715600000000,
+    "descriptionPlain": "Lead our frontend platform team. React, TypeScript, GraphQL.",
+    "lists": [{ "text": "Strong React and TypeScript expertise required." }]
+  }
+]

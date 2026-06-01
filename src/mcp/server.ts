@@ -3,6 +3,7 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { z } from 'zod';
 import { processResumeData } from '../core';
 import { analyzeAts } from '../ats/index';
+import { searchJobs, scorePosting, buildTailorPrompt } from '../jobs/index';
 import { listRubricMarkdown, getRubricEntry } from '../ats/rubric';
 import { loadConfig } from '../utils/config';
 import { loadTheme } from '../utils/themeLoader';
@@ -666,6 +667,144 @@ ${resumeYaml}
           isError: true,
         };
       }
+    }
+  );
+
+  // ── resuml_jobs_search ──────────────────────────────────────────────
+
+  server.registerTool(
+    'resuml_jobs_search',
+    {
+      title: 'Search Jobs',
+      description:
+        'Discover job postings across free sources (Greenhouse, Lever, Ashby, Workable, RemoteOK, Remotive, WeWorkRemotely, HN Who is Hiring), score each against the resume with the ATS engine, and return the ranked queue. No paid APIs, no LinkedIn scraping.',
+      inputSchema: {
+        yaml: z.string().describe('Resume content in YAML format'),
+        remote: z.boolean().optional().describe('Filter to remote-friendly postings'),
+        minScore: z.number().int().min(0).max(100).optional().describe('Minimum total ATS score (default 85)'),
+        limit: z.number().int().min(1).max(100).optional().describe('Max postings returned (default 20)'),
+        providers: z
+          .array(
+            z.enum([
+              'greenhouse',
+              'lever',
+              'ashby',
+              'workable',
+              'remoteok',
+              'wwr',
+              'remotive',
+              'hn-whoishiring',
+            ])
+          )
+          .optional()
+          .describe('Restrict to a subset of providers'),
+        timeoutMs: z.number().int().optional().describe('Per-provider timeout in ms (default 8000)'),
+      },
+    },
+    async ({ yaml, remote, minScore, limit, providers, timeoutMs }) => {
+      suppressStdout();
+      try {
+        const resume = await processResumeData([yaml]);
+        const result = await searchJobs(resume, {
+          ...(remote !== undefined && { remoteOnly: remote }),
+          ...(minScore !== undefined && { minScore }),
+          ...(limit !== undefined && { limit }),
+          ...(providers && { providers }),
+          ...(timeoutMs !== undefined && { timeoutMs }),
+        });
+        restoreStdout();
+        return { content: [{ type: 'text' as const, text: JSON.stringify(result, null, 2) }] };
+      } catch (e: unknown) {
+        restoreStdout();
+        return {
+          content: [
+            {
+              type: 'text' as const,
+              text: JSON.stringify({ error: e instanceof Error ? e.message : String(e) }),
+            },
+          ],
+          isError: true,
+        };
+      }
+    }
+  );
+
+  // ── resuml_jobs_score ───────────────────────────────────────────────
+
+  server.registerTool(
+    'resuml_jobs_score',
+    {
+      title: 'Score Job Posting',
+      description:
+        'Score a single JD body against the resume. Use when the agent already has the JD text (e.g. user pasted a URL elsewhere) and just wants the ranked ATS breakdown without a fresh search.',
+      inputSchema: {
+        yaml: z.string().describe('Resume content in YAML format'),
+        company: z.string().describe('Posting company name'),
+        title: z.string().describe('Posting title'),
+        body: z.string().describe('Full job description text'),
+        url: z.string().describe('Posting URL'),
+        location: z.string().optional().describe('Free-form location'),
+      },
+    },
+    async ({ yaml, company, title, body, url, location }) => {
+      suppressStdout();
+      try {
+        const resume = await processResumeData([yaml]);
+        const ranked = scorePosting(resume, {
+          id: `manual:${url}`,
+          source: 'remoteok',
+          company,
+          title,
+          body,
+          url,
+          ...(location !== undefined && { location }),
+          remote: !!location && /remote/i.test(location),
+        });
+        restoreStdout();
+        return { content: [{ type: 'text' as const, text: JSON.stringify(ranked, null, 2) }] };
+      } catch (e: unknown) {
+        restoreStdout();
+        return {
+          content: [
+            {
+              type: 'text' as const,
+              text: JSON.stringify({ error: e instanceof Error ? e.message : String(e) }),
+            },
+          ],
+          isError: true,
+        };
+      }
+    }
+  );
+
+  // ── resuml_jobs_tailor ──────────────────────────────────────────────
+
+  server.registerTool(
+    'resuml_jobs_tailor',
+    {
+      title: 'Build Tailor Prompt',
+      description:
+        'Return a prompt that asks the agent to tailor the resume YAML to a specific posting, chaining into resuml_validate and resuml_ats_check.',
+      inputSchema: {
+        company: z.string(),
+        title: z.string(),
+        body: z.string(),
+        url: z.string(),
+        location: z.string().optional(),
+      },
+    },
+    ({ company, title, body, url, location }) => {
+      const prompt = buildTailorPrompt({
+        id: `manual:${url}`,
+        source: 'remoteok',
+        company,
+        title,
+        body,
+        url,
+        ...(location !== undefined && { location }),
+        remote: !!location && /remote/i.test(location),
+      });
+      return { content: [{ type: 'text' as const, text: prompt }] };
     }
   );
 

@@ -21,13 +21,16 @@ resuml exposes an MCP server for AI agent integration. Add to your Claude Code c
 
 | Tool                 | Purpose                                                                 |
 | -------------------- | ----------------------------------------------------------------------- |
-| `resuml_init_resume` | Generate a starter YAML template                                        |
-| `resuml_validate`    | Validate resume YAML against JSON Resume schema                         |
-| `resuml_ats_check`   | Tiered ATS analysis (Parsing / Match / Recruiter) with knockout signals |
-| `resuml_ats_explain` | Return the rubric entry for a check id                                  |
-| `resuml_render`      | Render resume to HTML using a theme (supports `locale` param)           |
-| `resuml_list_themes` | List available themes and install status                                |
-| `resuml_export_pdf`  | Export resume as PDF (supports `margin` and `locale` params)            |
+| `resuml_init_resume`   | Generate a starter YAML template                                                           |
+| `resuml_validate`      | Validate resume YAML against JSON Resume schema                                            |
+| `resuml_ats_check`     | Tiered ATS analysis (Parsing / Match / Recruiter) with knockout signals                    |
+| `resuml_ats_explain`   | Return the rubric entry for a check id                                                     |
+| `resuml_render`        | Render resume to HTML using a theme (supports `locale` param)                              |
+| `resuml_list_themes`   | List available themes and install status                                                   |
+| `resuml_export_pdf`    | Export resume as PDF (supports `margin` and `locale` params)                               |
+| `resuml_jobs_search`   | Discover and rank job postings from free sources against the resume (minScore default 85)  |
+| `resuml_jobs_score`    | Score a single job posting against the resume and return a full ATS breakdown              |
+| `resuml_jobs_tailor`   | Build a tailoring prompt for a specific posting (no resume needed; returns prompt text)    |
 
 ### Available Resources
 
@@ -138,6 +141,24 @@ resuml themes
 resuml themes --install stackoverflow
 resuml ats explain quantification-density
 resuml ats config
+
+# Job search
+resuml jobs search -r resume.yaml [--location "Zürich, CH"] [--remote] [--min-score 85] [--limit 20] [--json]
+resuml jobs score -r resume.yaml --posting posting.yaml [--json]
+resuml jobs tailor --posting posting.yaml [--json]
+resuml jobs tailor --body -    # read posting body from stdin
+```
+
+### Posting file format (`--posting posting.yaml`)
+
+```yaml
+company: Acme Corp
+title: Senior Backend Engineer
+url: https://acme.com/jobs/123
+body: |
+  We are looking for a backend engineer...
+location: Berlin, DE   # optional
+remote: false          # optional
 ```
 
 ## ATS Configuration (`resuml.config.yaml`)

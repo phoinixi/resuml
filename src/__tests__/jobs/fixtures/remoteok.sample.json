@@ -1,0 +1,16 @@
+[
+  { "legal": "metadata entry, ignored" },
+  {
+    "id": "r1",
+    "slug": "acme-frontend",
+    "url": "https://remoteok.com/remote-jobs/acme-frontend",
+    "company": "Acme",
+    "position": "Senior Frontend Engineer",
+    "location": "Worldwide",
+    "description": "<p>Build a React + TypeScript SaaS.</p>",
+    "tags": ["react", "typescript"],
+    "date": "2026-05-15",
+    "salary_min": 90000,
+    "salary_max": 130000
+  }
+]
