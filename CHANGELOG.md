@@ -1,3 +1,15 @@
+# [3.2.0](https://github.com/phoinixi/resuml/compare/v3.1.0...v3.2.0) (2026-06-01)
+
+
+### Bug Fixes
+
+* **lint:** resolve ESLint errors in new files ([4b5e29c](https://github.com/phoinixi/resuml/commit/4b5e29cee79788436e07e8095185d47862b76287))
+
+
+### Features
+
+* jobs search/score/tailor CLI + MCP; specialty coherence fix; seniority module ([#23](https://github.com/phoinixi/resuml/issues/23)) ([128e218](https://github.com/phoinixi/resuml/commit/128e21813738105c61c4e1d1a7e81652293a118e))
+
 # [3.1.0](https://github.com/phoinixi/resuml/compare/v3.0.0...v3.1.0) (2026-05-06)
 
 
