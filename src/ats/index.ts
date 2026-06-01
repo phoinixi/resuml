@@ -49,20 +49,32 @@ export function analyzeAts(resume: ResumeSchema, options: AtsOptions = {}): Tier
 
   let match: TierResult | undefined;
   let knockouts: KnockoutSignal[] = [];
+  let roleMismatch = false;
   if (options.jobDescription) {
     const matchChecks = allMatchChecks.map((fn) =>
-      fn(resume, language, { jobDescription: options.jobDescription })
+      fn(resume, language, { jobDescription: options.jobDescription, jobTitle: options.jobTitle })
     );
     match = buildTier('match', matchChecks, cfg);
+    roleMismatch = matchChecks.some(
+      (c) => c.id === 'role-family-match' && c.status === 'fail'
+    );
     knockouts = extractKnockouts(resume, options.jobDescription);
   }
 
-  const totalScore = computeTotalScore(
+  let totalScore = computeTotalScore(
     { parsing: parsing.score, match: match?.score, recruiter: recruiter.score },
     cfg.weights.tiers
   );
+
+  // A confident occupation mismatch is decisive: resume hygiene (parsing +
+  // recruiter tiers, ~50% of the weight by default) cannot lift a wrong-role
+  // posting into a passing score. Cap it so the total reflects fit, not polish.
+  const capped = roleMismatch && totalScore > ROLE_MISMATCH_CAP;
+  if (capped) totalScore = ROLE_MISMATCH_CAP;
+
   const rating = scoreToRating(totalScore, cfg.thresholds.rating);
-  const summary = generateSummary(totalScore, rating, !!options.jobDescription, knockouts.length);
+  let summary = generateSummary(totalScore, rating, !!options.jobDescription, knockouts.length);
+  if (capped) summary += ' Score capped: resume role family does not match this posting.';
 
   return {
     score: totalScore,
@@ -72,5 +84,8 @@ export function analyzeAts(resume: ResumeSchema, options: AtsOptions = {}): Tier
     summary,
   };
 }
+
+/** Ceiling applied to the total when the resume and JD are different occupations. */
+const ROLE_MISMATCH_CAP = 45;
 
 export type { TieredAtsResult, AtsOptions, CheckResult, TierResult, KnockoutSignal } from './types';

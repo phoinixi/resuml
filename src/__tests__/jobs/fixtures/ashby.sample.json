@@ -1,0 +1,14 @@
+{
+  "apiVersion": "1",
+  "jobs": [
+    {
+      "id": "job-1",
+      "title": "Frontend Tech Lead",
+      "locationName": "Remote",
+      "isRemote": true,
+      "jobUrl": "https://jobs.ashbyhq.com/acme/job-1",
+      "descriptionPlain": "Tech lead role mentoring a 4-person frontend squad. React + TypeScript.",
+      "publishedDate": "2026-05-01T00:00:00Z"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>We Work Remotely</title>
+    <link>https://weworkremotely.com</link>
+    <item>
+      <title>Acme: Senior Frontend Engineer (React, TypeScript)</title>
+      <link>https://weworkremotely.com/remote-jobs/acme-1</link>
+      <guid>https://weworkremotely.com/remote-jobs/acme-1</guid>
+      <pubDate>Fri, 15 May 2026 10:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Senior frontend role at Acme. React, TypeScript, GraphQL.</p>]]></description>
+    </item>
+  </channel>
+</rss>

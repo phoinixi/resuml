@@ -11,6 +11,7 @@ import { pdfAction } from './commands/pdf';
 import { themesAction } from './commands/themes';
 import { mcpAction } from './commands/mcp';
 import { atsExplain, atsConfigPrint } from './commands/ats';
+import { jobsSearchAction, jobsScoreAction, jobsTailorAction } from './commands/jobs';
 
 // Get the directory name equivalent to __dirname in CommonJS
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
@@ -137,6 +138,41 @@ ats
     atsConfigPrint(opts);
   });
 
+// Jobs Subcommand
+const jobs = program.command('jobs').description('Discover and score job postings against your resume.');
+
+jobs
+  .command('search')
+  .description('Search free job sources, score every match against your resume, return the ranked queue.')
+  .option('-r, --resume <path>', 'Input YAML file, directory, or glob pattern.')
+  .option('--remote', 'Restrict to remote-friendly postings.')
+  .option('--location <city, CC>', 'Override candidate location, e.g. "Zürich, CH". Filters on-site roles by country.')
+  .option('--min-score <score>', 'Minimum total ATS score (0-100). Default 85.')
+  .option('--limit <count>', 'Maximum postings to return after ranking. Default 20.')
+  .option(
+    '--providers <list>',
+    'Comma-separated provider ids (greenhouse,lever,ashby,workable,remoteok,wwr,remotive,hn-whoishiring). Default: all.'
+  )
+  .option('--timeout <ms>', 'Per-provider timeout in ms. Default 8000.')
+  .option('--json', 'Output the full SearchResult as JSON.')
+  .action(jobsSearchAction);
+
+jobs
+  .command('score')
+  .description('Score a single job posting against your resume and show a full ATS breakdown.')
+  .option('-r, --resume <path>', 'Input YAML file, directory, or glob pattern.')
+  .option('--posting <file>', 'Posting YAML/JSON file (company, title, body, url, location?, remote?).')
+  .option('--json', 'Output the full RankedJob as JSON.')
+  .action(jobsScoreAction);
+
+jobs
+  .command('tailor')
+  .description('Generate a tailoring prompt for a specific job posting.')
+  .option('--posting <file>', 'Posting YAML/JSON file (company, title, body, url, location?, remote?).')
+  .option('--body <text>', 'Posting body text. Use - to read from stdin.')
+  .option('--json', 'Output { "prompt": "..." } as JSON.')
+  .action(jobsTailorAction);
+
 export { processResumeData } from './core';
 export { loadResumeFiles } from './utils/loadResume';
 export { loadTheme } from './utils/themeLoader';
@@ -151,3 +187,14 @@ export type {
 } from './ats/index';
 export type { ResumeSchema, Iso8601 } from './types/resume';
 export type { ResumeSchema as Resume } from './types/resume';
+export { searchJobs, scorePosting, buildTailorPrompt, deriveSearchQuery } from './jobs/index';
+export type {
+  JobPosting,
+  RankedJob,
+  SearchQuery,
+  SearchOptions,
+  SearchResult,
+  ProviderId,
+  ProviderResult,
+  SeniorityLevel,
+} from './jobs/index';

@@ -2,9 +2,17 @@ import type { ResumeSchema } from '../../types/resume';
 import type { CheckResult, KnockoutSignal } from '../types';
 import { matchJobDescription } from '../jdMatcher';
 import { computeYoeYears } from './yoe';
+import {
+  classifyRoleFamily,
+  classifySpecialty,
+  resumeRoleText,
+  resumeSpecialties,
+} from '../roleFamily';
 
 interface MatchOpts {
   jobDescription?: string;
+  /** Posting title, when available separately from the body (e.g. job search). */
+  jobTitle?: string;
 }
 
 type MatchCheckFn = (resume: ResumeSchema, language: string, opts: MatchOpts) => CheckResult;
@@ -65,7 +73,7 @@ function extractJdTitle(jd: string): string | undefined {
   return fallback ? trimTitle(fallback) : undefined;
 }
 
-export const titleAlignment: MatchCheckFn = (resume, _l, { jobDescription }) => {
+export const titleAlignment: MatchCheckFn = (resume, _l, { jobDescription, jobTitle }) => {
   if (!jobDescription) {
     return {
       id: 'title-alignment',
@@ -78,16 +86,18 @@ export const titleAlignment: MatchCheckFn = (resume, _l, { jobDescription }) => 
     };
   }
   const resumeTitle = resume.work?.[0]?.position || resume.basics?.label;
-  const jdTitle = extractJdTitle(jobDescription);
+  // Prefer an explicitly-supplied posting title; fall back to mining the body.
+  const jdTitle = jobTitle?.trim() ? trimTitle(jobTitle) : extractJdTitle(jobDescription);
   if (!resumeTitle || !jdTitle) {
+    // Don't reward or punish on missing data — exclude from the tier score.
     return {
       id: 'title-alignment',
       tier: 'match',
       weight: 'high',
-      status: 'warn',
-      score: 50,
-      message: 'Could not extract title from JD or resume.',
-      hints: ['Set basics.label to your target title.'],
+      status: 'skipped',
+      score: 0,
+      message: 'Could not extract a title from the JD or resume.',
+      hints: ['Set basics.label to your target title, or supply the posting title.'],
     };
   }
   const j = jaccard(tokenize(resumeTitle), tokenize(jdTitle));
@@ -224,7 +234,97 @@ export const hardSkillOverlap: MatchCheckFn = (resume, language, { jobDescriptio
   };
 };
 
-export const allMatchChecks = [hardSkillOverlap, titleAlignment, educationLevel, yoeMatch];
+/**
+ * Occupation fit. Classifies the resume and the JD (title + body) into a coarse
+ * role family and compares them. A hard mismatch (engineering resume vs a
+ * recruiting role) is the single most important relevance signal and, unlike
+ * the other checks, also caps the overall score in analyzeAts.
+ */
+export const roleFamilyMatch: MatchCheckFn = (resume, _l, { jobDescription, jobTitle }) => {
+  if (!jobDescription) {
+    return {
+      id: 'role-family-match',
+      tier: 'match',
+      weight: 'high',
+      status: 'skipped',
+      score: 0,
+      message: 'No JD.',
+      hints: [],
+    };
+  }
+  const jd = classifyRoleFamily(jobDescription, jobTitle ?? '');
+  const cv = classifyRoleFamily(resumeRoleText(resume));
+  if (!jd || !cv) {
+    return {
+      id: 'role-family-match',
+      tier: 'match',
+      weight: 'high',
+      status: 'skipped',
+      score: 0,
+      message: 'Could not confidently classify the role family of the JD or resume.',
+      hints: [],
+    };
+  }
+  if (jd.family !== cv.family) {
+    return {
+      id: 'role-family-match',
+      tier: 'match',
+      weight: 'high',
+      status: 'fail',
+      score: 0,
+      message: `Role mismatch: ${cv.family} resume vs ${jd.family} role.`,
+      hints: [
+        `This posting reads as a ${jd.family} role; your resume reads as ${cv.family}. Likely not a fit.`,
+      ],
+    };
+  }
+
+  // Same family — for engineering, also gate on sub-specialty. A Frontend
+  // Architect is not an Application Security engineer even though both are
+  // "engineering". Only fires when the JD title/body names a clear specialty
+  // the resume doesn't evidence (fullstack ↔ frontend/backend treated as ok).
+  if (cv.family === 'engineering') {
+    const jdSpec = classifySpecialty(jobDescription, jobTitle ?? '');
+    if (jdSpec) {
+      const cvTopSpecs = resumeSpecialties(resume);
+      // Penalize only when the resume has clear specialties and none is the one
+      // the JD demands. A general-engineering resume (no clear specialty) isn't
+      // penalized — it could plausibly fit.
+      const satisfied = cvTopSpecs.length === 0 || cvTopSpecs.includes(jdSpec);
+      if (!satisfied) {
+        return {
+          id: 'role-family-match',
+          tier: 'match',
+          weight: 'high',
+          status: 'fail',
+          score: 0,
+          message: `Specialty mismatch: ${jdSpec} role, resume specializes in ${cvTopSpecs[0] ?? 'general engineering'}.`,
+          hints: [
+            `This is a ${jdSpec} engineering role; your resume doesn't show ${jdSpec} depth. Likely not a fit.`,
+          ],
+        };
+      }
+    }
+  }
+
+  return {
+    id: 'role-family-match',
+    tier: 'match',
+    weight: 'high',
+    status: 'pass',
+    score: 100,
+    message: `Role family aligned (${cv.family}).`,
+    hints: [],
+  };
+};
+
+export const allMatchChecks = [
+  hardSkillOverlap,
+  titleAlignment,
+  roleFamilyMatch,
+  educationLevel,
+  yoeMatch,
+];
 
 interface KnockoutPattern {
   signal: string;

@@ -1,0 +1,16 @@
+{
+  "jobs": [
+    {
+      "id": "w1",
+      "shortcode": "ABC123",
+      "title": "Senior React Engineer",
+      "city": "Berlin",
+      "country": "Germany",
+      "remote": false,
+      "url": "https://apply.workable.com/acme/j/ABC123/",
+      "description": "<p>Building UI for our platform with React and TypeScript.</p>",
+      "requirements": "<p>5+ years React.</p>",
+      "published_on": "2026-05-12"
+    }
+  ]
+}

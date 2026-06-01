@@ -9,6 +9,7 @@ export default defineConfig([
       'src/ats/index.ts',
       'src/skills/index.ts',
       'src/types/index.ts',
+      'src/jobs/index.ts',
     ],
     format: ['esm'],
     target: 'es2022',

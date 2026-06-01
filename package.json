@@ -27,6 +27,10 @@
       "types": "./dist/mcp/server.d.ts",
       "import": "./dist/mcp/server.js"
     },
+    "./jobs": {
+      "types": "./dist/jobs/index.d.ts",
+      "import": "./dist/jobs/index.js"
+    },
     "./package.json": "./package.json"
   },
   "bin": {
@@ -36,6 +40,7 @@
     "bin",
     "dist",
     "data/skills",
+    "data/jobs",
     "DOCS.md",
     "README.md"
   ],

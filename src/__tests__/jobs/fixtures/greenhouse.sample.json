@@ -1,0 +1,20 @@
+{
+  "jobs": [
+    {
+      "id": 100001,
+      "absolute_url": "https://boards.greenhouse.io/acme/jobs/100001",
+      "title": "Senior Frontend Engineer",
+      "location": { "name": "Remote - EU" },
+      "updated_at": "2026-05-10T10:00:00Z",
+      "content": "<p>We need a Senior React + TypeScript engineer to lead frontend work on our design system.</p>"
+    },
+    {
+      "id": 100002,
+      "absolute_url": "https://boards.greenhouse.io/acme/jobs/100002",
+      "title": "Backend Engineer",
+      "location": { "name": "Berlin" },
+      "updated_at": "2026-05-09T10:00:00Z",
+      "content": "<p>Go and Postgres backend role.</p>"
+    }
+  ]
+}
