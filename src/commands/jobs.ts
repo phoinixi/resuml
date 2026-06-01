@@ -87,7 +87,7 @@ async function readStdin(): Promise<string> {
     process.stdin.on('data', (chunk: string) => {
       data += chunk;
     });
-    process.stdin.on('end', () => resolve(data.trim()));
+    process.stdin.on('end', () => { resolve(data.trim()); });
   });
 }
 
@@ -208,9 +208,7 @@ export async function jobsScoreAction(options: JobsScoreOptions): Promise<void> 
     console.log('');
 
     for (const [name, tier] of Object.entries(job.ats.tiers)) {
-      if (tier) {
-        console.log(`  ${name.padEnd(10)} ${String(tier.score).padStart(3)}  ${tierBadge(tier.grade)}`);
-      }
+      console.log(`  ${name.padEnd(10)} ${String(tier.score).padStart(3)}  ${tierBadge(tier.grade)}`);
     }
     console.log('');
 

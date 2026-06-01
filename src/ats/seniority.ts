@@ -44,8 +44,8 @@ export function seniorityFromYoe(yoe: number): SeniorityLevel {
 export function bandLabelToLevel(label: string): SeniorityLevel | null {
   const m = /^(IC|[LEM])(\d)$/i.exec(label);
   if (!m) return null;
-  const prefix = m[1]!.toUpperCase();
-  const num = parseInt(m[2]!, 10);
+  const prefix = (m[1] ?? '').toUpperCase();
+  const num = parseInt(m[2] ?? '0', 10);
   if (prefix === 'L' || prefix === 'E') {
     const map: Partial<Record<number, SeniorityLevel>> = {
       3: 'junior', 4: 'mid', 5: 'senior', 6: 'staff', 7: 'principal',
@@ -98,7 +98,7 @@ export function extractJdSeniority(jd: string, jobTitle?: string): SeniorityLeve
   // Signal 3: numeric YOE range
   const yoeMatch = YOE_RE.exec(jd);
   if (yoeMatch) {
-    return seniorityFromYoe(parseInt(yoeMatch[1]!, 10));
+    return seniorityFromYoe(parseInt(yoeMatch[1] ?? '0', 10));
   }
 
   return null;

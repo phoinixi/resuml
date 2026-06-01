@@ -181,6 +181,6 @@ describe('rankPostings specialty integration', () => {
   it('caps ATS score for frontend CV against a backend posting', () => {
     const results = rankPostings(frontendCv, [backendPosting]);
     expect(results).toHaveLength(1);
-    expect(results[0]!.ats.score).toBeLessThanOrEqual(45);
+    expect(results.at(0)?.ats.score).toBeLessThanOrEqual(45);
   });
 });

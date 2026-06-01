@@ -48,7 +48,7 @@ describe('provider resilience', () => {
     (global.fetch as ReturnType<typeof vi.fn>).mockRejectedValue(new Error('network down'));
     const result = await searchJobs(minimalResume, { providers: ['remoteok'], timeoutMs: 500 });
     expect(result.providers).toHaveLength(1);
-    expect(result.providers[0]!.error).toMatch(/network/i);
+    expect(result.providers.at(0)?.error).toMatch(/network/i);
     expect(result.jobs).toEqual([]);
   });
 
@@ -58,7 +58,7 @@ describe('provider resilience', () => {
     fetchMock.mockResolvedValue({
       ok: true,
       status: 200,
-      text: async () => JSON.stringify([]),
+      text: () => Promise.resolve(JSON.stringify([])),
     });
     const result = await searchJobs(minimalResume, {
       providers: ['remoteok', 'remotive'],
@@ -81,7 +81,7 @@ describe('dedupe', () => {
       posting('high', highBody),
     ]);
     expect(results).toHaveLength(1);
-    expect(results[0]!.id).toBe('high');
+    expect(results.at(0)?.id).toBe('high');
   });
 
   it('keeps both when (company, title, location) differ', () => {
