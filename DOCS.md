@@ -8,6 +8,7 @@
 - [Installation](#installation)
 - [CLI commands and options](#cli-commands-and-options)
 - [ATS analysis](#ats-analysis)
+- [Job search](#job-search)
 - [Themes](#themes)
 - [Example YAML structure](#example-yaml-structure)
 - [CI/CD integration](#cicd-auto-build-on-push)
@@ -47,21 +48,32 @@ Requires Node.js ≥ 20 and npm ≥ 10.
 | `pdf`            | Render to PDF                                       |
 | `dev`            | Dev server with hot-reload                          |
 | `mcp`            | Start the MCP server for AI agents                  |
+| `jobs search`    | Discover and rank job postings from free sources    |
+| `jobs score`     | Score a single posting against your resume          |
+| `jobs tailor`    | Generate a tailoring prompt for a posting           |
 
 ### Options
 
 | Option            | Alias | Description                                  |
 | ----------------- | ----- | -------------------------------------------- |
-| `--resume`        | `-r`  | Input YAML file(s) or directory              |
-| `--output`        | `-o`  | Output file path                             |
-| `--theme`         | `-t`  | Theme name                                   |
-| `--port`          | `-p`  | Dev server port (default: 3000)              |
-| `--language`      |       | Locale (default: `en`)                       |
-| `--debug`         |       | Detailed errors                              |
-| `--ats`           |       | Run ATS analysis (with `validate`)           |
-| `--jd`            |       | Path to job description file (with `--ats`)  |
-| `--ats-threshold` |       | Minimum score (0-100); exits 1 if below      |
-| `--format`        |       | Output format for validate: `text` or `json` |
+| `--resume`        | `-r`  | Input YAML file(s) or directory                                          |
+| `--output`        | `-o`  | Output file path                                                         |
+| `--theme`         | `-t`  | Theme name                                                               |
+| `--port`          | `-p`  | Dev server port (default: 3000)                                          |
+| `--language`      |       | Locale (default: `en`)                                                   |
+| `--debug`         |       | Detailed errors                                                          |
+| `--ats`           |       | Run ATS analysis (with `validate`)                                       |
+| `--jd`            |       | Path to job description file (with `--ats`)                              |
+| `--ats-threshold` |       | Minimum score (0-100); exits 1 if below                                  |
+| `--format`        |       | Output format for validate: `text` or `json`                             |
+| `--location`      |       | Override candidate location as `"City, CC"` (with `jobs search`)        |
+| `--min-score`     |       | Minimum ATS score for results (default 85, with `jobs search`)           |
+| `--limit`         |       | Max postings returned after ranking (default 20, with `jobs search`)     |
+| `--providers`     |       | Comma-separated provider list (with `jobs search`)                       |
+| `--remote`        |       | Restrict to remote-friendly postings (with `jobs search`)                |
+| `--posting`       |       | Posting YAML/JSON file for `jobs score` / `jobs tailor`                  |
+| `--body`          |       | Posting body text; use `-` for stdin (with `jobs tailor`)                |
+| `--json`          |       | Machine-readable JSON output (with `jobs search`, `score`, `tailor`)     |
 
 ### Quick start
 
@@ -140,6 +152,49 @@ Supports English and German (language-specific action verbs and pronouns). Use `
 ```bash
 resuml validate --resume lebenslauf.yaml --ats --language de
 ```
+
+## Job search
+
+Discover, score, and tailor job postings against your resume — all offline, no API keys.
+
+```bash
+# Search free job sources and rank results against your resume (default minScore: 85)
+resuml jobs search -r resume.yaml
+
+# Filter to remote-friendly postings in your country
+resuml jobs search -r resume.yaml --remote --location "Zürich, CH"
+
+# Score a single posting (full per-tier ATS breakdown)
+resuml jobs score -r resume.yaml --posting posting.yaml
+
+# Generate a tailoring prompt for a posting (pipe output to Claude)
+resuml jobs tailor --posting posting.yaml
+resuml jobs tailor --body - < jd.txt   # read body from stdin
+
+# Machine-readable output
+resuml jobs search -r resume.yaml --json
+```
+
+### Posting file format (`--posting posting.yaml`)
+
+```yaml
+company: Acme Corp
+title: Senior Backend Engineer
+url: https://acme.com/jobs/123
+body: |
+  We are looking for a backend engineer with 5+ years of experience...
+location: Berlin, DE   # optional
+remote: false          # optional
+```
+
+### How search works
+
+1. Derives a query from your resume (seniority, top skills, location).
+2. Fetches postings from free sources in parallel (Greenhouse, Lever, Ashby, Workable, RemoteOK, WWR, Remotive, HN Who's Hiring).
+3. Drops on-site postings in the wrong country when `--location` is set.
+4. Scores every posting with the full ATS engine; dedupes by `(company, title, location)`.
+5. Removes postings below `--min-score` (default 85) and caps to `--limit` (default 20).
+6. Off-specialty roles (e.g. a backend JD for a frontend CV) are capped at 45 and filtered out automatically.
 
 ## Themes
 
@@ -277,14 +332,18 @@ Claude Code will:
 
 ### Tools
 
-| Tool                 | Purpose                                             |
-| -------------------- | --------------------------------------------------- |
-| `resuml_init_resume` | Generate a starter YAML template                    |
-| `resuml_validate`    | Validate resume YAML against the JSON Resume schema |
-| `resuml_ats_check`   | ATS analysis + JD keyword matching                  |
-| `resuml_render`      | Render to HTML using a theme (supports `locale`)    |
-| `resuml_list_themes` | List available themes and install status            |
-| `resuml_export_pdf`  | Export as PDF (supports `margin`, `locale`)         |
+| Tool                   | Purpose                                                                         |
+| ---------------------- | ------------------------------------------------------------------------------- |
+| `resuml_init_resume`   | Generate a starter YAML template                                                |
+| `resuml_validate`      | Validate resume YAML against the JSON Resume schema                             |
+| `resuml_ats_check`     | Tiered ATS analysis (Parsing / Match / Recruiter) with knockout signals         |
+| `resuml_ats_explain`   | Return the rubric entry for a specific check id                                 |
+| `resuml_render`        | Render to HTML using a theme (supports `locale`)                                |
+| `resuml_list_themes`   | List available themes and install status                                        |
+| `resuml_export_pdf`    | Export as PDF (supports `margin`, `locale`)                                     |
+| `resuml_jobs_search`   | Discover and rank job postings from free sources against the resume             |
+| `resuml_jobs_score`    | Score a single job posting against the resume; returns full ATS breakdown       |
+| `resuml_jobs_tailor`   | Build a tailoring prompt for a specific posting (returns prompt text)           |
 
 ### Resources
 

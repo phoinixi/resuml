@@ -72,6 +72,11 @@ npm install -g jsonresume-theme-stackoverflow
 resuml validate --resume resume.yaml --ats --jd job.txt
 resuml render   --resume resume.yaml --theme stackoverflow --output resume.html
 resuml pdf      --resume resume.yaml --theme stackoverflow --output resume.pdf
+
+# discover and rank job postings from free sources
+resuml jobs search --resume resume.yaml --location "Zürich, CH"
+resuml jobs score  --resume resume.yaml --posting posting.yaml
+resuml jobs tailor --posting posting.yaml
 ```
 
 `resuml pdf` and snapshot rendering need Playwright. Install it once with `npm install -g playwright` (it's an optional peer dep so the base install stays slim).
